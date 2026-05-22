@@ -32,10 +32,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body
-        className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable, fontGaramond.variable)}
+        className={cn("h-dvh overflow-hidden bg-background font-sans antialiased", fontSans.variable, fontGaramond.variable)}
       >
-        <div className="flex justify-center items-center min-h-screen bg-gray-200 p-4">
-          <div className="w-full max-w-sm h-[800px] bg-gradient-to-br from-white to-blue-50 rounded-3xl shadow-2xl overflow-hidden flex flex-col">
+        <div className="flex justify-center items-stretch md:items-center h-dvh bg-white md:bg-gray-200 md:p-4">
+          <div className="w-full h-dvh md:max-w-sm md:h-[800px] bg-gradient-to-br from-white to-blue-50 md:rounded-3xl md:shadow-2xl overflow-hidden flex flex-col">
             {children}
           </div>
         </div>

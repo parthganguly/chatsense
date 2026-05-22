@@ -1,7 +1,8 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useEffect, useState, useRef } from "react"
 import Image from "next/image"
+import JSZip from "jszip"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -26,6 +27,12 @@ import { analyzeChat, type ChatAnalysis } from "@/lib/chat-analyzer"
 
 type Screen = "welcome" | "import" | "dashboard" | "calendar" | "settings"
 
+type SharedFileEvent = CustomEvent<{
+  name?: string
+  mimeType?: string
+  base64?: string
+}>
+
 export default function ChatSenseApp() {
   const [screen, setScreen] = useState<Screen>("welcome")
   const [activeTab, setActiveTab] = useState<Screen>("dashboard")
@@ -39,18 +46,12 @@ export default function ChatSenseApp() {
     setActiveTab("dashboard")
   }
 
-  const handleFileUpload = async (file: File) => {
+  const processChatFile = async (file: File) => {
     setIsLoading(true)
     setError(null)
 
     try {
-      // Validate file type
-      if (!file.name.endsWith('.txt')) {
-        throw new Error('Please upload a .txt file exported from WhatsApp.')
-      }
-
-      // Read file content
-      const text = await file.text()
+      const text = await readWhatsAppExport(file)
       
       // Parse chat messages
       const parsedMessages = parseWhatsAppChat(text)
@@ -75,6 +76,35 @@ export default function ChatSenseApp() {
       setIsLoading(false)
     }
   }
+
+  const handleFileUpload = async (file: File) => {
+    await processChatFile(file)
+  }
+
+  useEffect(() => {
+    if (typeof window === "undefined") return
+
+    const handleSharedFile = (event: Event) => {
+      const { name, mimeType, base64 } = (event as SharedFileEvent).detail || {}
+      if (!base64) return
+
+      try {
+        const bytes = base64ToBytes(base64)
+        const file = new File([bytes], name || "WhatsApp Chat.zip", {
+          type: mimeType || "application/zip",
+        })
+        void processChatFile(file)
+      } catch {
+        setError("ChatSense could not read the shared WhatsApp export. Please try selecting the ZIP manually.")
+      }
+    }
+
+    window.addEventListener("chatsense-shared-file", handleSharedFile)
+
+    return () => {
+      window.removeEventListener("chatsense-shared-file", handleSharedFile)
+    }
+  })
 
   const renderScreen = () => {
     if (screen === "welcome") {
@@ -127,6 +157,41 @@ export default function ChatSenseApp() {
       </motion.div>
     </AnimatePresence>
   )
+}
+
+async function readWhatsAppExport(file: File): Promise<string> {
+  const fileName = file.name.toLowerCase()
+
+  if (fileName.endsWith(".txt")) {
+    return file.text()
+  }
+
+  if (fileName.endsWith(".zip") || file.type.includes("zip")) {
+    const zip = await JSZip.loadAsync(await file.arrayBuffer())
+    const chatFile = Object.values(zip.files).find((entry) => {
+      const name = entry.name.toLowerCase()
+      return !entry.dir && name.endsWith(".txt") && name.includes("whatsapp chat")
+    }) || Object.values(zip.files).find((entry) => !entry.dir && entry.name.toLowerCase().endsWith(".txt"))
+
+    if (!chatFile) {
+      throw new Error("No WhatsApp chat .txt file was found inside this ZIP.")
+    }
+
+    return chatFile.async("string")
+  }
+
+  throw new Error("Please select the WhatsApp chat export ZIP, or the .txt file inside it.")
+}
+
+function base64ToBytes(base64: string): Uint8Array {
+  const binary = window.atob(base64)
+  const bytes = new Uint8Array(binary.length)
+
+  for (let i = 0; i < binary.length; i++) {
+    bytes[i] = binary.charCodeAt(i)
+  }
+
+  return bytes
 }
 
 const WelcomeScreen = ({ onGetStarted }: { onGetStarted: () => void }) => (
@@ -208,7 +273,7 @@ const ImportScreen = ({
         <input
           ref={fileInputRef}
           type="file"
-          accept=".txt"
+          accept=".zip,.txt,application/zip,text/plain"
           onChange={handleFileSelect}
           className="hidden"
         />
@@ -232,9 +297,9 @@ const ImportScreen = ({
               <>
                 <UploadCloud className="mx-auto h-16 w-16 text-blue-500" />
                 <h2 className="mt-4 font-lora text-2xl font-semibold text-slate-800">
-                  Import your chat
+                  Choose WhatsApp export
                 </h2>
-                <p className="mt-1 text-slate-500">Tap to select your WhatsApp .txt file</p>
+                <p className="mt-1 text-slate-500">Tap and pick the ZIP WhatsApp creates</p>
               </>
             )}
           </CardContent>
@@ -435,7 +500,7 @@ const SettingItem = ({ title, description }) => (
 )
 
 const BottomNav = ({ activeTab, setActiveTab }: { activeTab: Screen; setActiveTab: (tab: Screen) => void }) => (
-  <div className="bg-white/50 backdrop-blur-lg border-t border-slate-200/80 rounded-b-3xl">
+  <div className="bg-white/50 backdrop-blur-lg border-t border-slate-200/80 md:rounded-b-3xl pb-[env(safe-area-inset-bottom)]">
     <div className="flex justify-around p-2">
       <NavItem
         icon={LayoutGrid}
