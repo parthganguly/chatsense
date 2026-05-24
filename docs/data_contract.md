@@ -90,8 +90,8 @@ Each row represents one cleaned message. Timestamps are UTC-naive pandas timesta
 | `rolling_20_avg_gap_min` | float64 | yes | Average gap in current 20-message window. |
 | `rolling_7d_message_count` | int64 | no | Count in trailing 7 days. |
 | `rolling_7d_sender_share` | float64 | no | Sender share in trailing 7 days. |
-| `next_reply_delay_bucket` | string | yes | Future reply delay class. |
+| `next_reply_delay_bucket` | string | yes | Delay class until the next future message from a different sender. |
 | `next_window_activity_level` | string | yes | Future activity relative to baseline: `low`, `normal`, `high`. |
 | `next_window_imbalance_change` | string | yes | Future balance change: `more_balanced`, `same`, `more_one_sided`. |
 
-Label columns must only use messages after the current row/window. They must never use current-row future values as features.
+Label columns must only use messages after the current row/window. They must never use current-row future values as features. `next_reply_delay_bucket` specifically looks forward from the current message until the next message by a different sender, so consecutive messages from the same sender do not become artificial replies.

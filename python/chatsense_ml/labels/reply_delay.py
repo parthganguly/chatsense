@@ -8,13 +8,32 @@ def add_next_reply_delay_bucket(df: pd.DataFrame) -> pd.DataFrame:
         return df
 
     result = df.copy()
-    next_reply_delay = result["reply_delay_min"].shift(-1)
+    next_reply_delay = _delay_until_next_other_sender(result)
     result["next_reply_delay_bucket"] = pd.Series(
         [_bucket_reply_delay(value) for value in next_reply_delay],
         index=result.index,
         dtype=object,
     )
     return result
+
+
+def _delay_until_next_other_sender(df: pd.DataFrame) -> list[float | None]:
+    delays: list[float | None] = []
+    senders = df["sender"].tolist()
+    timestamps = df["timestamp"].tolist()
+
+    for row_number, sender in enumerate(senders):
+        next_delay: float | None = None
+        current_timestamp = timestamps[row_number]
+        for future_row_number in range(row_number + 1, len(df)):
+            if senders[future_row_number] == sender:
+                continue
+            future_timestamp = timestamps[future_row_number]
+            next_delay = (future_timestamp - current_timestamp).total_seconds() / 60
+            break
+        delays.append(next_delay)
+
+    return delays
 
 
 def _bucket_reply_delay(minutes: float | None) -> str | None:
