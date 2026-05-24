@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=70", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chatsense-ml"
+version = "0.1.0"
+description = "Local-first behavioral analytics for WhatsApp chat exports."
+requires-python = ">=3.11"
+dependencies = [
+  "duckdb>=1.1",
+  "networkx>=3.3",
+  "numpy>=2.0",
+  "pandas>=2.2",
+  "pyarrow>=16",
+  "pydantic>=2.7",
+  "ipyvizzu>=0.17",
+  "netgraph>=4.13",
+  "pyvis>=0.3",
+  "rich>=13.7",
+  "scikit-learn>=1.5",
+  "typer>=0.12",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.2"]
+
+[project.scripts]
+chatsense-ml = "chatsense_ml.cli:app"
+
+[tool.setuptools]
+package-dir = {"" = "python"}
+
+[tool.setuptools.packages.find]
+where = ["python"]
+
+[tool.pytest.ini_options]
+testpaths = ["python/tests"]
+pythonpath = ["python"]

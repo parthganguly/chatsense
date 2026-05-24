@@ -3,6 +3,17 @@
 # dependencies
 /node_modules
 
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+report.json
+features.parquet
+
 # next.js
 /.next/
 /out/
