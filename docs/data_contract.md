@@ -95,3 +95,17 @@ Each row represents one cleaned message. Timestamps are UTC-naive pandas timesta
 | `next_window_imbalance_change` | string | yes | Future balance change: `more_balanced`, `same`, `more_one_sided`. |
 
 Label columns must only use messages after the current row/window. They must never use current-row future values as features. `next_reply_delay_bucket` specifically looks forward from the current message until the next message by a different sender, so consecutive messages from the same sender do not become artificial replies.
+
+## Classical analytics modules
+
+Phase 2 research helpers remain non-LLM and local-only. They may consume `features.parquet`, but they must not change the Phase 1 file schema unless this contract is updated.
+
+| Module | Purpose |
+| --- | --- |
+| `survival/reply_time.py` | Empirical probability of reply within horizons such as 1h, 6h, and 24h. |
+| `anomaly/silence_anomaly.py` | Robust silence-gap anomaly scoring from observed gaps. |
+| `anomaly/activity_change.py` | Daily activity spikes and drops relative to trailing baselines. |
+| `models/baselines.py` | Majority and sender-relative baseline predictors. |
+| `models/sklearn_models.py` | Classical sklearn label classifiers for parquet features. |
+| `evaluation/backtest.py` | Chronological expanding-window evaluation. |
+| `evaluation/calibration.py` | Probability calibration checks for future classifiers. |
