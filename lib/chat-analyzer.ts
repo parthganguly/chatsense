@@ -1,298 +1,481 @@
-import type { ChatMessage } from './chat-parser'
-import { getSenders } from './chat-parser'
+import type { ChatMessage } from "./chat-parser"
+import { getSenders } from "./chat-parser"
 
-export interface RelationshipSummary {
-  strength: number // 0-100
-  balance: number // 0-100 (50 = perfectly balanced)
-  description: string
+const MINUTE_MS = 60 * 1000
+const THREAD_GAP_MINUTES = 6 * 60
+
+export interface ConversationOverview {
+  messageCount: number
+  participantCount: number
+  activeDays: number
+  totalWords: number
+  avgMessagesPerActiveDay: number
+  startedAt: string
+  endedAt: string
 }
 
-export interface ConversationStyle {
-  avgReplyTime: number // minutes
-  quickReplyRate: number // percentage of replies under 5 minutes
-  description: string
+export interface ParticipantInsight {
+  sender: string
+  messageCount: number
+  messageShare: number
+  wordCount: number
+  replyCount: number
+  medianReplyMinutes: number | null
+  initiationCount: number
 }
 
-export interface EnergyPeaks {
-  peakHour: number // 0-23
-  peakDay: string // day of week
-  description: string
+export interface ReplyDynamics {
+  replyCount: number
+  avgReplyMinutes: number | null
+  medianReplyMinutes: number | null
+  quickReplyRate: number
+  withinOneHourRate: number
+  withinSixHoursRate: number
+  withinDayRate: number
+}
+
+export interface SilenceSummary {
+  longestSilenceMinutes: number | null
+  unusualSilenceCount: number
+  unusualSilenceThresholdMinutes: number | null
+  latestUnusualSilence: {
+    startedAt: string
+    endedAt: string
+    durationMinutes: number
+  } | null
+}
+
+export interface ActivityPoint {
+  label: string
+  count: number
+}
+
+export interface ActivitySummary {
+  peakHour: number
+  peakDay: string
+  recentTrend: "rising" | "stable" | "falling" | "not_enough_data"
+  recentVsPriorPct: number | null
+  nightMessageRate: number
+  hourlyCounts: ActivityPoint[]
+  weekdayCounts: ActivityPoint[]
+  dailyCounts: ActivityPoint[]
+}
+
+export interface ReplyEdge {
+  from: string
+  to: string
+  count: number
+}
+
+export interface ObservableInsight {
+  tone: "watch" | "pattern" | "context"
+  title: string
+  detail: string
 }
 
 export interface ChatAnalysis {
-  relationshipSummary: RelationshipSummary
-  conversationStyle: ConversationStyle
-  energyPeaks: EnergyPeaks
+  overview: ConversationOverview
+  participants: ParticipantInsight[]
+  replyDynamics: ReplyDynamics
+  silenceSummary: SilenceSummary
+  activity: ActivitySummary
+  replyEdges: ReplyEdge[]
+  threadCount: number
+  insights: ObservableInsight[]
 }
 
-/**
- * Analyzes chat messages and generates insights
- */
-export function analyzeChat(messages: ChatMessage[]): ChatAnalysis {
+interface ReplyEvent {
+  sender: string
+  previousSender: string
+  delayMinutes: number
+}
+
+interface SilenceEvent {
+  startedAt: Date
+  endedAt: Date
+  durationMinutes: number
+}
+
+export function analyzeChat(inputMessages: ChatMessage[]): ChatAnalysis {
+  const messages = [...inputMessages]
+    .filter((message) => !Number.isNaN(message.timestamp.getTime()))
+    .sort((left, right) => left.timestamp.getTime() - right.timestamp.getTime())
+
   if (messages.length === 0) {
     return getDefaultAnalysis()
   }
 
   const senders = getSenders(messages)
-  if (senders.length === 0) {
-    return getDefaultAnalysis()
-  }
-
-  // For MVP, assume two-person chat and identify primary sender
-  const primarySender = senders[0]
-  const otherSender = senders.length > 1 ? senders[1] : primarySender
-
-  const relationshipSummary = analyzeRelationship(messages, primarySender, otherSender)
-  const conversationStyle = analyzeConversationStyle(messages, primarySender, otherSender)
-  const energyPeaks = analyzeEnergyPeaks(messages)
+  const gaps = getGaps(messages)
+  const replyEvents = getReplyEvents(messages)
+  const threadStarts = messages.map((message, index) => {
+    if (index === 0) return true
+    return gapMinutes(messages[index - 1], message) >= THREAD_GAP_MINUTES
+  })
+  const activity = analyzeActivity(messages)
+  const silenceSummary = analyzeSilences(messages, gaps)
+  const participants = analyzeParticipants(messages, senders, replyEvents, threadStarts)
+  const replyDynamics = analyzeReplies(replyEvents)
+  const replyEdges = buildReplyEdges(replyEvents)
+  const overview = buildOverview(messages, senders)
 
   return {
-    relationshipSummary,
-    conversationStyle,
-    energyPeaks,
+    overview,
+    participants,
+    replyDynamics,
+    silenceSummary,
+    activity,
+    replyEdges,
+    threadCount: threadStarts.filter(Boolean).length,
+    insights: buildInsights(overview, participants, replyDynamics, silenceSummary, activity),
   }
 }
 
-/**
- * Analyzes relationship strength and balance
- */
-function analyzeRelationship(
-  messages: ChatMessage[],
-  sender1: string,
-  sender2: string
-): RelationshipSummary {
-  if (messages.length === 0) {
-    return {
-      strength: 0,
-      balance: 50,
-      description: 'No messages to analyze.',
-    }
-  }
-
-  const sender1Messages = messages.filter((m) => m.sender === sender1).length
-  const sender2Messages = messages.filter((m) => m.sender === sender2).length
-  const totalMessages = sender1Messages + sender2Messages
-
-  // Calculate balance (0-100, 50 = perfectly balanced)
-  const sender1Percentage = totalMessages > 0 ? (sender1Messages / totalMessages) * 100 : 50
-  const balance = Math.abs(50 - sender1Percentage) * 2 // Convert to 0-100 scale where 0 = perfectly balanced
-  const normalizedBalance = 100 - balance // Invert so higher = more balanced
-
-  // Calculate strength based on message frequency and consistency
-  const daysActive = getUniqueDays(messages).length
-  const avgMessagesPerDay = messages.length / Math.max(daysActive, 1)
-  
-  // Strength factors:
-  // - Message count (0-40 points): more messages = stronger
-  // - Consistency (0-30 points): more days active = stronger
-  // - Balance (0-30 points): more balanced = stronger
-  const messageScore = Math.min(40, (messages.length / 1000) * 40)
-  const consistencyScore = Math.min(30, (daysActive / 30) * 30)
-  const balanceScore = (normalizedBalance / 100) * 30
-  
-  const strength = Math.min(100, Math.round(messageScore + consistencyScore + balanceScore))
-
-  // Generate description
-  let description = ''
-  if (strength >= 80) {
-    description = `You share a very strong connection with ${sender2 === sender1 ? 'this person' : sender2}, with active, balanced communication.`
-  } else if (strength >= 60) {
-    description = `You have a solid relationship with ${sender2 === sender1 ? 'this person' : sender2}, with regular interaction.`
-  } else if (strength >= 40) {
-    description = `You maintain a moderate connection with ${sender2 === sender1 ? 'this person' : sender2}.`
-  } else {
-    description = `You have a casual connection with ${sender2 === sender1 ? 'this person' : sender2}.`
-  }
-
-  if (normalizedBalance >= 70) {
-    description += ' Communication is well-balanced.'
-  } else if (normalizedBalance >= 50) {
-    description += ' Communication shows moderate balance.'
-  } else {
-    description += ' Communication patterns show some imbalance.'
-  }
+function buildOverview(messages: ChatMessage[], senders: string[]): ConversationOverview {
+  const activeDays = new Set(messages.map((message) => toDateKey(message.timestamp))).size
+  const totalWords = messages.reduce((total, message) => total + countWords(message.content), 0)
 
   return {
-    strength,
-    balance: normalizedBalance,
-    description,
+    messageCount: messages.length,
+    participantCount: senders.length,
+    activeDays,
+    totalWords,
+    avgMessagesPerActiveDay: round(messages.length / Math.max(activeDays, 1), 1),
+    startedAt: messages[0].timestamp.toISOString(),
+    endedAt: messages[messages.length - 1].timestamp.toISOString(),
   }
 }
 
-/**
- * Analyzes conversation style and reply speed
- */
-function analyzeConversationStyle(
+function analyzeParticipants(
   messages: ChatMessage[],
-  sender1: string,
-  sender2: string
-): ConversationStyle {
-  if (messages.length < 2) {
-    return {
-      avgReplyTime: 0,
-      quickReplyRate: 0,
-      description: 'Not enough messages to analyze conversation style.',
-    }
-  }
+  senders: string[],
+  replyEvents: ReplyEvent[],
+  threadStarts: boolean[],
+): ParticipantInsight[] {
+  return senders
+    .map((sender) => {
+      const senderMessages = messages.filter((message) => message.sender === sender)
+      const replyDelays = replyEvents
+        .filter((event) => event.sender === sender)
+        .map((event) => event.delayMinutes)
+      const initiationCount = messages.reduce(
+        (total, message, index) => total + (threadStarts[index] && message.sender === sender ? 1 : 0),
+        0,
+      )
 
-  // Calculate reply times (time between messages from different senders)
-  const replyTimes: number[] = [] // in minutes
-
-  for (let i = 1; i < messages.length; i++) {
-    const prevMsg = messages[i - 1]
-    const currMsg = messages[i]
-
-    // Only count if different senders (actual reply)
-    if (prevMsg.sender !== currMsg.sender) {
-      const timeDiff = currMsg.timestamp.getTime() - prevMsg.timestamp.getTime()
-      const minutes = timeDiff / (1000 * 60)
-
-      // Only count reasonable reply times (less than 24 hours)
-      if (minutes > 0 && minutes < 24 * 60) {
-        replyTimes.push(minutes)
+      return {
+        sender,
+        messageCount: senderMessages.length,
+        messageShare: round((senderMessages.length / messages.length) * 100),
+        wordCount: senderMessages.reduce((total, message) => total + countWords(message.content), 0),
+        replyCount: replyDelays.length,
+        medianReplyMinutes: median(replyDelays),
+        initiationCount,
       }
-    }
-  }
+    })
+    .sort((left, right) => right.messageCount - left.messageCount)
+}
 
-  if (replyTimes.length === 0) {
+function analyzeReplies(replyEvents: ReplyEvent[]): ReplyDynamics {
+  const delays = replyEvents.map((event) => event.delayMinutes)
+  if (delays.length === 0) {
     return {
-      avgReplyTime: 0,
+      replyCount: 0,
+      avgReplyMinutes: null,
+      medianReplyMinutes: null,
       quickReplyRate: 0,
-      description: 'No reply patterns detected.',
+      withinOneHourRate: 0,
+      withinSixHoursRate: 0,
+      withinDayRate: 0,
     }
-  }
-
-  // Calculate average reply time
-  const avgReplyTime = replyTimes.reduce((sum, time) => sum + time, 0) / replyTimes.length
-
-  // Calculate quick reply rate (replies under 5 minutes)
-  const quickReplies = replyTimes.filter((time) => time < 5).length
-  const quickReplyRate = (quickReplies / replyTimes.length) * 100
-
-  // Generate description
-  let description = ''
-  if (avgReplyTime < 5) {
-    description = `Your chats are very quick and responsive, with an average reply time of ${Math.round(avgReplyTime)} minutes.`
-  } else if (avgReplyTime < 30) {
-    description = `Your chats are typically quick and responsive, with an average reply time of ${Math.round(avgReplyTime)} minutes.`
-  } else if (avgReplyTime < 120) {
-    description = `Your chats show moderate response times, averaging ${Math.round(avgReplyTime)} minutes to reply.`
-  } else {
-    description = `Your chats have slower response patterns, with an average reply time of ${Math.round(avgReplyTime / 60)} hours.`
-  }
-
-  if (quickReplyRate >= 50) {
-    description += ' You often reply within 5 minutes.'
-  } else if (quickReplyRate >= 30) {
-    description += ' You sometimes reply quickly.'
   }
 
   return {
-    avgReplyTime: Math.round(avgReplyTime),
-    quickReplyRate: Math.round(quickReplyRate),
-    description,
+    replyCount: delays.length,
+    avgReplyMinutes: round(delays.reduce((total, delay) => total + delay, 0) / delays.length),
+    medianReplyMinutes: median(delays),
+    quickReplyRate: percentage(delays.filter((delay) => delay < 5).length, delays.length),
+    withinOneHourRate: percentage(delays.filter((delay) => delay <= 60).length, delays.length),
+    withinSixHoursRate: percentage(delays.filter((delay) => delay <= 6 * 60).length, delays.length),
+    withinDayRate: percentage(delays.filter((delay) => delay <= 24 * 60).length, delays.length),
   }
 }
 
-/**
- * Analyzes energy peaks (most active times)
- */
-function analyzeEnergyPeaks(messages: ChatMessage[]): EnergyPeaks {
-  if (messages.length === 0) {
+function analyzeSilences(messages: ChatMessage[], gaps: number[]): SilenceSummary {
+  if (gaps.length === 0) {
     return {
-      peakHour: 12,
-      peakDay: 'Monday',
-      description: 'No activity data available.',
+      longestSilenceMinutes: null,
+      unusualSilenceCount: 0,
+      unusualSilenceThresholdMinutes: null,
+      latestUnusualSilence: null,
     }
   }
 
-  // Count messages by hour
-  const hourCounts = new Array(24).fill(0)
-  messages.forEach((msg) => {
-    const hour = msg.timestamp.getHours()
-    hourCounts[hour]++
-  })
+  const medianGap = median(gaps) ?? 0
+  const absoluteDeviations = gaps.map((gap) => Math.abs(gap - medianGap))
+  const medianAbsoluteDeviation = median(absoluteDeviations) ?? 0
+  const robustThreshold = medianGap + 3.5 * 1.4826 * medianAbsoluteDeviation
+  const threshold = Math.max(6 * 60, robustThreshold)
+  const unusualSilences: SilenceEvent[] = []
 
-  // Find peak hour
-  const peakHour = hourCounts.indexOf(Math.max(...hourCounts))
-
-  // Count messages by day of week
-  const dayCounts = new Map<string, number>()
-  const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-
-  messages.forEach((msg) => {
-    const dayName = dayNames[msg.timestamp.getDay()]
-    dayCounts.set(dayName, (dayCounts.get(dayName) || 0) + 1)
-  })
-
-  // Find peak day
-  let peakDay = 'Monday'
-  let maxDayCount = 0
-  dayCounts.forEach((count, day) => {
-    if (count > maxDayCount) {
-      maxDayCount = count
-      peakDay = day
+  for (let index = 1; index < messages.length; index += 1) {
+    const durationMinutes = gapMinutes(messages[index - 1], messages[index])
+    if (durationMinutes > threshold) {
+      unusualSilences.push({
+        startedAt: messages[index - 1].timestamp,
+        endedAt: messages[index].timestamp,
+        durationMinutes,
+      })
     }
-  })
-
-  // Generate description
-  const hour12 = peakHour === 0 ? 12 : peakHour > 12 ? peakHour - 12 : peakHour
-  const period = peakHour >= 12 ? 'PM' : 'AM'
-  
-  let description = ''
-  if (peakHour >= 6 && peakHour < 12) {
-    description = `You're most active in the mornings, especially around ${hour12} ${period}.`
-  } else if (peakHour >= 12 && peakHour < 17) {
-    description = `You're most active in the afternoons, especially around ${hour12} ${period}.`
-  } else if (peakHour >= 17 && peakHour < 21) {
-    description = `You're most active in the evenings, especially around ${hour12} ${period}.`
-  } else {
-    description = `You're most active during ${peakHour >= 21 ? 'late evening' : 'night'}, especially around ${hour12} ${period}.`
   }
 
-  description += ` Your most active day is ${peakDay}.`
+  const latest = unusualSilences.at(-1)
+  return {
+    longestSilenceMinutes: round(Math.max(...gaps)),
+    unusualSilenceCount: unusualSilences.length,
+    unusualSilenceThresholdMinutes: round(threshold),
+    latestUnusualSilence: latest
+      ? {
+          startedAt: latest.startedAt.toISOString(),
+          endedAt: latest.endedAt.toISOString(),
+          durationMinutes: round(latest.durationMinutes),
+        }
+      : null,
+  }
+}
+
+function analyzeActivity(messages: ChatMessage[]): ActivitySummary {
+  const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  const hourly = Array.from({ length: 24 }, (_, hour) => ({ label: String(hour), count: 0 }))
+  const weekdays = dayNames.map((day) => ({ label: day, count: 0 }))
+  const dailyMap = new Map<string, number>()
+
+  for (const message of messages) {
+    hourly[message.timestamp.getHours()].count += 1
+    weekdays[message.timestamp.getDay()].count += 1
+    const dateKey = toDateKey(message.timestamp)
+    dailyMap.set(dateKey, (dailyMap.get(dateKey) ?? 0) + 1)
+  }
+
+  const dailyCounts = fillDailyCounts(messages[0].timestamp, messages.at(-1)!.timestamp, dailyMap)
+  const peakHour = highestIndex(hourly.map((item) => item.count))
+  const peakDayIndex = highestIndex(weekdays.map((item) => item.count))
+  const trend = getRecentTrend(dailyCounts)
+  const nightMessages = messages.filter((message) => {
+    const hour = message.timestamp.getHours()
+    return hour >= 22 || hour < 6
+  }).length
 
   return {
     peakHour,
-    peakDay,
-    description,
+    peakDay: dayNames[peakDayIndex],
+    recentTrend: trend.label,
+    recentVsPriorPct: trend.deltaPct,
+    nightMessageRate: percentage(nightMessages, messages.length),
+    hourlyCounts: hourly,
+    weekdayCounts: weekdays,
+    dailyCounts: dailyCounts.slice(-30),
   }
 }
 
-/**
- * Helper: Get unique days from messages
- */
-function getUniqueDays(messages: ChatMessage[]): Date[] {
-  const days = new Set<string>()
-  messages.forEach((msg) => {
-    const dateKey = `${msg.timestamp.getFullYear()}-${msg.timestamp.getMonth()}-${msg.timestamp.getDate()}`
-    days.add(dateKey)
-  })
-  return Array.from(days).map((key) => {
-    const [year, month, day] = key.split('-').map(Number)
-    return new Date(year, month, day)
-  })
+function buildReplyEdges(replyEvents: ReplyEvent[]): ReplyEdge[] {
+  const edges = new Map<string, ReplyEdge>()
+  for (const event of replyEvents) {
+    const key = `${event.sender}\u0000${event.previousSender}`
+    const edge = edges.get(key) ?? { from: event.sender, to: event.previousSender, count: 0 }
+    edge.count += 1
+    edges.set(key, edge)
+  }
+  return [...edges.values()].sort((left, right) => right.count - left.count)
 }
 
-/**
- * Returns default analysis when no data is available
- */
+function buildInsights(
+  overview: ConversationOverview,
+  participants: ParticipantInsight[],
+  replies: ReplyDynamics,
+  silences: SilenceSummary,
+  activity: ActivitySummary,
+): ObservableInsight[] {
+  const insights: ObservableInsight[] = []
+  const topParticipant = participants[0]
+
+  if (participants.length > 1 && topParticipant.messageShare >= 65) {
+    insights.push({
+      tone: "watch",
+      title: "Message volume is uneven",
+      detail: `${topParticipant.sender} sent ${topParticipant.messageShare}% of messages in this export. This describes volume, not intent.`,
+    })
+  } else if (participants.length > 1) {
+    insights.push({
+      tone: "pattern",
+      title: "Message volume is fairly distributed",
+      detail: `The most active participant sent ${topParticipant.messageShare}% of ${formatNumber(overview.messageCount)} messages.`,
+    })
+  }
+
+  if (silences.unusualSilenceCount > 0 && silences.latestUnusualSilence) {
+    insights.push({
+      tone: "watch",
+      title: `${silences.unusualSilenceCount} unusually long silence${silences.unusualSilenceCount === 1 ? "" : "s"} detected`,
+      detail: `The latest unusual gap lasted ${formatDuration(silences.latestUnusualSilence.durationMinutes)}. It is unusual compared with this chat's own rhythm.`,
+    })
+  }
+
+  if (activity.recentTrend !== "not_enough_data") {
+    insights.push({
+      tone: activity.recentTrend === "falling" ? "watch" : "pattern",
+      title: `Recent activity is ${activity.recentTrend}`,
+      detail:
+        activity.recentVsPriorPct === null
+          ? "The recent 7-day window differs from the preceding week."
+          : `The latest 7 days changed by ${Math.abs(activity.recentVsPriorPct)}% compared with the preceding 7 days.`,
+    })
+  }
+
+  if (replies.replyCount > 0) {
+    insights.push({
+      tone: "context",
+      title: `${replies.withinOneHourRate}% of replies arrive within 1 hour`,
+      detail: `${replies.withinSixHoursRate}% arrive within 6 hours and ${replies.withinDayRate}% within 24 hours, based on ${formatNumber(replies.replyCount)} observed replies.`,
+    })
+  }
+
+  return insights.slice(0, 4)
+}
+
+function getGaps(messages: ChatMessage[]): number[] {
+  return messages.slice(1).map((message, index) => gapMinutes(messages[index], message))
+}
+
+function getReplyEvents(messages: ChatMessage[]): ReplyEvent[] {
+  const events: ReplyEvent[] = []
+  for (let index = 1; index < messages.length; index += 1) {
+    const previous = messages[index - 1]
+    const current = messages[index]
+    if (previous.sender !== current.sender) {
+      events.push({
+        sender: current.sender,
+        previousSender: previous.sender,
+        delayMinutes: gapMinutes(previous, current),
+      })
+    }
+  }
+  return events
+}
+
+function fillDailyCounts(start: Date, end: Date, counts: Map<string, number>): ActivityPoint[] {
+  const result: ActivityPoint[] = []
+  const cursor = new Date(start.getFullYear(), start.getMonth(), start.getDate())
+  const finalDate = new Date(end.getFullYear(), end.getMonth(), end.getDate())
+  while (cursor <= finalDate) {
+    const key = toDateKey(cursor)
+    result.push({ label: key, count: counts.get(key) ?? 0 })
+    cursor.setDate(cursor.getDate() + 1)
+  }
+  return result
+}
+
+function getRecentTrend(daily: ActivityPoint[]): {
+  label: ActivitySummary["recentTrend"]
+  deltaPct: number | null
+} {
+  if (daily.length < 8) return { label: "not_enough_data", deltaPct: null }
+  const recent = daily.slice(-7).reduce((total, day) => total + day.count, 0)
+  const prior = daily.slice(-14, -7).reduce((total, day) => total + day.count, 0)
+  if (prior === 0) return { label: recent === 0 ? "stable" : "rising", deltaPct: null }
+  const deltaPct = round(((recent - prior) / prior) * 100)
+  if (deltaPct >= 20) return { label: "rising", deltaPct }
+  if (deltaPct <= -20) return { label: "falling", deltaPct }
+  return { label: "stable", deltaPct }
+}
+
+function gapMinutes(previous: ChatMessage, current: ChatMessage): number {
+  return Math.max(0, (current.timestamp.getTime() - previous.timestamp.getTime()) / MINUTE_MS)
+}
+
+function countWords(value: string): number {
+  return value.trim() ? value.trim().split(/\s+/).length : 0
+}
+
+function toDateKey(date: Date): string {
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, "0")
+  const day = String(date.getDate()).padStart(2, "0")
+  return `${year}-${month}-${day}`
+}
+
+function median(values: number[]): number | null {
+  if (values.length === 0) return null
+  const sorted = [...values].sort((left, right) => left - right)
+  const middle = Math.floor(sorted.length / 2)
+  return round(
+    sorted.length % 2 === 0 ? (sorted[middle - 1] + sorted[middle]) / 2 : sorted[middle],
+  )
+}
+
+function highestIndex(values: number[]): number {
+  return values.indexOf(Math.max(...values))
+}
+
+function percentage(count: number, total: number): number {
+  return total === 0 ? 0 : round((count / total) * 100)
+}
+
+function round(value: number, digits = 0): number {
+  const factor = 10 ** digits
+  return Math.round(value * factor) / factor
+}
+
+function formatNumber(value: number): string {
+  return new Intl.NumberFormat("en-US").format(value)
+}
+
+export function formatDuration(minutes: number | null): string {
+  if (minutes === null) return "No data"
+  if (minutes < 60) return `${Math.round(minutes)}m`
+  if (minutes < 24 * 60) return `${round(minutes / 60, 1)}h`
+  return `${round(minutes / (24 * 60), 1)}d`
+}
+
 function getDefaultAnalysis(): ChatAnalysis {
   return {
-    relationshipSummary: {
-      strength: 0,
-      balance: 50,
-      description: 'No chat data available.',
+    overview: {
+      messageCount: 0,
+      participantCount: 0,
+      activeDays: 0,
+      totalWords: 0,
+      avgMessagesPerActiveDay: 0,
+      startedAt: "",
+      endedAt: "",
     },
-    conversationStyle: {
-      avgReplyTime: 0,
+    participants: [],
+    replyDynamics: {
+      replyCount: 0,
+      avgReplyMinutes: null,
+      medianReplyMinutes: null,
       quickReplyRate: 0,
-      description: 'No conversation data available.',
+      withinOneHourRate: 0,
+      withinSixHoursRate: 0,
+      withinDayRate: 0,
     },
-    energyPeaks: {
-      peakHour: 12,
-      peakDay: 'Monday',
-      description: 'No activity data available.',
+    silenceSummary: {
+      longestSilenceMinutes: null,
+      unusualSilenceCount: 0,
+      unusualSilenceThresholdMinutes: null,
+      latestUnusualSilence: null,
     },
+    activity: {
+      peakHour: 0,
+      peakDay: "",
+      recentTrend: "not_enough_data",
+      recentVsPriorPct: null,
+      nightMessageRate: 0,
+      hourlyCounts: [],
+      weekdayCounts: [],
+      dailyCounts: [],
+    },
+    replyEdges: [],
+    threadCount: 0,
+    insights: [],
   }
 }

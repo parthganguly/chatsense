@@ -1,31 +1,39 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
-import Image from "next/image"
+import { useEffect, useRef, useState } from "react"
 import JSZip from "jszip"
-import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
+import { AnimatePresence, motion } from "framer-motion"
 import {
-  UploadCloud,
-  ShieldCheck,
-  LayoutGrid,
-  CalendarDays,
-  Settings,
-  Heart,
-  MessageCircle,
-  Zap,
-  ChevronRight,
-  Loader2,
+  Activity,
   AlertCircle,
+  ArrowRight,
+  BarChart3,
+  Clock3,
+  Gauge,
+  Import,
+  Loader2,
+  MessagesSquare,
+  Moon,
+  RefreshCw,
+  ShieldCheck,
+  Sparkles,
+  Timer,
+  TrendingDown,
+  TrendingUp,
+  Users,
 } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { cn } from "@/utils/cn"
 import { parseWhatsAppChat, type ChatMessage } from "@/lib/chat-parser"
-import { analyzeChat, type ChatAnalysis } from "@/lib/chat-analyzer"
+import {
+  analyzeChat,
+  formatDuration,
+  type ActivityPoint,
+  type ChatAnalysis,
+  type ObservableInsight,
+} from "@/lib/chat-analyzer"
 
-type Screen = "welcome" | "import" | "dashboard" | "calendar" | "settings"
+type Screen = "import" | "overview" | "rhythm" | "people"
 
 type SharedFileEvent = CustomEvent<{
   name?: string
@@ -34,17 +42,12 @@ type SharedFileEvent = CustomEvent<{
 }>
 
 export default function ChatSenseApp() {
-  const [screen, setScreen] = useState<Screen>("welcome")
-  const [activeTab, setActiveTab] = useState<Screen>("dashboard")
+  const [screen, setScreen] = useState<Screen>("import")
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [analysis, setAnalysis] = useState<ChatAnalysis | null>(null)
+  const [sourceName, setSourceName] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-
-  const navigateToApp = () => {
-    setScreen("dashboard")
-    setActiveTab("dashboard")
-  }
 
   const processChatFile = async (file: File) => {
     setIsLoading(true)
@@ -52,488 +55,546 @@ export default function ChatSenseApp() {
 
     try {
       const text = await readWhatsAppExport(file)
-      
-      // Parse chat messages
       const parsedMessages = parseWhatsAppChat(text)
-      
       if (parsedMessages.length === 0) {
-        throw new Error('No messages found in the chat file. Please check the file format.')
+        throw new Error("No WhatsApp messages were found. Choose the exported ZIP or TXT file.")
       }
 
-      // Analyze chat
-      const chatAnalysis = analyzeChat(parsedMessages)
-
-      // Store results
       setMessages(parsedMessages)
-      setAnalysis(chatAnalysis)
-
-      // Navigate to dashboard
-      navigateToApp()
+      setAnalysis(analyzeChat(parsedMessages))
+      setSourceName(file.name)
+      setScreen("overview")
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to process chat file.')
-      console.error('Error processing chat file:', err)
+      setError(err instanceof Error ? err.message : "ChatSense could not process this export.")
     } finally {
       setIsLoading(false)
     }
   }
 
-  const handleFileUpload = async (file: File) => {
-    await processChatFile(file)
-  }
-
   useEffect(() => {
-    if (typeof window === "undefined") return
-
     const handleSharedFile = (event: Event) => {
       const { name, mimeType, base64 } = (event as SharedFileEvent).detail || {}
       if (!base64) return
 
       try {
-        const bytes = base64ToBytes(base64)
-        const file = new File([bytes], name || "WhatsApp Chat.zip", {
+        const file = new File([base64ToBuffer(base64)], name || "WhatsApp Chat.zip", {
           type: mimeType || "application/zip",
         })
         void processChatFile(file)
       } catch {
-        setError("ChatSense could not read the shared WhatsApp export. Please try selecting the ZIP manually.")
+        setError("ChatSense could not read the shared export. Try selecting the ZIP manually.")
       }
     }
 
     window.addEventListener("chatsense-shared-file", handleSharedFile)
+    return () => window.removeEventListener("chatsense-shared-file", handleSharedFile)
+  }, [])
 
-    return () => {
-      window.removeEventListener("chatsense-shared-file", handleSharedFile)
-    }
-  })
-
-  const renderScreen = () => {
-    if (screen === "welcome") {
-      return <WelcomeScreen onGetStarted={() => setScreen("import")} />
-    }
-    if (screen === "import") {
-      return (
-        <ImportScreen
-          onFileUpload={handleFileUpload}
-          isLoading={isLoading}
-          error={error}
-        />
-      )
-    }
-
-    // Main app view with bottom navigation
+  if (screen === "import" || !analysis) {
     return (
-      <div className="flex flex-col h-full">
-        <main className="flex-1 overflow-y-auto">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-            >
-              {activeTab === "dashboard" && <DashboardScreen analysis={analysis} />}
-              {activeTab === "calendar" && <CalendarScreen />}
-              {activeTab === "settings" && <SettingsScreen />}
-            </motion.div>
-          </AnimatePresence>
-        </main>
-        <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
-      </div>
+      <ImportScreen
+        error={error}
+        isLoading={isLoading}
+        onFileUpload={(file) => void processChatFile(file)}
+      />
     )
   }
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={screen}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-        className="h-full"
-      >
-        {renderScreen()}
-      </motion.div>
-    </AnimatePresence>
+    <div className="flex h-full flex-col bg-[#f8faf8] text-slate-900">
+      <AppHeader
+        messageCount={messages.length}
+        sourceName={sourceName}
+        onImport={() => setScreen("import")}
+      />
+      <main className="min-h-0 flex-1 overflow-y-auto">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={screen}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.16 }}
+          >
+            {screen === "overview" && <OverviewScreen analysis={analysis} />}
+            {screen === "rhythm" && <RhythmScreen analysis={analysis} />}
+            {screen === "people" && <PeopleScreen analysis={analysis} />}
+          </motion.div>
+        </AnimatePresence>
+      </main>
+      <BottomNav activeTab={screen} setActiveTab={setScreen} />
+    </div>
+  )
+}
+
+function ImportScreen({
+  error,
+  isLoading,
+  onFileUpload,
+}: {
+  error: string | null
+  isLoading: boolean
+  onFileUpload: (file: File) => void
+}) {
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  return (
+    <div className="flex h-full flex-col bg-[#f8faf8] p-6">
+      <div className="flex flex-1 flex-col justify-center">
+        <div className="mb-10">
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-700 text-white">
+            <MessagesSquare className="h-6 w-6" />
+          </div>
+          <h1 className="text-4xl font-bold text-slate-900">ChatSense</h1>
+          <p className="mt-3 max-w-sm text-base leading-6 text-slate-600">
+            Local behavioral analytics for your WhatsApp export.
+          </p>
+        </div>
+
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept=".zip,.txt,application/zip,text/plain"
+          className="hidden"
+          onChange={(event) => {
+            const file = event.target.files?.[0]
+            if (file) onFileUpload(file)
+          }}
+        />
+
+        <button
+          type="button"
+          disabled={isLoading}
+          onClick={() => fileInputRef.current?.click()}
+          className="flex min-h-48 w-full flex-col items-center justify-center rounded-lg border border-dashed border-emerald-500 bg-white px-6 text-center shadow-sm transition hover:bg-emerald-50 disabled:cursor-wait disabled:opacity-70"
+        >
+          {isLoading ? (
+            <>
+              <Loader2 className="h-10 w-10 animate-spin text-emerald-700" />
+              <span className="mt-4 text-lg font-semibold">Analyzing export</span>
+              <span className="mt-1 text-sm text-slate-500">Everything stays on this device</span>
+            </>
+          ) : (
+            <>
+              <Import className="h-10 w-10 text-emerald-700" />
+              <span className="mt-4 text-lg font-semibold">Choose WhatsApp export</span>
+              <span className="mt-1 text-sm text-slate-500">ZIP or TXT</span>
+            </>
+          )}
+        </button>
+
+        {error && (
+          <div className="mt-4 flex gap-3 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+            <span>{error}</span>
+          </div>
+        )}
+      </div>
+
+      <div className="flex items-center gap-2 border-t border-slate-200 pt-4 text-xs leading-5 text-slate-500">
+        <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-700" />
+        <span>No upload. No account. Patterns are observations, not proof of intent.</span>
+      </div>
+    </div>
+  )
+}
+
+function AppHeader({
+  messageCount,
+  sourceName,
+  onImport,
+}: {
+  messageCount: number
+  sourceName: string
+  onImport: () => void
+}) {
+  return (
+    <header className="border-b border-slate-200 bg-white px-5 pb-3 pt-[max(1rem,env(safe-area-inset-top))]">
+      <div className="flex items-center justify-between gap-3">
+        <div className="min-w-0">
+          <div className="flex items-center gap-2">
+            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-emerald-700 text-white">
+              <MessagesSquare className="h-4 w-4" />
+            </div>
+            <h1 className="text-lg font-bold">ChatSense</h1>
+          </div>
+          <p className="mt-2 truncate text-xs text-slate-500">
+            {formatNumber(messageCount)} messages from {sourceName}
+          </p>
+        </div>
+        <Button
+          type="button"
+          variant="outline"
+          size="icon"
+          onClick={onImport}
+          aria-label="Analyze another export"
+          title="Analyze another export"
+          className="shrink-0 rounded-md"
+        >
+          <RefreshCw className="h-4 w-4" />
+        </Button>
+      </div>
+    </header>
+  )
+}
+
+function OverviewScreen({ analysis }: { analysis: ChatAnalysis }) {
+  const { overview, replyDynamics, silenceSummary, activity, insights } = analysis
+
+  return (
+    <div className="space-y-7 px-5 py-5">
+      <section>
+        <SectionHeading eyebrow="Imported export" title="What stands out" />
+        <div className="mt-4 grid grid-cols-2 gap-3">
+          <MetricCard label="Messages" value={formatNumber(overview.messageCount)} icon={MessagesSquare} />
+          <MetricCard label="Active days" value={formatNumber(overview.activeDays)} icon={Activity} />
+          <MetricCard label="Median reply" value={formatDuration(replyDynamics.medianReplyMinutes)} icon={Timer} />
+          <MetricCard label="Longest silence" value={formatDuration(silenceSummary.longestSilenceMinutes)} icon={Moon} />
+        </div>
+      </section>
+
+      <section>
+        <SectionHeading eyebrow="Observed patterns" title="Useful signals" />
+        <div className="mt-3 divide-y divide-slate-200 border-y border-slate-200 bg-white">
+          {insights.length > 0 ? (
+            insights.map((insight) => <InsightRow key={insight.title} insight={insight} />)
+          ) : (
+            <p className="px-4 py-5 text-sm text-slate-600">Not enough messages for pattern detection yet.</p>
+          )}
+        </div>
+      </section>
+
+      <section>
+        <SectionHeading eyebrow="Reply probability" title="How quickly replies arrive" />
+        <div className="mt-4 space-y-3">
+          <ProgressRow label="Within 1 hour" value={replyDynamics.withinOneHourRate} />
+          <ProgressRow label="Within 6 hours" value={replyDynamics.withinSixHoursRate} />
+          <ProgressRow label="Within 24 hours" value={replyDynamics.withinDayRate} />
+        </div>
+        <p className="mt-3 text-xs leading-5 text-slate-500">
+          Based on {formatNumber(replyDynamics.replyCount)} sender-switch replies in the exported history.
+        </p>
+      </section>
+
+      <section className="border-t border-slate-200 pt-5 text-xs leading-5 text-slate-500">
+        <p>
+          Coverage: {formatDate(overview.startedAt)} to {formatDate(overview.endedAt)}. This report describes
+          communication patterns in the exported messages only.
+        </p>
+      </section>
+    </div>
+  )
+}
+
+function RhythmScreen({ analysis }: { analysis: ChatAnalysis }) {
+  const { activity, replyDynamics, silenceSummary, threadCount } = analysis
+
+  return (
+    <div className="space-y-7 px-5 py-5">
+      <section>
+        <SectionHeading eyebrow="Time series" title="Conversation rhythm" />
+        <div className="mt-4 grid grid-cols-2 gap-3">
+          <MetricCard label="Recent trend" value={formatTrend(activity.recentTrend)} icon={trendIcon(activity.recentTrend)} />
+          <MetricCard label="Threads" value={formatNumber(threadCount)} icon={MessagesSquare} />
+          <MetricCard label="Peak time" value={formatHour(activity.peakHour)} icon={Clock3} />
+          <MetricCard label="Night messages" value={`${activity.nightMessageRate}%`} icon={Moon} />
+        </div>
+      </section>
+
+      <section>
+        <SectionHeading eyebrow="Last 30 days in export" title="Daily message volume" />
+        <div className="mt-4">
+          <MiniBars points={activity.dailyCounts} />
+        </div>
+      </section>
+
+      <section>
+        <SectionHeading eyebrow="Across the week" title="Active days" />
+        <div className="mt-4 space-y-3">
+          {activity.weekdayCounts.map((day) => (
+            <ProgressRow
+              key={day.label}
+              label={day.label.slice(0, 3)}
+              value={day.count}
+              max={Math.max(...activity.weekdayCounts.map((point) => point.count), 1)}
+              valueLabel={formatNumber(day.count)}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionHeading eyebrow="Silence gaps" title="Unusual pauses" />
+        <div className="mt-4 divide-y divide-slate-200 border-y border-slate-200 bg-white">
+          <DataRow label="Longest observed gap" value={formatDuration(silenceSummary.longestSilenceMinutes)} />
+          <DataRow label="Unusual gaps" value={formatNumber(silenceSummary.unusualSilenceCount)} />
+          <DataRow label="Chat-specific threshold" value={formatDuration(silenceSummary.unusualSilenceThresholdMinutes)} />
+          <DataRow label="Average reply" value={formatDuration(replyDynamics.avgReplyMinutes)} />
+        </div>
+        <p className="mt-3 text-xs leading-5 text-slate-500">
+          A pause is flagged only when it is unusually long relative to this chat&apos;s own history.
+        </p>
+      </section>
+    </div>
+  )
+}
+
+function PeopleScreen({ analysis }: { analysis: ChatAnalysis }) {
+  const maxMessages = Math.max(...analysis.participants.map((participant) => participant.messageCount), 1)
+
+  return (
+    <div className="space-y-7 px-5 py-5">
+      <section>
+        <SectionHeading eyebrow={`${analysis.participants.length} participants`} title="Who contributes" />
+        <div className="mt-4 space-y-3">
+          {analysis.participants.map((participant) => (
+            <div key={participant.sender} className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <h3 className="truncate text-sm font-semibold text-slate-900">{participant.sender}</h3>
+                  <p className="mt-1 text-xs text-slate-500">
+                    {formatNumber(participant.wordCount)} words | {formatNumber(participant.initiationCount)} thread starts
+                  </p>
+                </div>
+                <span className="shrink-0 text-sm font-bold text-emerald-800">{participant.messageShare}%</span>
+              </div>
+              <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
+                <div
+                  className="h-full rounded-full bg-emerald-600"
+                  style={{ width: `${(participant.messageCount / maxMessages) * 100}%` }}
+                />
+              </div>
+              <div className="mt-3 flex justify-between text-xs text-slate-500">
+                <span>{formatNumber(participant.messageCount)} messages</span>
+                <span>median reply {formatDuration(participant.medianReplyMinutes)}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionHeading eyebrow="Sender switches" title="Who replies to whom" />
+        <div className="mt-4 divide-y divide-slate-200 border-y border-slate-200 bg-white">
+          {analysis.replyEdges.length > 0 ? (
+            analysis.replyEdges.slice(0, 12).map((edge) => (
+              <div key={`${edge.from}-${edge.to}`} className="flex items-center justify-between gap-3 px-4 py-3 text-sm">
+                <div className="flex min-w-0 items-center gap-2">
+                  <span className="truncate font-medium text-slate-800">{edge.from}</span>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-slate-400" />
+                  <span className="truncate text-slate-600">{edge.to}</span>
+                </div>
+                <span className="shrink-0 font-semibold text-emerald-800">{formatNumber(edge.count)}</span>
+              </div>
+            ))
+          ) : (
+            <p className="px-4 py-5 text-sm text-slate-600">No sender-switch replies were found.</p>
+          )}
+        </div>
+        <p className="mt-3 text-xs leading-5 text-slate-500">
+          A reply edge is counted when one participant sends the next message after another participant.
+        </p>
+      </section>
+    </div>
+  )
+}
+
+function MetricCard({
+  icon: Icon,
+  label,
+  value,
+}: {
+  icon: React.ComponentType<{ className?: string }>
+  label: string
+  value: string
+}) {
+  return (
+    <div className="min-h-28 rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+      <Icon className="h-4 w-4 text-emerald-700" />
+      <p className="mt-4 text-xl font-bold text-slate-900">{value}</p>
+      <p className="mt-1 text-xs text-slate-500">{label}</p>
+    </div>
+  )
+}
+
+function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
+  return (
+    <div>
+      <p className="text-[11px] font-bold uppercase tracking-wider text-emerald-700">{eyebrow}</p>
+      <h2 className="mt-1 text-xl font-bold text-slate-900">{title}</h2>
+    </div>
+  )
+}
+
+function InsightRow({ insight }: { insight: ObservableInsight }) {
+  const styles = {
+    watch: { icon: AlertCircle, iconClass: "text-amber-700", label: "Watch" },
+    pattern: { icon: Sparkles, iconClass: "text-emerald-700", label: "Pattern" },
+    context: { icon: Gauge, iconClass: "text-sky-700", label: "Context" },
+  }[insight.tone]
+  const Icon = styles.icon
+
+  return (
+    <div className="flex gap-3 px-4 py-4">
+      <Icon className={cn("mt-0.5 h-4 w-4 shrink-0", styles.iconClass)} />
+      <div>
+        <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{styles.label}</p>
+        <h3 className="mt-1 text-sm font-semibold text-slate-900">{insight.title}</h3>
+        <p className="mt-1 text-xs leading-5 text-slate-600">{insight.detail}</p>
+      </div>
+    </div>
+  )
+}
+
+function ProgressRow({
+  label,
+  max = 100,
+  value,
+  valueLabel,
+}: {
+  label: string
+  max?: number
+  value: number
+  valueLabel?: string
+}) {
+  return (
+    <div>
+      <div className="mb-1.5 flex justify-between gap-4 text-xs">
+        <span className="font-medium text-slate-600">{label}</span>
+        <span className="font-bold text-slate-800">{valueLabel ?? `${value}%`}</span>
+      </div>
+      <div className="h-2 overflow-hidden rounded-full bg-slate-200">
+        <div
+          className="h-full rounded-full bg-emerald-600"
+          style={{ width: `${Math.max(0, Math.min(100, (value / max) * 100))}%` }}
+        />
+      </div>
+    </div>
+  )
+}
+
+function MiniBars({ points }: { points: ActivityPoint[] }) {
+  const maxCount = Math.max(...points.map((point) => point.count), 1)
+  return (
+    <div>
+      <div className="flex h-28 items-end gap-1 border-b border-slate-300">
+        {points.map((point) => (
+          <div
+            key={point.label}
+            className="min-w-0 flex-1 rounded-t-sm bg-emerald-600"
+            style={{ height: `${Math.max(3, (point.count / maxCount) * 100)}%` }}
+            title={`${point.label}: ${point.count} messages`}
+          />
+        ))}
+      </div>
+      <div className="mt-2 flex justify-between text-[10px] text-slate-400">
+        <span>{points.at(0)?.label ?? ""}</span>
+        <span>{points.at(-1)?.label ?? ""}</span>
+      </div>
+    </div>
+  )
+}
+
+function DataRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex items-center justify-between gap-4 px-4 py-3 text-sm">
+      <span className="text-slate-600">{label}</span>
+      <span className="font-bold text-slate-900">{value}</span>
+    </div>
+  )
+}
+
+function BottomNav({
+  activeTab,
+  setActiveTab,
+}: {
+  activeTab: Screen
+  setActiveTab: (tab: Screen) => void
+}) {
+  return (
+    <nav className="border-t border-slate-200 bg-white pb-[env(safe-area-inset-bottom)]">
+      <div className="grid grid-cols-3">
+        <NavItem icon={BarChart3} label="Overview" active={activeTab === "overview"} onClick={() => setActiveTab("overview")} />
+        <NavItem icon={Activity} label="Rhythm" active={activeTab === "rhythm"} onClick={() => setActiveTab("rhythm")} />
+        <NavItem icon={Users} label="People" active={activeTab === "people"} onClick={() => setActiveTab("people")} />
+      </div>
+    </nav>
+  )
+}
+
+function NavItem({
+  active,
+  icon: Icon,
+  label,
+  onClick,
+}: {
+  active: boolean
+  icon: React.ComponentType<{ className?: string }>
+  label: string
+  onClick: () => void
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        "flex h-16 flex-col items-center justify-center gap-1 text-[11px] font-semibold transition",
+        active ? "bg-emerald-50 text-emerald-800" : "text-slate-500 hover:bg-slate-50",
+      )}
+    >
+      <Icon className="h-5 w-5" />
+      <span>{label}</span>
+    </button>
   )
 }
 
 async function readWhatsAppExport(file: File): Promise<string> {
   const fileName = file.name.toLowerCase()
-
-  if (fileName.endsWith(".txt")) {
-    return file.text()
-  }
+  if (fileName.endsWith(".txt")) return file.text()
 
   if (fileName.endsWith(".zip") || file.type.includes("zip")) {
     const zip = await JSZip.loadAsync(await file.arrayBuffer())
-    const chatFile = Object.values(zip.files).find((entry) => {
-      const name = entry.name.toLowerCase()
-      return !entry.dir && name.endsWith(".txt") && name.includes("whatsapp chat")
-    }) || Object.values(zip.files).find((entry) => !entry.dir && entry.name.toLowerCase().endsWith(".txt"))
+    const files = Object.values(zip.files)
+    const chatFile =
+      files.find((entry) => !entry.dir && entry.name.toLowerCase().endsWith("_chat.txt")) ??
+      files.find((entry) => !entry.dir && entry.name.toLowerCase().includes("whatsapp chat") && entry.name.toLowerCase().endsWith(".txt")) ??
+      files.find((entry) => !entry.dir && entry.name.toLowerCase().endsWith(".txt"))
 
-    if (!chatFile) {
-      throw new Error("No WhatsApp chat .txt file was found inside this ZIP.")
-    }
-
+    if (!chatFile) throw new Error("No WhatsApp chat TXT file was found inside this ZIP.")
     return chatFile.async("string")
   }
 
-  throw new Error("Please select the WhatsApp chat export ZIP, or the .txt file inside it.")
+  throw new Error("Choose the WhatsApp export ZIP or TXT file.")
 }
 
-function base64ToBytes(base64: string): Uint8Array {
+function base64ToBuffer(base64: string): ArrayBuffer {
   const binary = window.atob(base64)
   const bytes = new Uint8Array(binary.length)
-
-  for (let i = 0; i < binary.length; i++) {
-    bytes[i] = binary.charCodeAt(i)
-  }
-
-  return bytes
+  for (let index = 0; index < binary.length; index += 1) bytes[index] = binary.charCodeAt(index)
+  return bytes.buffer
 }
 
-const WelcomeScreen = ({ onGetStarted }: { onGetStarted: () => void }) => (
-  <div className="flex flex-col h-full justify-center items-center text-center p-8 bg-gradient-to-b from-blue-50 to-transparent">
-    <motion.h1
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7, type: "spring" }}
-      className="font-garamond text-6xl font-bold text-slate-800"
-    >
-      ChatSense
-    </motion.h1>
-    <motion.p
-      initial={{ y: 20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.3 }}
-      className="mt-4 font-sans text-base text-slate-600 max-w-xs"
-    >
-      Decode your WhatsApp chats. Understand moods. Enhance connections.
-    </motion.p>
-    <motion.div
-      initial={{ y: 20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.5 }}
-      className="mt-12"
-    >
-      <Button
-        onClick={onGetStarted}
-        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-full px-10 py-6 text-lg shadow-lg shadow-blue-500/30"
-      >
-        Get Started
-      </Button>
-    </motion.div>
-    <motion.div
-      initial={{ y: 20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.7 }}
-      className="absolute bottom-8 flex items-center space-x-2 text-slate-500"
-    >
-      <p className="text-xs">Published by</p>
-      <Image src="/logo.png" alt="The Great Parthicle Logo" width={24} height={24} className="bg-black rounded-full" />
-      <p className="text-sm font-semibold">The Great Parthicle</p>
-    </motion.div>
-  </div>
-)
-
-const ImportScreen = ({
-  onFileUpload,
-  isLoading,
-  error,
-}: {
-  onFileUpload: (file: File) => void
-  isLoading: boolean
-  error: string | null
-}) => {
-  const fileInputRef = useRef<HTMLInputElement>(null)
-
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file) {
-      onFileUpload(file)
-    }
-  }
-
-  const handleCardClick = () => {
-    if (!isLoading) {
-      fileInputRef.current?.click()
-    }
-  }
-
-  return (
-    <div className="flex flex-col h-full justify-center items-center text-center p-8">
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="w-full"
-      >
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept=".zip,.txt,application/zip,text/plain"
-          onChange={handleFileSelect}
-          className="hidden"
-        />
-        <Card
-          onClick={handleCardClick}
-          className={cn(
-            "w-full border-2 border-dashed border-blue-300 bg-blue-50/50 transition-colors",
-            isLoading ? "cursor-wait opacity-60" : "hover:bg-blue-100/50 cursor-pointer"
-          )}
-        >
-          <CardContent className="p-12">
-            {isLoading ? (
-              <>
-                <Loader2 className="mx-auto h-16 w-16 text-blue-500 animate-spin" />
-                <h2 className="mt-4 font-lora text-2xl font-semibold text-slate-800">
-                  Processing your chat...
-                </h2>
-                <p className="mt-1 text-slate-500">This may take a moment</p>
-              </>
-            ) : (
-              <>
-                <UploadCloud className="mx-auto h-16 w-16 text-blue-500" />
-                <h2 className="mt-4 font-lora text-2xl font-semibold text-slate-800">
-                  Choose WhatsApp export
-                </h2>
-                <p className="mt-1 text-slate-500">Tap and pick the ZIP WhatsApp creates</p>
-              </>
-            )}
-          </CardContent>
-        </Card>
-        {error && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mt-4 flex items-center justify-center text-red-600 bg-red-50 border border-red-200 rounded-lg p-3"
-          >
-            <AlertCircle className="h-5 w-5 mr-2" />
-            <p className="text-sm">{error}</p>
-          </motion.div>
-        )}
-        <div className="mt-6 flex items-center justify-center text-green-700">
-          <ShieldCheck className="h-5 w-5 mr-2" />
-          <p className="text-sm">Your data stays private. Always.</p>
-        </div>
-      </motion.div>
-    </div>
-  )
+function trendIcon(trend: ChatAnalysis["activity"]["recentTrend"]) {
+  if (trend === "rising") return TrendingUp
+  if (trend === "falling") return TrendingDown
+  return Activity
 }
 
-const DashboardScreen = ({ analysis }: { analysis: ChatAnalysis | null }) => {
-  // Use default data if no analysis available
-  const relationshipSummary = analysis?.relationshipSummary || {
-    strength: 0,
-    balance: 50,
-    description: 'Import a chat file to see relationship insights.',
-  }
-
-  const conversationStyle = analysis?.conversationStyle || {
-    avgReplyTime: 0,
-    quickReplyRate: 0,
-    description: 'Import a chat file to see conversation style insights.',
-  }
-
-  const energyPeaks = analysis?.energyPeaks || {
-    peakHour: 12,
-    peakDay: 'Monday',
-    description: 'Import a chat file to see activity patterns.',
-  }
-
-  return (
-    <div className="p-6 space-y-6">
-      <h1 className="font-lora text-4xl font-bold text-slate-800">Insights</h1>
-      <InsightCard
-        icon={Heart}
-        title="Relationship Summary"
-        description={relationshipSummary.description}
-        color="text-pink-500"
-      />
-      <InsightCard
-        icon={MessageCircle}
-        title="Conversation Style"
-        description={conversationStyle.description}
-        color="text-green-500"
-      />
-      <InsightCard
-        icon={Zap}
-        title="Energy Peaks"
-        description={energyPeaks.description}
-        color="text-yellow-500"
-      />
-      <Card className="bg-white/70 backdrop-blur-sm">
-        <CardContent className="p-4">
-          <h3 className="font-lora text-lg font-semibold text-slate-700 mb-2">Mood Waveform</h3>
-          <div className="h-24 overflow-hidden">
-            <svg width="100%" height="100%" viewBox="0 0 300 100" preserveAspectRatio="none">
-              <motion.path
-                d="M0,50 C50,20 100,80 150,50 C200,20 250,80 300,50"
-                stroke="url(#gradient)"
-                strokeWidth="3"
-                fill="none"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 2, ease: "easeInOut" }}
-              />
-              <defs>
-                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#3b82f6" />
-                  <stop offset="100%" stopColor="#60a5fa" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  )
+function formatTrend(trend: ChatAnalysis["activity"]["recentTrend"]): string {
+  return trend === "not_enough_data" ? "Limited data" : trend[0].toUpperCase() + trend.slice(1)
 }
 
-const InsightCard = ({
-  icon: Icon,
-  title,
-  description,
-  color,
-}: {
-  icon: React.ComponentType<{ className?: string }>
-  title: string
-  description: string
-  color: string
-}) => (
-  <Card className="bg-white/70 backdrop-blur-sm">
-    <CardContent className="p-4 flex items-start space-x-4">
-      <Icon className={`h-8 w-8 mt-1 flex-shrink-0 ${color}`} />
-      <div>
-        <h3 className="font-lora text-lg font-semibold text-slate-700">{title}</h3>
-        <p className="text-slate-500 text-sm">{description}</p>
-      </div>
-    </CardContent>
-  </Card>
-)
-
-const CalendarScreen = () => {
-  const days = ["S", "M", "T", "W", "T", "F", "S"]
-  const dates = Array.from({ length: 35 }, (_, i) => i - 2)
-  const highlightedDates = [10, 15, 28]
-
-  return (
-    <div className="p-6">
-      <h1 className="font-lora text-4xl font-bold text-slate-800 mb-6">Calendar</h1>
-      <Card className="bg-white/70 backdrop-blur-sm">
-        <CardContent className="p-4">
-          <div className="text-center mb-4">
-            <h3 className="font-lora text-xl font-semibold text-slate-700">July 2025</h3>
-          </div>
-          <div className="grid grid-cols-7 gap-2 text-center">
-            {days.map((day) => (
-              <div key={day} className="font-bold text-sm text-slate-500">
-                {day}
-              </div>
-            ))}
-            {dates.map((date) => (
-              <div
-                key={date}
-                className={cn(
-                  "w-10 h-10 flex items-center justify-center rounded-full",
-                  date < 1 && "text-transparent",
-                  highlightedDates.includes(date) && "bg-blue-500 text-white font-bold",
-                )}
-              >
-                {date > 0 && date}
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-      <div className="mt-6 space-y-3">
-        <p className="font-lora text-lg font-semibold text-slate-700">Upcoming Events</p>
-        <EventItem date="July 10" title="Coffee with Alice" />
-        <EventItem date="July 15" title="Project Deadline" />
-        <EventItem date="July 28" title="Dinner reservation" />
-      </div>
-    </div>
-  )
+function formatHour(hour: number): string {
+  const suffix = hour >= 12 ? "PM" : "AM"
+  const displayHour = hour % 12 || 12
+  return `${displayHour} ${suffix}`
 }
 
-const EventItem = ({ date, title }) => (
-  <Card className="bg-white/70 backdrop-blur-sm">
-    <CardContent className="p-3 flex items-center justify-between">
-      <div>
-        <p className="font-semibold text-slate-700">{title}</p>
-        <p className="text-sm text-slate-500">{date}</p>
-      </div>
-      <ChevronRight className="h-5 w-5 text-slate-400" />
-    </CardContent>
-  </Card>
-)
+function formatDate(value: string): string {
+  if (!value) return "No data"
+  return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(new Date(value))
+}
 
-const SettingsScreen = () => (
-  <div className="p-6">
-    <h1 className="font-lora text-4xl font-bold text-slate-800 mb-6">Settings</h1>
-    <Card className="bg-white/70 backdrop-blur-sm">
-      <CardContent className="p-4 space-y-4 divide-y divide-slate-200">
-        <SettingItem title="Enable Cloud Sync" description="Sync insights across devices (optional)." />
-        <SettingItem title="Dark Mode" description="Easier on the eyes at night." />
-        <SettingItem title="Notifications" description="Get notified about new insights." />
-      </CardContent>
-    </Card>
-    <div className="mt-6 text-center text-slate-500 text-sm">
-      <p>ChatSense v1.0</p>
-      <p>Made with ❤️ by The Great Parthicle</p>
-    </div>
-  </div>
-)
-
-const SettingItem = ({ title, description }) => (
-  <div className="flex items-center justify-between pt-4 first:pt-0">
-    <div>
-      <Label htmlFor={title} className="font-semibold text-slate-700 text-base">
-        {title}
-      </Label>
-      <p className="text-sm text-slate-500">{description}</p>
-    </div>
-    <Switch id={title} />
-  </div>
-)
-
-const BottomNav = ({ activeTab, setActiveTab }: { activeTab: Screen; setActiveTab: (tab: Screen) => void }) => (
-  <div className="bg-white/50 backdrop-blur-lg border-t border-slate-200/80 md:rounded-b-3xl pb-[env(safe-area-inset-bottom)]">
-    <div className="flex justify-around p-2">
-      <NavItem
-        icon={LayoutGrid}
-        label="Insights"
-        isActive={activeTab === "dashboard"}
-        onClick={() => setActiveTab("dashboard")}
-      />
-      <NavItem
-        icon={CalendarDays}
-        label="Calendar"
-        isActive={activeTab === "calendar"}
-        onClick={() => setActiveTab("calendar")}
-      />
-      <NavItem
-        icon={Settings}
-        label="Settings"
-        isActive={activeTab === "settings"}
-        onClick={() => setActiveTab("settings")}
-      />
-    </div>
-  </div>
-)
-
-const NavItem = ({ icon: Icon, label, isActive, onClick }) => (
-  <button
-    onClick={onClick}
-    className={cn(
-      "flex flex-col items-center justify-center w-20 h-16 rounded-2xl transition-colors duration-300",
-      isActive ? "text-blue-500" : "text-slate-500 hover:bg-blue-100/50",
-    )}
-  >
-    <Icon className="h-6 w-6" />
-    <span className="text-xs mt-1 font-medium">{label}</span>
-    {isActive && <motion.div layoutId="active-indicator" className="h-1 w-8 bg-blue-500 rounded-full mt-1" />}
-  </button>
-)
+function formatNumber(value: number): string {
+  return new Intl.NumberFormat("en-US").format(value)
+}

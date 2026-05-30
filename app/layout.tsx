@@ -19,7 +19,8 @@ const fontGaramond = EB_Garamond({
 
 export const metadata: Metadata = {
   title: "ChatSense",
-  description: "Decode your WhatsApp chats. Understand moods. Enhance connections.",
+  description: "Local behavioral analytics for WhatsApp chat exports.",
+  icons: "/logo.png",
     generator: 'v0.app'
 }
 
@@ -35,7 +36,7 @@ export default function RootLayout({
         className={cn("h-dvh overflow-hidden bg-background font-sans antialiased", fontSans.variable, fontGaramond.variable)}
       >
         <div className="flex justify-center items-stretch md:items-center h-dvh bg-white md:bg-gray-200 md:p-4">
-          <div className="w-full h-dvh md:max-w-sm md:h-[800px] bg-gradient-to-br from-white to-blue-50 md:rounded-3xl md:shadow-2xl overflow-hidden flex flex-col">
+          <div className="w-full h-dvh md:max-w-sm md:h-[800px] bg-[#f8faf8] md:rounded-lg md:shadow-2xl overflow-hidden flex flex-col">
             {children}
           </div>
         </div>

@@ -13,6 +13,7 @@ export interface ChatMessage {
 export function parseWhatsAppChat(fileContent: string): ChatMessage[] {
   const messages: ChatMessage[] = []
   const lines = fileContent.split(/\r?\n/)
+  const dateOrder = inferDateOrder(lines)
   
   // Regex patterns for different WhatsApp formats
   const patterns = [
@@ -45,7 +46,7 @@ export function parseWhatsAppChat(fileContent: string): ChatMessage[] {
         const content = match[4].trim()
 
         // Parse date and time
-        const timestamp = parseDateTime(dateStr, timeStr)
+        const timestamp = parseDateTime(dateStr, timeStr, dateOrder)
         
         currentMessage = {
           timestamp,
@@ -58,7 +59,7 @@ export function parseWhatsAppChat(fileContent: string): ChatMessage[] {
     }
 
     // If no match, this might be a continuation of the previous message
-    if (!matched && currentMessage) {
+    if (!matched && currentMessage && !looksLikeSystemLine(line)) {
       currentMessage.content += '\n' + line
     }
   }
@@ -74,9 +75,10 @@ export function parseWhatsAppChat(fileContent: string): ChatMessage[] {
 /**
  * Parses date and time strings into a Date object
  */
-function parseDateTime(dateStr: string, timeStr: string): Date {
-  // Parse date: DD/MM/YYYY or DD/MM/YY
-  const [day, month, year] = dateStr.split('/').map(Number)
+function parseDateTime(dateStr: string, timeStr: string, dateOrder: "dmy" | "mdy"): Date {
+  const [first, second, year] = dateStr.split('/').map(Number)
+  const day = dateOrder === "dmy" ? first : second
+  const month = dateOrder === "dmy" ? second : first
   const fullYear = year < 100 ? 2000 + year : year
 
   // Parse time: HH:MM:SS or HH:MM (with optional AM/PM)
@@ -105,6 +107,22 @@ function parseDateTime(dateStr: string, timeStr: string): Date {
 
   // Create Date object (month is 0-indexed in JS Date)
   return new Date(fullYear, month - 1, day, hours, minutes, seconds)
+}
+
+function inferDateOrder(lines: string[]): "dmy" | "mdy" {
+  for (const line of lines) {
+    const match = line.match(/^\[?(\d{1,2})\/(\d{1,2})\/\d{2,4}/)
+    if (!match) continue
+    const first = Number(match[1])
+    const second = Number(match[2])
+    if (first > 12) return "dmy"
+    if (second > 12) return "mdy"
+  }
+  return "dmy"
+}
+
+function looksLikeSystemLine(line: string): boolean {
+  return /^\[?\d{1,2}\/\d{1,2}\/\d{2,4},\s*\d{1,2}:\d{2}/.test(line)
 }
 
 /**
