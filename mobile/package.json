@@ -12,7 +12,8 @@
     "expo-status-bar": "~56.0.4",
     "fflate": "^0.8.3",
     "react": "19.2.3",
-    "react-native": "0.85.3"
+    "react-native": "0.85.3",
+    "react-native-safe-area-context": "~5.7.0"
   },
   "devDependencies": {
     "@types/node": "^25.9.3",
@@ -22,12 +23,13 @@
   },
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
+    "android": "expo run:android",
+    "postinstall": "node scripts/patch-gradle-foojay.js",
     "prebuild:android": "expo prebuild --platform android",
     "prebuild:android:clean": "expo prebuild --clean --platform android",
     "test": "tsx tests/import.test.ts",
     "typecheck": "tsc --noEmit",
-    "ios": "expo start --ios",
+    "ios": "expo run:ios",
     "web": "expo start --web"
   },
   "private": true

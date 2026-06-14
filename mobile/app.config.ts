@@ -1,5 +1,12 @@
 import type { ExpoConfig } from "expo/config"
 
+const sharedFileMimeTypes = [
+  "application/zip",
+  "application/x-zip-compressed",
+  "application/octet-stream",
+  "text/plain",
+] as const
+
 const config: ExpoConfig = {
   name: "ChatSense",
   slug: "chatsense",
@@ -7,7 +14,6 @@ const config: ExpoConfig = {
   version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
-  userInterfaceStyle: "automatic",
   plugins: [
     [
       "expo-splash-screen",
@@ -26,6 +32,21 @@ const config: ExpoConfig = {
     package: "com.thegreatparthicle.chatsense",
     versionCode: 1,
     permissions: [],
+    intentFilters: [
+      {
+        action: "SEND",
+        category: ["DEFAULT"],
+        data: sharedFileMimeTypes.map((mimeType) => ({ mimeType })),
+      },
+      {
+        action: "VIEW",
+        category: ["DEFAULT", "BROWSABLE"],
+        data: sharedFileMimeTypes.map((mimeType) => ({
+          mimeType,
+          scheme: "content",
+        })),
+      },
+    ],
     adaptiveIcon: {
       foregroundImage: "./assets/android-icon-foreground.png",
       backgroundColor: "#ffffff",

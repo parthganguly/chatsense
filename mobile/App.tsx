@@ -1,17 +1,15 @@
-import { useReducer } from "react"
+import { useCallback, useEffect, useReducer, useRef } from "react"
 import { StatusBar as ExpoStatusBar } from "expo-status-bar"
 import {
   ActivityIndicator,
-  Platform,
   Pressable,
-  SafeAreaView,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   View,
   type DimensionValue,
 } from "react-native"
+import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context"
 import {
   analyzeChat,
   formatDuration,
@@ -23,8 +21,19 @@ import {
   type ReplyEdge,
 } from "@chatsense/core"
 
-import { pickChatExport, readChatTextFromPickedExport, ChatImportError } from "./src/import/whatsappExport"
+import {
+  ChatImportError,
+  pickChatExport,
+  readChatTextFromPickedExport,
+  type PickedChatExport,
+} from "./src/import/whatsappExport"
 import { appReducer, initialAppState, type ImportPhase, type Screen } from "./src/state/appState"
+import {
+  addIncomingFileListener,
+  clearInitialSharedFile,
+  getInitialSharedFile,
+  type SharedChatExport,
+} from "./modules/chatsense-share-intent/src/ChatSenseShareIntentModule"
 
 const tabs: Array<{ screen: Exclude<Screen, "import">; label: string }> = [
   { screen: "overview", label: "Overview" },
@@ -34,12 +43,45 @@ const tabs: Array<{ screen: Exclude<Screen, "import">; label: string }> = [
 ]
 
 export default function App() {
+  return (
+    <SafeAreaProvider>
+      <AppContent />
+    </SafeAreaProvider>
+  )
+}
+
+function AppContent() {
   const [state, dispatch] = useReducer(appReducer, initialAppState)
+  const lastIncomingKeyRef = useRef<string | null>(null)
   const session = state.session
 
-  async function importChatExport() {
-    dispatch({ type: "import_started" })
+  const analyzePickedExport = useCallback(async (picked: PickedChatExport) => {
+    dispatch({ type: "file_reading" })
+    const text = await readChatTextFromPickedExport(picked)
 
+    dispatch({ type: "analysis_started" })
+    await yieldToNative()
+
+    const messages = parseWhatsAppChat(text)
+    if (messages.length === 0) {
+      throw new ChatImportError(
+        "malformed_text",
+        "No WhatsApp messages were found in this export.",
+      )
+    }
+
+    dispatch({
+      type: "analysis_succeeded",
+      session: {
+        sourceName: picked.name,
+        messages,
+        analysis: analyzeChat(messages),
+      },
+    })
+  }, [])
+
+  const importChatExport = useCallback(async () => {
+    dispatch({ type: "import_started" })
     try {
       const picked = await pickChatExport()
       if (!picked) {
@@ -47,38 +89,64 @@ export default function App() {
         return
       }
 
-      dispatch({ type: "file_reading" })
-      const text = await readChatTextFromPickedExport(picked)
-
-      dispatch({ type: "analysis_started" })
-      await yieldToNative()
-
-      const messages = parseWhatsAppChat(text)
-      if (messages.length === 0) {
-        throw new ChatImportError(
-          "malformed_text",
-          "No WhatsApp messages were found in this export.",
-        )
-      }
-
-      dispatch({
-        type: "analysis_succeeded",
-        session: {
-          sourceName: picked.name,
-          messages,
-          analysis: analyzeChat(messages),
-        },
-      })
+      await analyzePickedExport(picked)
     } catch (error) {
       dispatch({
         type: "analysis_failed",
         error:
           error instanceof Error
             ? error.message
-            : "ChatSense could not process this export.",
+          : "ChatSense could not process this export.",
       })
     }
-  }
+  }, [analyzePickedExport])
+
+  const processIncomingExport = useCallback(
+    async (incoming: SharedChatExport) => {
+      const incomingKey = `${incoming.uri}|${incoming.receivedAt}`
+      if (incomingKey === lastIncomingKeyRef.current) {
+        return
+      }
+      lastIncomingKeyRef.current = incomingKey
+
+      dispatch({ type: "import_started" })
+      try {
+        await analyzePickedExport({
+          uri: incoming.uri,
+          name: incoming.name ?? "WhatsApp Chat.zip",
+          mimeType: incoming.mimeType ?? undefined,
+          size: incoming.size ?? undefined,
+          deleteAfterRead: incoming.deleteAfterRead,
+        })
+        clearInitialSharedFile()
+      } catch (error) {
+        clearInitialSharedFile()
+        dispatch({
+          type: "analysis_failed",
+          error:
+            error instanceof Error
+              ? error.message
+              : "ChatSense could not process the shared export.",
+        })
+      }
+    },
+    [analyzePickedExport],
+  )
+
+  useEffect(() => {
+    const initialFile = getInitialSharedFile()
+    if (initialFile) {
+      void processIncomingExport(initialFile)
+    }
+
+    const subscription = addIncomingFileListener((incomingFile) => {
+      void processIncomingExport(incomingFile)
+    })
+
+    return () => {
+      subscription.remove()
+    }
+  }, [processIncomingExport])
 
   if (state.screen === "import" || !session) {
     return (
@@ -122,7 +190,7 @@ export default function App() {
 
 function AppShell({ children }: { children: React.ReactNode }) {
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView edges={["top", "left", "right"]} style={styles.safeArea}>
       <ExpoStatusBar style="dark" />
       <View style={styles.app}>{children}</View>
     </SafeAreaView>
@@ -589,8 +657,11 @@ function BottomNav({
   activeScreen: Screen
   onNavigate: (screen: Exclude<Screen, "import">) => void
 }) {
+  const insets = useSafeAreaInsets()
+  const bottomInset = Math.max(insets.bottom, 10)
+
   return (
-    <View style={styles.bottomNav}>
+    <View style={[styles.bottomNav, { paddingBottom: bottomInset }]}>
       {tabs.map((tab) => {
         const active = activeScreen === tab.screen
         return (
@@ -658,7 +729,6 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: "#f8faf8",
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight ?? 0 : 0,
   },
   app: {
     flex: 1,
