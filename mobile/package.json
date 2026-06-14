@@ -1,0 +1,28 @@
+{
+  "name": "chatsense-mobile",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "dependencies": {
+    "@chatsense/core": "file:../packages/chatsense-core",
+    "expo": "~56.0.11",
+    "expo-dev-client": "~56.0.20",
+    "expo-splash-screen": "~56.0.10",
+    "expo-status-bar": "~56.0.4",
+    "react": "19.2.3",
+    "react-native": "0.85.3"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.2",
+    "typescript": "~6.0.3"
+  },
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "prebuild:android": "expo prebuild --platform android",
+    "prebuild:android:clean": "expo prebuild --clean --platform android",
+    "typecheck": "tsc --noEmit",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "private": true
+}

@@ -10,8 +10,11 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint .",
+    "mobile:android": "npm --prefix mobile run android",
+    "mobile:prebuild": "npm --prefix mobile run prebuild:android:clean",
+    "mobile:typecheck": "npm --prefix mobile run typecheck",
     "test:parity": "tsx tests/parity.ts",
-    "typecheck": "tsc --noEmit && npm --workspace @chatsense/core run typecheck",
+    "typecheck": "tsc --noEmit && npm --workspace @chatsense/core run typecheck && npm --prefix mobile run typecheck",
     "start": "next start"
   },
   "dependencies": {
