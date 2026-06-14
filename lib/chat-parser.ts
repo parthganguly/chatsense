@@ -1,3 +1,5 @@
+import { DATE_ORDER_DEFAULT, TWO_DIGIT_YEAR_PIVOT } from "./contract"
+
 export interface ChatMessage {
   timestamp: Date
   sender: string
@@ -79,7 +81,7 @@ function parseDateTime(dateStr: string, timeStr: string, dateOrder: "dmy" | "mdy
   const [first, second, year] = dateStr.split('/').map(Number)
   const day = dateOrder === "dmy" ? first : second
   const month = dateOrder === "dmy" ? second : first
-  const fullYear = year < 100 ? 2000 + year : year
+  const fullYear = year < 100 ? TWO_DIGIT_YEAR_PIVOT + year : year
 
   // Parse time: HH:MM:SS or HH:MM (with optional AM/PM)
   let hours = 0
@@ -118,7 +120,7 @@ function inferDateOrder(lines: string[]): "dmy" | "mdy" {
     if (first > 12) return "dmy"
     if (second > 12) return "mdy"
   }
-  return "dmy"
+  return DATE_ORDER_DEFAULT
 }
 
 function looksLikeSystemLine(line: string): boolean {

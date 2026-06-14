@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import pandas as pd
 
+from chatsense_ml.contract import LATE_REPLY_MIN_EXCLUSIVE_MIN, QUICK_REPLY_MAX_MIN
 from chatsense_ml.schemas import Conversation
 
 
@@ -34,8 +35,8 @@ def add_base_columns(df: pd.DataFrame) -> pd.DataFrame:
     result["is_reply"] = (result["sender"] != result["prev_sender"]) & result["prev_sender"].notna()
     result["gap_min"] = result["timestamp"].diff().dt.total_seconds() / 60
     result["reply_delay_min"] = result["gap_min"].where(result["is_reply"])
-    result["is_quick_reply"] = (result["reply_delay_min"] < 5).fillna(False)
-    result["is_late_reply"] = (result["reply_delay_min"] > 24 * 60).fillna(False)
+    result["is_quick_reply"] = (result["reply_delay_min"] < QUICK_REPLY_MAX_MIN).fillna(False)
+    result["is_late_reply"] = (result["reply_delay_min"] > LATE_REPLY_MIN_EXCLUSIVE_MIN).fillna(False)
     return result
 
 

@@ -2,13 +2,14 @@ from __future__ import annotations
 
 import pandas as pd
 
+from chatsense_ml.contract import THREAD_GAP_MIN
 
-def add_initiation_features(df: pd.DataFrame, silence_threshold_hours: float = 6.0) -> pd.DataFrame:
+
+def add_initiation_features(df: pd.DataFrame, threshold_min: float = THREAD_GAP_MIN) -> pd.DataFrame:
     if df.empty:
         return df
 
     result = df.copy()
-    threshold_min = silence_threshold_hours * 60
     result["initiates_thread"] = result["gap_min"].isna() | (result["gap_min"] >= threshold_min)
     return result
 

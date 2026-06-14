@@ -7,7 +7,15 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
+from chatsense_ml.contract import (
+    DATE_ORDER_DEFAULT,
+    DELETED_MARKERS,
+    MEDIA_MARKERS,
+    TWO_DIGIT_YEAR_PIVOT,
+)
 from chatsense_ml.schemas import ChatMessage, Conversation, MessageType
+
+_DATE_PREFIX = re.compile(r"^\[?(\d{1,2})/(\d{1,2})/\d{2,4}")
 
 PATTERNS = [
     re.compile(
@@ -69,6 +77,7 @@ def parse_export(path: str | Path) -> Conversation:
 
 def parse_text(text: str, source_name: str | None = None) -> Conversation:
     conversation_id = _stable_id(text)
+    date_order = _infer_date_order(text)
     messages: list[ChatMessage] = []
     current: dict[str, object] | None = None
 
@@ -77,14 +86,14 @@ def parse_text(text: str, source_name: str | None = None) -> Conversation:
         if not line:
             continue
 
-        match = _match_message(line)
+        match = _match_message(line, date_order)
         if match:
             if current:
                 messages.append(_to_message(conversation_id, len(messages), current))
             current = match
             continue
 
-        system_match = _match_system(line)
+        system_match = _match_system(line, date_order)
         if system_match:
             if current:
                 messages.append(_to_message(conversation_id, len(messages), current))
@@ -104,13 +113,34 @@ def parse_text(text: str, source_name: str | None = None) -> Conversation:
     )
 
 
-def _match_message(line: str) -> dict[str, object] | None:
+def _infer_date_order(text: str) -> str:
+    """Infer one date order for the entire export (canonical contract policy).
+
+    Mirrors lib/chat-parser.ts: scan timestamped lines in order; the first line
+    whose first component exceeds 12 forces DMY, the first whose second component
+    exceeds 12 forces MDY, otherwise default. The single order applies to every
+    row -- the order is never decided per row.
+    """
+    for raw_line in text.splitlines():
+        match = _DATE_PREFIX.match(raw_line.strip())
+        if not match:
+            continue
+        first = int(match.group(1))
+        second = int(match.group(2))
+        if first > 12:
+            return "dmy"
+        if second > 12:
+            return "mdy"
+    return DATE_ORDER_DEFAULT
+
+
+def _match_message(line: str, date_order: str) -> dict[str, object] | None:
     for pattern in PATTERNS:
         match = pattern.match(line)
         if match:
             text = match.group("text").strip()
             return {
-                "timestamp": _parse_datetime(match.group("date"), match.group("time")),
+                "timestamp": _parse_datetime(match.group("date"), match.group("time"), date_order),
                 "sender": match.group("sender").strip(),
                 "text": text,
                 "message_type": _classify_message(text),
@@ -118,13 +148,13 @@ def _match_message(line: str) -> dict[str, object] | None:
     return None
 
 
-def _match_system(line: str) -> dict[str, object] | None:
+def _match_system(line: str, date_order: str) -> dict[str, object] | None:
     for pattern in SYSTEM_PATTERNS:
         match = pattern.match(line)
         if match:
             text = match.group("text").strip()
             return {
-                "timestamp": _parse_datetime(match.group("date"), match.group("time")),
+                "timestamp": _parse_datetime(match.group("date"), match.group("time"), date_order),
                 "sender": "System",
                 "text": text,
                 "message_type": "system",
@@ -149,14 +179,14 @@ def _to_message(conversation_id: str, index: int, data: dict[str, object]) -> Ch
     )
 
 
-def _parse_datetime(date_text: str, time_text: str) -> datetime:
+def _parse_datetime(date_text: str, time_text: str, date_order: str = DATE_ORDER_DEFAULT) -> datetime:
     first, second, year = [int(part) for part in date_text.split("/")]
-    if second > 12 and first <= 12:
+    if date_order == "mdy":
         month, day = first, second
     else:
         day, month = first, second
     if year < 100:
-        year += 2000
+        year += TWO_DIGIT_YEAR_PIVOT
 
     cleaned = time_text.strip().lower().replace(" ", "")
     is_pm = cleaned.endswith("pm")
@@ -176,9 +206,9 @@ def _parse_datetime(date_text: str, time_text: str) -> datetime:
 
 def _classify_message(text: str) -> MessageType:
     lowered = text.lower()
-    if "message was deleted" in lowered or "deleted this message" in lowered:
+    if any(marker in lowered for marker in DELETED_MARKERS):
         return "deleted"
-    if "media omitted" in lowered or "<attached:" in lowered:
+    if any(marker in lowered for marker in MEDIA_MARKERS):
         return "media"
     return "text"
 
