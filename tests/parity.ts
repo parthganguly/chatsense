@@ -5,6 +5,7 @@ import path from "node:path"
 import {
   DATE_ORDER_DEFAULT,
   LATE_REPLY_MIN_EXCLUSIVE_MIN,
+  normalizedParityFromText,
   QUICK_REPLY_MAX_MIN,
   SILENCE_ANOMALY_FLOOR_MIN,
   SILENCE_ANOMALY_K,
@@ -14,8 +15,7 @@ import {
   WITHIN_ONE_DAY_MAX_MIN,
   WITHIN_ONE_HOUR_MAX_MIN,
   WITHIN_SIX_HOURS_MAX_MIN,
-} from "../lib/contract"
-import { normalizedParityFromText } from "../lib/parity"
+} from "@chatsense/core"
 
 const root = process.cwd()
 const contractPath = path.join(root, "contracts", "behavioral_contract.json")

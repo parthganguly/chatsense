@@ -1,0 +1,36 @@
+{
+  "name": "@chatsense/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./chat-parser": {
+      "types": "./src/chat-parser.ts",
+      "default": "./src/chat-parser.ts"
+    },
+    "./chat-analyzer": {
+      "types": "./src/chat-analyzer.ts",
+      "default": "./src/chat-analyzer.ts"
+    },
+    "./contract": {
+      "types": "./src/contract.ts",
+      "default": "./src/contract.ts"
+    },
+    "./parity": {
+      "types": "./src/parity.ts",
+      "default": "./src/parity.ts"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}
