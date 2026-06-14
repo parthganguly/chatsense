@@ -3,7 +3,7 @@ from __future__ import annotations
 import pandas as pd
 
 from chatsense_ml.anomaly.activity_change import daily_activity_change
-from chatsense_ml.anomaly.silence_anomaly import unusual_silences
+from chatsense_ml.anomaly.silence_anomaly import research_unusual_silences
 from chatsense_ml.evaluation.backtest import expanding_window_backtest
 from chatsense_ml.evaluation.calibration import expected_calibration_error
 from chatsense_ml.importers.whatsapp import parse_text
@@ -41,7 +41,7 @@ def test_empirical_reply_survival_reports_horizon_probabilities():
 def test_silence_anomaly_flags_large_gap():
     features = _features_for_classical_tests()
 
-    anomalies = unusual_silences(features, z_threshold=2.0)
+    anomalies = research_unusual_silences(features, z_threshold=2.0)
 
     assert not anomalies.empty
     assert anomalies["gap_min"].max() > 24 * 60

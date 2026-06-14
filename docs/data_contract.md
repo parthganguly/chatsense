@@ -2,6 +2,8 @@
 
 This contract defines the Phase 1 local analytics outputs. The analyzer must not claim hidden motives, diagnoses, or mental-health conclusions.
 
+The stable machine-readable report schema is committed at `contracts/report.schema.json`.
+
 ## `report.json`
 
 Top-level required fields:
@@ -55,6 +57,8 @@ Every report must include warnings equivalent to:
 - Reply delays and message patterns are behavioral observations, not proof of hidden intent.
 - Do not use this report to diagnose mental health, personality, or relationship status.
 
+`report.json` is generated from the Python core pipeline only. It must not include research-only future labels such as `next_reply_delay_bucket`, `next_window_activity_level`, or `next_window_imbalance_change`.
+
 ## `features.parquet`
 
 Each row represents one cleaned message. Timestamps are UTC-naive pandas timestamps preserving exported local clock time.
@@ -95,6 +99,35 @@ Each row represents one cleaned message. Timestamps are UTC-naive pandas timesta
 | `next_window_imbalance_change` | string | yes | Future balance change: `more_balanced`, `same`, `more_one_sided`. |
 
 Label columns must only use messages after the current row/window. They must never use current-row future values as features. `next_reply_delay_bucket` specifically looks forward from the current message until the next message by a different sender, so consecutive messages from the same sender do not become artificial replies.
+
+## Shared parity output
+
+The cross-language parity contract is narrower than `report.json`. It contains only metrics the TypeScript Android runtime and Python reference implementation both promise to compute identically from non-system messages:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `message_count` | integer | Non-system message count. |
+| `participant_count` | integer | Unique non-system sender count. |
+| `participants[]` | array | Sender, message count, word count, integer message-share percent. |
+| `reply_count` | integer | Count of sender-switch reply events. |
+| `thread_count` | integer | Count of messages that initiate a thread. |
+| `peak_hour` | integer/null | Busiest hour. |
+| `peak_weekday` | string/null | Busiest weekday name. |
+| `quick_reply_rate_pct` | integer | Reply delays under the quick-reply threshold. |
+| `within_one_hour_rate_pct` | integer | Reply delays at or below one hour. |
+| `within_six_hours_rate_pct` | integer | Reply delays at or below six hours. |
+| `within_one_day_rate_pct` | integer | Reply delays at or below one day. |
+| `avg_reply_delay_min` | integer/null | Rounded average reply delay. |
+| `median_reply_delay_min` | integer/null | Rounded median reply delay. |
+| `longest_silence_min` | integer/null | Rounded longest inter-message gap. |
+| `unusual_silence_count` | integer | Count of gaps above the canonical runtime silence threshold. |
+| `reply_edges[]` | array | Directed `from` responder to `to` previous-sender edge counts. |
+
+Golden parity outputs live in `fixtures/expected/*.json`; tests must read those files and compare exact equality. Do not regenerate expected files during normal tests. To intentionally refresh the golden outputs, run:
+
+```bash
+python -m chatsense_ml.synthetic.fixtures --expected
+```
 
 ## Classical analytics modules
 
