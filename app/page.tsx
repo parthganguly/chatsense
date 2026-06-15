@@ -24,14 +24,15 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/utils/cn"
-import { parseWhatsAppChat, type ChatMessage } from "@/lib/chat-parser"
 import {
   analyzeChat,
   formatDuration,
   type ActivityPoint,
   type ChatAnalysis,
+  type ChatMessage,
   type ObservableInsight,
-} from "@/lib/chat-analyzer"
+  parseWhatsAppChat,
+} from "@chatsense/core"
 
 type Screen = "import" | "overview" | "rhythm" | "people"
 

@@ -1,0 +1,11 @@
+{
+  "name": "@chatsense/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./parity": "./src/parity.ts",
+    "./contract": "./src/contract.ts"
+  }
+}
