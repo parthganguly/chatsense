@@ -14,8 +14,8 @@ import {
   WITHIN_ONE_DAY_MAX_MIN,
   WITHIN_ONE_HOUR_MAX_MIN,
   WITHIN_SIX_HOURS_MAX_MIN,
-} from "../lib/contract"
-import { normalizedParityFromText } from "../lib/parity"
+} from "@chatsense/core/contract"
+import { normalizedParityFromText } from "@chatsense/core/parity"
 
 const root = process.cwd()
 const contractPath = path.join(root, "contracts", "behavioral_contract.json")
