@@ -1,10 +1,11 @@
-# ChatSense Runtime And Research Boundaries
+# ChatSense Runtime Boundaries
 
-ChatSense has two implementations with different jobs:
+ChatSense has one shipped behavioral engine and one research/reference implementation.
 
-- **TypeScript is the Android runtime.** The Capacitor app parses and analyzes exports in `lib/chat-parser.ts` and `lib/chat-analyzer.ts`. No Python code is bundled into Android.
-- **Python is the local research/reference package.** `python/chatsense_ml` owns richer offline analysis, research features, parquet output, notebooks, and predictive experiments.
-- **The shared contract is the bridge.** `contracts/behavioral_contract.json`, `contracts/report.schema.json`, `fixtures/whatsapp`, and `fixtures/expected` define the stable behavior both sides must agree on.
+- **`@chatsense/core` is the production behavioral engine.** It owns WhatsApp text parsing, date-order inference, behavioral calculations, shared analysis types, deterministic insights, contract constants, and parity normalization.
+- **Next.js/Capacitor is the current application shell.** It owns React UI, browser file handling, ZIP extraction, safe import errors, and the Android WebView/share-sheet bridge.
+- **Python is research/reference only.** `python/chatsense_ml` owns offline analytics, parquet output, notebooks, classical ML experiments, and the Python parity reference. Python is not bundled into Android.
+- **Contracts and fixtures prevent drift.** `contracts/behavioral_contract.json`, `contracts/report.schema.json`, `fixtures/whatsapp`, and `fixtures/expected` define behavior both implementations must preserve.
 
 The mobile app remains local-only: imported chats are processed in memory, not uploaded, not persisted by the app, and not analyzed by an LLM.
 
@@ -13,11 +14,17 @@ The mobile app remains local-only: imported chats are processed in memory, not u
 New behavioral definitions should start in Python when they need pandas, notebooks, or research iteration. A metric is only considered shipped when it is:
 
 1. Defined in `contracts/behavioral_contract.json` or `docs/data_contract.md`.
-2. Implemented in the TypeScript runtime.
+2. Implemented in `@chatsense/core`.
 3. Covered by shared parity fixtures.
 
 Forward-looking labels, sklearn models, survival analysis, anomaly experiments, and notebook visualizations are research-only unless they go through that promotion path.
 
-## Known Follow-Up
+## Import Boundary
 
-The current Android import bridge passes file bytes through a Base64 string injected into the WebView. That is intentionally unchanged in this cleanup and should be handled as a separate performance/privacy hardening task.
+The import feature owns browser `File` handling, TXT reading, ZIP extraction, file validation, loading state, safe errors, and calling `parseWhatsAppChat()` plus `analyzeChat()`.
+
+Screens and UI components receive already-computed `ChatAnalysis` values. They may format or visualize values, but they must not independently calculate behavioral metrics.
+
+## Android Boundary
+
+The Android adapter owns native shared-file events, the current whole-file Base64 conversion, native error events, and listener cleanup. The Base64 bridge is a temporary known limitation and should be replaced in a later isolated task.

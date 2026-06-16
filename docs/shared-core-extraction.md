@@ -3,22 +3,23 @@
 Base branch: `architecture/ts-python-contract`
 Base SHA: `ad848ea1b8ee781e280cd18c91f22bcb2ed21d61`
 
-## Runtime Files Audited
+## Runtime Files Audited Before Extraction
 
-- `lib/chat-parser.ts`
-- `lib/chat-analyzer.ts`
-- `lib/contract.ts`
-- `lib/parity.ts`
+- former parser module
+- former analyzer module
+- former TypeScript contract constants module
+- former TypeScript parity normalizer module
 - `tests/parity.ts`
 - `contracts/behavioral_contract.json`
 
 ## Current Consumers
 
-- `app/page.tsx` imports the parser, analyzer, and shared analysis/message types.
-- `tests/parity.ts` imports contract constants and the parity normalizer.
-- `lib/parity.ts` imports the parser and analyzer.
-- `lib/chat-analyzer.ts` imports parser types/helpers and contract constants.
-- `lib/chat-parser.ts` imports contract constants.
+- `app/page.tsx` composes the current app and imports screens, import orchestration, navigation, and the Android bridge adapter.
+- `features/import/useChatImport.ts` imports parser/analyzer functions from `@chatsense/core`.
+- `tests/parity.ts` imports contract constants and the parity normalizer through the `@chatsense/core` package boundary.
+- `packages/chatsense-core/src/parity.ts` imports the core parser and analyzer.
+- `packages/chatsense-core/src/chat-analyzer.ts` imports parser types/helpers and contract constants.
+- `packages/chatsense-core/src/chat-parser.ts` imports contract constants.
 
 ## Platform Boundary
 
@@ -40,7 +41,8 @@ No core file imports or depends on:
 
 Platform-specific code stays outside the core:
 
-- `app/page.tsx` owns React state, browser `File`, `window`, `CustomEvent`, and ZIP/base64 handling.
+- `features/import` owns browser `File`, TXT/ZIP reading, validation, and core import orchestration.
+- `platform/android/sharedFileBridge.ts` owns shared-file events, Base64 conversion for the current bridge, typed native error events, and listener cleanup.
 - `tests/parity.ts` owns Node `fs`, `path`, and `assert` usage.
 - Python remains a separate research/reference implementation connected only through contracts and fixtures.
 
