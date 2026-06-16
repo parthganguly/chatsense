@@ -19,9 +19,6 @@
       }
     ],
     "paths": {
-      "@chatsense/core": ["./packages/chatsense-core/src/index.ts"],
-      "@chatsense/core/contract": ["./packages/chatsense-core/src/contract.ts"],
-      "@chatsense/core/parity": ["./packages/chatsense-core/src/parity.ts"],
       "@/*": ["./*"]
     }
   },
