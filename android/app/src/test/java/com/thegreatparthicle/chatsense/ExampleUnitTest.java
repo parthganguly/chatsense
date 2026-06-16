@@ -1,4 +1,4 @@
-package com.getcapacitor.myapp;
+package com.thegreatparthicle.chatsense;
 
 import static org.junit.Assert.*;
 
