@@ -19,7 +19,7 @@ export default function ChatSenseApp() {
 
   useEffect(() => {
     return subscribeToSharedFileBridge({
-      onFile: (file) => void importFile(file),
+      onFile: (file) => importFile(file),
       onError: setError,
     })
   }, [importFile, setError])
