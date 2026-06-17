@@ -1,6 +1,6 @@
 {
   "contract_version": "1.0",
-  "description": "Canonical behavioral definitions and constants shared by the TypeScript Android runtime (lib/) and the Python research/reference package (python/chatsense_ml/). This JSON is the single source of truth. Both languages load it through a thin constants layer (lib/contract.ts and chatsense_ml/contract.py) whose values are proven equal to this file by parity tests. The Android app does NOT bundle Python; this file is the only thing both implementations share.",
+  "description": "Canonical behavioral definitions and constants shared by the TypeScript Android runtime (@chatsense/core) and the Python research/reference package (python/chatsense_ml/). This JSON is the single source of truth. Both languages load it through a thin constants layer (packages/chatsense-core/src/contract.ts and chatsense_ml/contract.py) whose values are proven equal to this file by parity tests. The Android app does NOT bundle Python; this file is the only thing both implementations share.",
   "thresholds_minutes": {
     "quick_reply_max": 5,
     "within_one_hour_max": 60,
@@ -32,7 +32,7 @@
     "k": 3.5,
     "floor_minutes_ref": "thread_gap_min",
     "formula": "threshold = max(thread_gap_min, median(gaps) + k * scale * MAD(gaps)); a gap is an unusual silence when gap > threshold; MAD = median(|gap - median(gaps)|).",
-    "notes": "This is the SHIPPED runtime silence-anomaly definition computed by both lib/chat-analyzer.ts and chatsense_ml core silence_metrics. The Python research module chatsense_ml/anomaly/silence_anomaly.py exposes a DIFFERENT, unfloored, configurable-z research variant under the distinct name `research_silence_zscore`; it is explicitly not the runtime metric."
+    "notes": "This is the SHIPPED runtime silence-anomaly definition computed by both @chatsense/core and chatsense_ml core silence_metrics. The Python research module chatsense_ml/anomaly/silence_anomaly.py exposes a DIFFERENT, unfloored, configurable-z research variant under the distinct name `research_silence_zscore`; it is explicitly not the runtime metric."
   },
   "message_types": {
     "supported": ["text", "media", "deleted", "system"],
