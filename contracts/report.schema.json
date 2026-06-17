@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chatsense.local/contracts/report.schema.json",
+  "title": "ChatSense Python Core Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "conversation", "participants", "metrics", "graph", "warnings"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "conversation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "conversation_id",
+        "source_name",
+        "message_count",
+        "participant_count",
+        "started_at",
+        "ended_at"
+      ],
+      "properties": {
+        "conversation_id": { "type": "string", "minLength": 1 },
+        "source_name": { "type": ["string", "null"] },
+        "message_count": { "type": "integer", "minimum": 0 },
+        "participant_count": { "type": "integer", "minimum": 0 },
+        "started_at": { "type": ["string", "null"] },
+        "ended_at": { "type": ["string", "null"] }
+      }
+    },
+    "participants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sender",
+          "message_count",
+          "word_count",
+          "message_share",
+          "word_share",
+          "median_reply_delay_min"
+        ],
+        "properties": {
+          "sender": { "type": "string" },
+          "message_count": { "type": "integer", "minimum": 0 },
+          "word_count": { "type": "integer", "minimum": 0 },
+          "message_share": { "type": "number", "minimum": 0, "maximum": 1 },
+          "word_share": { "type": "number", "minimum": 0, "maximum": 1 },
+          "median_reply_delay_min": { "type": ["number", "null"], "minimum": 0 }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reply_dynamics", "silence_gaps", "sender_balance", "initiation", "activity"],
+      "properties": {
+        "reply_dynamics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "avg_reply_delay_min",
+            "median_reply_delay_min",
+            "quick_reply_rate",
+            "within_one_hour_rate",
+            "within_six_hours_rate",
+            "within_one_day_rate",
+            "late_reply_rate",
+            "per_sender_median_reply_delay_min"
+          ],
+          "properties": {
+            "avg_reply_delay_min": { "type": ["number", "null"], "minimum": 0 },
+            "median_reply_delay_min": { "type": ["number", "null"], "minimum": 0 },
+            "quick_reply_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+            "within_one_hour_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+            "within_six_hours_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+            "within_one_day_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+            "late_reply_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+            "per_sender_median_reply_delay_min": {
+              "type": "object",
+              "additionalProperties": { "type": "number", "minimum": 0 }
+            }
+          }
+        },
+        "silence_gaps": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "longest_silence_hours",
+            "longest_silence_min",
+            "median_gap_min",
+            "gaps_over_24h",
+            "unusual_silence_threshold_min",
+            "unusual_silence_count"
+          ],
+          "properties": {
+            "longest_silence_hours": { "type": "number", "minimum": 0 },
+            "longest_silence_min": { "type": ["number", "null"], "minimum": 0 },
+            "median_gap_min": { "type": ["number", "null"], "minimum": 0 },
+            "gaps_over_24h": { "type": "integer", "minimum": 0 },
+            "unusual_silence_threshold_min": { "type": ["number", "null"], "minimum": 0 },
+            "unusual_silence_count": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "sender_balance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["message_balance_score", "word_balance_score", "one_sidedness"],
+          "properties": {
+            "message_balance_score": { "type": "number", "minimum": 0, "maximum": 1 },
+            "word_balance_score": { "type": "number", "minimum": 0, "maximum": 1 },
+            "one_sidedness": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        },
+        "initiation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["thread_initiations", "initiation_ratio"],
+          "properties": {
+            "thread_initiations": {
+              "type": "object",
+              "additionalProperties": { "type": "integer", "minimum": 0 }
+            },
+            "initiation_ratio": {
+              "type": "object",
+              "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 }
+            }
+          }
+        },
+        "activity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["daily_counts", "weekly_counts", "peak_hour", "peak_weekday", "active_day_ratio"],
+          "properties": {
+            "daily_counts": {
+              "type": "object",
+              "additionalProperties": { "type": "integer", "minimum": 0 }
+            },
+            "weekly_counts": {
+              "type": "object",
+              "additionalProperties": { "type": "integer", "minimum": 0 }
+            },
+            "peak_hour": { "type": ["integer", "null"], "minimum": 0, "maximum": 23 },
+            "peak_weekday": { "type": ["integer", "null"], "minimum": 0, "maximum": 6 },
+            "active_day_ratio": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        }
+      }
+    },
+    "graph": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node_count", "edge_count", "top_reply_edges"],
+      "properties": {
+        "node_count": { "type": "integer", "minimum": 0 },
+        "edge_count": { "type": "integer", "minimum": 0 },
+        "top_reply_edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["from", "to", "reply_count"],
+            "properties": {
+              "from": { "type": "string" },
+              "to": { "type": "string" },
+              "reply_count": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

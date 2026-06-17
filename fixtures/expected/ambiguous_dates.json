@@ -1,0 +1,42 @@
+{
+  "message_count": 4,
+  "participant_count": 2,
+  "participants": [
+    {
+      "sender": "Asha",
+      "message_count": 2,
+      "word_count": 9,
+      "message_share_pct": 50
+    },
+    {
+      "sender": "Ravi",
+      "message_count": 2,
+      "word_count": 3,
+      "message_share_pct": 50
+    }
+  ],
+  "reply_count": 3,
+  "thread_count": 1,
+  "peak_hour": 7,
+  "peak_weekday": "Friday",
+  "quick_reply_rate_pct": 0,
+  "within_one_hour_rate_pct": 100,
+  "within_six_hours_rate_pct": 100,
+  "within_one_day_rate_pct": 100,
+  "avg_reply_delay_min": 20,
+  "median_reply_delay_min": 25,
+  "longest_silence_min": 30,
+  "unusual_silence_count": 0,
+  "reply_edges": [
+    {
+      "from": "Asha",
+      "to": "Ravi",
+      "count": 1
+    },
+    {
+      "from": "Ravi",
+      "to": "Asha",
+      "count": 2
+    }
+  ]
+}

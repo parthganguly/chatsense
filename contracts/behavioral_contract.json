@@ -1,0 +1,76 @@
+{
+  "contract_version": "1.0",
+  "description": "Canonical behavioral definitions and constants shared by the TypeScript Android runtime (lib/) and the Python research/reference package (python/chatsense_ml/). This JSON is the single source of truth. Both languages load it through a thin constants layer (lib/contract.ts and chatsense_ml/contract.py) whose values are proven equal to this file by parity tests. The Android app does NOT bundle Python; this file is the only thing both implementations share.",
+  "thresholds_minutes": {
+    "quick_reply_max": 5,
+    "within_one_hour_max": 60,
+    "within_six_hours_max": 360,
+    "within_one_day_max": 1440,
+    "late_reply_min_exclusive": 1440,
+    "thread_gap_min": 360
+  },
+  "reply_event": {
+    "definition": "sender_differs_from_previous_message",
+    "notes": "A reply event exists at index i>=1 when message[i].sender != message[i-1].sender. Consecutive messages from the same sender are NOT replies and never create an artificial reply edge or reply-delay sample."
+  },
+  "reply_graph": {
+    "edge_direction": "responder_to_previous_sender",
+    "from": "current sender (the responder)",
+    "to": "previous sender (the one being replied to)",
+    "notes": "Directed edge weight is the number of reply events from `from` to `to`."
+  },
+  "date_order_policy": {
+    "policy": "infer_once_per_export",
+    "rule": "Scan all timestamped lines in the export in order. If any line's first date component is > 12, the whole export is day/month/year (DMY). Otherwise, if any line's second date component is > 12, the whole export is month/day/year (MDY). Otherwise default to DMY. The single inferred order is then applied to every row; the order is never decided per row.",
+    "default": "dmy",
+    "two_digit_year_pivot": 2000
+  },
+  "silence_anomaly": {
+    "name": "runtime_modified_zscore_floored",
+    "method": "modified_z_score",
+    "scale": 1.4826,
+    "k": 3.5,
+    "floor_minutes_ref": "thread_gap_min",
+    "formula": "threshold = max(thread_gap_min, median(gaps) + k * scale * MAD(gaps)); a gap is an unusual silence when gap > threshold; MAD = median(|gap - median(gaps)|).",
+    "notes": "This is the SHIPPED runtime silence-anomaly definition computed by both lib/chat-analyzer.ts and chatsense_ml core silence_metrics. The Python research module chatsense_ml/anomaly/silence_anomaly.py exposes a DIFFERENT, unfloored, configurable-z research variant under the distinct name `research_silence_zscore`; it is explicitly not the runtime metric."
+  },
+  "message_types": {
+    "supported": ["text", "media", "deleted", "system"],
+    "media_markers": ["media omitted", "<attached:"],
+    "deleted_markers": ["message was deleted", "deleted this message"],
+    "system_handling": "System notice lines (timestamped lines with no 'Sender:' prefix) are detected. They are EXCLUDED from shared runtime behavioral parity metrics (participant counts, reply dynamics, balance, initiation, activity, graph). The Python reference report may retain them for research, but the cross-language parity contract is defined over non-system messages only."
+  },
+  "parity": {
+    "scope": "non_system_messages",
+    "exact_equality_metrics": [
+      "message_count",
+      "participant_count",
+      "participants[].message_count",
+      "participants[].word_count",
+      "participants[].message_share_pct",
+      "reply_count",
+      "thread_count",
+      "peak_hour",
+      "peak_weekday",
+      "reply_edges",
+      "quick_reply_rate_pct",
+      "within_one_hour_rate_pct",
+      "within_six_hours_rate_pct",
+      "within_one_day_rate_pct",
+      "avg_reply_delay_min",
+      "median_reply_delay_min",
+      "longest_silence_min",
+      "unusual_silence_count"
+    ],
+    "float_tolerance_metrics": {},
+    "rounding": {
+      "rates_pct": "round_half_up to integer percent",
+      "delays_min": "round_half_up to integer minutes",
+      "notes": "The TypeScript runtime already emits these metrics as integers (rates as integer percent, delays/longest-silence as integer minutes via Math.round). The Python parity normalizer applies the identical round-half-up at the boundary, so every shared metric is an integer or categorical value and all comparisons use EXACT equality. No aggressive rounding is introduced beyond what the shipped runtime already produces. The unusual-silence COUNT is the shared silence-anomaly output; the raw threshold value is an internal quantity (sensitive to the runtime's integer-rounded median/MAD) and is intentionally not compared, while both sides compute it from the same contract constants (k, scale, floor)."
+    }
+  },
+  "group_chat": {
+    "supported": true,
+    "limitations": "The reply model is pairwise (reply = previous sender differs). In group chats with 3+ participants this attributes each message as a reply to the immediately preceding sender only; it does not resolve threaded @-mentions or quoted replies. Initiation and reply-graph metrics inherit this pairwise approximation. Treat group-chat reply attribution as an approximation, not ground truth."
+  }
+}

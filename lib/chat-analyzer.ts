@@ -1,8 +1,18 @@
 import type { ChatMessage } from "./chat-parser"
 import { getSenders } from "./chat-parser"
+import {
+  QUICK_REPLY_MAX_MIN,
+  SILENCE_ANOMALY_FLOOR_MIN,
+  SILENCE_ANOMALY_K,
+  SILENCE_ANOMALY_SCALE,
+  THREAD_GAP_MIN,
+  WITHIN_ONE_DAY_MAX_MIN,
+  WITHIN_ONE_HOUR_MAX_MIN,
+  WITHIN_SIX_HOURS_MAX_MIN,
+} from "./contract"
 
 const MINUTE_MS = 60 * 1000
-const THREAD_GAP_MINUTES = 6 * 60
+const THREAD_GAP_MINUTES = THREAD_GAP_MIN
 
 export interface ConversationOverview {
   messageCount: number
@@ -194,10 +204,10 @@ function analyzeReplies(replyEvents: ReplyEvent[]): ReplyDynamics {
     replyCount: delays.length,
     avgReplyMinutes: round(delays.reduce((total, delay) => total + delay, 0) / delays.length),
     medianReplyMinutes: median(delays),
-    quickReplyRate: percentage(delays.filter((delay) => delay < 5).length, delays.length),
-    withinOneHourRate: percentage(delays.filter((delay) => delay <= 60).length, delays.length),
-    withinSixHoursRate: percentage(delays.filter((delay) => delay <= 6 * 60).length, delays.length),
-    withinDayRate: percentage(delays.filter((delay) => delay <= 24 * 60).length, delays.length),
+    quickReplyRate: percentage(delays.filter((delay) => delay < QUICK_REPLY_MAX_MIN).length, delays.length),
+    withinOneHourRate: percentage(delays.filter((delay) => delay <= WITHIN_ONE_HOUR_MAX_MIN).length, delays.length),
+    withinSixHoursRate: percentage(delays.filter((delay) => delay <= WITHIN_SIX_HOURS_MAX_MIN).length, delays.length),
+    withinDayRate: percentage(delays.filter((delay) => delay <= WITHIN_ONE_DAY_MAX_MIN).length, delays.length),
   }
 }
 
@@ -214,8 +224,8 @@ function analyzeSilences(messages: ChatMessage[], gaps: number[]): SilenceSummar
   const medianGap = median(gaps) ?? 0
   const absoluteDeviations = gaps.map((gap) => Math.abs(gap - medianGap))
   const medianAbsoluteDeviation = median(absoluteDeviations) ?? 0
-  const robustThreshold = medianGap + 3.5 * 1.4826 * medianAbsoluteDeviation
-  const threshold = Math.max(6 * 60, robustThreshold)
+  const robustThreshold = medianGap + SILENCE_ANOMALY_K * SILENCE_ANOMALY_SCALE * medianAbsoluteDeviation
+  const threshold = Math.max(SILENCE_ANOMALY_FLOOR_MIN, robustThreshold)
   const unusualSilences: SilenceEvent[] = []
 
   for (let index = 1; index < messages.length; index += 1) {

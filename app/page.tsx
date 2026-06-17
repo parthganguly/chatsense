@@ -239,7 +239,7 @@ function AppHeader({
 }
 
 function OverviewScreen({ analysis }: { analysis: ChatAnalysis }) {
-  const { overview, replyDynamics, silenceSummary, activity, insights } = analysis
+  const { overview, replyDynamics, silenceSummary, insights } = analysis
 
   return (
     <div className="space-y-7 px-5 py-5">
