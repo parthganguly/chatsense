@@ -64,7 +64,9 @@ features/rhythm/           rhythm presentation screen
 features/people/           people presentation screen
 components/analytics/      reusable analytics UI components
 components/navigation/     app header and bottom navigation
-platform/android/          typed shared-file bridge adapter
+platform/android/          typed Capacitor shared-file adapter
+android/app/src/main/java/com/thegreatparthicle/chatsense/plugins/
+                            native Android shared-file import plugin
 python/chatsense_ml/       Python research/reference implementation
 contracts/                 shared behavioral and report contracts
 fixtures/                  shared WhatsApp fixtures and expected parity outputs
@@ -74,4 +76,4 @@ fixtures/                  shared WhatsApp fixtures and expected parity outputs
 
 Chats are processed locally and are not persisted by the app. There is no LLM, backend, account system, telemetry, or cloud storage in the current runtime.
 
-The Android share-sheet bridge still passes the whole file into the WebView as Base64. That bridge is isolated and documented as a known limitation for a later task.
+Android share-sheet imports are copied from the provider `content://` URI into app-private cache by the native `SharedFile` Capacitor plugin. JavaScript receives only metadata plus a local file URI, imports it through the same browser `File` path, and asks native code to release the cached copy after import.

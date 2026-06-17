@@ -12,15 +12,22 @@ ChatSense is designed as a local-first analyzer for WhatsApp exports.
 
 ## Android Share Sheet
 
-The Android app accepts shared WhatsApp export files through Capacitor. The native bridge currently reads the shared file and passes the whole file to the WebView as Base64.
+The Android app accepts shared WhatsApp export files through a first-party Capacitor plugin. The plugin reads the provider `content://` stream and copies supported ZIP/TXT files into app-private cache:
 
-This bridge is isolated behind:
+```text
+cache/chatsense-shared-imports/
+```
+
+The WebView receives only metadata and a local file URI, then imports the file through the same in-memory browser `File` path used by manual selection. After import, the JavaScript adapter asks native code to delete the cached copy. Stale cached files are pruned on plugin load.
+
+The bridge is isolated behind:
 
 ```text
 platform/android/sharedFileBridge.ts
+android/app/src/main/java/com/thegreatparthicle/chatsense/plugins/SharedFilePlugin.java
 ```
 
-The Base64 bridge is a known temporary limitation. It should be replaced later with a dedicated native file-access plugin or streaming import path in a separate task.
+The app does not request broad file storage permissions. FileProvider remains limited to app-controlled `shared/` paths for testing and future app-owned sharing.
 
 ## Safety Language
 

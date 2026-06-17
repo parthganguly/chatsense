@@ -45,7 +45,7 @@ The Next.js/Capacitor shell owns:
 - file-picker import UX;
 - browser `File` handling;
 - ZIP/TXT extraction;
-- Android share-sheet bridge events;
+- Android share-sheet import orchestration through the native `SharedFile` plugin;
 - presentation screens and components.
 
 Screens render `ChatAnalysis` values from `@chatsense/core`. They must not duplicate behavioral calculations.
@@ -63,6 +63,22 @@ Shared contracts and fixtures are the guardrails:
 - `fixtures/whatsapp` and `fixtures/expected` preserve nine deterministic parity fixtures.
 - `npm run test:parity` verifies TypeScript behavior against expected outputs.
 - `python -m pytest` verifies the Python reference and contract parity.
+
+## Android Native Import
+
+Stage 3 replaces the old whole-file JavaScript injection bridge with a first-party Capacitor plugin:
+
+```text
+Android share intent
+  content:// provider URI
+  SharedFilePlugin
+  app-private cache/chatsense-shared-imports
+  Capacitor file URL via convertFileSrc()
+  browser File import path
+  releaseSharedFile()
+```
+
+`MainActivity` only registers the plugin and forwards cold-start or warm share intents. `SharedFilePlugin` validates ZIP/TXT imports, copies them with a size limit into private cache, retains pending metadata for startup races, and deletes cached files after JavaScript finishes import. No Python, LLM, backend, telemetry, or broad storage permission participates in this runtime path.
 
 ## Deferred React Native Work
 
