@@ -66,6 +66,12 @@ The native stream copy enforces a 50 MB limit. Oversized partial copies are dele
 
 JavaScript calls `releaseSharedFile({ id })` in a `finally` block after converting the native cache URI and after the downstream import handler finishes or fails. If release is missed because of process shutdown, plugin load prunes stale cached imports.
 
+## Cold Start Delivery
+
+Capacitor 7 delivers the initial Activity intent during bridge load. `BridgeActivity.load()` creates the bridge with registered plugins and then calls `this.onNewIntent(getIntent())`. Because `MainActivity` registers `SharedFilePlugin` before `super.onCreate(savedInstanceState)`, that virtual `onNewIntent()` call reaches `MainActivity.onNewIntent()` after the plugin is available.
+
+`MainActivity` uses `SharedFileIntentRouting` to forward only supported `ACTION_SEND` and `ACTION_VIEW` intents with a provider URI. Normal launcher starts do nothing. The router also suppresses duplicate forwarding of the same Activity `Intent` object, while allowing a later warm share of the same file URI when Android supplies a new intent object.
+
 ## Current Verification Checklist
 
 Required local checks for this stage:
