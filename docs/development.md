@@ -30,7 +30,7 @@ npm run check
 
 `npm run test` runs focused TypeScript boundary tests for imports, ZIP/TXT handling, Android native shared-file conversion, pending/warm share dedupe, release cleanup, package-boundary imports, and UI/core separation.
 
-`npm run test:parity` compares the TypeScript runtime with the nine shared expected parity outputs.
+`npm run test:parity` compares the TypeScript runtime with the 21 shared expected parity outputs.
 
 ## Python Reference
 

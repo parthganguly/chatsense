@@ -10,7 +10,7 @@ Top-level required fields:
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `schema_version` | string | yes | Contract version, currently `1.0`. |
+| `schema_version` | string | yes | Contract version, currently `2.0`. |
 | `conversation` | object | yes | Conversation metadata and counts. |
 | `participants` | array | yes | Per-sender summary objects. |
 | `metrics` | object | yes | User-readable behavioral metrics. |
@@ -48,6 +48,29 @@ Required groups:
 - `sender_balance`: message and word balance scores, one-sidedness.
 - `initiation`: conversation/thread initiation counts and ratios.
 - `activity`: daily counts, peak hour, peak weekday, active day ratio.
+- `relationship_dynamics`: adaptive windows, turns, reconnections, follow-ups, and evidence-safe comparisons.
+
+### `metrics.relationship_dynamics`
+
+This object mirrors the descriptive Stage 4 relationship-dynamics model. It is
+not part of the future-label research pipeline.
+
+Required groups:
+
+- `window_size_days`: selected adaptive calendar window size.
+- `turns`: ordered conversational turns with sender, start/end, message count,
+  word count, duration, thread-start flag, and final-open-turn flag.
+- `adaptive_windows`: calendar windows with message count, active days, turns,
+  thread starts, reconnections, participant summaries, eligibility, and partial
+  state.
+- `participant_summaries`: full-export sender summaries for turn share, reply
+  timing, thread starts, reconnections, and follow-ups.
+- `pause_summary`: pauses at or above 24 hours, latest-gap percentile, and
+  reconnecting participants.
+- `early_late` and `recent_prior`: comparison objects with availability,
+  periods, metric changes, sample sizes, evidence state, and notable state.
+- `notable_changes`: sufficient changes that cross canonical thresholds.
+- `change_insights`: guardrailed observable insight text.
 
 ### `warnings`
 
@@ -122,6 +145,7 @@ The cross-language parity contract is narrower than `report.json`. It contains o
 | `longest_silence_min` | integer/null | Rounded longest inter-message gap. |
 | `unusual_silence_count` | integer | Count of gaps above the canonical runtime silence threshold. |
 | `reply_edges[]` | array | Directed `from` responder to `to` previous-sender edge counts. |
+| `relationship_dynamics` | object | Turns, participant summaries, pauses, adaptive windows, and evidence-safe comparisons normalized for TypeScript/Python equality. |
 
 Golden parity outputs live in `fixtures/expected/*.json`; tests must read those files and compare exact equality. Do not regenerate expected files during normal tests. To intentionally refresh the golden outputs, run:
 

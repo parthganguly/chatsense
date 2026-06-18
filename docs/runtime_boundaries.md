@@ -12,14 +12,17 @@ The mobile app remains local-only: imported chats are processed in memory, not u
 ## Relationship Dynamics Boundary
 
 Stage 4 adds descriptive relationship-dynamics summaries to `@chatsense/core`.
-These summaries split the exported message history into deterministic early,
-middle, and recent phases when enough messages exist, then compare observable
-changes in:
+These summaries split the exported message history into adaptive calendar
+windows, build conversational turns, and compare eligible early/late and
+recent/prior periods with metric-specific sample checks. They summarize
+observable changes in:
 
 - messages per active day;
-- median sender-switch reply pace;
-- dominant sender message share;
-- thread initiation leader.
+- participant turn share;
+- median sender-switch reply timing;
+- thread-start share;
+- reconnection share after 24-hour pauses;
+- follow-up-before-reply rate.
 
 These comparisons are not predictions and do not inspect message meaning. They
 must not be described as proof of motive, affection, attachment, personality,

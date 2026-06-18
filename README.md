@@ -60,7 +60,7 @@ android/app/build/outputs/apk/debug/app-debug.apk
 packages/chatsense-core/   production TypeScript behavioral engine
 features/import/           browser file import, ZIP/TXT extraction, import orchestration
 features/overview/         overview presentation screen
-features/dynamics/         relationship-dynamics phase comparison screen
+features/changes/          relationship-dynamics change comparison screen
 features/rhythm/           rhythm presentation screen
 features/people/           people presentation screen
 components/analytics/      reusable analytics UI components
