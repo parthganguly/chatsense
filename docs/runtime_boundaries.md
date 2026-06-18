@@ -9,6 +9,22 @@ ChatSense has one shipped behavioral engine and one research/reference implement
 
 The mobile app remains local-only: imported chats are processed in memory, not uploaded, not persisted by the app, and not analyzed by an LLM.
 
+## Relationship Dynamics Boundary
+
+Stage 4 adds descriptive relationship-dynamics summaries to `@chatsense/core`.
+These summaries split the exported message history into deterministic early,
+middle, and recent phases when enough messages exist, then compare observable
+changes in:
+
+- messages per active day;
+- median sender-switch reply pace;
+- dominant sender message share;
+- thread initiation leader.
+
+These comparisons are not predictions and do not inspect message meaning. They
+must not be described as proof of motive, affection, attachment, personality,
+mental health, relationship quality, or relationship status.
+
 ## Promotion Rule
 
 New behavioral definitions should start in Python when they need pandas, notebooks, or research iteration. A metric is only considered shipped when it is:

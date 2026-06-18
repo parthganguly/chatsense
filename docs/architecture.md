@@ -32,6 +32,7 @@ Shared contracts and fixtures
 - behavioral calculations;
 - shared analysis types;
 - deterministic behavioral insights;
+- deterministic relationship-dynamics phase comparisons;
 - contract constants;
 - TypeScript parity normalization.
 
@@ -49,6 +50,10 @@ The Next.js/Capacitor shell owns:
 - presentation screens and components.
 
 Screens render `ChatAnalysis` values from `@chatsense/core`. They must not duplicate behavioral calculations.
+
+Stage 4 adds a `Dynamics` screen that renders precomputed first-vs-recent
+behavior changes from `ChatAnalysis.relationshipDynamics`. The screen does not
+run sentiment analysis, prediction, coaching, or any content interpretation.
 
 ## Python Research
 

@@ -18,3 +18,25 @@ export function formatDate(value: string): string {
 export function formatNumber(value: number): string {
   return new Intl.NumberFormat("en-US").format(value)
 }
+
+export function formatPhaseLabel(label: ChatAnalysis["relationshipDynamics"]["phases"][number]["label"]): string {
+  if (label === "full") return "Full export"
+  return label[0].toUpperCase() + label.slice(1)
+}
+
+export function formatChangeDirection(
+  direction: ChatAnalysis["relationshipDynamics"]["activityChange"]["direction"],
+): string {
+  const labels = {
+    rising: "Rising",
+    falling: "Falling",
+    stable: "Stable",
+    faster: "Faster",
+    slower: "Slower",
+    more_balanced: "More balanced",
+    more_one_sided: "More one-sided",
+    shifted: "Shifted",
+    not_enough_data: "Limited data",
+  }
+  return labels[direction]
+}

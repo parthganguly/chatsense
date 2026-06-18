@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { AppHeader } from "@/components/navigation/AppHeader"
 import { BottomNav } from "@/components/navigation/BottomNav"
 import type { AppScreen } from "@/components/navigation/navigationTypes"
+import { DynamicsScreen } from "@/features/dynamics/DynamicsScreen"
 import { ImportScreen } from "@/features/import/ImportScreen"
 import { useChatImport } from "@/features/import/useChatImport"
 import { OverviewScreen } from "@/features/overview/OverviewScreen"
@@ -51,6 +52,7 @@ export default function ChatSenseApp() {
             transition={{ duration: 0.16 }}
           >
             {screen === "overview" && <OverviewScreen analysis={analysis} />}
+            {screen === "dynamics" && <DynamicsScreen analysis={analysis} />}
             {screen === "rhythm" && <RhythmScreen analysis={analysis} />}
             {screen === "people" && <PeopleScreen analysis={analysis} />}
           </motion.div>
