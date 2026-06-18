@@ -4,6 +4,7 @@ import pandas as pd
 
 from chatsense_ml.features.initiation import initiation_metrics
 from chatsense_ml.features.reply_dynamics import reply_metrics, silence_metrics
+from chatsense_ml.features.relationship_dynamics import relationship_dynamics
 from chatsense_ml.features.sender_balance import participant_summary, sender_balance_metrics
 from chatsense_ml.features.temporal import activity_metrics
 from chatsense_ml.graphs.interaction_graph import graph_summary
@@ -24,7 +25,7 @@ def build_report(conversation: Conversation, features: pd.DataFrame) -> dict:
         ended_at = features["timestamp"].max().isoformat()
 
     return {
-        "schema_version": "1.0",
+        "schema_version": "2.0",
         "conversation": {
             "conversation_id": conversation.conversation_id,
             "source_name": conversation.source_name,
@@ -40,6 +41,7 @@ def build_report(conversation: Conversation, features: pd.DataFrame) -> dict:
             "sender_balance": sender_balance_metrics(features),
             "initiation": initiation_metrics(features),
             "activity": activity_metrics(features),
+            "relationship_dynamics": relationship_dynamics(features),
         },
         "graph": graph_summary(features),
         "warnings": SAFETY_WARNINGS,

@@ -8,7 +8,12 @@ import { SectionHeading } from "@/components/analytics/SectionHeading"
 import { formatHour, formatNumber, formatTrend } from "@/utils/formatting"
 
 export function RhythmScreen({ analysis }: { analysis: ChatAnalysis }) {
-  const { activity, replyDynamics, silenceSummary, threadCount } = analysis
+  const { activity, replyDynamics, silenceSummary, threadCount, relationshipDynamics } = analysis
+  const pauseSummary = relationshipDynamics.pauseSummary
+  const reconnectors =
+    pauseSummary.reconnectingParticipants.length > 0
+      ? pauseSummary.reconnectingParticipants.map((participant) => participant.sender).join(", ")
+      : "No 24h restarts"
 
   return (
     <div className="space-y-7 px-5 py-5">
@@ -30,7 +35,7 @@ export function RhythmScreen({ analysis }: { analysis: ChatAnalysis }) {
       </section>
 
       <section>
-        <SectionHeading eyebrow="Across the week" title="Active days" />
+        <SectionHeading eyebrow="Across the week" title="Messages by weekday" />
         <div className="mt-4 space-y-3">
           {activity.weekdayCounts.map((day) => (
             <ProgressRow
@@ -45,15 +50,20 @@ export function RhythmScreen({ analysis }: { analysis: ChatAnalysis }) {
       </section>
 
       <section>
-        <SectionHeading eyebrow="Silence gaps" title="Unusual pauses" />
+        <SectionHeading eyebrow="Pauses and restarts" title="Long gaps in context" />
         <div className="mt-4 divide-y divide-slate-200 border-y border-slate-200 bg-white">
           <DataRow label="Longest observed gap" value={formatDuration(silenceSummary.longestSilenceMinutes)} />
-          <DataRow label="Unusual gaps" value={formatNumber(silenceSummary.unusualSilenceCount)} />
-          <DataRow label="Chat-specific threshold" value={formatDuration(silenceSummary.unusualSilenceThresholdMinutes)} />
+          <DataRow label="Pauses at least 24h" value={formatNumber(pauseSummary.longPauseCount)} />
+          <DataRow
+            label="Latest gap percentile"
+            value={pauseSummary.latestGapPercentile === null ? "No data" : `${pauseSummary.latestGapPercentile}%`}
+          />
+          <DataRow label="Reconnecting participants" value={reconnectors} />
           <DataRow label="Average reply" value={formatDuration(replyDynamics.avgReplyMinutes)} />
         </div>
         <p className="mt-3 text-xs leading-5 text-slate-500">
-          A pause is flagged only when it is unusually long relative to this chat&apos;s own history.
+          A restart is counted only when a participant sends the first message after a pause of at least 24 hours.
+          This is a timing observation, not a motive claim.
         </p>
       </section>
     </div>

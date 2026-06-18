@@ -14,7 +14,7 @@ export function BottomNav({
     <nav className="border-t border-slate-200 bg-white pb-[max(0.75rem,env(safe-area-inset-bottom))]">
       <div className="grid grid-cols-4">
         <NavItem icon={BarChart3} label="Overview" active={activeTab === "overview"} onClick={() => setActiveTab("overview")} />
-        <NavItem icon={LineChart} label="Dynamics" active={activeTab === "dynamics"} onClick={() => setActiveTab("dynamics")} />
+        <NavItem icon={LineChart} label="Changes" active={activeTab === "changes"} onClick={() => setActiveTab("changes")} />
         <NavItem icon={Activity} label="Rhythm" active={activeTab === "rhythm"} onClick={() => setActiveTab("rhythm")} />
         <NavItem icon={Users} label="People" active={activeTab === "people"} onClick={() => setActiveTab("people")} />
       </div>

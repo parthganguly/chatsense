@@ -1,0 +1,192 @@
+import { CalendarDays, GitCompare, MessageCircleReply, RotateCcw, Split, Timer } from "lucide-react"
+import { formatDuration, type ChatAnalysis, type DynamicsComparison, type MetricChange } from "@chatsense/core"
+import { DataRow } from "@/components/analytics/DataRow"
+import { MetricCard } from "@/components/analytics/MetricCard"
+import { ProgressRow } from "@/components/analytics/ProgressRow"
+import { SectionHeading } from "@/components/analytics/SectionHeading"
+import { formatChangeDirection, formatDate, formatNumber } from "@/utils/formatting"
+
+export function ChangesScreen({ analysis }: { analysis: ChatAnalysis }) {
+  const dynamics = analysis.relationshipDynamics
+  const topParticipants = dynamics.participantSummaries.slice(0, 4)
+
+  return (
+    <div className="space-y-7 px-5 py-5">
+      <section>
+        <SectionHeading eyebrow="Relationship dynamics" title="Changes over time" />
+        <div className="mt-4 grid grid-cols-2 gap-3">
+          <MetricCard label="Window size" value={`${dynamics.windowSizeDays}d`} icon={CalendarDays} />
+          <MetricCard label="Turns" value={formatNumber(dynamics.turns.length)} icon={Split} />
+          <MetricCard label="24h restarts" value={formatNumber(dynamics.pauseSummary.longPauseCount)} icon={RotateCcw} />
+          <MetricCard label="Notable changes" value={formatNumber(dynamics.notableChanges.length)} icon={GitCompare} />
+        </div>
+      </section>
+
+      <ComparisonSection comparison={dynamics.earlyLate} />
+      <ComparisonSection comparison={dynamics.recentPrior} />
+
+      <section>
+        <SectionHeading eyebrow="Adaptive windows" title="Export timeline" />
+        <div className="mt-4 space-y-3">
+          {dynamics.adaptiveWindows.map((bucket) => (
+            <div key={bucket.index} className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="text-sm font-semibold text-slate-900">
+                    {formatDate(bucket.start)} to {formatDate(bucket.end)}
+                  </h3>
+                  <p className="mt-1 text-xs text-slate-500">
+                    {bucket.partial ? "Partial final window" : "Complete calendar window"} |{" "}
+                    {bucket.eligible ? "eligible" : "limited evidence"}
+                  </p>
+                </div>
+                <span className="text-sm font-bold text-emerald-800">{formatNumber(bucket.messageCount)}</span>
+              </div>
+              <div className="mt-3 grid grid-cols-3 gap-2 text-xs">
+                <WindowStat label="Active days" value={formatNumber(bucket.activeDays)} />
+                <WindowStat label="Turns" value={formatNumber(bucket.turnCount)} />
+                <WindowStat label="Restarts" value={formatNumber(bucket.reconnectionCount)} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <SectionHeading eyebrow="Participant movement" title="Who keeps contact moving" />
+        <div className="mt-4 space-y-5">
+          {topParticipants.map((participant) => (
+            <div key={participant.sender} className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="text-sm font-semibold text-slate-900">{participant.sender}</h3>
+                  <p className="mt-1 text-xs text-slate-500">
+                    {formatNumber(participant.turnCount)} turns | median reply{" "}
+                    {formatDuration(participant.medianReplyMinutes)}
+                  </p>
+                </div>
+                <MessageCircleReply className="h-4 w-4 shrink-0 text-emerald-700" />
+              </div>
+              <div className="mt-4 space-y-3">
+                <ProgressRow label="Turn share" value={participant.turnShare} />
+                <ProgressRow label="Thread-start share" value={participant.threadStartShare} />
+                <ProgressRow label="Reconnection share" value={participant.reconnectionShare} />
+                <ProgressRow
+                  label="Follow-up turn rate"
+                  value={participant.followUpRate ?? 0}
+                  valueLabel={participant.followUpRate === null ? "Limited data" : `${participant.followUpRate}%`}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-t border-slate-200 pt-5 text-xs leading-5 text-slate-500">
+        <p>
+          Changes describe exported timing and volume behavior only. They are not proof of motive or relationship status,
+          affection, attachment, personality, mental health, or relationship quality.
+        </p>
+      </section>
+    </div>
+  )
+}
+
+function ComparisonSection({ comparison }: { comparison: DynamicsComparison }) {
+  const changes = comparison.changes.filter((change) => change.notable || change.evidenceState !== "sufficient").slice(0, 8)
+  return (
+    <section>
+      <SectionHeading
+        eyebrow={comparison.available ? "Evidence-safe comparison" : "Limited evidence"}
+        title={comparisonTitle(comparison)}
+      />
+      {!comparison.available ? (
+        <p className="mt-3 rounded-lg border border-slate-200 bg-white p-4 text-sm leading-6 text-slate-600">
+          {comparison.unavailableReason}
+        </p>
+      ) : (
+        <>
+          <div className="mt-4 divide-y divide-slate-200 border-y border-slate-200 bg-white">
+            <DataRow
+              label={comparison.earlierPeriod.label}
+              value={`${formatDate(comparison.earlierPeriod.start ?? "")} - ${formatDate(comparison.earlierPeriod.end ?? "")}`}
+            />
+            <DataRow
+              label={comparison.laterPeriod.label}
+              value={`${formatDate(comparison.laterPeriod.start ?? "")} - ${formatDate(comparison.laterPeriod.end ?? "")}`}
+            />
+          </div>
+          <div className="mt-4 space-y-3">
+            {changes.length > 0 ? (
+              changes.map((change) => <ChangeCard key={changeKey(change)} change={change} />)
+            ) : (
+              <p className="rounded-lg border border-slate-200 bg-white p-4 text-sm leading-6 text-slate-600">
+                No notable change crossed the contract threshold for this comparison.
+              </p>
+            )}
+          </div>
+        </>
+      )}
+    </section>
+  )
+}
+
+function ChangeCard({ change }: { change: MetricChange }) {
+  const hasDirection = change.evidenceState === "sufficient"
+  return (
+    <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+            {change.sender ?? "Conversation"} | {change.evidenceState}
+          </p>
+          <h3 className="mt-1 text-sm font-semibold text-slate-900">{change.label}</h3>
+          <p className="mt-1 text-xs leading-5 text-slate-500">
+            {formatPeriod(change.earlierPeriod)} to {formatPeriod(change.laterPeriod)}
+          </p>
+        </div>
+        {hasDirection ? (
+          <span className="shrink-0 text-xs font-bold text-emerald-800">{formatChangeDirection(change.direction)}</span>
+        ) : (
+          <Timer className="h-4 w-4 shrink-0 text-slate-400" />
+        )}
+      </div>
+      <div className="mt-3 grid grid-cols-2 gap-3 text-xs">
+        <WindowStat label={`${change.earlierPeriod.label} value`} value={formatChangeValue(change.earlierValue)} />
+        <WindowStat label={`${change.laterPeriod.label} value`} value={formatChangeValue(change.laterValue)} />
+        <WindowStat label="Earlier sample" value={formatNumber(change.earlierSampleSize)} />
+        <WindowStat label="Later sample" value={formatNumber(change.laterSampleSize)} />
+      </div>
+      <p className="mt-3 text-xs leading-5 text-slate-600">{change.explanation}</p>
+      <p className="mt-2 text-xs leading-5 text-slate-500">{change.guardrail}</p>
+    </div>
+  )
+}
+
+function WindowStat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-md bg-slate-50 p-3">
+      <p className="font-bold text-slate-900">{value}</p>
+      <p className="mt-1 text-slate-500">{label}</p>
+    </div>
+  )
+}
+
+function formatChangeValue(value: MetricChange["earlierValue"]): string {
+  if (value === null) return "Unavailable"
+  if (typeof value === "string") return value
+  return String(value)
+}
+
+function changeKey(change: MetricChange): string {
+  return `${change.metric}-${change.sender ?? "conversation"}-${change.earlierPeriod.label}-${change.laterPeriod.label}`
+}
+
+function comparisonTitle(comparison: DynamicsComparison): string {
+  return comparison.kind === "early_late" ? "Early versus late" : "Recent versus prior"
+}
+
+function formatPeriod(period: MetricChange["earlierPeriod"]): string {
+  if (!period.start || !period.end) return period.label
+  return `${period.label} (${formatDate(period.start)} - ${formatDate(period.end)})`
+}

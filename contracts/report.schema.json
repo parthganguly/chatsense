@@ -8,7 +8,7 @@
   "properties": {
     "schema_version": {
       "type": "string",
-      "const": "1.0"
+      "const": "2.0"
     },
     "conversation": {
       "type": "object",
@@ -56,7 +56,14 @@
     "metrics": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["reply_dynamics", "silence_gaps", "sender_balance", "initiation", "activity"],
+      "required": [
+        "reply_dynamics",
+        "silence_gaps",
+        "sender_balance",
+        "initiation",
+        "activity",
+        "relationship_dynamics"
+      ],
       "properties": {
         "reply_dynamics": {
           "type": "object",
@@ -147,6 +154,42 @@
             "peak_weekday": { "type": ["integer", "null"], "minimum": 0, "maximum": 6 },
             "active_day_ratio": { "type": "number", "minimum": 0, "maximum": 1 }
           }
+        },
+        "relationship_dynamics": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "window_size_days",
+            "turns",
+            "adaptive_windows",
+            "participant_summaries",
+            "pause_summary",
+            "early_late",
+            "recent_prior",
+            "notable_changes",
+            "change_insights"
+          ],
+          "properties": {
+            "window_size_days": { "type": "integer", "minimum": 1 },
+            "turns": { "type": "array" },
+            "adaptive_windows": { "type": "array" },
+            "participant_summaries": { "type": "array" },
+            "pause_summary": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": ["long_pause_count", "latest_gap_minutes", "latest_gap_percentile", "reconnecting_participants"],
+              "properties": {
+                "long_pause_count": { "type": "integer", "minimum": 0 },
+                "latest_gap_minutes": { "type": ["number", "null"], "minimum": 0 },
+                "latest_gap_percentile": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+                "reconnecting_participants": { "type": "array" }
+              }
+            },
+            "early_late": { "$ref": "#/$defs/dynamics_comparison" },
+            "recent_prior": { "$ref": "#/$defs/dynamics_comparison" },
+            "notable_changes": { "type": "array" },
+            "change_insights": { "type": "array" }
+          }
         }
       }
     },
@@ -176,6 +219,22 @@
       "type": "array",
       "minItems": 3,
       "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "dynamics_comparison": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["kind", "label", "available", "unavailable_reason", "earlier_period", "later_period", "changes"],
+      "properties": {
+        "kind": { "type": "string" },
+        "label": { "type": "string" },
+        "available": { "type": "boolean" },
+        "unavailable_reason": { "type": ["string", "null"] },
+        "earlier_period": { "type": "object" },
+        "later_period": { "type": "object" },
+        "changes": { "type": "array" }
+      }
     }
   }
 }

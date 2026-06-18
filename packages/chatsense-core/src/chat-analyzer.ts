@@ -10,6 +10,11 @@ import {
   WITHIN_ONE_HOUR_MAX_MIN,
   WITHIN_SIX_HOURS_MAX_MIN,
 } from "./contract"
+import {
+  analyzeRelationshipDynamics,
+  getDefaultRelationshipDynamics,
+  type RelationshipDynamics,
+} from "./relationship-dynamics"
 
 const MINUTE_MS = 60 * 1000
 const THREAD_GAP_MINUTES = THREAD_GAP_MIN
@@ -71,51 +76,6 @@ export interface ActivitySummary {
   dailyCounts: ActivityPoint[]
 }
 
-export type LifecyclePhaseLabel = "early" | "middle" | "recent" | "full"
-
-export interface LifecyclePhase {
-  label: LifecyclePhaseLabel
-  messageCount: number
-  startedAt: string
-  endedAt: string
-  activeDays: number
-  avgMessagesPerActiveDay: number
-  medianReplyMinutes: number | null
-  longestSilenceMinutes: number | null
-  dominantSender: string | null
-  dominantSenderShare: number
-  initiationLeader: string | null
-  initiationCount: number
-}
-
-export interface DynamicsChange {
-  label: string
-  direction:
-    | "rising"
-    | "falling"
-    | "stable"
-    | "faster"
-    | "slower"
-    | "more_balanced"
-    | "more_one_sided"
-    | "shifted"
-    | "not_enough_data"
-  firstValue: number | string | null
-  recentValue: number | string | null
-  delta: number | null
-  summary: string
-}
-
-export interface RelationshipDynamics {
-  phaseCount: number
-  phases: LifecyclePhase[]
-  activityChange: DynamicsChange
-  replyPaceChange: DynamicsChange
-  balanceChange: DynamicsChange
-  initiationChange: DynamicsChange
-  changeInsights: ObservableInsight[]
-}
-
 export interface ReplyEdge {
   from: string
   to: string
@@ -173,7 +133,7 @@ export function analyzeChat(inputMessages: ChatMessage[]): ChatAnalysis {
   const silenceSummary = analyzeSilences(messages, gaps)
   const participants = analyzeParticipants(messages, senders, replyEvents, threadStarts)
   const replyDynamics = analyzeReplies(replyEvents)
-  const relationshipDynamics = analyzeRelationshipDynamics(messages, replyEvents, threadStarts)
+  const relationshipDynamics = analyzeRelationshipDynamics(messages)
   const replyEdges = buildReplyEdges(replyEvents)
   const overview = buildOverview(messages, senders)
 
@@ -337,207 +297,6 @@ function analyzeActivity(messages: ChatMessage[]): ActivitySummary {
   }
 }
 
-function analyzeRelationshipDynamics(
-  messages: ChatMessage[],
-  replyEvents: ReplyEvent[],
-  threadStarts: boolean[],
-): RelationshipDynamics {
-  const phases = buildLifecyclePhases(messages, replyEvents, threadStarts)
-  const first = phases[0]
-  const recent = phases.at(-1)
-
-  if (!first || !recent || phases.length < 2) {
-    const change = notEnoughDataChange("Lifecycle comparison")
-    return {
-      phaseCount: phases.length,
-      phases,
-      activityChange: change,
-      replyPaceChange: notEnoughDataChange("Reply pace"),
-      balanceChange: notEnoughDataChange("Message balance"),
-      initiationChange: notEnoughDataChange("Thread starts"),
-      changeInsights: [
-        {
-          tone: "context",
-          title: "More history is needed for change over time",
-          detail: "ChatSense needs enough exported messages to compare early and recent observable behavior.",
-        },
-      ],
-    }
-  }
-
-  const activityChange = compareActivity(first, recent)
-  const replyPaceChange = compareReplyPace(first, recent)
-  const balanceChange = compareBalance(first, recent)
-  const initiationChange = compareInitiation(first, recent)
-
-  return {
-    phaseCount: phases.length,
-    phases,
-    activityChange,
-    replyPaceChange,
-    balanceChange,
-    initiationChange,
-    changeInsights: buildDynamicsInsights(activityChange, replyPaceChange, balanceChange, initiationChange),
-  }
-}
-
-function buildLifecyclePhases(
-  messages: ChatMessage[],
-  replyEvents: ReplyEvent[],
-  threadStarts: boolean[],
-): LifecyclePhase[] {
-  if (messages.length === 0) return []
-  if (messages.length < 6) {
-    return [summarizePhase("full", messages, 0, messages.length, replyEvents, threadStarts)]
-  }
-
-  const labels: LifecyclePhaseLabel[] = ["early", "middle", "recent"]
-  return labels.map((label, phaseIndex) => {
-    const startIndex = Math.floor((messages.length * phaseIndex) / labels.length)
-    const endIndex = Math.floor((messages.length * (phaseIndex + 1)) / labels.length)
-    return summarizePhase(label, messages, startIndex, endIndex, replyEvents, threadStarts)
-  })
-}
-
-function summarizePhase(
-  label: LifecyclePhaseLabel,
-  allMessages: ChatMessage[],
-  startIndex: number,
-  endIndex: number,
-  replyEvents: ReplyEvent[],
-  threadStarts: boolean[],
-): LifecyclePhase {
-  const phaseMessages = allMessages.slice(startIndex, endIndex)
-  const activeDays = new Set(phaseMessages.map((message) => toDateKey(message.timestamp))).size
-  const senderCounts = new Map<string, number>()
-  const initiationCounts = new Map<string, number>()
-
-  for (const message of phaseMessages) {
-    senderCounts.set(message.sender, (senderCounts.get(message.sender) ?? 0) + 1)
-  }
-
-  for (let index = startIndex; index < endIndex; index += 1) {
-    if (threadStarts[index]) {
-      const sender = allMessages[index].sender
-      initiationCounts.set(sender, (initiationCounts.get(sender) ?? 0) + 1)
-    }
-  }
-
-  const dominant = highestEntry(senderCounts)
-  const initiationLeader = highestEntry(initiationCounts)
-  const repliesInPhase = replyEvents
-    .filter((event) => event.messageIndex > startIndex && event.messageIndex < endIndex)
-    .map((event) => event.delayMinutes)
-  const gapsInPhase = phaseMessages.slice(1).map((message, index) => gapMinutes(phaseMessages[index], message))
-
-  return {
-    label,
-    messageCount: phaseMessages.length,
-    startedAt: phaseMessages[0].timestamp.toISOString(),
-    endedAt: phaseMessages.at(-1)!.timestamp.toISOString(),
-    activeDays,
-    avgMessagesPerActiveDay: round(phaseMessages.length / Math.max(activeDays, 1), 1),
-    medianReplyMinutes: median(repliesInPhase),
-    longestSilenceMinutes: gapsInPhase.length > 0 ? round(Math.max(...gapsInPhase)) : null,
-    dominantSender: dominant?.key ?? null,
-    dominantSenderShare: dominant ? percentage(dominant.value, phaseMessages.length) : 0,
-    initiationLeader: initiationLeader?.key ?? null,
-    initiationCount: initiationLeader?.value ?? 0,
-  }
-}
-
-function compareActivity(first: LifecyclePhase, recent: LifecyclePhase): DynamicsChange {
-  const delta = round(recent.avgMessagesPerActiveDay - first.avgMessagesPerActiveDay, 1)
-  const direction = Math.abs(delta) < 0.5 ? "stable" : delta > 0 ? "rising" : "falling"
-  return {
-    label: "Messages per active day",
-    direction,
-    firstValue: first.avgMessagesPerActiveDay,
-    recentValue: recent.avgMessagesPerActiveDay,
-    delta,
-    summary:
-      direction === "stable"
-        ? "Message volume per active day stayed roughly similar from early to recent messages."
-        : `Message volume per active day moved from ${first.avgMessagesPerActiveDay} to ${recent.avgMessagesPerActiveDay}.`,
-  }
-}
-
-function compareReplyPace(first: LifecyclePhase, recent: LifecyclePhase): DynamicsChange {
-  if (first.medianReplyMinutes === null || recent.medianReplyMinutes === null) {
-    return notEnoughDataChange("Median reply pace")
-  }
-
-  const delta = round(recent.medianReplyMinutes - first.medianReplyMinutes)
-  const direction = Math.abs(delta) < 5 ? "stable" : delta < 0 ? "faster" : "slower"
-  return {
-    label: "Median reply pace",
-    direction,
-    firstValue: first.medianReplyMinutes,
-    recentValue: recent.medianReplyMinutes,
-    delta,
-    summary:
-      direction === "stable"
-        ? "Median sender-switch reply time stayed roughly similar."
-        : `Median sender-switch reply time moved from ${formatDuration(first.medianReplyMinutes)} to ${formatDuration(recent.medianReplyMinutes)}.`,
-  }
-}
-
-function compareBalance(first: LifecyclePhase, recent: LifecyclePhase): DynamicsChange {
-  const delta = round(recent.dominantSenderShare - first.dominantSenderShare)
-  const direction =
-    Math.abs(delta) < 10
-      ? "stable"
-      : delta < 0
-        ? "more_balanced"
-        : "more_one_sided"
-  return {
-    label: "Dominant sender share",
-    direction,
-    firstValue: first.dominantSenderShare,
-    recentValue: recent.dominantSenderShare,
-    delta,
-    summary:
-      direction === "stable"
-        ? "The most active sender's message share stayed roughly similar."
-        : `The most active sender's share moved from ${first.dominantSenderShare}% to ${recent.dominantSenderShare}%.`,
-  }
-}
-
-function compareInitiation(first: LifecyclePhase, recent: LifecyclePhase): DynamicsChange {
-  const firstLeader = first.initiationLeader ?? "No clear leader"
-  const recentLeader = recent.initiationLeader ?? "No clear leader"
-  const shifted = firstLeader !== recentLeader
-  return {
-    label: "Thread starts",
-    direction: shifted ? "shifted" : "stable",
-    firstValue: firstLeader,
-    recentValue: recentLeader,
-    delta: null,
-    summary: shifted
-      ? `Thread starts shifted from ${firstLeader} earlier to ${recentLeader} recently.`
-      : `Thread starts stayed with ${recentLeader}.`,
-  }
-}
-
-function buildDynamicsInsights(...changes: DynamicsChange[]): ObservableInsight[] {
-  return changes.map((change) => ({
-    tone: change.direction === "stable" || change.direction === "not_enough_data" ? "context" : "pattern",
-    title: change.label,
-    detail: `${change.summary} This is an observable export pattern, not proof of motive or relationship status.`,
-  }))
-}
-
-function notEnoughDataChange(label: string): DynamicsChange {
-  return {
-    label,
-    direction: "not_enough_data",
-    firstValue: null,
-    recentValue: null,
-    delta: null,
-    summary: "There is not enough exported history to compare early and recent behavior.",
-  }
-}
-
 function buildReplyEdges(replyEvents: ReplyEvent[]): ReplyEdge[] {
   const edges = new Map<string, ReplyEdge>()
   for (const event of replyEvents) {
@@ -684,16 +443,6 @@ function highestIndex(values: number[]): number {
   return values.indexOf(Math.max(...values))
 }
 
-function highestEntry(map: Map<string, number>): { key: string; value: number } | null {
-  let result: { key: string; value: number } | null = null
-  for (const [key, value] of map.entries()) {
-    if (!result || value > result.value || (value === result.value && key < result.key)) {
-      result = { key, value }
-    }
-  }
-  return result
-}
-
 function percentage(count: number, total: number): number {
   return total === 0 ? 0 : round((count / total) * 100)
 }
@@ -751,15 +500,7 @@ function getDefaultAnalysis(): ChatAnalysis {
       weekdayCounts: [],
       dailyCounts: [],
     },
-    relationshipDynamics: {
-      phaseCount: 0,
-      phases: [],
-      activityChange: notEnoughDataChange("Messages per active day"),
-      replyPaceChange: notEnoughDataChange("Median reply pace"),
-      balanceChange: notEnoughDataChange("Dominant sender share"),
-      initiationChange: notEnoughDataChange("Thread starts"),
-      changeInsights: [],
-    },
+    relationshipDynamics: getDefaultRelationshipDynamics(),
     replyEdges: [],
     threadCount: 0,
     insights: [],
