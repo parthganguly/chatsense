@@ -1,0 +1,1390 @@
+{
+  "message_count": 120,
+  "participant_count": 2,
+  "participants": [
+    {
+      "sender": "Asha",
+      "message_count": 60,
+      "word_count": 120,
+      "message_share_pct": 50
+    },
+    {
+      "sender": "Ravi",
+      "message_count": 60,
+      "word_count": 120,
+      "message_share_pct": 50
+    }
+  ],
+  "reply_count": 119,
+  "thread_count": 12,
+  "peak_hour": 9,
+  "peak_weekday": "Wednesday",
+  "quick_reply_rate_pct": 0,
+  "within_one_hour_rate_pct": 44,
+  "within_six_hours_rate_pct": 91,
+  "within_one_day_rate_pct": 96,
+  "avg_reply_delay_min": 440,
+  "median_reply_delay_min": 90,
+  "longest_silence_min": 8155,
+  "unusual_silence_count": 11,
+  "reply_edges": [
+    {
+      "from": "Asha",
+      "to": "Ravi",
+      "count": 59
+    },
+    {
+      "from": "Ravi",
+      "to": "Asha",
+      "count": 60
+    }
+  ],
+  "relationship_dynamics": {
+    "turn_count": 120,
+    "turns": [
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": true
+      }
+    ],
+    "participants": [
+      {
+        "sender": "Asha",
+        "turn_count": 60,
+        "turn_share_pct": 50,
+        "median_reply_delay_min": 30,
+        "reply_sample_count": 59,
+        "thread_starts": 12,
+        "reconnections": 5,
+        "follow_ups": 0,
+        "follow_up_relevant_turns": 60,
+        "follow_up_rate_pct": 0
+      },
+      {
+        "sender": "Ravi",
+        "turn_count": 60,
+        "turn_share_pct": 50,
+        "median_reply_delay_min": 90,
+        "reply_sample_count": 60,
+        "thread_starts": 0,
+        "reconnections": 0,
+        "follow_ups": 0,
+        "follow_up_relevant_turns": 48,
+        "follow_up_rate_pct": 0
+      }
+    ],
+    "pause_summary": {
+      "long_pause_count": 5,
+      "latest_gap_percentile": 77,
+      "reconnecting_participants": [
+        {
+          "sender": "Asha",
+          "count": 5,
+          "share_pct": 100
+        }
+      ]
+    },
+    "adaptive_windows": [
+      {
+        "start": "2026-04-01",
+        "end": "2026-04-07",
+        "partial": false,
+        "eligible": true,
+        "message_count": 20,
+        "active_days": 2,
+        "turn_count": 20,
+        "thread_count": 2,
+        "reconnection_count": 0
+      },
+      {
+        "start": "2026-04-08",
+        "end": "2026-04-14",
+        "partial": false,
+        "eligible": true,
+        "message_count": 20,
+        "active_days": 2,
+        "turn_count": 20,
+        "thread_count": 2,
+        "reconnection_count": 1
+      },
+      {
+        "start": "2026-04-15",
+        "end": "2026-04-21",
+        "partial": false,
+        "eligible": true,
+        "message_count": 20,
+        "active_days": 2,
+        "turn_count": 20,
+        "thread_count": 2,
+        "reconnection_count": 1
+      },
+      {
+        "start": "2026-04-22",
+        "end": "2026-04-28",
+        "partial": false,
+        "eligible": true,
+        "message_count": 20,
+        "active_days": 2,
+        "turn_count": 20,
+        "thread_count": 2,
+        "reconnection_count": 1
+      },
+      {
+        "start": "2026-04-29",
+        "end": "2026-05-05",
+        "partial": false,
+        "eligible": true,
+        "message_count": 20,
+        "active_days": 2,
+        "turn_count": 20,
+        "thread_count": 2,
+        "reconnection_count": 1
+      },
+      {
+        "start": "2026-05-06",
+        "end": "2026-05-07",
+        "partial": true,
+        "eligible": true,
+        "message_count": 20,
+        "active_days": 2,
+        "turn_count": 20,
+        "thread_count": 2,
+        "reconnection_count": 1
+      }
+    ],
+    "early_late": {
+      "available": true,
+      "unavailable_reason": null,
+      "earlier_period": {
+        "start": "2026-04-01",
+        "end": "2026-04-14",
+        "message_count": 40,
+        "active_days": 4
+      },
+      "later_period": {
+        "start": "2026-04-29",
+        "end": "2026-05-07",
+        "message_count": 40,
+        "active_days": 4
+      },
+      "changes": [
+        {
+          "metric": "follow_up_rate",
+          "sender": "Asha",
+          "evidence_state": "sufficient",
+          "direction": "stable",
+          "notable": false,
+          "earlier_value": 0,
+          "later_value": 0,
+          "earlier_sample_size": 20,
+          "later_sample_size": 20
+        },
+        {
+          "metric": "follow_up_rate",
+          "sender": "Ravi",
+          "evidence_state": "sufficient",
+          "direction": "stable",
+          "notable": false,
+          "earlier_value": 0,
+          "later_value": 0,
+          "earlier_sample_size": 16,
+          "later_sample_size": 16
+        },
+        {
+          "metric": "median_reply_minutes",
+          "sender": "Asha",
+          "evidence_state": "sufficient",
+          "direction": "faster",
+          "notable": true,
+          "earlier_value": 115,
+          "later_value": 30,
+          "earlier_sample_size": 19,
+          "later_sample_size": 20
+        },
+        {
+          "metric": "median_reply_minutes",
+          "sender": "Ravi",
+          "evidence_state": "sufficient",
+          "direction": "slower",
+          "notable": true,
+          "earlier_value": 5,
+          "later_value": 90,
+          "earlier_sample_size": 20,
+          "later_sample_size": 20
+        },
+        {
+          "metric": "messages_per_active_day",
+          "sender": null,
+          "evidence_state": "sufficient",
+          "direction": "stable",
+          "notable": false,
+          "earlier_value": 10.0,
+          "later_value": 10.0,
+          "earlier_sample_size": 40,
+          "later_sample_size": 40
+        },
+        {
+          "metric": "reconnection_share",
+          "sender": "Asha",
+          "evidence_state": "insufficient",
+          "direction": "unavailable",
+          "notable": false,
+          "earlier_value": 100,
+          "later_value": 100,
+          "earlier_sample_size": 1,
+          "later_sample_size": 2
+        },
+        {
+          "metric": "reconnection_share",
+          "sender": "Ravi",
+          "evidence_state": "insufficient",
+          "direction": "unavailable",
+          "notable": false,
+          "earlier_value": 0,
+          "later_value": 0,
+          "earlier_sample_size": 1,
+          "later_sample_size": 2
+        },
+        {
+          "metric": "thread_start_share",
+          "sender": "Asha",
+          "evidence_state": "sufficient",
+          "direction": "stable",
+          "notable": false,
+          "earlier_value": 100,
+          "later_value": 100,
+          "earlier_sample_size": 4,
+          "later_sample_size": 4
+        },
+        {
+          "metric": "thread_start_share",
+          "sender": "Ravi",
+          "evidence_state": "sufficient",
+          "direction": "stable",
+          "notable": false,
+          "earlier_value": 0,
+          "later_value": 0,
+          "earlier_sample_size": 4,
+          "later_sample_size": 4
+        },
+        {
+          "metric": "turn_share",
+          "sender": "Asha",
+          "evidence_state": "sufficient",
+          "direction": "stable",
+          "notable": false,
+          "earlier_value": 50,
+          "later_value": 50,
+          "earlier_sample_size": 40,
+          "later_sample_size": 40
+        },
+        {
+          "metric": "turn_share",
+          "sender": "Ravi",
+          "evidence_state": "sufficient",
+          "direction": "stable",
+          "notable": false,
+          "earlier_value": 50,
+          "later_value": 50,
+          "earlier_sample_size": 40,
+          "later_sample_size": 40
+        }
+      ]
+    },
+    "recent_prior": {
+      "available": true,
+      "unavailable_reason": null,
+      "earlier_period": {
+        "start": "2026-04-29",
+        "end": "2026-05-05",
+        "message_count": 20,
+        "active_days": 2
+      },
+      "later_period": {
+        "start": "2026-05-06",
+        "end": "2026-05-07",
+        "message_count": 20,
+        "active_days": 2
+      },
+      "changes": [
+        {
+          "metric": "follow_up_rate",
+          "sender": "Asha",
+          "evidence_state": "sufficient",
+          "direction": "stable",
+          "notable": false,
+          "earlier_value": 0,
+          "later_value": 0,
+          "earlier_sample_size": 10,
+          "later_sample_size": 10
+        },
+        {
+          "metric": "follow_up_rate",
+          "sender": "Ravi",
+          "evidence_state": "sufficient",
+          "direction": "stable",
+          "notable": false,
+          "earlier_value": 0,
+          "later_value": 0,
+          "earlier_sample_size": 8,
+          "later_sample_size": 8
+        },
+        {
+          "metric": "median_reply_minutes",
+          "sender": "Asha",
+          "evidence_state": "sufficient",
+          "direction": "stable",
+          "notable": false,
+          "earlier_value": 30,
+          "later_value": 30,
+          "earlier_sample_size": 10,
+          "later_sample_size": 10
+        },
+        {
+          "metric": "median_reply_minutes",
+          "sender": "Ravi",
+          "evidence_state": "sufficient",
+          "direction": "stable",
+          "notable": false,
+          "earlier_value": 90,
+          "later_value": 90,
+          "earlier_sample_size": 10,
+          "later_sample_size": 10
+        },
+        {
+          "metric": "messages_per_active_day",
+          "sender": null,
+          "evidence_state": "sufficient",
+          "direction": "stable",
+          "notable": false,
+          "earlier_value": 10.0,
+          "later_value": 10.0,
+          "earlier_sample_size": 20,
+          "later_sample_size": 20
+        },
+        {
+          "metric": "reconnection_share",
+          "sender": "Asha",
+          "evidence_state": "insufficient",
+          "direction": "unavailable",
+          "notable": false,
+          "earlier_value": 100,
+          "later_value": 100,
+          "earlier_sample_size": 1,
+          "later_sample_size": 1
+        },
+        {
+          "metric": "reconnection_share",
+          "sender": "Ravi",
+          "evidence_state": "insufficient",
+          "direction": "unavailable",
+          "notable": false,
+          "earlier_value": 0,
+          "later_value": 0,
+          "earlier_sample_size": 1,
+          "later_sample_size": 1
+        },
+        {
+          "metric": "thread_start_share",
+          "sender": "Asha",
+          "evidence_state": "insufficient",
+          "direction": "unavailable",
+          "notable": false,
+          "earlier_value": 100,
+          "later_value": 100,
+          "earlier_sample_size": 2,
+          "later_sample_size": 2
+        },
+        {
+          "metric": "thread_start_share",
+          "sender": "Ravi",
+          "evidence_state": "insufficient",
+          "direction": "unavailable",
+          "notable": false,
+          "earlier_value": 0,
+          "later_value": 0,
+          "earlier_sample_size": 2,
+          "later_sample_size": 2
+        },
+        {
+          "metric": "turn_share",
+          "sender": "Asha",
+          "evidence_state": "sufficient",
+          "direction": "stable",
+          "notable": false,
+          "earlier_value": 50,
+          "later_value": 50,
+          "earlier_sample_size": 20,
+          "later_sample_size": 20
+        },
+        {
+          "metric": "turn_share",
+          "sender": "Ravi",
+          "evidence_state": "sufficient",
+          "direction": "stable",
+          "notable": false,
+          "earlier_value": 50,
+          "later_value": 50,
+          "earlier_sample_size": 20,
+          "later_sample_size": 20
+        }
+      ]
+    }
+  }
+}

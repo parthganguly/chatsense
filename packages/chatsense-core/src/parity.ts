@@ -13,6 +13,7 @@
 
 import { analyzeChat } from "./chat-analyzer"
 import { parseWhatsAppChat } from "./chat-parser"
+import type { DynamicsComparison, RelationshipDynamics } from "./relationship-dynamics"
 
 export interface NormalizedParticipant {
   sender: string
@@ -44,6 +45,67 @@ export interface NormalizedParity {
   longest_silence_min: number | null
   unusual_silence_count: number
   reply_edges: NormalizedReplyEdge[]
+  relationship_dynamics: NormalizedRelationshipDynamics
+}
+
+export interface NormalizedRelationshipDynamics {
+  turn_count: number
+  turns: Array<{
+    sender: string
+    message_count: number
+    word_count: number
+    duration_min: number
+    starts_thread: boolean
+    open_at_export_end: boolean
+  }>
+  participants: Array<{
+    sender: string
+    turn_count: number
+    turn_share_pct: number
+    median_reply_delay_min: number | null
+    reply_sample_count: number
+    thread_starts: number
+    reconnections: number
+    follow_ups: number
+    follow_up_relevant_turns: number
+    follow_up_rate_pct: number | null
+  }>
+  pause_summary: {
+    long_pause_count: number
+    latest_gap_percentile: number | null
+    reconnecting_participants: Array<{ sender: string; count: number; share_pct: number }>
+  }
+  adaptive_windows: Array<{
+    start: string
+    end: string
+    partial: boolean
+    eligible: boolean
+    message_count: number
+    active_days: number
+    turn_count: number
+    thread_count: number
+    reconnection_count: number
+  }>
+  early_late: NormalizedComparison
+  recent_prior: NormalizedComparison
+}
+
+export interface NormalizedComparison {
+  available: boolean
+  unavailable_reason: string | null
+  earlier_period: { start: string | null; end: string | null; message_count: number; active_days: number }
+  later_period: { start: string | null; end: string | null; message_count: number; active_days: number }
+  changes: Array<{
+    metric: string
+    sender: string | null
+    evidence_state: string
+    direction: string
+    notable: boolean
+    earlier_value: number | string | null
+    later_value: number | string | null
+    earlier_sample_size: number
+    later_sample_size: number
+  }>
 }
 
 export function normalizedParityFromText(text: string): NormalizedParity {
@@ -68,6 +130,7 @@ export function normalizedParityFromText(text: string): NormalizedParity {
       longest_silence_min: null,
       unusual_silence_count: 0,
       reply_edges: [],
+      relationship_dynamics: normalizeRelationshipDynamics(analysis.relationshipDynamics),
     }
   }
 
@@ -111,5 +174,92 @@ export function normalizedParityFromText(text: string): NormalizedParity {
     longest_silence_min: analysis.silenceSummary.longestSilenceMinutes,
     unusual_silence_count: analysis.silenceSummary.unusualSilenceCount,
     reply_edges,
+    relationship_dynamics: normalizeRelationshipDynamics(analysis.relationshipDynamics),
+  }
+}
+
+function normalizeRelationshipDynamics(dynamics: RelationshipDynamics): NormalizedRelationshipDynamics {
+  return {
+    turn_count: dynamics.turns.length,
+    turns: dynamics.turns.map((turn) => ({
+      sender: turn.sender,
+      message_count: turn.messageCount,
+      word_count: turn.wordCount,
+      duration_min: turn.durationMinutes,
+      starts_thread: turn.startsThread,
+      open_at_export_end: turn.openAtExportEnd,
+    })),
+    participants: dynamics.participantSummaries
+      .map((participant) => ({
+        sender: participant.sender,
+        turn_count: participant.turnCount,
+        turn_share_pct: participant.turnShare,
+        median_reply_delay_min: participant.medianReplyMinutes,
+        reply_sample_count: participant.replySampleCount,
+        thread_starts: participant.threadStarts,
+        reconnections: participant.reconnectionCount,
+        follow_ups: participant.followUpCount,
+        follow_up_relevant_turns: participant.followUpRelevantTurnCount,
+        follow_up_rate_pct: participant.followUpRate,
+      }))
+      .sort((left, right) => left.sender.localeCompare(right.sender)),
+    pause_summary: {
+      long_pause_count: dynamics.pauseSummary.longPauseCount,
+      latest_gap_percentile: dynamics.pauseSummary.latestGapPercentile,
+      reconnecting_participants: dynamics.pauseSummary.reconnectingParticipants.map((participant) => ({
+        sender: participant.sender,
+        count: participant.count,
+        share_pct: participant.share,
+      })),
+    },
+    adaptive_windows: dynamics.adaptiveWindows.map((bucket) => ({
+      start: bucket.start,
+      end: bucket.end,
+      partial: bucket.partial,
+      eligible: bucket.eligible,
+      message_count: bucket.messageCount,
+      active_days: bucket.activeDays,
+      turn_count: bucket.turnCount,
+      thread_count: bucket.threadCount,
+      reconnection_count: bucket.reconnectionCount,
+    })),
+    early_late: normalizeComparison(dynamics.earlyLate),
+    recent_prior: normalizeComparison(dynamics.recentPrior),
+  }
+}
+
+function normalizeComparison(comparison: DynamicsComparison): NormalizedComparison {
+  return {
+    available: comparison.available,
+    unavailable_reason: comparison.unavailableReason,
+    earlier_period: {
+      start: comparison.earlierPeriod.start,
+      end: comparison.earlierPeriod.end,
+      message_count: comparison.earlierPeriod.messageCount,
+      active_days: comparison.earlierPeriod.activeDays,
+    },
+    later_period: {
+      start: comparison.laterPeriod.start,
+      end: comparison.laterPeriod.end,
+      message_count: comparison.laterPeriod.messageCount,
+      active_days: comparison.laterPeriod.activeDays,
+    },
+    changes: comparison.changes
+      .map((change) => ({
+        metric: change.metric,
+        sender: change.sender,
+        evidence_state: change.evidenceState,
+        direction: change.direction,
+        notable: change.notable,
+        earlier_value: change.earlierValue,
+        later_value: change.laterValue,
+        earlier_sample_size: change.earlierSampleSize,
+        later_sample_size: change.laterSampleSize,
+      }))
+      .sort((left, right) =>
+        left.metric === right.metric
+          ? (left.sender ?? "").localeCompare(right.sender ?? "")
+          : left.metric.localeCompare(right.metric),
+      ),
   }
 }

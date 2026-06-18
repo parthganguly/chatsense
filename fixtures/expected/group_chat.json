@@ -54,5 +54,140 @@
       "to": "Asha",
       "count": 1
     }
-  ]
+  ],
+  "relationship_dynamics": {
+    "turn_count": 5,
+    "turns": [
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Priya",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Priya",
+        "message_count": 1,
+        "word_count": 2,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": true
+      }
+    ],
+    "participants": [
+      {
+        "sender": "Asha",
+        "turn_count": 2,
+        "turn_share_pct": 40,
+        "median_reply_delay_min": 1,
+        "reply_sample_count": 1,
+        "thread_starts": 1,
+        "reconnections": 0,
+        "follow_ups": 0,
+        "follow_up_relevant_turns": 2,
+        "follow_up_rate_pct": 0
+      },
+      {
+        "sender": "Priya",
+        "turn_count": 2,
+        "turn_share_pct": 40,
+        "median_reply_delay_min": 9,
+        "reply_sample_count": 2,
+        "thread_starts": 0,
+        "reconnections": 0,
+        "follow_ups": 0,
+        "follow_up_relevant_turns": 1,
+        "follow_up_rate_pct": 0
+      },
+      {
+        "sender": "Ravi",
+        "turn_count": 1,
+        "turn_share_pct": 20,
+        "median_reply_delay_min": 2,
+        "reply_sample_count": 1,
+        "thread_starts": 0,
+        "reconnections": 0,
+        "follow_ups": 0,
+        "follow_up_relevant_turns": 1,
+        "follow_up_rate_pct": 0
+      }
+    ],
+    "pause_summary": {
+      "long_pause_count": 0,
+      "latest_gap_percentile": 100,
+      "reconnecting_participants": []
+    },
+    "adaptive_windows": [
+      {
+        "start": "2026-02-10",
+        "end": "2026-02-10",
+        "partial": true,
+        "eligible": false,
+        "message_count": 5,
+        "active_days": 1,
+        "turn_count": 5,
+        "thread_count": 1,
+        "reconnection_count": 0
+      }
+    ],
+    "early_late": {
+      "available": false,
+      "unavailable_reason": "Requires 4 eligible windows; found 0.",
+      "earlier_period": {
+        "start": null,
+        "end": null,
+        "message_count": 0,
+        "active_days": 0
+      },
+      "later_period": {
+        "start": null,
+        "end": null,
+        "message_count": 0,
+        "active_days": 0
+      },
+      "changes": []
+    },
+    "recent_prior": {
+      "available": false,
+      "unavailable_reason": "Requires 2 eligible windows; found 0.",
+      "earlier_period": {
+        "start": null,
+        "end": null,
+        "message_count": 0,
+        "active_days": 0
+      },
+      "later_period": {
+        "start": null,
+        "end": null,
+        "message_count": 0,
+        "active_days": 0
+      },
+      "changes": []
+    }
+  }
 }

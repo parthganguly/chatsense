@@ -15,7 +15,74 @@ from __future__ import annotations
 
 import argparse
 import json
+from datetime import datetime, timedelta
 from pathlib import Path
+
+
+def _line(timestamp: datetime, sender: str, text: str) -> str:
+    return f"{timestamp.strftime('%d/%m/%Y, %H:%M')} - {sender}: {text}"
+
+
+def _windowed_chat(name: str, windows: int = 6, dominant_late: bool = False, initiator_late: str | None = None) -> str:
+    lines: list[str] = []
+    start = datetime(2026, 3, 1, 9, 0)
+    for window in range(windows):
+        base = start + timedelta(days=window * 7)
+        for day_offset in [0, 1]:
+            day = base + timedelta(days=day_offset)
+            for item in range(10):
+                if initiator_late and item == 0:
+                    sender = initiator_late if window >= windows - 2 else "Asha"
+                elif dominant_late and window >= windows - 2:
+                    sender = "Asha" if item < 8 else "Ravi"
+                else:
+                    sender = "Asha" if item % 2 == 0 else "Ravi"
+                lines.append(_line(day + timedelta(minutes=item * 12), sender, f"{name} w{window} d{day_offset} m{item}"))
+        if window < windows - 1:
+            # Force the next window's first message to be a new thread.
+            lines.append(_line(base + timedelta(days=2, hours=8), "Ravi", f"{name} bridge {window}"))
+    return "\n".join(lines)
+
+
+def _reply_slowdown_chat() -> str:
+    lines: list[str] = []
+    start = datetime(2026, 4, 1, 9, 0)
+    for window in range(6):
+        base = start + timedelta(days=window * 7)
+        for day_offset in [0, 1]:
+            day = base + timedelta(days=day_offset)
+            for pair in range(5):
+                # Keep the export chronological even when late-window replies
+                # are intentionally slower than the early-window baseline.
+                sent = day + timedelta(minutes=pair * 120)
+                delay = 5 if window < 2 else 90
+                lines.append(_line(sent, "Asha", f"prompt {window}-{day_offset}-{pair}"))
+                lines.append(_line(sent + timedelta(minutes=delay), "Ravi", f"reply {window}-{day_offset}-{pair}"))
+    return "\n".join(lines)
+
+
+def _multi_reconnector_chat() -> str:
+    lines: list[str] = []
+    timestamp = datetime(2026, 5, 1, 9, 0)
+    reconnectors = ["Asha", "Ravi", "Priya", "Asha"]
+    for index, sender in enumerate(reconnectors):
+        lines.append(_line(timestamp, sender, f"restart {index}"))
+        lines.append(_line(timestamp + timedelta(minutes=5), "Ravi" if sender != "Ravi" else "Asha", f"reply {index}"))
+        timestamp += timedelta(hours=30)
+    return "\n".join(lines)
+
+
+def _boundary_chat() -> str:
+    base = datetime(2026, 6, 1, 9, 0)
+    events = [
+        (0, "Asha", "start"),
+        (14, "Asha", "not follow up yet"),
+        (29, "Asha", "exact 15 minute follow up"),
+        (389, "Asha", "exact six hour new thread"),
+        (1829, "Ravi", "exact twenty four hour reconnection"),
+        (1844, "Ravi", "exact 15 minute follow up after restart"),
+    ]
+    return "\n".join(_line(base + timedelta(minutes=minutes), sender, text) for minutes, sender, text in events)
 
 # name -> WhatsApp export text (LF line endings).
 FIXTURES: dict[str, str] = {
@@ -103,6 +170,66 @@ FIXTURES: dict[str, str] = {
             "10/02/2026, 10:20 - Priya: See you.",
         ]
     ),
+    # Stage 4 relationship-dynamics matrix.
+    "stage4_balanced_then_one_sided": _windowed_chat("balanced_then_one_sided", dominant_late=True),
+    "stage4_increasing_initiation": _windowed_chat("increasing_initiation", initiator_late="Ravi"),
+    "stage4_reply_slowdown": _reply_slowdown_chat(),
+    "stage4_multi_reconnectors": _multi_reconnector_chat(),
+    "stage4_same_sender_burst_turn": "\n".join(
+        [
+            "01/07/2026, 09:00 - Asha: one",
+            "01/07/2026, 09:02 - Asha: two",
+            "01/07/2026, 09:04 - Asha: three",
+            "01/07/2026, 09:20 - Ravi: reply",
+        ]
+    ),
+    "stage4_followup_15_min_boundary": "\n".join(
+        [
+            "02/07/2026, 09:00 - Asha: start",
+            "02/07/2026, 09:14 - Asha: too soon",
+            "02/07/2026, 09:29 - Asha: exact boundary follow up",
+            "02/07/2026, 09:40 - Ravi: reply",
+        ]
+    ),
+    "stage4_six_hour_thread_boundary": "\n".join(
+        [
+            "03/07/2026, 09:00 - Asha: start",
+            "03/07/2026, 15:00 - Asha: exact six hour new thread",
+            "03/07/2026, 15:05 - Ravi: reply",
+        ]
+    ),
+    "stage4_insufficient_export": "\n".join(
+        [
+            "04/07/2026, 09:00 - Asha: tiny",
+            "04/07/2026, 09:05 - Ravi: tiny reply",
+        ]
+    ),
+    "stage4_group_reply_edges": "\n".join(
+        [
+            "05/07/2026, 10:00 - Asha: plan?",
+            "05/07/2026, 10:03 - Ravi: yes",
+            "05/07/2026, 10:04 - Priya: also yes",
+            "05/07/2026, 10:08 - Dev: I can join",
+            "05/07/2026, 10:10 - Asha: booked",
+        ]
+    ),
+    "stage4_final_open_turn": "\n".join(
+        [
+            "06/07/2026, 09:00 - Asha: morning",
+            "06/07/2026, 09:05 - Ravi: hey",
+            "06/07/2026, 09:20 - Asha: question",
+            "06/07/2026, 09:35 - Asha: follow up still open",
+        ]
+    ),
+    "stage4_partial_final_window": "\n".join(
+        [
+            "07/07/2026, 09:00 - Asha: day one",
+            "07/07/2026, 09:05 - Ravi: reply",
+            "15/07/2026, 09:00 - Asha: partial next window",
+            "15/07/2026, 09:05 - Ravi: reply",
+        ]
+    ),
+    "stage4_exact_boundaries": _boundary_chat(),
 }
 
 

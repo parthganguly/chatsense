@@ -1,38 +1,33 @@
 {
-  "message_count": 3,
+  "message_count": 6,
   "participant_count": 2,
   "participants": [
     {
       "sender": "Asha",
-      "message_count": 2,
-      "word_count": 9,
+      "message_count": 4,
+      "word_count": 15,
       "message_share_pct": 67
     },
     {
       "sender": "Ravi",
-      "message_count": 1,
-      "word_count": 4,
+      "message_count": 2,
+      "word_count": 12,
       "message_share_pct": 33
     }
   ],
-  "reply_count": 2,
-  "thread_count": 1,
-  "peak_hour": 11,
-  "peak_weekday": "Friday",
-  "quick_reply_rate_pct": 100,
-  "within_one_hour_rate_pct": 100,
-  "within_six_hours_rate_pct": 100,
+  "reply_count": 1,
+  "thread_count": 3,
+  "peak_hour": 9,
+  "peak_weekday": "Monday",
+  "quick_reply_rate_pct": 0,
+  "within_one_hour_rate_pct": 0,
+  "within_six_hours_rate_pct": 0,
   "within_one_day_rate_pct": 100,
-  "avg_reply_delay_min": 3,
-  "median_reply_delay_min": 3,
-  "longest_silence_min": 3,
-  "unusual_silence_count": 0,
+  "avg_reply_delay_min": 1440,
+  "median_reply_delay_min": 1440,
+  "longest_silence_min": 1440,
+  "unusual_silence_count": 1,
   "reply_edges": [
-    {
-      "from": "Asha",
-      "to": "Ravi",
-      "count": 1
-    },
     {
       "from": "Ravi",
       "to": "Asha",
@@ -44,6 +39,14 @@
     "turns": [
       {
         "sender": "Asha",
+        "message_count": 3,
+        "word_count": 10,
+        "duration_min": 29,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
         "message_count": 1,
         "word_count": 5,
         "duration_min": 0,
@@ -52,18 +55,10 @@
       },
       {
         "sender": "Ravi",
-        "message_count": 1,
-        "word_count": 4,
-        "duration_min": 0,
-        "starts_thread": false,
-        "open_at_export_end": false
-      },
-      {
-        "sender": "Asha",
-        "message_count": 1,
-        "word_count": 4,
-        "duration_min": 0,
-        "starts_thread": false,
+        "message_count": 2,
+        "word_count": 12,
+        "duration_min": 15,
+        "starts_thread": true,
         "open_at_export_end": true
       }
     ],
@@ -72,43 +67,49 @@
         "sender": "Asha",
         "turn_count": 2,
         "turn_share_pct": 67,
-        "median_reply_delay_min": 3,
-        "reply_sample_count": 1,
-        "thread_starts": 1,
+        "median_reply_delay_min": null,
+        "reply_sample_count": 0,
+        "thread_starts": 2,
         "reconnections": 0,
-        "follow_ups": 0,
+        "follow_ups": 1,
         "follow_up_relevant_turns": 1,
-        "follow_up_rate_pct": 0
+        "follow_up_rate_pct": 100
       },
       {
         "sender": "Ravi",
         "turn_count": 1,
         "turn_share_pct": 33,
-        "median_reply_delay_min": 2,
+        "median_reply_delay_min": 1440,
         "reply_sample_count": 1,
-        "thread_starts": 0,
-        "reconnections": 0,
-        "follow_ups": 0,
+        "thread_starts": 1,
+        "reconnections": 1,
+        "follow_ups": 1,
         "follow_up_relevant_turns": 1,
-        "follow_up_rate_pct": 0
+        "follow_up_rate_pct": 100
       }
     ],
     "pause_summary": {
-      "long_pause_count": 0,
-      "latest_gap_percentile": 100,
-      "reconnecting_participants": []
+      "long_pause_count": 1,
+      "latest_gap_percentile": 60,
+      "reconnecting_participants": [
+        {
+          "sender": "Ravi",
+          "count": 1,
+          "share_pct": 100
+        }
+      ]
     },
     "adaptive_windows": [
       {
-        "start": "2026-02-06",
-        "end": "2026-02-06",
+        "start": "2026-06-01",
+        "end": "2026-06-02",
         "partial": true,
         "eligible": false,
-        "message_count": 3,
-        "active_days": 1,
+        "message_count": 6,
+        "active_days": 2,
         "turn_count": 3,
-        "thread_count": 1,
-        "reconnection_count": 0
+        "thread_count": 3,
+        "reconnection_count": 1
       }
     ],
     "early_late": {
