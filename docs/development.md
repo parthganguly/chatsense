@@ -73,5 +73,5 @@ For physical device share-sheet verification, see `docs/android-share-import-tes
 - Core logic goes in `packages/chatsense-core/src`.
 - Import orchestration goes in `features/import`.
 - Android shared-file handling is split between `platform/android` for the TypeScript adapter and `android/app/src/main/java/com/thegreatparthicle/chatsense/plugins` for the native Capacitor plugin.
-- Presentation-only screens go in `features/overview`, `features/rhythm`, and `features/people`.
+- Presentation-only screens go in `features/overview`, `features/rhythm`, `features/people`, and `features/changes`.
 - Reusable presentation components go in `components/analytics` and `components/navigation`.

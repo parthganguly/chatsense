@@ -34,6 +34,9 @@ function run() {
   testConversationalTurnsAndBoundaries()
   testReconnectionsFollowUpsAndOpenTurns()
   testEvidenceSafeMetricChanges()
+  testReplyLatencyNotableThresholds()
+  testLatestGapPercentileUsesOnlyEarlierGaps()
+  testOverviewUsesPauseSummaryInsteadOfRawUnusualSilenceCount()
   testUiLabelsAreStage4Accurate()
   testDynamicsAreSemanticContentIndependent()
   console.log("Relationship dynamics tests passed.")
@@ -169,6 +172,68 @@ function testEvidenceSafeMetricChanges() {
   assert.match(tiny.earlyLate.unavailableReason ?? "", /Requires 4 eligible windows/)
 }
 
+function testReplyLatencyNotableThresholds() {
+  const twoToFour = analyzeChat(parseWhatsAppChat(replyLatencyFixture(2, 4))).relationshipDynamics
+  const twoToFourChange = change(twoToFour, "earlyLate", "median_reply_minutes", "Ravi")
+  assert.equal(twoToFourChange.evidenceState, "sufficient")
+  assert.equal(twoToFourChange.earlierValue, 2)
+  assert.equal(twoToFourChange.laterValue, 4)
+  assert.equal(twoToFourChange.notable, false)
+
+  const tenToTwentyFive = analyzeChat(parseWhatsAppChat(replyLatencyFixture(10, 25))).relationshipDynamics
+  const tenToTwentyFiveChange = change(tenToTwentyFive, "earlyLate", "median_reply_minutes", "Ravi")
+  assert.equal(tenToTwentyFiveChange.evidenceState, "sufficient")
+  assert.equal(tenToTwentyFiveChange.earlierValue, 10)
+  assert.equal(tenToTwentyFiveChange.laterValue, 25)
+  assert.equal(tenToTwentyFiveChange.notable, true)
+
+  const exactBoundary = analyzeChat(parseWhatsAppChat(replyLatencyFixture(10, 20))).relationshipDynamics
+  assert.equal(change(exactBoundary, "earlyLate", "median_reply_minutes", "Ravi").notable, true)
+
+  const belowRatioBoundary = analyzeChat(parseWhatsAppChat(replyLatencyFixture(10, 19))).relationshipDynamics
+  assert.equal(change(belowRatioBoundary, "earlyLate", "median_reply_minutes", "Ravi").notable, false)
+}
+
+function testLatestGapPercentileUsesOnlyEarlierGaps() {
+  const dynamics = analyzeChat(
+    parseWhatsAppChat(
+      [
+        "01/01/2026, 09:00 - Asha: one",
+        "01/01/2026, 09:10 - Ravi: two",
+        "01/01/2026, 09:30 - Asha: three",
+        "01/01/2026, 09:45 - Ravi: four",
+      ].join("\n"),
+    ),
+  ).relationshipDynamics
+
+  assert.equal(dynamics.pauseSummary.latestGapMinutes, 15)
+  assert.equal(dynamics.pauseSummary.latestGapPercentile, 50)
+  assert.equal(dynamics.pauseSummary.medianInterMessageGapMinutes, 15)
+  assert.deepEqual(
+    dynamics.pauseSummary.longestPauses.map((pause) => [pause.durationMinutes, pause.reconnectingSender]),
+    [
+      [20, "Asha"],
+      [15, "Ravi"],
+      [10, "Ravi"],
+    ],
+  )
+
+  const singleGap = analyzeChat(
+    parseWhatsAppChat(["01/01/2026, 09:00 - Asha: one", "01/01/2026, 09:10 - Ravi: two"].join("\n")),
+  ).relationshipDynamics
+  assert.equal(singleGap.pauseSummary.latestGapMinutes, 10)
+  assert.equal(singleGap.pauseSummary.latestGapPercentile, null)
+}
+
+function testOverviewUsesPauseSummaryInsteadOfRawUnusualSilenceCount() {
+  const analysis = analyzeChat(parseWhatsAppChat(fixture("long_silence")))
+  const titles = analysis.insights.map((insight) => insight.title).join("\n")
+
+  assert.doesNotMatch(titles, /unusually long silence/i)
+  assert.match(titles, /pause.*24h/i)
+  assert.equal(analysis.silenceSummary.unusualSilenceCount > 0, true)
+}
+
 function testUiLabelsAreStage4Accurate() {
   const overview = readFileSync(path.join(process.cwd(), "features", "overview", "OverviewScreen.tsx"), "utf8")
   const rhythm = readFileSync(path.join(process.cwd(), "features", "rhythm", "RhythmScreen.tsx"), "utf8")
@@ -181,10 +246,15 @@ function testUiLabelsAreStage4Accurate() {
   assert.match(rhythm, /Messages by weekday/)
   assert.match(rhythm, /Pauses and restarts/)
   assert.match(rhythm, /latest gap percentile/i)
+  assert.match(rhythm, /Median inter-message gap/)
+  assert.match(rhythm, /First message afterward/)
   assert.match(people, /Who keeps contact moving/)
+  assert.match(people, /Approximate interaction paths/)
   assert.match(people, /Sender-switch edges in group exports are approximate/)
   assert.match(changes, /Early versus late/)
   assert.match(changes, /Recent versus prior/)
+  assert.match(changes, /Participant details/)
+  assert.match(changes, /sortChangesForDisplay/)
   assert.match(changes, /not proof of motive or relationship status/)
   assert.match(nav, /Changes/)
 }
@@ -202,6 +272,37 @@ function rewriteContentPreservingWordCounts(text: string): string {
     const words = content.trim().split(/\s+/).filter(Boolean)
     return `: ${words.map((_, index) => `token${index}`).join(" ")}`
   })
+}
+
+function replyLatencyFixture(earlyDelayMinutes: number, lateDelayMinutes: number): string {
+  const lines: string[] = []
+  const delays = [earlyDelayMinutes, earlyDelayMinutes, lateDelayMinutes, lateDelayMinutes]
+
+  delays.forEach((delay, windowIndex) => {
+    const firstDayOfWindow = 1 + windowIndex * 7
+    for (let dayOffset = 0; dayOffset < 2; dayOffset += 1) {
+      for (let pair = 0; pair < 5; pair += 1) {
+        const sent = new Date(2026, 0, firstDayOfWindow + dayOffset, 9 + pair * 2, 0)
+        lines.push(whatsAppLine(sent, "Asha", `prompt ${windowIndex}-${dayOffset}-${pair}`))
+        lines.push(whatsAppLine(addMinutes(sent, delay), "Ravi", `reply ${windowIndex}-${dayOffset}-${pair}`))
+      }
+    }
+  })
+
+  return lines.join("\n")
+}
+
+function whatsAppLine(date: Date, sender: string, text: string): string {
+  const day = String(date.getDate()).padStart(2, "0")
+  const month = String(date.getMonth() + 1).padStart(2, "0")
+  const year = date.getFullYear()
+  const hour = String(date.getHours()).padStart(2, "0")
+  const minute = String(date.getMinutes()).padStart(2, "0")
+  return `${day}/${month}/${year}, ${hour}:${minute} - ${sender}: ${text}`
+}
+
+function addMinutes(date: Date, minutes: number): Date {
+  return new Date(date.getTime() + minutes * 60_000)
 }
 
 function projectContentIndependentFields(dynamics: RelationshipDynamics) {

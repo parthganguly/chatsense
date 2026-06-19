@@ -47,6 +47,14 @@ def test_python_contract_loader_matches_json_file():
     assert contract.MIN_WINDOW_ACTIVE_DAYS == dynamics["window_eligibility"]["min_active_days"]
     assert contract.EARLY_LATE_MIN_ELIGIBLE_WINDOWS == dynamics["comparison_periods"]["early_late_min_eligible_windows"]
     assert contract.MIN_REPLY_LATENCY_PER_PARTICIPANT == dynamics["sample_minimums"]["reply_latency_per_participant"]
+    assert (
+        contract.NOTABLE_REPLY_LATENCY_RELATIVE_MULTIPLIER
+        == dynamics["notable_change_thresholds"]["reply_latency_relative_multiplier"]
+    )
+    assert (
+        contract.NOTABLE_REPLY_LATENCY_ABSOLUTE_MIN
+        == dynamics["notable_change_thresholds"]["reply_latency_absolute_min"]
+    )
 
 
 def test_whole_export_date_order_inference_follows_contract():

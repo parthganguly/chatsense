@@ -90,7 +90,23 @@
     ],
     "pause_summary": {
       "long_pause_count": 0,
-      "latest_gap_percentile": 50,
+      "latest_gap_min": 5,
+      "latest_gap_percentile": 0,
+      "median_inter_message_gap_min": 183,
+      "longest_pauses": [
+        {
+          "started_at": "2026-07-03T09:00:00",
+          "ended_at": "2026-07-03T15:00:00",
+          "duration_min": 360,
+          "reconnecting_sender": "Asha"
+        },
+        {
+          "started_at": "2026-07-03T15:00:00",
+          "ended_at": "2026-07-03T15:05:00",
+          "duration_min": 5,
+          "reconnecting_sender": "Ravi"
+        }
+      ],
       "reconnecting_participants": []
     },
     "adaptive_windows": [

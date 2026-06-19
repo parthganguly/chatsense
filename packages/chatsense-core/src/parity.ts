@@ -72,7 +72,15 @@ export interface NormalizedRelationshipDynamics {
   }>
   pause_summary: {
     long_pause_count: number
+    latest_gap_min: number | null
     latest_gap_percentile: number | null
+    median_inter_message_gap_min: number | null
+    longest_pauses: Array<{
+      started_at: string
+      ended_at: string
+      duration_min: number
+      reconnecting_sender: string | null
+    }>
     reconnecting_participants: Array<{ sender: string; count: number; share_pct: number }>
   }
   adaptive_windows: Array<{
@@ -205,7 +213,15 @@ function normalizeRelationshipDynamics(dynamics: RelationshipDynamics): Normaliz
       .sort((left, right) => left.sender.localeCompare(right.sender)),
     pause_summary: {
       long_pause_count: dynamics.pauseSummary.longPauseCount,
+      latest_gap_min: dynamics.pauseSummary.latestGapMinutes,
       latest_gap_percentile: dynamics.pauseSummary.latestGapPercentile,
+      median_inter_message_gap_min: dynamics.pauseSummary.medianInterMessageGapMinutes,
+      longest_pauses: dynamics.pauseSummary.longestPauses.map((pause) => ({
+        started_at: localDateTimeKey(pause.startedAt),
+        ended_at: localDateTimeKey(pause.endedAt),
+        duration_min: pause.durationMinutes,
+        reconnecting_sender: pause.reconnectingSender,
+      })),
       reconnecting_participants: dynamics.pauseSummary.reconnectingParticipants.map((participant) => ({
         sender: participant.sender,
         count: participant.count,
@@ -226,6 +242,17 @@ function normalizeRelationshipDynamics(dynamics: RelationshipDynamics): Normaliz
     early_late: normalizeComparison(dynamics.earlyLate),
     recent_prior: normalizeComparison(dynamics.recentPrior),
   }
+}
+
+function localDateTimeKey(value: string): string {
+  const date = new Date(value)
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, "0")
+  const day = String(date.getDate()).padStart(2, "0")
+  const hour = String(date.getHours()).padStart(2, "0")
+  const minute = String(date.getMinutes()).padStart(2, "0")
+  const second = String(date.getSeconds()).padStart(2, "0")
+  return `${year}-${month}-${day}T${hour}:${minute}:${second}`
 }
 
 function normalizeComparison(comparison: DynamicsComparison): NormalizedComparison {

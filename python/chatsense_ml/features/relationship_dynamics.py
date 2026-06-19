@@ -20,7 +20,8 @@ from chatsense_ml.contract import (
     NOTABLE_FOLLOW_UP_RATE_ABS_PCT,
     NOTABLE_MESSAGES_PER_ACTIVE_DAY_RELATIVE_PCT,
     NOTABLE_RECONNECTION_SHARE_ABS_PCT,
-    NOTABLE_REPLY_LATENCY_RELATIVE_PCT,
+    NOTABLE_REPLY_LATENCY_ABSOLUTE_MIN,
+    NOTABLE_REPLY_LATENCY_RELATIVE_MULTIPLIER,
     NOTABLE_THREAD_START_SHARE_ABS_PCT,
     NOTABLE_TURN_SHARE_ABS_PCT,
     RECONNECTION_GAP_MIN,
@@ -469,7 +470,23 @@ def _changes(earlier, later, participants):
         changes.extend(
             [
                 _numeric_change("turn_share", "Turn share", sender, earlier, later, left["turn_share"], right["turn_share"], earlier["period"]["turn_count"], later["period"]["turn_count"], NOTABLE_TURN_SHARE_ABS_PCT, "absolute", "Participant turns divided by all turns in each compared period."),
-                _numeric_change("median_reply_minutes", "Median reply timing", sender, earlier, later, left["median_reply_minutes"], right["median_reply_minutes"], left["reply_sample_count"], right["reply_sample_count"], NOTABLE_REPLY_LATENCY_RELATIVE_PCT, "relative", "Median delay for sender-switch replies by this participant.", MIN_REPLY_LATENCY_PER_PARTICIPANT, True),
+                _numeric_change(
+                    "median_reply_minutes",
+                    "Median reply timing",
+                    sender,
+                    earlier,
+                    later,
+                    left["median_reply_minutes"],
+                    right["median_reply_minutes"],
+                    left["reply_sample_count"],
+                    right["reply_sample_count"],
+                    NOTABLE_REPLY_LATENCY_RELATIVE_MULTIPLIER,
+                    "relative_ratio",
+                    "Median delay for sender-switch replies by this participant.",
+                    MIN_REPLY_LATENCY_PER_PARTICIPANT,
+                    True,
+                    NOTABLE_REPLY_LATENCY_ABSOLUTE_MIN,
+                ),
                 _numeric_change("thread_start_share", "Thread-start share", sender, earlier, later, left["thread_start_share"], right["thread_start_share"], earlier["period"]["thread_count"], later["period"]["thread_count"], NOTABLE_THREAD_START_SHARE_ABS_PCT, "absolute", "Participant thread starts divided by total thread starts in each period.", MIN_THREAD_STARTS_PER_PERIOD),
                 _numeric_change("reconnection_share", "Reconnection share", sender, earlier, later, left["reconnection_share"], right["reconnection_share"], earlier["period"]["reconnection_count"], later["period"]["reconnection_count"], NOTABLE_RECONNECTION_SHARE_ABS_PCT, "absolute", "Participant reconnections divided by total reconnections after 24-hour pauses.", MIN_RECONNECTIONS_PER_PERIOD),
                 _numeric_change("follow_up_rate", "Follow-ups before reply", sender, earlier, later, left["follow_up_rate"], right["follow_up_rate"], left["follow_up_relevant_turn_count"], right["follow_up_relevant_turn_count"], NOTABLE_FOLLOW_UP_RATE_ABS_PCT, "absolute", "Relevant turns with at least one same-sender follow-up before another participant responds.", MIN_FOLLOW_UP_RELEVANT_TURNS_PER_PARTICIPANT),
@@ -478,16 +495,37 @@ def _changes(earlier, later, participants):
     return changes
 
 
-def _numeric_change(metric, label, sender, earlier, later, earlier_value, later_value, earlier_sample, later_sample, threshold, threshold_type, explanation, sample_minimum=None, faster_is_decrease=False):
+def _numeric_change(
+    metric,
+    label,
+    sender,
+    earlier,
+    later,
+    earlier_value,
+    later_value,
+    earlier_sample,
+    later_sample,
+    threshold,
+    threshold_type,
+    explanation,
+    sample_minimum=None,
+    faster_is_decrease=False,
+    minimum_absolute_difference=None,
+):
     has_values = earlier_value is not None and later_value is not None
     sufficient = has_values and (sample_minimum is None or (earlier_sample >= sample_minimum and later_sample >= sample_minimum))
     absolute = _round(later_value - earlier_value, 1) if has_values else None
     relative = _round(((later_value - earlier_value) / abs(earlier_value)) * 100) if has_values and earlier_value != 0 else None
+    ratio = max(later_value / earlier_value, earlier_value / later_value) if has_values and earlier_value > 0 and later_value > 0 else None
+    absolute_minimum_met = minimum_absolute_difference is None or abs(absolute or 0) >= minimum_absolute_difference
     notable = bool(
         sufficient
+        and absolute_minimum_met
         and (
             abs(absolute or 0) >= threshold
             if threshold_type == "absolute"
+            else (ratio or 0) >= threshold
+            if threshold_type == "relative_ratio"
             else abs(relative or 0) >= threshold
         )
     )
@@ -543,8 +581,18 @@ def _unavailable(kind, label, reason):
 
 
 def _pause_summary(records, reconnections):
-    gaps = [_gap(records[i - 1]["timestamp"], records[i]["timestamp"]) for i in range(1, len(records))]
+    pauses = [
+        {
+            "started_at": records[i - 1]["timestamp"].isoformat(),
+            "ended_at": records[i]["timestamp"].isoformat(),
+            "duration_minutes": _round(_gap(records[i - 1]["timestamp"], records[i]["timestamp"])),
+            "reconnecting_sender": records[i]["sender"],
+        }
+        for i in range(1, len(records))
+    ]
+    gaps = [pause["duration_minutes"] for pause in pauses]
     latest = gaps[-1] if gaps else None
+    earlier_gaps = gaps[:-1] if latest is not None else []
     counts: dict[str, int] = {}
     for event in reconnections:
         counts[event["sender"]] = counts.get(event["sender"], 0) + 1
@@ -555,9 +603,11 @@ def _pause_summary(records, reconnections):
     return {
         "long_pause_count": len(reconnections),
         "latest_gap_minutes": _round(latest) if latest is not None else None,
-        "latest_gap_percentile": _percentage(len([gap for gap in gaps if latest is not None and gap <= latest]), len(gaps))
-        if latest is not None
+        "latest_gap_percentile": _percentage(len([gap for gap in earlier_gaps if gap <= latest]), len(earlier_gaps))
+        if latest is not None and earlier_gaps
         else None,
+        "median_inter_message_gap_minutes": _median(gaps),
+        "longest_pauses": sorted(pauses, key=lambda pause: (-pause["duration_minutes"], pause["started_at"]))[:5],
         "reconnecting_participants": participants,
     }
 
@@ -592,6 +642,8 @@ def _default_dynamics():
             "long_pause_count": 0,
             "latest_gap_minutes": None,
             "latest_gap_percentile": None,
+            "median_inter_message_gap_minutes": None,
+            "longest_pauses": [],
             "reconnecting_participants": [],
         },
         "early_late": _unavailable("early_late", "Early versus late", "No valid messages were found."),

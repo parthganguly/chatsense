@@ -42,17 +42,18 @@
       "follow_up_relevant_turns_per_participant": 3
     },
     "notable_change_thresholds": {
-      "messages_per_active_day_relative_pct": 25,
-      "turn_share_abs_pct": 15,
-      "reply_latency_relative_pct": 50,
-      "thread_start_share_abs_pct": 20,
+      "messages_per_active_day_relative_pct": 30,
+      "turn_share_abs_pct": 10,
+      "reply_latency_relative_multiplier": 2,
+      "reply_latency_absolute_min": 10,
+      "thread_start_share_abs_pct": 15,
       "reconnection_share_abs_pct": 20,
-      "follow_up_rate_abs_pct": 20
+      "follow_up_rate_abs_pct": 15
     },
     "turn_definition": "A new turn begins at the first valid message, when the sender changes, or when the gap reaches thread_gap_min.",
     "reconnection_definition": "A reconnection is the first message after a gap greater than or equal to reconnection_gap_min.",
     "follow_up_definition": "A follow-up before reply occurs when the same participant sends again before anyone else responds, at least follow_up_min minutes have passed, and the gap remains below thread_gap_min.",
-    "notes": "Relationship dynamics are deterministic descriptive summaries of exported timing and volume behavior. They do not inspect message meaning and must not be represented as proof of motive, affection, attachment, personality, mental health, relationship quality, or relationship status."
+    "notes": "Relationship dynamics are deterministic descriptive summaries of exported timing and volume behavior. They do not inspect message meaning and must not be represented as proof of motive, affection, attachment, personality, mental health, relationship quality, or relationship status. Reconnection-share changes use a documented 20 percentage-point notable threshold because reconnections are sparse by construction and already require at least two reconnection events in each compared period."
   },
   "reply_event": {
     "definition": "sender_differs_from_previous_message",

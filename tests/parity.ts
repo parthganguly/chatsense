@@ -17,7 +17,8 @@ import {
   NOTABLE_FOLLOW_UP_RATE_ABS_PCT,
   NOTABLE_MESSAGES_PER_ACTIVE_DAY_RELATIVE_PCT,
   NOTABLE_RECONNECTION_SHARE_ABS_PCT,
-  NOTABLE_REPLY_LATENCY_RELATIVE_PCT,
+  NOTABLE_REPLY_LATENCY_ABSOLUTE_MIN,
+  NOTABLE_REPLY_LATENCY_RELATIVE_MULTIPLIER,
   NOTABLE_THREAD_START_SHARE_ABS_PCT,
   NOTABLE_TURN_SHARE_ABS_PCT,
   QUICK_REPLY_MAX_MIN,
@@ -73,7 +74,11 @@ assert.equal(
   dynamics.notable_change_thresholds.messages_per_active_day_relative_pct,
 )
 assert.equal(NOTABLE_TURN_SHARE_ABS_PCT, dynamics.notable_change_thresholds.turn_share_abs_pct)
-assert.equal(NOTABLE_REPLY_LATENCY_RELATIVE_PCT, dynamics.notable_change_thresholds.reply_latency_relative_pct)
+assert.equal(
+  NOTABLE_REPLY_LATENCY_RELATIVE_MULTIPLIER,
+  dynamics.notable_change_thresholds.reply_latency_relative_multiplier,
+)
+assert.equal(NOTABLE_REPLY_LATENCY_ABSOLUTE_MIN, dynamics.notable_change_thresholds.reply_latency_absolute_min)
 assert.equal(NOTABLE_THREAD_START_SHARE_ABS_PCT, dynamics.notable_change_thresholds.thread_start_share_abs_pct)
 assert.equal(NOTABLE_RECONNECTION_SHARE_ABS_PCT, dynamics.notable_change_thresholds.reconnection_share_abs_pct)
 assert.equal(NOTABLE_FOLLOW_UP_RATE_ABS_PCT, dynamics.notable_change_thresholds.follow_up_rate_abs_pct)

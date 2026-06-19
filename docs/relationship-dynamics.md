@@ -24,6 +24,18 @@ contract version `2.0`. TypeScript mirrors them in
 | Thread-start sample minimum | 3 total starts per period |
 | Reconnection sample minimum | 2 total reconnections per period |
 | Follow-up sample minimum | 3 relevant turns per participant per period |
+| Messages per active day notable change | 30% relative change |
+| Turn-share notable change | 10 percentage points |
+| Thread-start-share notable change | 15 percentage points |
+| Follow-up-rate notable change | 15 percentage points |
+| Reply-latency notable change | At least 2x and at least 10 minutes |
+| Reconnection-share notable change | 20 percentage points |
+
+The reconnection-share threshold is intentionally 20 percentage points. A
+reconnection is already a sparse event because it requires a 24-hour pause and
+the metric also requires at least two reconnections in each compared period.
+The higher threshold keeps this descriptive metric from over-highlighting small
+sample movement.
 
 ## Output Shape
 
@@ -33,7 +45,9 @@ contract version `2.0`. TypeScript mirrors them in
 - `turns`: ordered `ConversationTurn` rows.
 - `adaptiveWindows`: calendar-window summaries.
 - `participantSummaries`: full-export participant turn/reply/restart summaries.
-- `pauseSummary`: long-pause count, latest-gap percentile, reconnecting senders.
+- `pauseSummary`: long-pause count, latest-gap percentile compared only with
+  earlier gaps, median inter-message gap, five longest observed pauses, and
+  reconnecting senders.
 - `earlyLate`: first two eligible windows versus last two eligible windows.
 - `recentPrior`: final eligible window versus the previous eligible window.
 - `notableChanges`: sufficient changes that cross contract thresholds.
@@ -58,6 +72,9 @@ contract version `2.0`. TypeScript mirrors them in
 
 Screens must not show a directional label when evidence is insufficient or
 unavailable.
+
+The latest-gap percentile returns `null` when there is no earlier gap to compare
+against. The latest gap is never included in its own reference distribution.
 
 ## Runtime Boundaries
 

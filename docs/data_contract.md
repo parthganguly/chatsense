@@ -65,8 +65,10 @@ Required groups:
   state.
 - `participant_summaries`: full-export sender summaries for turn share, reply
   timing, thread starts, reconnections, and follow-ups.
-- `pause_summary`: pauses at or above 24 hours, latest-gap percentile, and
-  reconnecting participants.
+- `pause_summary`: pauses at or above 24 hours, latest-gap percentile compared
+  only with earlier gaps, median inter-message gap, five longest observed
+  pauses with start/end/duration/reconnecting sender, and reconnecting
+  participants.
 - `early_late` and `recent_prior`: comparison objects with availability,
   periods, metric changes, sample sizes, evidence state, and notable state.
 - `notable_changes`: sufficient changes that cross canonical thresholds.

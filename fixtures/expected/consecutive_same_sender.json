@@ -82,7 +82,35 @@
     ],
     "pause_summary": {
       "long_pause_count": 0,
-      "latest_gap_percentile": 75,
+      "latest_gap_min": 5,
+      "latest_gap_percentile": 67,
+      "median_inter_message_gap_min": 3,
+      "longest_pauses": [
+        {
+          "started_at": "2026-02-02T14:02:00",
+          "ended_at": "2026-02-02T14:30:00",
+          "duration_min": 28,
+          "reconnecting_sender": "Ravi"
+        },
+        {
+          "started_at": "2026-02-02T14:30:00",
+          "ended_at": "2026-02-02T14:35:00",
+          "duration_min": 5,
+          "reconnecting_sender": "Ravi"
+        },
+        {
+          "started_at": "2026-02-02T14:00:00",
+          "ended_at": "2026-02-02T14:01:00",
+          "duration_min": 1,
+          "reconnecting_sender": "Asha"
+        },
+        {
+          "started_at": "2026-02-02T14:01:00",
+          "ended_at": "2026-02-02T14:02:00",
+          "duration_min": 1,
+          "reconnecting_sender": "Asha"
+        }
+      ],
       "reconnecting_participants": []
     },
     "adaptive_windows": [

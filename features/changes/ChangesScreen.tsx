@@ -1,5 +1,12 @@
 import { CalendarDays, GitCompare, MessageCircleReply, RotateCcw, Split, Timer } from "lucide-react"
-import { formatDuration, type ChatAnalysis, type DynamicsComparison, type MetricChange } from "@chatsense/core"
+import {
+  formatDuration,
+  type AdaptiveWindow,
+  type ChatAnalysis,
+  type DynamicsComparison,
+  type MetricChange,
+  type ParticipantDynamicsSummary,
+} from "@chatsense/core"
 import { DataRow } from "@/components/analytics/DataRow"
 import { MetricCard } from "@/components/analytics/MetricCard"
 import { ProgressRow } from "@/components/analytics/ProgressRow"
@@ -47,6 +54,7 @@ export function ChangesScreen({ analysis }: { analysis: ChatAnalysis }) {
                 <WindowStat label="Turns" value={formatNumber(bucket.turnCount)} />
                 <WindowStat label="Restarts" value={formatNumber(bucket.reconnectionCount)} />
               </div>
+              <WindowParticipantDetails bucket={bucket} />
             </div>
           ))}
         </div>
@@ -93,7 +101,9 @@ export function ChangesScreen({ analysis }: { analysis: ChatAnalysis }) {
 }
 
 function ComparisonSection({ comparison }: { comparison: DynamicsComparison }) {
-  const changes = comparison.changes.filter((change) => change.notable || change.evidenceState !== "sufficient").slice(0, 8)
+  const changes = sortChangesForDisplay(comparison.changes)
+    .filter((change) => change.notable || change.evidenceState !== "sufficient")
+    .slice(0, 8)
   return (
     <section>
       <SectionHeading
@@ -131,6 +141,51 @@ function ComparisonSection({ comparison }: { comparison: DynamicsComparison }) {
   )
 }
 
+function WindowParticipantDetails({ bucket }: { bucket: AdaptiveWindow }) {
+  const participants = bucket.participants.filter(
+    (participant) =>
+      participant.messageCount > 0 ||
+      participant.turnCount > 0 ||
+      participant.replySampleCount > 0 ||
+      participant.reconnectionCount > 0,
+  )
+
+  if (participants.length === 0) return null
+
+  return (
+    <details className="mt-3 border-t border-slate-100 pt-3">
+      <summary className="cursor-pointer text-xs font-semibold text-slate-600">Participant details</summary>
+      <div className="mt-3 space-y-3">
+        {participants.map((participant) => (
+          <WindowParticipantRow key={`${bucket.index}-${participant.sender}`} participant={participant} />
+        ))}
+      </div>
+    </details>
+  )
+}
+
+function WindowParticipantRow({ participant }: { participant: ParticipantDynamicsSummary }) {
+  return (
+    <div className="rounded-md bg-slate-50 p-3">
+      <div className="flex items-center justify-between gap-3 text-xs">
+        <span className="min-w-0 truncate font-semibold text-slate-800">{participant.sender}</span>
+        <span className="shrink-0 text-slate-500">{formatNumber(participant.reconnectionCount)} restarts</span>
+      </div>
+      <div className="mt-3 space-y-2">
+        <ProgressRow label="Turn share" value={participant.turnShare} />
+        <ProgressRow label="Thread-start share" value={participant.threadStartShare} />
+      </div>
+      <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
+        <WindowStat
+          label={`${formatNumber(participant.replySampleCount)} reply samples`}
+          value={formatDuration(participant.medianReplyMinutes)}
+        />
+        <WindowStat label="Reconnections" value={formatNumber(participant.reconnectionCount)} />
+      </div>
+    </div>
+  )
+}
+
 function ChangeCard({ change }: { change: MetricChange }) {
   const hasDirection = change.evidenceState === "sufficient"
   return (
@@ -161,6 +216,20 @@ function ChangeCard({ change }: { change: MetricChange }) {
       <p className="mt-2 text-xs leading-5 text-slate-500">{change.guardrail}</p>
     </div>
   )
+}
+
+function sortChangesForDisplay(changes: MetricChange[]): MetricChange[] {
+  return [...changes].sort((left, right) => {
+    const rank = (change: MetricChange) => {
+      if (change.notable && change.evidenceState === "sufficient") return 0
+      if (change.evidenceState !== "sufficient") return 1
+      return 2
+    }
+    const rankDifference = rank(left) - rank(right)
+    if (rankDifference !== 0) return rankDifference
+    if (left.metric !== right.metric) return left.metric.localeCompare(right.metric)
+    return (left.sender ?? "").localeCompare(right.sender ?? "")
+  })
 }
 
 function WindowStat({ label, value }: { label: string; value: string }) {

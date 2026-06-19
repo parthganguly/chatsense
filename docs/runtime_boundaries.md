@@ -24,6 +24,11 @@ observable changes in:
 - reconnection share after 24-hour pauses;
 - follow-up-before-reply rate.
 
+Notable-change thresholds are contract-owned: 30% for messages per active day,
+10 percentage points for turn share, 15 percentage points for thread-start
+share and follow-up rate, 20 percentage points for reconnection share, and for
+reply latency both a 2x ratio and a 10-minute absolute change.
+
 These comparisons are not predictions and do not inspect message meaning. They
 must not be described as proof of motive, affection, attachment, personality,
 mental health, relationship quality, or relationship status.

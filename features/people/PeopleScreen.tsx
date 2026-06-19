@@ -64,7 +64,7 @@ export function PeopleScreen({ analysis }: { analysis: ChatAnalysis }) {
         </section>
       ) : (
         <section>
-          <SectionHeading eyebrow="Sender switches" title="Who replies to whom" />
+          <SectionHeading eyebrow="Sender switches" title="Approximate interaction paths" />
           <div className="mt-4 divide-y divide-slate-200 border-y border-slate-200 bg-white">
             {analysis.replyEdges.length > 0 ? (
               analysis.replyEdges.slice(0, 12).map((edge) => (

@@ -13,7 +13,8 @@ import {
   NOTABLE_FOLLOW_UP_RATE_ABS_PCT,
   NOTABLE_MESSAGES_PER_ACTIVE_DAY_RELATIVE_PCT,
   NOTABLE_RECONNECTION_SHARE_ABS_PCT,
-  NOTABLE_REPLY_LATENCY_RELATIVE_PCT,
+  NOTABLE_REPLY_LATENCY_ABSOLUTE_MIN,
+  NOTABLE_REPLY_LATENCY_RELATIVE_MULTIPLIER,
   NOTABLE_THREAD_START_SHARE_ABS_PCT,
   NOTABLE_TURN_SHARE_ABS_PCT,
   RECONNECTION_GAP_MIN,
@@ -89,7 +90,16 @@ export interface PauseReconnectionSummary {
   longPauseCount: number
   latestGapMinutes: number | null
   latestGapPercentile: number | null
+  medianInterMessageGapMinutes: number | null
+  longestPauses: PauseEntry[]
   reconnectingParticipants: Array<{ sender: string; count: number; share: number }>
+}
+
+export interface PauseEntry {
+  startedAt: string
+  endedAt: string
+  durationMinutes: number
+  reconnectingSender: string | null
 }
 
 export interface ComparisonPeriod {
@@ -243,6 +253,8 @@ export function getDefaultRelationshipDynamics(): RelationshipDynamics {
       longPauseCount: 0,
       latestGapMinutes: null,
       latestGapPercentile: null,
+      medianInterMessageGapMinutes: null,
+      longestPauses: [],
       reconnectingParticipants: [],
     },
     earlyLate: unavailable,
@@ -722,8 +734,9 @@ function buildMetricChanges(earlier: PeriodInternals, later: PeriodInternals, pa
         laterValue: right.medianReplyMinutes,
         earlierSample: left.replySampleCount,
         laterSample: right.replySampleCount,
-        threshold: NOTABLE_REPLY_LATENCY_RELATIVE_PCT,
-        thresholdType: "relative",
+        threshold: NOTABLE_REPLY_LATENCY_RELATIVE_MULTIPLIER,
+        thresholdType: "relative_ratio",
+        minimumAbsoluteDifference: NOTABLE_REPLY_LATENCY_ABSOLUTE_MIN,
         sampleMinimum: MIN_REPLY_LATENCY_PER_PARTICIPANT,
         fasterIsDecrease: true,
         explanation: "Median delay for sender-switch replies by this participant.",
@@ -791,6 +804,7 @@ function numericChange({
   laterSample,
   threshold,
   thresholdType,
+  minimumAbsoluteDifference,
   sampleMinimum,
   fasterIsDecrease = false,
   explanation,
@@ -805,7 +819,8 @@ function numericChange({
   earlierSample: number
   laterSample: number
   threshold: number
-  thresholdType: "absolute" | "relative"
+  thresholdType: "absolute" | "relative" | "relative_ratio"
+  minimumAbsoluteDifference?: number
   sampleMinimum?: number
   fasterIsDecrease?: boolean
   explanation: string
@@ -817,11 +832,20 @@ function numericChange({
   const absoluteDifference = hasValues ? round(laterValue - earlierValue, 1) : null
   const relativeDifferencePct =
     hasValues && earlierValue !== 0 ? round(((laterValue - earlierValue) / Math.abs(earlierValue)) * 100) : null
+  const relativeRatio =
+    hasValues && earlierValue > 0 && laterValue > 0
+      ? Math.max(laterValue / earlierValue, earlierValue / laterValue)
+      : null
+  const absoluteMinimumMet =
+    minimumAbsoluteDifference === undefined || Math.abs(absoluteDifference ?? 0) >= minimumAbsoluteDifference
   const notable =
     evidenceState === "sufficient" &&
+    absoluteMinimumMet &&
     (thresholdType === "absolute"
       ? Math.abs(absoluteDifference ?? 0) >= threshold
-      : Math.abs(relativeDifferencePct ?? 0) >= threshold)
+      : thresholdType === "relative_ratio"
+        ? (relativeRatio ?? 0) >= threshold
+        : Math.abs(relativeDifferencePct ?? 0) >= threshold)
 
   return {
     metric,
@@ -875,8 +899,15 @@ function unavailableComparison(kind: ComparisonKind, label: string, reason: stri
 }
 
 function buildPauseSummary(messages: ChatMessage[], reconnections: ReconnectionEvent[]): PauseReconnectionSummary {
-  const gaps = messages.slice(1).map((message, index) => gapMinutes(messages[index].timestamp, message.timestamp))
+  const pauseEntries: PauseEntry[] = messages.slice(1).map((message, index) => ({
+    startedAt: messages[index].timestamp.toISOString(),
+    endedAt: message.timestamp.toISOString(),
+    durationMinutes: round(gapMinutes(messages[index].timestamp, message.timestamp)),
+    reconnectingSender: message.sender,
+  }))
+  const gaps = pauseEntries.map((entry) => entry.durationMinutes)
   const latestGap = gaps.at(-1) ?? null
+  const earlierGaps = latestGap === null ? [] : gaps.slice(0, -1)
   const counts = new Map<string, number>()
   for (const event of reconnections) {
     counts.set(event.sender, (counts.get(event.sender) ?? 0) + 1)
@@ -887,10 +918,14 @@ function buildPauseSummary(messages: ChatMessage[], reconnections: ReconnectionE
   return {
     longPauseCount: reconnections.length,
     latestGapMinutes: latestGap === null ? null : round(latestGap),
+    medianInterMessageGapMinutes: median(gaps),
     latestGapPercentile:
-      latestGap === null || gaps.length === 0
+      latestGap === null || earlierGaps.length === 0
         ? null
-        : percentage(gaps.filter((gap) => gap <= latestGap).length, gaps.length),
+        : percentage(earlierGaps.filter((gap) => gap <= latestGap).length, earlierGaps.length),
+    longestPauses: [...pauseEntries]
+      .sort((left, right) => right.durationMinutes - left.durationMinutes || left.startedAt.localeCompare(right.startedAt))
+      .slice(0, 5),
     reconnectingParticipants,
   }
 }

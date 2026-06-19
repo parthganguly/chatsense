@@ -44,12 +44,13 @@ export const MIN_RECONNECTIONS_PER_PERIOD = 2
 export const MIN_FOLLOW_UP_RELEVANT_TURNS_PER_PARTICIPANT = 3
 
 // Relationship-dynamics notable-change thresholds.
-export const NOTABLE_MESSAGES_PER_ACTIVE_DAY_RELATIVE_PCT = 25
-export const NOTABLE_TURN_SHARE_ABS_PCT = 15
-export const NOTABLE_REPLY_LATENCY_RELATIVE_PCT = 50
-export const NOTABLE_THREAD_START_SHARE_ABS_PCT = 20
+export const NOTABLE_MESSAGES_PER_ACTIVE_DAY_RELATIVE_PCT = 30
+export const NOTABLE_TURN_SHARE_ABS_PCT = 10
+export const NOTABLE_REPLY_LATENCY_RELATIVE_MULTIPLIER = 2
+export const NOTABLE_REPLY_LATENCY_ABSOLUTE_MIN = 10
+export const NOTABLE_THREAD_START_SHARE_ABS_PCT = 15
 export const NOTABLE_RECONNECTION_SHARE_ABS_PCT = 20
-export const NOTABLE_FOLLOW_UP_RATE_ABS_PCT = 20
+export const NOTABLE_FOLLOW_UP_RATE_ABS_PCT = 15
 
 // Canonical runtime silence-anomaly definition (modified z-score, floored).
 export const SILENCE_ANOMALY_SCALE = 1.4826

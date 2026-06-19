@@ -95,7 +95,23 @@
     ],
     "pause_summary": {
       "long_pause_count": 0,
+      "latest_gap_min": 3,
       "latest_gap_percentile": 100,
+      "median_inter_message_gap_min": 3,
+      "longest_pauses": [
+        {
+          "started_at": "2026-02-06T11:02:00",
+          "ended_at": "2026-02-06T11:05:00",
+          "duration_min": 3,
+          "reconnecting_sender": "Asha"
+        },
+        {
+          "started_at": "2026-02-06T11:00:00",
+          "ended_at": "2026-02-06T11:02:00",
+          "duration_min": 2,
+          "reconnecting_sender": "Ravi"
+        }
+      ],
       "reconnecting_participants": []
     },
     "adaptive_windows": [

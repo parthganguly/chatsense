@@ -192,7 +192,18 @@ def _normalize_relationship_dynamics(dynamics: dict) -> dict:
         ),
         "pause_summary": {
             "long_pause_count": dynamics["pause_summary"]["long_pause_count"],
+            "latest_gap_min": dynamics["pause_summary"]["latest_gap_minutes"],
             "latest_gap_percentile": dynamics["pause_summary"]["latest_gap_percentile"],
+            "median_inter_message_gap_min": dynamics["pause_summary"]["median_inter_message_gap_minutes"],
+            "longest_pauses": [
+                {
+                    "started_at": pause["started_at"],
+                    "ended_at": pause["ended_at"],
+                    "duration_min": pause["duration_minutes"],
+                    "reconnecting_sender": pause["reconnecting_sender"],
+                }
+                for pause in dynamics["pause_summary"]["longest_pauses"]
+            ],
             "reconnecting_participants": [
                 {
                     "sender": participant["sender"],

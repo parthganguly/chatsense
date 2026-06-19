@@ -60,6 +60,11 @@ is the final open turn at export end.
 The app reports counts, shares, medians, and denominators only. It does not
 infer why a person restarted, delayed, or followed up.
 
+The pause summary also reports the median inter-message gap, the latest gap
+percentile against earlier gaps only, and the five longest observed pauses with
+start/end timestamps, duration, and the participant who sent the first message
+afterward when available.
+
 ### Evidence-safe Comparisons
 
 Window eligibility requires at least 20 messages and at least 2 active days.
@@ -77,6 +82,21 @@ Metric-specific minima are enforced before directions are shown:
 | Thread-start share | 3 total starts in each period |
 | Reconnection share | 2 total reconnections in each period |
 | Follow-up rate | 3 relevant turns per participant in each period |
+
+Notable-change thresholds are defined in the canonical contract:
+
+| Metric | Notable threshold |
+| --- | --- |
+| Messages per active day | 30% relative change |
+| Turn share | 10 percentage points |
+| Thread-start share | 15 percentage points |
+| Follow-up rate | 15 percentage points |
+| Reply latency | At least 2x and at least 10 minutes absolute change |
+| Reconnection share | 20 percentage points |
+
+The reconnection-share threshold remains a documented 20 percentage points
+because reconnections are sparse by definition and require at least two events
+in each compared period before any direction is shown.
 
 When samples are insufficient, the `MetricChange` is explicit:
 `evidenceState = "insufficient"`, `direction = "unavailable"`, and
@@ -107,7 +127,8 @@ indices without changing the contract.
 - `turns`;
 - `adaptiveWindows`;
 - `participantSummaries`;
-- `pauseSummary`;
+- `pauseSummary`, including median inter-message gap and the five longest
+  observed pauses;
 - `earlyLate`;
 - `recentPrior`;
 - `notableChanges`;
@@ -147,35 +168,43 @@ python -m chatsense_ml.synthetic.fixtures --expected
 
 ## Verification Results
 
-Final verification for this PR was run locally with Node 22. The completed
-command results were:
+Final verification for this PR was run locally with Node `v22.23.0` via
+`npx -p node@22 node ...`. The completed command results were:
 
 | Command | Result |
 | --- | --- |
-| `npm ci` | Passed on Node `v22.21.1`; npm reported existing audit/deprecation warnings |
+| `npm ci` | Passed on Node `v22.23.0`; npm reported existing audit/deprecation warnings |
 | `npm run lint` | Passed |
 | `npm run typecheck` | Passed |
 | `npm run test` | Passed: import/boundary tests and relationship-dynamics tests |
 | `npm run test:parity` | Passed for 21 fixtures |
-| `npm run build` | Passed after deleting stale generated `.next` cache |
+| `npm run build` | Passed after deleting stale generated `.next` cache; Next reported the existing ESLint plugin warning |
 | `python -m pip install -e ".[dev]"` | Passed |
-| `python -m pytest` | Passed: 20 tests |
+| `python -m pytest` | Passed: 22 tests |
 | `npx cap sync android` | Passed |
-| `android/gradlew test` | Passed |
-| `android/gradlew assembleDebug` | Passed |
+| `android/gradlew test` | Passed from the `android/` project directory |
+| `android/gradlew assembleDebug` | Passed from the `android/` project directory |
 | `git diff --check` | Passed with Windows CRLF normalization warnings only |
 | APK | `android/app/build/outputs/apk/debug/app-debug.apk` |
-| Device verification | Not run: ADB returned an empty device list after daemon restart |
+| Device verification | Not run during this focused cleanup; the requested suite stops at debug APK assembly |
+
+The root-level `android\gradlew.bat test` form evaluates the repository root as
+the Gradle project and fails because the Gradle settings file lives under
+`android/`. The verified Gradle commands were therefore run from the Android
+project directory.
 
 ## Product Changes
 
 - The fourth tab is now `Changes`.
 - Overview uses `Historical reply timing`, not reply probability.
-- Rhythm uses `Messages by weekday` and `Pauses and restarts`.
+- Rhythm uses `Messages by weekday` and `Pauses and restarts`, with median gap,
+  latest gap percentile, and concrete longest-pause rows.
 - People uses `Who keeps contact moving` for exactly two participants and keeps
-  sender-switch edges only for group chats with an approximation warning.
+  approximate interaction paths only for group chats with an approximation
+  warning.
 - Changes shows early/late, recent/prior, adaptive windows, participant turn
-  share, reply timing, initiations, reconnections, and follow-up behavior.
+  share, reply timing, initiations, reconnections, follow-up behavior, and
+  expandable per-window participant details.
 
 ## Limitations
 

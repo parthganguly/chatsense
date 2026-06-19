@@ -146,7 +146,7 @@ export function analyzeChat(inputMessages: ChatMessage[]): ChatAnalysis {
     relationshipDynamics,
     replyEdges,
     threadCount: threadStarts.filter(Boolean).length,
-    insights: buildInsights(overview, participants, replyDynamics, silenceSummary, activity, relationshipDynamics),
+    insights: buildInsights(overview, participants, replyDynamics, activity, relationshipDynamics),
   }
 }
 
@@ -312,7 +312,6 @@ function buildInsights(
   overview: ConversationOverview,
   participants: ParticipantInsight[],
   replies: ReplyDynamics,
-  silences: SilenceSummary,
   activity: ActivitySummary,
   relationshipDynamics: RelationshipDynamics,
 ): ObservableInsight[] {
@@ -333,11 +332,20 @@ function buildInsights(
     })
   }
 
-  if (silences.unusualSilenceCount > 0 && silences.latestUnusualSilence) {
+  if (relationshipDynamics.pauseSummary.longPauseCount > 0) {
+    const longestPause = relationshipDynamics.pauseSummary.longestPauses[0]
+    const reconnectors = relationshipDynamics.pauseSummary.reconnectingParticipants
+      .slice(0, 3)
+      .map((participant) => participant.sender)
+      .join(", ")
     insights.push({
       tone: "watch",
-      title: `${silences.unusualSilenceCount} unusually long silence${silences.unusualSilenceCount === 1 ? "" : "s"} detected`,
-      detail: `The latest unusual gap lasted ${formatDuration(silences.latestUnusualSilence.durationMinutes)}. It is unusual compared with this chat's own rhythm.`,
+      title: `${relationshipDynamics.pauseSummary.longPauseCount} pause${
+        relationshipDynamics.pauseSummary.longPauseCount === 1 ? "" : "s"
+      } of at least 24h`,
+      detail: `The longest observed pause lasted ${formatDuration(longestPause?.durationMinutes ?? null)}.${
+        reconnectors ? ` First messages after 24h pauses came from: ${reconnectors}.` : ""
+      }`,
     })
   }
 

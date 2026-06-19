@@ -64,7 +64,10 @@ NOTABLE_MESSAGES_PER_ACTIVE_DAY_RELATIVE_PCT: int = _dynamics["notable_change_th
     "messages_per_active_day_relative_pct"
 ]
 NOTABLE_TURN_SHARE_ABS_PCT: int = _dynamics["notable_change_thresholds"]["turn_share_abs_pct"]
-NOTABLE_REPLY_LATENCY_RELATIVE_PCT: int = _dynamics["notable_change_thresholds"]["reply_latency_relative_pct"]
+NOTABLE_REPLY_LATENCY_RELATIVE_MULTIPLIER: float = _dynamics["notable_change_thresholds"][
+    "reply_latency_relative_multiplier"
+]
+NOTABLE_REPLY_LATENCY_ABSOLUTE_MIN: int = _dynamics["notable_change_thresholds"]["reply_latency_absolute_min"]
 NOTABLE_THREAD_START_SHARE_ABS_PCT: int = _dynamics["notable_change_thresholds"]["thread_start_share_abs_pct"]
 NOTABLE_RECONNECTION_SHARE_ABS_PCT: int = _dynamics["notable_change_thresholds"]["reconnection_share_abs_pct"]
 NOTABLE_FOLLOW_UP_RATE_ABS_PCT: int = _dynamics["notable_change_thresholds"]["follow_up_rate_abs_pct"]
