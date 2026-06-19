@@ -1,61 +1,155 @@
-export const SHARED_FILE_EVENT = "chatsense-shared-file"
-export const SHARED_FILE_ERROR_EVENT = "chatsense-shared-file-error"
-
-export type SharedFilePayload = {
-  base64?: string
-  mimeType?: string | null
-  name?: string | null
-}
-
-export type SharedFileErrorPayload = {
-  code?: string
-  errorType?: string
-  message?: string
-  name?: string | null
-}
+import {
+  convertNativeFileUri,
+  isSharedFilePluginAvailable,
+  SHARED_FILE_AVAILABLE_EVENT,
+  SHARED_FILE_ERROR_EVENT,
+  SharedFile,
+  type NativeSharedFile,
+  type NativeSharedFileError,
+  type SharedFilePlugin,
+} from "./nativeSharedFile"
 
 export type SharedFileBridgeHandlers = {
-  onFile(file: File): void
+  onFile(file: File): void | Promise<void>
   onError(message: string): void
 }
 
-export function sharedFilePayloadToFile(payload: SharedFilePayload): File | null {
-  if (!payload.base64) return null
-
-  return new File([base64ToBuffer(payload.base64)], payload.name || "WhatsApp Chat.zip", {
-    type: payload.mimeType || "application/zip",
-  })
+export type SharedFileBridgeDependencies = {
+  convertFileSrc?: (uri: string) => string
+  fetchFile?: (url: string) => Promise<Response>
+  fileCtor?: typeof File
+  isPluginAvailable?: () => boolean
+  plugin?: SharedFilePlugin | null
 }
 
-export function sharedFileErrorMessage(payload: SharedFileErrorPayload): string {
-  return payload.message || "ChatSense could not read the shared export. Try selecting the ZIP manually."
+type RemovableListener = {
+  remove(): Promise<void>
+}
+
+const DEFAULT_IMPORT_NAME = "WhatsApp Chat.zip"
+
+export function sharedFileErrorMessage(error: NativeSharedFileError): string {
+  if (error.message) {
+    return error.message
+  }
+
+  switch (error.code) {
+    case "file_too_large":
+      return "This WhatsApp export is too large for local import. Try exporting without media or use a smaller TXT export."
+    case "unsupported_file":
+      return "This file type is not supported. Share the WhatsApp export ZIP or TXT file."
+    case "missing_uri":
+    case "copy_failed":
+    case "file_unavailable":
+      return "ChatSense could not access the shared export. Try selecting the ZIP manually."
+    default:
+      return "ChatSense could not import the shared export. Try selecting the ZIP manually."
+  }
+}
+
+export async function nativeSharedFileToFile(
+  sharedFile: NativeSharedFile,
+  dependencies: SharedFileBridgeDependencies = {},
+): Promise<File> {
+  const convertFileSrc = dependencies.convertFileSrc ?? convertNativeFileUri
+  const fetchFile = dependencies.fetchFile ?? fetch
+  const FileCtor = dependencies.fileCtor ?? File
+  const response = await fetchFile(convertFileSrc(sharedFile.uri))
+
+  if (!response.ok) {
+    throw new Error("file_unavailable")
+  }
+
+  const blob = await response.blob()
+  return new FileCtor([blob], sharedFile.name || DEFAULT_IMPORT_NAME, {
+    type: sharedFile.mimeType || blob.type || "application/zip",
+  })
 }
 
 export function subscribeToSharedFileBridge(
   handlers: SharedFileBridgeHandlers,
-  target: Pick<EventTarget, "addEventListener" | "removeEventListener"> = window,
+  dependencies: SharedFileBridgeDependencies = {},
 ): () => void {
-  const handleSharedFile = (event: Event) => {
-    const file = sharedFilePayloadToFile((event as CustomEvent<SharedFilePayload>).detail || {})
-    if (file) handlers.onFile(file)
+  const isAvailable = dependencies.isPluginAvailable ?? isSharedFilePluginAvailable
+  const plugin = dependencies.plugin === undefined ? (isAvailable() ? SharedFile : null) : dependencies.plugin
+
+  if (!plugin) {
+    return () => {}
   }
 
-  const handleNativeError = (event: Event) => {
-    handlers.onError(sharedFileErrorMessage((event as CustomEvent<SharedFileErrorPayload>).detail || {}))
+  const deliveredIds = new Set<string>()
+  const listenerHandles: RemovableListener[] = []
+  let disposed = false
+
+  const trackListener = (handlePromise: Promise<RemovableListener>) => {
+    void handlePromise.then((handle) => {
+      if (disposed) {
+        void handle.remove()
+      } else {
+        listenerHandles.push(handle)
+      }
+    }).catch(() => {
+      if (!disposed) {
+        handlers.onError("ChatSense could not listen for Android shared files. Try selecting the ZIP manually.")
+      }
+    })
   }
 
-  target.addEventListener(SHARED_FILE_EVENT, handleSharedFile)
-  target.addEventListener(SHARED_FILE_ERROR_EVENT, handleNativeError)
+  const handleNativeError = (error: NativeSharedFileError | null | undefined) => {
+    if (!disposed && error) {
+      handlers.onError(sharedFileErrorMessage(error))
+    }
+  }
+
+  const releaseSharedFile = async (id: string) => {
+    try {
+      await plugin.releaseSharedFile({ id })
+    } catch {
+      // The cached file is best-effort cleanup; stale startup cleanup handles missed releases.
+    }
+  }
+
+  const handleNativeFile = async (sharedFile: NativeSharedFile | null | undefined) => {
+    if (disposed || !sharedFile?.id || deliveredIds.has(sharedFile.id)) {
+      return
+    }
+
+    deliveredIds.add(sharedFile.id)
+
+    try {
+      const file = await nativeSharedFileToFile(sharedFile, dependencies)
+      if (!disposed) {
+        await handlers.onFile(file)
+      }
+    } catch (error) {
+      if (!disposed) {
+        handlers.onError(error instanceof Error ? sharedFileErrorMessage({ code: error.message }) : sharedFileErrorMessage({}))
+      }
+    } finally {
+      await releaseSharedFile(sharedFile.id)
+    }
+  }
+
+  trackListener(plugin.addListener(SHARED_FILE_AVAILABLE_EVENT, (sharedFile) => {
+    void handleNativeFile(sharedFile)
+  }))
+  trackListener(plugin.addListener(SHARED_FILE_ERROR_EVENT, handleNativeError))
+
+  void plugin.getPendingSharedFile()
+    .then((pending) => {
+      handleNativeError(pending.error)
+      void handleNativeFile(pending.file)
+    })
+    .catch(() => {
+      if (!disposed) {
+        handlers.onError("ChatSense could not check Android shared files. Try selecting the ZIP manually.")
+      }
+    })
 
   return () => {
-    target.removeEventListener(SHARED_FILE_EVENT, handleSharedFile)
-    target.removeEventListener(SHARED_FILE_ERROR_EVENT, handleNativeError)
+    disposed = true
+    for (const handle of listenerHandles.splice(0)) {
+      void handle.remove()
+    }
   }
-}
-
-function base64ToBuffer(base64: string): ArrayBuffer {
-  const binary = globalThis.atob(base64)
-  const bytes = new Uint8Array(binary.length)
-  for (let index = 0; index < binary.length; index += 1) bytes[index] = binary.charCodeAt(index)
-  return bytes.buffer
 }

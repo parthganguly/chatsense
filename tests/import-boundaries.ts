@@ -6,13 +6,15 @@ import JSZip from "jszip"
 import { analyzeChat, parseWhatsAppChat } from "@chatsense/core"
 import { analyzeImportedText } from "../features/import/useChatImport"
 import { readWhatsAppExport, selectWhatsAppTextEntry } from "../features/import/readWhatsAppExport"
+import { nativeSharedFileToFile, sharedFileErrorMessage, subscribeToSharedFileBridge } from "../platform/android/sharedFileBridge"
 import {
+  SHARED_FILE_AVAILABLE_EVENT,
   SHARED_FILE_ERROR_EVENT,
-  SHARED_FILE_EVENT,
-  sharedFileErrorMessage,
-  sharedFilePayloadToFile,
-  subscribeToSharedFileBridge,
-} from "../platform/android/sharedFileBridge"
+  type NativeSharedFile,
+  type NativeSharedFileError,
+  type PendingSharedFileResult,
+  type SharedFilePlugin,
+} from "../platform/android/nativeSharedFile"
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
 const sampleChat = [
@@ -28,13 +30,18 @@ async function run() {
   await testZipSelection()
   await testZipWithoutTxtFailure()
   await testUnsupportedFileFailure()
-  await testAndroidSharedFileConversion()
+  await testNativeSharedFileConversion()
   testAndroidNativeErrorConversion()
-  await testListenerCleanup()
+  testNativePluginUnavailable()
+  await testPendingSharedFileImportAndRelease()
+  await testWarmSharedFileImportAndListenerCleanup()
+  await testDuplicatePendingAndWarmEventsAreIgnored()
+  await testReleaseAfterDownstreamImportFailure()
   testImportOrchestrationUsesCore()
   testNoDuplicateRuntimeImplementations()
   testCoreHasNoPlatformImports()
   testUiDoesNotComputeBehavioralAnalytics()
+  testNativeImportBridgeDoesNotUseObsoleteBridge()
   console.log("Import and boundary tests passed.")
 }
 
@@ -77,57 +84,146 @@ async function testUnsupportedFileFailure() {
   await assert.rejects(readWhatsAppExport(file), /Choose the WhatsApp export ZIP or TXT file/)
 }
 
-async function testAndroidSharedFileConversion() {
-  const file = sharedFilePayloadToFile({
-    base64: Buffer.from(sampleChat, "utf8").toString("base64"),
-    mimeType: "text/plain",
-    name: "shared.txt",
+async function testNativeSharedFileConversion() {
+  const convertedUrls: string[] = []
+  const fetchedUrls: string[] = []
+  const file = await nativeSharedFileToFile(nativeFile("file-1"), {
+    convertFileSrc: (uri) => {
+      convertedUrls.push(uri)
+      return "capacitor://localhost/_capacitor_file_/cache/shared.txt"
+    },
+    fetchFile: async (url) => {
+      fetchedUrls.push(url)
+      return new Response(new Blob([sampleChat], { type: "text/plain" }), { status: 200 })
+    },
   })
 
-  assert.ok(file)
   assert.equal(file.name, "shared.txt")
   assert.equal(file.type, "text/plain")
   assert.equal(await file.text(), sampleChat)
+  assert.deepEqual(convertedUrls, ["file:///data/user/0/app/cache/shared.txt"])
+  assert.deepEqual(fetchedUrls, ["capacitor://localhost/_capacitor_file_/cache/shared.txt"])
 }
 
 function testAndroidNativeErrorConversion() {
   assert.equal(sharedFileErrorMessage({ message: "Native read failed" }), "Native read failed")
-  assert.match(sharedFileErrorMessage({}), /could not read the shared export/)
+  assert.match(sharedFileErrorMessage({ code: "file_too_large" }), /too large/)
+  assert.match(sharedFileErrorMessage({ code: "unsupported_file" }), /not supported/)
+  assert.match(sharedFileErrorMessage({}), /could not import the shared export/)
 }
 
-async function testListenerCleanup() {
-  const target = new EventTarget()
+function testNativePluginUnavailable() {
+  const errors: string[] = []
+  const unsubscribe = subscribeToSharedFileBridge(
+    {
+      onFile: () => {
+        throw new Error("No file should be delivered without the native plugin.")
+      },
+      onError: (message) => errors.push(message),
+    },
+    {
+      isPluginAvailable: () => false,
+      plugin: null,
+    },
+  )
+
+  unsubscribe()
+  assert.deepEqual(errors, [])
+}
+
+async function testPendingSharedFileImportAndRelease() {
+  const plugin = new FakeSharedFilePlugin({ file: nativeFile("pending-1"), error: null })
+  const files: File[] = []
+
+  subscribeToSharedFileBridge(
+    {
+      onFile: (file) => {
+        files.push(file)
+      },
+      onError: (message) => {
+        throw new Error(message)
+      },
+    },
+    nativeTestDependencies(plugin),
+  )
+  await flushAsync()
+
+  assert.equal(files.length, 1)
+  assert.equal(await files[0].text(), sampleChat)
+  assert.deepEqual(plugin.releasedIds, ["pending-1"])
+}
+
+async function testWarmSharedFileImportAndListenerCleanup() {
+  const plugin = new FakeSharedFilePlugin({ file: null, error: null })
   const files: File[] = []
   const errors: string[] = []
   const unsubscribe = subscribeToSharedFileBridge(
     {
-      onFile: (file) => files.push(file),
+      onFile: (file) => {
+        files.push(file)
+      },
       onError: (message) => errors.push(message),
     },
-    target,
+    nativeTestDependencies(plugin),
   )
+  await flushAsync()
 
-  target.dispatchEvent(customEvent(SHARED_FILE_EVENT, {
-    base64: Buffer.from(sampleChat, "utf8").toString("base64"),
-    mimeType: "text/plain",
-    name: "shared.txt",
-  }))
-  target.dispatchEvent(customEvent(SHARED_FILE_ERROR_EVENT, { message: "Native error" }))
+  plugin.emit(SHARED_FILE_AVAILABLE_EVENT, nativeFile("warm-1"))
+  plugin.emit(SHARED_FILE_ERROR_EVENT, { message: "Native error" })
+  await flushAsync()
+
+  assert.equal(files.length, 1)
+  assert.equal(errors[0], "Native error")
+  assert.deepEqual(plugin.releasedIds, ["warm-1"])
+
+  unsubscribe()
+  plugin.emit(SHARED_FILE_AVAILABLE_EVENT, nativeFile("warm-2"))
+  plugin.emit(SHARED_FILE_ERROR_EVENT, { message: "Ignored error" })
+  await flushAsync()
 
   assert.equal(files.length, 1)
   assert.equal(errors.length, 1)
-  assert.equal(await files[0].text(), sampleChat)
-  assert.equal(errors[0], "Native error")
+}
 
-  unsubscribe()
-  target.dispatchEvent(customEvent(SHARED_FILE_EVENT, {
-    base64: Buffer.from("after cleanup", "utf8").toString("base64"),
-    mimeType: "text/plain",
-    name: "ignored.txt",
-  }))
-  target.dispatchEvent(customEvent(SHARED_FILE_ERROR_EVENT, { message: "Ignored error" }))
+async function testDuplicatePendingAndWarmEventsAreIgnored() {
+  const duplicate = nativeFile("duplicate-1")
+  const plugin = new FakeSharedFilePlugin({ file: duplicate, error: null })
+  const files: File[] = []
+
+  subscribeToSharedFileBridge(
+    {
+      onFile: (file) => {
+        files.push(file)
+      },
+      onError: (message) => {
+        throw new Error(message)
+      },
+    },
+    nativeTestDependencies(plugin),
+  )
+  plugin.emit(SHARED_FILE_AVAILABLE_EVENT, duplicate)
+  await flushAsync()
 
   assert.equal(files.length, 1)
+  assert.deepEqual(plugin.releasedIds, ["duplicate-1"])
+}
+
+async function testReleaseAfterDownstreamImportFailure() {
+  const plugin = new FakeSharedFilePlugin({ file: nativeFile("failure-1"), error: null })
+  const errors: string[] = []
+
+  subscribeToSharedFileBridge(
+    {
+      onFile: async () => {
+        throw new Error("downstream import failed")
+      },
+      onError: (message) => errors.push(message),
+    },
+    nativeTestDependencies(plugin),
+  )
+  await flushAsync()
+
+  assert.deepEqual(plugin.releasedIds, ["failure-1"])
   assert.equal(errors.length, 1)
 }
 
@@ -173,6 +269,75 @@ function testUiDoesNotComputeBehavioralAnalytics() {
   }
 }
 
+function testNativeImportBridgeDoesNotUseObsoleteBridge() {
+  const files = [
+    path.join(root, "android", "app", "src", "main", "java", "com", "thegreatparthicle", "chatsense", "MainActivity.java"),
+    path.join(root, "platform", "android", "sharedFileBridge.ts"),
+    path.join(root, "platform", "android", "nativeSharedFile.ts"),
+  ]
+  const forbidden = /base64|readAllBytes|evaluateJavascript|postDelayed|1200|chatsense-shared-file|chatsense-shared-file-error/i
+
+  for (const file of files) {
+    const content = fs.readFileSync(file, "utf8")
+    assert.equal(forbidden.test(content), false, `${path.relative(root, file)} still references the obsolete import bridge`)
+  }
+}
+
+function nativeFile(id: string): NativeSharedFile {
+  return {
+    id,
+    name: "shared.txt",
+    mimeType: "text/plain",
+    sizeBytes: sampleChat.length,
+    uri: "file:///data/user/0/app/cache/shared.txt",
+  }
+}
+
+function nativeTestDependencies(plugin: FakeSharedFilePlugin) {
+  return {
+    convertFileSrc: (uri: string) => uri.replace("file://", "capacitor://localhost/_capacitor_file_/"),
+    fetchFile: async () => new Response(new Blob([sampleChat], { type: "text/plain" }), { status: 200 }),
+    isPluginAvailable: () => true,
+    plugin: plugin as unknown as SharedFilePlugin,
+  }
+}
+
+class FakeSharedFilePlugin {
+  releasedIds: string[] = []
+  private listeners = new Map<string, Set<(payload: NativeSharedFile | NativeSharedFileError) => void>>()
+
+  constructor(private pending: PendingSharedFileResult) {}
+
+  async addListener(eventName: string, listenerFunc: (payload: NativeSharedFile | NativeSharedFileError) => void) {
+    const listeners = this.listeners.get(eventName) ?? new Set<(payload: NativeSharedFile | NativeSharedFileError) => void>()
+    listeners.add(listenerFunc)
+    this.listeners.set(eventName, listeners)
+    return {
+      remove: async () => {
+        listeners.delete(listenerFunc)
+      },
+    }
+  }
+
+  async getPendingSharedFile() {
+    const pending = this.pending
+    this.pending = { file: null, error: null }
+    return pending
+  }
+
+  async releaseSharedFile({ id }: { id: string }) {
+    this.releasedIds.push(id)
+  }
+
+  emit(eventName: typeof SHARED_FILE_AVAILABLE_EVENT, payload: NativeSharedFile): void
+  emit(eventName: typeof SHARED_FILE_ERROR_EVENT, payload: NativeSharedFileError): void
+  emit(eventName: string, payload: NativeSharedFile | NativeSharedFileError) {
+    for (const listener of this.listeners.get(eventName) ?? []) {
+      listener(payload)
+    }
+  }
+}
+
 function collectSourceFiles(directory: string): string[] {
   if (!fs.existsSync(directory)) return []
 
@@ -189,16 +354,13 @@ function stripComments(content: string): string {
     .replace(/(^|\s)\/\/.*$/gm, "$1")
 }
 
-function customEvent<T>(type: string, detail: T): Event {
-  if (typeof CustomEvent !== "undefined") return new CustomEvent(type, { detail })
-
-  const event = new Event(type) as CustomEvent<T>
-  Object.defineProperty(event, "detail", { value: detail })
-  return event
-}
-
 function toArrayBuffer(bytes: Uint8Array): ArrayBuffer {
   return bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer
+}
+
+async function flushAsync() {
+  await new Promise((resolve) => setTimeout(resolve, 0))
+  await new Promise((resolve) => setTimeout(resolve, 0))
 }
 
 void run()

@@ -28,7 +28,7 @@ npm run check
 
 `npm run typecheck` typechecks `@chatsense/core` independently before checking the app.
 
-`npm run test` runs focused TypeScript boundary tests for imports, ZIP/TXT handling, Android event conversion, listener cleanup, package-boundary imports, and UI/core separation.
+`npm run test` runs focused TypeScript boundary tests for imports, ZIP/TXT handling, Android native shared-file conversion, pending/warm share dedupe, release cleanup, package-boundary imports, and UI/core separation.
 
 `npm run test:parity` compares the TypeScript runtime with the nine shared expected parity outputs.
 
@@ -60,10 +60,18 @@ npm run android:build
 
 builds the web shell, syncs Capacitor, and assembles the debug APK.
 
+The debug APK path is:
+
+```text
+android/app/build/outputs/apk/debug/app-debug.apk
+```
+
+For physical device share-sheet verification, see `docs/android-share-import-testing.md`.
+
 ## Source Boundaries
 
 - Core logic goes in `packages/chatsense-core/src`.
 - Import orchestration goes in `features/import`.
-- Android shared-file handling goes in `platform/android`.
+- Android shared-file handling is split between `platform/android` for the TypeScript adapter and `android/app/src/main/java/com/thegreatparthicle/chatsense/plugins` for the native Capacitor plugin.
 - Presentation-only screens go in `features/overview`, `features/rhythm`, and `features/people`.
 - Reusable presentation components go in `components/analytics` and `components/navigation`.

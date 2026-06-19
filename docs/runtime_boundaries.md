@@ -3,7 +3,7 @@
 ChatSense has one shipped behavioral engine and one research/reference implementation.
 
 - **`@chatsense/core` is the production behavioral engine.** It owns WhatsApp text parsing, date-order inference, behavioral calculations, shared analysis types, deterministic insights, contract constants, and parity normalization.
-- **Next.js/Capacitor is the current application shell.** It owns React UI, browser file handling, ZIP extraction, safe import errors, and the Android WebView/share-sheet bridge.
+- **Next.js/Capacitor is the current application shell.** It owns React UI, browser file handling, ZIP extraction, safe import errors, and Android share-sheet orchestration through the native `SharedFile` plugin.
 - **Python is research/reference only.** `python/chatsense_ml` owns offline analytics, parquet output, notebooks, classical ML experiments, and the Python parity reference. Python is not bundled into Android.
 - **Contracts and fixtures prevent drift.** `contracts/behavioral_contract.json`, `contracts/report.schema.json`, `fixtures/whatsapp`, and `fixtures/expected` define behavior both implementations must preserve.
 
@@ -27,4 +27,11 @@ Screens and UI components receive already-computed `ChatAnalysis` values. They m
 
 ## Android Boundary
 
-The Android adapter owns native shared-file events, the current whole-file Base64 conversion, native error events, and listener cleanup. The Base64 bridge is a temporary known limitation and should be replaced in a later isolated task.
+The Android native boundary owns only file access and lifecycle mechanics:
+
+- `MainActivity` registers `SharedFilePlugin` and forwards share intents.
+- `SharedFilePlugin` accepts Android share/view `content://` URIs, validates supported ZIP/TXT inputs, copies the stream into app-private cache, emits retained Capacitor events, and exposes `getPendingSharedFile()` for startup races.
+- `platform/android/sharedFileBridge.ts` converts the native cache URI with `Capacitor.convertFileSrc()`, fetches it into a browser `File`, calls the existing import path, then calls `releaseSharedFile()` in a cleanup path.
+- Native cache is best-effort released after import and also pruned on plugin load if stale.
+
+Android must not compute behavioral analytics. It must not use Python, an LLM, a backend, telemetry, broad storage permissions, or direct WebView code injection for shared file contents.
