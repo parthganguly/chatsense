@@ -34,3 +34,4 @@ export {
 } from "./relationship-dynamics"
 export * from "./forecasting"
 export * from "./forecasting-contract"
+export * from "./forecasting-parity"
