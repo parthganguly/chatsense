@@ -6,6 +6,7 @@ ChatSense has one shipped behavioral engine and one research/reference implement
 - **Next.js/Capacitor is the current application shell.** It owns React UI, browser file handling, ZIP extraction, safe import errors, and Android share-sheet orchestration through the native `SharedFile` plugin.
 - **Python is research/reference only.** `python/chatsense_ml` owns offline analytics, parquet output, notebooks, classical ML experiments, and the Python parity reference. Python is not bundled into Android.
 - **Contracts and fixtures prevent drift.** `contracts/behavioral_contract.json`, `contracts/report.schema.json`, `fixtures/whatsapp`, and `fixtures/expected` define behavior both implementations must preserve.
+- **Forecasting remains behind a research gate.** `contracts/forecasting_contract.json` defines leakage-safe evaluation and promotion gates. Passing a method gate is not enough to show product forecasts.
 
 The mobile app remains local-only: imported chats are processed in memory, not uploaded, not persisted by the app, and not analyzed by an LLM.
 
@@ -42,6 +43,20 @@ New behavioral definitions should start in Python when they need pandas, noteboo
 3. Covered by shared parity fixtures.
 
 Forward-looking labels, sklearn models, survival analysis, anomaly experiments, and notebook visualizations are research-only unless they go through that promotion path.
+
+## Forecasting Research Boundary
+
+Stage 5 adds deterministic forecasting validation to TypeScript and Python.
+
+Allowed tasks:
+
+- reply within 1h, 6h, or 24h from a turn-based reply opportunity;
+- conditional delay bucket among observed responses;
+- next completed adaptive-window activity.
+
+The runtime may show research gate status and sample counts. It must not show live forecasts or response recommendations. Forecasting uses no message content, sentiment, embeddings, LLMs, personality inference, motive inference, remote processing, telemetry, neural nets, React Native, or Expo code.
+
+The current status is not validated for product use.
 
 ## Import Boundary
 
