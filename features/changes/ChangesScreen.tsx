@@ -1,4 +1,4 @@
-import { CalendarDays, GitCompare, MessageCircleReply, RotateCcw, Split, Timer } from "lucide-react"
+import { CalendarDays, FlaskConical, GitCompare, MessageCircleReply, RotateCcw, Split, Timer } from "lucide-react"
 import {
   formatDuration,
   type AdaptiveWindow,
@@ -31,6 +31,7 @@ export function ChangesScreen({ analysis }: { analysis: ChatAnalysis }) {
 
       <ComparisonSection comparison={dynamics.earlyLate} />
       <ComparisonSection comparison={dynamics.recentPrior} />
+      <ForecastingResearchSection analysis={analysis} />
 
       <section>
         <SectionHeading eyebrow="Adaptive windows" title="Export timeline" />
@@ -97,6 +98,54 @@ export function ChangesScreen({ analysis }: { analysis: ChatAnalysis }) {
         </p>
       </section>
     </div>
+  )
+}
+
+function ForecastingResearchSection({ analysis }: { analysis: ChatAnalysis }) {
+  const forecasting = analysis.forecastingResearch
+  const oneHour = forecasting.tasks.replyWithinHorizon["60"]
+  const delay = forecasting.tasks.conditionalReplyDelayBucket
+  const activity = forecasting.tasks.nextWindowActivity
+
+  return (
+    <section>
+      <SectionHeading eyebrow="Research gate" title="Forecasting validation" />
+      <div className="mt-4 rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h3 className="text-sm font-semibold text-slate-900">Not validated for product use</h3>
+            <p className="mt-1 text-xs leading-5 text-slate-500">
+              ChatSense can backtest observable timing and volume signals, but this export does not enable a product
+              forecast or any claim about intent.
+            </p>
+          </div>
+          <FlaskConical className="h-4 w-4 shrink-0 text-emerald-700" />
+        </div>
+        <div className="mt-4 grid grid-cols-2 gap-2 text-xs">
+          <WindowStat label="Reply opportunities" value={formatNumber(forecasting.summary.replyOpportunityCount)} />
+          <WindowStat label="Observed replies" value={formatNumber(forecasting.summary.observedReplyCount)} />
+          <WindowStat label="Activity windows" value={formatNumber(forecasting.summary.completedActivityWindowCount)} />
+          <WindowStat label="Promotion" value={forecasting.summary.productPromotion ? "Passed" : "Blocked"} />
+        </div>
+        <div className="mt-4 space-y-2 text-xs leading-5 text-slate-600">
+          <p>
+            1h reply gate: {gateLabel(oneHour?.promotion.methodGatePassed ?? false)}; evaluated{" "}
+            {formatNumber(oneHour?.metrics.candidate.evaluatedCount ?? 0)} opportunities.
+          </p>
+          <p>
+            Delay-bucket gate: {gateLabel(delay.promotion.methodGatePassed)}; evaluated{" "}
+            {formatNumber(delay.evaluatedCount)} observed responses.
+          </p>
+          <p>
+            Activity gate: {gateLabel(activity.promotion.methodGatePassed)}; evaluated{" "}
+            {formatNumber(activity.evaluatedCount)} completed windows.
+          </p>
+        </div>
+        <p className="mt-3 border-t border-slate-100 pt-3 text-xs leading-5 text-slate-500">
+          {forecasting.safety.noMotive}
+        </p>
+      </div>
+    </section>
   )
 }
 
@@ -230,6 +279,10 @@ function sortChangesForDisplay(changes: MetricChange[]): MetricChange[] {
     if (left.metric !== right.metric) return left.metric.localeCompare(right.metric)
     return (left.sender ?? "").localeCompare(right.sender ?? "")
   })
+}
+
+function gateLabel(passed: boolean): string {
+  return passed ? "method gate passed, product gate still blocked" : "not enough validated evidence"
 }
 
 function WindowStat({ label, value }: { label: string; value: string }) {
