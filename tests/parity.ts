@@ -33,14 +33,22 @@ import {
   WITHIN_ONE_HOUR_MAX_MIN,
   WITHIN_SIX_HOURS_MAX_MIN,
 } from "@chatsense/core/contract"
+import {
+  FORECASTING_CONTRACT_VERSION,
+  FORECASTING_PROMOTION_REPLY_MIN_EVALUATED_OVERALL,
+  FORECASTING_WARM_UP_REPLY_OPPORTUNITIES,
+  REPLY_HORIZONS_MINUTES,
+} from "@chatsense/core/forecasting-contract"
 import { normalizedParityFromText } from "@chatsense/core/parity"
 
 const root = process.cwd()
 const contractPath = path.join(root, "contracts", "behavioral_contract.json")
+const forecastingContractPath = path.join(root, "contracts", "forecasting_contract.json")
 const fixturesDir = path.join(root, "fixtures", "whatsapp")
 const expectedDir = path.join(root, "fixtures", "expected")
 
 const contract = JSON.parse(fs.readFileSync(contractPath, "utf8"))
+const forecastingContract = JSON.parse(fs.readFileSync(forecastingContractPath, "utf8"))
 const thresholds = contract.thresholds_minutes
 const dynamics = contract.relationship_dynamics
 
@@ -82,6 +90,16 @@ assert.equal(NOTABLE_REPLY_LATENCY_ABSOLUTE_MIN, dynamics.notable_change_thresho
 assert.equal(NOTABLE_THREAD_START_SHARE_ABS_PCT, dynamics.notable_change_thresholds.thread_start_share_abs_pct)
 assert.equal(NOTABLE_RECONNECTION_SHARE_ABS_PCT, dynamics.notable_change_thresholds.reconnection_share_abs_pct)
 assert.equal(NOTABLE_FOLLOW_UP_RATE_ABS_PCT, dynamics.notable_change_thresholds.follow_up_rate_abs_pct)
+assert.equal(FORECASTING_CONTRACT_VERSION, forecastingContract.contract_version)
+assert.deepEqual(REPLY_HORIZONS_MINUTES, forecastingContract.tasks.reply_within_horizon.horizons_minutes)
+assert.equal(
+  FORECASTING_WARM_UP_REPLY_OPPORTUNITIES,
+  forecastingContract.evaluation.warm_up_reply_opportunities,
+)
+assert.equal(
+  FORECASTING_PROMOTION_REPLY_MIN_EVALUATED_OVERALL,
+  forecastingContract.promotion_gates.reply_horizon.min_evaluated_overall,
+)
 
 const fixtureNames = fs
   .readdirSync(fixturesDir)
