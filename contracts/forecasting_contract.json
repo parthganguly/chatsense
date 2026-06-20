@@ -1,0 +1,97 @@
+{
+  "contract_version": "1.0",
+  "description": "Research-only forecasting validation contract. This file defines deterministic opportunity construction, censoring, baselines, transparent candidates, evaluation metrics and product-promotion gates. It does not authorize production predictions by itself.",
+  "tasks": {
+    "reply_within_horizon": {
+      "unit": "turn_based_reply_opportunity",
+      "horizons_minutes": [60, 360, 1440],
+      "definition": "At the end of a participant turn, estimate whether a different participant begins a future turn within the specified horizon.",
+      "group_chat_definition": "For group chats this is only time until any different participant next speaks, not a specific reply attribution."
+    },
+    "conditional_reply_delay_bucket": {
+      "unit": "observed_reply_opportunity",
+      "definition": "Among opportunities with an observed future response, estimate the response-delay bucket. This is conditional timing among observed responses, not reply probability.",
+      "buckets": [
+        { "label": "under_1h", "min_minutes": 0, "max_minutes": 60, "max_inclusive": true },
+        { "label": "1h_6h", "min_minutes": 60, "max_minutes": 360, "max_inclusive": true },
+        { "label": "6h_24h", "min_minutes": 360, "max_minutes": 1440, "max_inclusive": true },
+        { "label": "over_24h", "min_minutes": 1440, "max_minutes": null, "max_inclusive": false }
+      ]
+    },
+    "next_window_activity": {
+      "unit": "completed_adaptive_window",
+      "target": "messages_per_active_day",
+      "definition": "Using completed adaptive windows only, estimate the next completed window's messages per active day."
+    },
+    "initiation_reconnection": {
+      "status": "audited_only",
+      "reason": "Not implemented for product validation in Stage 5 because sample sizes and independent observations are likely insufficient."
+    }
+  },
+  "censoring_policy": {
+    "right_censored_if_export_ends_before_horizon": true,
+    "censored_examples_are_negatives": false,
+    "observed_response_after_horizon_is_negative_for_that_horizon": true,
+    "final_open_turn_is_not_automatically_no_reply": true,
+    "historical_export_limitation": "An export can end before the real-world conversation ended; export-end opportunities are treated according to observed export coverage only."
+  },
+  "feature_rules": {
+    "prediction_unit": "conversation_turn_or_completed_window",
+    "features_must_precede_prediction_time": true,
+    "message_text_allowed": false,
+    "sentiment_allowed": false,
+    "embeddings_allowed": false,
+    "llm_allowed": false,
+    "rolling_statistics_exclude_current_target": true,
+    "rolling_statistics_expose_sample_count": true
+  },
+  "evaluation": {
+    "strategy": "prequential_rolling_origin",
+    "warm_up_reply_opportunities": 5,
+    "warm_up_windows": 3,
+    "probability_clip": 0.001,
+    "calibration_bins": 5,
+    "recent_window_size": 20
+  },
+  "smoothing": {
+    "method": "beta_binomial",
+    "alpha": 1,
+    "beta": 1,
+    "min_context_samples": 5,
+    "min_participant_samples": 3
+  },
+  "promotion_gates": {
+    "reply_horizon": {
+      "min_evaluated_overall": 80,
+      "min_evaluated_for_displayed_participant": 30,
+      "min_positive": 15,
+      "min_negative": 15,
+      "min_brier_improvement_over_best_baseline_pct": 5,
+      "max_calibration_error": 0.1,
+      "requires_no_catastrophic_subgroup_failure": true,
+      "requires_bootstrap_not_strongly_inferior": true
+    },
+    "conditional_delay_bucket": {
+      "min_observed_responses": 80,
+      "requires_meaningful_class_support": true,
+      "requires_macro_f1_and_log_loss_beat_best_baseline": true
+    },
+    "activity": {
+      "min_completed_target_windows": 12,
+      "min_mae_improvement_over_best_baseline_pct": 10
+    },
+    "real_world_validity": {
+      "synthetic_fixtures_are_not_sufficient_for_product_validation": true,
+      "requires_private_or_user_supplied_real_exports_for_general_validity": true
+    }
+  },
+  "freshness_policy": {
+    "max_export_age_hours_for_live_forecast": 24,
+    "requires_user_confirms_export_is_current": true
+  },
+  "safety_wording": {
+    "not_validated": "Forecasting is not validated for this export.",
+    "no_motive": "A forecast is an estimate from previous observable behavior, not knowledge of intent, affection, attachment, personality or relationship status.",
+    "synthetic_limit": "Synthetic fixtures validate correctness of the method, not real-world predictive validity."
+  }
+}
