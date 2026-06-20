@@ -25,7 +25,7 @@ def test_cli_writes_report_and_features(tmp_path):
     report = json.loads(report_path.read_text(encoding="utf-8"))
     features = pd.read_parquet(features_path)
 
-    assert report["schema_version"] == "1.0"
+    assert report["schema_version"] == "2.0"
     assert report["conversation"]["message_count"] == len(features)
     assert report["warnings"]
     assert "reply_dynamics" in report["metrics"]

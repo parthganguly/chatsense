@@ -255,6 +255,7 @@ function testUiDoesNotComputeBehavioralAnalytics() {
     path.join(root, "app", "page.tsx"),
     ...collectSourceFiles(path.join(root, "components", "analytics")),
     ...collectSourceFiles(path.join(root, "components", "navigation")),
+    ...collectSourceFiles(path.join(root, "features", "changes")),
     ...collectSourceFiles(path.join(root, "features", "overview")),
     ...collectSourceFiles(path.join(root, "features", "rhythm")),
     ...collectSourceFiles(path.join(root, "features", "people")),

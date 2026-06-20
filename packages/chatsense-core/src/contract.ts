@@ -11,7 +11,7 @@
  * Do not edit a number here without editing the JSON; the test will fail otherwise.
  */
 
-export const CONTRACT_VERSION = "1.0"
+export const CONTRACT_VERSION = "2.0"
 
 // Reply-dynamics thresholds (minutes).
 export const QUICK_REPLY_MAX_MIN = 5
@@ -22,6 +22,35 @@ export const LATE_REPLY_MIN_EXCLUSIVE_MIN = 1440
 
 // Thread / initiation silence threshold (minutes).
 export const THREAD_GAP_MIN = 360
+export const RECONNECTION_GAP_MIN = 1440
+export const FOLLOW_UP_MIN = 15
+
+// Relationship-dynamics adaptive windows.
+export const ADAPTIVE_WINDOW_RULES = [
+  { maxSpanDays: 90, windowDays: 7 },
+  { maxSpanDays: 365, windowDays: 14 },
+  { maxSpanDays: null, windowDays: 30 },
+] as const
+
+// Relationship-dynamics evidence thresholds.
+export const MIN_WINDOW_MESSAGES = 20
+export const MIN_WINDOW_ACTIVE_DAYS = 2
+export const EARLY_LATE_MIN_ELIGIBLE_WINDOWS = 4
+export const EARLY_LATE_WINDOW_COUNT = 2
+export const RECENT_PRIOR_WINDOW_COUNT = 1
+export const MIN_REPLY_LATENCY_PER_PARTICIPANT = 5
+export const MIN_THREAD_STARTS_PER_PERIOD = 3
+export const MIN_RECONNECTIONS_PER_PERIOD = 2
+export const MIN_FOLLOW_UP_RELEVANT_TURNS_PER_PARTICIPANT = 3
+
+// Relationship-dynamics notable-change thresholds.
+export const NOTABLE_MESSAGES_PER_ACTIVE_DAY_RELATIVE_PCT = 30
+export const NOTABLE_TURN_SHARE_ABS_PCT = 10
+export const NOTABLE_REPLY_LATENCY_RELATIVE_MULTIPLIER = 2
+export const NOTABLE_REPLY_LATENCY_ABSOLUTE_MIN = 10
+export const NOTABLE_THREAD_START_SHARE_ABS_PCT = 15
+export const NOTABLE_RECONNECTION_SHARE_ABS_PCT = 20
+export const NOTABLE_FOLLOW_UP_RATE_ABS_PCT = 15
 
 // Canonical runtime silence-anomaly definition (modified z-score, floored).
 export const SILENCE_ANOMALY_SCALE = 1.4826

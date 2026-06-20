@@ -10,6 +10,11 @@ import {
   WITHIN_ONE_HOUR_MAX_MIN,
   WITHIN_SIX_HOURS_MAX_MIN,
 } from "./contract"
+import {
+  analyzeRelationshipDynamics,
+  getDefaultRelationshipDynamics,
+  type RelationshipDynamics,
+} from "./relationship-dynamics"
 
 const MINUTE_MS = 60 * 1000
 const THREAD_GAP_MINUTES = THREAD_GAP_MIN
@@ -89,12 +94,14 @@ export interface ChatAnalysis {
   replyDynamics: ReplyDynamics
   silenceSummary: SilenceSummary
   activity: ActivitySummary
+  relationshipDynamics: RelationshipDynamics
   replyEdges: ReplyEdge[]
   threadCount: number
   insights: ObservableInsight[]
 }
 
 interface ReplyEvent {
+  messageIndex: number
   sender: string
   previousSender: string
   delayMinutes: number
@@ -126,6 +133,7 @@ export function analyzeChat(inputMessages: ChatMessage[]): ChatAnalysis {
   const silenceSummary = analyzeSilences(messages, gaps)
   const participants = analyzeParticipants(messages, senders, replyEvents, threadStarts)
   const replyDynamics = analyzeReplies(replyEvents)
+  const relationshipDynamics = analyzeRelationshipDynamics(messages)
   const replyEdges = buildReplyEdges(replyEvents)
   const overview = buildOverview(messages, senders)
 
@@ -135,9 +143,10 @@ export function analyzeChat(inputMessages: ChatMessage[]): ChatAnalysis {
     replyDynamics,
     silenceSummary,
     activity,
+    relationshipDynamics,
     replyEdges,
     threadCount: threadStarts.filter(Boolean).length,
-    insights: buildInsights(overview, participants, replyDynamics, silenceSummary, activity),
+    insights: buildInsights(overview, participants, replyDynamics, activity, relationshipDynamics),
   }
 }
 
@@ -303,8 +312,8 @@ function buildInsights(
   overview: ConversationOverview,
   participants: ParticipantInsight[],
   replies: ReplyDynamics,
-  silences: SilenceSummary,
   activity: ActivitySummary,
+  relationshipDynamics: RelationshipDynamics,
 ): ObservableInsight[] {
   const insights: ObservableInsight[] = []
   const topParticipant = participants[0]
@@ -323,11 +332,20 @@ function buildInsights(
     })
   }
 
-  if (silences.unusualSilenceCount > 0 && silences.latestUnusualSilence) {
+  if (relationshipDynamics.pauseSummary.longPauseCount > 0) {
+    const longestPause = relationshipDynamics.pauseSummary.longestPauses[0]
+    const reconnectors = relationshipDynamics.pauseSummary.reconnectingParticipants
+      .slice(0, 3)
+      .map((participant) => participant.sender)
+      .join(", ")
     insights.push({
       tone: "watch",
-      title: `${silences.unusualSilenceCount} unusually long silence${silences.unusualSilenceCount === 1 ? "" : "s"} detected`,
-      detail: `The latest unusual gap lasted ${formatDuration(silences.latestUnusualSilence.durationMinutes)}. It is unusual compared with this chat's own rhythm.`,
+      title: `${relationshipDynamics.pauseSummary.longPauseCount} pause${
+        relationshipDynamics.pauseSummary.longPauseCount === 1 ? "" : "s"
+      } of at least 24h`,
+      detail: `The longest observed pause lasted ${formatDuration(longestPause?.durationMinutes ?? null)}.${
+        reconnectors ? ` First messages after 24h pauses came from: ${reconnectors}.` : ""
+      }`,
     })
   }
 
@@ -350,6 +368,11 @@ function buildInsights(
     })
   }
 
+  const changingDynamics = relationshipDynamics.changeInsights.find((insight) => insight.tone === "pattern")
+  if (changingDynamics) {
+    insights.push(changingDynamics)
+  }
+
   return insights.slice(0, 4)
 }
 
@@ -364,6 +387,7 @@ function getReplyEvents(messages: ChatMessage[]): ReplyEvent[] {
     const current = messages[index]
     if (previous.sender !== current.sender) {
       events.push({
+        messageIndex: index,
         sender: current.sender,
         previousSender: previous.sender,
         delayMinutes: gapMinutes(previous, current),
@@ -484,6 +508,7 @@ function getDefaultAnalysis(): ChatAnalysis {
       weekdayCounts: [],
       dailyCounts: [],
     },
+    relationshipDynamics: getDefaultRelationshipDynamics(),
     replyEdges: [],
     threadCount: 0,
     insights: [],

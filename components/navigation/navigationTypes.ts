@@ -1,1 +1,1 @@
-export type AppScreen = "import" | "overview" | "rhythm" | "people"
+export type AppScreen = "import" | "overview" | "changes" | "rhythm" | "people"

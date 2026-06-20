@@ -34,11 +34,27 @@ def test_python_contract_loader_matches_json_file():
     assert contract.WITHIN_ONE_DAY_MAX_MIN == thresholds["within_one_day_max"]
     assert contract.LATE_REPLY_MIN_EXCLUSIVE_MIN == thresholds["late_reply_min_exclusive"]
     assert contract.THREAD_GAP_MIN == thresholds["thread_gap_min"]
+    assert contract.RECONNECTION_GAP_MIN == thresholds["reconnection_gap_min"]
+    assert contract.FOLLOW_UP_MIN == thresholds["follow_up_min"]
     assert contract.SILENCE_ANOMALY_SCALE == raw["silence_anomaly"]["scale"]
     assert contract.SILENCE_ANOMALY_K == raw["silence_anomaly"]["k"]
     assert contract.SILENCE_ANOMALY_FLOOR_MIN == thresholds["thread_gap_min"]
     assert contract.DATE_ORDER_DEFAULT == raw["date_order_policy"]["default"]
     assert contract.TWO_DIGIT_YEAR_PIVOT == raw["date_order_policy"]["two_digit_year_pivot"]
+    dynamics = raw["relationship_dynamics"]
+    assert contract.CONTRACT_VERSION == raw["contract_version"]
+    assert contract.MIN_WINDOW_MESSAGES == dynamics["window_eligibility"]["min_messages"]
+    assert contract.MIN_WINDOW_ACTIVE_DAYS == dynamics["window_eligibility"]["min_active_days"]
+    assert contract.EARLY_LATE_MIN_ELIGIBLE_WINDOWS == dynamics["comparison_periods"]["early_late_min_eligible_windows"]
+    assert contract.MIN_REPLY_LATENCY_PER_PARTICIPANT == dynamics["sample_minimums"]["reply_latency_per_participant"]
+    assert (
+        contract.NOTABLE_REPLY_LATENCY_RELATIVE_MULTIPLIER
+        == dynamics["notable_change_thresholds"]["reply_latency_relative_multiplier"]
+    )
+    assert (
+        contract.NOTABLE_REPLY_LATENCY_ABSOLUTE_MIN
+        == dynamics["notable_change_thresholds"]["reply_latency_absolute_min"]
+    )
 
 
 def test_whole_export_date_order_inference_follows_contract():
@@ -89,7 +105,7 @@ def test_research_features_may_contain_leakage_safe_future_labels():
 def test_python_parity_matches_all_committed_expected_fixtures():
     fixture_paths = sorted(FIXTURES_DIR.glob("*.txt"))
 
-    assert len(fixture_paths) == 9
+    assert len(fixture_paths) >= 21
     for fixture_path in fixture_paths:
         expected_path = EXPECTED_DIR / f"{fixture_path.stem}.json"
         expected = json.loads(expected_path.read_text(encoding="utf-8"))

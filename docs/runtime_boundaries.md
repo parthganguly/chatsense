@@ -9,6 +9,30 @@ ChatSense has one shipped behavioral engine and one research/reference implement
 
 The mobile app remains local-only: imported chats are processed in memory, not uploaded, not persisted by the app, and not analyzed by an LLM.
 
+## Relationship Dynamics Boundary
+
+Stage 4 adds descriptive relationship-dynamics summaries to `@chatsense/core`.
+These summaries split the exported message history into adaptive calendar
+windows, build conversational turns, and compare eligible early/late and
+recent/prior periods with metric-specific sample checks. They summarize
+observable changes in:
+
+- messages per active day;
+- participant turn share;
+- median sender-switch reply timing;
+- thread-start share;
+- reconnection share after 24-hour pauses;
+- follow-up-before-reply rate.
+
+Notable-change thresholds are contract-owned: 30% for messages per active day,
+10 percentage points for turn share, 15 percentage points for thread-start
+share and follow-up rate, 20 percentage points for reconnection share, and for
+reply latency both a 2x ratio and a 10-minute absolute change.
+
+These comparisons are not predictions and do not inspect message meaning. They
+must not be described as proof of motive, affection, attachment, personality,
+mental health, relationship quality, or relationship status.
+
 ## Promotion Rule
 
 New behavioral definitions should start in Python when they need pandas, notebooks, or research iteration. A metric is only considered shipped when it is:

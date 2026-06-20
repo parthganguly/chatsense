@@ -33,14 +33,15 @@ export function OverviewScreen({ analysis }: { analysis: ChatAnalysis }) {
       </section>
 
       <section>
-        <SectionHeading eyebrow="Reply probability" title="How quickly replies arrive" />
+        <SectionHeading eyebrow="Historical reply timing" title="Observed sender switches" />
         <div className="mt-4 space-y-3">
           <ProgressRow label="Within 1 hour" value={replyDynamics.withinOneHourRate} />
           <ProgressRow label="Within 6 hours" value={replyDynamics.withinSixHoursRate} />
           <ProgressRow label="Within 24 hours" value={replyDynamics.withinDayRate} />
         </div>
         <p className="mt-3 text-xs leading-5 text-slate-500">
-          Based on {formatNumber(replyDynamics.replyCount)} sender-switch replies in the exported history.
+          Based on {formatNumber(replyDynamics.replyCount)} observed sender-switch replies in this export. This is
+          historical timing, not a prediction of future replies.
         </p>
       </section>
 

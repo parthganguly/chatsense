@@ -17,3 +17,17 @@ export {
   type ReplyEdge,
   type SilenceSummary,
 } from "./chat-analyzer"
+export {
+  type AdaptiveWindow,
+  type ChangeDirection,
+  type ComparisonKind,
+  type ComparisonPeriod,
+  type ConversationTurn,
+  type DynamicsComparison,
+  type EvidenceState,
+  type MetricChange,
+  type MetricKey,
+  type ParticipantDynamicsSummary,
+  type PauseReconnectionSummary,
+  type RelationshipDynamics,
+} from "./relationship-dynamics"

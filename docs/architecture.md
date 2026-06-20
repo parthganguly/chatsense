@@ -32,6 +32,7 @@ Shared contracts and fixtures
 - behavioral calculations;
 - shared analysis types;
 - deterministic behavioral insights;
+- deterministic relationship-dynamics turns, windows, and evidence-safe comparisons;
 - contract constants;
 - TypeScript parity normalization.
 
@@ -50,6 +51,11 @@ The Next.js/Capacitor shell owns:
 
 Screens render `ChatAnalysis` values from `@chatsense/core`. They must not duplicate behavioral calculations.
 
+Stage 4 adds a `Changes` screen that renders precomputed adaptive-window,
+turn-taking, reconnection, and evidence-safe comparison summaries from
+`ChatAnalysis.relationshipDynamics`. The screen does not run sentiment analysis,
+prediction, coaching, or any content interpretation.
+
 ## Python Research
 
 Python remains local research/reference only. It is useful for pandas pipelines, parquet features, notebooks, classical ML experiments, and cross-language parity. Python is not bundled into Android.
@@ -60,7 +66,7 @@ Shared contracts and fixtures are the guardrails:
 
 - `contracts/behavioral_contract.json` defines shared behavioral constants and definitions.
 - `contracts/report.schema.json` defines the Python report contract.
-- `fixtures/whatsapp` and `fixtures/expected` preserve nine deterministic parity fixtures.
+- `fixtures/whatsapp` and `fixtures/expected` preserve the base fixtures and Stage 4 synthetic fixture matrix.
 - `npm run test:parity` verifies TypeScript behavior against expected outputs.
 - `python -m pytest` verifies the Python reference and contract parity.
 

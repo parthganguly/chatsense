@@ -1,0 +1,184 @@
+{
+  "message_count": 6,
+  "participant_count": 2,
+  "participants": [
+    {
+      "sender": "Asha",
+      "message_count": 4,
+      "word_count": 15,
+      "message_share_pct": 67
+    },
+    {
+      "sender": "Ravi",
+      "message_count": 2,
+      "word_count": 12,
+      "message_share_pct": 33
+    }
+  ],
+  "reply_count": 1,
+  "thread_count": 3,
+  "peak_hour": 9,
+  "peak_weekday": "Monday",
+  "quick_reply_rate_pct": 0,
+  "within_one_hour_rate_pct": 0,
+  "within_six_hours_rate_pct": 0,
+  "within_one_day_rate_pct": 100,
+  "avg_reply_delay_min": 1440,
+  "median_reply_delay_min": 1440,
+  "longest_silence_min": 1440,
+  "unusual_silence_count": 1,
+  "reply_edges": [
+    {
+      "from": "Ravi",
+      "to": "Asha",
+      "count": 1
+    }
+  ],
+  "relationship_dynamics": {
+    "turn_count": 3,
+    "turns": [
+      {
+        "sender": "Asha",
+        "message_count": 3,
+        "word_count": 10,
+        "duration_min": 29,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 5,
+        "duration_min": 0,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 2,
+        "word_count": 12,
+        "duration_min": 15,
+        "starts_thread": true,
+        "open_at_export_end": true
+      }
+    ],
+    "participants": [
+      {
+        "sender": "Asha",
+        "turn_count": 2,
+        "turn_share_pct": 67,
+        "median_reply_delay_min": null,
+        "reply_sample_count": 0,
+        "thread_starts": 2,
+        "reconnections": 0,
+        "follow_ups": 1,
+        "follow_up_relevant_turns": 1,
+        "follow_up_rate_pct": 100
+      },
+      {
+        "sender": "Ravi",
+        "turn_count": 1,
+        "turn_share_pct": 33,
+        "median_reply_delay_min": 1440,
+        "reply_sample_count": 1,
+        "thread_starts": 1,
+        "reconnections": 1,
+        "follow_ups": 1,
+        "follow_up_relevant_turns": 1,
+        "follow_up_rate_pct": 100
+      }
+    ],
+    "pause_summary": {
+      "long_pause_count": 1,
+      "latest_gap_min": 15,
+      "latest_gap_percentile": 50,
+      "median_inter_message_gap_min": 15,
+      "longest_pauses": [
+        {
+          "started_at": "2026-06-01T15:29:00",
+          "ended_at": "2026-06-02T15:29:00",
+          "duration_min": 1440,
+          "reconnecting_sender": "Ravi"
+        },
+        {
+          "started_at": "2026-06-01T09:29:00",
+          "ended_at": "2026-06-01T15:29:00",
+          "duration_min": 360,
+          "reconnecting_sender": "Asha"
+        },
+        {
+          "started_at": "2026-06-01T09:14:00",
+          "ended_at": "2026-06-01T09:29:00",
+          "duration_min": 15,
+          "reconnecting_sender": "Asha"
+        },
+        {
+          "started_at": "2026-06-02T15:29:00",
+          "ended_at": "2026-06-02T15:44:00",
+          "duration_min": 15,
+          "reconnecting_sender": "Ravi"
+        },
+        {
+          "started_at": "2026-06-01T09:00:00",
+          "ended_at": "2026-06-01T09:14:00",
+          "duration_min": 14,
+          "reconnecting_sender": "Asha"
+        }
+      ],
+      "reconnecting_participants": [
+        {
+          "sender": "Ravi",
+          "count": 1,
+          "share_pct": 100
+        }
+      ]
+    },
+    "adaptive_windows": [
+      {
+        "start": "2026-06-01",
+        "end": "2026-06-02",
+        "partial": true,
+        "eligible": false,
+        "message_count": 6,
+        "active_days": 2,
+        "turn_count": 3,
+        "thread_count": 3,
+        "reconnection_count": 1
+      }
+    ],
+    "early_late": {
+      "available": false,
+      "unavailable_reason": "Requires 4 eligible windows; found 0.",
+      "earlier_period": {
+        "start": null,
+        "end": null,
+        "message_count": 0,
+        "active_days": 0
+      },
+      "later_period": {
+        "start": null,
+        "end": null,
+        "message_count": 0,
+        "active_days": 0
+      },
+      "changes": []
+    },
+    "recent_prior": {
+      "available": false,
+      "unavailable_reason": "Requires 2 eligible windows; found 0.",
+      "earlier_period": {
+        "start": null,
+        "end": null,
+        "message_count": 0,
+        "active_days": 0
+      },
+      "later_period": {
+        "start": null,
+        "end": null,
+        "message_count": 0,
+        "active_days": 0
+      },
+      "changes": []
+    }
+  }
+}

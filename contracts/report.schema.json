@@ -8,7 +8,7 @@
   "properties": {
     "schema_version": {
       "type": "string",
-      "const": "1.0"
+      "const": "2.0"
     },
     "conversation": {
       "type": "object",
@@ -56,7 +56,14 @@
     "metrics": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["reply_dynamics", "silence_gaps", "sender_balance", "initiation", "activity"],
+      "required": [
+        "reply_dynamics",
+        "silence_gaps",
+        "sender_balance",
+        "initiation",
+        "activity",
+        "relationship_dynamics"
+      ],
       "properties": {
         "reply_dynamics": {
           "type": "object",
@@ -147,6 +154,73 @@
             "peak_weekday": { "type": ["integer", "null"], "minimum": 0, "maximum": 6 },
             "active_day_ratio": { "type": "number", "minimum": 0, "maximum": 1 }
           }
+        },
+        "relationship_dynamics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "window_size_days",
+            "turns",
+            "adaptive_windows",
+            "participant_summaries",
+            "pause_summary",
+            "early_late",
+            "recent_prior",
+            "notable_changes",
+            "change_insights"
+          ],
+          "properties": {
+            "window_size_days": { "type": "integer", "minimum": 1 },
+            "turns": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/relationship_turn" }
+            },
+            "adaptive_windows": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/adaptive_window" }
+            },
+            "participant_summaries": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/participant_dynamics_summary" }
+            },
+            "pause_summary": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "long_pause_count",
+                "latest_gap_minutes",
+                "latest_gap_percentile",
+                "median_inter_message_gap_minutes",
+                "longest_pauses",
+                "reconnecting_participants"
+              ],
+              "properties": {
+                "long_pause_count": { "type": "integer", "minimum": 0 },
+                "latest_gap_minutes": { "type": ["number", "null"], "minimum": 0 },
+                "latest_gap_percentile": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+                "median_inter_message_gap_minutes": { "type": ["number", "null"], "minimum": 0 },
+                "longest_pauses": {
+                  "type": "array",
+                  "maxItems": 5,
+                  "items": { "$ref": "#/$defs/pause_entry" }
+                },
+                "reconnecting_participants": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/reconnecting_participant" }
+                }
+              }
+            },
+            "early_late": { "$ref": "#/$defs/dynamics_comparison" },
+            "recent_prior": { "$ref": "#/$defs/dynamics_comparison" },
+            "notable_changes": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/metric_change" }
+            },
+            "change_insights": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/observable_insight" }
+            }
+          }
         }
       }
     },
@@ -176,6 +250,260 @@
       "type": "array",
       "minItems": 3,
       "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "relationship_turn": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sender",
+        "start",
+        "end",
+        "start_message_index",
+        "end_message_index",
+        "message_count",
+        "word_count",
+        "duration_minutes",
+        "starts_thread",
+        "open_at_export_end"
+      ],
+      "properties": {
+        "id": { "type": "integer", "minimum": 0 },
+        "sender": { "type": "string" },
+        "start": { "type": "string" },
+        "end": { "type": "string" },
+        "start_message_index": { "type": "integer", "minimum": 0 },
+        "end_message_index": { "type": "integer", "minimum": 0 },
+        "message_count": { "type": "integer", "minimum": 0 },
+        "word_count": { "type": "integer", "minimum": 0 },
+        "duration_minutes": { "type": "number", "minimum": 0 },
+        "starts_thread": { "type": "boolean" },
+        "open_at_export_end": { "type": "boolean" }
+      }
+    },
+    "participant_dynamics_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sender",
+        "message_count",
+        "turn_count",
+        "turn_share",
+        "messages_per_turn",
+        "words_per_turn",
+        "median_turn_message_count",
+        "median_reply_minutes",
+        "reply_sample_count",
+        "thread_starts",
+        "thread_start_share",
+        "reconnection_count",
+        "reconnection_share",
+        "median_subsequent_thread_duration_minutes",
+        "median_subsequent_thread_turn_count",
+        "follow_up_count",
+        "follow_up_relevant_turn_count",
+        "follow_up_rate",
+        "median_follow_up_delay_minutes"
+      ],
+      "properties": {
+        "sender": { "type": "string" },
+        "message_count": { "type": "integer", "minimum": 0 },
+        "turn_count": { "type": "integer", "minimum": 0 },
+        "turn_share": { "type": "number", "minimum": 0, "maximum": 100 },
+        "messages_per_turn": { "type": ["number", "null"], "minimum": 0 },
+        "words_per_turn": { "type": ["number", "null"], "minimum": 0 },
+        "median_turn_message_count": { "type": ["number", "null"], "minimum": 0 },
+        "median_reply_minutes": { "type": ["number", "null"], "minimum": 0 },
+        "reply_sample_count": { "type": "integer", "minimum": 0 },
+        "thread_starts": { "type": "integer", "minimum": 0 },
+        "thread_start_share": { "type": "number", "minimum": 0, "maximum": 100 },
+        "reconnection_count": { "type": "integer", "minimum": 0 },
+        "reconnection_share": { "type": "number", "minimum": 0, "maximum": 100 },
+        "median_subsequent_thread_duration_minutes": { "type": ["number", "null"], "minimum": 0 },
+        "median_subsequent_thread_turn_count": { "type": ["number", "null"], "minimum": 0 },
+        "follow_up_count": { "type": "integer", "minimum": 0 },
+        "follow_up_relevant_turn_count": { "type": "integer", "minimum": 0 },
+        "follow_up_rate": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+        "median_follow_up_delay_minutes": { "type": ["number", "null"], "minimum": 0 }
+      }
+    },
+    "adaptive_window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "index",
+        "start",
+        "end",
+        "partial",
+        "eligible",
+        "message_count",
+        "active_days",
+        "turn_count",
+        "thread_count",
+        "reconnection_count",
+        "participants"
+      ],
+      "properties": {
+        "index": { "type": "integer", "minimum": 0 },
+        "start": { "type": "string" },
+        "end": { "type": "string" },
+        "partial": { "type": "boolean" },
+        "eligible": { "type": "boolean" },
+        "message_count": { "type": "integer", "minimum": 0 },
+        "active_days": { "type": "integer", "minimum": 0 },
+        "turn_count": { "type": "integer", "minimum": 0 },
+        "thread_count": { "type": "integer", "minimum": 0 },
+        "reconnection_count": { "type": "integer", "minimum": 0 },
+        "participants": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/participant_dynamics_summary" }
+        }
+      }
+    },
+    "pause_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["started_at", "ended_at", "duration_minutes", "reconnecting_sender"],
+      "properties": {
+        "started_at": { "type": "string" },
+        "ended_at": { "type": "string" },
+        "duration_minutes": { "type": "number", "minimum": 0 },
+        "reconnecting_sender": { "type": ["string", "null"] }
+      }
+    },
+    "reconnecting_participant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sender", "count", "share"],
+      "properties": {
+        "sender": { "type": "string" },
+        "count": { "type": "integer", "minimum": 0 },
+        "share": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "comparison_period": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "start",
+        "end",
+        "window_indices",
+        "message_count",
+        "active_days",
+        "turn_count",
+        "thread_count",
+        "reconnection_count"
+      ],
+      "properties": {
+        "label": { "type": "string" },
+        "start": { "type": ["string", "null"] },
+        "end": { "type": ["string", "null"] },
+        "window_indices": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 0 }
+        },
+        "message_count": { "type": "integer", "minimum": 0 },
+        "active_days": { "type": "integer", "minimum": 0 },
+        "turn_count": { "type": "integer", "minimum": 0 },
+        "thread_count": { "type": "integer", "minimum": 0 },
+        "reconnection_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "metric_period_label": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "start", "end"],
+      "properties": {
+        "label": { "type": "string" },
+        "start": { "type": ["string", "null"] },
+        "end": { "type": ["string", "null"] }
+      }
+    },
+    "metric_change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metric",
+        "label",
+        "sender",
+        "earlier_value",
+        "later_value",
+        "absolute_difference",
+        "relative_difference_pct",
+        "earlier_period",
+        "later_period",
+        "earlier_sample_size",
+        "later_sample_size",
+        "direction",
+        "evidence_state",
+        "notable",
+        "explanation",
+        "guardrail"
+      ],
+      "properties": {
+        "metric": {
+          "type": "string",
+          "enum": [
+            "messages_per_active_day",
+            "turn_share",
+            "median_reply_minutes",
+            "thread_start_share",
+            "reconnection_share",
+            "follow_up_rate"
+          ]
+        },
+        "label": { "type": "string" },
+        "sender": { "type": ["string", "null"] },
+        "earlier_value": { "type": ["number", "string", "null"] },
+        "later_value": { "type": ["number", "string", "null"] },
+        "absolute_difference": { "type": ["number", "null"] },
+        "relative_difference_pct": { "type": ["number", "null"] },
+        "earlier_period": { "$ref": "#/$defs/metric_period_label" },
+        "later_period": { "$ref": "#/$defs/metric_period_label" },
+        "earlier_sample_size": { "type": "integer", "minimum": 0 },
+        "later_sample_size": { "type": "integer", "minimum": 0 },
+        "direction": {
+          "type": "string",
+          "enum": ["increased", "decreased", "stable", "faster", "slower", "shifted", "unavailable"]
+        },
+        "evidence_state": {
+          "type": "string",
+          "enum": ["sufficient", "insufficient", "unavailable"]
+        },
+        "notable": { "type": "boolean" },
+        "explanation": { "type": "string" },
+        "guardrail": { "type": "string" }
+      }
+    },
+    "observable_insight": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tone", "title", "detail"],
+      "properties": {
+        "tone": { "type": "string", "enum": ["watch", "pattern", "context"] },
+        "title": { "type": "string" },
+        "detail": { "type": "string" }
+      }
+    },
+    "dynamics_comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "label", "available", "unavailable_reason", "earlier_period", "later_period", "changes"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["early_late", "recent_prior"] },
+        "label": { "type": "string" },
+        "available": { "type": "boolean" },
+        "unavailable_reason": { "type": ["string", "null"] },
+        "earlier_period": { "$ref": "#/$defs/comparison_period" },
+        "later_period": { "$ref": "#/$defs/comparison_period" },
+        "changes": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/metric_change" }
+        }
+      }
     }
   }
 }

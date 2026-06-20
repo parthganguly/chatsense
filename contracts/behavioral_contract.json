@@ -1,5 +1,5 @@
 {
-  "contract_version": "1.0",
+  "contract_version": "2.0",
   "description": "Canonical behavioral definitions and constants shared by the TypeScript Android runtime (@chatsense/core) and the Python research/reference package (python/chatsense_ml/). This JSON is the single source of truth. Both languages load it through a thin constants layer (packages/chatsense-core/src/contract.ts and chatsense_ml/contract.py) whose values are proven equal to this file by parity tests. The Android app does NOT bundle Python; this file is the only thing both implementations share.",
   "thresholds_minutes": {
     "quick_reply_max": 5,
@@ -7,7 +7,53 @@
     "within_six_hours_max": 360,
     "within_one_day_max": 1440,
     "late_reply_min_exclusive": 1440,
-    "thread_gap_min": 360
+    "thread_gap_min": 360,
+    "reconnection_gap_min": 1440,
+    "follow_up_min": 15
+  },
+  "relationship_dynamics": {
+    "adaptive_windows": [
+      {
+        "max_span_days": 90,
+        "window_days": 7
+      },
+      {
+        "max_span_days": 365,
+        "window_days": 14
+      },
+      {
+        "max_span_days": null,
+        "window_days": 30
+      }
+    ],
+    "window_eligibility": {
+      "min_messages": 20,
+      "min_active_days": 2
+    },
+    "comparison_periods": {
+      "early_late_min_eligible_windows": 4,
+      "early_late_window_count": 2,
+      "recent_prior_window_count": 1
+    },
+    "sample_minimums": {
+      "reply_latency_per_participant": 5,
+      "thread_starts_per_period": 3,
+      "reconnections_per_period": 2,
+      "follow_up_relevant_turns_per_participant": 3
+    },
+    "notable_change_thresholds": {
+      "messages_per_active_day_relative_pct": 30,
+      "turn_share_abs_pct": 10,
+      "reply_latency_relative_multiplier": 2,
+      "reply_latency_absolute_min": 10,
+      "thread_start_share_abs_pct": 15,
+      "reconnection_share_abs_pct": 20,
+      "follow_up_rate_abs_pct": 15
+    },
+    "turn_definition": "A new turn begins at the first valid message, when the sender changes, or when the gap reaches thread_gap_min.",
+    "reconnection_definition": "A reconnection is the first message after a gap greater than or equal to reconnection_gap_min.",
+    "follow_up_definition": "A follow-up before reply occurs when the same participant sends again before anyone else responds, at least follow_up_min minutes have passed, and the gap remains below thread_gap_min.",
+    "notes": "Relationship dynamics are deterministic descriptive summaries of exported timing and volume behavior. They do not inspect message meaning and must not be represented as proof of motive, affection, attachment, personality, mental health, relationship quality, or relationship status. Reconnection-share changes use a documented 20 percentage-point notable threshold because reconnections are sparse by construction and already require at least two reconnection events in each compared period."
   },
   "reply_event": {
     "definition": "sender_differs_from_previous_message",
@@ -60,7 +106,13 @@
       "avg_reply_delay_min",
       "median_reply_delay_min",
       "longest_silence_min",
-      "unusual_silence_count"
+      "unusual_silence_count",
+      "relationship_dynamics.turns",
+      "relationship_dynamics.participants",
+      "relationship_dynamics.pause_summary",
+      "relationship_dynamics.adaptive_windows",
+      "relationship_dynamics.early_late",
+      "relationship_dynamics.recent_prior"
     ],
     "float_tolerance_metrics": {},
     "rounding": {

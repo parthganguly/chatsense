@@ -1,0 +1,171 @@
+{
+  "message_count": 4,
+  "participant_count": 2,
+  "participants": [
+    {
+      "sender": "Asha",
+      "message_count": 3,
+      "word_count": 6,
+      "message_share_pct": 75
+    },
+    {
+      "sender": "Ravi",
+      "message_count": 1,
+      "word_count": 1,
+      "message_share_pct": 25
+    }
+  ],
+  "reply_count": 2,
+  "thread_count": 1,
+  "peak_hour": 9,
+  "peak_weekday": "Monday",
+  "quick_reply_rate_pct": 0,
+  "within_one_hour_rate_pct": 100,
+  "within_six_hours_rate_pct": 100,
+  "within_one_day_rate_pct": 100,
+  "avg_reply_delay_min": 10,
+  "median_reply_delay_min": 10,
+  "longest_silence_min": 15,
+  "unusual_silence_count": 0,
+  "reply_edges": [
+    {
+      "from": "Asha",
+      "to": "Ravi",
+      "count": 1
+    },
+    {
+      "from": "Ravi",
+      "to": "Asha",
+      "count": 1
+    }
+  ],
+  "relationship_dynamics": {
+    "turn_count": 3,
+    "turns": [
+      {
+        "sender": "Asha",
+        "message_count": 1,
+        "word_count": 1,
+        "duration_min": 0,
+        "starts_thread": true,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Ravi",
+        "message_count": 1,
+        "word_count": 1,
+        "duration_min": 0,
+        "starts_thread": false,
+        "open_at_export_end": false
+      },
+      {
+        "sender": "Asha",
+        "message_count": 2,
+        "word_count": 5,
+        "duration_min": 15,
+        "starts_thread": false,
+        "open_at_export_end": true
+      }
+    ],
+    "participants": [
+      {
+        "sender": "Asha",
+        "turn_count": 2,
+        "turn_share_pct": 67,
+        "median_reply_delay_min": 15,
+        "reply_sample_count": 1,
+        "thread_starts": 1,
+        "reconnections": 0,
+        "follow_ups": 1,
+        "follow_up_relevant_turns": 2,
+        "follow_up_rate_pct": 50
+      },
+      {
+        "sender": "Ravi",
+        "turn_count": 1,
+        "turn_share_pct": 33,
+        "median_reply_delay_min": 5,
+        "reply_sample_count": 1,
+        "thread_starts": 0,
+        "reconnections": 0,
+        "follow_ups": 0,
+        "follow_up_relevant_turns": 1,
+        "follow_up_rate_pct": 0
+      }
+    ],
+    "pause_summary": {
+      "long_pause_count": 0,
+      "latest_gap_min": 15,
+      "latest_gap_percentile": 100,
+      "median_inter_message_gap_min": 15,
+      "longest_pauses": [
+        {
+          "started_at": "2026-07-06T09:05:00",
+          "ended_at": "2026-07-06T09:20:00",
+          "duration_min": 15,
+          "reconnecting_sender": "Asha"
+        },
+        {
+          "started_at": "2026-07-06T09:20:00",
+          "ended_at": "2026-07-06T09:35:00",
+          "duration_min": 15,
+          "reconnecting_sender": "Asha"
+        },
+        {
+          "started_at": "2026-07-06T09:00:00",
+          "ended_at": "2026-07-06T09:05:00",
+          "duration_min": 5,
+          "reconnecting_sender": "Ravi"
+        }
+      ],
+      "reconnecting_participants": []
+    },
+    "adaptive_windows": [
+      {
+        "start": "2026-07-06",
+        "end": "2026-07-06",
+        "partial": true,
+        "eligible": false,
+        "message_count": 4,
+        "active_days": 1,
+        "turn_count": 3,
+        "thread_count": 1,
+        "reconnection_count": 0
+      }
+    ],
+    "early_late": {
+      "available": false,
+      "unavailable_reason": "Requires 4 eligible windows; found 0.",
+      "earlier_period": {
+        "start": null,
+        "end": null,
+        "message_count": 0,
+        "active_days": 0
+      },
+      "later_period": {
+        "start": null,
+        "end": null,
+        "message_count": 0,
+        "active_days": 0
+      },
+      "changes": []
+    },
+    "recent_prior": {
+      "available": false,
+      "unavailable_reason": "Requires 2 eligible windows; found 0.",
+      "earlier_period": {
+        "start": null,
+        "end": null,
+        "message_count": 0,
+        "active_days": 0
+      },
+      "later_period": {
+        "start": null,
+        "end": null,
+        "message_count": 0,
+        "active_days": 0
+      },
+      "changes": []
+    }
+  }
+}

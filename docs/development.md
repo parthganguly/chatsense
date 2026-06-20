@@ -30,7 +30,7 @@ npm run check
 
 `npm run test` runs focused TypeScript boundary tests for imports, ZIP/TXT handling, Android native shared-file conversion, pending/warm share dedupe, release cleanup, package-boundary imports, and UI/core separation.
 
-`npm run test:parity` compares the TypeScript runtime with the nine shared expected parity outputs.
+`npm run test:parity` compares the TypeScript runtime with the 21 shared expected parity outputs.
 
 ## Python Reference
 
@@ -73,5 +73,5 @@ For physical device share-sheet verification, see `docs/android-share-import-tes
 - Core logic goes in `packages/chatsense-core/src`.
 - Import orchestration goes in `features/import`.
 - Android shared-file handling is split between `platform/android` for the TypeScript adapter and `android/app/src/main/java/com/thegreatparthicle/chatsense/plugins` for the native Capacitor plugin.
-- Presentation-only screens go in `features/overview`, `features/rhythm`, and `features/people`.
+- Presentation-only screens go in `features/overview`, `features/rhythm`, `features/people`, and `features/changes`.
 - Reusable presentation components go in `components/analytics` and `components/navigation`.
