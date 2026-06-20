@@ -30,6 +30,7 @@
   },
   "censoring_policy": {
     "right_censored_if_export_ends_before_horizon": true,
+    "superseded_by_same_sender_new_thread_before_horizon_is_censored": true,
     "censored_examples_are_negatives": false,
     "observed_response_after_horizon_is_negative_for_that_horizon": true,
     "final_open_turn_is_not_automatically_no_reply": true,
@@ -51,7 +52,17 @@
     "warm_up_windows": 3,
     "probability_clip": 0.001,
     "calibration_bins": 5,
-    "recent_window_size": 20
+    "recent_window_size": 20,
+    "bootstrap": {
+      "seed": 1729,
+      "resample_count": 200,
+      "confidence_level": 0.9,
+      "strongly_inferior_margin": 0
+    },
+    "subgroup_checks": {
+      "min_evaluated": 10,
+      "catastrophic_brier_degradation": 0.1
+    }
   },
   "smoothing": {
     "method": "beta_binomial",

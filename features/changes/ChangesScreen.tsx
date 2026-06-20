@@ -106,6 +106,8 @@ function ForecastingResearchSection({ analysis }: { analysis: ChatAnalysis }) {
   const oneHour = forecasting.tasks.replyWithinHorizon["60"]
   const delay = forecasting.tasks.conditionalReplyDelayBucket
   const activity = forecasting.tasks.nextWindowActivity
+  const primaryStatus = forecastStatus(oneHour?.promotion, oneHour?.metrics.candidate.evaluatedCount ?? 0)
+  const primaryReason = oneHour?.promotion.reasons[0] ?? forecasting.summary.reasons[0]
 
   return (
     <section>
@@ -113,10 +115,9 @@ function ForecastingResearchSection({ analysis }: { analysis: ChatAnalysis }) {
       <div className="mt-4 rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <h3 className="text-sm font-semibold text-slate-900">Not validated for product use</h3>
+            <h3 className="text-sm font-semibold text-slate-900">{primaryStatus}</h3>
             <p className="mt-1 text-xs leading-5 text-slate-500">
-              ChatSense can backtest observable timing and volume signals, but this export does not enable a product
-              forecast or any claim about intent.
+              {primaryReason} Product forecasting remains blocked and this does not support any claim about intent.
             </p>
           </div>
           <FlaskConical className="h-4 w-4 shrink-0 text-emerald-700" />
@@ -129,15 +130,15 @@ function ForecastingResearchSection({ analysis }: { analysis: ChatAnalysis }) {
         </div>
         <div className="mt-4 space-y-2 text-xs leading-5 text-slate-600">
           <p>
-            1h reply gate: {gateLabel(oneHour?.promotion.methodGatePassed ?? false)}; evaluated{" "}
+            1h reply gate: {gateLabel(oneHour?.promotion, oneHour?.metrics.candidate.evaluatedCount ?? 0)}; evaluated{" "}
             {formatNumber(oneHour?.metrics.candidate.evaluatedCount ?? 0)} opportunities.
           </p>
           <p>
-            Delay-bucket gate: {gateLabel(delay.promotion.methodGatePassed)}; evaluated{" "}
+            Delay-bucket gate: {gateLabel(delay.promotion, delay.evaluatedCount)}; evaluated{" "}
             {formatNumber(delay.evaluatedCount)} observed responses.
           </p>
           <p>
-            Activity gate: {gateLabel(activity.promotion.methodGatePassed)}; evaluated{" "}
+            Activity gate: {gateLabel(activity.promotion, activity.evaluatedCount)}; evaluated{" "}
             {formatNumber(activity.evaluatedCount)} completed windows.
           </p>
         </div>
@@ -281,8 +282,29 @@ function sortChangesForDisplay(changes: MetricChange[]): MetricChange[] {
   })
 }
 
-function gateLabel(passed: boolean): string {
-  return passed ? "method gate passed, product gate still blocked" : "not enough validated evidence"
+function gateLabel(
+  promotion: { methodGatePassed: boolean; promoted: boolean; reasons: string[] } | undefined,
+  evaluatedCount: number,
+): string {
+  if (!promotion || evaluatedCount === 0 || promotion.reasons.some((reason) => reason.startsWith("Requires "))) {
+    return "insufficient data"
+  }
+  if (!promotion.methodGatePassed) return "method gate failed"
+  if (!promotion.promoted) return "method passed historically; product blocked"
+  return "product gate passed"
+}
+
+function forecastStatus(
+  promotion: { methodGatePassed: boolean; promoted: boolean; reasons: string[] } | undefined,
+  evaluatedCount: number,
+): string {
+  const label = gateLabel(promotion, evaluatedCount)
+  if (label === "insufficient data") return "Insufficient data"
+  if (label === "method gate failed") return "Method gate failed"
+  if (label === "method passed historically; product blocked") {
+    return "Method gate passed historically, product blocked"
+  }
+  return "Product gate passed"
 }
 
 function WindowStat({ label, value }: { label: string; value: string }) {

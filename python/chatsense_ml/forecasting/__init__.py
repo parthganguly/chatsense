@@ -6,6 +6,7 @@ It is not used by the Android runtime.
 """
 
 from chatsense_ml.forecasting.evaluation import (
+    assert_no_forecasting_leakage,
     assess_reply_horizon_promotion,
     build_reply_opportunities,
     evaluate_forecasting_research,
@@ -13,6 +14,7 @@ from chatsense_ml.forecasting.evaluation import (
 )
 
 __all__ = [
+    "assert_no_forecasting_leakage",
     "assess_reply_horizon_promotion",
     "build_reply_opportunities",
     "evaluate_forecasting_research",
