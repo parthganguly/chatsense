@@ -36,3 +36,12 @@ Committed fixtures are synthetic and may be used for correctness tests, boundary
 ## Responsible Output
 
 When a gate fails, the product should say so plainly. "Not enough validated evidence" is better than a confident but unsupported forecast.
+
+The Changes screen distinguishes:
+
+- insufficient data;
+- method gate failed;
+- method gate passed on the historical export while product forecasting remains blocked;
+- product forecasting blocked because real-world validation evidence is absent.
+
+Synthetic fixtures validate implementation mechanics and gate behavior only. They do not establish general predictive validity and must never set `realWorldValidationEligible` / `real_world_validation_eligible` to true.

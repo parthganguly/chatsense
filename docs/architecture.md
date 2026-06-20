@@ -39,7 +39,7 @@ Shared contracts and fixtures
 
 The core package is an npm workspace package and must stay free of React, Next.js, DOM, Capacitor, Android, Node filesystem, and Python dependencies.
 
-Stage 5 adds research-only forecasting validation functions to the core package so the current runtime and future consumers can inspect the same gated result. These functions do not call remote services and do not authorize product predictions by themselves.
+Stage 5 adds research-only forecasting validation functions to the core package so the current runtime and future consumers can inspect the same gated result. These functions do not call remote services and do not authorize product predictions by themselves. Reply opportunities terminate conservatively at observed response, same-sender new-thread supersession, or export end.
 
 ## Application Shell
 
@@ -75,11 +75,15 @@ Shared contracts and fixtures are the guardrails:
 
 - `contracts/behavioral_contract.json` defines shared behavioral constants and definitions.
 - `contracts/forecasting_contract.json` defines research-only forecasting tasks, censoring policy, metrics, and promotion gates.
+- `contracts/forecasting_report.schema.json` defines the strict synthetic forecasting benchmark report shape.
 - `contracts/report.schema.json` defines the Python report contract.
 - `fixtures/whatsapp` and `fixtures/expected` preserve the base fixtures and Stage 4 synthetic fixture matrix.
 - `fixtures/forecasting` stores Stage 5 synthetic forecasting fixtures that are not part of parity golden outputs.
 - `npm run test:parity` verifies TypeScript behavior against expected outputs.
+- `npm run test:forecast-parity` verifies the TypeScript and Python forecasting gates fixture-by-fixture.
+- `npm run forecast:eval` writes schema-shaped TypeScript and parity benchmark reports for committed synthetic forecasting fixtures.
 - `python -m pytest` verifies the Python reference and contract parity.
+- `python -m chatsense_ml.forecasting.evaluate` writes the schema-shaped Python benchmark report.
 
 ## Android Native Import
 

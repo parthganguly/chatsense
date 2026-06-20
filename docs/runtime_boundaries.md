@@ -6,7 +6,7 @@ ChatSense has one shipped behavioral engine and one research/reference implement
 - **Next.js/Capacitor is the current application shell.** It owns React UI, browser file handling, ZIP extraction, safe import errors, and Android share-sheet orchestration through the native `SharedFile` plugin.
 - **Python is research/reference only.** `python/chatsense_ml` owns offline analytics, parquet output, notebooks, classical ML experiments, and the Python parity reference. Python is not bundled into Android.
 - **Contracts and fixtures prevent drift.** `contracts/behavioral_contract.json`, `contracts/report.schema.json`, `fixtures/whatsapp`, and `fixtures/expected` define behavior both implementations must preserve.
-- **Forecasting remains behind a research gate.** `contracts/forecasting_contract.json` defines leakage-safe evaluation and promotion gates. Passing a method gate is not enough to show product forecasts.
+- **Forecasting remains behind a research gate.** `contracts/forecasting_contract.json` defines leakage-safe evaluation and promotion gates. `contracts/forecasting_report.schema.json` defines the benchmark artifact shape. Passing a method gate is not enough to show product forecasts.
 
 The mobile app remains local-only: imported chats are processed in memory, not uploaded, not persisted by the app, and not analyzed by an LLM.
 
@@ -57,6 +57,10 @@ Allowed tasks:
 The runtime may show research gate status and sample counts. It must not show live forecasts or response recommendations. Forecasting uses no message content, sentiment, embeddings, LLMs, personality inference, motive inference, remote processing, telemetry, neural nets, React Native, or Expo code.
 
 The current status is not validated for product use.
+
+Stage 5 reply opportunities are closed by the first valid future event: observed different-participant response, same-sender new-thread supersession, or export end. Superseded opportunities are censored for horizons that have not elapsed, preventing later responses from being attached to stale source turns.
+
+Cross-language forecasting parity is enforced with `npm run test:forecast-parity`, and synthetic benchmark reports are generated with `npm run forecast:eval` and `python -m chatsense_ml.forecasting.evaluate`.
 
 ## Import Boundary
 

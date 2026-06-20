@@ -106,6 +106,10 @@ Stage 5 keeps only methodologically explicit tasks:
 2. Conditional reply-delay bucket among observed responses.
 3. Next completed adaptive-window activity using `messages_per_active_day`.
 
+Reply opportunities now terminate at the first chronologically valid event: observed response by a different participant, same-sender new-thread supersession, or export end. This prevents a later response from being attributed to an older source turn after the source sender has already restarted the conversation.
+
+The Stage 5 validation path is prequential/rolling-origin. It does not use random splitting for product eligibility, and tests assert that future message changes do not alter earlier prediction probabilities.
+
 Initiation and reconnection forecasting remain audited but not promoted because
 the current synthetic and fixture data do not establish enough independent,
 unambiguous observations for product use.

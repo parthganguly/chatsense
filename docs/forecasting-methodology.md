@@ -34,6 +34,8 @@ If a response is observed after a horizon, that opportunity is a valid negative 
 
 If the export ends before the full horizon can be observed, the opportunity is right-censored and excluded from that horizon score. The final open turn is not automatically treated as a no-reply outcome.
 
+If the same source sender starts a new thread before a different participant responds, the older opportunity is terminated as `superseded_by_new_source_thread`. It is censored for horizons that have not elapsed at supersession time, and later responses are not attached to the old turn.
+
 ### Activity
 
 Activity forecasting uses completed, eligible adaptive windows only. A target window is scored using windows before it.
@@ -45,18 +47,21 @@ Reply horizon baselines:
 - global historical smoothed rate;
 - participant historical smoothed rate;
 - recent rolling smoothed rate.
+- time-context smoothed rate using expected responder, weekday/weekend, and broad hour bucket with fallback.
 
 Delay-bucket baselines:
 
 - global historical bucket distribution;
 - participant historical bucket distribution;
 - recent rolling bucket distribution.
+- time-context bucket distribution using the same coarse context and fallback.
 
 Activity baselines:
 
 - previous completed value;
 - historical mean;
 - rolling mean.
+- exponentially weighted mean.
 
 ## Candidate Models
 
@@ -74,24 +79,38 @@ Reply horizon metrics:
 
 - Brier score;
 - log loss;
-- calibration error;
-- accuracy as secondary context.
+- calibration table and expected calibration error;
+- accuracy, precision, and recall as secondary context;
+- deterministic bootstrap interval for best-baseline Brier minus candidate Brier;
+- subgroup/time-slice degradation checks.
 
 Delay-bucket metrics:
 
+- balanced accuracy;
 - macro F1;
 - log loss;
 - accuracy as secondary context;
-- class support.
+- confusion matrix;
+- per-class precision, recall, F1, and support.
 
 Activity metrics:
 
 - MAE;
 - median absolute error;
 - RMSE.
+- safe MAPE when actual values are non-zero;
+- per-window predictions and absolute errors for every estimator.
 
 ## Promotion Gates
 
 `contracts/forecasting_contract.json` owns the numeric gates. Passing the method gate is not enough for product promotion. General predictive validity requires appropriate real validation data; synthetic fixtures only prove that the machinery is deterministic and leakage-safe.
 
 Current product status: forecasting is not validated for product use.
+
+## Generated Reports
+
+`npm run forecast:eval` writes `artifacts/forecasting/typescript_report.json`, `artifacts/forecasting/parity_report.json`, and `artifacts/forecasting/report.md`.
+
+`python -m chatsense_ml.forecasting.evaluate` writes `artifacts/forecasting/python_report.json`.
+
+The machine-readable reports conform to `contracts/forecasting_report.schema.json`. The artifacts are ignored by git because they can also be produced for personal exports, but the committed synthetic fixture matrix is safe to benchmark in CI.
