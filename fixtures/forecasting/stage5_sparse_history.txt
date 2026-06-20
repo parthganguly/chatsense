@@ -1,0 +1,6 @@
+01/01/2026, 09:00 - Asha: small sample start
+01/01/2026, 09:30 - Ravi: small sample response
+01/02/2026, 09:00 - Asha: another sparse source
+01/02/2026, 09:45 - Ravi: another sparse response
+01/03/2026, 09:00 - Meera: third participant makes this approximate
+01/03/2026, 10:00 - Asha: approximate reply path

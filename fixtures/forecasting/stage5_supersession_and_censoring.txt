@@ -1,0 +1,7 @@
+01/01/2026, 09:00 - Asha: source with same turn follow up
+01/01/2026, 09:05 - Asha: same sender, same thread
+01/01/2026, 09:20 - Ravi: response to the same turn
+01/01/2026, 11:00 - Asha: source that should be superseded
+01/01/2026, 18:00 - Asha: new source thread before Ravi answers
+01/01/2026, 18:10 - Ravi: response belongs to the new thread only
+01/02/2026, 09:00 - Asha: final open source turn

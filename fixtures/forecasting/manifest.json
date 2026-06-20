@@ -1,0 +1,176 @@
+{
+  "schema_version": "1.0",
+  "description": "Dedicated Stage 5 synthetic forecasting matrix. Fixtures validate implementation mechanics, censoring and gate behavior only; they do not establish real-world predictive validity.",
+  "required_cases": [
+    "response_exactly_60m",
+    "response_just_after_60m",
+    "response_exactly_6h",
+    "response_just_after_6h",
+    "response_exactly_24h",
+    "response_just_after_24h",
+    "export_ends_before_1h",
+    "export_ends_after_1h_before_24h",
+    "final_open_turn",
+    "same_sender_followup_before_response",
+    "same_sender_new_thread_before_response",
+    "sparse_participant_history",
+    "changing_reply_regime",
+    "stable_periodic_communication",
+    "sudden_activity_decline",
+    "partial_target_window_excluded",
+    "leakage_trap_future_aggregates",
+    "chronological_regime_shift_random_split_trap",
+    "synthetic_candidate_fails_method_gate",
+    "synthetic_candidate_passes_method_gate_product_blocked",
+    "group_chat_approximate_unsupported"
+  ],
+  "cases": {
+    "response_exactly_60m": {
+      "fixture": "stage5_horizon_boundaries.txt",
+      "expected_opportunity_count": 12,
+      "expected_censoring_state": "none",
+      "expected_boundary_outcome": { "60": "positive", "360": "positive", "1440": "positive" },
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    },
+    "response_just_after_60m": {
+      "fixture": "stage5_horizon_boundaries.txt",
+      "expected_opportunity_count": 12,
+      "expected_censoring_state": "none",
+      "expected_boundary_outcome": { "60": "negative", "360": "positive", "1440": "positive" },
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    },
+    "response_exactly_6h": {
+      "fixture": "stage5_horizon_boundaries.txt",
+      "expected_opportunity_count": 12,
+      "expected_censoring_state": "none",
+      "expected_boundary_outcome": { "60": "negative", "360": "positive", "1440": "positive" },
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    },
+    "response_just_after_6h": {
+      "fixture": "stage5_horizon_boundaries.txt",
+      "expected_opportunity_count": 12,
+      "expected_censoring_state": "none",
+      "expected_boundary_outcome": { "60": "negative", "360": "negative", "1440": "positive" },
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    },
+    "response_exactly_24h": {
+      "fixture": "stage5_horizon_boundaries.txt",
+      "expected_opportunity_count": 12,
+      "expected_censoring_state": "none",
+      "expected_boundary_outcome": { "60": "negative", "360": "negative", "1440": "positive" },
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    },
+    "response_just_after_24h": {
+      "fixture": "stage5_horizon_boundaries.txt",
+      "expected_opportunity_count": 12,
+      "expected_censoring_state": "none",
+      "expected_boundary_outcome": { "60": "negative", "360": "negative", "1440": "negative" },
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    },
+    "export_ends_before_1h": {
+      "fixture": "stage5_supersession_and_censoring.txt",
+      "expected_opportunity_count": 5,
+      "expected_censoring_state": "export_end",
+      "expected_boundary_outcome": { "60": "censored" },
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    },
+    "export_ends_after_1h_before_24h": {
+      "generator": "unit:manual_export_censor_opportunity",
+      "expected_opportunity_count": 1,
+      "expected_censoring_state": "export_end",
+      "expected_boundary_outcome": { "60": "negative", "1440": "censored" },
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    },
+    "final_open_turn": {
+      "fixture": "stage5_supersession_and_censoring.txt",
+      "expected_opportunity_count": 5,
+      "expected_censoring_state": "export_end",
+      "expected_boundary_outcome": { "60": "censored" },
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    },
+    "same_sender_followup_before_response": {
+      "fixture": "stage5_supersession_and_censoring.txt",
+      "expected_opportunity_count": 5,
+      "expected_censoring_state": "observed_response",
+      "expected_boundary_outcome": { "60": "positive" },
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    },
+    "same_sender_new_thread_before_response": {
+      "fixture": "stage5_supersession_and_censoring.txt",
+      "expected_opportunity_count": 5,
+      "expected_censoring_state": "superseded_by_new_source_thread",
+      "expected_boundary_outcome": { "60": "negative", "1440": "censored" },
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    },
+    "sparse_participant_history": {
+      "fixture": "stage5_sparse_history.txt",
+      "expected_opportunity_count": 6,
+      "expected_censoring_state": "mixed",
+      "expected_boundary_outcome": "insufficient_support",
+      "expected_gate_behavior": "method_gate_failed"
+    },
+    "changing_reply_regime": {
+      "fixture": "stage5_regime_shift.txt",
+      "expected_opportunity_count": 8,
+      "expected_censoring_state": "none_or_export_end",
+      "expected_boundary_outcome": "chronological_backtest",
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    },
+    "stable_periodic_communication": {
+      "fixture": "stage5_stable_periodic.txt",
+      "expected_opportunity_count": 16,
+      "expected_censoring_state": "none_or_export_end",
+      "expected_boundary_outcome": "stable_periodic",
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    },
+    "sudden_activity_decline": {
+      "fixture": "stage5_activity_windows.txt",
+      "expected_opportunity_count": 12,
+      "expected_censoring_state": "none_or_export_end",
+      "expected_boundary_outcome": "activity_decline",
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    },
+    "partial_target_window_excluded": {
+      "generator": "unit:adaptive_window_partial_exclusion",
+      "expected_opportunity_count": 0,
+      "expected_censoring_state": "not_applicable",
+      "expected_boundary_outcome": "partial_window_excluded",
+      "expected_gate_behavior": "method_gate_failed"
+    },
+    "leakage_trap_future_aggregates": {
+      "fixture": "stage5_leakage_trap.txt",
+      "expected_opportunity_count": 12,
+      "expected_censoring_state": "none_or_export_end",
+      "expected_boundary_outcome": "future_changes_do_not_change_prior_features",
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    },
+    "chronological_regime_shift_random_split_trap": {
+      "fixture": "stage5_regime_shift.txt",
+      "expected_opportunity_count": 8,
+      "expected_censoring_state": "none_or_export_end",
+      "expected_boundary_outcome": "prequential_not_random_split",
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    },
+    "synthetic_candidate_fails_method_gate": {
+      "fixture": "stage5_method_gate_examples.txt",
+      "expected_opportunity_count": 14,
+      "expected_censoring_state": "none_or_export_end",
+      "expected_boundary_outcome": "candidate_fails_gate",
+      "expected_gate_behavior": "method_gate_failed"
+    },
+    "synthetic_candidate_passes_method_gate_product_blocked": {
+      "generator": "unit:promotion_gate_synthetic_method_pass",
+      "expected_opportunity_count": 100,
+      "expected_censoring_state": "not_applicable",
+      "expected_boundary_outcome": "method_pass_product_blocked",
+      "expected_gate_behavior": "passed_method_gate_product_blocked"
+    },
+    "group_chat_approximate_unsupported": {
+      "fixture": "stage5_group_approximation.txt",
+      "expected_opportunity_count": 4,
+      "expected_censoring_state": "group_approximation",
+      "expected_boundary_outcome": "approximate_any_different_participant",
+      "expected_gate_behavior": "method_gate_failed_or_product_blocked"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+01/01/2026, 09:00 - Asha: early fast source
+01/01/2026, 09:05 - Ravi: early fast response
+01/02/2026, 09:00 - Asha: early fast source
+01/02/2026, 09:06 - Ravi: early fast response
+01/03/2026, 09:00 - Asha: early fast source
+01/03/2026, 09:07 - Ravi: early fast response
+01/04/2026, 09:00 - Asha: future slow regime begins
+01/04/2026, 15:00 - Ravi: future slow response
+01/05/2026, 09:00 - Asha: future slow source
+01/05/2026, 17:00 - Ravi: future slow response
+01/06/2026, 09:00 - Asha: future slow source
+01/06/2026, 19:00 - Ravi: future slow response
