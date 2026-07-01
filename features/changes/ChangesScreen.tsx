@@ -1,4 +1,4 @@
-import { CalendarDays, GitCompare, MessageCircleReply, RotateCcw, Split, Timer } from "lucide-react"
+import { CalendarDays, FlaskConical, GitCompare, MessageCircleReply, RotateCcw, Split, Timer } from "lucide-react"
 import {
   formatDuration,
   type AdaptiveWindow,
@@ -31,6 +31,7 @@ export function ChangesScreen({ analysis }: { analysis: ChatAnalysis }) {
 
       <ComparisonSection comparison={dynamics.earlyLate} />
       <ComparisonSection comparison={dynamics.recentPrior} />
+      <ForecastingResearchSection analysis={analysis} />
 
       <section>
         <SectionHeading eyebrow="Adaptive windows" title="Export timeline" />
@@ -97,6 +98,55 @@ export function ChangesScreen({ analysis }: { analysis: ChatAnalysis }) {
         </p>
       </section>
     </div>
+  )
+}
+
+function ForecastingResearchSection({ analysis }: { analysis: ChatAnalysis }) {
+  const forecasting = analysis.forecastingResearch
+  const oneHour = forecasting.tasks.replyWithinHorizon["60"]
+  const delay = forecasting.tasks.conditionalReplyDelayBucket
+  const activity = forecasting.tasks.nextWindowActivity
+  const primaryStatus = forecastStatus(oneHour?.promotion, oneHour?.metrics.candidate.evaluatedCount ?? 0)
+  const primaryReason = oneHour?.promotion.reasons[0] ?? forecasting.summary.reasons[0]
+
+  return (
+    <section>
+      <SectionHeading eyebrow="Research gate" title="Forecasting validation" />
+      <div className="mt-4 rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h3 className="text-sm font-semibold text-slate-900">{primaryStatus}</h3>
+            <p className="mt-1 text-xs leading-5 text-slate-500">
+              {primaryReason} Product forecasting remains blocked and this does not support any claim about intent.
+            </p>
+          </div>
+          <FlaskConical className="h-4 w-4 shrink-0 text-emerald-700" />
+        </div>
+        <div className="mt-4 grid grid-cols-2 gap-2 text-xs">
+          <WindowStat label="Reply opportunities" value={formatNumber(forecasting.summary.replyOpportunityCount)} />
+          <WindowStat label="Observed replies" value={formatNumber(forecasting.summary.observedReplyCount)} />
+          <WindowStat label="Activity windows" value={formatNumber(forecasting.summary.completedActivityWindowCount)} />
+          <WindowStat label="Promotion" value={forecasting.summary.productPromotion ? "Passed" : "Blocked"} />
+        </div>
+        <div className="mt-4 space-y-2 text-xs leading-5 text-slate-600">
+          <p>
+            1h reply gate: {gateLabel(oneHour?.promotion, oneHour?.metrics.candidate.evaluatedCount ?? 0)}; evaluated{" "}
+            {formatNumber(oneHour?.metrics.candidate.evaluatedCount ?? 0)} opportunities.
+          </p>
+          <p>
+            Delay-bucket gate: {gateLabel(delay.promotion, delay.evaluatedCount)}; evaluated{" "}
+            {formatNumber(delay.evaluatedCount)} observed responses.
+          </p>
+          <p>
+            Activity gate: {gateLabel(activity.promotion, activity.evaluatedCount)}; evaluated{" "}
+            {formatNumber(activity.evaluatedCount)} completed windows.
+          </p>
+        </div>
+        <p className="mt-3 border-t border-slate-100 pt-3 text-xs leading-5 text-slate-500">
+          {forecasting.safety.noMotive}
+        </p>
+      </div>
+    </section>
   )
 }
 
@@ -230,6 +280,31 @@ function sortChangesForDisplay(changes: MetricChange[]): MetricChange[] {
     if (left.metric !== right.metric) return left.metric.localeCompare(right.metric)
     return (left.sender ?? "").localeCompare(right.sender ?? "")
   })
+}
+
+function gateLabel(
+  promotion: { methodGatePassed: boolean; promoted: boolean; reasons: string[] } | undefined,
+  evaluatedCount: number,
+): string {
+  if (!promotion || evaluatedCount === 0 || promotion.reasons.some((reason) => reason.startsWith("Requires "))) {
+    return "insufficient data"
+  }
+  if (!promotion.methodGatePassed) return "method gate failed"
+  if (!promotion.promoted) return "method passed historically; product blocked"
+  return "product gate passed"
+}
+
+function forecastStatus(
+  promotion: { methodGatePassed: boolean; promoted: boolean; reasons: string[] } | undefined,
+  evaluatedCount: number,
+): string {
+  const label = gateLabel(promotion, evaluatedCount)
+  if (label === "insufficient data") return "Insufficient data"
+  if (label === "method gate failed") return "Method gate failed"
+  if (label === "method passed historically; product blocked") {
+    return "Method gate passed historically, product blocked"
+  }
+  return "Product gate passed"
 }
 
 function WindowStat({ label, value }: { label: string; value: string }) {

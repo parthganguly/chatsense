@@ -24,7 +24,10 @@ npm run lint
 npm run typecheck
 npm run test
 npm run test:parity
+npm run test:forecast-parity
+npm run forecast:eval
 python -m pytest
+python -m chatsense_ml.forecasting.evaluate
 ```
 
 ## Build
@@ -78,3 +81,11 @@ fixtures/                  shared WhatsApp fixtures and expected parity outputs
 Chats are processed locally and are not persisted by the app. There is no LLM, backend, account system, telemetry, or cloud storage in the current runtime.
 
 Android share-sheet imports are copied from the provider `content://` URI into app-private cache by the native `SharedFile` Capacitor plugin. JavaScript receives only metadata plus a local file URI, imports it through the same browser `File` path, and asks native code to release the cached copy after import.
+
+## Forecasting Research
+
+Stage 5 adds a research-only forecasting gate. It backtests turn-based reply opportunities and completed adaptive-window activity against simple baselines, then keeps product forecasting blocked unless conservative gates pass on appropriate validation data.
+
+The current product status is not validated. The app may show research counts and gate status, but it does not show live predictions, coaching, motive claims, sentiment analysis, embeddings, LLM output, telemetry, or remote processing.
+
+Dedicated Stage 5 synthetic fixtures live under `fixtures/forecasting/` with a manifest at `fixtures/forecasting/manifest.json`. They validate implementation mechanics, TypeScript/Python parity, censoring, calibration reporting, bootstrap/subgroup gates, and product-blocking behavior; they do not prove forecasting works on real relationships.

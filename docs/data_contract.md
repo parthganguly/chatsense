@@ -168,3 +168,22 @@ Phase 2 research helpers remain non-LLM and local-only. They may consume `featur
 | `models/sklearn_models.py` | Classical sklearn label classifiers for parquet features. |
 | `evaluation/backtest.py` | Chronological expanding-window evaluation. |
 | `evaluation/calibration.py` | Probability calibration checks for future classifiers. |
+
+## Forecasting research artifacts
+
+Stage 5 forecasting outputs are generated artifacts, not part of `report.json` or `features.parquet`.
+
+Commands:
+
+```bash
+npm run forecast:eval
+python -m chatsense_ml.forecasting.evaluate
+```
+
+Output directory:
+
+```text
+artifacts/forecasting/
+```
+
+These artifacts summarize research-only backtests over synthetic fixtures. They must state that forecasting is not validated for product use unless the gates in `contracts/forecasting_contract.json` are satisfied on appropriate validation data.

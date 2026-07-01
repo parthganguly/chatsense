@@ -10,6 +10,7 @@ import {
   WITHIN_ONE_HOUR_MAX_MIN,
   WITHIN_SIX_HOURS_MAX_MIN,
 } from "./contract"
+import { evaluateForecastingResearch, type ForecastingResearchReport } from "./forecasting"
 import {
   analyzeRelationshipDynamics,
   getDefaultRelationshipDynamics,
@@ -95,6 +96,7 @@ export interface ChatAnalysis {
   silenceSummary: SilenceSummary
   activity: ActivitySummary
   relationshipDynamics: RelationshipDynamics
+  forecastingResearch: ForecastingResearchReport
   replyEdges: ReplyEdge[]
   threadCount: number
   insights: ObservableInsight[]
@@ -134,6 +136,7 @@ export function analyzeChat(inputMessages: ChatMessage[]): ChatAnalysis {
   const participants = analyzeParticipants(messages, senders, replyEvents, threadStarts)
   const replyDynamics = analyzeReplies(replyEvents)
   const relationshipDynamics = analyzeRelationshipDynamics(messages)
+  const forecastingResearch = evaluateForecastingResearch(messages)
   const replyEdges = buildReplyEdges(replyEvents)
   const overview = buildOverview(messages, senders)
 
@@ -144,6 +147,7 @@ export function analyzeChat(inputMessages: ChatMessage[]): ChatAnalysis {
     silenceSummary,
     activity,
     relationshipDynamics,
+    forecastingResearch,
     replyEdges,
     threadCount: threadStarts.filter(Boolean).length,
     insights: buildInsights(overview, participants, replyDynamics, activity, relationshipDynamics),
@@ -509,6 +513,7 @@ function getDefaultAnalysis(): ChatAnalysis {
       dailyCounts: [],
     },
     relationshipDynamics: getDefaultRelationshipDynamics(),
+    forecastingResearch: evaluateForecastingResearch([]),
     replyEdges: [],
     threadCount: 0,
     insights: [],

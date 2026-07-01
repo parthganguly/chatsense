@@ -21,6 +21,18 @@
     "./contract": {
       "types": "./src/contract.ts",
       "default": "./src/contract.ts"
+    },
+    "./forecasting": {
+      "types": "./src/forecasting.ts",
+      "default": "./src/forecasting.ts"
+    },
+    "./forecasting-contract": {
+      "types": "./src/forecasting-contract.ts",
+      "default": "./src/forecasting-contract.ts"
+    },
+    "./forecasting-parity": {
+      "types": "./src/forecasting-parity.ts",
+      "default": "./src/forecasting-parity.ts"
     }
   }
 }

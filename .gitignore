@@ -13,6 +13,7 @@ __pycache__/
 .venv/
 report.json
 features.parquet
+/artifacts/forecasting/
 
 # next.js
 /.next/

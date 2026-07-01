@@ -33,6 +33,16 @@ The app does not request broad file storage permissions. FileProvider remains li
 
 ChatSense reports observable communication patterns only. Reply delays, silence gaps, sender balance, and activity rhythms are not proof of hidden intent, mental-health status, or relationship status.
 
+## Forecasting Research
+
+Stage 5 forecasting validation stays local and deterministic. It backtests observable timing and volume outcomes from earlier observable behavior, but the current app does not promote live predictions.
+
+Forecasting research does not use message meaning, sentiment analysis, embeddings, LLMs, personality inference, motive inference, coaching, telemetry, backend calls, or cloud processing.
+
+Synthetic fixtures validate correctness of the method, not real-world predictive validity.
+
+The Stage 5 benchmark artifacts are generated from committed synthetic fixtures unless a developer intentionally runs the commands on local private exports. Generated artifacts are ignored by git. Synthetic reports may be uploaded by CI; personal-export reports must not be committed or uploaded.
+
 ## Android Configuration
 
 The Android app should remain local-only:

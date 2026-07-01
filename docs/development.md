@@ -22,6 +22,8 @@ npm run lint
 npm run typecheck
 npm run test
 npm run test:parity
+npm run test:forecast-parity
+npm run forecast:eval
 npm run build
 npm run check
 ```
@@ -32,13 +34,20 @@ npm run check
 
 `npm run test:parity` compares the TypeScript runtime with the 21 shared expected parity outputs.
 
+`npm run test:forecast-parity` compares the TypeScript and Python Stage 5 forecasting gates over the dedicated synthetic forecasting fixture matrix.
+
+`npm run forecast:eval` runs the Stage 5 TypeScript forecasting research gate over committed synthetic fixtures and writes ignored schema-shaped artifacts under `artifacts/forecasting/`.
+
 ## Python Reference
 
 ```bash
 python -m pytest
+python -m chatsense_ml.forecasting.evaluate
 ```
 
 Python is the research/reference implementation. It is not bundled into Android.
+
+The Python forecasting evaluator mirrors the TypeScript research gate, validates the strict report schema in tests, and writes ignored artifacts under `artifacts/forecasting/`.
 
 ## Android
 
@@ -75,3 +84,5 @@ For physical device share-sheet verification, see `docs/android-share-import-tes
 - Android shared-file handling is split between `platform/android` for the TypeScript adapter and `android/app/src/main/java/com/thegreatparthicle/chatsense/plugins` for the native Capacitor plugin.
 - Presentation-only screens go in `features/overview`, `features/rhythm`, `features/people`, and `features/changes`.
 - Reusable presentation components go in `components/analytics` and `components/navigation`.
+- Forecasting validation code must stay local, deterministic, content-independent, and gated by `contracts/forecasting_contract.json`.
+- Forecasting benchmark reports must conform to `contracts/forecasting_report.schema.json`.

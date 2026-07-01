@@ -1,0 +1,16 @@
+01/01/2026, 08:00 - Asha: day 1 start
+01/01/2026, 08:20 - Ravi: day 1 response
+01/02/2026, 08:00 - Asha: day 2 start
+01/02/2026, 08:20 - Ravi: day 2 response
+01/03/2026, 08:00 - Asha: day 3 start
+01/03/2026, 08:20 - Ravi: day 3 response
+01/04/2026, 08:00 - Asha: day 4 start
+01/04/2026, 08:20 - Ravi: day 4 response
+01/05/2026, 08:00 - Asha: day 5 start
+01/05/2026, 08:20 - Ravi: day 5 response
+01/06/2026, 08:00 - Asha: day 6 start
+01/06/2026, 08:20 - Ravi: day 6 response
+01/07/2026, 08:00 - Asha: day 7 start
+01/07/2026, 08:20 - Ravi: day 7 response
+01/08/2026, 08:00 - Asha: day 8 start
+01/08/2026, 08:20 - Ravi: day 8 response

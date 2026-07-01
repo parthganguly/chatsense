@@ -18,6 +18,7 @@ export {
   type SilenceSummary,
 } from "./chat-analyzer"
 export {
+  analyzeRelationshipDynamics,
   type AdaptiveWindow,
   type ChangeDirection,
   type ComparisonKind,
@@ -31,3 +32,6 @@ export {
   type PauseReconnectionSummary,
   type RelationshipDynamics,
 } from "./relationship-dynamics"
+export * from "./forecasting"
+export * from "./forecasting-contract"
+export * from "./forecasting-parity"
