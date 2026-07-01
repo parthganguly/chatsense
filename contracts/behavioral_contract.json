@@ -55,6 +55,20 @@
     "follow_up_definition": "A follow-up before reply occurs when the same participant sends again before anyone else responds, at least follow_up_min minutes have passed, and the gap remains below thread_gap_min.",
     "notes": "Relationship dynamics are deterministic descriptive summaries of exported timing and volume behavior. They do not inspect message meaning and must not be represented as proof of motive, affection, attachment, personality, mental health, relationship quality, or relationship status. Reconnection-share changes use a documented 20 percentage-point notable threshold because reconnections are sparse by construction and already require at least two reconnection events in each compared period."
   },
+  "insight_narrative": {
+    "max_primary_findings": 4,
+    "max_notable_change_findings": 2,
+    "priority_order": [
+      "notable_change",
+      "comparison_context",
+      "participation",
+      "pause_reconnection",
+      "reply_timing",
+      "activity"
+    ],
+    "required_guardrail": "These observations describe exported timing and volume only. They do not prove motive, love, rejection, affection, attachment, personality, mental health, relationship quality, or relationship status.",
+    "notes": "The narrative is a deterministic presentation of existing behavioral metrics. Every finding must carry visible evidence, comparison findings must use sufficient evidence and canonical notable-change thresholds, and limited evidence must be stated rather than filled with speculation. The narrative does not inspect message content and must not contain forecasts, coaching, advice, or generated interpretations."
+  },
   "reply_event": {
     "definition": "sender_differs_from_previous_message",
     "notes": "A reply event exists at index i>=1 when message[i].sender != message[i-1].sender. Consecutive messages from the same sender are NOT replies and never create an artificial reply edge or reply-delay sample."

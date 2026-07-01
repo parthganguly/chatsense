@@ -31,6 +31,7 @@ _contract = load_contract()
 _thresholds = _contract["thresholds_minutes"]
 _silence = _contract["silence_anomaly"]
 _dynamics = _contract["relationship_dynamics"]
+_narrative = _contract["insight_narrative"]
 
 CONTRACT_VERSION: str = _contract["contract_version"]
 
@@ -71,6 +72,12 @@ NOTABLE_REPLY_LATENCY_ABSOLUTE_MIN: int = _dynamics["notable_change_thresholds"]
 NOTABLE_THREAD_START_SHARE_ABS_PCT: int = _dynamics["notable_change_thresholds"]["thread_start_share_abs_pct"]
 NOTABLE_RECONNECTION_SHARE_ABS_PCT: int = _dynamics["notable_change_thresholds"]["reconnection_share_abs_pct"]
 NOTABLE_FOLLOW_UP_RATE_ABS_PCT: int = _dynamics["notable_change_thresholds"]["follow_up_rate_abs_pct"]
+
+# Evidence-backed narrative presentation contract. Python does not render the
+# Android UI, but exposes the same canonical limits for research consumers.
+NARRATIVE_MAX_PRIMARY_FINDINGS: int = _narrative["max_primary_findings"]
+NARRATIVE_MAX_NOTABLE_CHANGE_FINDINGS: int = _narrative["max_notable_change_findings"]
+NARRATIVE_REQUIRED_GUARDRAIL: str = _narrative["required_guardrail"]
 
 # Canonical runtime silence-anomaly definition.
 SILENCE_ANOMALY_SCALE: float = _silence["scale"]

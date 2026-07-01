@@ -12,7 +12,7 @@
     "dev": "next dev",
     "lint": "eslint .",
     "forecast:eval": "tsx scripts/forecast-evaluate.ts",
-    "test": "tsx tests/import-boundaries.ts && tsx tests/relationship-dynamics.ts && tsx tests/forecasting.ts",
+    "test": "tsx tests/import-boundaries.ts && tsx tests/relationship-dynamics.ts && tsx tests/insight-narrative.ts && tsx tests/forecasting.ts",
     "test:core": "npm run typecheck -w @chatsense/core",
     "test:forecast-parity": "tsx tests/forecasting-parity.ts",
     "test:parity": "tsx tests/parity.ts",

@@ -14,6 +14,9 @@ import {
   MIN_THREAD_STARTS_PER_PERIOD,
   MIN_WINDOW_ACTIVE_DAYS,
   MIN_WINDOW_MESSAGES,
+  NARRATIVE_MAX_NOTABLE_CHANGE_FINDINGS,
+  NARRATIVE_MAX_PRIMARY_FINDINGS,
+  NARRATIVE_REQUIRED_GUARDRAIL,
   NOTABLE_FOLLOW_UP_RATE_ABS_PCT,
   NOTABLE_MESSAGES_PER_ACTIVE_DAY_RELATIVE_PCT,
   NOTABLE_RECONNECTION_SHARE_ABS_PCT,
@@ -51,6 +54,7 @@ const contract = JSON.parse(fs.readFileSync(contractPath, "utf8"))
 const forecastingContract = JSON.parse(fs.readFileSync(forecastingContractPath, "utf8"))
 const thresholds = contract.thresholds_minutes
 const dynamics = contract.relationship_dynamics
+const narrative = contract.insight_narrative
 
 assert.equal(QUICK_REPLY_MAX_MIN, thresholds.quick_reply_max)
 assert.equal(WITHIN_ONE_HOUR_MAX_MIN, thresholds.within_one_hour_max)
@@ -90,6 +94,9 @@ assert.equal(NOTABLE_REPLY_LATENCY_ABSOLUTE_MIN, dynamics.notable_change_thresho
 assert.equal(NOTABLE_THREAD_START_SHARE_ABS_PCT, dynamics.notable_change_thresholds.thread_start_share_abs_pct)
 assert.equal(NOTABLE_RECONNECTION_SHARE_ABS_PCT, dynamics.notable_change_thresholds.reconnection_share_abs_pct)
 assert.equal(NOTABLE_FOLLOW_UP_RATE_ABS_PCT, dynamics.notable_change_thresholds.follow_up_rate_abs_pct)
+assert.equal(NARRATIVE_MAX_PRIMARY_FINDINGS, narrative.max_primary_findings)
+assert.equal(NARRATIVE_MAX_NOTABLE_CHANGE_FINDINGS, narrative.max_notable_change_findings)
+assert.equal(NARRATIVE_REQUIRED_GUARDRAIL, narrative.required_guardrail)
 assert.equal(FORECASTING_CONTRACT_VERSION, forecastingContract.contract_version)
 assert.deepEqual(REPLY_HORIZONS_MINUTES, forecastingContract.tasks.reply_within_horizon.horizons_minutes)
 assert.equal(

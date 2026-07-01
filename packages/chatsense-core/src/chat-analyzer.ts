@@ -11,6 +11,7 @@ import {
   WITHIN_SIX_HOURS_MAX_MIN,
 } from "./contract"
 import { evaluateForecastingResearch, type ForecastingResearchReport } from "./forecasting"
+import { buildInsightNarrative, type InsightNarrative } from "./insight-narrative"
 import {
   analyzeRelationshipDynamics,
   getDefaultRelationshipDynamics,
@@ -97,6 +98,7 @@ export interface ChatAnalysis {
   activity: ActivitySummary
   relationshipDynamics: RelationshipDynamics
   forecastingResearch: ForecastingResearchReport
+  narrative: InsightNarrative
   replyEdges: ReplyEdge[]
   threadCount: number
   insights: ObservableInsight[]
@@ -139,6 +141,13 @@ export function analyzeChat(inputMessages: ChatMessage[]): ChatAnalysis {
   const forecastingResearch = evaluateForecastingResearch(messages)
   const replyEdges = buildReplyEdges(replyEvents)
   const overview = buildOverview(messages, senders)
+  const narrative = buildInsightNarrative({
+    overview,
+    participants,
+    replies: replyDynamics,
+    activity,
+    relationshipDynamics,
+  })
 
   return {
     overview,
@@ -148,6 +157,7 @@ export function analyzeChat(inputMessages: ChatMessage[]): ChatAnalysis {
     activity,
     relationshipDynamics,
     forecastingResearch,
+    narrative,
     replyEdges,
     threadCount: threadStarts.filter(Boolean).length,
     insights: buildInsights(overview, participants, replyDynamics, activity, relationshipDynamics),
@@ -514,6 +524,38 @@ function getDefaultAnalysis(): ChatAnalysis {
     },
     relationshipDynamics: getDefaultRelationshipDynamics(),
     forecastingResearch: evaluateForecastingResearch([]),
+    narrative: buildInsightNarrative({
+      overview: {
+        messageCount: 0,
+        participantCount: 0,
+        activeDays: 0,
+        totalWords: 0,
+        avgMessagesPerActiveDay: 0,
+        startedAt: "",
+        endedAt: "",
+      },
+      participants: [],
+      replies: {
+        replyCount: 0,
+        avgReplyMinutes: null,
+        medianReplyMinutes: null,
+        quickReplyRate: 0,
+        withinOneHourRate: 0,
+        withinSixHoursRate: 0,
+        withinDayRate: 0,
+      },
+      activity: {
+        peakHour: 0,
+        peakDay: "",
+        recentTrend: "not_enough_data",
+        recentVsPriorPct: null,
+        nightMessageRate: 0,
+        hourlyCounts: [],
+        weekdayCounts: [],
+        dailyCounts: [],
+      },
+      relationshipDynamics: getDefaultRelationshipDynamics(),
+    }),
     replyEdges: [],
     threadCount: 0,
     insights: [],

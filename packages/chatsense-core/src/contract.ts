@@ -52,6 +52,12 @@ export const NOTABLE_THREAD_START_SHARE_ABS_PCT = 15
 export const NOTABLE_RECONNECTION_SHARE_ABS_PCT = 20
 export const NOTABLE_FOLLOW_UP_RATE_ABS_PCT = 15
 
+// Evidence-backed narrative presentation limits and mandatory safety language.
+export const NARRATIVE_MAX_PRIMARY_FINDINGS = 4
+export const NARRATIVE_MAX_NOTABLE_CHANGE_FINDINGS = 2
+export const NARRATIVE_REQUIRED_GUARDRAIL =
+  "These observations describe exported timing and volume only. They do not prove motive, love, rejection, affection, attachment, personality, mental health, relationship quality, or relationship status."
+
 // Canonical runtime silence-anomaly definition (modified z-score, floored).
 export const SILENCE_ANOMALY_SCALE = 1.4826
 export const SILENCE_ANOMALY_K = 3.5

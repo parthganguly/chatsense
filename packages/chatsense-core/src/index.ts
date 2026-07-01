@@ -35,3 +35,4 @@ export {
 export * from "./forecasting"
 export * from "./forecasting-contract"
 export * from "./forecasting-parity"
+export * from "./insight-narrative"
