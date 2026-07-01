@@ -3,6 +3,7 @@
 ChatSense has one shipped behavioral engine and one research/reference implementation.
 
 - **`@chatsense/core` is the production behavioral engine.** It owns WhatsApp text parsing, date-order inference, behavioral calculations, shared analysis types, deterministic insights, contract constants, and parity normalization.
+- **The evidence-backed narrative is core output.** The Android UI renders `ChatAnalysis.narrative`; it does not invent, reorder, or embellish findings. Narrative text is deterministic and derived only from existing observable metrics.
 - **Next.js/Capacitor is the current application shell.** It owns React UI, browser file handling, ZIP extraction, safe import errors, and Android share-sheet orchestration through the native `SharedFile` plugin.
 - **Python is research/reference only.** `python/chatsense_ml` owns offline analytics, parquet output, notebooks, classical ML experiments, and the Python parity reference. Python is not bundled into Android.
 - **Contracts and fixtures prevent drift.** `contracts/behavioral_contract.json`, `contracts/report.schema.json`, `fixtures/whatsapp`, and `fixtures/expected` define behavior both implementations must preserve.
@@ -55,6 +56,11 @@ Allowed tasks:
 - next completed adaptive-window activity.
 
 The runtime may show research gate status and sample counts. It must not show live forecasts or response recommendations. Forecasting uses no message content, sentiment, embeddings, LLMs, personality inference, motive inference, remote processing, telemetry, neural nets, React Native, or Expo code.
+
+Stage 6 remains outside forecasting. A narrative finding can describe a past
+change only when Stage 4 marks it notable with sufficient evidence. It cannot
+state or imply what will happen next. Overview's evidence labels and safety
+language are part of the product contract, not optional UI decoration.
 
 The current status is not validated for product use.
 
