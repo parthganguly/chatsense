@@ -45,6 +45,16 @@ def test_python_contract_loader_matches_json_file():
     assert contract.CONTRACT_VERSION == raw["contract_version"]
     assert contract.NARRATIVE_MAX_PRIMARY_FINDINGS == raw["insight_narrative"]["max_primary_findings"]
     assert contract.NARRATIVE_MAX_NOTABLE_CHANGE_FINDINGS == raw["insight_narrative"]["max_notable_change_findings"]
+    maintenance = raw["insight_narrative"]["maintenance_thresholds"]
+    assert contract.NARRATIVE_BALANCED_MAX_TOP_SHARE_PCT == maintenance["balanced_max_top_share_pct"]
+    assert contract.NARRATIVE_MAINTENANCE_UNEVEN_SHARE_MIN_PCT == maintenance["uneven_share_min_pct"]
+    assert contract.NARRATIVE_HIGH_FOLLOW_UP_RATE_PCT == maintenance["high_follow_up_rate_pct"]
+    assert contract.NARRATIVE_MAINTENANCE_MIN_THREAD_STARTS == maintenance["min_thread_starts"]
+    assert contract.NARRATIVE_MAINTENANCE_MIN_RECONNECTIONS == maintenance["min_reconnections"]
+    assert (
+        contract.NARRATIVE_MAINTENANCE_MIN_FOLLOW_UP_RELEVANT_TURNS
+        == maintenance["min_follow_up_relevant_turns"]
+    )
     assert contract.NARRATIVE_REQUIRED_GUARDRAIL == raw["insight_narrative"]["required_guardrail"]
     assert contract.MIN_WINDOW_MESSAGES == dynamics["window_eligibility"]["min_messages"]
     assert contract.MIN_WINDOW_ACTIVE_DAYS == dynamics["window_eligibility"]["min_active_days"]

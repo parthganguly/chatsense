@@ -14,6 +14,12 @@ import {
   MIN_THREAD_STARTS_PER_PERIOD,
   MIN_WINDOW_ACTIVE_DAYS,
   MIN_WINDOW_MESSAGES,
+  NARRATIVE_BALANCED_MAX_TOP_SHARE_PCT,
+  NARRATIVE_HIGH_FOLLOW_UP_RATE_PCT,
+  NARRATIVE_MAINTENANCE_MIN_FOLLOW_UP_RELEVANT_TURNS,
+  NARRATIVE_MAINTENANCE_MIN_RECONNECTIONS,
+  NARRATIVE_MAINTENANCE_MIN_THREAD_STARTS,
+  NARRATIVE_MAINTENANCE_UNEVEN_SHARE_MIN_PCT,
   NARRATIVE_MAX_NOTABLE_CHANGE_FINDINGS,
   NARRATIVE_MAX_PRIMARY_FINDINGS,
   NARRATIVE_REQUIRED_GUARDRAIL,
@@ -96,6 +102,21 @@ assert.equal(NOTABLE_RECONNECTION_SHARE_ABS_PCT, dynamics.notable_change_thresho
 assert.equal(NOTABLE_FOLLOW_UP_RATE_ABS_PCT, dynamics.notable_change_thresholds.follow_up_rate_abs_pct)
 assert.equal(NARRATIVE_MAX_PRIMARY_FINDINGS, narrative.max_primary_findings)
 assert.equal(NARRATIVE_MAX_NOTABLE_CHANGE_FINDINGS, narrative.max_notable_change_findings)
+assert.equal(
+  NARRATIVE_BALANCED_MAX_TOP_SHARE_PCT,
+  narrative.maintenance_thresholds.balanced_max_top_share_pct,
+)
+assert.equal(
+  NARRATIVE_MAINTENANCE_UNEVEN_SHARE_MIN_PCT,
+  narrative.maintenance_thresholds.uneven_share_min_pct,
+)
+assert.equal(NARRATIVE_HIGH_FOLLOW_UP_RATE_PCT, narrative.maintenance_thresholds.high_follow_up_rate_pct)
+assert.equal(NARRATIVE_MAINTENANCE_MIN_THREAD_STARTS, narrative.maintenance_thresholds.min_thread_starts)
+assert.equal(NARRATIVE_MAINTENANCE_MIN_RECONNECTIONS, narrative.maintenance_thresholds.min_reconnections)
+assert.equal(
+  NARRATIVE_MAINTENANCE_MIN_FOLLOW_UP_RELEVANT_TURNS,
+  narrative.maintenance_thresholds.min_follow_up_relevant_turns,
+)
 assert.equal(NARRATIVE_REQUIRED_GUARDRAIL, narrative.required_guardrail)
 assert.equal(FORECASTING_CONTRACT_VERSION, forecastingContract.contract_version)
 assert.deepEqual(REPLY_HORIZONS_MINUTES, forecastingContract.tasks.reply_within_horizon.horizons_minutes)
