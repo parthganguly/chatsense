@@ -34,12 +34,23 @@ Shared contracts and fixtures
 - shared analysis types;
 - deterministic behavioral insights;
 - deterministic relationship-dynamics turns, windows, and evidence-safe comparisons;
+- deterministic evidence-backed narrative findings derived from those existing metrics;
 - contract constants;
 - TypeScript parity normalization.
 
 The core package is an npm workspace package and must stay free of React, Next.js, DOM, Capacitor, Android, Node filesystem, and Python dependencies.
 
 Stage 5 adds research-only forecasting validation functions to the core package so the current runtime and future consumers can inspect the same gated result. These functions do not call remote services and do not authorize product predictions by themselves. Reply opportunities terminate conservatively at observed response, same-sender new-thread supersession, or export end.
+
+Stage 6 adds `InsightNarrative` to `ChatAnalysis`. The core, rather than the UI,
+builds separate Overview, Changes, People, and Rhythm sections. Its categories
+cover balance, maintenance, reconnection, reply timing, activity change, rhythm,
+forecasting gate, and data quality. Comparison findings can lead only when the
+canonical Stage 4 evidence and notable-change rules are satisfied. Maintenance
+findings use contract-owned share and sample thresholds. The forecasting finding
+reports Stage 5 gate status but never emits a live forecast. Every finding includes
+the values, periods, counts, or sample sizes that support it. This is a presentation
+layer over existing calculations; it adds no new behavioral score.
 
 ## Application Shell
 
@@ -53,6 +64,11 @@ The Next.js/Capacitor shell owns:
 - presentation screens and components.
 
 Screens render `ChatAnalysis` values from `@chatsense/core`. They must not duplicate behavioral calculations.
+
+All four analytics screens render their corresponding `ChatAnalysis.narrative.sections`
+entry before raw metric cards, comparison cards, participant cards, charts, or pause
+tables. `components/analytics/NarrativeSection.tsx` and `NarrativeFindingRow.tsx`
+format the precomputed narrative without altering its order or language.
 
 Stage 4 adds a `Changes` screen that renders precomputed adaptive-window,
 turn-taking, reconnection, and evidence-safe comparison summaries from

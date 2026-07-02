@@ -9,6 +9,7 @@ import {
 } from "@chatsense/core"
 import { DataRow } from "@/components/analytics/DataRow"
 import { MetricCard } from "@/components/analytics/MetricCard"
+import { NarrativeSection } from "@/components/analytics/NarrativeSection"
 import { ProgressRow } from "@/components/analytics/ProgressRow"
 import { SectionHeading } from "@/components/analytics/SectionHeading"
 import { formatChangeDirection, formatDate, formatNumber } from "@/utils/formatting"
@@ -19,6 +20,13 @@ export function ChangesScreen({ analysis }: { analysis: ChatAnalysis }) {
 
   return (
     <div className="space-y-7 px-5 py-5">
+      <NarrativeSection
+        eyebrow="Plain-English read"
+        title="What changed?"
+        section={analysis.narrative.sections.changes}
+        guardrail={analysis.narrative.guardrail}
+      />
+
       <section>
         <SectionHeading eyebrow="Relationship dynamics" title="Changes over time" />
         <div className="mt-4 grid grid-cols-2 gap-3">

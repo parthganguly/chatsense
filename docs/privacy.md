@@ -37,6 +37,16 @@ ChatSense reports observable communication patterns only. Reply delays, silence 
 
 Stage 5 forecasting validation stays local and deterministic. It backtests observable timing and volume outcomes from earlier observable behavior, but the current app does not promote live predictions.
 
+Stage 6 plain-English summaries for Overview, Changes, People, and Rhythm are
+generated locally by deterministic rules in `@chatsense/core`. They do not send
+data anywhere, inspect message text, call a model, or infer meaning. Visible
+evidence accompanies each finding. The maintenance narrative uses only turn,
+thread-start, 24-hour restart, and follow-up counts. The forecasting-gate
+narrative reports that product forecasting remains blocked; it does not expose a
+live forecast. Every screen repeats the contract guardrail that exported timing
+and volume do not prove motive, love, rejection, affection, attachment,
+personality, mental health, relationship quality, or relationship status.
+
 Forecasting research does not use message meaning, sentiment analysis, embeddings, LLMs, personality inference, motive inference, coaching, telemetry, backend calls, or cloud processing.
 
 Synthetic fixtures validate correctness of the method, not real-world predictive validity.
