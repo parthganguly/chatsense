@@ -77,6 +77,14 @@ NOTABLE_FOLLOW_UP_RATE_ABS_PCT: int = _dynamics["notable_change_thresholds"]["fo
 # Android UI, but exposes the same canonical limits for research consumers.
 NARRATIVE_MAX_PRIMARY_FINDINGS: int = _narrative["max_primary_findings"]
 NARRATIVE_MAX_NOTABLE_CHANGE_FINDINGS: int = _narrative["max_notable_change_findings"]
+NARRATIVE_BALANCED_MAX_TOP_SHARE_PCT: int = _narrative["maintenance_thresholds"]["balanced_max_top_share_pct"]
+NARRATIVE_MAINTENANCE_UNEVEN_SHARE_MIN_PCT: int = _narrative["maintenance_thresholds"]["uneven_share_min_pct"]
+NARRATIVE_HIGH_FOLLOW_UP_RATE_PCT: int = _narrative["maintenance_thresholds"]["high_follow_up_rate_pct"]
+NARRATIVE_MAINTENANCE_MIN_THREAD_STARTS: int = _narrative["maintenance_thresholds"]["min_thread_starts"]
+NARRATIVE_MAINTENANCE_MIN_RECONNECTIONS: int = _narrative["maintenance_thresholds"]["min_reconnections"]
+NARRATIVE_MAINTENANCE_MIN_FOLLOW_UP_RELEVANT_TURNS: int = _narrative["maintenance_thresholds"][
+    "min_follow_up_relevant_turns"
+]
 NARRATIVE_REQUIRED_GUARDRAIL: str = _narrative["required_guardrail"]
 
 # Canonical runtime silence-anomaly definition.

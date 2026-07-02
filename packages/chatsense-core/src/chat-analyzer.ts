@@ -147,6 +147,7 @@ export function analyzeChat(inputMessages: ChatMessage[]): ChatAnalysis {
     replies: replyDynamics,
     activity,
     relationshipDynamics,
+    forecastingResearch,
   })
 
   return {
@@ -555,6 +556,7 @@ function getDefaultAnalysis(): ChatAnalysis {
         dailyCounts: [],
       },
       relationshipDynamics: getDefaultRelationshipDynamics(),
+      forecastingResearch: evaluateForecastingResearch([]),
     }),
     replyEdges: [],
     threadCount: 0,
