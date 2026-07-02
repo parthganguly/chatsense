@@ -2,7 +2,7 @@
 
 ChatSense is a local-first WhatsApp export analyzer. The current app is a Next.js static shell wrapped by Capacitor for Android, with behavioral parsing and analytics provided by the internal `@chatsense/core` workspace package.
 
-Overview begins with a deterministic, evidence-backed plain-English summary. Each finding is derived from existing timing and volume metrics, carries supporting values or sample counts, and states when an export is too limited for an over-time comparison. It does not interpret message content or infer motives.
+Overview, Changes, People, and Rhythm each begin with a deterministic, evidence-backed plain-English summary. Findings are derived from existing timing and volume metrics, carry supporting values or sample counts, and state when an export is too limited for a comparison. The narrative highlights measured change, contact maintenance, participant balance, pause context, and the blocked forecasting gate without interpreting message content or inferring motives.
 
 Python remains a local research/reference implementation and is not bundled into Android.
 
