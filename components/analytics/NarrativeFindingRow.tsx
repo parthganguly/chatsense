@@ -1,20 +1,34 @@
 import {
   Activity,
   Clock3,
+  FlaskConical,
   GitCompare,
+  Handshake,
   MessagesSquare,
   PauseCircle,
+  RotateCcw,
+  Scale,
   ScanSearch,
+  ShieldAlert,
+  TrendingUp,
+  Waves,
   type LucideIcon,
 } from "lucide-react"
 import type { NarrativeCategory, NarrativeFinding } from "@chatsense/core"
 
 const categoryPresentation: Record<NarrativeCategory, { icon: LucideIcon; label: string; iconClass: string }> = {
+  balance: { icon: Scale, label: "Balance", iconClass: "text-violet-700" },
+  maintenance: { icon: Handshake, label: "Contact maintenance", iconClass: "text-emerald-700" },
+  reconnection: { icon: RotateCcw, label: "Restarts", iconClass: "text-amber-700" },
+  reply_timing: { icon: Clock3, label: "Reply timing", iconClass: "text-cyan-700" },
+  activity_change: { icon: TrendingUp, label: "Activity change", iconClass: "text-rose-700" },
+  rhythm: { icon: Waves, label: "Rhythm", iconClass: "text-sky-700" },
+  forecasting_gate: { icon: FlaskConical, label: "Forecasting gate", iconClass: "text-slate-700" },
+  data_quality: { icon: ShieldAlert, label: "Evidence limit", iconClass: "text-amber-700" },
   change: { icon: GitCompare, label: "Measured change", iconClass: "text-emerald-700" },
   comparison_context: { icon: ScanSearch, label: "Comparison", iconClass: "text-sky-700" },
   participation: { icon: MessagesSquare, label: "Participation", iconClass: "text-violet-700" },
   pause_reconnection: { icon: PauseCircle, label: "Pauses", iconClass: "text-amber-700" },
-  reply_timing: { icon: Clock3, label: "Reply timing", iconClass: "text-cyan-700" },
   activity: { icon: Activity, label: "Activity", iconClass: "text-rose-700" },
 }
 

@@ -3,6 +3,7 @@ import { formatDuration, type ChatAnalysis } from "@chatsense/core"
 import { DataRow } from "@/components/analytics/DataRow"
 import { MetricCard } from "@/components/analytics/MetricCard"
 import { MiniBars } from "@/components/analytics/MiniBars"
+import { NarrativeSection } from "@/components/analytics/NarrativeSection"
 import { ProgressRow } from "@/components/analytics/ProgressRow"
 import { SectionHeading } from "@/components/analytics/SectionHeading"
 import { formatDateTime, formatHour, formatNumber, formatTrend } from "@/utils/formatting"
@@ -17,6 +18,13 @@ export function RhythmScreen({ analysis }: { analysis: ChatAnalysis }) {
 
   return (
     <div className="space-y-7 px-5 py-5">
+      <NarrativeSection
+        eyebrow="Plain-English read"
+        title="Pause story"
+        section={analysis.narrative.sections.rhythm}
+        guardrail={analysis.narrative.guardrail}
+      />
+
       <section>
         <SectionHeading eyebrow="Time series" title="Conversation rhythm" />
         <div className="mt-4 grid grid-cols-2 gap-3">
