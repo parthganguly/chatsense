@@ -32,7 +32,8 @@ function run() {
   testTakeawayRendersAboveNarrativeOnEveryScreen()
   testTopCardsAvoidInternalMetricNames()
   testTakeawayCardShowsShortSafetyLine()
-  console.log("Human takeaway tests passed (13-case Stage 6.2/6.3 matrix).")
+  testConcentratedContactReadsOneSided()
+  console.log("Human takeaway tests passed (14-case Stage 6.2/6.3 matrix).")
 }
 
 function testBalancedVolumeUnevenMaintenanceTakeaway() {
@@ -97,6 +98,7 @@ function testEveryTakeawayHasEvidence() {
     fixture("stage4_insufficient_export"),
     fixture("stage4_group_reply_edges"),
     balancedMaintenanceFixture(),
+    concentratedContactFixture(),
     activityComparisonFixture(5, 10),
     activityComparisonFixture(5, 5),
   ]
@@ -166,6 +168,7 @@ function testTopCardsAvoidInternalMetricNames() {
     fixture("stage4_insufficient_export"),
     fixture("stage4_group_reply_edges"),
     balancedMaintenanceFixture(),
+    concentratedContactFixture(),
     activityComparisonFixture(5, 10),
     activityComparisonFixture(5, 5),
   ]
@@ -189,6 +192,35 @@ function testTakeawayCardShowsShortSafetyLine() {
   for (const { name, pattern } of [...NARRATIVE_HIGH_RISK_PATTERNS, ...NARRATIVE_SOFT_RISK_PATTERNS]) {
     assert.doesNotMatch(NARRATIVE_TAKEAWAY_SAFETY_LINE, pattern, `safety line contains risk term '${name}'`)
   }
+}
+
+function testConcentratedContactReadsOneSided() {
+  // Uneven volume plus uneven maintenance on the same side must produce the
+  // "One side carried more of the contact." overview read, not the
+  // balanced-volume variant.
+  const narrative = narrativeForText(concentratedContactFixture())
+  const overview = narrative.takeaways.overview
+  assert.equal(overview.oneLineRead, "One side carried more of the contact.")
+  assert.equal(overview.tone, "uneven")
+  assert.equal(["moderate", "strong"].includes(overview.confidence), true, `unexpected confidence ${overview.confidence}`)
+  assert.equal(overview.whyItLooksThatWay.length > 0, true, "concentrated-contact takeaway has no evidence")
+  assert.match(overview.whatThisMeans, /Asha sent more overall/)
+  assertNarrativeLanguageSafe(narrative, "concentrated contact fixture")
+}
+
+function concentratedContactFixture(): string {
+  // Asha sends three of every four messages, starts every thread, and sends
+  // the first message after every multi-day pause; Ravi only replies once per
+  // thread. Volume and maintenance both lean to Asha.
+  const lines: string[] = []
+  for (let thread = 0; thread < 6; thread += 1) {
+    const start = new Date(2026, 0, 1 + thread * 2, 9, 0)
+    lines.push(whatsAppLine(start, "Asha", `opener ${thread}`))
+    lines.push(whatsAppLine(addMinutes(start, 3), "Asha", `second ${thread}`))
+    lines.push(whatsAppLine(addMinutes(start, 6), "Asha", `third ${thread}`))
+    lines.push(whatsAppLine(addMinutes(start, 10), "Ravi", `reply ${thread}`))
+  }
+  return lines.join("\n")
 }
 
 function balancedMaintenanceFixture(): string {
