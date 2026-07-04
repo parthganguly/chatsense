@@ -8,6 +8,7 @@ import {
   NARRATIVE_MAX_NOTABLE_CHANGE_FINDINGS,
   NARRATIVE_MAX_PRIMARY_FINDINGS,
   NARRATIVE_REQUIRED_GUARDRAIL,
+  NARRATIVE_TAKEAWAY_STRONG_EVIDENCE_MULTIPLIER,
   NOTABLE_FOLLOW_UP_RATE_ABS_PCT,
   NOTABLE_MESSAGES_PER_ACTIVE_DAY_RELATIVE_PCT,
   NOTABLE_RECONNECTION_SHARE_ABS_PCT,
@@ -22,6 +23,7 @@ import type {
   ReplyDynamics,
 } from "./chat-analyzer"
 import type { ForecastingResearchReport } from "./forecasting"
+import type { HumanTakeaway, TakeawayConfidence } from "./human-takeaway"
 import type {
   DynamicsComparison,
   MetricChange,
@@ -77,6 +79,9 @@ export interface InsightNarrative {
   summary: string
   findings: NarrativeFinding[]
   sections: Record<NarrativeSectionKey, NarrativeSection>
+  // Stage 6.2: one plain-language takeaway per tab, rendered above the
+  // evidence narrative. Derived from the same computed values as the findings.
+  takeaways: Record<NarrativeSectionKey, HumanTakeaway>
   guardrail: string
   limitations: string[]
 }
@@ -93,7 +98,8 @@ export interface NarrativeInput {
 export function buildInsightNarrative(input: NarrativeInput): InsightNarrative {
   if (input.overview.messageCount === 0) return emptyNarrative()
 
-  const maintenance = maintenanceFinding(input.overview, input.participants, input.relationshipDynamics)
+  const assessment = assessMaintenance(input.participants, input.relationshipDynamics)
+  const maintenance = maintenanceFinding(assessment, input.overview, input.participants, input.relationshipDynamics)
   const balance = balanceFinding(input.participants, input.relationshipDynamics.participantSummaries)
   const pauseStory = pauseStoryFinding(input.relationshipDynamics.pauseSummary)
   const reconnection = reconnectionFinding(input.relationshipDynamics.pauseSummary)
@@ -176,6 +182,7 @@ export function buildInsightNarrative(input: NarrativeInput): InsightNarrative {
       people: peopleSection,
       rhythm: rhythmSection,
     },
+    takeaways: buildTakeaways(input, assessment, earlyChange, recentChange),
     guardrail: NARRATIVE_REQUIRED_GUARDRAIL,
     limitations: [
       "Message content is not interpreted; only timestamps, senders, counts, and derived timing patterns are used.",
@@ -313,81 +320,130 @@ function comparisonEvidence(comparison: DynamicsComparison): NarrativeEvidence[]
   ]
 }
 
-function maintenanceFinding(
-  overview: ConversationOverview,
+interface MaintenanceAssessment {
+  state: "uneven" | "balanced" | "limited"
+  limitedReason: string | null
+  volumeBalanced: boolean
+  topMessage: ParticipantInsight | null
+  topTurn: ParticipantDynamicsSummary | null
+  leader: ParticipantDynamicsSummary | null
+  leaderPhrases: string[]
+  threadStartsTotal: number
+  reconnectionsTotal: number
+}
+
+function assessMaintenance(
   participants: ParticipantInsight[],
   dynamics: RelationshipDynamics,
-): NarrativeFinding {
+): MaintenanceAssessment {
+  const base: MaintenanceAssessment = {
+    state: "limited",
+    limitedReason: null,
+    volumeBalanced: false,
+    topMessage: null,
+    topTurn: null,
+    leader: null,
+    leaderPhrases: [],
+    threadStartsTotal: dynamics.participantSummaries.reduce((total, participant) => total + participant.threadStarts, 0),
+    reconnectionsTotal: dynamics.pauseSummary.longPauseCount,
+  }
+
   if (participants.length < 2 || dynamics.participantSummaries.length < 2) {
-    return limitedMaintenanceFinding(dynamics, "At least two participants are needed for a maintenance comparison.")
+    return { ...base, limitedReason: "At least two participants are needed for a maintenance comparison." }
   }
 
   const topMessage = [...participants].sort((left, right) => right.messageShare - left.messageShare)[0]
   const topTurn = [...dynamics.participantSummaries].sort((left, right) => right.turnShare - left.turnShare)[0]
-  const threadStarts = dynamics.participantSummaries.reduce((total, participant) => total + participant.threadStarts, 0)
-  const reconnections = dynamics.pauseSummary.longPauseCount
   const volumeBalanced =
     topMessage.messageShare <= NARRATIVE_BALANCED_MAX_TOP_SHARE_PCT &&
     topTurn.turnShare <= NARRATIVE_BALANCED_MAX_TOP_SHARE_PCT
 
   const ranked = dynamics.participantSummaries
-    .map((participant) => ({ participant, score: maintenanceScore(participant, threadStarts, reconnections) }))
+    .map((participant) => ({
+      participant,
+      score: maintenanceScore(participant, base.threadStartsTotal, base.reconnectionsTotal),
+    }))
     .sort((left, right) => right.score - left.score || left.participant.sender.localeCompare(right.participant.sender))
   const strongest = ranked[0]
 
   if (strongest.score >= 1) {
     const participant = strongest.participant
-    const maintenancePhrases: string[] = []
+    const leaderPhrases: string[] = []
     if (
-      threadStarts >= NARRATIVE_MAINTENANCE_MIN_THREAD_STARTS &&
+      base.threadStartsTotal >= NARRATIVE_MAINTENANCE_MIN_THREAD_STARTS &&
       participant.threadStartShare >= NARRATIVE_MAINTENANCE_UNEVEN_SHARE_MIN_PCT
     ) {
-      maintenancePhrases.push(`started ${participant.threadStartShare}% of threads`)
+      leaderPhrases.push(`started ${participant.threadStartShare}% of threads`)
     }
     if (
-      reconnections >= NARRATIVE_MAINTENANCE_MIN_RECONNECTIONS &&
+      base.reconnectionsTotal >= NARRATIVE_MAINTENANCE_MIN_RECONNECTIONS &&
       participant.reconnectionShare >= NARRATIVE_MAINTENANCE_UNEVEN_SHARE_MIN_PCT
     ) {
-      maintenancePhrases.push(
-        `sent the first message after ${participant.reconnectionCount} of ${reconnections} pauses of at least 24 hours`,
+      leaderPhrases.push(
+        `sent the first message after ${participant.reconnectionCount} of ${base.reconnectionsTotal} pauses of at least 24 hours`,
       )
     }
     if (
       participant.followUpRelevantTurnCount >= NARRATIVE_MAINTENANCE_MIN_FOLLOW_UP_RELEVANT_TURNS &&
       (participant.followUpRate ?? 0) >= NARRATIVE_HIGH_FOLLOW_UP_RATE_PCT
     ) {
-      maintenancePhrases.push(`followed up before a reply in ${participant.followUpRate}% of relevant turns`)
+      leaderPhrases.push(`followed up before a reply in ${participant.followUpRate}% of relevant turns`)
     }
-
-    return {
-      id: "maintenance:uneven",
-      category: "maintenance",
-      evidenceLevel: "descriptive",
-      title: volumeBalanced ? "Balanced volume, uneven contact maintenance" : "Contact maintenance is uneven",
-      summary: `${volumeBalanced ? "Message volume and turn share were relatively balanced, while" : "In the observed maintenance measures,"} ${participant.sender} ${joinPhrases(maintenancePhrases)}.`,
-      evidence: maintenanceEvidence(participant, participants, overview.messageCount),
-    }
+    return { ...base, state: "uneven", volumeBalanced, topMessage, topTurn, leader: participant, leaderPhrases }
   }
 
   const hasMaintenanceEvidence =
-    threadStarts >= NARRATIVE_MAINTENANCE_MIN_THREAD_STARTS ||
-    reconnections >= NARRATIVE_MAINTENANCE_MIN_RECONNECTIONS ||
+    base.threadStartsTotal >= NARRATIVE_MAINTENANCE_MIN_THREAD_STARTS ||
+    base.reconnectionsTotal >= NARRATIVE_MAINTENANCE_MIN_RECONNECTIONS ||
     dynamics.participantSummaries.some(
       (participant) =>
         participant.followUpRelevantTurnCount >= NARRATIVE_MAINTENANCE_MIN_FOLLOW_UP_RELEVANT_TURNS,
     )
   if (!hasMaintenanceEvidence) {
-    return limitedMaintenanceFinding(dynamics, "Too few thread starts, long-pause restarts, or relevant follow-up turns.")
+    return {
+      ...base,
+      volumeBalanced,
+      topMessage,
+      topTurn,
+      limitedReason: "Too few thread starts, long-pause restarts, or relevant follow-up turns.",
+    }
+  }
+
+  return { ...base, state: "balanced", volumeBalanced, topMessage, topTurn }
+}
+
+function maintenanceFinding(
+  assessment: MaintenanceAssessment,
+  overview: ConversationOverview,
+  participants: ParticipantInsight[],
+  dynamics: RelationshipDynamics,
+): NarrativeFinding {
+  if (assessment.state === "limited") {
+    return limitedMaintenanceFinding(
+      dynamics,
+      assessment.limitedReason ?? "Too few thread starts, long-pause restarts, or relevant follow-up turns.",
+    )
+  }
+
+  if (assessment.state === "uneven" && assessment.leader) {
+    return {
+      id: "maintenance:uneven",
+      category: "maintenance",
+      evidenceLevel: "descriptive",
+      title: assessment.volumeBalanced ? "Balanced volume, uneven contact maintenance" : "Contact maintenance is uneven",
+      summary: `${assessment.volumeBalanced ? "Message volume and turn share were relatively balanced, while" : "In the observed maintenance measures,"} ${assessment.leader.sender} ${joinPhrases(assessment.leaderPhrases)}.`,
+      evidence: maintenanceEvidence(assessment.leader, participants, overview.messageCount),
+    }
   }
 
   return {
     id: "maintenance:balanced",
     category: "maintenance",
     evidenceLevel: "descriptive",
-    title: volumeBalanced
+    title: assessment.volumeBalanced
       ? "Contribution and contact maintenance were relatively balanced"
       : "Observed contact maintenance was relatively balanced",
-    summary: volumeBalanced
+    summary: assessment.volumeBalanced
       ? "Contribution and the available contact-maintenance measures were both relatively balanced in this export."
       : "The available thread-start, restart, and follow-up measures did not concentrate above the narrative threshold for one participant.",
     evidence: balancedMaintenanceEvidence(participants, dynamics.participantSummaries),
@@ -733,6 +789,340 @@ function round(value: number, digits: number): number {
   return Math.round(value * factor) / factor
 }
 
+// --- Stage 6.2 human takeaways -------------------------------------------
+// One plain-language read per tab, derived from the same computed values as
+// the findings above. No new behavioral score, no content interpretation.
+
+const TAKEAWAY_TITLES: Record<NarrativeSectionKey, string> = {
+  overview: "What this looks like",
+  changes: "Direction of travel",
+  people: "Who carried the contact?",
+  rhythm: "Silence pattern",
+}
+
+function buildTakeaways(
+  input: NarrativeInput,
+  assessment: MaintenanceAssessment,
+  earlyChange: MetricChange | null,
+  recentChange: MetricChange | null,
+): Record<NarrativeSectionKey, HumanTakeaway> {
+  const isGroup = input.overview.participantCount > 2
+  return {
+    overview: overviewTakeaway(input, assessment, earlyChange, recentChange),
+    changes: changesTakeaway(input.relationshipDynamics, earlyChange, recentChange),
+    people: peopleTakeaway(input, assessment, isGroup),
+    rhythm: rhythmTakeaway(input.relationshipDynamics.pauseSummary),
+  }
+}
+
+function maintenanceConfidence(assessment: MaintenanceAssessment): TakeawayConfidence {
+  if (assessment.state === "limited") return "limited"
+  const strongThreads =
+    assessment.threadStartsTotal >=
+    NARRATIVE_MAINTENANCE_MIN_THREAD_STARTS * NARRATIVE_TAKEAWAY_STRONG_EVIDENCE_MULTIPLIER
+  const strongRestarts =
+    assessment.reconnectionsTotal >=
+    NARRATIVE_MAINTENANCE_MIN_RECONNECTIONS * NARRATIVE_TAKEAWAY_STRONG_EVIDENCE_MULTIPLIER
+  return strongThreads || strongRestarts ? "strong" : "moderate"
+}
+
+function maintenanceBullets(
+  input: NarrativeInput,
+  assessment: MaintenanceAssessment,
+): string[] {
+  const bullets: string[] = []
+  const pair = input.overview.participantCount === 2
+  if (pair && input.participants.length === 2) {
+    bullets.push(`Message share was ${input.participants[0].messageShare}% / ${input.participants[1].messageShare}%.`)
+  } else if (assessment.topMessage) {
+    bullets.push(`Top message share was ${assessment.topMessage.messageShare}% (${assessment.topMessage.sender}).`)
+  } else {
+    bullets.push(`${formatCount(input.overview.messageCount)} ${pluralize("message", input.overview.messageCount)} on ${formatCount(input.overview.activeDays)} active ${pluralize("day", input.overview.activeDays)}.`)
+  }
+  const summaries = input.relationshipDynamics.participantSummaries
+  if (pair && summaries.length === 2 && assessment.threadStartsTotal > 0) {
+    bullets.push(`Thread starts were ${summaries[0].threadStartShare}% / ${summaries[1].threadStartShare}%.`)
+  }
+  if (assessment.leader && assessment.reconnectionsTotal > 0 && assessment.leader.reconnectionCount > 0) {
+    bullets.push(
+      `${assessment.leader.reconnectionCount} of ${assessment.reconnectionsTotal} long pauses were restarted by ${assessment.leader.sender}.`,
+    )
+  }
+  return bullets.slice(0, 3)
+}
+
+function overviewTakeaway(
+  input: NarrativeInput,
+  assessment: MaintenanceAssessment,
+  earlyChange: MetricChange | null,
+  recentChange: MetricChange | null,
+): HumanTakeaway {
+  const title = TAKEAWAY_TITLES.overview
+  const people = input.overview.participantCount === 2 ? "Both people" : "Participants"
+
+  if (assessment.state === "uneven" && assessment.leader) {
+    if (assessment.volumeBalanced) {
+      return takeaway(title, {
+        oneLineRead: "Balanced volume, uneven maintenance.",
+        whatThisMeans: `${people} sent a similar amount, but ${assessment.leader.sender} ${joinPhrases(assessment.leaderPhrases)}. The export looks reciprocal in volume, but less reciprocal in keeping contact alive.`,
+        whyItLooksThatWay: maintenanceBullets(input, assessment),
+        confidence: maintenanceConfidence(assessment),
+        tone: "uneven",
+      })
+    }
+    return takeaway(title, {
+      oneLineRead: `Activity and maintenance both leaned toward ${assessment.leader.sender}.`,
+      whatThisMeans: `${assessment.leader.sender} sent more and also ${joinPhrases(assessment.leaderPhrases)}. The export looks concentrated on one side rather than reciprocal.`,
+      whyItLooksThatWay: maintenanceBullets(input, assessment),
+      confidence: maintenanceConfidence(assessment),
+      tone: "uneven",
+    })
+  }
+
+  if (assessment.state === "balanced") {
+    if (earlyChange || recentChange) {
+      return takeaway(title, {
+        oneLineRead: "Mostly balanced, with a measured shift over time.",
+        whatThisMeans:
+          "Contribution and the available maintenance measures look reciprocal, but at least one measured pattern moved between the compared periods. The Changes tab shows which one.",
+        whyItLooksThatWay: [...maintenanceBullets(input, assessment), changeBullet(recentChange ?? earlyChange!)].slice(0, 3),
+        confidence: maintenanceConfidence(assessment),
+        tone: "changed",
+      })
+    }
+    const comparisonAvailable =
+      input.relationshipDynamics.earlyLate.available || input.relationshipDynamics.recentPrior.available
+    return takeaway(title, {
+      oneLineRead: comparisonAvailable ? "Mostly balanced and stable." : "Mostly balanced.",
+      whatThisMeans: comparisonAvailable
+        ? "Volume, turns, and the available maintenance measures all stayed close to even, and no compared measure crossed its change threshold. Nothing in this export concentrates on one side."
+        : "Volume, turns, and the available maintenance measures all stayed close to even. The export is too short to compare periods, so stability over time is not claimed.",
+      whyItLooksThatWay: maintenanceBullets(input, assessment),
+      confidence: maintenanceConfidence(assessment),
+      tone: "balanced",
+    })
+  }
+
+  return takeaway(title, {
+    oneLineRead: "Too little data for a real read.",
+    whatThisMeans:
+      "The export is too small or too sparse to attribute maintenance or compare periods. What is shown is a snapshot, not a pattern.",
+    whyItLooksThatWay: [
+      `${formatCount(input.overview.messageCount)} ${pluralize("message", input.overview.messageCount)} on ${formatCount(input.overview.activeDays)} active ${pluralize("day", input.overview.activeDays)}.`,
+      ...(assessment.limitedReason ? [assessment.limitedReason] : []),
+    ],
+    confidence: "limited",
+    tone: "limited",
+  })
+}
+
+function changesTakeaway(
+  dynamics: RelationshipDynamics,
+  earlyChange: MetricChange | null,
+  recentChange: MetricChange | null,
+): HumanTakeaway {
+  const title = TAKEAWAY_TITLES.changes
+  const primary = recentChange ?? earlyChange
+
+  if (primary) {
+    const bullets = [changeBullet(primary)]
+    const secondary = primary === recentChange ? earlyChange : null
+    if (secondary) bullets.push(changeBullet(secondary))
+    return takeaway(title, {
+      oneLineRead: changeOneLine(primary),
+      whatThisMeans: `${secondary ? "The lifetime arc and the most recent window both moved. " : ""}At least one measured pattern crossed its predefined change threshold between the compared periods. The direction is measured from timing and volume only; it does not explain why it moved.`,
+      whyItLooksThatWay: bullets,
+      confidence: earlyChange && recentChange ? "strong" : "moderate",
+      tone: "changed",
+    })
+  }
+
+  const available = [dynamics.recentPrior, dynamics.earlyLate].filter((comparison) => comparison.available)
+  if (available.length > 0) {
+    const comparison = available[0]
+    return takeaway(title, {
+      oneLineRead: "No clear change crossed the threshold.",
+      whatThisMeans:
+        "This looks stable rather than clearly changing. Every compared measure stayed inside its predefined threshold.",
+      whyItLooksThatWay: [
+        `${comparison.earlierPeriod.label}: ${formatCount(comparison.earlierPeriod.messageCount)} ${pluralize("message", comparison.earlierPeriod.messageCount)}.`,
+        `${comparison.laterPeriod.label}: ${formatCount(comparison.laterPeriod.messageCount)} ${pluralize("message", comparison.laterPeriod.messageCount)}.`,
+      ],
+      confidence: "moderate",
+      tone: "stable",
+    })
+  }
+
+  const reason = dynamics.recentPrior.unavailableReason ?? dynamics.earlyLate.unavailableReason
+  return takeaway(title, {
+    oneLineRead: "Not enough history to read a direction.",
+    whatThisMeans:
+      "There is not enough evidence here to read a real change. That can mean the pattern was stable, or that the export is too short to compare properly.",
+    whyItLooksThatWay: [reason ?? "No eligible comparison windows were found."],
+    confidence: "limited",
+    tone: "limited",
+  })
+}
+
+function changeOneLine(change: MetricChange): string {
+  if (change.metric === "messages_per_active_day") {
+    return change.direction === "increased"
+      ? "The later period became more active."
+      : "The later period became less active."
+  }
+  if (change.metric === "median_reply_minutes") return `Reply timing changed for ${change.sender}.`
+  if (change.metric === "thread_start_share") return `Thread starting shifted for ${change.sender}.`
+  if (change.metric === "reconnection_share") return `Restarting after long pauses shifted for ${change.sender}.`
+  if (change.metric === "follow_up_rate") return `Follow-up rate shifted for ${change.sender}.`
+  return `Participation share shifted for ${change.sender}.`
+}
+
+function changeBullet(change: MetricChange): string {
+  const earlier = formatMetricValue(change, change.earlierValue)
+  const later = formatMetricValue(change, change.laterValue)
+  if (change.metric === "median_reply_minutes") {
+    return `Median reply changed from ${earlier} to ${later} for ${change.sender}.`
+  }
+  if (change.metric === "messages_per_active_day") {
+    return `Messages per active day went from ${earlier} to ${later}.`
+  }
+  return `${change.label} moved from ${earlier} to ${later}${change.sender ? ` for ${change.sender}` : ""}.`
+}
+
+function peopleTakeaway(
+  input: NarrativeInput,
+  assessment: MaintenanceAssessment,
+  isGroup: boolean,
+): HumanTakeaway {
+  const title = TAKEAWAY_TITLES.people
+  const groupNote = isGroup
+    ? " In group chats, attribution is approximate: each reply is credited to the immediately previous sender."
+    : ""
+
+  if (assessment.state === "uneven" && assessment.leader) {
+    return takeaway(title, {
+      oneLineRead: `Contact maintenance leaned toward ${assessment.leader.sender}.`,
+      whatThisMeans: `${assessment.leader.sender} ${joinPhrases(assessment.leaderPhrases)}. ${
+        assessment.volumeBalanced
+          ? "Volume stayed relatively balanced, so the lean shows up in maintenance rather than in message count."
+          : "Volume also leaned the same way."
+      }${groupNote}`,
+      whyItLooksThatWay: maintenanceBullets(input, assessment),
+      confidence: maintenanceConfidence(assessment),
+      tone: "uneven",
+    })
+  }
+
+  if (assessment.state === "balanced") {
+    return takeaway(title, {
+      oneLineRead: "Contact maintenance looked fairly balanced.",
+      whatThisMeans: `Thread starts and restarts after long pauses did not concentrate on one side of this export.${groupNote}`,
+      whyItLooksThatWay: maintenanceBullets(input, assessment),
+      confidence: maintenanceConfidence(assessment),
+      tone: "balanced",
+    })
+  }
+
+  return takeaway(title, {
+    oneLineRead: "Too few maintenance events to attribute.",
+    whatThisMeans: `This export does not contain enough thread starts, restarts, or follow-ups to say who kept contact moving.${groupNote}`,
+    whyItLooksThatWay: [
+      `${formatCount(assessment.threadStartsTotal)} thread ${pluralize("start", assessment.threadStartsTotal)} and ${formatCount(assessment.reconnectionsTotal)} ${pluralize("restart", assessment.reconnectionsTotal)} were observed.`,
+      ...(assessment.limitedReason ? [assessment.limitedReason] : []),
+    ],
+    confidence: "limited",
+    tone: "limited",
+  })
+}
+
+function rhythmTakeaway(summary: PauseReconnectionSummary): HumanTakeaway {
+  const title = TAKEAWAY_TITLES.rhythm
+
+  if (summary.latestGapMinutes === null) {
+    return takeaway(title, {
+      oneLineRead: "Not enough messages to read a rhythm.",
+      whatThisMeans: "At least two valid messages are needed to describe gaps between messages.",
+      whyItLooksThatWay: ["0 inter-message gaps were observed."],
+      confidence: "limited",
+      tone: "limited",
+    })
+  }
+
+  const longestBullet = `Longest pause was ${formatDuration(summary.longestPauses[0]?.durationMinutes ?? null)}; median gap was ${formatDuration(summary.medianInterMessageGapMinutes)}.`
+  const latestNote =
+    summary.latestGapPercentile !== null && summary.latestGapPercentile >= 90
+      ? " The latest gap ranks near the top of this export's gaps."
+      : ""
+
+  if (summary.longPauseCount === 0) {
+    return takeaway(title, {
+      oneLineRead: "No 24-hour silence appeared in this export.",
+      whatThisMeans: `Inside this export, the conversation never went a full day without a message.${latestNote}`,
+      whyItLooksThatWay: ["0 pauses reached 24 hours.", longestBullet],
+      confidence: "moderate",
+      tone: "stable",
+    })
+  }
+
+  const top = summary.reconnectingParticipants[0]
+  const concentrated =
+    top !== undefined &&
+    top.count >= NARRATIVE_MAINTENANCE_MIN_RECONNECTIONS &&
+    top.share >= NARRATIVE_MAINTENANCE_UNEVEN_SHARE_MIN_PCT
+  const restartConfidence: TakeawayConfidence =
+    summary.longPauseCount >= NARRATIVE_MAINTENANCE_MIN_RECONNECTIONS * NARRATIVE_TAKEAWAY_STRONG_EVIDENCE_MULTIPLIER
+      ? "strong"
+      : "moderate"
+
+  if (concentrated) {
+    return takeaway(title, {
+      oneLineRead: "Long pauses happened, and most were restarted by the same person.",
+      whatThisMeans: `The quiet periods repeatedly ended the same way: ${top.sender} sent the first message after ${top.count} of ${summary.longPauseCount} pauses of at least 24 hours. That is a pattern worth noticing, not an explanation of it.${latestNote}`,
+      whyItLooksThatWay: [
+        `${top.count} of ${formatCount(summary.longPauseCount)} long pauses were restarted by ${top.sender}.`,
+        longestBullet,
+      ],
+      confidence: restartConfidence,
+      tone: "caution",
+    })
+  }
+
+  return takeaway(title, {
+    oneLineRead: "Long pauses happened, with restarts from more than one side.",
+    whatThisMeans: `Pauses of at least 24 hours appeared, and the first message afterward did not consistently come from one person.${latestNote}`,
+    whyItLooksThatWay: [
+      `${formatCount(summary.longPauseCount)} ${pluralize("pause", summary.longPauseCount)} reached 24 hours.`,
+      longestBullet,
+    ],
+    confidence: restartConfidence,
+    tone: "balanced",
+  })
+}
+
+function takeaway(
+  title: string,
+  body: Omit<HumanTakeaway, "title" | "guardrail">,
+): HumanTakeaway {
+  return { title, guardrail: NARRATIVE_REQUIRED_GUARDRAIL, ...body }
+}
+
+function limitedTakeaways(): Record<NarrativeSectionKey, HumanTakeaway> {
+  const empty = (sectionKey: NarrativeSectionKey, oneLineRead: string): HumanTakeaway =>
+    takeaway(TAKEAWAY_TITLES[sectionKey], {
+      oneLineRead,
+      whatThisMeans: "Import a WhatsApp export with valid messages to build this local summary.",
+      whyItLooksThatWay: ["No valid messages were imported."],
+      confidence: "limited",
+      tone: "limited",
+    })
+  return {
+    overview: empty("overview", "Nothing to read yet."),
+    changes: empty("changes", "Nothing to compare yet."),
+    people: empty("people", "No participants to attribute yet."),
+    rhythm: empty("rhythm", "No gaps to describe yet."),
+  }
+}
+
 function emptySection(id: NarrativeSectionKey, headline: string): NarrativeSection {
   return {
     id,
@@ -754,6 +1144,7 @@ function emptyNarrative(): InsightNarrative {
       people: emptySection("people", "No maintenance summary is available yet"),
       rhythm: emptySection("rhythm", "No pause summary is available yet"),
     },
+    takeaways: limitedTakeaways(),
     guardrail: NARRATIVE_REQUIRED_GUARDRAIL,
     limitations: [
       "Message content is not interpreted; only timestamps, senders, counts, and derived timing patterns are used.",

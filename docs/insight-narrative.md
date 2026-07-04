@@ -19,6 +19,32 @@ non-diagnostic, and non-predictive.
 The original `headline`, `summary`, and `findings` fields remain aliases for the
 Overview section.
 
+## Human takeaways (Stage 6.2)
+
+`ChatAnalysis.narrative.takeaways` holds one `HumanTakeaway` per tab, rendered
+in a compact card above the evidence narrative:
+
+- Overview: "What this looks like";
+- Changes: "Direction of travel";
+- People: "Who carried the contact?";
+- Rhythm: "Silence pattern".
+
+Each takeaway carries `oneLineRead`, `whatThisMeans`, `whyItLooksThatWay`
+evidence bullets, a tone, a confidence level, and the required guardrail. It is
+a deterministic translation of the same computed values the findings use — a
+plain-language orientation, not advice, emotional inference, prediction, or a
+new behavioral score. Confidence is contract-owned: a read is "strong" only
+when the supporting event count reaches `strong_evidence_multiplier` times the
+corresponding minimum; limited evidence always produces a limited read. The
+product labels are "Strong read", "Useful read", and "Light read" — they are
+copy, not statistical claims.
+
+Allowed style: "Balanced volume, uneven maintenance."; "This looks stable
+rather than clearly changing."; "The quiet periods repeatedly ended the same
+way." Forbidden style: any motive, emotion, attachment, diagnosis, advice,
+prediction, or relationship-status wording — enforced by the shared scanner,
+which also scans every takeaway field.
+
 ## Categories
 
 Product narrative uses these explicit categories:

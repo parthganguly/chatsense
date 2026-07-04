@@ -65,6 +65,11 @@ export const NARRATIVE_SOFT_RISK_PATTERNS: ReadonlyArray<{ name: string; pattern
   { name: "ghosting", pattern: /\bghost\w*\b/i },
   { name: "pulling away", pattern: /\bpull(?:s|ed|ing)? away\b/i },
   { name: "clingy / needy", pattern: /\bclingy\b|\bneedy\b/i },
+  // Stage 6.2 additions for the human-takeaway layer.
+  { name: "cared / caring", pattern: /\bcar(?:ed|ing)\b/i },
+  { name: "desperate", pattern: /\bdesperat\w*\b/i },
+  { name: "healthy / unhealthy", pattern: /\b(?:un)?health\w*\b/i },
+  { name: "red / green flag", pattern: /\b(?:red|green) flag\w*\b/i },
 ]
 
 export function assertNarrativeLanguageSafe(narrative: InsightNarrative, label: string): void {
@@ -80,6 +85,19 @@ function narrativeTextEntries(narrative: InsightNarrative): Array<{ path: string
     { path: "guardrail", text: narrative.guardrail },
     ...narrative.limitations.map((text, index) => ({ path: `limitations[${index}]`, text })),
   ]
+
+  for (const [takeawayKey, takeaway] of Object.entries(narrative.takeaways)) {
+    entries.push(
+      { path: `takeaways.${takeawayKey}.title`, text: takeaway.title },
+      { path: `takeaways.${takeawayKey}.oneLineRead`, text: takeaway.oneLineRead },
+      { path: `takeaways.${takeawayKey}.whatThisMeans`, text: takeaway.whatThisMeans },
+      { path: `takeaways.${takeawayKey}.guardrail`, text: takeaway.guardrail },
+      ...takeaway.whyItLooksThatWay.map((text, index) => ({
+        path: `takeaways.${takeawayKey}.whyItLooksThatWay[${index}]`,
+        text,
+      })),
+    )
+  }
 
   for (const [sectionKey, section] of Object.entries(narrative.sections)) {
     entries.push(

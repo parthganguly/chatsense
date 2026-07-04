@@ -1,4 +1,4 @@
-"""Shared behavioral contract loader.
+﻿"""Shared behavioral contract loader.
 
 The canonical source of truth is ``contracts/behavioral_contract.json`` at the
 repository root. This module loads it once and exposes the constants the core
@@ -86,6 +86,8 @@ NARRATIVE_MAINTENANCE_MIN_FOLLOW_UP_RELEVANT_TURNS: int = _narrative["maintenanc
     "min_follow_up_relevant_turns"
 ]
 NARRATIVE_REQUIRED_GUARDRAIL: str = _narrative["required_guardrail"]
+NARRATIVE_TAKEAWAY_STRONG_EVIDENCE_MULTIPLIER: int = _narrative["takeaway"]["strong_evidence_multiplier"]
+NARRATIVE_TAKEAWAY_CONFIDENCE_LABELS: dict = _narrative["takeaway"]["confidence_labels"]
 
 # Canonical runtime silence-anomaly definition.
 SILENCE_ANOMALY_SCALE: float = _silence["scale"]

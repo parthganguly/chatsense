@@ -1,5 +1,8 @@
 # Stage 6 Evidence-backed Insight Narrative
 
+> Stage 6.2 adds a human-takeaway card above this narrative on every tab; see
+> `docs/stage-6-2-human-readable-takeaways-report.md`. Nothing below changed.
+
 ## Objective
 
 Stage 6 makes ChatSense answer "What does this export actually show?" without

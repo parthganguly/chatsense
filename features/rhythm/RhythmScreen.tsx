@@ -6,6 +6,7 @@ import { MiniBars } from "@/components/analytics/MiniBars"
 import { NarrativeSection } from "@/components/analytics/NarrativeSection"
 import { ProgressRow } from "@/components/analytics/ProgressRow"
 import { SectionHeading } from "@/components/analytics/SectionHeading"
+import { TakeawayCard } from "@/components/analytics/TakeawayCard"
 import { formatDateTime, formatHour, formatNumber, formatTrend } from "@/utils/formatting"
 
 export function RhythmScreen({ analysis }: { analysis: ChatAnalysis }) {
@@ -18,6 +19,8 @@ export function RhythmScreen({ analysis }: { analysis: ChatAnalysis }) {
 
   return (
     <div className="space-y-7 px-5 py-5">
+      <TakeawayCard takeaway={analysis.narrative.takeaways.rhythm} />
+
       <NarrativeSection
         eyebrow="Plain-English read"
         title="Pause story"

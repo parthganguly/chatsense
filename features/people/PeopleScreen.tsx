@@ -4,6 +4,7 @@ import { DataRow } from "@/components/analytics/DataRow"
 import { NarrativeSection } from "@/components/analytics/NarrativeSection"
 import { ProgressRow } from "@/components/analytics/ProgressRow"
 import { SectionHeading } from "@/components/analytics/SectionHeading"
+import { TakeawayCard } from "@/components/analytics/TakeawayCard"
 import { formatNumber } from "@/utils/formatting"
 
 export function PeopleScreen({ analysis }: { analysis: ChatAnalysis }) {
@@ -13,6 +14,8 @@ export function PeopleScreen({ analysis }: { analysis: ChatAnalysis }) {
 
   return (
     <div className="space-y-7 px-5 py-5">
+      <TakeawayCard takeaway={analysis.narrative.takeaways.people} />
+
       <NarrativeSection
         eyebrow="Plain-English read"
         title="Contact maintenance"
