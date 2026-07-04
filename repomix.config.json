@@ -1,0 +1,39 @@
+{
+  "$schema": "https://repomix.com/schemas/latest/schema.json",
+  "output": {
+    "filePath": "artifacts/ai-context/chatsense-repo.xml",
+    "style": "xml",
+    "fileSummary": true,
+    "directoryStructure": true,
+    "showLineNumbers": false,
+    "removeComments": false,
+    "removeEmptyLines": false
+  },
+  "include": [
+    "app/**",
+    "features/**",
+    "components/**",
+    "packages/chatsense-core/**",
+    "docs/**",
+    "contracts/**",
+    "tests/**",
+    "README.md",
+    "package.json"
+  ],
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [
+      ".next/**",
+      "node_modules/**",
+      "android/build/**",
+      "android/app/build/**",
+      "artifacts/**",
+      "**/*.apk",
+      "out/**"
+    ]
+  },
+  "security": {
+    "enableSecurityCheck": true
+  }
+}

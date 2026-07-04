@@ -1,0 +1,29 @@
+# ChatSense Android smoke flow (Maestro).
+#
+# Precondition: an export has already been imported. Use a synthetic fixture,
+# e.g. push fixtures/whatsapp/stage4_increasing_initiation.txt to the device
+# and import it through the in-app picker once. Automating the Android system
+# file picker is intentionally out of scope (see docs/agent-tooling.md for the
+# manual fallback). Never use a personal export for automated QA.
+#
+# Run: maestro test maestro/chatsense-smoke.yaml
+appId: com.thegreatparthicle.chatsense
+---
+- launchApp
+- extendedWaitUntil:
+    visible: "ChatSense"
+    timeout: 15000
+# If the import screen is showing, the precondition was not met.
+- assertNotVisible: "Choose WhatsApp export"
+# Walk every tab through the bottom navigation and check the takeaway leads.
+- tapOn: "Overview"
+- assertVisible: "(?i)what this looks like"
+- tapOn: "Changes"
+- assertVisible: "(?i)direction of travel"
+- tapOn: "People"
+- assertVisible: "(?i)who carried the contact\\?"
+- tapOn: "Rhythm"
+- assertVisible: "(?i)silence pattern"
+# Bottom nav still works after the walk.
+- tapOn: "Overview"
+- assertVisible: "(?i)what this looks like"
