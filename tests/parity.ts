@@ -1,4 +1,4 @@
-import assert from "node:assert/strict"
+﻿import assert from "node:assert/strict"
 import fs from "node:fs"
 import path from "node:path"
 
@@ -23,6 +23,8 @@ import {
   NARRATIVE_MAX_NOTABLE_CHANGE_FINDINGS,
   NARRATIVE_MAX_PRIMARY_FINDINGS,
   NARRATIVE_REQUIRED_GUARDRAIL,
+  NARRATIVE_TAKEAWAY_CONFIDENCE_LABELS,
+  NARRATIVE_TAKEAWAY_STRONG_EVIDENCE_MULTIPLIER,
   NOTABLE_FOLLOW_UP_RATE_ABS_PCT,
   NOTABLE_MESSAGES_PER_ACTIVE_DAY_RELATIVE_PCT,
   NOTABLE_RECONNECTION_SHARE_ABS_PCT,
@@ -118,6 +120,8 @@ assert.equal(
   narrative.maintenance_thresholds.min_follow_up_relevant_turns,
 )
 assert.equal(NARRATIVE_REQUIRED_GUARDRAIL, narrative.required_guardrail)
+assert.equal(NARRATIVE_TAKEAWAY_STRONG_EVIDENCE_MULTIPLIER, narrative.takeaway.strong_evidence_multiplier)
+assert.deepEqual({ ...NARRATIVE_TAKEAWAY_CONFIDENCE_LABELS }, narrative.takeaway.confidence_labels)
 assert.equal(FORECASTING_CONTRACT_VERSION, forecastingContract.contract_version)
 assert.deepEqual(REPLY_HORIZONS_MINUTES, forecastingContract.tasks.reply_within_horizon.horizons_minutes)
 assert.equal(

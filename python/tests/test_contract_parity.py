@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import json
 from pathlib import Path
@@ -56,6 +56,11 @@ def test_python_contract_loader_matches_json_file():
         == maintenance["min_follow_up_relevant_turns"]
     )
     assert contract.NARRATIVE_REQUIRED_GUARDRAIL == raw["insight_narrative"]["required_guardrail"]
+    assert (
+        contract.NARRATIVE_TAKEAWAY_STRONG_EVIDENCE_MULTIPLIER
+        == raw["insight_narrative"]["takeaway"]["strong_evidence_multiplier"]
+    )
+    assert contract.NARRATIVE_TAKEAWAY_CONFIDENCE_LABELS == raw["insight_narrative"]["takeaway"]["confidence_labels"]
     assert contract.MIN_WINDOW_MESSAGES == dynamics["window_eligibility"]["min_messages"]
     assert contract.MIN_WINDOW_ACTIVE_DAYS == dynamics["window_eligibility"]["min_active_days"]
     assert contract.EARLY_LATE_MIN_ELIGIBLE_WINDOWS == dynamics["comparison_periods"]["early_late_min_eligible_windows"]

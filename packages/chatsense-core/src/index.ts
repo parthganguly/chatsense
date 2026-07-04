@@ -36,3 +36,9 @@ export * from "./forecasting"
 export * from "./forecasting-contract"
 export * from "./forecasting-parity"
 export * from "./insight-narrative"
+export {
+  takeawayConfidenceLabel,
+  type HumanTakeaway,
+  type TakeawayConfidence,
+  type TakeawayTone,
+} from "./human-takeaway"

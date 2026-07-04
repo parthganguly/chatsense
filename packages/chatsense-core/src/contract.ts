@@ -61,6 +61,12 @@ export const NARRATIVE_HIGH_FOLLOW_UP_RATE_PCT = 60
 export const NARRATIVE_MAINTENANCE_MIN_THREAD_STARTS = 3
 export const NARRATIVE_MAINTENANCE_MIN_RECONNECTIONS = 2
 export const NARRATIVE_MAINTENANCE_MIN_FOLLOW_UP_RELEVANT_TURNS = 3
+export const NARRATIVE_TAKEAWAY_STRONG_EVIDENCE_MULTIPLIER = 2
+export const NARRATIVE_TAKEAWAY_CONFIDENCE_LABELS = {
+  strong: "Strong read",
+  moderate: "Useful read",
+  limited: "Light read",
+} as const
 export const NARRATIVE_REQUIRED_GUARDRAIL =
   "These observations describe exported timing and volume only. They do not prove motive, love, rejection, affection, attachment, personality, mental health, relationship quality, or relationship status."
 

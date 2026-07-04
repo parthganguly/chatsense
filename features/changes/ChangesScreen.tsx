@@ -11,6 +11,7 @@ import { DataRow } from "@/components/analytics/DataRow"
 import { MetricCard } from "@/components/analytics/MetricCard"
 import { NarrativeSection } from "@/components/analytics/NarrativeSection"
 import { ProgressRow } from "@/components/analytics/ProgressRow"
+import { TakeawayCard } from "@/components/analytics/TakeawayCard"
 import { SectionHeading } from "@/components/analytics/SectionHeading"
 import { formatChangeDirection, formatDate, formatNumber } from "@/utils/formatting"
 
@@ -20,6 +21,8 @@ export function ChangesScreen({ analysis }: { analysis: ChatAnalysis }) {
 
   return (
     <div className="space-y-7 px-5 py-5">
+      <TakeawayCard takeaway={analysis.narrative.takeaways.changes} />
+
       <NarrativeSection
         eyebrow="Plain-English read"
         title="What changed?"

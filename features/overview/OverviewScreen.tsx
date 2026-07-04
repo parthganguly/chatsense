@@ -3,6 +3,7 @@ import { formatDuration, type ChatAnalysis } from "@chatsense/core"
 import { MetricCard } from "@/components/analytics/MetricCard"
 import { NarrativeFindingRow } from "@/components/analytics/NarrativeFindingRow"
 import { ProgressRow } from "@/components/analytics/ProgressRow"
+import { TakeawayCard } from "@/components/analytics/TakeawayCard"
 import { SectionHeading } from "@/components/analytics/SectionHeading"
 import { formatDate, formatNumber } from "@/utils/formatting"
 
@@ -11,6 +12,8 @@ export function OverviewScreen({ analysis }: { analysis: ChatAnalysis }) {
 
   return (
     <div className="space-y-7 px-5 py-5">
+      <TakeawayCard takeaway={narrative.takeaways.overview} />
+
       <section aria-labelledby="narrative-heading">
         <p className="text-[11px] font-bold uppercase text-emerald-700">Evidence-backed summary</p>
         <h2 id="narrative-heading" className="mt-2 max-w-xl break-words text-2xl font-bold leading-8 text-slate-950">
