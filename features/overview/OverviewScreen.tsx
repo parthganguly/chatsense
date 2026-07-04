@@ -13,10 +13,10 @@ export function OverviewScreen({ analysis }: { analysis: ChatAnalysis }) {
     <div className="space-y-7 px-5 py-5">
       <section aria-labelledby="narrative-heading">
         <p className="text-[11px] font-bold uppercase text-emerald-700">Evidence-backed summary</p>
-        <h2 id="narrative-heading" className="mt-2 max-w-xl text-2xl font-bold leading-8 text-slate-950">
+        <h2 id="narrative-heading" className="mt-2 max-w-xl break-words text-2xl font-bold leading-8 text-slate-950">
           {narrative.headline}
         </h2>
-        <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">{narrative.summary}</p>
+        <p className="mt-3 max-w-2xl break-words text-sm leading-6 text-slate-600">{narrative.summary}</p>
 
         <div className="mt-5 divide-y divide-slate-200 border-y border-slate-200">
           {narrative.findings.map((finding) => (

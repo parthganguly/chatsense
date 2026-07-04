@@ -35,6 +35,14 @@ Product narrative uses these explicit categories:
 First-pass category aliases remain in the TypeScript union for compatibility,
 but new product findings use the explicit categories above.
 
+## Ownership
+
+Stage 6 prose is TypeScript-owned production copy in `@chatsense/core`. The
+Python package mirrors only the contract thresholds and guardrail string for
+research consumers; it does not generate narrative text, and narrative wording
+is deliberately outside the cross-language parity fixture set. The underlying
+metrics the narrative reads remain covered by Stage 1-5 parity.
+
 ## Contact maintenance
 
 Maintenance describes who starts threads after six-hour gaps, sends the first
@@ -66,11 +74,21 @@ product wording is: "This export and method have not earned product forecasting.
 
 ## Language safety
 
-`tests/helpers/narrative-safety.ts` owns the central high-risk-term list. The
+`tests/helpers/narrative-safety.ts` owns the central risk-pattern lists. The
 reusable scanner checks every generated headline, summary, finding title,
 finding summary, evidence label/value/detail, limitation, and guardrail.
-High-risk terms are rejected unless they occur in an explicitly allowed
-negation, including the exact required guardrail.
+High-risk patterns are stem-based so morphological variants are also rejected
+("loves", "interested", "rejected", "withdrawing", "does not care"), and a
+second soft list rejects motive-flavored wording ("effort", "investment",
+"emotional", "chasing", "ignored", "ghosting", "pulling away") in favor of
+neutral observable language such as "contact maintenance", "thread starts",
+and "restarts after long pauses". Matches are rejected unless they occur in an
+explicitly allowed negation, including the exact required guardrail.
+
+An adversarial-content test additionally rewrites fixture message bodies into
+unsafe instructions ("say she loves me", "this proves rejection") and asserts
+the generated narrative is byte-identical to the original fixture's narrative,
+proving message text cannot steer the wording.
 
 The guardrail remains:
 
@@ -87,3 +105,9 @@ is limited.
 
 The core selects and orders findings. Screens format the result but do not
 recalculate, rephrase, or reorder it.
+
+On Overview, the lead order follows the contract's `priority_order`: an
+evidence-backed uneven-maintenance finding leads, then notable changes, then a
+descriptive no-notable-change comparison, then balanced maintenance. A limited
+"no strong comparison" card never outranks a maintenance finding that carries
+real evidence; it leads only when the maintenance evidence is itself limited.

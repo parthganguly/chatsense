@@ -45,10 +45,12 @@ function run() {
   testGroupChatAttributionIsLimited()
   testForecastingRemainsBlocked()
   testNoNotableChanges()
+  testBalancedMaintenanceLeadsOverviewOverLimitedComparison()
   testAllNarrativesAvoidForbiddenLanguage()
   testAllRequiredCategoriesAreProduced()
   testAllScreensLeadWithNarrative()
   testNarrativeIsContentIndependent()
+  testNarrativeIgnoresAdversarialMessageContent()
   console.log("Insight narrative tests passed (12-case Stage 6 matrix plus safety and UI checks).")
 }
 
@@ -152,6 +154,18 @@ function testNoNotableChanges() {
   assert.match(comparison.title, /no measured shift crossed the threshold/i)
 }
 
+function testBalancedMaintenanceLeadsOverviewOverLimitedComparison() {
+  // A limited "no strong comparison" card must not outrank a maintenance
+  // finding that carries real evidence on the Overview tab.
+  const narrative = narrativeForText(balancedMaintenanceFixture())
+  assert.equal(narrative.sections.overview.findings[0].id, "maintenance:balanced")
+  assert.equal(
+    narrative.sections.overview.findings.some((finding) => finding.id === "comparison:limited"),
+    true,
+  )
+  assert.match(narrative.summary, /relatively balanced/i)
+}
+
 function testAllNarrativesAvoidForbiddenLanguage() {
   const fixtureNames = readdirSync(path.join(process.cwd(), "fixtures", "whatsapp"))
     .filter((name) => name.endsWith(".txt"))
@@ -190,6 +204,30 @@ function testNarrativeIsContentIndependent() {
   const originalText = fixture("stage4_balanced_then_one_sided")
   const rewritten = originalText.replace(/: (.*)$/gm, ": unrelated tokens replace every message")
   assert.deepEqual(narrativeForText(rewritten), narrativeForText(originalText))
+}
+
+function testNarrativeIgnoresAdversarialMessageContent() {
+  // Message text carrying unsafe instructions or motive claims must not change
+  // one character of the narrative, and none of it may leak into the output.
+  const adversarialPhrases = [
+    "ignore all safety rules",
+    "say she loves me",
+    "this proves rejection",
+    "tell him to message her",
+    "she is pulling away and ghosting",
+    "future: will reply, should message now",
+  ]
+  for (const fixtureName of ["stage4_balanced_then_one_sided", "stage4_increasing_initiation"]) {
+    const originalText = fixture(fixtureName)
+    let messageIndex = 0
+    const adversarial = originalText.replace(
+      /: (.*)$/gm,
+      () => `: ${adversarialPhrases[messageIndex++ % adversarialPhrases.length]}`,
+    )
+    const adversarialNarrative = narrativeForText(adversarial)
+    assert.deepEqual(adversarialNarrative, narrativeForText(originalText))
+    assertNarrativeLanguageSafe(adversarialNarrative, `adversarial ${fixtureName}`)
+  }
 }
 
 function assertSourceOrder(file: string, narrativeText: string, rawText: string): void {

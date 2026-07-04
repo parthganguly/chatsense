@@ -42,15 +42,17 @@ export function NarrativeFindingRow({ finding }: { finding: NarrativeFinding }) 
         <Icon className={`mt-0.5 h-4 w-4 shrink-0 ${presentation.iconClass}`} aria-hidden="true" />
         <div className="min-w-0 flex-1">
           <p className="text-[10px] font-bold uppercase text-slate-400">{presentation.label}</p>
-          <h3 className="mt-1 text-sm font-semibold text-slate-950">{finding.title}</h3>
-          <p className="mt-1 text-sm leading-6 text-slate-600">{finding.summary}</p>
+          <h3 className="mt-1 break-words text-sm font-semibold text-slate-950">{finding.title}</h3>
+          <p className="mt-1 break-words text-sm leading-6 text-slate-600">{finding.summary}</p>
 
           <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-3 sm:grid-cols-3">
             {finding.evidence.map((item) => (
-              <div key={`${finding.id}-${item.label}`} className="border-l-2 border-slate-200 pl-3">
-                <dt className="text-[10px] font-semibold uppercase text-slate-400">{item.label}</dt>
-                <dd className="mt-1 text-xs font-bold text-slate-900">{item.value}</dd>
-                {item.detail && <dd className="mt-1 text-[11px] leading-4 text-slate-500">{item.detail}</dd>}
+              <div key={`${finding.id}-${item.label}`} className="min-w-0 border-l-2 border-slate-200 pl-3">
+                <dt className="break-words text-[10px] font-semibold uppercase text-slate-400">{item.label}</dt>
+                <dd className="mt-1 break-words text-xs font-bold text-slate-900">{item.value}</dd>
+                {item.detail && (
+                  <dd className="mt-1 break-words text-[11px] leading-4 text-slate-500">{item.detail}</dd>
+                )}
               </div>
             ))}
           </dl>

@@ -51,7 +51,7 @@ forecast is shown.
 
 ## Forbidden-language policy
 
-`tests/helpers/narrative-safety.ts` centralizes the high-risk term list and scans:
+`tests/helpers/narrative-safety.ts` centralizes the risk-pattern lists and scans:
 
 - headline and summary;
 - every section headline and summary;
@@ -63,7 +63,16 @@ forecast is shown.
 Terms such as love, interest, withdrawal, attachment labels, diagnostic labels,
 relationship-status claims, response advice, and future-reply claims fail unless
 they appear in an explicitly allowed negation. The exact required guardrail is
-allowed and tested.
+allowed and tested. The patterns are stem-based, so morphological variants
+("loves", "interested", "rejected", "withdrawing", "does not care") are also
+rejected, and a soft list additionally rejects motive-flavored wording such as
+"effort", "investment", "emotional", "chasing", "ignored", "ghosting", and
+"pulling away" in favor of neutral observable language.
+
+An adversarial-content test rewrites fixture message bodies into unsafe
+instructions ("ignore all safety rules", "say she loves me", "this proves
+rejection", "tell him to message her") and asserts the narrative output is
+byte-identical to the unmodified fixture's narrative.
 
 ## Twelve-case fixture matrix
 

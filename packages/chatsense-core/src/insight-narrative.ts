@@ -103,10 +103,15 @@ export function buildInsightNarrative(input: NarrativeInput): InsightNarrative {
   const groupLimit = groupAttributionFinding(input.overview.participantCount)
 
   const overviewChanges = selectNotableChanges(input.relationshipDynamics).map((change) => changeFinding(change, "overview"))
+  const comparisonContext = overviewChanges.length === 0 ? comparisonContextFinding(input.relationshipDynamics) : null
   const overviewCandidates: NarrativeFinding[] = maintenance.id === "maintenance:uneven" ? [maintenance] : []
   overviewCandidates.push(...overviewChanges)
-  if (overviewChanges.length === 0) overviewCandidates.push(comparisonContextFinding(input.relationshipDynamics))
-  if (maintenance.id !== "maintenance:uneven") overviewCandidates.push(maintenance)
+  // A limited "no strong comparison" card must not outrank a maintenance finding
+  // that carries real evidence; it stays ahead only of other limited findings.
+  if (comparisonContext && comparisonContext.evidenceLevel !== "limited") overviewCandidates.push(comparisonContext)
+  if (maintenance.id === "maintenance:balanced") overviewCandidates.push(maintenance)
+  if (comparisonContext && comparisonContext.evidenceLevel === "limited") overviewCandidates.push(comparisonContext)
+  if (maintenance.id === "maintenance:limited") overviewCandidates.push(maintenance)
   overviewCandidates.push(balance)
   if (reconnection) overviewCandidates.push(reconnection)
   if (replyTiming) overviewCandidates.push(replyTiming)
