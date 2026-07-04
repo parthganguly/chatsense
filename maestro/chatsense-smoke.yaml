@@ -18,13 +18,13 @@ appId: com.thegreatparthicle.chatsense
 - assertNotVisible: "(?i)choose whatsapp export.*"
 # Walk every tab through the bottom navigation and check the takeaway leads.
 - tapOn: "Overview"
-- assertVisible: "(?i)what this looks like"
+- assertVisible: "(?i)what to notice"
 - tapOn: "Changes"
-- assertVisible: "(?i)direction of travel"
+- assertVisible: "(?i)did the pattern move\\?"
 - tapOn: "People"
-- assertVisible: "(?i)who carried the contact\\?"
+- assertVisible: "(?i)who kept contact alive\\?"
 - tapOn: "Rhythm"
-- assertVisible: "(?i)silence pattern"
+- assertVisible: "(?i)what silence looked like"
 # Bottom nav still works after the walk.
 - tapOn: "Overview"
-- assertVisible: "(?i)what this looks like"
+- assertVisible: "(?i)what to notice"

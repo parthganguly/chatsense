@@ -24,10 +24,10 @@ Overview section.
 `ChatAnalysis.narrative.takeaways` holds one `HumanTakeaway` per tab, rendered
 in a compact card above the evidence narrative:
 
-- Overview: "What this looks like";
-- Changes: "Direction of travel";
-- People: "Who carried the contact?";
-- Rhythm: "Silence pattern".
+- Overview: "What to notice";
+- Changes: "Did the pattern move?";
+- People: "Who kept contact alive?";
+- Rhythm: "What silence looked like".
 
 Each takeaway carries `oneLineRead`, `whatThisMeans`, `whyItLooksThatWay`
 evidence bullets, a tone, a confidence level, and the required guardrail. It is
@@ -39,11 +39,33 @@ corresponding minimum; limited evidence always produces a limited read. The
 product labels are "Strong read", "Useful read", and "Light read" — they are
 copy, not statistical claims.
 
-Allowed style: "Balanced volume, uneven maintenance."; "This looks stable
+Allowed style: "Balanced volume, uneven maintenance."; "This looks steady
 rather than clearly changing."; "The quiet periods repeatedly ended the same
 way." Forbidden style: any motive, emotion, attachment, diagnosis, advice,
 prediction, or relationship-status wording — enforced by the shared scanner,
 which also scans every takeaway field.
+
+### Emotional legibility (Stage 6.3)
+
+Stage 6.3 rewrites the top cards as orientation, not metric summaries, while
+staying strictly inside the observable boundary:
+
+- one-line reads state what to notice ("The quiet periods repeatedly ended the
+  same way.", "One side carried more of the contact.", "There is not enough
+  here to read a pattern yet.");
+- evidence bullets frame numbers before showing them ("Message share was
+  close: 55% / 45%.", "After long pauses, Ravi restarted 7 of 10 times.",
+  "Typical reply time moved from 5m to 1.5h for Asha.");
+- top cards never expose raw internal metric keys (`thread_start_share`,
+  `reconnection_share`, `messages_per_active_day`, `median_reply_minutes`) —
+  test-enforced;
+- to reduce guardrail fatigue, the takeaway card shows only the short
+  contract-owned safety line ("This is a pattern read, not a motive read.",
+  `takeaway.safety_line` in the behavioral contract), while the full guardrail
+  remains in every detailed narrative section and the screen footers.
+
+This pass changes wording and card layout only: no new metrics, no sentiment,
+no content interpretation, no advice, no prediction.
 
 ## Categories
 

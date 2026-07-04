@@ -88,6 +88,7 @@
         "moderate": "Useful read",
         "limited": "Light read"
       },
+      "safety_line": "This is a pattern read, not a motive read.",
       "notes": "Stage 6.2 human takeaways translate the existing narrative into plain orientation without adding behavioral scores. A read is 'strong' only when the supporting event count reaches strong_evidence_multiplier times the corresponding maintenance/sample minimum; limited evidence always produces a 'limited' read. Confidence labels are product copy, not statistical claims."
     },
     "required_guardrail": "These observations describe exported timing and volume only. They do not prove motive, love, rejection, affection, attachment, personality, mental health, relationship quality, or relationship status.",
