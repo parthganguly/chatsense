@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react"
 import { formatDuration, type ChatAnalysis } from "@chatsense/core"
 import { DataRow } from "@/components/analytics/DataRow"
+import { NarrativeSection } from "@/components/analytics/NarrativeSection"
 import { ProgressRow } from "@/components/analytics/ProgressRow"
 import { SectionHeading } from "@/components/analytics/SectionHeading"
 import { formatNumber } from "@/utils/formatting"
@@ -12,6 +13,13 @@ export function PeopleScreen({ analysis }: { analysis: ChatAnalysis }) {
 
   return (
     <div className="space-y-7 px-5 py-5">
+      <NarrativeSection
+        eyebrow="Plain-English read"
+        title="Contact maintenance"
+        section={analysis.narrative.sections.people}
+        guardrail={analysis.narrative.guardrail}
+      />
+
       <section>
         <SectionHeading eyebrow={`${analysis.participants.length} participants`} title="Who contributes" />
         <div className="mt-4 space-y-3">

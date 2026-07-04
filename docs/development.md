@@ -30,7 +30,13 @@ npm run check
 
 `npm run typecheck` typechecks `@chatsense/core` independently before checking the app.
 
-`npm run test` runs focused TypeScript boundary tests for imports, ZIP/TXT handling, Android native shared-file conversion, pending/warm share dedupe, release cleanup, package-boundary imports, and UI/core separation.
+`npm run test` runs focused TypeScript boundary tests for imports, ZIP/TXT handling, Android native shared-file conversion, pending/warm share dedupe, release cleanup, package-boundary imports, UI/core separation, and the Stage 6 narrative matrix.
+
+`tests/insight-narrative.ts` covers twelve named Stage 6 cases, verifies that all
+four analytics tabs place narrative before raw evidence, and scans every
+committed WhatsApp fixture. `tests/helpers/narrative-safety.ts` is the central
+high-risk-language policy for generated headlines, summaries, finding titles,
+evidence text, limitations, and guardrails.
 
 `npm run test:parity` compares the TypeScript runtime with the 21 shared expected parity outputs.
 

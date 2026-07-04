@@ -169,6 +169,27 @@ Phase 2 research helpers remain non-LLM and local-only. They may consume `featur
 | `evaluation/backtest.py` | Chronological expanding-window evaluation. |
 | `evaluation/calibration.py` | Probability calibration checks for future classifiers. |
 
+## Android runtime narrative
+
+`ChatAnalysis.narrative` is a TypeScript runtime presentation contract and is
+not added to the Python `report.json` schema in Stage 6. It contains:
+
+- `headline` and `summary`: deterministic plain-English export context;
+- `findings`: at most four prioritized observations, each with a stable ID,
+  category, evidence level, title, summary, and visible evidence entries;
+- `sections`: typed `overview`, `changes`, `people`, and `rhythm` narrative
+  sections; the top-level headline, summary, and findings remain Overview aliases;
+- `guardrail`: the canonical non-inference statement from
+  `contracts/behavioral_contract.json`;
+- `limitations`: content-independence, non-prediction, and group-chat
+  approximation notes when applicable.
+
+The narrative does not introduce new metric values. It presents existing
+`ChatAnalysis`, `relationshipDynamics`, and forecasting-gate evidence. It does
+not expose live forecasts. Python exposes the same narrative limits,
+maintenance thresholds, and guardrail constants for research consumers, but
+Python does not render the Android product narrative in this stage.
+
 ## Forecasting research artifacts
 
 Stage 5 forecasting outputs are generated artifacts, not part of `report.json` or `features.parquet`.
