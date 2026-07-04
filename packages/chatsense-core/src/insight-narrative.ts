@@ -794,10 +794,10 @@ function round(value: number, digits: number): number {
 // the findings above. No new behavioral score, no content interpretation.
 
 const TAKEAWAY_TITLES: Record<NarrativeSectionKey, string> = {
-  overview: "What this looks like",
-  changes: "Direction of travel",
-  people: "Who carried the contact?",
-  rhythm: "Silence pattern",
+  overview: "What to notice",
+  changes: "Did the pattern move?",
+  people: "Who kept contact alive?",
+  rhythm: "What silence looked like",
 }
 
 function buildTakeaways(
@@ -833,19 +833,23 @@ function maintenanceBullets(
   const bullets: string[] = []
   const pair = input.overview.participantCount === 2
   if (pair && input.participants.length === 2) {
-    bullets.push(`Message share was ${input.participants[0].messageShare}% / ${input.participants[1].messageShare}%.`)
+    const shares = [input.participants[0].messageShare, input.participants[1].messageShare]
+    const descriptor = Math.max(...shares) <= NARRATIVE_BALANCED_MAX_TOP_SHARE_PCT ? "close" : "uneven"
+    bullets.push(`Message share was ${descriptor}: ${shares[0]}% / ${shares[1]}%.`)
   } else if (assessment.topMessage) {
-    bullets.push(`Top message share was ${assessment.topMessage.messageShare}% (${assessment.topMessage.sender}).`)
+    bullets.push(`The largest message share was ${assessment.topMessage.messageShare}% (${assessment.topMessage.sender}).`)
   } else {
     bullets.push(`${formatCount(input.overview.messageCount)} ${pluralize("message", input.overview.messageCount)} on ${formatCount(input.overview.activeDays)} active ${pluralize("day", input.overview.activeDays)}.`)
   }
   const summaries = input.relationshipDynamics.participantSummaries
   if (pair && summaries.length === 2 && assessment.threadStartsTotal > 0) {
-    bullets.push(`Thread starts were ${summaries[0].threadStartShare}% / ${summaries[1].threadStartShare}%.`)
+    const shares = [summaries[0].threadStartShare, summaries[1].threadStartShare]
+    const descriptor = Math.max(...shares) <= NARRATIVE_BALANCED_MAX_TOP_SHARE_PCT ? "close" : "uneven"
+    bullets.push(`Thread starts were ${descriptor}: ${shares[0]}% / ${shares[1]}%.`)
   }
   if (assessment.leader && assessment.reconnectionsTotal > 0 && assessment.leader.reconnectionCount > 0) {
     bullets.push(
-      `${assessment.leader.reconnectionCount} of ${assessment.reconnectionsTotal} long pauses were restarted by ${assessment.leader.sender}.`,
+      `After long pauses, ${assessment.leader.sender} restarted ${assessment.leader.reconnectionCount} of ${assessment.reconnectionsTotal} times.`,
     )
   }
   return bullets.slice(0, 3)
@@ -864,15 +868,15 @@ function overviewTakeaway(
     if (assessment.volumeBalanced) {
       return takeaway(title, {
         oneLineRead: "Balanced volume, uneven maintenance.",
-        whatThisMeans: `${people} sent a similar amount, but ${assessment.leader.sender} ${joinPhrases(assessment.leaderPhrases)}. The export looks reciprocal in volume, but less reciprocal in keeping contact alive.`,
+        whatThisMeans: `${people} showed up in the conversation, but ${assessment.leader.sender} ${joinPhrases(assessment.leaderPhrases)}. That makes this look balanced in volume, but less balanced in keeping contact alive.`,
         whyItLooksThatWay: maintenanceBullets(input, assessment),
         confidence: maintenanceConfidence(assessment),
         tone: "uneven",
       })
     }
     return takeaway(title, {
-      oneLineRead: `Activity and maintenance both leaned toward ${assessment.leader.sender}.`,
-      whatThisMeans: `${assessment.leader.sender} sent more and also ${joinPhrases(assessment.leaderPhrases)}. The export looks concentrated on one side rather than reciprocal.`,
+      oneLineRead: "One side carried more of the contact.",
+      whatThisMeans: `${assessment.leader.sender} sent more overall and also ${joinPhrases(assessment.leaderPhrases)}. Most of what kept this conversation moving came from one side.`,
       whyItLooksThatWay: maintenanceBullets(input, assessment),
       confidence: maintenanceConfidence(assessment),
       tone: "uneven",
@@ -882,9 +886,9 @@ function overviewTakeaway(
   if (assessment.state === "balanced") {
     if (earlyChange || recentChange) {
       return takeaway(title, {
-        oneLineRead: "Mostly balanced, with a measured shift over time.",
+        oneLineRead: "Mostly balanced, with one measured shift.",
         whatThisMeans:
-          "Contribution and the available maintenance measures look reciprocal, but at least one measured pattern moved between the compared periods. The Changes tab shows which one.",
+          "Nothing here points to one person carrying the contact, but at least one measured pattern moved between the compared periods. The Changes tab shows which one.",
         whyItLooksThatWay: [...maintenanceBullets(input, assessment), changeBullet(recentChange ?? earlyChange!)].slice(0, 3),
         confidence: maintenanceConfidence(assessment),
         tone: "changed",
@@ -893,10 +897,10 @@ function overviewTakeaway(
     const comparisonAvailable =
       input.relationshipDynamics.earlyLate.available || input.relationshipDynamics.recentPrior.available
     return takeaway(title, {
-      oneLineRead: comparisonAvailable ? "Mostly balanced and stable." : "Mostly balanced.",
+      oneLineRead: comparisonAvailable ? "Mostly balanced and steady." : "Mostly balanced.",
       whatThisMeans: comparisonAvailable
-        ? "Volume, turns, and the available maintenance measures all stayed close to even, and no compared measure crossed its change threshold. Nothing in this export concentrates on one side."
-        : "Volume, turns, and the available maintenance measures all stayed close to even. The export is too short to compare periods, so stability over time is not claimed.",
+        ? "Nothing here points to one person carrying the contact. Volume, turns, and the available upkeep measures stayed close to even, and no compared measure moved past its change threshold."
+        : "Nothing here points to one person carrying the contact. The export is too short to compare periods, so steadiness over time is not claimed.",
       whyItLooksThatWay: maintenanceBullets(input, assessment),
       confidence: maintenanceConfidence(assessment),
       tone: "balanced",
@@ -904,9 +908,9 @@ function overviewTakeaway(
   }
 
   return takeaway(title, {
-    oneLineRead: "Too little data for a real read.",
+    oneLineRead: "There is not enough here to read a pattern yet.",
     whatThisMeans:
-      "The export is too small or too sparse to attribute maintenance or compare periods. What is shown is a snapshot, not a pattern.",
+      "The export is too small or too sparse to say who kept contact moving or to compare periods. This is a snapshot, not a pattern.",
     whyItLooksThatWay: [
       `${formatCount(input.overview.messageCount)} ${pluralize("message", input.overview.messageCount)} on ${formatCount(input.overview.activeDays)} active ${pluralize("day", input.overview.activeDays)}.`,
       ...(assessment.limitedReason ? [assessment.limitedReason] : []),
@@ -930,7 +934,7 @@ function changesTakeaway(
     if (secondary) bullets.push(changeBullet(secondary))
     return takeaway(title, {
       oneLineRead: changeOneLine(primary),
-      whatThisMeans: `${secondary ? "The lifetime arc and the most recent window both moved. " : ""}At least one measured pattern crossed its predefined change threshold between the compared periods. The direction is measured from timing and volume only; it does not explain why it moved.`,
+      whatThisMeans: `${secondary ? "Both the long arc and the most recent window moved. " : ""}The latest period looks different from the earlier rhythm on at least one measured pattern. The data shows the shift, not the reason for the shift.`,
       whyItLooksThatWay: bullets,
       confidence: earlyChange && recentChange ? "strong" : "moderate",
       tone: "changed",
@@ -941,9 +945,9 @@ function changesTakeaway(
   if (available.length > 0) {
     const comparison = available[0]
     return takeaway(title, {
-      oneLineRead: "No clear change crossed the threshold.",
+      oneLineRead: "No clear shift crossed the threshold.",
       whatThisMeans:
-        "This looks stable rather than clearly changing. Every compared measure stayed inside its predefined threshold.",
+        "This looks steady rather than clearly changing. Every compared measure stayed inside its predefined threshold.",
       whyItLooksThatWay: [
         `${comparison.earlierPeriod.label}: ${formatCount(comparison.earlierPeriod.messageCount)} ${pluralize("message", comparison.earlierPeriod.messageCount)}.`,
         `${comparison.laterPeriod.label}: ${formatCount(comparison.laterPeriod.messageCount)} ${pluralize("message", comparison.laterPeriod.messageCount)}.`,
@@ -955,9 +959,9 @@ function changesTakeaway(
 
   const reason = dynamics.recentPrior.unavailableReason ?? dynamics.earlyLate.unavailableReason
   return takeaway(title, {
-    oneLineRead: "Not enough history to read a direction.",
+    oneLineRead: "There is not enough history to read a direction.",
     whatThisMeans:
-      "There is not enough evidence here to read a real change. That can mean the pattern was stable, or that the export is too short to compare properly.",
+      "There is not enough evidence here to read a real change. That can mean the pattern held steady, or that the export is too short to compare properly.",
     whyItLooksThatWay: [reason ?? "No eligible comparison windows were found."],
     confidence: "limited",
     tone: "limited",
@@ -970,23 +974,30 @@ function changeOneLine(change: MetricChange): string {
       ? "The later period became more active."
       : "The later period became less active."
   }
-  if (change.metric === "median_reply_minutes") return `Reply timing changed for ${change.sender}.`
-  if (change.metric === "thread_start_share") return `Thread starting shifted for ${change.sender}.`
-  if (change.metric === "reconnection_share") return `Restarting after long pauses shifted for ${change.sender}.`
-  if (change.metric === "follow_up_rate") return `Follow-up rate shifted for ${change.sender}.`
-  return `Participation share shifted for ${change.sender}.`
+  if (change.metric === "median_reply_minutes") return `Typical replies changed for ${change.sender}.`
+  if (change.metric === "thread_start_share") return `Starting new conversations shifted for ${change.sender}.`
+  if (change.metric === "reconnection_share") return `Restarting after quiet periods shifted for ${change.sender}.`
+  if (change.metric === "follow_up_rate") return `Following up before a reply shifted for ${change.sender}.`
+  return `Share of the conversation shifted for ${change.sender}.`
 }
 
 function changeBullet(change: MetricChange): string {
   const earlier = formatMetricValue(change, change.earlierValue)
   const later = formatMetricValue(change, change.laterValue)
   if (change.metric === "median_reply_minutes") {
-    return `Median reply changed from ${earlier} to ${later} for ${change.sender}.`
+    return `Typical reply time moved from ${earlier} to ${later} for ${change.sender}.`
   }
   if (change.metric === "messages_per_active_day") {
-    return `Messages per active day went from ${earlier} to ${later}.`
+    return `Activity moved from ${earlier} to ${later} messages per active day.`
   }
-  return `${change.label} moved from ${earlier} to ${later}${change.sender ? ` for ${change.sender}` : ""}.`
+  const subjects: Partial<Record<MetricChange["metric"], string>> = {
+    thread_start_share: "Share of thread starts",
+    reconnection_share: "Share of restarts after long pauses",
+    follow_up_rate: "Rate of following up before a reply",
+    turn_share: "Share of conversation turns",
+  }
+  const subject = subjects[change.metric] ?? change.label
+  return `${subject} moved from ${earlier} to ${later}${change.sender ? ` for ${change.sender}` : ""}.`
 }
 
 function peopleTakeaway(
@@ -1001,11 +1012,11 @@ function peopleTakeaway(
 
   if (assessment.state === "uneven" && assessment.leader) {
     return takeaway(title, {
-      oneLineRead: `Contact maintenance leaned toward ${assessment.leader.sender}.`,
+      oneLineRead: `Keeping contact alive leaned toward ${assessment.leader.sender}.`,
       whatThisMeans: `${assessment.leader.sender} ${joinPhrases(assessment.leaderPhrases)}. ${
         assessment.volumeBalanced
-          ? "Volume stayed relatively balanced, so the lean shows up in maintenance rather than in message count."
-          : "Volume also leaned the same way."
+          ? "Message volume stayed close to even, so the lean shows up in who kept contact alive rather than in who sent more."
+          : "Message volume also leaned the same way."
       }${groupNote}`,
       whyItLooksThatWay: maintenanceBullets(input, assessment),
       confidence: maintenanceConfidence(assessment),
@@ -1024,7 +1035,7 @@ function peopleTakeaway(
   }
 
   return takeaway(title, {
-    oneLineRead: "Too few maintenance events to attribute.",
+    oneLineRead: "There were too few maintenance events to attribute.",
     whatThisMeans: `This export does not contain enough thread starts, restarts, or follow-ups to say who kept contact moving.${groupNote}`,
     whyItLooksThatWay: [
       `${formatCount(assessment.threadStartsTotal)} thread ${pluralize("start", assessment.threadStartsTotal)} and ${formatCount(assessment.reconnectionsTotal)} ${pluralize("restart", assessment.reconnectionsTotal)} were observed.`,
@@ -1040,15 +1051,15 @@ function rhythmTakeaway(summary: PauseReconnectionSummary): HumanTakeaway {
 
   if (summary.latestGapMinutes === null) {
     return takeaway(title, {
-      oneLineRead: "Not enough messages to read a rhythm.",
+      oneLineRead: "There is not enough timing history to read a rhythm.",
       whatThisMeans: "At least two valid messages are needed to describe gaps between messages.",
-      whyItLooksThatWay: ["0 inter-message gaps were observed."],
+      whyItLooksThatWay: ["0 gaps between messages were observed."],
       confidence: "limited",
       tone: "limited",
     })
   }
 
-  const longestBullet = `Longest pause was ${formatDuration(summary.longestPauses[0]?.durationMinutes ?? null)}; median gap was ${formatDuration(summary.medianInterMessageGapMinutes)}.`
+  const longestBullet = `The longest pause was ${formatDuration(summary.longestPauses[0]?.durationMinutes ?? null)}; the typical gap was ${formatDuration(summary.medianInterMessageGapMinutes)}.`
   const latestNote =
     summary.latestGapPercentile !== null && summary.latestGapPercentile >= 90
       ? " The latest gap ranks near the top of this export's gaps."
@@ -1056,7 +1067,7 @@ function rhythmTakeaway(summary: PauseReconnectionSummary): HumanTakeaway {
 
   if (summary.longPauseCount === 0) {
     return takeaway(title, {
-      oneLineRead: "No 24-hour silence appeared in this export.",
+      oneLineRead: "No full-day silence appeared in this export.",
       whatThisMeans: `Inside this export, the conversation never went a full day without a message.${latestNote}`,
       whyItLooksThatWay: ["0 pauses reached 24 hours.", longestBullet],
       confidence: "moderate",
@@ -1076,10 +1087,10 @@ function rhythmTakeaway(summary: PauseReconnectionSummary): HumanTakeaway {
 
   if (concentrated) {
     return takeaway(title, {
-      oneLineRead: "Long pauses happened, and most were restarted by the same person.",
-      whatThisMeans: `The quiet periods repeatedly ended the same way: ${top.sender} sent the first message after ${top.count} of ${summary.longPauseCount} pauses of at least 24 hours. That is a pattern worth noticing, not an explanation of it.${latestNote}`,
+      oneLineRead: "The quiet periods repeatedly ended the same way.",
+      whatThisMeans: `${top.sender} sent the first message after ${top.count} of ${summary.longPauseCount} pauses of at least 24 hours. That is a pattern worth noticing, not an explanation of it.${latestNote}`,
       whyItLooksThatWay: [
-        `${top.count} of ${formatCount(summary.longPauseCount)} long pauses were restarted by ${top.sender}.`,
+        `After long pauses, ${top.sender} restarted ${top.count} of ${formatCount(summary.longPauseCount)} times.`,
         longestBullet,
       ],
       confidence: restartConfidence,
@@ -1088,7 +1099,7 @@ function rhythmTakeaway(summary: PauseReconnectionSummary): HumanTakeaway {
   }
 
   return takeaway(title, {
-    oneLineRead: "Long pauses happened, with restarts from more than one side.",
+    oneLineRead: "There were long pauses, but restarts came from more than one side.",
     whatThisMeans: `Pauses of at least 24 hours appeared, and the first message afterward did not consistently come from one person.${latestNote}`,
     whyItLooksThatWay: [
       `${formatCount(summary.longPauseCount)} ${pluralize("pause", summary.longPauseCount)} reached 24 hours.`,

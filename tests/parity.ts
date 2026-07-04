@@ -24,6 +24,7 @@ import {
   NARRATIVE_MAX_PRIMARY_FINDINGS,
   NARRATIVE_REQUIRED_GUARDRAIL,
   NARRATIVE_TAKEAWAY_CONFIDENCE_LABELS,
+  NARRATIVE_TAKEAWAY_SAFETY_LINE,
   NARRATIVE_TAKEAWAY_STRONG_EVIDENCE_MULTIPLIER,
   NOTABLE_FOLLOW_UP_RATE_ABS_PCT,
   NOTABLE_MESSAGES_PER_ACTIVE_DAY_RELATIVE_PCT,
@@ -122,6 +123,7 @@ assert.equal(
 assert.equal(NARRATIVE_REQUIRED_GUARDRAIL, narrative.required_guardrail)
 assert.equal(NARRATIVE_TAKEAWAY_STRONG_EVIDENCE_MULTIPLIER, narrative.takeaway.strong_evidence_multiplier)
 assert.deepEqual({ ...NARRATIVE_TAKEAWAY_CONFIDENCE_LABELS }, narrative.takeaway.confidence_labels)
+assert.equal(NARRATIVE_TAKEAWAY_SAFETY_LINE, narrative.takeaway.safety_line)
 assert.equal(FORECASTING_CONTRACT_VERSION, forecastingContract.contract_version)
 assert.deepEqual(REPLY_HORIZONS_MINUTES, forecastingContract.tasks.reply_within_horizon.horizons_minutes)
 assert.equal(

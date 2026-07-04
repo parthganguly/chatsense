@@ -88,6 +88,7 @@ NARRATIVE_MAINTENANCE_MIN_FOLLOW_UP_RELEVANT_TURNS: int = _narrative["maintenanc
 NARRATIVE_REQUIRED_GUARDRAIL: str = _narrative["required_guardrail"]
 NARRATIVE_TAKEAWAY_STRONG_EVIDENCE_MULTIPLIER: int = _narrative["takeaway"]["strong_evidence_multiplier"]
 NARRATIVE_TAKEAWAY_CONFIDENCE_LABELS: dict = _narrative["takeaway"]["confidence_labels"]
+NARRATIVE_TAKEAWAY_SAFETY_LINE: str = _narrative["takeaway"]["safety_line"]
 
 # Canonical runtime silence-anomaly definition.
 SILENCE_ANOMALY_SCALE: float = _silence["scale"]

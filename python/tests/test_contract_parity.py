@@ -61,6 +61,7 @@ def test_python_contract_loader_matches_json_file():
         == raw["insight_narrative"]["takeaway"]["strong_evidence_multiplier"]
     )
     assert contract.NARRATIVE_TAKEAWAY_CONFIDENCE_LABELS == raw["insight_narrative"]["takeaway"]["confidence_labels"]
+    assert contract.NARRATIVE_TAKEAWAY_SAFETY_LINE == raw["insight_narrative"]["takeaway"]["safety_line"]
     assert contract.MIN_WINDOW_MESSAGES == dynamics["window_eligibility"]["min_messages"]
     assert contract.MIN_WINDOW_ACTIVE_DAYS == dynamics["window_eligibility"]["min_active_days"]
     assert contract.EARLY_LATE_MIN_ELIGIBLE_WINDOWS == dynamics["comparison_periods"]["early_late_min_eligible_windows"]

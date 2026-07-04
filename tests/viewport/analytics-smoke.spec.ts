@@ -5,10 +5,10 @@ import { expect, test } from "@playwright/test"
 const FIXTURE = path.join(process.cwd(), "fixtures", "whatsapp", "stage4_increasing_initiation.txt")
 
 const TABS = [
-  { nav: "Overview", takeaway: "What this looks like", rawMetrics: "At a glance" },
-  { nav: "Changes", takeaway: "Direction of travel", rawMetrics: "Changes over time" },
-  { nav: "People", takeaway: "Who carried the contact?", rawMetrics: "Who contributes" },
-  { nav: "Rhythm", takeaway: "Silence pattern", rawMetrics: "Conversation rhythm" },
+  { nav: "Overview", takeaway: "What to notice", rawMetrics: "At a glance" },
+  { nav: "Changes", takeaway: "Did the pattern move?", rawMetrics: "Changes over time" },
+  { nav: "People", takeaway: "Who kept contact alive?", rawMetrics: "Who contributes" },
+  { nav: "Rhythm", takeaway: "What silence looked like", rawMetrics: "Conversation rhythm" },
 ] as const
 
 test("all analytics tabs lead with a takeaway card and do not overflow", async ({ page }) => {
@@ -17,6 +17,7 @@ test("all analytics tabs lead with a takeaway card and do not overflow", async (
 
   await page.setInputFiles("input[type=file]", FIXTURE)
   await expect(page.getByText("Balanced volume, uneven maintenance.")).toBeVisible({ timeout: 30_000 })
+  await expect(page.getByText("This is a pattern read, not a motive read.").first()).toBeVisible()
 
   for (const tab of TABS) {
     await page.getByRole("button", { name: tab.nav, exact: true }).click()
@@ -42,5 +43,5 @@ test("all analytics tabs lead with a takeaway card and do not overflow", async (
 
   // Bottom nav still works after the walk: return to Overview.
   await page.getByRole("button", { name: "Overview", exact: true }).click()
-  await expect(page.getByText("What this looks like").first()).toBeVisible()
+  await expect(page.getByText("What to notice").first()).toBeVisible()
 })

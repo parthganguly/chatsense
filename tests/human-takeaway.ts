@@ -3,7 +3,12 @@ import { readdirSync, readFileSync } from "node:fs"
 import path from "node:path"
 
 import { analyzeChat, parseWhatsAppChat, type HumanTakeaway, type InsightNarrative } from "@chatsense/core"
-import { assertNarrativeLanguageSafe } from "./helpers/narrative-safety"
+import { NARRATIVE_TAKEAWAY_SAFETY_LINE } from "@chatsense/core/contract"
+import {
+  assertNarrativeLanguageSafe,
+  NARRATIVE_HIGH_RISK_PATTERNS,
+  NARRATIVE_SOFT_RISK_PATTERNS,
+} from "./helpers/narrative-safety"
 
 function fixture(name: string): string {
   return readFileSync(path.join(process.cwd(), "fixtures", "whatsapp", `${name}.txt`), "utf8")
@@ -25,16 +30,18 @@ function run() {
   testTakeawayLanguageIsSafe()
   testAdversarialContentCannotAffectTakeaways()
   testTakeawayRendersAboveNarrativeOnEveryScreen()
-  console.log("Human takeaway tests passed (11-case Stage 6.2 matrix).")
+  testTopCardsAvoidInternalMetricNames()
+  testTakeawayCardShowsShortSafetyLine()
+  console.log("Human takeaway tests passed (13-case Stage 6.2/6.3 matrix).")
 }
 
 function testBalancedVolumeUnevenMaintenanceTakeaway() {
   const takeaway = narrativeForText(fixture("stage4_increasing_initiation")).takeaways.overview
   assert.equal(takeaway.oneLineRead, "Balanced volume, uneven maintenance.")
   assert.equal(takeaway.tone, "uneven")
-  assert.match(takeaway.whatThisMeans, /sent a similar amount/i)
-  assert.match(takeaway.whatThisMeans, /less reciprocal in keeping contact alive/i)
-  assert.equal(takeaway.whyItLooksThatWay.some((reason) => /long pauses were restarted by Ravi/i.test(reason)), true)
+  assert.match(takeaway.whatThisMeans, /showed up in the conversation/i)
+  assert.match(takeaway.whatThisMeans, /less balanced in keeping contact alive/i)
+  assert.equal(takeaway.whyItLooksThatWay.some((reason) => /After long pauses, Ravi restarted/i.test(reason)), true)
 }
 
 function testBalancedMaintenanceTakeawayIsNeutral() {
@@ -49,14 +56,14 @@ function testShortExportIsLightRead() {
   const takeaways = narrativeForText(fixture("stage4_insufficient_export")).takeaways
   assert.equal(takeaways.overview.confidence, "limited")
   assert.equal(takeaways.overview.tone, "limited")
-  assert.match(takeaways.overview.oneLineRead, /too little data/i)
+  assert.match(takeaways.overview.oneLineRead, /not enough here to read a pattern yet/i)
   assert.equal(takeaways.changes.confidence, "limited")
   assert.equal(takeaways.people.confidence, "limited")
 }
 
 function testConcentratedRestartsProduceSilencePattern() {
   const rhythm = narrativeForText(fixture("stage4_increasing_initiation")).takeaways.rhythm
-  assert.equal(rhythm.oneLineRead, "Long pauses happened, and most were restarted by the same person.")
+  assert.equal(rhythm.oneLineRead, "The quiet periods repeatedly ended the same way.")
   assert.equal(rhythm.tone, "caution")
   assert.match(rhythm.whatThisMeans, /Ravi sent the first message after 7 of 10 pauses/i)
   assert.match(rhythm.whatThisMeans, /worth noticing/i)
@@ -66,15 +73,15 @@ function testConcentratedRestartsProduceSilencePattern() {
 function testReplyTimingChangeProducesDirectionOfTravel() {
   const changes = narrativeForText(fixture("stage4_reply_slowdown")).takeaways.changes
   assert.equal(changes.tone, "changed")
-  assert.match(changes.oneLineRead, /Reply timing changed for (Asha|Ravi)\./)
-  assert.equal(changes.whyItLooksThatWay.some((reason) => /Median reply changed from .* to .* for/i.test(reason)), true)
+  assert.match(changes.oneLineRead, /Typical replies changed for (Asha|Ravi)\./)
+  assert.equal(changes.whyItLooksThatWay.some((reason) => /Typical reply time moved from .* to .* for/i.test(reason)), true)
 }
 
 function testNoNotableChangeReadsStable() {
   const changes = narrativeForText(activityComparisonFixture(5, 5)).takeaways.changes
-  assert.equal(changes.oneLineRead, "No clear change crossed the threshold.")
+  assert.equal(changes.oneLineRead, "No clear shift crossed the threshold.")
   assert.equal(changes.tone, "stable")
-  assert.match(changes.whatThisMeans, /stable rather than clearly changing/i)
+  assert.match(changes.whatThisMeans, /steady rather than clearly changing/i)
 }
 
 function testGroupAttributionIsApproximate() {
@@ -147,6 +154,41 @@ function assertSourceOrder(file: string, takeawayText: string, narrativeText: st
   const narrativeIndex = source.indexOf(narrativeText)
   assert.equal(takeawayIndex >= 0, true, `${file} is missing ${takeawayText}`)
   assert.equal(narrativeIndex > takeawayIndex, true, `${file} must render ${takeawayText} before ${narrativeText}`)
+}
+
+function testTopCardsAvoidInternalMetricNames() {
+  // Top cards must speak product language, never raw internal metric keys.
+  const internalMetricName = /thread_start_share|reconnection_share|messages_per_active_day|median_reply_minutes|follow_up_rate|turn_share/i
+  const cases = [
+    fixture("stage4_increasing_initiation"),
+    fixture("stage4_balanced_then_one_sided"),
+    fixture("stage4_reply_slowdown"),
+    fixture("stage4_insufficient_export"),
+    fixture("stage4_group_reply_edges"),
+    balancedMaintenanceFixture(),
+    activityComparisonFixture(5, 10),
+    activityComparisonFixture(5, 5),
+  ]
+  for (const text of cases) {
+    const takeaways = narrativeForText(text).takeaways
+    for (const [key, takeaway] of Object.entries(takeaways) as Array<[string, HumanTakeaway]>) {
+      const fields = [takeaway.title, takeaway.oneLineRead, takeaway.whatThisMeans, ...takeaway.whyItLooksThatWay]
+      for (const field of fields) {
+        assert.doesNotMatch(field, internalMetricName, `${key} takeaway leaks an internal metric name: ${field}`)
+      }
+    }
+  }
+}
+
+function testTakeawayCardShowsShortSafetyLine() {
+  // The top card carries a short orientation line instead of repeating the
+  // full guardrail; the full guardrail stays in the detailed narrative.
+  assert.equal(NARRATIVE_TAKEAWAY_SAFETY_LINE, "This is a pattern read, not a motive read.")
+  const cardSource = readFileSync(path.join(process.cwd(), "components", "analytics", "TakeawayCard.tsx"), "utf8")
+  assert.equal(cardSource.includes("NARRATIVE_TAKEAWAY_SAFETY_LINE"), true, "TakeawayCard must render the short safety line")
+  for (const { name, pattern } of [...NARRATIVE_HIGH_RISK_PATTERNS, ...NARRATIVE_SOFT_RISK_PATTERNS]) {
+    assert.doesNotMatch(NARRATIVE_TAKEAWAY_SAFETY_LINE, pattern, `safety line contains risk term '${name}'`)
+  }
 }
 
 function balancedMaintenanceFixture(): string {

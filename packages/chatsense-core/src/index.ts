@@ -36,6 +36,7 @@ export * from "./forecasting"
 export * from "./forecasting-contract"
 export * from "./forecasting-parity"
 export * from "./insight-narrative"
+export { NARRATIVE_TAKEAWAY_SAFETY_LINE } from "./contract"
 export {
   takeawayConfidenceLabel,
   type HumanTakeaway,
