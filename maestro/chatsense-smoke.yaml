@@ -9,12 +9,13 @@
 # Run: maestro test maestro/chatsense-smoke.yaml
 appId: com.thegreatparthicle.chatsense
 ---
-- launchApp
+- launchApp:
+    stopApp: false
 - extendedWaitUntil:
     visible: "ChatSense"
     timeout: 15000
 # If the import screen is showing, the precondition was not met.
-- assertNotVisible: "Choose WhatsApp export"
+- assertNotVisible: "(?i)choose whatsapp export.*"
 # Walk every tab through the bottom navigation and check the takeaway leads.
 - tapOn: "Overview"
 - assertVisible: "(?i)what this looks like"
