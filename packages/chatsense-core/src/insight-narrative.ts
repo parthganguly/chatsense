@@ -328,6 +328,7 @@ interface MaintenanceAssessment {
   topTurn: ParticipantDynamicsSummary | null
   leader: ParticipantDynamicsSummary | null
   leaderPhrases: string[]
+  leaderPlainPhrases: string[]
   threadStartsTotal: number
   reconnectionsTotal: number
 }
@@ -344,6 +345,7 @@ function assessMaintenance(
     topTurn: null,
     leader: null,
     leaderPhrases: [],
+    leaderPlainPhrases: [],
     threadStartsTotal: dynamics.participantSummaries.reduce((total, participant) => total + participant.threadStarts, 0),
     reconnectionsTotal: dynamics.pauseSummary.longPauseCount,
   }
@@ -369,11 +371,13 @@ function assessMaintenance(
   if (strongest.score >= 1) {
     const participant = strongest.participant
     const leaderPhrases: string[] = []
+    const leaderPlainPhrases: string[] = []
     if (
       base.threadStartsTotal >= NARRATIVE_MAINTENANCE_MIN_THREAD_STARTS &&
       participant.threadStartShare >= NARRATIVE_MAINTENANCE_UNEVEN_SHARE_MIN_PCT
     ) {
       leaderPhrases.push(`started ${participant.threadStartShare}% of threads`)
+      leaderPlainPhrases.push("started more of the conversation threads")
     }
     if (
       base.reconnectionsTotal >= NARRATIVE_MAINTENANCE_MIN_RECONNECTIONS &&
@@ -382,14 +386,25 @@ function assessMaintenance(
       leaderPhrases.push(
         `sent the first message after ${participant.reconnectionCount} of ${base.reconnectionsTotal} pauses of at least 24 hours`,
       )
+      leaderPlainPhrases.push("more often sent the first message after long pauses")
     }
     if (
       participant.followUpRelevantTurnCount >= NARRATIVE_MAINTENANCE_MIN_FOLLOW_UP_RELEVANT_TURNS &&
       (participant.followUpRate ?? 0) >= NARRATIVE_HIGH_FOLLOW_UP_RATE_PCT
     ) {
       leaderPhrases.push(`followed up before a reply in ${participant.followUpRate}% of relevant turns`)
+      leaderPlainPhrases.push("more often followed up before a reply")
     }
-    return { ...base, state: "uneven", volumeBalanced, topMessage, topTurn, leader: participant, leaderPhrases }
+    return {
+      ...base,
+      state: "uneven",
+      volumeBalanced,
+      topMessage,
+      topTurn,
+      leader: participant,
+      leaderPhrases,
+      leaderPlainPhrases,
+    }
   }
 
   const hasMaintenanceEvidence =
@@ -867,8 +882,8 @@ function overviewTakeaway(
   if (assessment.state === "uneven" && assessment.leader) {
     if (assessment.volumeBalanced) {
       return takeaway(title, {
-        oneLineRead: "Balanced volume, uneven maintenance.",
-        whatThisMeans: `${people} showed up in the conversation, but ${assessment.leader.sender} ${joinPhrases(assessment.leaderPhrases)}. That makes this look balanced in volume, but less balanced in keeping contact alive.`,
+        oneLineRead: "Message volume was even, while keeping contact going leaned one way.",
+        whatThisMeans: `${people} contributed similar amounts. ${assessment.leader.sender} ${joinPhrases(assessment.leaderPlainPhrases)}.`,
         whyItLooksThatWay: maintenanceBullets(input, assessment),
         confidence: maintenanceConfidence(assessment),
         tone: "uneven",
@@ -876,7 +891,7 @@ function overviewTakeaway(
     }
     return takeaway(title, {
       oneLineRead: "One side carried more of the contact.",
-      whatThisMeans: `${assessment.leader.sender} sent more overall and also ${joinPhrases(assessment.leaderPhrases)}. Most of what kept this conversation moving came from one side.`,
+      whatThisMeans: `${assessment.leader.sender} sent more overall and also ${joinPhrases(assessment.leaderPlainPhrases)}. Both message volume and keeping contact going leaned the same way.`,
       whyItLooksThatWay: maintenanceBullets(input, assessment),
       confidence: maintenanceConfidence(assessment),
       tone: "uneven",
@@ -934,7 +949,9 @@ function changesTakeaway(
     if (secondary) bullets.push(changeBullet(secondary))
     return takeaway(title, {
       oneLineRead: changeOneLine(primary),
-      whatThisMeans: `${secondary ? "Both the long arc and the most recent window moved. " : ""}The latest period looks different from the earlier rhythm on at least one measured pattern. The data shows the shift, not the reason for the shift.`,
+      whatThisMeans: secondary
+        ? "The same kind of shift appeared in both the longer comparison and the most recent one."
+        : "The latest period looks different from the earlier pattern in this export.",
       whyItLooksThatWay: bullets,
       confidence: earlyChange && recentChange ? "strong" : "moderate",
       tone: "changed",
@@ -945,9 +962,8 @@ function changesTakeaway(
   if (available.length > 0) {
     const comparison = available[0]
     return takeaway(title, {
-      oneLineRead: "No clear shift crossed the threshold.",
-      whatThisMeans:
-        "This looks steady rather than clearly changing. Every compared measure stayed inside its predefined threshold.",
+      oneLineRead: "The pattern looks mostly steady in this export.",
+      whatThisMeans: "None of the compared patterns changed enough to count as a clear shift.",
       whyItLooksThatWay: [
         `${comparison.earlierPeriod.label}: ${formatCount(comparison.earlierPeriod.messageCount)} ${pluralize("message", comparison.earlierPeriod.messageCount)}.`,
         `${comparison.laterPeriod.label}: ${formatCount(comparison.laterPeriod.messageCount)} ${pluralize("message", comparison.laterPeriod.messageCount)}.`,
@@ -974,7 +990,9 @@ function changeOneLine(change: MetricChange): string {
       ? "The later period became more active."
       : "The later period became less active."
   }
-  if (change.metric === "median_reply_minutes") return `Typical replies changed for ${change.sender}.`
+  if (change.metric === "median_reply_minutes") {
+    return `Typical replies became ${change.direction === "increased" ? "slower" : "faster"} for ${change.sender}.`
+  }
   if (change.metric === "thread_start_share") return `Starting new conversations shifted for ${change.sender}.`
   if (change.metric === "reconnection_share") return `Restarting after quiet periods shifted for ${change.sender}.`
   if (change.metric === "follow_up_rate") return `Following up before a reply shifted for ${change.sender}.`
@@ -1013,7 +1031,7 @@ function peopleTakeaway(
   if (assessment.state === "uneven" && assessment.leader) {
     return takeaway(title, {
       oneLineRead: `Keeping contact alive leaned toward ${assessment.leader.sender}.`,
-      whatThisMeans: `${assessment.leader.sender} ${joinPhrases(assessment.leaderPhrases)}. ${
+      whatThisMeans: `${assessment.leader.sender} ${joinPhrases(assessment.leaderPlainPhrases)}. ${
         assessment.volumeBalanced
           ? "Message volume stayed close to even, so the lean shows up in who kept contact alive rather than in who sent more."
           : "Message volume also leaned the same way."
@@ -1088,7 +1106,7 @@ function rhythmTakeaway(summary: PauseReconnectionSummary): HumanTakeaway {
   if (concentrated) {
     return takeaway(title, {
       oneLineRead: "The quiet periods repeatedly ended the same way.",
-      whatThisMeans: `${top.sender} sent the first message after ${top.count} of ${summary.longPauseCount} pauses of at least 24 hours. That is a pattern worth noticing, not an explanation of it.${latestNote}`,
+      whatThisMeans: `${top.sender} sent the first message after ${top.count} of ${summary.longPauseCount} pauses of at least 24 hours. This was the most common way long pauses ended in this export.${latestNote}`,
       whyItLooksThatWay: [
         `After long pauses, ${top.sender} restarted ${top.count} of ${formatCount(summary.longPauseCount)} times.`,
         longestBullet,

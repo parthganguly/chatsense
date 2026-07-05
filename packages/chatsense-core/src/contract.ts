@@ -69,7 +69,7 @@ export const NARRATIVE_TAKEAWAY_CONFIDENCE_LABELS = {
 } as const
 // Short orientation line on the takeaway card; the full guardrail remains in
 // the detailed narrative and screen footers.
-export const NARRATIVE_TAKEAWAY_SAFETY_LINE = "This is a pattern read, not a motive read."
+export const NARRATIVE_TAKEAWAY_SAFETY_LINE = "Observed in this export; it does not explain why."
 export const NARRATIVE_REQUIRED_GUARDRAIL =
   "These observations describe exported timing and volume only. They do not prove motive, love, rejection, affection, attachment, personality, mental health, relationship quality, or relationship status."
 

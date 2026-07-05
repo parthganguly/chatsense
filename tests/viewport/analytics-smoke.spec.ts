@@ -16,8 +16,10 @@ test("all analytics tabs lead with a takeaway card and do not overflow", async (
   await expect(page.getByText("Choose WhatsApp export")).toBeVisible()
 
   await page.setInputFiles("input[type=file]", FIXTURE)
-  await expect(page.getByText("Balanced volume, uneven maintenance.")).toBeVisible({ timeout: 30_000 })
-  await expect(page.getByText("This is a pattern read, not a motive read.").first()).toBeVisible()
+  await expect(page.getByText("Message volume was even, while keeping contact going leaned one way.")).toBeVisible({
+    timeout: 30_000,
+  })
+  await expect(page.getByText("Observed in this export; it does not explain why.").first()).toBeVisible()
 
   for (const tab of TABS) {
     await page.getByRole("button", { name: tab.nav, exact: true }).click()
