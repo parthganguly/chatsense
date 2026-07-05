@@ -32,8 +32,8 @@ export function TakeawayCard({ takeaway }: { takeaway: HumanTakeaway }) {
       </div>
       <h2 className="mt-2 break-words text-lg font-bold leading-6 text-slate-950">{takeaway.oneLineRead}</h2>
       <p className="mt-2 break-words text-sm leading-6 text-slate-600">{takeaway.whatThisMeans}</p>
-      <p className="mt-3 text-[11px] font-semibold text-slate-500">Why this appears</p>
-      <ul className="mt-1 space-y-1">
+      <p className="mt-3 text-[11px] font-semibold text-slate-500">What supports this</p>
+      <ul className="mt-1 space-y-0.5">
         {takeaway.whyItLooksThatWay.slice(0, 3).map((reason) => (
           <li key={reason} className="flex gap-2 break-words text-xs leading-5 text-slate-500">
             <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-slate-400" aria-hidden="true" />
@@ -41,7 +41,7 @@ export function TakeawayCard({ takeaway }: { takeaway: HumanTakeaway }) {
           </li>
         ))}
       </ul>
-      <p className="mt-3 border-t border-slate-100 pt-2 text-[11px] leading-4 text-slate-400">
+      <p className="mt-2 border-t border-slate-100 pt-2 text-[11px] leading-4 text-slate-400">
         {NARRATIVE_TAKEAWAY_SAFETY_LINE}
       </p>
     </section>

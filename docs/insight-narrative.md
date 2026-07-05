@@ -67,6 +67,23 @@ staying strictly inside the observable boundary:
 This pass changes wording and card layout only: no new metrics, no sentiment,
 no content interpretation, no advice, no prediction.
 
+### Real-export copy polish (Stage 6.4)
+
+An anonymized on-device read-through of a real export kept the four top-card
+headings and evidence order, but tightened repeated or report-like wording:
+
+- exact values stay in the evidence bullets while the orientation paragraphs
+  use shorter descriptions of the same observable patterns;
+- reply-timing headlines state the observed direction (faster or slower)
+  instead of saying only that replies "changed";
+- "What supports this" replaces the causal-sounding "Why this appears";
+- the compact safety line now reads "Observed in this export; it does not
+  explain why." The full required guardrail still appears in every detailed
+  narrative section and screen footer.
+
+This is copy and spacing polish only. It adds no metrics, interpretation,
+advice, prediction, content analysis, or data movement.
+
 ## Categories
 
 Product narrative uses these explicit categories:
