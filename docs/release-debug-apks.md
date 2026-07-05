@@ -17,9 +17,9 @@ APKs and checksum files are release artifacts. Do not commit them to Git.
 `.github/workflows/release-debug-apk.yml` runs on every push to `main` and can
 also be started manually with `workflow_dispatch`. Before publishing, it:
 
-1. installs dependencies with Node 22 and Java 21;
-2. runs lint, type checking, JavaScript tests, parity tests, forecasting
-   evaluation, and the production web build;
+1. installs dependencies with Node 22, Python 3.13, and Java 21;
+2. runs lint, type checking, JavaScript and Python tests, parity tests,
+   forecasting evaluations, and the production web build;
 3. synchronizes Capacitor, runs Gradle tests, and assembles the debug APK;
 4. computes the APK byte size and SHA-256 digest;
 5. uploads the APK, checksum, and release metadata as a retained Actions

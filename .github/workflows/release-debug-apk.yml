@@ -23,6 +23,12 @@ jobs:
           node-version: 22
           cache: npm
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pip"
+
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
@@ -41,6 +47,9 @@ jobs:
 
       - name: Install JavaScript dependencies
         run: npm ci
+
+      - name: Install Python dependencies
+        run: python -m pip install -e ".[dev]"
 
       - name: Lint
         run: npm run lint
@@ -62,6 +71,12 @@ jobs:
 
       - name: Build web shell
         run: npm run build
+
+      - name: Test Python package
+        run: python -m pytest
+
+      - name: Evaluate Python forecasting benchmarks
+        run: python -m chatsense_ml.forecasting.evaluate
 
       - name: Sync Android project
         run: npx cap sync android
