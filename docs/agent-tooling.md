@@ -79,6 +79,22 @@ nav works, and nothing overflows. Delete the pushed fixture afterwards
 
 Maestro install: https://maestro.mobile.dev (on Windows, run it under WSL).
 
+## Debug APK releases
+
+Every generated APK intended for distribution must be published as a clearly
+labeled GitHub pre-release with an SHA-256 checksum and release metadata. The
+repeatable workflow, manual backfill procedure, verification commands, and
+release safety rules are documented in `docs/release-debug-apks.md`.
+
+`.github/workflows/release-debug-apk.yml` builds and publishes a debug APK on
+pushes to `main` or manual dispatch, after the Node and Android verification
+gates pass. These APKs are not production-ready and are not Play Store signed.
+Maestro remains local device QA rather than a GitHub-hosted runner step.
+
+Never commit APKs or checksum outputs. Never attach personal exports,
+screenshots, reports, packed context, credentials, or signing material to a
+release.
+
 ## Archon — repeatable workflows
 
 Recurring product passes (red-team review, release polish, phone QA) should be
@@ -101,6 +117,8 @@ passes on this trusted repository do not need it.
   build` and installed Chromium).
 - `npm run test:mobile:maestro` — Maestro flow on a connected device (needs
   Maestro installed and the fixture imported).
+- `.github/workflows/release-debug-apk.yml` — verify, assemble, checksum, and
+  publish a GitHub debug APK pre-release from `main` or manual dispatch.
 - `npm run test:product-smoke` — every safe machine-local check in one
   command: lint, typecheck, unit/narrative/takeaway tests, parity, build, and
   the viewport suite.

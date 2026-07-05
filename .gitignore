@@ -31,6 +31,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+*.apk
+*.sha256
 
 # env files
 .env*

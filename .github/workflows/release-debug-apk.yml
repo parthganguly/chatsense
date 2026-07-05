@@ -1,0 +1,190 @@
+name: Release debug APK
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release-debug-apk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('android/**/*.gradle*', 'android/gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ runner.os }}-
+
+      - name: Install JavaScript dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test JavaScript boundaries
+        run: npm run test
+
+      - name: Test parity fixtures
+        run: npm run test:parity
+
+      - name: Test forecasting parity fixtures
+        run: npm run test:forecast-parity
+
+      - name: Evaluate TypeScript forecasting benchmarks
+        run: npm run forecast:eval
+
+      - name: Build web shell
+        run: npm run build
+
+      - name: Sync Android project
+        run: npx cap sync android
+
+      - name: Test Android
+        working-directory: android
+        run: ./gradlew test
+
+      - name: Assemble Android debug APK
+        working-directory: android
+        run: ./gradlew assembleDebug
+
+      - name: Prepare release assets and metadata
+        id: release
+        shell: bash
+        env:
+          APK_PATH: android/app/build/outputs/apk/debug/app-debug.apk
+        run: |
+          set -euo pipefail
+
+          test -f "$APK_PATH"
+          SHORT_SHA="${GITHUB_SHA::7}"
+          TAG="debug-apk-${SHORT_SHA}"
+          APK_NAME="app-debug.apk"
+          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+
+          mkdir -p release-assets
+          cp "$APK_PATH" "release-assets/$APK_NAME"
+          SHA256="$(sha256sum "release-assets/$APK_NAME" | awk '{print $1}')"
+          SIZE_BYTES="$(stat -c%s "release-assets/$APK_NAME")"
+          printf '%s  %s\n' "$SHA256" "$APK_NAME" > release-assets/app-debug.apk.sha256
+          jq -n \
+            --arg artifact "$APK_NAME" \
+            --arg apk_path "$APK_PATH" \
+            --arg build_type "debug" \
+            --arg commit_sha "$GITHUB_SHA" \
+            --arg source_ref "$GITHUB_REF_NAME" \
+            --arg workflow_run_url "$RUN_URL" \
+            --arg sha256 "$SHA256" \
+            --argjson size_bytes "$SIZE_BYTES" \
+            '{
+              artifact: $artifact,
+              apk_path: $apk_path,
+              build_type: $build_type,
+              commit_sha: $commit_sha,
+              source_ref: $source_ref,
+              workflow_run_url: $workflow_run_url,
+              size_bytes: $size_bytes,
+              sha256: $sha256,
+              production_ready: false
+            }' > release-assets/release-metadata.json
+
+          {
+            echo "short_sha=$SHORT_SHA"
+            echo "tag=$TAG"
+            echo "sha256=$SHA256"
+            echo "size_bytes=$SIZE_BYTES"
+            echo "run_url=$RUN_URL"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Upload debug APK build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-apk-${{ steps.release.outputs.short_sha }}
+          path: release-assets/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Create or update debug APK prerelease
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.release.outputs.tag }}
+          SHORT_SHA: ${{ steps.release.outputs.short_sha }}
+          APK_SHA256: ${{ steps.release.outputs.sha256 }}
+          APK_SIZE_BYTES: ${{ steps.release.outputs.size_bytes }}
+          RUN_URL: ${{ steps.release.outputs.run_url }}
+        run: |
+          set -euo pipefail
+
+          NOTES=$(cat <<EOF
+          Debug build / not production-ready.
+
+          - Commit SHA: ${GITHUB_SHA}
+          - Branch/source: ${GITHUB_REF_NAME}
+          - APK path: android/app/build/outputs/apk/debug/app-debug.apk
+          - APK filename: app-debug.apk
+          - APK size: ${APK_SIZE_BYTES} bytes
+          - SHA-256: ${APK_SHA256}
+          - Build type: Android debug APK
+          - Workflow run: ${RUN_URL}
+
+          Verification:
+          - Lint, type checking, JavaScript tests, parity checks, forecasting evaluation, and web build passed
+          - Gradle tests and assembleDebug passed
+          - Maestro is local/manual phone QA and is not run on GitHub-hosted runners
+
+          Limitations:
+          - Debug APK
+          - No Play Store signing
+          - For testing only
+          EOF
+          )
+
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            EXISTING_SHA=$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${TAG}" --jq '.object.sha')
+            if [[ "$EXISTING_SHA" != "$GITHUB_SHA" ]]; then
+              echo "Refusing to update $TAG because it points to $EXISTING_SHA, not $GITHUB_SHA" >&2
+              exit 1
+            fi
+            gh release edit "$TAG" \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "ChatSense Debug APK $SHORT_SHA" \
+              --notes "$NOTES" \
+              --prerelease
+            gh release upload "$TAG" release-assets/* \
+              --repo "$GITHUB_REPOSITORY" \
+              --clobber
+          else
+            gh release create "$TAG" release-assets/* \
+              --repo "$GITHUB_REPOSITORY" \
+              --target "$GITHUB_SHA" \
+              --title "ChatSense Debug APK $SHORT_SHA" \
+              --notes "$NOTES" \
+              --prerelease
+          fi
