@@ -64,12 +64,14 @@ npm run test:viewport  # serves out/ and runs all three viewports
 ## Maestro — phone QA
 
 `maestro/chatsense-smoke.yaml` walks the four tabs on a connected Android
-device and asserts each takeaway heading. Maestro cannot reliably automate the
-Android system file picker, so the flow requires a one-time manual import:
+device and asserts each takeaway heading. Since Stage 7 the flow is
+self-contained: when the onboarding screen is visible it taps "Try demo
+export", which loads the committed synthetic fixture through the normal
+import pipeline. No fixture push, no Android system file picker, and no
+manual import precondition:
 
-1. `adb push fixtures/whatsapp/stage4_increasing_initiation.txt /sdcard/Download/`
-2. Open ChatSense, tap "Choose WhatsApp export", pick the fixture.
-3. `npm run test:mobile:maestro`
+1. Install the debug APK.
+2. `npm run test:mobile:maestro`
 
 Manual fallback (no Maestro installed): follow the phone checklist in
 `docs/stage-6-2-human-readable-takeaways-report.md` by hand — import the

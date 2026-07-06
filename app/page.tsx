@@ -16,7 +16,7 @@ import { subscribeToSharedFileBridge } from "@/platform/android/sharedFileBridge
 export default function ChatSenseApp() {
   const [screen, setScreen] = useState<AppScreen>("import")
   const handleImported = useCallback(() => setScreen("overview"), [])
-  const { analysis, error, importFile, isLoading, messages, setError, sourceName } = useChatImport(handleImported)
+  const { analysis, error, importFile, importDemo, isLoading, messages, setError, sourceName } = useChatImport(handleImported)
 
   useEffect(() => {
     return subscribeToSharedFileBridge({
@@ -31,6 +31,7 @@ export default function ChatSenseApp() {
         error={error}
         isLoading={isLoading}
         onFileUpload={(file) => void importFile(file)}
+        onDemoImport={importDemo}
       />
     )
   }

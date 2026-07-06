@@ -7,6 +7,7 @@ import {
   type ChatAnalysis,
   type ChatMessage,
 } from "@chatsense/core"
+import { DEMO_EXPORT_NAME, DEMO_EXPORT_TEXT } from "./demoExport"
 import { readWhatsAppExport } from "./readWhatsAppExport"
 
 export type ChatImportState = {
@@ -19,6 +20,7 @@ export type ChatImportState = {
 
 export type ChatImportActions = {
   importFile(file: File): Promise<void>
+  importDemo(): void
   setError(message: string | null): void
 }
 
@@ -66,10 +68,31 @@ export function useChatImport(onImported?: () => void): ChatImportState & ChatIm
     [onImported],
   )
 
+  // The demo runs the exact same parse/analyze pipeline as a real import; the
+  // only differences are the committed synthetic source text and the source
+  // label shown in the header.
+  const importDemo = useCallback(() => {
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const imported = analyzeImportedText(DEMO_EXPORT_TEXT)
+      setMessages(imported.messages)
+      setAnalysis(imported.analysis)
+      setSourceName(DEMO_EXPORT_NAME)
+      onImported?.()
+    } catch (err) {
+      setError(getImportErrorMessage(err))
+    } finally {
+      setIsLoading(false)
+    }
+  }, [onImported])
+
   return {
     analysis,
     error,
     importFile,
+    importDemo,
     isLoading,
     messages,
     setError,

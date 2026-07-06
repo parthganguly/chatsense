@@ -11,6 +11,32 @@ const TABS = [
   { nav: "Rhythm", takeaway: "What silence looked like", rawMetrics: "Conversation rhythm" },
 ] as const
 
+test("onboarding explains the product and demo import reaches analysis", async ({ page }) => {
+  await page.goto("/")
+
+  // Onboarding content before any import.
+  await expect(page.getByRole("heading", { name: "ChatSense" })).toBeVisible()
+  await expect(page.getByText("Choose WhatsApp export")).toBeVisible()
+  await expect(page.getByText("Try demo export")).toBeVisible()
+  await expect(page.getByText("What you'll see")).toBeVisible()
+  await expect(page.getByText("What this cannot tell you")).toBeVisible()
+  await expect(page.getByText("Analysis runs locally inside the app", { exact: false })).toBeVisible()
+  await expect(page.getByText("How to export from WhatsApp")).toBeVisible()
+
+  const overflow = await page.evaluate(
+    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+  )
+  expect(overflow, "onboarding overflows horizontally").toBeLessThanOrEqual(0)
+
+  // The demo import must land in the normal analysis state.
+  await page.getByRole("button", { name: "Try demo export" }).click()
+  for (const tab of TABS) {
+    await page.getByRole("button", { name: tab.nav, exact: true }).click()
+    await expect(page.getByText(tab.takeaway).first()).toBeVisible()
+  }
+  await expect(page.getByText("Demo export (synthetic)", { exact: false })).toBeVisible()
+})
+
 test("all analytics tabs lead with a takeaway card and do not overflow", async ({ page }) => {
   await page.goto("/")
   await expect(page.getByText("Choose WhatsApp export")).toBeVisible()

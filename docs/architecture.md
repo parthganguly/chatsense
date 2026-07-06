@@ -57,7 +57,7 @@ layer over existing calculations; it adds no new behavioral score.
 The Next.js/Capacitor shell owns:
 
 - root app state and screen composition;
-- file-picker import UX;
+- file-picker import UX, Stage 7 onboarding copy (`features/import/onboardingCopy.ts`), and the synthetic demo import (`features/import/demoExport.ts`, embedded from `fixtures/whatsapp/stage4_increasing_initiation.txt`, same pipeline as a real import);
 - browser `File` handling;
 - ZIP/TXT extraction;
 - Android share-sheet import orchestration through the native `SharedFile` plugin;
