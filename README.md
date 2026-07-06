@@ -6,6 +6,23 @@ Overview, Changes, People, and Rhythm each begin with a compact human takeaway c
 
 Python remains a local research/reference implementation and is not bundled into Android.
 
+## Importing a chat
+
+ChatSense analyzes a local WhatsApp `.txt` export (or the exported ZIP). In
+WhatsApp: open the chat, tap the menu / More, choose **Export chat**, pick
+**Without media** (recommended — only the text is read), then select the file
+in ChatSense. Analysis runs locally in the app: no upload, no account, no
+backend, no telemetry. Only import chats you have permission to analyze.
+
+The onboarding screen also offers **Try demo export**, which loads a committed
+synthetic fixture (`fixtures/whatsapp/stage4_increasing_initiation.txt`,
+embedded as `features/import/demoExport.ts`) through the same import pipeline,
+so a new user can see Overview, Changes, People, and Rhythm without importing
+a real chat. The demo contains no real people or messages. ChatSense shows
+observable patterns only — it does not read minds, infer motive or
+relationship status, give advice, or predict replies. See
+docs/onboarding-import.md.
+
 ## Install
 
 ```bash

@@ -29,6 +29,15 @@ android/app/src/main/java/com/thegreatparthicle/chatsense/plugins/SharedFilePlug
 
 The app does not request broad file storage permissions. FileProvider remains limited to app-controlled `shared/` paths for testing and future app-owned sharing.
 
+## Onboarding and Demo Import (Stage 7)
+
+The import screen states the boundary before any data is chosen: analysis is
+local-only (no upload, no account, no server, no telemetry), the export stays
+in the app session, and users should only import chats they have permission to
+analyze. The "Try demo export" button loads a committed synthetic fixture
+embedded at build time (`features/import/demoExport.ts`); it fetches nothing
+from the network and contains no real people or messages.
+
 ## Safety Language
 
 ChatSense reports observable communication patterns only. Reply delays, silence gaps, sender balance, and activity rhythms are not proof of hidden intent, mental-health status, or relationship status.
