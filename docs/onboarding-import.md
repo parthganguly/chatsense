@@ -64,3 +64,11 @@ why" or "will reply".
 
 No personal exports, screenshots, or personal data are used anywhere in this
 flow or its tests.
+
+## Future direction
+
+Stage 8 is planned to lead the post-import experience with a plain-language
+"Relationship Read" (pattern, direction, effort balance, silence, evidence,
+confidence) ahead of the metric cards. Onboarding copy and the demo export
+should continue to set that expectation. See
+`docs/product/relationship-read-roadmap.md`.

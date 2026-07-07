@@ -38,6 +38,14 @@ analyze. The "Try demo export" button loads a committed synthetic fixture
 embedded at build time (`features/import/demoExport.ts`); it fetches nothing
 from the network and contains no real people or messages.
 
+## Planned Product Direction
+
+The planned "Relationship Read" layer (see
+`docs/product/relationship-read-roadmap.md`) stays inside this privacy
+boundary: local-only, deterministic, derived from timing/volume/initiation
+metadata, with no message-content interpretation, no motive or emotion
+claims, and no cloud processing.
+
 ## Safety Language
 
 ChatSense reports observable communication patterns only. Reply delays, silence gaps, sender balance, and activity rhythms are not proof of hidden intent, mental-health status, or relationship status.
