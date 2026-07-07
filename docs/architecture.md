@@ -117,6 +117,16 @@ Android share intent
 
 `MainActivity` only registers the plugin and forwards cold-start or warm share intents. `SharedFilePlugin` validates ZIP/TXT imports, copies them with a size limit into private cache, retains pending metadata for startup races, and deletes cached files after JavaScript finishes import. No Python, LLM, backend, telemetry, or broad storage permission participates in this runtime path.
 
+## Planned Direction (Stage 8+)
+
+The next planned product layer is a deterministic "Relationship Read" in
+`@chatsense/core` — a human-first pattern read (current pattern, direction,
+effort balance, silence pattern, historical next-step baselines, confidence)
+derived purely from existing analysis outputs and rendered above the current
+metrics. It is a presentation/mapping layer; the analysis engine and the
+safety boundary are unchanged. Strategy and constraints live in
+`docs/product/relationship-read-roadmap.md`.
+
 ## Deferred React Native Work
 
 React Native is a possible later consumer of `@chatsense/core`, but it is not part of Stage 2. No Expo, Metro, or second frontend exists in this stage.

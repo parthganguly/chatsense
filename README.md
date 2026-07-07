@@ -6,6 +6,8 @@ Overview, Changes, People, and Rhythm each begin with a compact human takeaway c
 
 Python remains a local research/reference implementation and is not bundled into Android.
 
+The planned product direction after Stage 7 is a human-first "Relationship Read" layer — a plain-language pattern read shown before the metrics, backed by inspectable evidence, within the same local/deterministic/no-content-interpretation boundary. See `docs/product/relationship-read-roadmap.md`.
+
 ## Importing a chat
 
 ChatSense analyzes a local WhatsApp `.txt` export (or the exported ZIP). In

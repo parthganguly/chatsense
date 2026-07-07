@@ -35,6 +35,11 @@ any agent pass:
 
 Use `npm run context:pack` to give a review agent full context in one file.
 
+Agents starting product work after Stage 7 should read
+`docs/product/relationship-read-roadmap.md` first — it is the baton document
+for the planned human-first "Relationship Read" direction (Stage 8+),
+including its hard safety boundaries and a ready-to-run Stage 8A prompt.
+
 ## Playwright — viewport QA
 
 `npm run test:viewport` runs the mobile smoke suite in
