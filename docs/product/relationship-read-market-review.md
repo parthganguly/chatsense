@@ -5,6 +5,8 @@
 **Written:** 2026-07-11, reviewing `docs/product/relationship-read-roadmap.md` at its merged state (`main`, PR #16).
 **Reviewer stance:** skeptical by instruction. This is not a rubber stamp of the roadmap.
 
+**See also [`scenario-evidence-research.md`](./scenario-evidence-research.md)** — a scenario-and-method research pass that grounds this review's three promises (§3) empirically: for each scenario it names the measurable construct, statistical method, evidence threshold, safe output, and what cannot be inferred. Its §4 ranking confirms this review's top-3 promise ordering and adds "honest insufficiency" and "intermittent rhythm" as first-class MVP scenarios.
+
 **See also [`relationship-context-research.md`](./relationship-context-research.md)** — a follow-on research pass asking whether this review's romantic-first framing should extend to friendship/family/work contexts. It agrees with this review's narrowed Stage 8A brief (§12–§13 below) and adds one requirement: ship that brief's copy in relationship-neutral default wording, not romance-coded wording, so the product doesn't have to be rewritten when non-romantic contexts are added later. Friendship is identified as the strongest second market (its §8), ahead of family or work.
 
 ---

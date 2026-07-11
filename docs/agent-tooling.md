@@ -40,9 +40,12 @@ Agents starting product work after Stage 7 should read
 for the planned human-first "Relationship Read" direction (Stage 8+),
 including its hard safety boundaries and a ready-to-run Stage 8A prompt. Then
 read `docs/product/relationship-read-market-review.md` (narrows the Stage 8A
-brief) and `docs/product/relationship-context-research.md` (externally
-researched pass on romantic-vs-relationship-general scope; the copy-paste
-Stage 8A prompt there supersedes the roadmap's own).
+brief), `docs/product/relationship-context-research.md` (externally
+researched pass on romantic-vs-relationship-general scope), and
+`docs/product/scenario-evidence-research.md` (scenario library and empirical
+methods: which user situations the product answers, with what statistics, on
+how much evidence, and what may never be inferred; its §23 brief is the
+current Stage 8A implementation prompt, superseding the earlier ones).
 
 ## Playwright — viewport QA
 
