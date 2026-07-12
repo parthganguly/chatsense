@@ -7,6 +7,8 @@
 
 **See also [`scenario-evidence-research.md`](./scenario-evidence-research.md)** — a scenario-and-method research pass that grounds this review's three promises (§3) empirically: for each scenario it names the measurable construct, statistical method, evidence threshold, safe output, and what cannot be inferred. Its §4 ranking confirms this review's top-3 promise ordering and adds "honest insufficiency" and "intermittent rhythm" as first-class MVP scenarios.
 
+**See also [`chatsense-master-plan.md`](./chatsense-master-plan.md)** — the authoritative baton (2026-07-12); its §16 prompt supersedes the Stage 8A briefs in this document's §12–§13 where they differ. The full-project audit ([`chatsense-full-project-audit.md`](./chatsense-full-project-audit.md)) confirms this review's narrowed-8A recommendation with amendments (audit §25).
+
 **See also [`relationship-context-research.md`](./relationship-context-research.md)** — a follow-on research pass asking whether this review's romantic-first framing should extend to friendship/family/work contexts. It agrees with this review's narrowed Stage 8A brief (§12–§13 below) and adds one requirement: ship that brief's copy in relationship-neutral default wording, not romance-coded wording, so the product doesn't have to be rewritten when non-romantic contexts are added later. Friendship is identified as the strongest second market (its §8), ahead of family or work.
 
 ---

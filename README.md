@@ -6,7 +6,7 @@ Overview, Changes, People, and Rhythm each begin with a compact human takeaway c
 
 Python remains a local research/reference implementation and is not bundled into Android.
 
-The planned product direction after Stage 7 is a human-first "Relationship Read" layer — a plain-language pattern read shown before the metrics, backed by inspectable evidence, within the same local/deterministic/no-content-interpretation boundary. See `docs/product/relationship-read-roadmap.md`.
+The planned product direction after Stage 7 is a human-first "Relationship Read" layer — a plain-language pattern read shown before the metrics, backed by inspectable evidence, within the same local/deterministic/no-content-interpretation boundary. **The authoritative entry point for product direction and the next implementation is `docs/product/chatsense-master-plan.md`** (backed by the full audit in `docs/product/chatsense-full-project-audit.md`); `docs/product/relationship-read-roadmap.md` and its follow-on research documents remain as background.
 
 ## Importing a chat
 

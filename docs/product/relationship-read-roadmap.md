@@ -3,6 +3,8 @@
 **Status:** strategy document — nothing in this file is implemented yet.
 **Audience:** the next model/agent (GPT-5.5, Sonnet 5, a future Fable/Codex agent) picking up ChatSense after Stage 7.
 **Written:** 2026-07-07, from `main` at the merge of Stage 7 (onboarding, import, demo export).
+**Superseded as an implementation prompt (2026-07-12):** the authoritative baton is now [`chatsense-master-plan.md`](./chatsense-master-plan.md), whose §16 prompt supersedes §14 below; the full-project audit ([`chatsense-full-project-audit.md`](./chatsense-full-project-audit.md)) is the evidence behind it. This roadmap's safety boundary (§7 allowed/forbidden forms, §9 forbidden-claims list) remains normative.
+
 **Before implementing Stage 8A, read [`relationship-read-market-review.md`](./relationship-read-market-review.md)** — a skeptical product/marketing review of this roadmap. It recommends a narrower first slice than §10/§14 below describe; see its §12–§13 for the revised brief.
 
 **Also read [`scenario-evidence-research.md`](./scenario-evidence-research.md)** — the scenario library and empirical-method catalog behind this roadmap. It maps every user situation to observable data, statistical method, minimum evidence, safe wording, and limitation; its §7 matrix, §11–§12 designs, and §23 brief are the implementation spec for Stage 8A's card content.
