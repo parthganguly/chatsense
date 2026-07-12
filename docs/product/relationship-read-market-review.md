@@ -5,6 +5,8 @@
 **Written:** 2026-07-11, reviewing `docs/product/relationship-read-roadmap.md` at its merged state (`main`, PR #16).
 **Reviewer stance:** skeptical by instruction. This is not a rubber stamp of the roadmap.
 
+**See also [`relationship-context-research.md`](./relationship-context-research.md)** — a follow-on research pass asking whether this review's romantic-first framing should extend to friendship/family/work contexts. It agrees with this review's narrowed Stage 8A brief (§12–§13 below) and adds one requirement: ship that brief's copy in relationship-neutral default wording, not romance-coded wording, so the product doesn't have to be rewritten when non-romantic contexts are added later. Friendship is identified as the strongest second market (its §8), ahead of family or work.
+
 ---
 
 ## 1. Blunt verdict
