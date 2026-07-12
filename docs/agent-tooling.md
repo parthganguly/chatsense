@@ -35,17 +35,14 @@ any agent pass:
 
 Use `npm run context:pack` to give a review agent full context in one file.
 
-Agents starting product work after Stage 7 should read
-`docs/product/relationship-read-roadmap.md` first — it is the baton document
-for the planned human-first "Relationship Read" direction (Stage 8+),
-including its hard safety boundaries and a ready-to-run Stage 8A prompt. Then
-read `docs/product/relationship-read-market-review.md` (narrows the Stage 8A
-brief), `docs/product/relationship-context-research.md` (externally
-researched pass on romantic-vs-relationship-general scope), and
-`docs/product/scenario-evidence-research.md` (scenario library and empirical
-methods: which user situations the product answers, with what statistics, on
-how much evidence, and what may never be inferred; its §23 brief is the
-current Stage 8A implementation prompt, superseding the earlier ones).
+Agents starting product work should read
+`docs/product/chatsense-master-plan.md` first — it is the authoritative
+baton (2026-07-12) with the current Stage 8A prompt (its §16) and a reading
+order (its §15) into the supporting documents: the full-project audit
+(`chatsense-full-project-audit.md`), the roadmap (safety boundary),
+market review, context research, and scenario-evidence research. The older
+Stage 8A prompts embedded in those documents are superseded by the master
+plan and should not be executed.
 
 ## Playwright — viewport QA
 
