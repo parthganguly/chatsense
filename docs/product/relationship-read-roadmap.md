@@ -3,6 +3,7 @@
 **Status:** strategy document — nothing in this file is implemented yet.
 **Audience:** the next model/agent (GPT-5.5, Sonnet 5, a future Fable/Codex agent) picking up ChatSense after Stage 7.
 **Written:** 2026-07-07, from `main` at the merge of Stage 7 (onboarding, import, demo export).
+**Before implementing Stage 8A, read [`relationship-read-market-review.md`](./relationship-read-market-review.md)** — a skeptical product/marketing review of this roadmap. It recommends a narrower first slice than §10/§14 below describe; see its §12–§13 for the revised brief.
 
 This is a baton document. It assumes you have not read the chat history that produced Stages 1–7. It tells you what we know, what the product should become, what not to do, what to build first, how to validate it, and where the ethical boundary sits. It deliberately leaves design room: you are expected to improve on the label sets and layouts proposed here, not transcribe them.
 
