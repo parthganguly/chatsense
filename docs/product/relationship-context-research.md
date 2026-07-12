@@ -4,6 +4,8 @@
 **Audience:** the next model/agent (GPT-5.5, Sonnet 5, a future Fable/Codex agent) deciding how wide ChatSense's product surface should be before implementing Stage 8A.
 **Written:** 2026-07-11, from a branch stacked on PR #17 (`product/relationship-read-market-review`, not yet merged at time of writing — see note below).
 **Reads first:** `docs/product/relationship-read-roadmap.md` (PR #16, merged) and `docs/product/relationship-read-market-review.md` (PR #17, draft). This document does not repeat their content; it extends them with a wider relationship-context lens and external research.
+**See also [`scenario-evidence-research.md`](./scenario-evidence-research.md)** — the follow-on scenario library and empirical-method catalog (written 2026-07-12). It inherits this document's context rules (neutral copy, family restraint, work unmarketed, groups secondary) and adds the per-scenario evidence chains — construct, method, minimum sample, safe output, limitation — plus hard empirical standards (its §6) and the prediction research plan (its §18). Its §23 implementation brief supersedes the Stage 8A prompt in §20 below for card-content specifics, while §20's neutral-wording and hard-constraint requirements remain binding.
+
 **Branch note:** PR #17 was still in draft, not merged, when this research began. Per the task instructions this branch was stacked on PR #17's head (`product/relationship-read-market-review`) rather than waiting. When PR #17 merges, this branch should be rebased onto `main`; the diff will shrink to just this document plus the three pointer edits.
 
 ---
