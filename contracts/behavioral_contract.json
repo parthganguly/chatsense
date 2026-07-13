@@ -94,6 +94,24 @@
     "required_guardrail": "These observations describe exported timing and volume only. They do not prove motive, love, rejection, affection, attachment, personality, mental health, relationship quality, or relationship status.",
     "notes": "The narrative is a deterministic presentation of existing behavioral metrics. Every finding must carry visible evidence, comparison findings must use sufficient evidence and canonical notable-change thresholds, and limited evidence must be stated rather than filled with speculation. A maintenance imbalance requires a participant share at or above uneven_share_min_pct with its corresponding sample minimum. Balanced volume requires both top message share and top turn share at or below balanced_max_top_share_pct. priority_order documents the Overview lead order: an evidence-backed uneven-maintenance finding outranks notable changes; a limited 'no strong comparison' card must never outrank a maintenance finding that carries real evidence. The narrative does not inspect message content and must not contain live forecasts, coaching, advice, or generated interpretations."
   },
+  "relationship_read": {
+    "silence": {
+      "comparable_pause_floor_minutes_ref": "reconnection_gap_min",
+      "min_comparable_pauses_to_rank": 5,
+      "useful_comparable_pauses": 10,
+      "strong_comparable_pauses": 20,
+      "unusual_rank_min_share_pct": 80,
+      "next_pattern_min_completed_pauses": 3,
+      "estrangement_pause_min_days": 60,
+      "estrangement_dominance_min_share_pct": 50
+    },
+    "carried_contact": {
+      "min_agreeing_constructs": 2,
+      "share_thresholds_ref": "insight_narrative.maintenance_thresholds",
+      "notes": "Asymmetry labels reuse balanced_max_top_share_pct (balanced band) and uneven_share_min_pct (lean threshold) from insight_narrative.maintenance_thresholds, plus high_follow_up_rate_pct for the follow-up construct. Message or turn volume alone can never produce an asymmetric label; at least min_agreeing_constructs contact-keeping constructs must agree."
+    },
+    "notes": "Stage 8A hero-read presentation thresholds. This is a TypeScript-only mapping layer over shipped metrics: no shared behavioral math changes, so the Python reference package does not mirror this section. Comparable quiet stretches are completed inter-message gaps of at least reconnection_gap_min. The ongoing quiet (device time minus the export's last message) is right-censored: it is ranked against completed comparable pauses but never enters its own reference distribution and is never described as completed. A historical-next-pattern sentence requires at least next_pattern_min_completed_pauses comparable completed pauses and is suppressed in code when at least estrangement_dominance_min_share_pct percent of comparable pauses ran estrangement_pause_min_days days or longer."
+  },
   "reply_event": {
     "definition": "sender_differs_from_previous_message",
     "notes": "A reply event exists at index i>=1 when message[i].sender != message[i-1].sender. Consecutive messages from the same sender are NOT replies and never create an artificial reply edge or reply-delay sample."

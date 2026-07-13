@@ -47,6 +47,18 @@ test("all analytics tabs lead with a takeaway card and do not overflow", async (
   })
   await expect(page.getByText("Observed in this export; it does not explain why.").first()).toBeVisible()
 
+  // Stage 8A: the relationship-read hero card leads the first screen, above
+  // the existing takeaway and raw analytics, with its evidence and inline
+  // limitation visible without opening a technical report.
+  const hero = page.getByText("What this export shows")
+  await expect(hero).toBeVisible()
+  await expect(page.getByText("Counted in this export")).toBeVisible()
+  const heroBox = await hero.boundingBox()
+  const overviewTakeawayBox = await page.getByText("What to notice").first().boundingBox()
+  expect(heroBox).not.toBeNull()
+  expect(overviewTakeawayBox).not.toBeNull()
+  expect(heroBox!.y).toBeLessThan(overviewTakeawayBox!.y)
+
   for (const tab of TABS) {
     await page.getByRole("button", { name: tab.nav, exact: true }).click()
 
