@@ -32,9 +32,11 @@ Shared contracts and fixtures
 - date-order inference;
 - behavioral calculations;
 - shared analysis types;
-- deterministic behavioral insights;
 - deterministic relationship-dynamics turns, windows, and evidence-safe comparisons;
 - deterministic evidence-backed narrative findings derived from those existing metrics;
+- the Stage 8A relationship read (`relationship-read.ts`): a deterministic hero-state
+  mapping over the metrics above — scenario selection, evidence selection, wording,
+  confidence, and estrangement suppression all live here, never in React;
 - contract constants;
 - TypeScript parity normalization.
 
@@ -51,6 +53,17 @@ findings use contract-owned share and sample thresholds. The forecasting finding
 reports Stage 5 gate status but never emits a live forecast. Every finding includes
 the values, periods, counts, or sample sizes that support it. This is a presentation
 layer over existing calculations; it adds no new behavioral score.
+
+Stage 8A adds `buildRelationshipRead(analysis, { nowMs })`: one answer-shaped hero
+read with four states (unusual silence → pattern change → carried contact →
+honest insufficiency, selected by qualification plus that priority order). It is
+a pure mapping layer: the only derived quantities are completed day-plus quiet
+stretches read off existing conversation turns and a right-censored "quiet so
+far" computed from the export's last message to a caller-supplied clock. The
+ongoing quiet never enters its own reference distribution and is never
+described as completed. `ChatAnalysis` itself stays clock-free and
+deterministic; the import hook supplies `Date.now()` once at import time. See
+`docs/stage-8a-relationship-read-report.md`.
 
 ## Application Shell
 
