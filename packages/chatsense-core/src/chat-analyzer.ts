@@ -84,12 +84,6 @@ export interface ReplyEdge {
   count: number
 }
 
-export interface ObservableInsight {
-  tone: "watch" | "pattern" | "context"
-  title: string
-  detail: string
-}
-
 export interface ChatAnalysis {
   overview: ConversationOverview
   participants: ParticipantInsight[]
@@ -101,7 +95,6 @@ export interface ChatAnalysis {
   narrative: InsightNarrative
   replyEdges: ReplyEdge[]
   threadCount: number
-  insights: ObservableInsight[]
 }
 
 interface ReplyEvent {
@@ -161,7 +154,6 @@ export function analyzeChat(inputMessages: ChatMessage[]): ChatAnalysis {
     narrative,
     replyEdges,
     threadCount: threadStarts.filter(Boolean).length,
-    insights: buildInsights(overview, participants, replyDynamics, activity, relationshipDynamics),
   }
 }
 
@@ -323,74 +315,6 @@ function buildReplyEdges(replyEvents: ReplyEvent[]): ReplyEdge[] {
   return [...edges.values()].sort((left, right) => right.count - left.count)
 }
 
-function buildInsights(
-  overview: ConversationOverview,
-  participants: ParticipantInsight[],
-  replies: ReplyDynamics,
-  activity: ActivitySummary,
-  relationshipDynamics: RelationshipDynamics,
-): ObservableInsight[] {
-  const insights: ObservableInsight[] = []
-  const topParticipant = participants[0]
-
-  if (participants.length > 1 && topParticipant.messageShare >= 65) {
-    insights.push({
-      tone: "watch",
-      title: "Message volume is uneven",
-      detail: `${topParticipant.sender} sent ${topParticipant.messageShare}% of messages in this export. This describes volume, not intent.`,
-    })
-  } else if (participants.length > 1) {
-    insights.push({
-      tone: "pattern",
-      title: "Message volume is fairly distributed",
-      detail: `The most active participant sent ${topParticipant.messageShare}% of ${formatNumber(overview.messageCount)} messages.`,
-    })
-  }
-
-  if (relationshipDynamics.pauseSummary.longPauseCount > 0) {
-    const longestPause = relationshipDynamics.pauseSummary.longestPauses[0]
-    const reconnectors = relationshipDynamics.pauseSummary.reconnectingParticipants
-      .slice(0, 3)
-      .map((participant) => participant.sender)
-      .join(", ")
-    insights.push({
-      tone: "watch",
-      title: `${relationshipDynamics.pauseSummary.longPauseCount} pause${
-        relationshipDynamics.pauseSummary.longPauseCount === 1 ? "" : "s"
-      } of at least 24h`,
-      detail: `The longest observed pause lasted ${formatDuration(longestPause?.durationMinutes ?? null)}.${
-        reconnectors ? ` First messages after 24h pauses came from: ${reconnectors}.` : ""
-      }`,
-    })
-  }
-
-  if (activity.recentTrend !== "not_enough_data") {
-    insights.push({
-      tone: activity.recentTrend === "falling" ? "watch" : "pattern",
-      title: `Recent activity is ${activity.recentTrend}`,
-      detail:
-        activity.recentVsPriorPct === null
-          ? "The recent 7-day window differs from the preceding week."
-          : `The latest 7 days changed by ${Math.abs(activity.recentVsPriorPct)}% compared with the preceding 7 days.`,
-    })
-  }
-
-  if (replies.replyCount > 0) {
-    insights.push({
-      tone: "context",
-      title: `${replies.withinOneHourRate}% of replies arrive within 1 hour`,
-      detail: `${replies.withinSixHoursRate}% arrive within 6 hours and ${replies.withinDayRate}% within 24 hours, based on ${formatNumber(replies.replyCount)} observed replies.`,
-    })
-  }
-
-  const changingDynamics = relationshipDynamics.changeInsights.find((insight) => insight.tone === "pattern")
-  if (changingDynamics) {
-    insights.push(changingDynamics)
-  }
-
-  return insights.slice(0, 4)
-}
-
 function getGaps(messages: ChatMessage[]): number[] {
   return messages.slice(1).map((message, index) => gapMinutes(messages[index], message))
 }
@@ -475,10 +399,6 @@ function round(value: number, digits = 0): number {
   return Math.round(value * factor) / factor
 }
 
-function formatNumber(value: number): string {
-  return new Intl.NumberFormat("en-US").format(value)
-}
-
 export function formatDuration(minutes: number | null): string {
   if (minutes === null) return "No data"
   if (minutes < 60) return `${Math.round(minutes)}m`
@@ -560,6 +480,5 @@ function getDefaultAnalysis(): ChatAnalysis {
     }),
     replyEdges: [],
     threadCount: 0,
-    insights: [],
   }
 }

@@ -1,17 +1,25 @@
 import { Activity, MessagesSquare, Moon, ShieldCheck, Timer } from "lucide-react"
-import { formatDuration, type ChatAnalysis } from "@chatsense/core"
+import { formatDuration, type ChatAnalysis, type RelationshipRead } from "@chatsense/core"
 import { MetricCard } from "@/components/analytics/MetricCard"
 import { NarrativeFindingRow } from "@/components/analytics/NarrativeFindingRow"
 import { ProgressRow } from "@/components/analytics/ProgressRow"
+import { RelationshipReadCard } from "@/components/analytics/RelationshipReadCard"
 import { TakeawayCard } from "@/components/analytics/TakeawayCard"
 import { SectionHeading } from "@/components/analytics/SectionHeading"
 import { formatDate, formatNumber } from "@/utils/formatting"
 
-export function OverviewScreen({ analysis }: { analysis: ChatAnalysis }) {
+export function OverviewScreen({
+  analysis,
+  relationshipRead,
+}: {
+  analysis: ChatAnalysis
+  relationshipRead: RelationshipRead | null
+}) {
   const { overview, replyDynamics, silenceSummary, narrative } = analysis
 
   return (
     <div className="space-y-7 px-5 py-5">
+      {relationshipRead ? <RelationshipReadCard read={relationshipRead} /> : null}
       <TakeawayCard takeaway={narrative.takeaways.overview} />
 
       <section aria-labelledby="narrative-heading">
