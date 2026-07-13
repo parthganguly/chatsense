@@ -11,7 +11,6 @@ export {
   type ActivitySummary,
   type ChatAnalysis,
   type ConversationOverview,
-  type ObservableInsight,
   type ParticipantInsight,
   type ReplyDynamics,
   type ReplyEdge,

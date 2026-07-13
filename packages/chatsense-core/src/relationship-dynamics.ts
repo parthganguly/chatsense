@@ -143,12 +143,6 @@ export interface DynamicsComparison {
   changes: MetricChange[]
 }
 
-export interface ObservableInsight {
-  tone: "watch" | "pattern" | "context"
-  title: string
-  detail: string
-}
-
 export interface RelationshipDynamics {
   windowSizeDays: number
   turns: ConversationTurn[]
@@ -158,7 +152,6 @@ export interface RelationshipDynamics {
   earlyLate: DynamicsComparison
   recentPrior: DynamicsComparison
   notableChanges: MetricChange[]
-  changeInsights: ObservableInsight[]
 }
 
 interface ReplyEvent {
@@ -227,7 +220,6 @@ export function analyzeRelationshipDynamics(messages: ChatMessage[]): Relationsh
   const earlyLate = buildEarlyLateComparison(windows, messages, turns, replyEvents, reconnections, followUps, participants)
   const recentPrior = buildRecentPriorComparison(windows, messages, turns, replyEvents, reconnections, followUps, participants)
   const notableChanges = [...earlyLate.changes, ...recentPrior.changes].filter((change) => change.notable)
-  const changeInsights = buildChangeInsights(notableChanges, earlyLate, recentPrior)
 
   return {
     windowSizeDays: chooseWindowSize(spanDaysInclusive(messages[0].timestamp, messages.at(-1)!.timestamp)),
@@ -238,7 +230,6 @@ export function analyzeRelationshipDynamics(messages: ChatMessage[]): Relationsh
     earlyLate,
     recentPrior,
     notableChanges,
-    changeInsights,
   }
 }
 
@@ -260,7 +251,6 @@ export function getDefaultRelationshipDynamics(): RelationshipDynamics {
     earlyLate: unavailable,
     recentPrior: unavailableComparison("recent_prior", "Recent versus prior", "No valid messages were found."),
     notableChanges: [],
-    changeInsights: [],
   }
 }
 
@@ -928,29 +918,6 @@ function buildPauseSummary(messages: ChatMessage[], reconnections: ReconnectionE
       .slice(0, 5),
     reconnectingParticipants,
   }
-}
-
-function buildChangeInsights(
-  notableChanges: MetricChange[],
-  earlyLate: DynamicsComparison,
-  recentPrior: DynamicsComparison,
-): ObservableInsight[] {
-  if (notableChanges.length === 0) {
-    const unavailable = [earlyLate, recentPrior].find((comparison) => !comparison.available)
-    return [
-      {
-        tone: "context",
-        title: unavailable ? "More eligible windows are needed" : "No notable change crossed the threshold",
-        detail: unavailable?.unavailableReason ?? "The compared periods did not cross the contract's notable-change thresholds.",
-      },
-    ]
-  }
-
-  return notableChanges.slice(0, 4).map((change) => ({
-    tone: "pattern",
-    title: `${change.sender ? `${change.sender}: ` : ""}${change.label}`,
-    detail: `${change.explanation} ${change.guardrail}`,
-  }))
 }
 
 function chooseWindowSize(spanDays: number): number {
