@@ -1,10 +1,19 @@
 # ChatSense
 
-ChatSense is a local-first WhatsApp export analyzer. The current app is a Next.js static shell wrapped by Capacitor for Android, with behavioral parsing and analytics provided by the internal `@chatsense/core` workspace package.
+**Local-first Android-ready WhatsApp export analyzer with deterministic behavioral analytics and a separate Python reference implementation.**
 
-Overview, Changes, People, and Rhythm each begin with a compact human takeaway card — one plain-language read of what the export looks like, with a confidence label and evidence bullets — followed by a deterministic, evidence-backed plain-English summary. Findings are derived from existing timing and volume metrics, carry supporting values or sample counts, and state when an export is too limited for a comparison. The narrative highlights measured change, contact maintenance, participant balance, pause context, and the blocked forecasting gate without interpreting message content or inferring motives.
+ChatSense turns WhatsApp exports into evidence-backed summaries without uploading raw chats. The production path is a Next.js/TypeScript application wrapped with Capacitor for Android; Python remains a separate research/reference implementation used for parity and forecasting evaluation.
 
-Python remains a local research/reference implementation and is not bundled into Android.
+## Engineering snapshot
+
+- **Stack:** TypeScript · Next.js · Capacitor · Python.
+- **Privacy architecture:** no backend, account system, telemetry, cloud storage, or LLM in the current runtime.
+- **Deterministic analytics:** summaries are derived from timing/volume metrics and carry supporting values, sample counts, confidence, and explicit insufficiency states.
+- **Parity discipline:** TypeScript and Python implementations share fixtures/contracts and are checked for behavioral and forecasting parity.
+- **Product gating:** forecasting remains blocked unless calibration, bootstrap, baseline, and subgroup checks pass.
+- **Android delivery:** native shared-file import routes exported chats through the same analysis pipeline.
+
+Overview, Changes, People, and Rhythm each begin with a compact human takeaway card followed by deterministic, evidence-backed summaries. The system reports measured patterns without interpreting message content or inferring motives.
 
 The planned product direction after Stage 7 is a human-first "Relationship Read" layer — a plain-language pattern read shown before the metrics, backed by inspectable evidence, within the same local/deterministic/no-content-interpretation boundary. **The authoritative entry point for product direction and the next implementation is `docs/product/chatsense-master-plan.md`** (backed by the full audit in `docs/product/chatsense-full-project-audit.md`); `docs/product/relationship-read-roadmap.md` and its follow-on research documents remain as background.
 
