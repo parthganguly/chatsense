@@ -16,7 +16,8 @@ import { subscribeToSharedFileBridge } from "@/platform/android/sharedFileBridge
 export default function ChatSenseApp() {
   const [screen, setScreen] = useState<AppScreen>("import")
   const handleImported = useCallback(() => setScreen("overview"), [])
-  const { analysis, error, importFile, importDemo, isLoading, messages, setError, sourceName } = useChatImport(handleImported)
+  const { analysis, relationshipRead, error, importFile, importDemo, isLoading, messages, setError, sourceName } =
+    useChatImport(handleImported)
 
   useEffect(() => {
     return subscribeToSharedFileBridge({
@@ -52,7 +53,7 @@ export default function ChatSenseApp() {
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.16 }}
           >
-            {screen === "overview" && <OverviewScreen analysis={analysis} />}
+            {screen === "overview" && <OverviewScreen analysis={analysis} relationshipRead={relationshipRead} />}
             {screen === "changes" && <ChangesScreen analysis={analysis} />}
             {screen === "rhythm" && <RhythmScreen analysis={analysis} />}
             {screen === "people" && <PeopleScreen analysis={analysis} />}

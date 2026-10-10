@@ -1,5 +1,5 @@
 import assert from "node:assert/strict"
-import type { InsightNarrative } from "@chatsense/core"
+import type { InsightNarrative, RelationshipRead } from "@chatsense/core"
 import { NARRATIVE_REQUIRED_GUARDRAIL } from "@chatsense/core/contract"
 
 // Kept for compatibility with earlier imports; the enforced source of truth is
@@ -74,6 +74,28 @@ export const NARRATIVE_SOFT_RISK_PATTERNS: ReadonlyArray<{ name: string; pattern
 
 export function assertNarrativeLanguageSafe(narrative: InsightNarrative, label: string): void {
   for (const entry of narrativeTextEntries(narrative)) {
+    assertTextHasNoUnnegatedRiskTerm(entry.text, `${label} ${entry.path}`)
+  }
+}
+
+/**
+ * Stage 8A: every string the relationship-read hero card can render —
+ * headline, summary, each evidence sentence, historical-next-pattern note,
+ * limitation, staleness line, and the confidence label — must pass the same
+ * forbidden-language scan as the narrative.
+ */
+export function assertRelationshipReadLanguageSafe(read: RelationshipRead, label: string): void {
+  const entries: Array<{ path: string; text: string | null }> = [
+    { path: "headline", text: read.headline },
+    { path: "summary", text: read.summary },
+    ...read.evidence.map((text, index) => ({ path: `evidence[${index}]`, text })),
+    { path: "historicalNote", text: read.historicalNote },
+    { path: "limitation", text: read.limitation },
+    { path: "stalenessNote", text: read.stalenessNote },
+    { path: "confidenceLabel", text: read.confidenceLabel },
+  ]
+  for (const entry of entries) {
+    if (entry.text === null) continue
     assertTextHasNoUnnegatedRiskTerm(entry.text, `${label} ${entry.path}`)
   }
 }

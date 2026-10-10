@@ -34,6 +34,14 @@ import {
   NOTABLE_THREAD_START_SHARE_ABS_PCT,
   NOTABLE_TURN_SHARE_ABS_PCT,
   QUICK_REPLY_MAX_MIN,
+  READ_ESTRANGEMENT_DOMINANCE_MIN_SHARE_PCT,
+  READ_ESTRANGEMENT_PAUSE_MIN_DAYS,
+  READ_MIN_AGREEING_CONSTRUCTS,
+  READ_MIN_COMPARABLE_PAUSES_TO_RANK,
+  READ_NEXT_PATTERN_MIN_COMPLETED_PAUSES,
+  READ_STRONG_COMPARABLE_PAUSES,
+  READ_UNUSUAL_RANK_MIN_SHARE_PCT,
+  READ_USEFUL_COMPARABLE_PAUSES,
   RECONNECTION_GAP_MIN,
   RECENT_PRIOR_WINDOW_COUNT,
   SILENCE_ANOMALY_FLOOR_MIN,
@@ -124,6 +132,18 @@ assert.equal(NARRATIVE_REQUIRED_GUARDRAIL, narrative.required_guardrail)
 assert.equal(NARRATIVE_TAKEAWAY_STRONG_EVIDENCE_MULTIPLIER, narrative.takeaway.strong_evidence_multiplier)
 assert.deepEqual({ ...NARRATIVE_TAKEAWAY_CONFIDENCE_LABELS }, narrative.takeaway.confidence_labels)
 assert.equal(NARRATIVE_TAKEAWAY_SAFETY_LINE, narrative.takeaway.safety_line)
+const relationshipRead = contract.relationship_read
+assert.equal(READ_MIN_COMPARABLE_PAUSES_TO_RANK, relationshipRead.silence.min_comparable_pauses_to_rank)
+assert.equal(READ_USEFUL_COMPARABLE_PAUSES, relationshipRead.silence.useful_comparable_pauses)
+assert.equal(READ_STRONG_COMPARABLE_PAUSES, relationshipRead.silence.strong_comparable_pauses)
+assert.equal(READ_UNUSUAL_RANK_MIN_SHARE_PCT, relationshipRead.silence.unusual_rank_min_share_pct)
+assert.equal(READ_NEXT_PATTERN_MIN_COMPLETED_PAUSES, relationshipRead.silence.next_pattern_min_completed_pauses)
+assert.equal(READ_ESTRANGEMENT_PAUSE_MIN_DAYS, relationshipRead.silence.estrangement_pause_min_days)
+assert.equal(
+  READ_ESTRANGEMENT_DOMINANCE_MIN_SHARE_PCT,
+  relationshipRead.silence.estrangement_dominance_min_share_pct,
+)
+assert.equal(READ_MIN_AGREEING_CONSTRUCTS, relationshipRead.carried_contact.min_agreeing_constructs)
 assert.equal(FORECASTING_CONTRACT_VERSION, forecastingContract.contract_version)
 assert.deepEqual(REPLY_HORIZONS_MINUTES, forecastingContract.tasks.reply_within_horizon.horizons_minutes)
 assert.equal(

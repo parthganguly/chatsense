@@ -73,6 +73,17 @@ export const NARRATIVE_TAKEAWAY_SAFETY_LINE = "Observed in this export; it does 
 export const NARRATIVE_REQUIRED_GUARDRAIL =
   "These observations describe exported timing and volume only. They do not prove motive, love, rejection, affection, attachment, personality, mental health, relationship quality, or relationship status."
 
+// Stage 8A relationship-read presentation thresholds (contract `relationship_read`).
+// TypeScript-only mapping layer over shipped metrics; not mirrored in Python.
+export const READ_MIN_COMPARABLE_PAUSES_TO_RANK = 5
+export const READ_USEFUL_COMPARABLE_PAUSES = 10
+export const READ_STRONG_COMPARABLE_PAUSES = 20
+export const READ_UNUSUAL_RANK_MIN_SHARE_PCT = 80
+export const READ_NEXT_PATTERN_MIN_COMPLETED_PAUSES = 3
+export const READ_ESTRANGEMENT_PAUSE_MIN_DAYS = 60
+export const READ_ESTRANGEMENT_DOMINANCE_MIN_SHARE_PCT = 50
+export const READ_MIN_AGREEING_CONSTRUCTS = 2
+
 // Canonical runtime silence-anomaly definition (modified z-score, floored).
 export const SILENCE_ANOMALY_SCALE = 1.4826
 export const SILENCE_ANOMALY_K = 3.5

@@ -16,7 +16,7 @@
     "test:product-smoke": "npm run lint && npm run typecheck && npm run test && npm run test:parity && npm run test:forecast-parity && npm run build && npm run test:viewport",
     "lint": "eslint .",
     "forecast:eval": "tsx scripts/forecast-evaluate.ts",
-    "test": "tsx tests/import-boundaries.ts && tsx tests/relationship-dynamics.ts && tsx tests/insight-narrative.ts && tsx tests/human-takeaway.ts && tsx tests/onboarding.ts && tsx tests/forecasting.ts",
+    "test": "tsx tests/import-boundaries.ts && tsx tests/relationship-dynamics.ts && tsx tests/insight-narrative.ts && tsx tests/human-takeaway.ts && tsx tests/relationship-read.ts && tsx tests/onboarding.ts && tsx tests/forecasting.ts",
     "test:core": "npm run typecheck -w @chatsense/core",
     "test:forecast-parity": "tsx tests/forecasting-parity.ts",
     "test:parity": "tsx tests/parity.ts",

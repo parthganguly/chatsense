@@ -37,16 +37,16 @@ Friendship drift (second market and second copy pack, unclaimed space); family (
 - Android native code does file access and lifecycle only (SharedFile plugin: private cache, 50 MB cap, release-after-import). No permissions in the manifest.
 - All user-facing strings must pass the forbidden-language scanner (`tests/helpers/narrative-safety.ts`).
 
-## 7. Current state (2026-07-12)
+## 7. Current state (2026-07-13)
 
-Stages 1–7 merged and green: parser, contract v2.0, relationship dynamics, blocked forecasting gate with cross-language parity, evidence-backed narrative + human takeaway cards on four tabs (Overview/Changes/People/Rhythm), Android native import, onboarding + synthetic demo, debug-APK release workflow. Research stack PRs #17 (market review) → #18 (context research) → #19 (scenario library) open as stacked drafts; this plan and the full audit sit on top of #19.
+Stages 1–7 merged and green: parser, contract v2.0, relationship dynamics, blocked forecasting gate with cross-language parity, evidence-backed narrative + human takeaway cards on four tabs (Overview/Changes/People/Rhythm), Android native import, onboarding + synthetic demo, debug-APK release workflow. The research stack (market review, context research, scenario library, full audit, this plan) is merged.
 
-The engine computes answers; the UI does not yet deliver them as answers. Stage 8A closes that gap.
+**Stage 8A is implemented** (branch `product/human-relationship-read-stage-8a`, draft PR): the Relationship Read hero card on Overview with the four states of §9, the corrected silence semantics of §8.1, and the dead-code removal of §8.2. See `docs/stage-8a-relationship-read-report.md`. The 5–10-person comprehension check (§12) has **not** run yet and still gates Stage 8B.
 
 ## 8. Known problems (from the audit; §-refs into it)
 
-1. **Silence-spec mismatch (blocker):** `pauseSummary.latestGapMinutes` is the last *completed* inter-message gap, not "export end minus last message" as scenario-research §11 assumed. The current, ongoing silence is right-censored and not represented. Decide presentation before the silence card ships (audit §7.13, §24.1).
-2. **Dead code (blocker-adjacent):** `ChatAnalysis.insights`, `relationshipDynamics.changeInsights`, and `components/analytics/InsightRow.tsx` are computed/present but never rendered; `buildInsights` carries an off-contract threshold. Delete before building the mapping layer (audit §24.2).
+1. **Silence-spec mismatch — RESOLVED in Stage 8A:** `pauseSummary.latestGapMinutes` remains the last *completed* inter-message gap and is presented as such; the ongoing quiet is a separate right-censored "quiet so far" (export's last message → device clock, supplied by the caller, never in its own reference distribution) with a staleness line (audit §7.13, §24.1; report §2).
+2. **Dead code — RESOLVED in Stage 8A:** `ChatAnalysis.insights` + `buildInsights`, `relationshipDynamics.changeInsights` + `buildChangeInsights`, and `components/analytics/InsightRow.tsx` deleted; grep-clean (audit §24.2).
 3. Rhythm tab violates house rules: "Latest gap percentile: 83%" (percentile jargon, wrong gap) and "Average reply" (mean of a heavy-tailed quantity) on a primary surface (audit §9).
 4. Parser has never met a messy real export: no dot-date locales, no U+200E/LRM stripping (silent message merging on iOS exports), web path is UTF-8-only with no size cap, parse+analyze runs synchronously on the UI thread (audit §11).
 5. Dependency hygiene: two `"latest"` specifiers in runtime deps, `shadcn` CLI as a runtime dep, ~40 unused UI components, unresolved npm audit findings (audit §17.8, §19).
@@ -54,9 +54,9 @@ The engine computes answers; the UI does not yet deliver them as answers. Stage 
 7. Forecasting-gate status renders on a primary tab; it is Layer-3 material (audit §12).
 8. Guardrail repetition approaches fatigue: up to five safety texts visible on one screen (audit §6).
 
-## 9. Next implementation: Stage 8A — Relationship Read MVP
+## 9. Stage 8A — Relationship Read MVP (implemented)
 
-One hero card on Overview with **four states** — pattern change, carried contact (five-label hierarchy), unusual silence (corrected semantics), honest insufficiency — selected by strongest evidence (ties: silence → change → carried contact). Card anatomy: direct answer sentence; up to three dated, counted evidence facts; a historical-next-pattern sentence only when ≥3 comparable completed pauses exist **and** the pattern is not estrangement-shaped (suppression implemented as logic); confidence tag (existing labels); one inline limitation inside the card; details affordance to existing sections. Pure mapping layer over shipped math. Full prompt in §16.
+One hero card on Overview with **four states** — pattern change, carried contact (five-label hierarchy), unusual silence (corrected semantics), honest insufficiency — each state qualifying on its own evidence bar, priority among qualified states silence → change → carried contact. Card anatomy: direct answer sentence; up to three dated, counted evidence facts; a historical-next-pattern sentence only when ≥3 comparable completed pauses exist **and** the pattern is not estrangement-shaped (suppression implemented as logic); confidence tag (existing labels); one inline limitation inside the card; details affordance to existing sections. Pure mapping layer over shipped math (`packages/chatsense-core/src/relationship-read.ts`; presentation thresholds in the contract's `relationship_read` section, TypeScript-only). Implementation record: `docs/stage-8a-relationship-read-report.md`. The §16 prompt is now historical. **Next implementation: the §12 comprehension check, then Stage 8B (§10).**
 
 ## 10. Next three stages after 8A
 
@@ -95,6 +95,8 @@ Composite/compatibility scores; ghosting or red-flag detection under any name; r
 6. Historical only (do not execute): ARCHITECTURE_REVIEW.md, stage reports, the older Stage 8A prompts in roadmap §14 / context §20 / scenario §23.
 
 ## 16. Ready-to-copy prompt for the next implementation agent
+
+> **Status: executed.** Stage 8A shipped on `product/human-relationship-read-stage-8a`; see `docs/stage-8a-relationship-read-report.md`. This prompt is retained as the historical record of what was asked. The next unit of work is the §12 comprehension check (audit §29), then Stage 8B (§10).
 
 > You are working on the ChatSense repo. Read `docs/product/chatsense-master-plan.md` in full, then follow its §15 reading order. Start from green `main` (verify the research-doc stack PRs #17–#19 and the audit PR have merged; if not, coordinate before branching). Create branch `product/human-relationship-read-stage-8a`.
 >

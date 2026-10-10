@@ -227,10 +227,14 @@ function testLatestGapPercentileUsesOnlyEarlierGaps() {
 
 function testOverviewUsesPauseSummaryInsteadOfRawUnusualSilenceCount() {
   const analysis = analyzeChat(parseWhatsAppChat(fixture("long_silence")))
-  const titles = analysis.insights.map((insight) => insight.title).join("\n")
+  const rhythmTexts = [
+    analysis.narrative.sections.rhythm.headline,
+    analysis.narrative.sections.rhythm.summary,
+    ...analysis.narrative.sections.rhythm.findings.map((finding) => `${finding.title}\n${finding.summary}`),
+  ].join("\n")
 
-  assert.doesNotMatch(titles, /unusually long silence/i)
-  assert.match(titles, /pause.*24h/i)
+  assert.doesNotMatch(rhythmTexts, /unusually long silence/i)
+  assert.match(rhythmTexts, /pause/i)
   assert.equal(analysis.silenceSummary.unusualSilenceCount > 0, true)
 }
 
