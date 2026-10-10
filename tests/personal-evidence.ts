@@ -144,6 +144,8 @@ function run() {
   testInvalidCoverage()
   testInvalidCounts()
   testInconsistentParticipants()
+  testContradictoryEvidenceRejected()
+  testConsistentEvidenceControls()
   testGroupAndSingleParticipantExcluded()
   testZeroVersusUnavailable()
   testSampleFloorBoundaries()
@@ -375,6 +377,134 @@ function testInconsistentParticipants() {
   ])
 }
 
+// Contradictory incoming evidence is rejected with invalid_counts, never repaired.
+// DYAD_A canonical: starts Ana 2 / Ben 2 (50/50, threadCount 4); restarts 1 / 1 of 2 (50/50); messages 8 / 5.
+function testContradictoryEvidenceRejected() {
+  const ana = (a: ChatAnalysis) => selfSummary(a, "Ana Silva")
+  const ben = (a: ChatAnalysis) => otherSummary(a, "Ana Silva")
+  const participant = (a: ChatAnalysis, sender: string) => a.participants.find((entry) => entry.sender === sender)!
+  const cases: Record<string, (a: ChatAnalysis) => void> = {
+    "starts 3/0 with stale 50/50 shares and stale threadCount": (a) => {
+      ana(a).threadStarts = 3
+      ben(a).threadStarts = 0
+    },
+    "starts 3/0 with coherent threadCount 3 but stale 50/50 shares": (a) => {
+      ana(a).threadStarts = 3
+      ben(a).threadStarts = 0
+      a.threadCount = 3
+    },
+    "starts 3/1 with coherent threadCount 4 but stale 50/50 shares": (a) => {
+      ana(a).threadStarts = 3
+      ben(a).threadStarts = 1
+    },
+    "unselected sender start share stale": (a) => void (ben(a).threadStartShare = 40),
+    "restarts 2/0 with coherent pause total but stale 50/50 shares": (a) => {
+      ana(a).reconnectionCount = 2
+      ben(a).reconnectionCount = 0
+    },
+    "unselected sender restart share stale": (a) => void (ben(a).reconnectionShare = 40),
+    "participants message counts swapped, total unchanged": (a) => {
+      participant(a, "Ana Silva").messageCount = 5
+      participant(a, "Ben").messageCount = 8
+    },
+    "summary message counts swapped, total unchanged": (a) => {
+      ana(a).messageCount = 5
+      ben(a).messageCount = 8
+    },
+    "threadCount 5 with starts summing to 4": (a) => void (a.threadCount = 5),
+    "threadCount negative": (a) => void (a.threadCount = -1),
+    "threadCount fractional": (a) => void (a.threadCount = 4.5),
+    "threadCount NaN": (a) => void (a.threadCount = Number.NaN),
+    "threadCount Infinity": (a) => void (a.threadCount = Infinity),
+    "start share unrounded 1/3": (a) => {
+      Object.assign(ana(a), { threadStarts: 1, threadStartShare: 33.33 })
+      Object.assign(ben(a), { threadStarts: 2, threadStartShare: 66.67 })
+      a.threadCount = 3
+    },
+    "start share wrongly rounded 1/3": (a) => {
+      Object.assign(ana(a), { threadStarts: 1, threadStartShare: 34 })
+      Object.assign(ben(a), { threadStarts: 2, threadStartShare: 67 })
+      a.threadCount = 3
+    },
+  }
+  const actual: Record<string, string> = {}
+  const expected: Record<string, string> = {}
+  for (const [label, mutate] of Object.entries(cases)) {
+    const analysis = analysisOf(DYAD_A)
+    if (label.includes("restarts 2/0")) analysis.relationshipDynamics.pauseSummary.longPauseCount = 2
+    mutate(analysis)
+    const table = buildPersonalEvidence([selB(), selection("x", "x", "Ana Silva", analysis), selC()])
+    // One line per case so a failure diff names every affected label.
+    actual[label] = [
+      table.state,
+      ...table.entries.map((entry) => `${entry.index}:${entry.status === "excluded" ? entry.reasons.join(",") : "eligible"}`),
+    ].join(" ")
+    expected[label] = "evidence_rows 0:eligible 1:invalid_counts 2:eligible"
+  }
+  assert.deepEqual(actual, expected)
+
+  // Zero opportunities require the canonical stored zero share.
+  const zeroPauses = analysisOf(DYAD_C)
+  selfSummary(zeroPauses, "Eve").reconnectionShare = 50
+  assert.deepEqual(reasonsAt(buildPersonalEvidence([selection("x", "x", "Eve", zeroPauses)]), 0), ["invalid_counts"])
+
+  // Inconsistent identities keep their own reasons and do not throw on the per-sender lookup.
+  const renamed = analysisOf(DYAD_A)
+  participant(renamed, "Ben").sender = "Benjamin"
+  assert.deepEqual(reasonsAt(buildPersonalEvidence([selection("x", "x", "Ana Silva", renamed)]), 0), [
+    "inconsistent_participants",
+  ])
+}
+
+function testConsistentEvidenceControls() {
+  const row = (analysis: ChatAnalysis, self = "Ana Silva") => {
+    const table = buildPersonalEvidence([selection("x", "x", self, analysis), selB()])
+    assert.equal(table.entries[0].status, "eligible", JSON.stringify(table.entries[0]))
+    return rows(table)[0]
+  }
+
+  const reversed = analysisOf(DYAD_A)
+  reversed.participants.reverse()
+  reversed.relationshipDynamics.participantSummaries.reverse()
+  assert.deepEqual(row(reversed), row(analysisOf(DYAD_A)), "array order is not identity")
+  const reversedOne = analysisOf(DYAD_A)
+  reversedOne.participants.reverse()
+  row(reversedOne)
+
+  const thirds = analysisOf(DYAD_A)
+  Object.assign(selfSummary(thirds, "Ana Silva"), { threadStarts: 1, threadStartShare: 33 })
+  Object.assign(otherSummary(thirds, "Ana Silva"), { threadStarts: 2, threadStartShare: 67 })
+  thirds.threadCount = 3
+  assert.deepEqual(row(thirds).conversationStarts, { state: "sufficient", numerator: 1, denominator: 3, sharePct: 33, minimum: 3 })
+
+  const restartThirds = analysisOf(DYAD_A)
+  Object.assign(selfSummary(restartThirds, "Ana Silva"), { reconnectionCount: 2, reconnectionShare: 67 })
+  Object.assign(otherSummary(restartThirds, "Ana Silva"), { reconnectionCount: 1, reconnectionShare: 33 })
+  restartThirds.relationshipDynamics.pauseSummary.longPauseCount = 3
+  assert.deepEqual(row(restartThirds).restartsAfterDayPlusPauses, {
+    state: "sufficient",
+    numerator: 2,
+    denominator: 3,
+    sharePct: 67,
+    minimum: 2,
+  })
+
+  // Observed zero with positive opportunities stays a measured zero.
+  const zeroStarts = analysisOf(DYAD_A)
+  Object.assign(selfSummary(zeroStarts, "Ana Silva"), { threadStarts: 0, threadStartShare: 0 })
+  Object.assign(otherSummary(zeroStarts, "Ana Silva"), { threadStarts: 4, threadStartShare: 100 })
+  assert.deepEqual(row(zeroStarts).conversationStarts, { state: "sufficient", numerator: 0, denominator: 4, sharePct: 0, minimum: 3 })
+
+  // Zero opportunities with the canonical stored 0 share: unavailable, projected null.
+  assert.deepEqual(row(analysisOf(DYAD_C), "Eve").restartsAfterDayPlusPauses, {
+    state: "unavailable",
+    numerator: 0,
+    denominator: 0,
+    sharePct: null,
+    minimum: 2,
+  })
+}
+
 function testGroupAndSingleParticipantExcluded() {
   const groupText = readFileSync(path.join(process.cwd(), "fixtures", "whatsapp", "group_chat.txt"), "utf8")
   const groupMessages = parseWhatsAppChat(groupText)
@@ -427,29 +557,42 @@ function testSampleFloorBoundaries() {
     [3, "sufficient"],
   ] as const) {
     const row = at((a) => {
-      selfSummary(a, "Ana Silva").threadStarts = count
-      otherSummary(a, "Ana Silva").threadStarts = 0
+      Object.assign(selfSummary(a, "Ana Silva"), { threadStarts: count, threadStartShare: 100 })
+      Object.assign(otherSummary(a, "Ana Silva"), { threadStarts: 0, threadStartShare: 0 })
+      a.threadCount = count
     })
-    assert.equal(row.conversationStarts.denominator, count)
-    assert.equal(row.conversationStarts.state, state, `starts ${count}`)
+    assert.deepEqual(
+      row.conversationStarts,
+      { state, numerator: count, denominator: count, sharePct: 100, minimum: 3 },
+      `starts ${count}`,
+    )
   }
   for (const [count, state] of [
     [1, "insufficient"],
     [2, "sufficient"],
   ] as const) {
     const row = at((a) => {
-      selfSummary(a, "Ana Silva").reconnectionCount = count
-      otherSummary(a, "Ana Silva").reconnectionCount = 0
+      Object.assign(selfSummary(a, "Ana Silva"), { reconnectionCount: count, reconnectionShare: 100 })
+      Object.assign(otherSummary(a, "Ana Silva"), { reconnectionCount: 0, reconnectionShare: 0 })
       a.relationshipDynamics.pauseSummary.longPauseCount = count
     })
-    assert.equal(row.restartsAfterDayPlusPauses.state, state, `restarts ${count}`)
+    assert.deepEqual(
+      row.restartsAfterDayPlusPauses,
+      { state, numerator: count, denominator: count, sharePct: 100, minimum: 2 },
+      `restarts ${count}`,
+    )
   }
-  for (const [count, state] of [
-    [2, "insufficient"],
-    [3, "sufficient"],
+  // One known followed-up turn: 1 of 2 eligible turns is 50%, 1 of 3 is 33% (not derived from eventCount).
+  for (const [count, rate, state] of [
+    [2, 50, "insufficient"],
+    [3, 33, "sufficient"],
   ] as const) {
-    const row = at((a) => void (selfSummary(a, "Ana Silva").followUpRelevantTurnCount = count))
-    assert.equal(row.followUpsBeforeReply.state, state, `follow-up turns ${count}`)
+    const row = at((a) => void Object.assign(selfSummary(a, "Ana Silva"), { followUpRelevantTurnCount: count, followUpRate: rate }))
+    assert.deepEqual(
+      row.followUpsBeforeReply,
+      { state, eventCount: 2, eligibleTurnCount: count, ratePct: rate, minimum: 3 },
+      `follow-up turns ${count}`,
+    )
   }
   for (const [count, state] of [
     [4, "insufficient"],
@@ -575,7 +718,9 @@ function testExistingOutputsByteIdentical() {
     const before = snapshot()
     const analysis = analyzeChat(messages)
     const passed = JSON.stringify(analysis)
-    buildPersonalEvidence([selection(file, file, getSenders(messages)[0] ?? "", analysis), selA()])
+    const table = buildPersonalEvidence([selection(file, file, getSenders(messages)[0] ?? "", analysis), selA()])
+    if (getSenders(messages).length === 2) assert.equal(table.entries[0].status, "eligible", `${file}: canonical dyad eligible`)
+    else assert.deepEqual(reasonsAt(table, 0), ["unsupported_participant_count"], `${file}: group stays unsupported`)
     assert.equal(JSON.stringify(analysis), passed, `${file}: input analysis untouched`)
     assert.equal(snapshot(), before, `${file}: analyzeChat/Relationship Read unchanged`)
   }

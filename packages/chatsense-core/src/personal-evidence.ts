@@ -241,7 +241,6 @@ function selfReasons(
   }
 
   const reasons: PersonalEvidenceExclusionReason[] = []
-  if (!countsValid(analysis!, pauseCount)) reasons.push("invalid_counts")
   const participantNames = participants.map((participant) => participant.sender)
   const summaryNames = summaries.map((summary) => summary.sender)
   const distinct = new Set(participantNames)
@@ -251,6 +250,13 @@ function selfReasons(
     summaryNames.every((name) => distinct.has(name)) &&
     new Set(summaryNames).size === summaryNames.length &&
     analysis!.overview.participantCount === participantNames.length
+  // Per-sender message counts are compared by exact sender, only once identities agree.
+  const sendersAgree =
+    !consistent ||
+    participants.every(
+      (participant) => summaries.find((summary) => summary.sender === participant.sender)?.messageCount === participant.messageCount,
+    )
+  if (!countsValid(analysis!, pauseCount) || !sendersAgree) reasons.push("invalid_counts")
   if (!consistent) reasons.push("inconsistent_participants")
   if (distinct.size !== 2) reasons.push("unsupported_participant_count")
 
@@ -271,7 +277,7 @@ function countsValid(analysis: ChatAnalysis, pauseCount: unknown): boolean {
   if (!isCount(overview?.messageCount) || !isCount(overview.activeDays) || !isCount(overview.participantCount)) {
     return false
   }
-  if (overview.activeDays > overview.messageCount || !isCount(pauseCount)) return false
+  if (overview.activeDays > overview.messageCount || !isCount(pauseCount) || !isCount(analysis.threadCount)) return false
   if (!participants.every((participant) => isCount(participant?.messageCount))) return false
 
   const summariesValid = summaries.every(
@@ -292,11 +298,24 @@ function countsValid(analysis: ChatAnalysis, pauseCount: unknown): boolean {
   if (!summariesValid) return false
 
   const sum = (values: number[]) => values.reduce((total, value) => total + value, 0)
+  const startTotal = sum(summaries.map((summary) => summary.threadStarts))
   return (
     sum(participants.map((participant) => participant.messageCount)) === overview.messageCount &&
     sum(summaries.map((summary) => summary.messageCount)) === overview.messageCount &&
-    sum(summaries.map((summary) => summary.reconnectionCount)) === pauseCount
+    sum(summaries.map((summary) => summary.reconnectionCount)) === pauseCount &&
+    startTotal === analysis.threadCount &&
+    // Every sender's stored share must equal the engine's percentage convention exactly.
+    summaries.every(
+      (summary) =>
+        summary.threadStartShare === enginePct(summary.threadStarts, startTotal) &&
+        summary.reconnectionShare === enginePct(summary.reconnectionCount, pauseCount),
+    )
   )
+}
+
+// Mirrors relationship-dynamics.ts `percentage` (integer rounding; zero denominator stores 0).
+function enginePct(numerator: number, denominator: number): number {
+  return denominator === 0 ? 0 : Math.round((numerator / denominator) * 100)
 }
 
 function countValues(values: unknown[]): Map<string, number> {
