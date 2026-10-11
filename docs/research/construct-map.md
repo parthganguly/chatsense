@@ -2,6 +2,8 @@
 
 Research proposal, 2026-10-10; issue [#24](https://github.com/parthganguly/chatsense/issues/24). No production authorization. Read with the [evidence review](psychometrics-evidence-review.md), [protocol](validation-protocol.md), and [decision](personal-model-architecture-decision.md). Evidence IDs refer to the review.
 
+2026-10-11: [S25–S29 addendum](behavioural-transfer-evidence-addendum.md) strengthens the direct evidence for dyadic timing and partner/context alternatives. Stable partner-distribution similarity is not stable actor latency or unseen-dyad prediction. B1/B6 remain unvalidated; no A/B/C classification changes.
+
 **A means a reproducible observation, not a validated psychological interpretation. B means a testable hypothesis, not a feature ready to ship. C means an unsupported or inappropriate product claim.** A single feature can have an A measurement and a B or C interpretation. More messages improve measurement of the selected record; they do not turn one person into many independent people.
 
 ## A — Observations supported by the available data

@@ -2,6 +2,8 @@
 
 Proposed research decision, 2026-10-10, [issue #24](https://github.com/parthganguly/chatsense/issues/24). **Documentation only; no implementation, merge, deployment or collection authorization.** Evidence and uncertainty: [review](psychometrics-evidence-review.md); feature boundaries: [construct map](construct-map.md); empirical gates: [protocol](validation-protocol.md).
 
+2026-10-11 review: the [bounded evidence addendum](behavioural-transfer-evidence-addendum.md) supplies direct WhatsApp/Instagram dyadic-timing evidence, but no validated unseen-dyad or paired-person cross-medium transfer. It strengthens partner/sampling controls in the proposed study and leaves this decision table unchanged. Public-code discrepancies limit reuse of the preprint's exact thresholds; no new engineering follows.
+
 ## Recommendation
 
 Keep ChatSense a complete, first-class relationship-pattern reader. The research supports investigating a separate optional self-observation layer; it does not justify shipping a psychological model from the currently available data. Selected WhatsApp metadata contains observable behavior but lacks independent criteria, representative context sampling and validated transfer. Personality inference is **plausible as a research hypothesis and unproven as a ChatSense capability**.

@@ -2,6 +2,8 @@
 
 Source-checked research synthesis, 2026-10-10. Proposal for [issue #24](https://github.com/parthganguly/chatsense/issues/24), not implementation or product validation. Companion documents: [construct map](construct-map.md), [validation protocol](validation-protocol.md), [architecture decision](personal-model-architecture-decision.md).
 
+**2026-10-11 update:** the bounded [behavioural-transfer addendum](behavioural-transfer-evidence-addendum.md) adds S25–S29, including direct WhatsApp/Instagram timing evidence and an independent source/code audit. It supersedes any reading of this original review as finding no direct messaging-metadata studies; exact held-out behavioral transfer and personality interpretation remain unvalidated.
+
 ## Finding
 
 **Digital behavior can contain information about questionnaire-measured personality, but the reviewed evidence does not validate personality assessment from ChatSense's selected WhatsApp exports.** The appropriate next question is whether narrow communication habits generalize to another relationship after accounting for context and selection. A favorable result would support a bounded behavioral model before it supported a psychological interpretation.
