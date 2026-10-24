@@ -1,0 +1,6 @@
+
+> chatsense@0.1.0 test:parity
+> tsx tests/parity.ts
+
+TypeScript parity passed for 21 fixtures.
+exit=0

@@ -1,0 +1,22 @@
+
+> chatsense@0.1.0 lint
+> eslint .
+
+
+<worktree>/docs/studies/stage8a/2026-10-24-v1/preflight/validate-schema.cjs
+   2:12  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+   2:12  error  'require' is not defined                 no-undef
+   3:14  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+   3:14  error  'require' is not defined                 no-undef
+   4:16  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+   4:16  error  'require' is not defined                 no-undef
+   5:13  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+   5:13  error  'require' is not defined                 no-undef
+   6:23  error  '__dirname' is not defined               no-undef
+  19:1   error  'console' is not defined                 no-undef
+  19:97  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  19:97  error  'require' is not defined                 no-undef
+
+✖ 12 problems (12 errors, 0 warnings)
+
+exit=1

@@ -1,0 +1,2706 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:chatsense:stage8a:raw-response:v1",
+  "title": "Private blank response form; never put completed human records on GitHub",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "form_state",
+    "participant_code",
+    "slot",
+    "protocol_version",
+    "protocol_sha256",
+    "consent_record_reference",
+    "quote_consent",
+    "disposition",
+    "screening",
+    "session",
+    "cards",
+    "end_questions",
+    "independent_reviews",
+    "adjudication"
+  ],
+  "properties": {
+    "form_state": {
+      "enum": [
+        "BLANK_TEMPLATE",
+        "PRIVATE_HUMAN_RECORD"
+      ]
+    },
+    "participant_code": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^P(0[1-9]|10)$"
+    },
+    "slot": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1,
+      "maximum": 10
+    },
+    "protocol_version": {
+      "const": "2026-10-24-v1"
+    },
+    "protocol_sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "consent_record_reference": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "quote_consent": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "disposition": {
+      "enum": [
+        null,
+        "usable",
+        "withdrawn",
+        "excluded",
+        "incomplete"
+      ]
+    },
+    "screening": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adult_confirmed",
+        "voluntary_consent",
+        "uncertain_romantic_or_friendship",
+        "nonromantic_context"
+      ],
+      "properties": {
+        "adult_confirmed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "voluntary_consent": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "uncertain_romantic_or_friendship": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "nonromantic_context": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "start_at",
+        "end_at",
+        "facilitator_code",
+        "planned_order",
+        "actual_order",
+        "display",
+        "deviations",
+        "redaction_incident"
+      ],
+      "properties": {
+        "start_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "end_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "facilitator_code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "planned_order": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ]
+          }
+        },
+        "actual_order": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ]
+          }
+        },
+        "display": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "deviations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "redaction_incident": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "cards": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "card_id",
+          "screenshot_sha256",
+          "order_position",
+          "silent_read_seconds",
+          "fully_visible",
+          "tell",
+          "not_tell",
+          "reply_check",
+          "usefulness",
+          "creepiness",
+          "want",
+          "want_code",
+          "silence_next",
+          "deviations"
+        ],
+        "properties": {
+          "card_id": {
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ]
+          },
+          "screenshot_sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "order_position": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1,
+            "maximum": 5
+          },
+          "silent_read_seconds": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "fully_visible": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "tell": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "verbatim",
+              "missing_reason",
+              "probes",
+              "revisions"
+            ],
+            "properties": {
+              "verbatim": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "missing_reason": {
+                "enum": [
+                  null,
+                  "skipped",
+                  "withdrawn",
+                  "lost",
+                  "not_exposed",
+                  "coached",
+                  "visibility_failure",
+                  "not_applicable"
+                ]
+              },
+              "probes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "prompt",
+                    "response"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "prompt": {
+                      "type": "string"
+                    },
+                    "response": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "revisions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "not_tell": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "verbatim",
+              "missing_reason",
+              "probes",
+              "revisions"
+            ],
+            "properties": {
+              "verbatim": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "missing_reason": {
+                "enum": [
+                  null,
+                  "skipped",
+                  "withdrawn",
+                  "lost",
+                  "not_exposed",
+                  "coached",
+                  "visibility_failure",
+                  "not_applicable"
+                ]
+              },
+              "probes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "prompt",
+                    "response"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "prompt": {
+                      "type": "string"
+                    },
+                    "response": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "revisions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "reply_check": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "verbatim",
+              "missing_reason",
+              "probes",
+              "revisions"
+            ],
+            "properties": {
+              "verbatim": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "missing_reason": {
+                "enum": [
+                  null,
+                  "skipped",
+                  "withdrawn",
+                  "lost",
+                  "not_exposed",
+                  "coached",
+                  "visibility_failure",
+                  "not_applicable"
+                ]
+              },
+              "probes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "prompt",
+                    "response"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "prompt": {
+                      "type": "string"
+                    },
+                    "response": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "revisions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "want": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "verbatim",
+              "missing_reason",
+              "probes",
+              "revisions"
+            ],
+            "properties": {
+              "verbatim": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "missing_reason": {
+                "enum": [
+                  null,
+                  "skipped",
+                  "withdrawn",
+                  "lost",
+                  "not_exposed",
+                  "coached",
+                  "visibility_failure",
+                  "not_applicable"
+                ]
+              },
+              "probes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "prompt",
+                    "response"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "prompt": {
+                      "type": "string"
+                    },
+                    "response": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "revisions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "silence_next": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "verbatim",
+              "missing_reason",
+              "probes",
+              "revisions"
+            ],
+            "properties": {
+              "verbatim": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "missing_reason": {
+                "enum": [
+                  null,
+                  "skipped",
+                  "withdrawn",
+                  "lost",
+                  "not_exposed",
+                  "coached",
+                  "visibility_failure",
+                  "not_applicable"
+                ]
+              },
+              "probes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "prompt",
+                    "response"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "prompt": {
+                      "type": "string"
+                    },
+                    "response": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "revisions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "usefulness": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value",
+              "missing_reason"
+            ],
+            "properties": {
+              "value": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 1,
+                "maximum": 5
+              },
+              "missing_reason": {
+                "enum": [
+                  null,
+                  "skipped",
+                  "withdrawn",
+                  "lost",
+                  "not_exposed",
+                  "coached"
+                ]
+              }
+            }
+          },
+          "creepiness": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "value",
+              "missing_reason"
+            ],
+            "properties": {
+              "value": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 1,
+                "maximum": 5
+              },
+              "missing_reason": {
+                "enum": [
+                  null,
+                  "skipped",
+                  "withdrawn",
+                  "lost",
+                  "not_exposed",
+                  "coached"
+                ]
+              }
+            }
+          },
+          "want_code": {
+            "enum": [
+              null,
+              "yes",
+              "no",
+              "unsure",
+              "prefer_not"
+            ]
+          },
+          "deviations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "card_id"
+            ],
+            "properties": {
+              "card_id": {
+                "const": "A"
+              }
+            }
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "card_id"
+            ],
+            "properties": {
+              "card_id": {
+                "const": "B"
+              }
+            }
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "card_id"
+            ],
+            "properties": {
+              "card_id": {
+                "const": "C"
+              }
+            }
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "card_id"
+            ],
+            "properties": {
+              "card_id": {
+                "const": "D"
+              }
+            }
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "card_id"
+            ],
+            "properties": {
+              "card_id": {
+                "const": "E"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "end_questions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "screenshot_card",
+        "recheck_weeks",
+        "overall_trust",
+        "evidence_visibility"
+      ],
+      "properties": {
+        "screenshot_card": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "verbatim",
+            "missing_reason",
+            "probes",
+            "revisions"
+          ],
+          "properties": {
+            "verbatim": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "missing_reason": {
+              "enum": [
+                null,
+                "skipped",
+                "withdrawn",
+                "lost",
+                "not_exposed",
+                "coached",
+                "visibility_failure",
+                "not_applicable"
+              ]
+            },
+            "probes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "prompt",
+                  "response"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "prompt": {
+                    "type": "string"
+                  },
+                  "response": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "revisions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "recheck_weeks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "verbatim",
+            "missing_reason",
+            "probes",
+            "revisions"
+          ],
+          "properties": {
+            "verbatim": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "missing_reason": {
+              "enum": [
+                null,
+                "skipped",
+                "withdrawn",
+                "lost",
+                "not_exposed",
+                "coached",
+                "visibility_failure",
+                "not_applicable"
+              ]
+            },
+            "probes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "prompt",
+                  "response"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "prompt": {
+                    "type": "string"
+                  },
+                  "response": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "revisions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "overall_trust": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "missing_reason"
+          ],
+          "properties": {
+            "value": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 1,
+              "maximum": 5
+            },
+            "missing_reason": {
+              "enum": [
+                null,
+                "skipped",
+                "withdrawn",
+                "lost",
+                "not_exposed",
+                "coached"
+              ]
+            }
+          }
+        },
+        "evidence_visibility": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "verbatim",
+            "missing_reason",
+            "probes",
+            "revisions"
+          ],
+          "properties": {
+            "verbatim": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "missing_reason": {
+              "enum": [
+                null,
+                "skipped",
+                "withdrawn",
+                "lost",
+                "not_exposed",
+                "coached",
+                "visibility_failure",
+                "not_applicable"
+              ]
+            },
+            "probes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "prompt",
+                  "response"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "prompt": {
+                    "type": "string"
+                  },
+                  "response": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "revisions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "independent_reviews": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reviewer_id",
+          "blind_to_ratings_and_other_reviewer",
+          "locked_at",
+          "private_file_sha256",
+          "cards"
+        ],
+        "properties": {
+          "reviewer_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "blind_to_ratings_and_other_reviewer": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "locked_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "private_file_sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "cards": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ],
+            "properties": {
+              "A": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "motive",
+                  "prediction",
+                  "direct",
+                  "history"
+                ],
+                "properties": {
+                  "motive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null,
+                          "CLEAR_LIMIT",
+                          "ERROR",
+                          "AMBIGUOUS",
+                          "NOT_MENTIONED",
+                          "MISSING"
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "prediction": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null,
+                          "CLEAR_LIMIT",
+                          "ERROR",
+                          "AMBIGUOUS",
+                          "NOT_MENTIONED",
+                          "MISSING"
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "direct": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null,
+                          "CLEAR_LIMIT",
+                          "ERROR",
+                          "AMBIGUOUS",
+                          "MISSING"
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "history": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "B": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "motive",
+                  "prediction",
+                  "direct",
+                  "history"
+                ],
+                "properties": {
+                  "motive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null,
+                          "CLEAR_LIMIT",
+                          "ERROR",
+                          "AMBIGUOUS",
+                          "NOT_MENTIONED",
+                          "MISSING"
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "prediction": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null,
+                          "CLEAR_LIMIT",
+                          "ERROR",
+                          "AMBIGUOUS",
+                          "NOT_MENTIONED",
+                          "MISSING"
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "direct": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null,
+                          "CLEAR_LIMIT",
+                          "ERROR",
+                          "AMBIGUOUS",
+                          "MISSING"
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "history": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "C": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "motive",
+                  "prediction",
+                  "direct",
+                  "history"
+                ],
+                "properties": {
+                  "motive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null,
+                          "CLEAR_LIMIT",
+                          "ERROR",
+                          "AMBIGUOUS",
+                          "NOT_MENTIONED",
+                          "MISSING"
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "prediction": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null,
+                          "CLEAR_LIMIT",
+                          "ERROR",
+                          "AMBIGUOUS",
+                          "NOT_MENTIONED",
+                          "MISSING"
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "direct": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null,
+                          "CLEAR_LIMIT",
+                          "ERROR",
+                          "AMBIGUOUS",
+                          "MISSING"
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "history": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "D": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "motive",
+                  "prediction",
+                  "direct",
+                  "history"
+                ],
+                "properties": {
+                  "motive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null,
+                          "CLEAR_LIMIT",
+                          "ERROR",
+                          "AMBIGUOUS",
+                          "NOT_MENTIONED",
+                          "MISSING"
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "prediction": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null,
+                          "CLEAR_LIMIT",
+                          "ERROR",
+                          "AMBIGUOUS",
+                          "NOT_MENTIONED",
+                          "MISSING"
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "direct": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null,
+                          "CLEAR_LIMIT",
+                          "ERROR",
+                          "AMBIGUOUS",
+                          "MISSING"
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "history": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null,
+                          "NO_PROMISE",
+                          "PROMISE",
+                          "AMBIGUOUS",
+                          "MISSING"
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              },
+              "E": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "motive",
+                  "prediction",
+                  "direct",
+                  "history"
+                ],
+                "properties": {
+                  "motive": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null,
+                          "CLEAR_LIMIT",
+                          "ERROR",
+                          "AMBIGUOUS",
+                          "NOT_MENTIONED",
+                          "MISSING"
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "prediction": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null,
+                          "CLEAR_LIMIT",
+                          "ERROR",
+                          "AMBIGUOUS",
+                          "NOT_MENTIONED",
+                          "MISSING"
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "direct": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null,
+                          "CLEAR_LIMIT",
+                          "ERROR",
+                          "AMBIGUOUS",
+                          "MISSING"
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "history": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "label",
+                      "evidence_field",
+                      "quote",
+                      "rationale"
+                    ],
+                    "properties": {
+                      "label": {
+                        "enum": [
+                          null
+                        ]
+                      },
+                      "evidence_field": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "quote": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "adjudication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "completed",
+        "adjudicator_code",
+        "disagreements",
+        "resolved_cards",
+        "participant_correct",
+        "history_classification",
+        "integrity_eligible",
+        "exclusion_reason"
+      ],
+      "properties": {
+        "completed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "adjudicator_code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "disagreements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "field",
+              "reviewer_1",
+              "reviewer_2",
+              "resolution",
+              "reason"
+            ],
+            "properties": {
+              "field": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "reviewer_1": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "reviewer_2": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "resolution": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "reason": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "resolved_cards": {
+          "type": "object",
+          "required": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "A": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "motive",
+                "prediction",
+                "direct",
+                "history"
+              ],
+              "properties": {
+                "motive": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null,
+                        "CLEAR_LIMIT",
+                        "ERROR",
+                        "AMBIGUOUS",
+                        "NOT_MENTIONED",
+                        "MISSING"
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "prediction": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null,
+                        "CLEAR_LIMIT",
+                        "ERROR",
+                        "AMBIGUOUS",
+                        "NOT_MENTIONED",
+                        "MISSING"
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "direct": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null,
+                        "CLEAR_LIMIT",
+                        "ERROR",
+                        "AMBIGUOUS",
+                        "MISSING"
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "history": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "B": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "motive",
+                "prediction",
+                "direct",
+                "history"
+              ],
+              "properties": {
+                "motive": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null,
+                        "CLEAR_LIMIT",
+                        "ERROR",
+                        "AMBIGUOUS",
+                        "NOT_MENTIONED",
+                        "MISSING"
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "prediction": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null,
+                        "CLEAR_LIMIT",
+                        "ERROR",
+                        "AMBIGUOUS",
+                        "NOT_MENTIONED",
+                        "MISSING"
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "direct": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null,
+                        "CLEAR_LIMIT",
+                        "ERROR",
+                        "AMBIGUOUS",
+                        "MISSING"
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "history": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "C": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "motive",
+                "prediction",
+                "direct",
+                "history"
+              ],
+              "properties": {
+                "motive": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null,
+                        "CLEAR_LIMIT",
+                        "ERROR",
+                        "AMBIGUOUS",
+                        "NOT_MENTIONED",
+                        "MISSING"
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "prediction": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null,
+                        "CLEAR_LIMIT",
+                        "ERROR",
+                        "AMBIGUOUS",
+                        "NOT_MENTIONED",
+                        "MISSING"
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "direct": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null,
+                        "CLEAR_LIMIT",
+                        "ERROR",
+                        "AMBIGUOUS",
+                        "MISSING"
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "history": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "D": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "motive",
+                "prediction",
+                "direct",
+                "history"
+              ],
+              "properties": {
+                "motive": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null,
+                        "CLEAR_LIMIT",
+                        "ERROR",
+                        "AMBIGUOUS",
+                        "NOT_MENTIONED",
+                        "MISSING"
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "prediction": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null,
+                        "CLEAR_LIMIT",
+                        "ERROR",
+                        "AMBIGUOUS",
+                        "NOT_MENTIONED",
+                        "MISSING"
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "direct": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null,
+                        "CLEAR_LIMIT",
+                        "ERROR",
+                        "AMBIGUOUS",
+                        "MISSING"
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "history": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null,
+                        "NO_PROMISE",
+                        "PROMISE",
+                        "AMBIGUOUS",
+                        "MISSING"
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "E": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "motive",
+                "prediction",
+                "direct",
+                "history"
+              ],
+              "properties": {
+                "motive": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null,
+                        "CLEAR_LIMIT",
+                        "ERROR",
+                        "AMBIGUOUS",
+                        "NOT_MENTIONED",
+                        "MISSING"
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "prediction": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null,
+                        "CLEAR_LIMIT",
+                        "ERROR",
+                        "AMBIGUOUS",
+                        "NOT_MENTIONED",
+                        "MISSING"
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "direct": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null,
+                        "CLEAR_LIMIT",
+                        "ERROR",
+                        "AMBIGUOUS",
+                        "MISSING"
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "history": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "label",
+                    "evidence_field",
+                    "quote",
+                    "rationale"
+                  ],
+                  "properties": {
+                    "label": {
+                      "enum": [
+                        null
+                      ]
+                    },
+                    "evidence_field": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "quote": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "rationale": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "participant_correct": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "history_classification": {
+          "enum": [
+            null,
+            "NO_PROMISE",
+            "PROMISE",
+            "AMBIGUOUS",
+            "MISSING"
+          ]
+        },
+        "integrity_eligible": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "exclusion_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

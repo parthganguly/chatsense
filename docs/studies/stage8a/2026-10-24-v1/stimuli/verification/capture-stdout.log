@@ -1,0 +1,6 @@
+browser 149.0.7827.55 serving out/ at http://127.0.0.1:4319/
+s8a-v1-c1-pattern-change: state=pattern_change label=Strong read text-match=ok numbers=48 mobileCard=105..625 fitsFirstScreen=true desktopCard=205..725
+s8a-v1-c2-carried-balanced: state=carried_contact label=Strong read text-match=ok numbers=9 mobileCard=105..559 fitsFirstScreen=true desktopCard=205..695
+s8a-v1-c3-carried-mixed: state=carried_contact label=Useful read text-match=ok numbers=8 mobileCard=105..603 fitsFirstScreen=true desktopCard=205..719
+s8a-v1-c4-unusual-silence: state=unusual_silence label=Useful read text-match=ok numbers=13 mobileCard=105..739 fitsFirstScreen=true desktopCard=205..839
+s8a-v1-c5-insufficient: state=insufficient_evidence label=Light read text-match=ok numbers=9 mobileCard=105..627 fitsFirstScreen=true desktopCard=205..727

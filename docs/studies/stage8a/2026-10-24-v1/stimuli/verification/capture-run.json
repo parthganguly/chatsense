@@ -1,0 +1,621 @@
+{
+  "captureTimestamp": "2026-10-24T04:37:26.274Z",
+  "browser": "chromium 149.0.7827.55 (headless shell)",
+  "playwright": "1.61.1",
+  "baseUrl": "http://127.0.0.1:4319/",
+  "route": "/",
+  "importPath": "real <input type=file> on the import screen via Playwright locator.setInputFiles (file name \"WhatsApp Chat with Synthetic Example.txt\", bytes = fixture file) -> readWhatsAppExport -> analyzeImportedText(text, Date.now()) -> RelationshipReadCard",
+  "locale": "en-US",
+  "timezone": "UTC",
+  "viewports": {
+    "mobile": {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "deviceScaleFactor": 3,
+      "isMobile": true,
+      "hasTouch": true
+    },
+    "desktop": {
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "deviceScaleFactor": 1,
+      "isMobile": false,
+      "hasTouch": false
+    },
+    "desktop2x": {
+      "viewport": {
+        "width": 1280,
+        "height": 1000
+      },
+      "deviceScaleFactor": 2,
+      "isMobile": false,
+      "hasTouch": false
+    }
+  },
+  "colorScheme": "light",
+  "cards": [
+    {
+      "id": "s8a-v1-c1-pattern-change",
+      "sectionClass": "rounded-lg border border-slate-200 border-l-4 border-cyan-600 bg-white p-4 shadow-sm",
+      "computedBorder": {
+        "top": "1px rgb(226, 232, 240)",
+        "right": "1px rgb(226, 232, 240)",
+        "bottom": "1px rgb(226, 232, 240)",
+        "left": "4px rgb(226, 232, 240)"
+      },
+      "headerText": "ChatSense\n\n120 messages from WhatsApp Chat with Synthetic Example.txt",
+      "mobileCardBox": {
+        "x": 20,
+        "y": 105,
+        "width": 350,
+        "height": 520
+      },
+      "mobileCardFitsFirstScreen": true,
+      "mobileFullPageViewport": {
+        "width": 390,
+        "height": 3316
+      },
+      "desktopCardBox": {
+        "x": 468,
+        "y": 205,
+        "width": 344,
+        "height": 520
+      },
+      "contrast": [
+        {
+          "text": "What this export shows",
+          "color": "rgb(6, 95, 70)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "600",
+          "contrastRatio": 7.68
+        },
+        {
+          "text": "Strong read",
+          "color": "rgb(71, 85, 105)",
+          "background": "rgb(241, 245, 249)",
+          "fontSizePx": 11,
+          "fontWeight": "600",
+          "contrastRatio": 6.92
+        },
+        {
+          "text": "The pattern in this chat measurably changed.",
+          "color": "rgb(2, 6, 23)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 20,
+          "fontWeight": "700",
+          "contrastRatio": 20.17
+        },
+        {
+          "text": "Ravi's typical reply slowed from 5 minutes to 1.5 hours betw",
+          "color": "rgb(71, 85, 105)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 14,
+          "fontWeight": "400",
+          "contrastRatio": 7.58
+        },
+        {
+          "text": "Counted in this export",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 11,
+          "fontWeight": "600",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "Typical reply time (Ravi): 5 minutes in 2026-04-01 to 2026-0",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "Typical reply time (Asha): 1.9 hours in 2026-04-01 to 2026-0",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "Measured from the export's last message on May 7, 2026. If y",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "A measured change describes timing and volume between compar",
+          "color": "rgb(148, 163, 184)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 11,
+          "fontWeight": "400",
+          "contrastRatio": 2.56
+        },
+        {
+          "text": "See the evidence in the Changes tab",
+          "color": "rgb(6, 95, 70)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "600",
+          "contrastRatio": 7.68
+        }
+      ],
+      "textAssertions": "pass"
+    },
+    {
+      "id": "s8a-v1-c2-carried-balanced",
+      "sectionClass": "rounded-lg border border-slate-200 border-l-4 border-violet-600 bg-white p-4 shadow-sm",
+      "computedBorder": {
+        "top": "1px rgb(124, 58, 237)",
+        "right": "1px rgb(124, 58, 237)",
+        "bottom": "1px rgb(124, 58, 237)",
+        "left": "4px rgb(124, 58, 237)"
+      },
+      "headerText": "ChatSense\n\n608 messages from WhatsApp Chat with Synthetic Example.txt",
+      "mobileCardBox": {
+        "x": 20,
+        "y": 105,
+        "width": 350,
+        "height": 454
+      },
+      "mobileCardFitsFirstScreen": true,
+      "mobileFullPageViewport": {
+        "width": 390,
+        "height": 2868
+      },
+      "desktopCardBox": {
+        "x": 468,
+        "y": 205,
+        "width": 344,
+        "height": 490
+      },
+      "contrast": [
+        {
+          "text": "What this export shows",
+          "color": "rgb(6, 95, 70)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "600",
+          "contrastRatio": 7.68
+        },
+        {
+          "text": "Strong read",
+          "color": "rgb(71, 85, 105)",
+          "background": "rgb(241, 245, 249)",
+          "fontSizePx": 11,
+          "fontWeight": "600",
+          "contrastRatio": 6.92
+        },
+        {
+          "text": "Keeping this chat going has been shared.",
+          "color": "rgb(2, 6, 23)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 20,
+          "fontWeight": "700",
+          "contrastRatio": 20.17
+        },
+        {
+          "text": "Across 4 measures — conversation starts, restarts after paus",
+          "color": "rgb(71, 85, 105)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 14,
+          "fontWeight": "400",
+          "contrastRatio": 7.58
+        },
+        {
+          "text": "Counted in this export",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 11,
+          "fontWeight": "600",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "Conversation starts: 76 by Ravi, 76 by Asha (152 total).",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 tota",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "Following up before a reply: 0% of Ravi's relevant turns, 0%",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "Starting and restarting are counts of who happened to send f",
+          "color": "rgb(148, 163, 184)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 11,
+          "fontWeight": "400",
+          "contrastRatio": 2.56
+        },
+        {
+          "text": "See the evidence in the People tab",
+          "color": "rgb(6, 95, 70)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "600",
+          "contrastRatio": 7.68
+        }
+      ],
+      "textAssertions": "pass"
+    },
+    {
+      "id": "s8a-v1-c3-carried-mixed",
+      "sectionClass": "rounded-lg border border-slate-200 border-l-4 border-violet-600 bg-white p-4 shadow-sm",
+      "computedBorder": {
+        "top": "1px rgb(124, 58, 237)",
+        "right": "1px rgb(124, 58, 237)",
+        "bottom": "1px rgb(124, 58, 237)",
+        "left": "4px rgb(124, 58, 237)"
+      },
+      "headerText": "ChatSense\n\n608 messages from WhatsApp Chat with Synthetic Example.txt",
+      "mobileCardBox": {
+        "x": 20,
+        "y": 105,
+        "width": 350,
+        "height": 498
+      },
+      "mobileCardFitsFirstScreen": true,
+      "mobileFullPageViewport": {
+        "width": 390,
+        "height": 2960
+      },
+      "desktopCardBox": {
+        "x": 468,
+        "y": 205,
+        "width": 344,
+        "height": 514
+      },
+      "contrast": [
+        {
+          "text": "What this export shows",
+          "color": "rgb(6, 95, 70)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "600",
+          "contrastRatio": 7.68
+        },
+        {
+          "text": "Useful read",
+          "color": "rgb(71, 85, 105)",
+          "background": "rgb(241, 245, 249)",
+          "fontSizePx": 11,
+          "fontWeight": "600",
+          "contrastRatio": 6.92
+        },
+        {
+          "text": "The keeping-in-touch picture is mixed.",
+          "color": "rgb(2, 6, 23)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 20,
+          "fontWeight": "700",
+          "contrastRatio": 20.17
+        },
+        {
+          "text": "Ravi started most conversations, while restarts after pauses",
+          "color": "rgb(71, 85, 105)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 14,
+          "fontWeight": "400",
+          "contrastRatio": 7.58
+        },
+        {
+          "text": "Counted in this export",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 11,
+          "fontWeight": "600",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "Conversation starts: 112 by Ravi, 40 by Asha (152 total).",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 tota",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "Following up before a reply: 0% of Ravi's relevant turns, 0%",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "Starting and restarting are counts of who happened to send f",
+          "color": "rgb(148, 163, 184)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 11,
+          "fontWeight": "400",
+          "contrastRatio": 2.56
+        },
+        {
+          "text": "See the evidence in the People tab",
+          "color": "rgb(6, 95, 70)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "600",
+          "contrastRatio": 7.68
+        }
+      ],
+      "textAssertions": "pass"
+    },
+    {
+      "id": "s8a-v1-c4-unusual-silence",
+      "sectionClass": "rounded-lg border border-slate-200 border-l-4 border-amber-600 bg-white p-4 shadow-sm",
+      "computedBorder": {
+        "top": "1px rgb(226, 232, 240)",
+        "right": "1px rgb(226, 232, 240)",
+        "bottom": "1px rgb(226, 232, 240)",
+        "left": "4px rgb(226, 232, 240)"
+      },
+      "headerText": "ChatSense\n\n552 messages from WhatsApp Chat with Synthetic Example.txt",
+      "mobileCardBox": {
+        "x": 20,
+        "y": 105,
+        "width": 350,
+        "height": 634
+      },
+      "mobileCardFitsFirstScreen": true,
+      "mobileFullPageViewport": {
+        "width": 390,
+        "height": 3240
+      },
+      "desktopCardBox": {
+        "x": 468,
+        "y": 205,
+        "width": 344,
+        "height": 634
+      },
+      "contrast": [
+        {
+          "text": "What this export shows",
+          "color": "rgb(6, 95, 70)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "600",
+          "contrastRatio": 7.68
+        },
+        {
+          "text": "Useful read",
+          "color": "rgb(71, 85, 105)",
+          "background": "rgb(241, 245, 249)",
+          "fontSizePx": 11,
+          "fontWeight": "600",
+          "contrastRatio": 6.92
+        },
+        {
+          "text": "The current quiet is long for this chat.",
+          "color": "rgb(2, 6, 23)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 20,
+          "fontWeight": "700",
+          "contrastRatio": 20.17
+        },
+        {
+          "text": "Counting from the export's last message, this quiet has alre",
+          "color": "rgb(71, 85, 105)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 14,
+          "fontWeight": "400",
+          "contrastRatio": 7.58
+        },
+        {
+          "text": "Counted in this export",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 11,
+          "fontWeight": "600",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "No messages appear after Mar 29, 2026 in this export — quiet",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "All 10 earlier day-plus quiet stretches in this export ended",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "Earlier day-plus quiet stretches typically ran 2.1 days; the",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "After earlier day-plus pauses, this chat picked back up all ",
+          "color": "rgb(71, 85, 105)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 7.58
+        },
+        {
+          "text": "Measured from the export's last message on Mar 29, 2026. If ",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "Longer than usual is a timing fact from this export alone. I",
+          "color": "rgb(148, 163, 184)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 11,
+          "fontWeight": "400",
+          "contrastRatio": 2.56
+        },
+        {
+          "text": "See the evidence in the Rhythm tab",
+          "color": "rgb(6, 95, 70)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "600",
+          "contrastRatio": 7.68
+        }
+      ],
+      "textAssertions": "pass"
+    },
+    {
+      "id": "s8a-v1-c5-insufficient",
+      "sectionClass": "rounded-lg border border-slate-200 border-l-4 border-slate-300 bg-white p-4 shadow-sm",
+      "computedBorder": {
+        "top": "1px rgb(203, 213, 225)",
+        "right": "1px rgb(203, 213, 225)",
+        "bottom": "1px rgb(203, 213, 225)",
+        "left": "4px rgb(203, 213, 225)"
+      },
+      "headerText": "ChatSense\n\n2 messages from WhatsApp Chat with Synthetic Example.txt",
+      "mobileCardBox": {
+        "x": 20,
+        "y": 105,
+        "width": 350,
+        "height": 522
+      },
+      "mobileCardFitsFirstScreen": true,
+      "mobileFullPageViewport": {
+        "width": 390,
+        "height": 2864
+      },
+      "desktopCardBox": {
+        "x": 468,
+        "y": 205,
+        "width": 344,
+        "height": 522
+      },
+      "contrast": [
+        {
+          "text": "What this export shows",
+          "color": "rgb(6, 95, 70)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "600",
+          "contrastRatio": 7.68
+        },
+        {
+          "text": "Light read",
+          "color": "rgb(71, 85, 105)",
+          "background": "rgb(241, 245, 249)",
+          "fontSizePx": 11,
+          "fontWeight": "600",
+          "contrastRatio": 6.92
+        },
+        {
+          "text": "Not enough here to read a pattern yet.",
+          "color": "rgb(2, 6, 23)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 20,
+          "fontWeight": "700",
+          "contrastRatio": 20.17
+        },
+        {
+          "text": "This export is too short or too sparse for an honest pattern",
+          "color": "rgb(71, 85, 105)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 14,
+          "fontWeight": "400",
+          "contrastRatio": 7.58
+        },
+        {
+          "text": "Counted in this export",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 11,
+          "fontWeight": "600",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "1 day of messages with 0 eligible comparison windows — a per",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "1 conversation start — reading who starts contact needs at l",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "0 completed day-plus quiet stretches — ranking a quiet needs",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "Measured from the export's last message on Jul 4, 2026. If y",
+          "color": "rgb(100, 116, 139)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "400",
+          "contrastRatio": 4.76
+        },
+        {
+          "text": "If the chat is older than this export, re-export with the fu",
+          "color": "rgb(148, 163, 184)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 11,
+          "fontWeight": "400",
+          "contrastRatio": 2.56
+        },
+        {
+          "text": "See the evidence in the summary below",
+          "color": "rgb(6, 95, 70)",
+          "background": "rgb(255, 255, 255)",
+          "fontSizePx": 12,
+          "fontWeight": "600",
+          "contrastRatio": 7.68
+        }
+      ],
+      "textAssertions": "pass"
+    }
+  ]
+}
