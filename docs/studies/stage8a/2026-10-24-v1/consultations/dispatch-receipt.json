@@ -1,0 +1,31 @@
+{
+  "authority": "User explicitly requested native Claude Code Opus 5.5 and Codex Sol 6.1 consultations",
+  "orchestrator": "Astra",
+  "sequential": true,
+  "opus": {
+    "runtime": "Claude Code CLI 2.1.309",
+    "requested_model": "claude-opus-5-5",
+    "confirmed_model": "claude-opus-5-5",
+    "session_id": "78cbfd7f-32d7-4b76-9074-92275b00f4f8",
+    "terminal_reason": "completed",
+    "exit_code": 0,
+    "receipt": "opus-native-receipt.json",
+    "receipt_sha256": "d1c46d3bb9a4356e56bc120a6c3e2f5ec911b916400d9c47cb0b3c35ef7ba7c8",
+    "auth_route": "Existing native Claude subscription; no API key or paid research batch setup",
+    "cost_note": "CLI receipt contains list-price accounting (costBasis=list), not a payment receipt."
+  },
+  "sol": {
+    "runtime": "Codex native sub-agent consultation",
+    "requested_model": "gpt-6.1-sol",
+    "task_name": "/root/sol_stage8a_audit",
+    "fork_turns": "none",
+    "prompt": "sol-prompt.txt",
+    "write_scope": "consultations/sol/**",
+    "status": "completed",
+    "final_verdict": "PASS of instrument audit after two document-consistency repairs",
+    "report": "sol/review.md",
+    "evidence": "sol/check-results.json",
+    "independent_check_count": 43,
+    "identity_evidence": "Codex spawn_agent model override gpt-6.1-sol, canonical task /root/sol_stage8a_audit, consultant receipt in review.md; interface exposes no provider/session UUID."
+  }
+}

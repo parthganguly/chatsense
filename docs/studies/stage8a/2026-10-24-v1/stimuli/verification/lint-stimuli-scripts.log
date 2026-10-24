@@ -1,0 +1,9 @@
+
+<worktree>/docs/studies/stage8a/2026-10-24-v1/stimuli/scripts/generate-fixtures.ts
+  285:10  warning  'recentlyAsymmetricWeeks' is defined but never used. Allowed unused vars must match /^_/u   @typescript-eslint/no-unused-vars
+  303:10  warning  'unusualCompletedGapWeeks' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  335:10  warning  'estrangementBursts' is defined but never used. Allowed unused vars must match /^_/u        @typescript-eslint/no-unused-vars
+
+✖ 3 problems (0 errors, 3 warnings)
+
+exit=0 (warnings: unused verbatim-copied generators only)

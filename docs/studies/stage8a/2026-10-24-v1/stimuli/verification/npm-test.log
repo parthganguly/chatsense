@@ -1,0 +1,12 @@
+
+> chatsense@0.1.0 test
+> tsx tests/import-boundaries.ts && tsx tests/relationship-dynamics.ts && tsx tests/insight-narrative.ts && tsx tests/human-takeaway.ts && tsx tests/relationship-read.ts && tsx tests/onboarding.ts && tsx tests/forecasting.ts
+
+Import and boundary tests passed.
+Relationship dynamics tests passed.
+Insight narrative tests passed (12-case Stage 6 matrix plus safety and UI checks).
+Human takeaway tests passed (15-case Stage 6.2-6.4 matrix).
+Relationship read tests passed (Stage 8A hero-state matrix).
+Onboarding and demo import tests passed.
+Forecasting research tests passed (13 tests).
+exit=0

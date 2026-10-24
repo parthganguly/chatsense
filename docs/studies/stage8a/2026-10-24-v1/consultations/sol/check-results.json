@@ -1,0 +1,220 @@
+{
+  "checks": 43,
+  "results": [
+    {
+      "name": "minimal independent positive",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "N=8",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE"
+    },
+    {
+      "name": "N=9",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE"
+    },
+    {
+      "name": "ordinary errors=1",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "ordinary errors=2",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "ordinary errors=3",
+      "expected": "FAIL",
+      "actual": "FAIL"
+    },
+    {
+      "name": "D PROMISE",
+      "expected": "FAIL",
+      "actual": "FAIL"
+    },
+    {
+      "name": "D AMBIGUOUS",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE"
+    },
+    {
+      "name": "D MISSING",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE"
+    },
+    {
+      "name": "missing usefulness",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE"
+    },
+    {
+      "name": "missing creepiness",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE"
+    },
+    {
+      "name": "missing want",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE"
+    },
+    {
+      "name": "invalid rating False",
+      "expected": "REJECTED",
+      "actual": "REJECTED"
+    },
+    {
+      "name": "invalid rating True",
+      "expected": "REJECTED",
+      "actual": "REJECTED"
+    },
+    {
+      "name": "invalid rating 0",
+      "expected": "REJECTED",
+      "actual": "REJECTED"
+    },
+    {
+      "name": "invalid rating 6",
+      "expected": "REJECTED",
+      "actual": "REJECTED"
+    },
+    {
+      "name": "invalid rating 4.0",
+      "expected": "REJECTED",
+      "actual": "REJECTED"
+    },
+    {
+      "name": "invalid rating '4'",
+      "expected": "REJECTED",
+      "actual": "REJECTED"
+    },
+    {
+      "name": "leading check cannot rescue motive",
+      "expected": "FAIL",
+      "actual": "FAIL"
+    },
+    {
+      "name": "leading check cannot rescue prediction",
+      "expected": "FAIL",
+      "actual": "FAIL"
+    },
+    {
+      "name": "five card yes one person",
+      "expected": "FAIL",
+      "actual": "FAIL"
+    },
+    {
+      "name": "review independent",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE"
+    },
+    {
+      "name": "review locked",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE"
+    },
+    {
+      "name": "review adjudicated",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE"
+    },
+    {
+      "name": "withdrawn",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE"
+    },
+    {
+      "name": "excluded",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE"
+    },
+    {
+      "name": "duplicate slot",
+      "expected": "REJECTED",
+      "actual": "REJECTED"
+    },
+    {
+      "name": "50 repeated rows",
+      "expected": "REJECTED",
+      "actual": "REJECTED"
+    },
+    {
+      "name": "same reviewer",
+      "expected": "REJECTED",
+      "actual": "REJECTED"
+    },
+    {
+      "name": "D contradictory codes",
+      "expected": "REJECTED",
+      "actual": "REJECTED"
+    },
+    {
+      "name": "two-stage median differs from pooled",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "even median 2.5",
+      "expected": "FAIL",
+      "actual": "FAIL"
+    },
+    {
+      "name": "enumerated C=10",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "enumerated C=9",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "enumerated C=8",
+      "expected": "PASS",
+      "actual": "PASS"
+    },
+    {
+      "name": "enumerated C=7",
+      "expected": "FAIL",
+      "actual": "FAIL"
+    },
+    {
+      "name": "enumerated C=6",
+      "expected": "FAIL",
+      "actual": "FAIL"
+    },
+    {
+      "name": "enumerated C=5",
+      "expected": "FAIL",
+      "actual": "FAIL"
+    },
+    {
+      "name": "enumerated C=4",
+      "expected": "FAIL",
+      "actual": "FAIL"
+    },
+    {
+      "name": "enumerated C=3",
+      "expected": "FAIL",
+      "actual": "FAIL"
+    },
+    {
+      "name": "enumerated C=2",
+      "expected": "FAIL",
+      "actual": "FAIL"
+    },
+    {
+      "name": "enumerated C=1",
+      "expected": "FAIL",
+      "actual": "FAIL"
+    },
+    {
+      "name": "enumerated C=0",
+      "expected": "FAIL",
+      "actual": "FAIL"
+    }
+  ]
+}

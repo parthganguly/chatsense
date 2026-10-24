@@ -1,0 +1,64 @@
+**CURRENT — 23 October 2026: STAGE 8A SCIENTIFIC PREPARATION ASSIGNED, NOT EXECUTED.** Astra's bounded P0 preregistration/stimulus/consent/coding/readiness mandate is in [handoff #6364672064](https://github.com/parthganguly/chatsense/issues/29#issuecomment-6364672064). **Actual app screenshots not yet frozen; no consenting participant data recorded; no recruitment begun.** Astra may use Opus in native Claude Code for technical capture and Sol 6.1 in Codex for independent synthetic instrument checks. P0 READY evidence and owner approval are needed before P1 participant sessions. The binding study criteria below remain unchanged; Stage 8B stays blocked.
+
+## Purpose — empirical comprehension validation **before Stage 8B**
+
+PR [#21](https://github.com/parthganguly/chatsense/pull/21) **merged into `main`** with merge commit `2415a51385f60ff9e43ca2e26b66c8c9a7fd6267` on 2026-10-10. This merge is engineering integration, **not** a completed comprehension study or user-facing safety certification. The still-required study is specified in [the authoritative audit, §29](https://github.com/parthganguly/chatsense/blob/main/docs/product/chatsense-full-project-audit.md) and [master plan §12](https://github.com/parthganguly/chatsense/blob/main/docs/product/chatsense-master-plan.md). **Do not start Stage 8B** until the study satisfies those gates or revised wording is tested again.
+
+Design and execute a *small comprehension/usability pilot*, not a psychometric construct-validity study or clinical study. Do not claim statistical population generalisability from 8–10 participants. Use this frozen protocol; preregister thresholds in the study PR before evaluating responses, and record deviations.
+
+## Recruitment (audit §29)
+
+- 8–10 consenting adults; acquaintances-of-acquaintances rather than developer's inner circle.
+- At least 3 currently encountering an uncertain conversation (romantic or friendship).
+- At least 2 considering a non-romantic relationship/chat.
+- No minors; small thank-you or voucher acceptable.
+- Independent/non-coercive recruitment; no collecting or viewing participants' private exports, screenshots of personal conversations or third-party messages.
+
+## Materials and stimulus set (audit §29)
+
+Show the current Stage 8A app rendering five **synthetic** scenario cards; screenshots from the built app are acceptable:
+1. Pattern changed.
+2. Steady/balanced.
+3. Carried contact (mixed).
+4. Unusual silence with restart history.
+5. Not enough data.
+
+Rotate the starting scenario between participants, keeping the planned order otherwise. Preserve the exact rendered wording and date/version/fixture ID for each stimulus so results are reproducible and no silent copy drift occurs. Do not show any real chat export to the experimenter.
+
+## Per-card protocol (approximately 4 minutes; audit §29)
+
+1. Ten seconds of silent reading (timed).
+2. Open questions: “What does this tell you?” and “What does it **not** tell you?”
+3. Comprehension question: “Will they reply, according to this?” (correct: the app does not say).
+4. Usefulness score 1–5.
+5. Creepiness/trust score 1–5 (explicit anchors recorded in study form).
+6. “Would you want this about a chat of yours?”
+7. For silence scenario only: “What do you expect to happen next in that chat?” to detect misreading historical patterns as predictions.
+
+End-of-session questions:
+- “Which card would you screenshot for a friend, if any?”
+- “Would you check the same chat again in a few weeks?”
+- Overall trust rating.
+- “Was the evidence visible enough or too buried?”
+
+## Pre-registered acceptance (audit §29)
+
+- At least **8/10** correctly say it doesn't establish motives or predict replies (report exact numerator/denominator if N is not 10).
+- **Zero participants** take the historical next-pattern sentence as a promise.
+- Median usefulness **≥4** on at least two of the five cards.
+- Median creepiness **≤2**.
+- At least **half** say they would want this for their own chat.
+
+Failure of comprehension thresholds **blocks Stage 8B** and requires wording revision with re-testing, not introduction of extra predictive features. Record all responses and coding rules, including ambiguous answers, missingness, deviations, facilitator influence and disagreements; do not post identifiable responses publicly.
+
+## Execution and outputs
+
+- Astra owns pre-registration, scientific/UX interpretation and gate decision; Sol helps with synthetic reproducibility, blind-coded responses and data integrity. No automated generation of fake participant responses.
+- Review and cite the actual rendered screenshots/card text. Use synthetic data only for shared fixtures and developer tooling.
+- Produce consent language, stimulus manifest, an anonymized coding rubric, study results with denominators and quotes only if safe/consented, and a PASS/FAIL/INCONCLUSIVE gate decision with exact reasons.
+- Keep psychometrics/cross-medium research in [#24](https://github.com/parthganguly/chatsense/issues/24), optional personal-model M2 design in [#28](https://github.com/parthganguly/chatsense/issues/28) deferred until the evidence review, and M1 internal implementation [#27](https://github.com/parthganguly/chatsense/pull/27) unmerged pending separate owner approval.
+- Do not prompt users to recheck chats compulsively; “Would you check again?” is a research question, not authorization to add reminders.
+- The successful Stage 8A code merge triggers existing `main` CI and debug APK prerelease automation, but that automated build cannot satisfy this human study.
+
+**Definition of done:** actual participant data have been collected and independently reviewed against predeclared rules, no private third-party chat content uploaded, and a documented gate decision exists. Writing a plan alone is not completion.
+

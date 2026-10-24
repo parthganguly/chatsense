@@ -1,0 +1,5 @@
+# Preserve fetched authority bodies and terminal receipts byte-for-byte.
+# Code, protocol, forms and other authored files retain normal whitespace checks.
+authority/*.md whitespace=-blank-at-eof
+preflight/*.log -whitespace
+stimuli/verification/*.log -whitespace
