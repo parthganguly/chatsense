@@ -1,0 +1,82 @@
+{
+  "schema": "stage8a-science-invariants-v1",
+  "target_participants": 10,
+  "comprehension_min_correct": 8,
+  "history_confirmed_promise_max": 0,
+  "history_no_promise_required": 10,
+  "usefulness_min_card_median": 4,
+  "usefulness_min_qualifying_cards": 2,
+  "creepiness_aggregation": "median of ten participant medians over five cards",
+  "creepiness_max": 2,
+  "own_chat_interest_aggregation": "distinct participants with at least one unambiguous yes",
+  "own_chat_interest_min": 5,
+  "reduced_n_pass": false,
+  "missing_core_allows_pass": false,
+  "ambiguous_history_allows_pass": false,
+  "participant_replacement_after_exposure": false,
+  "human_study_decision": "NOT_RUN",
+  "participant_recruitment_authorized": false,
+  "stage8b_authorized": false,
+  "v1_commit": "64efc6d0018106d0644dc620ffca8939ac50c088",
+  "unchanged_files": [
+    {
+      "path": "materials/CODING-RUBRIC.md",
+      "v1_sha256": "76451f47cf4163ed92bc69ec01a788180814952e5d2a7da810b4faf8ed96d7ac",
+      "v2_sha256": "76451f47cf4163ed92bc69ec01a788180814952e5d2a7da810b4faf8ed96d7ac"
+    },
+    {
+      "path": "materials/INTERVIEW.md",
+      "v1_sha256": "206c7352008face8a2f167796ee5073b81fede02be44ce5c46bc31424400971d",
+      "v2_sha256": "206c7352008face8a2f167796ee5073b81fede02be44ce5c46bc31424400971d"
+    },
+    {
+      "path": "materials/CONSENT-AND-RECRUITMENT.md",
+      "v1_sha256": "f97eff5dbc8593a39aa3fb63c0c553f78173dd9f82907019e0e266b3e41a0120",
+      "v2_sha256": "f97eff5dbc8593a39aa3fb63c0c553f78173dd9f82907019e0e266b3e41a0120"
+    },
+    {
+      "path": "materials/RECORDING-AND-REVIEW.md",
+      "v1_sha256": "b52c9a561d33882baecf3358ef6824c77e439f61902f5be9c5528d08d9dc2315",
+      "v2_sha256": "b52c9a561d33882baecf3358ef6824c77e439f61902f5be9c5528d08d9dc2315"
+    },
+    {
+      "path": "preflight/gate.py",
+      "v1_sha256": "44b348049ac0697cdeb5b89ba2f399bdf9709f003acb23063156c417fe25e88f",
+      "v2_sha256": "44b348049ac0697cdeb5b89ba2f399bdf9709f003acb23063156c417fe25e88f"
+    },
+    {
+      "path": "preflight/test_gate.py",
+      "v1_sha256": "42d006be6015242d05a31bdd8602b38f94b6fbd70961aee98e9f76290512b8c6",
+      "v2_sha256": "42d006be6015242d05a31bdd8602b38f94b6fbd70961aee98e9f76290512b8c6"
+    },
+    {
+      "path": "preflight/run-report.py",
+      "v1_sha256": "a2509e74ea2bc46d15a537f366b0861eca165396f30e080af75780c45cd3fee1",
+      "v2_sha256": "a2509e74ea2bc46d15a537f366b0861eca165396f30e080af75780c45cd3fee1"
+    },
+    {
+      "path": "preflight/validate-schema.mjs",
+      "v1_sha256": "a46c8a7e9fa4c1e1e463bf81b045db537aa0baf8508ce7f1fd0b50884f9549bf",
+      "v2_sha256": "a46c8a7e9fa4c1e1e463bf81b045db537aa0baf8508ce7f1fd0b50884f9549bf"
+    }
+  ],
+  "v1_scientific_methods_tail_sha256": "d8d78298f1a934d50a2495f5de3ee6fe887f63506d7442755cd9cea61d5e2ad4",
+  "allowed_amendments": [
+    "protocol identity/date/authority and product-source provenance",
+    "version identifiers in blank form/schema and reproduction paths",
+    "complete native-scale selected screenshot set and display rule in STIMULUS-REVIEW.md",
+    "presentation-only readability change and corresponding evidence/provenance"
+  ],
+  "version_only_files": [
+    {
+      "path": "materials/BLANK-RESPONSE.json",
+      "v1_sha256": "4d08b2687ec9a372aaab040198b7c205b78e004b14160b970135a41745f075f4",
+      "normalized_v2_sha256": "4d08b2687ec9a372aaab040198b7c205b78e004b14160b970135a41745f075f4"
+    },
+    {
+      "path": "materials/response.schema.json",
+      "v1_sha256": "c52582d64a963d0bfda314b87b3b66fb802e6092bf0268d0b94b3ed3745b4eca",
+      "normalized_v2_sha256": "c52582d64a963d0bfda314b87b3b66fb802e6092bf0268d0b94b3ed3745b4eca"
+    }
+  ]
+}

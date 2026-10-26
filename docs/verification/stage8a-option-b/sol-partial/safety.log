@@ -1,0 +1,5 @@
+s8a-v1-c1-pattern-change: independent frozen-read language scan passed
+s8a-v1-c2-carried-balanced: independent frozen-read language scan passed
+s8a-v1-c3-carried-mixed: independent frozen-read language scan passed
+s8a-v1-c4-unusual-silence: independent frozen-read language scan passed
+s8a-v1-c5-insufficient: independent frozen-read language scan passed

@@ -1,0 +1,79 @@
+
+> chatsense@0.1.0 check
+> npm run lint && npm run typecheck && npm run test && npm run test:parity && npm run test:forecast-parity && npm run forecast:eval && npm run build
+
+
+> chatsense@0.1.0 lint
+> eslint .
+
+
+> chatsense@0.1.0 typecheck
+> npm run test:core && tsc --noEmit
+
+
+> chatsense@0.1.0 test:core
+> npm run typecheck -w @chatsense/core
+
+
+> @chatsense/core@0.1.0 typecheck
+> tsc -p tsconfig.json --noEmit
+
+
+> chatsense@0.1.0 test
+> tsx tests/import-boundaries.ts && tsx tests/relationship-dynamics.ts && tsx tests/insight-narrative.ts && tsx tests/human-takeaway.ts && tsx tests/relationship-read.ts && tsx tests/onboarding.ts && tsx tests/forecasting.ts
+
+Import and boundary tests passed.
+Relationship dynamics tests passed.
+Insight narrative tests passed (12-case Stage 6 matrix plus safety and UI checks).
+Human takeaway tests passed (15-case Stage 6.2-6.4 matrix).
+Relationship read tests passed (Stage 8A hero-state matrix).
+Onboarding and demo import tests passed.
+Forecasting research tests passed (13 tests).
+
+> chatsense@0.1.0 test:parity
+> tsx tests/parity.ts
+
+TypeScript parity passed for 21 fixtures.
+
+> chatsense@0.1.0 test:forecast-parity
+> tsx tests/forecasting-parity.ts
+
+Forecasting parity passed for 10 fixtures.
+
+> chatsense@0.1.0 forecast:eval
+> tsx scripts/forecast-evaluate.ts
+
+Wrote TypeScript forecasting evaluation for 10 fixtures to /Users/parth/.codex/worktrees/stage8a-ux-audit/whatsapp-analytics-ui/artifacts/forecasting
+
+> chatsense@0.1.0 build
+> next build
+
+   ▲ Next.js 15.2.4
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+
+ ⚠ The Next.js plugin was not detected in your ESLint configuration. See https://nextjs.org/docs/app/api-reference/config/eslint#migrating-existing-config
+   Collecting page data ...
+   Generating static pages (0/4) ...
+   Generating static pages (1/4) 
+   Generating static pages (2/4) 
+   Generating static pages (3/4) 
+ ✓ Generating static pages (4/4)
+   Finalizing page optimization ...
+   Collecting build traces ...
+   Exporting (0/3) ...
+ ✓ Exporting (3/3)
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                     125 kB         226 kB
+└ ○ /_not-found                            977 B         102 kB
++ First Load JS shared by all             101 kB
+  ├ chunks/4bd1b696-16d61eec428fe094.js  53.2 kB
+  ├ chunks/684-28b8ba1b514fd5b3.js       45.4 kB
+  └ other shared chunks (total)          1.92 kB
+
+
+○  (Static)  prerendered as static content
+

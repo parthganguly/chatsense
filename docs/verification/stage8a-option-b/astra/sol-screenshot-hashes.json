@@ -1,0 +1,156 @@
+[
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/keyboard-destination.partial.png",
+    "width": 320,
+    "height": 844,
+    "sha256": "edfe786e2f3b856d6b78616c8e8f01f573bc7287f41f523b9e512cd70aa66bb4",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c1-pattern-change.combined.partial-first-screen.png",
+    "width": 320,
+    "height": 844,
+    "sha256": "98ce972e4418dad49bb7b40e64de44e2bd6daba5a4e8cda3f0dc9b16e2d3baa8",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c1-pattern-change.desktop.partial-first-screen.png",
+    "width": 1280,
+    "height": 1000,
+    "sha256": "5cbcd9092121b201f951b8401061e517ea93350f70f91e800d81a70576ed2903",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c1-pattern-change.mobile.partial-first-screen.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "99d1bb9d917c2c46dba4597fa148bab51466cb2a2fc816abce528848788e1d8f",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c1-pattern-change.whole-344px.png",
+    "width": 344,
+    "height": 582,
+    "sha256": "175a97afae81de586c174b12906e4325d6205a91001d24a8a43724d6ecfeab06",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c2-carried-balanced.combined.partial-first-screen.png",
+    "width": 320,
+    "height": 844,
+    "sha256": "8d30bb910701a6a6e56b89157e63c767d03a6b397b3eb0a0d56bf39da5017961",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c2-carried-balanced.desktop.partial-first-screen.png",
+    "width": 1280,
+    "height": 1000,
+    "sha256": "b41e5e3f4f5ac3843b514808d1717561b47b85f59571360fb7be47c0fcfec447",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c2-carried-balanced.mobile.partial-first-screen.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "9021c82d923be740bebd72903019d591bf132ad14f52fed32ef7487ee87b4500",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c2-carried-balanced.whole-344px.png",
+    "width": 344,
+    "height": 536,
+    "sha256": "9ea6852193a568cd4efb4f23a515c1c55f4f68f433048d4f863bc336e3a189cc",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c3-carried-mixed.combined.partial-first-screen.png",
+    "width": 320,
+    "height": 844,
+    "sha256": "990b7c4d79b9c0d0d60eb3b73ac872674100802c415a896028d10dc5ad7201a8",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c3-carried-mixed.desktop.partial-first-screen.png",
+    "width": 1280,
+    "height": 1000,
+    "sha256": "64c59dcead0e6e83861c17e3acdd5ab212c75cbe8d21a97fc029d1d241b98160",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c3-carried-mixed.mobile.partial-first-screen.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "ebd493a3c6c9f09e5f732104b31782574e1c7524a7f352983a7e21914107c480",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c3-carried-mixed.whole-344px.png",
+    "width": 344,
+    "height": 560,
+    "sha256": "4c5758d73fba9f548866d0e4e86610d0517cf2582c2c8ff9f385275ab6950c28",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c4-unusual-silence.combined.partial-first-screen.png",
+    "width": 320,
+    "height": 844,
+    "sha256": "fc8e2ce1ccc120e7ef022250d2183a8a94f734044dc4e0c12a7fc7a1a4278717",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c4-unusual-silence.desktop.partial-first-screen.png",
+    "width": 1280,
+    "height": 1000,
+    "sha256": "6586c7e630a83bef0a41c5de5db94cb8f8c31bd15efa6c3730a17f65a3475f0b",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c4-unusual-silence.mobile.partial-first-screen.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "6b3ea74223ec498b98847c03fd8f2e4297edbaea8c89b8d17bd02b3d3591c0a7",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c4-unusual-silence.whole-344px.png",
+    "width": 344,
+    "height": 696,
+    "sha256": "5577f1748ec6a18223599139c8dca462b42077c6123260ca3d65f25adfa785db",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c5-insufficient.combined.partial-first-screen.png",
+    "width": 320,
+    "height": 844,
+    "sha256": "bc408150f3294401e484d7b5ef8077781f4a33cef105d29eb865c72ba72f3a1c",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c5-insufficient.desktop.partial-first-screen.png",
+    "width": 1280,
+    "height": 1000,
+    "sha256": "3bd5884b4a216f349f13adeb108c4d8e2df067d4f7e01e54d70670199f30e3c4",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c5-insufficient.mobile.partial-first-screen.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "6347a188b92e97bf9293f35d57f200ce31ee7dc7b10568e3282ab2b9a10ef4ad",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/s8a-v1-c5-insufficient.whole-344px.png",
+    "width": 344,
+    "height": 544,
+    "sha256": "6ecba7a7a257524107630036d924bb595dc64afcd581128486c1404ddca317b9",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  },
+  {
+    "path": "docs/verification/stage8a-option-b/sol-partial/stress-320-text200-unbroken120.partial.png",
+    "width": 320,
+    "height": 844,
+    "sha256": "937742162c36529e7bc464c8bdb1175c95b8c75d808c7fe321d2cdd8a8667f19",
+    "role": "independent failed-candidate audit; not a selected P0 v2 stimulus"
+  }
+]

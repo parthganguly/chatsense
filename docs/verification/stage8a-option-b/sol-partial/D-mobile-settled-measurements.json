@@ -1,0 +1,554 @@
+[
+  {
+    "ancestorOpacity": [
+      {
+        "tag": "SECTION",
+        "opacity": "1"
+      },
+      {
+        "tag": "DIV",
+        "opacity": "1"
+      },
+      {
+        "tag": "DIV",
+        "opacity": "1"
+      },
+      {
+        "tag": "MAIN",
+        "opacity": "1"
+      },
+      {
+        "tag": "DIV",
+        "opacity": "1"
+      },
+      {
+        "tag": "DIV",
+        "opacity": "1"
+      },
+      {
+        "tag": "DIV",
+        "opacity": "1"
+      },
+      {
+        "tag": "BODY",
+        "opacity": "1"
+      },
+      {
+        "tag": "HTML",
+        "opacity": "1"
+      }
+    ],
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 696,
+      "right": 370,
+      "bottom": 801
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "rows": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "foreground": [
+          6,
+          95,
+          70
+        ],
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "contrast": 7.683677009324036,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 153.828125,
+          "height": 16,
+          "right": 193.828125,
+          "bottom": 138
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 193.828125,
+            "bottom": 138
+          }
+        ]
+      },
+      {
+        "text": "Useful read",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "foreground": [
+          51,
+          65,
+          85
+        ],
+        "background": [
+          241,
+          245,
+          249
+        ],
+        "contrast": 9.451924418631656,
+        "rect": {
+          "x": 267.375,
+          "y": 122,
+          "width": 85.625,
+          "height": 20,
+          "right": 353,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 277.375,
+            "y": 123,
+            "right": 343,
+            "bottom": 140
+          }
+        ]
+      },
+      {
+        "text": "The current quiet is long for this chat.",
+        "fontSize": 20,
+        "lineHeight": 28,
+        "foreground": [
+          2,
+          6,
+          23
+        ],
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "contrast": 20.172843484025293,
+        "rect": {
+          "x": 40,
+          "y": 150,
+          "width": 313,
+          "height": 56,
+          "right": 353,
+          "bottom": 206
+        },
+        "ranges": [
+          {
+            "x": 40,
+            "y": 150,
+            "right": 347.6875,
+            "bottom": 178
+          },
+          {
+            "x": 40,
+            "y": 178,
+            "right": 89.671875,
+            "bottom": 206
+          }
+        ]
+      },
+      {
+        "text": "Counting from the export's last message, this quiet has already run longer than 10 of the 10 earlier day-plus quiet stretches in this export.",
+        "fontSize": 14,
+        "lineHeight": 24,
+        "foreground": [
+          71,
+          85,
+          105
+        ],
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "contrast": 7.577663953533317,
+        "rect": {
+          "x": 40,
+          "y": 214,
+          "width": 313,
+          "height": 72,
+          "right": 353,
+          "bottom": 286
+        },
+        "ranges": [
+          {
+            "x": 40,
+            "y": 216,
+            "right": 334.359375,
+            "bottom": 235
+          },
+          {
+            "x": 40,
+            "y": 240,
+            "right": 328.65625,
+            "bottom": 259
+          },
+          {
+            "x": 40,
+            "y": 264,
+            "right": 330.5,
+            "bottom": 283
+          }
+        ]
+      },
+      {
+        "text": "Counted in this export",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "foreground": [
+          71,
+          85,
+          105
+        ],
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "contrast": 7.577663953533317,
+        "rect": {
+          "x": 40,
+          "y": 298,
+          "width": 313,
+          "height": 16,
+          "right": 353,
+          "bottom": 314
+        },
+        "ranges": [
+          {
+            "x": 40,
+            "y": 297,
+            "right": 168.359375,
+            "bottom": 314
+          }
+        ]
+      },
+      {
+        "text": "No messages appear after Mar 29, 2026 in this export — quiet for at least 15 days so far.",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "foreground": [
+          71,
+          85,
+          105
+        ],
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "contrast": 7.577663953533317,
+        "rect": {
+          "x": 52,
+          "y": 318,
+          "width": 301,
+          "height": 40,
+          "right": 353,
+          "bottom": 358
+        },
+        "ranges": [
+          {
+            "x": 52,
+            "y": 318,
+            "right": 327.78125,
+            "bottom": 337
+          },
+          {
+            "x": 52,
+            "y": 338,
+            "right": 334.671875,
+            "bottom": 357
+          }
+        ]
+      },
+      {
+        "text": "All 10 earlier day-plus quiet stretches in this export ended with a new message — 7 of those first messages came from Ravi.",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "foreground": [
+          71,
+          85,
+          105
+        ],
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "contrast": 7.577663953533317,
+        "rect": {
+          "x": 52,
+          "y": 360,
+          "width": 301,
+          "height": 60,
+          "right": 353,
+          "bottom": 420
+        },
+        "ranges": [
+          {
+            "x": 52,
+            "y": 360,
+            "right": 330.4375,
+            "bottom": 379
+          },
+          {
+            "x": 52,
+            "y": 380,
+            "right": 351.546875,
+            "bottom": 399
+          },
+          {
+            "x": 52,
+            "y": 400,
+            "right": 256.828125,
+            "bottom": 419
+          }
+        ]
+      },
+      {
+        "text": "Earlier day-plus quiet stretches typically ran 2.1 days; the longest ran 2.6 days.",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "foreground": [
+          71,
+          85,
+          105
+        ],
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "contrast": 7.577663953533317,
+        "rect": {
+          "x": 52,
+          "y": 422,
+          "width": 301,
+          "height": 40,
+          "right": 353,
+          "bottom": 462
+        },
+        "ranges": [
+          {
+            "x": 52,
+            "y": 422,
+            "right": 335.546875,
+            "bottom": 441
+          },
+          {
+            "x": 52,
+            "y": 442,
+            "right": 263.765625,
+            "bottom": 461
+          }
+        ]
+      },
+      {
+        "text": "After earlier day-plus pauses, this chat picked back up all 10 times inside this export — 7 of those restarts began with a message from Ravi. That is a count of the past, not a promise about this quiet.",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "foreground": [
+          71,
+          85,
+          105
+        ],
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "contrast": 7.577663953533317,
+        "rect": {
+          "x": 40,
+          "y": 474,
+          "width": 313,
+          "height": 100,
+          "right": 353,
+          "bottom": 574
+        },
+        "ranges": [
+          {
+            "x": 54,
+            "y": 474,
+            "right": 349.359375,
+            "bottom": 493
+          },
+          {
+            "x": 54,
+            "y": 494,
+            "right": 335.328125,
+            "bottom": 513
+          },
+          {
+            "x": 54,
+            "y": 514,
+            "right": 327.953125,
+            "bottom": 533
+          },
+          {
+            "x": 54,
+            "y": 534,
+            "right": 298.171875,
+            "bottom": 553
+          },
+          {
+            "x": 54,
+            "y": 554,
+            "right": 215.34375,
+            "bottom": 573
+          }
+        ]
+      },
+      {
+        "text": "Measured from the export's last message on Mar 29, 2026. If you have spoken since then, re-export for a current read.",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "foreground": [
+          71,
+          85,
+          105
+        ],
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "contrast": 7.577663953533317,
+        "rect": {
+          "x": 40,
+          "y": 586,
+          "width": 313,
+          "height": 60,
+          "right": 353,
+          "bottom": 646
+        },
+        "ranges": [
+          {
+            "x": 40,
+            "y": 586,
+            "right": 328.8125,
+            "bottom": 605
+          },
+          {
+            "x": 40,
+            "y": 606,
+            "right": 345.078125,
+            "bottom": 625
+          },
+          {
+            "x": 40,
+            "y": 626,
+            "right": 200.4375,
+            "bottom": 645
+          }
+        ]
+      },
+      {
+        "text": "Longer than usual is a timing fact from this export alone. It cannot say why this chat is quiet, and it cannot see messages, calls, or contact happening anywhere else.",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "foreground": [
+          51,
+          65,
+          85
+        ],
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "contrast": 10.35474573184942,
+        "rect": {
+          "x": 40,
+          "y": 658,
+          "width": 313,
+          "height": 93,
+          "right": 353,
+          "bottom": 751
+        },
+        "ranges": [
+          {
+            "x": 40,
+            "y": 671,
+            "right": 317.890625,
+            "bottom": 690
+          },
+          {
+            "x": 40,
+            "y": 691,
+            "right": 314.765625,
+            "bottom": 710
+          },
+          {
+            "x": 40,
+            "y": 711,
+            "right": 317.15625,
+            "bottom": 730
+          },
+          {
+            "x": 40,
+            "y": 731,
+            "right": 261.390625,
+            "bottom": 750
+          }
+        ]
+      },
+      {
+        "text": "See the evidence in the Rhythm tab",
+        "fontSize": 14,
+        "lineHeight": 20,
+        "foreground": [
+          6,
+          95,
+          70
+        ],
+        "background": [
+          255,
+          255,
+          255
+        ],
+        "contrast": 7.683677009324036,
+        "rect": {
+          "x": 40,
+          "y": 763,
+          "width": 237.859375,
+          "height": 20,
+          "right": 277.859375,
+          "bottom": 783
+        },
+        "ranges": [
+          {
+            "x": 40,
+            "y": 763,
+            "right": 172.421875,
+            "bottom": 782
+          },
+          {
+            "x": 172.421875,
+            "y": 763,
+            "right": 277.859375,
+            "bottom": 782
+          }
+        ]
+      }
+    ],
+    "scroll": 0,
+    "documentWidth": 390,
+    "viewport": 390,
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "mobile",
+    "clock": 1776104100000,
+    "textEqual": true,
+    "href": "#narrative-heading"
+  }
+]

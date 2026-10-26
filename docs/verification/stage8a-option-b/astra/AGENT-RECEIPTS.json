@@ -1,0 +1,48 @@
+{
+  "schema": "stage8a-optionb-agent-receipts-v1",
+  "recorded_by": "Astra",
+  "recorded_at_utc": "2026-10-26T04:27:29.181657+00:00",
+  "source_candidate": "8ee579420d56038800d0a4f453deb7e989d7325c",
+  "opus_engineering": {
+    "route": "native Claude Code CLI",
+    "model_requested": "claude-opus-5-5",
+    "session_id": "e765d760-fc19-499d-9ec7-a73c7d466b3e",
+    "terminal_status": "usage_limit_reached",
+    "http_status": 429,
+    "candidate_created_before_error": true,
+    "raw_receipt": "consultations/opus-engineering-native-receipt.json"
+  },
+  "opus_repair": {
+    "route": "native Claude Code CLI",
+    "model_requested": "claude-opus-5-5",
+    "session_id": "ba8485b0-8048-4d97-aa17-52c71c2f151e",
+    "terminal_status": "usage_limit_reached",
+    "http_status": 429,
+    "repair_executed": false,
+    "reported_message": "You've hit your session limit · resets 1pm (Asia/Calcutta)",
+    "raw_receipt": "consultations/opus-repair-native-receipt.json"
+  },
+  "sol_independent": {
+    "route": "Codex collaboration.spawn_agent",
+    "model_explicitly_requested": "gpt-6.1-sol",
+    "fork_turns": "none",
+    "canonical_agent": "/root/sol_stage8a_optionb",
+    "provider_session_id": "not exposed",
+    "status_confirmed_by": "collaboration.list_agents and agent terminal notification",
+    "terminal_status": "errored",
+    "reported_message": "You’ve hit your usage limit. Visit https://chatgpt.com/settings/usage to purchase more credits or try again at Nov 1st, 2026 12:30 PM.",
+    "reported_retry_timezone": "not supplied",
+    "final_review_written": false,
+    "findings_received_before_error": [
+      "D1: desktop limitation bottom851 vs main bottom823",
+      "D2: confidence pill right352.53 and text right332.53 at320px plus200%"
+    ],
+    "raw_artifact_count": 48,
+    "artifact_copy_receipt": "sol-preservation-receipt.json"
+  },
+  "astra_decision": "BLOCKED; candidate rejected on independently generated defect evidence; no UX PASS or v2 freeze",
+  "human_observations": 0,
+  "human_study_decision": "NOT_RUN",
+  "paid_external_api_used": false,
+  "alternative_model_used": false
+}
