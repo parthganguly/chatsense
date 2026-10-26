@@ -1,0 +1,2 @@
+# Keep the independent unified diff receipt byte-for-byte, including context-line spaces.
+stage8a-option-b-v2-final/allowed-metadata.diff -whitespace

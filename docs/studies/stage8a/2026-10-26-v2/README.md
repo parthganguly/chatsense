@@ -1,0 +1,15 @@
+# ChatSense Stage 8A Option B — P0 v2 packet
+
+Prepared by Astra under owner-approved issue #35 and the original issue #29/comment 6364672064 mandate. Start with READINESS.md for the decision, PREREGISTRATION.md for the methods, and STIMULUS-REVIEW.md for the five actual rendered cards and native-scale display rule. This repository preregistration is timestamped by its immutable published Git commit; it is not an external registry or ethics-board endorsement.
+
+The v1 packet at `64efc6d0018106d0644dc620ffca8939ac50c088` remains unchanged. V2 deliberately changes presentation after a bounded readability correction. No cohort may mix versions. Scientific methods, thresholds, participant denominators, consent, interview and rubric remain unchanged; SCIENCE-INVARIANTS.json and preflight/verify-science.py verify their byte identities. The rubric's original v1 title is retained because the rubric itself did not change; the study protocol and blank response/schema identify v2.
+
+Only the five `*.selected.card.png` images listed in stimuli/manifest.json are participant stimuli. First-screen, engineering and independent-audit screenshots are evidence, not interchangeable study images. Display at one image pixel per CSS pixel, with every pixel visible; never crop, scale to fit, highlight, add captions or show reviewer notes. See STIMULUS-REVIEW.md for the complete rule.
+
+materials/ contains the neutral consent/recruitment template, verbatim interview, reviewer-only rubric, private recording/review plan, blank form and schema. Complete the expressly listed P1 operational fields privately only after separate owner authorization. Do not distribute invitations or collect responses now. Only consent/interview materials are participant-facing; never show the scoring rules or FAKE controls before responses.
+
+preflight/ contains FAKE-only semantic/arithmetic controls, unchanged from v1, plus preservation and freeze verifiers. A synthetic PASS tests an instrument and is never a human-study result. consultations/ preserves attributable native Opus and independent Codex Sol receipts, including failed earlier attempts where labeled. Authority snapshots retain historical statuses as retrieved; READINESS.md and the final issue #35 result establish current acceptance.
+
+FREEZE.json inventories every final packet file except itself and generated nonartifact caches. Its own hash, inventory hash and immutable Git commit are published in the single issue #35 result. Never rerun capture or overwrite evidence inside the published frozen version; create a new version for amendments. The independent packet review targets an immutable preparation commit; the final freeze verification and exact final commit are published externally to avoid self-referential hashes.
+
+P0 readiness does not authorize P1 recruitment/sessions, imply human comprehension, release the product or start Stage 8B. Human observations: zero. Human study: NOT_RUN. No private exports, paid external APIs, S2 work or merges are included.

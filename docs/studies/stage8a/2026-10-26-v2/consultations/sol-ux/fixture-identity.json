@@ -1,0 +1,98 @@
+[
+  {
+    "path": "tests/viewport/fixtures/stage8a-v1/cards.json",
+    "v1": "/Users/parth/.codex/worktrees/stage8a-prereg/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-24-v1/stimuli/expected/cards.json",
+    "equal": true,
+    "sha256": "4981708a04a32591991abf0d1f23ecfe0cdf593950358506c56fd4b73fdd7c58"
+  },
+  {
+    "path": "tests/viewport/fixtures/stage8a-v1/s8a-v1-c1-pattern-change.card.innerText.txt",
+    "v1": "/Users/parth/.codex/worktrees/stage8a-prereg/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-24-v1/stimuli/captures/s8a-v1-c1-pattern-change.card.innerText.txt",
+    "equal": true,
+    "sha256": "8e77123a283e07a3bb03cc418c792d04aec95fbd764ee71dcebb2f6fed2e24d0"
+  },
+  {
+    "path": "tests/viewport/fixtures/stage8a-v1/s8a-v1-c1-pattern-change.relationship-read.json",
+    "v1": "/Users/parth/.codex/worktrees/stage8a-prereg/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-24-v1/stimuli/expected/s8a-v1-c1-pattern-change.relationship-read.json",
+    "equal": true,
+    "sha256": "8dd97d12a4b1440b2377139bb84918d0b6090a772272252dcacee22dfbae2625"
+  },
+  {
+    "path": "tests/viewport/fixtures/stage8a-v1/s8a-v1-c1-pattern-change.txt",
+    "v1": "/Users/parth/.codex/worktrees/stage8a-prereg/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-24-v1/stimuli/fixtures/s8a-v1-c1-pattern-change.txt",
+    "equal": true,
+    "sha256": "0eb4a752559cc8ec4bc28a6e8452f4fad3c1ff85beba4df4ee97c26d68c719ce"
+  },
+  {
+    "path": "tests/viewport/fixtures/stage8a-v1/s8a-v1-c2-carried-balanced.card.innerText.txt",
+    "v1": "/Users/parth/.codex/worktrees/stage8a-prereg/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-24-v1/stimuli/captures/s8a-v1-c2-carried-balanced.card.innerText.txt",
+    "equal": true,
+    "sha256": "e8a3f104a27c56d1e91f2a3aac98f9c2819a33e6a9ca8af3b3d5bcc461e44cca"
+  },
+  {
+    "path": "tests/viewport/fixtures/stage8a-v1/s8a-v1-c2-carried-balanced.relationship-read.json",
+    "v1": "/Users/parth/.codex/worktrees/stage8a-prereg/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-24-v1/stimuli/expected/s8a-v1-c2-carried-balanced.relationship-read.json",
+    "equal": true,
+    "sha256": "2002831fa6b1547cf4200f26a307a47cb9f5799c596c0cac216cb10e127893fb"
+  },
+  {
+    "path": "tests/viewport/fixtures/stage8a-v1/s8a-v1-c2-carried-balanced.txt",
+    "v1": "/Users/parth/.codex/worktrees/stage8a-prereg/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-24-v1/stimuli/fixtures/s8a-v1-c2-carried-balanced.txt",
+    "equal": true,
+    "sha256": "385c67e2d968d279faade58bfa8ae188c1bee49d15e482ec98026d5924708848"
+  },
+  {
+    "path": "tests/viewport/fixtures/stage8a-v1/s8a-v1-c3-carried-mixed.card.innerText.txt",
+    "v1": "/Users/parth/.codex/worktrees/stage8a-prereg/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-24-v1/stimuli/captures/s8a-v1-c3-carried-mixed.card.innerText.txt",
+    "equal": true,
+    "sha256": "a84f90be893c2c337014f44008c0bc37b77aa6d363931af50c7e0256ed20b4fa"
+  },
+  {
+    "path": "tests/viewport/fixtures/stage8a-v1/s8a-v1-c3-carried-mixed.relationship-read.json",
+    "v1": "/Users/parth/.codex/worktrees/stage8a-prereg/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-24-v1/stimuli/expected/s8a-v1-c3-carried-mixed.relationship-read.json",
+    "equal": true,
+    "sha256": "b03201e658c39f4e2d3cbaa4cb0c6fb58568fe8a05ed2c5c7dabc8cc7b2e0d25"
+  },
+  {
+    "path": "tests/viewport/fixtures/stage8a-v1/s8a-v1-c3-carried-mixed.txt",
+    "v1": "/Users/parth/.codex/worktrees/stage8a-prereg/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-24-v1/stimuli/fixtures/s8a-v1-c3-carried-mixed.txt",
+    "equal": true,
+    "sha256": "30342ce2cebeb294577abb781222c6956984502e99beb8c5e0451c86ff99a34b"
+  },
+  {
+    "path": "tests/viewport/fixtures/stage8a-v1/s8a-v1-c4-unusual-silence.card.innerText.txt",
+    "v1": "/Users/parth/.codex/worktrees/stage8a-prereg/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-24-v1/stimuli/captures/s8a-v1-c4-unusual-silence.card.innerText.txt",
+    "equal": true,
+    "sha256": "d0712ba7660daadd1d429312c2959db589bc26647196d400073dbc00107a0608"
+  },
+  {
+    "path": "tests/viewport/fixtures/stage8a-v1/s8a-v1-c4-unusual-silence.relationship-read.json",
+    "v1": "/Users/parth/.codex/worktrees/stage8a-prereg/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-24-v1/stimuli/expected/s8a-v1-c4-unusual-silence.relationship-read.json",
+    "equal": true,
+    "sha256": "a9c8bcecf304083cd0c1b98594175669d51a426cec98cbc3613399e5c8847cc9"
+  },
+  {
+    "path": "tests/viewport/fixtures/stage8a-v1/s8a-v1-c4-unusual-silence.txt",
+    "v1": "/Users/parth/.codex/worktrees/stage8a-prereg/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-24-v1/stimuli/fixtures/s8a-v1-c4-unusual-silence.txt",
+    "equal": true,
+    "sha256": "825f7a7d88ad9a8d57886637286dbe89e064246fd943e6952c277fd878a21273"
+  },
+  {
+    "path": "tests/viewport/fixtures/stage8a-v1/s8a-v1-c5-insufficient.card.innerText.txt",
+    "v1": "/Users/parth/.codex/worktrees/stage8a-prereg/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-24-v1/stimuli/captures/s8a-v1-c5-insufficient.card.innerText.txt",
+    "equal": true,
+    "sha256": "51328f28c947eef9f5d281985241353256fab282435ddf7d1109efee854c5f0f"
+  },
+  {
+    "path": "tests/viewport/fixtures/stage8a-v1/s8a-v1-c5-insufficient.relationship-read.json",
+    "v1": "/Users/parth/.codex/worktrees/stage8a-prereg/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-24-v1/stimuli/expected/s8a-v1-c5-insufficient.relationship-read.json",
+    "equal": true,
+    "sha256": "c9a81e06fa5422b1a4079c56c7c821f6928d230152219e837aff2af73c87b5f9"
+  },
+  {
+    "path": "tests/viewport/fixtures/stage8a-v1/s8a-v1-c5-insufficient.txt",
+    "v1": "/Users/parth/.codex/worktrees/stage8a-prereg/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-24-v1/stimuli/fixtures/s8a-v1-c5-insufficient.txt",
+    "equal": true,
+    "sha256": "629f69b4beb573ca334831f79b9b2122da1bb6af0b2aaea23da1b45fe4ece10f"
+  }
+]

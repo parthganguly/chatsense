@@ -1,0 +1,3 @@
+rows 40 native [('s8a-v1-c1-pattern-change', 344, 546), ('s8a-v1-c2-carried-balanced', 344, 500), ('s8a-v1-c3-carried-mixed', 344, 520), ('s8a-v1-c4-unusual-silence', 344, 656), ('s8a-v1-c5-insufficient', 344, 508)]
+problems []
+desktop clearance [('s8a-v1-c1-pattern-change', 119, True), ('s8a-v1-c2-carried-balanced', 165, True), ('s8a-v1-c3-carried-mixed', 145, True), ('s8a-v1-c4-unusual-silence', 9, True), ('s8a-v1-c5-insufficient', 157, True)]

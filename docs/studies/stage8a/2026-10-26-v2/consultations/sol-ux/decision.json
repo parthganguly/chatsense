@@ -1,0 +1,112 @@
+{
+  "decision": "UX PASS",
+  "source_commit": "72eeb00d436d3a85a117fb8fced3cf7597b12d31",
+  "source_component_sha256": "033be9330b718288147dba63bebab8a7bd9b2944d0c7f2481c770711442b10b5",
+  "scope": "Only five frozen Stage8A Relationship Read hero cards, owner-approved OptionB presentation correction",
+  "D1": "PASS: every original limitation line visible in unscrolled1280x1000 main; actual hit tests; D last bottom814/main823/clearance9",
+  "D2": "PASS: all confidence pills/text inside card content at320+200% and390+200%; no overlaps, clipping, font reduction",
+  "scientific_preservation": {
+    "reference_files_equal_v1": 16,
+    "actual_card_text_equal_rows": 40,
+    "total_rows": 40,
+    "clock_and_href_preserved": true,
+    "core_contracts_selection_diff": "empty against frozen v1 in inspected science-scope paths"
+  },
+  "contrast": {
+    "minimum_ratio": 7.577663953533317,
+    "scheme": "settled light and OS-dark preference; ancestor opacity1; alpha foreground/background composition",
+    "body_floor": "14px/20px;28px/40px when200%"
+  },
+  "geometry": {
+    "rows": 40,
+    "modes": [
+      "desktop",
+      "phone",
+      "narrow",
+      "text200",
+      "390-text200",
+      "320-text200",
+      "dark",
+      "native344"
+    ],
+    "range_or_element_escapes": 0,
+    "clipped_glyph_flags": 0,
+    "line_reachability_failures": 0,
+    "text_overlap_flags": 0,
+    "actual_doubling": true
+  },
+  "fresh_counterexample": {
+    "cards": 5,
+    "unbroken_token": "Q\u00d7121",
+    "source_mutation": false,
+    "test_DOM_only": true,
+    "line_counts": [
+      160,
+      144,
+      148,
+      184,
+      154
+    ],
+    "all_lines_reachable": true
+  },
+  "keyboard": {
+    "all_five_Tab_ShiftTab_focus_and_Enter_activation": true,
+    "outline": "1px auto rgb(0,95,204)"
+  },
+  "native_PNGs": [
+    {
+      "path": "screenshots/s8a-v1-c1-pattern-change.whole-native344.png",
+      "width": 344,
+      "height": 546,
+      "bytes": 64800,
+      "sha256": "eea78a25698389ab31dc52a232b7384b6165444157680f34219e171065c0b51f"
+    },
+    {
+      "path": "screenshots/s8a-v1-c2-carried-balanced.whole-native344.png",
+      "width": 344,
+      "height": 500,
+      "bytes": 53856,
+      "sha256": "c8498e524874adf000a693c46a7e1a2154d6392e24759494f1de0bd3713f5adf"
+    },
+    {
+      "path": "screenshots/s8a-v1-c3-carried-mixed.whole-native344.png",
+      "width": 344,
+      "height": 520,
+      "bytes": 53669,
+      "sha256": "70470d8b2a3ba4c7c738dd09088a1f05cd786ee2b07dcf375a607e23685ed602"
+    },
+    {
+      "path": "screenshots/s8a-v1-c4-unusual-silence.whole-native344.png",
+      "width": 344,
+      "height": 656,
+      "bytes": 78339,
+      "sha256": "56b2ac46dcaa48cfd11e229b462d6bd2ac1f8b6630ec965723dfecbdc7106816"
+    },
+    {
+      "path": "screenshots/s8a-v1-c5-insufficient.whole-native344.png",
+      "width": 344,
+      "height": 508,
+      "bytes": 55465,
+      "sha256": "77f4339d31bc6a333b70b6c5f010e3b31c8882f063a29619f98d037f9c82082e"
+    }
+  ],
+  "native_display_fit_800_css_px": true,
+  "commands": "commands.json",
+  "measurements": "measurements.json",
+  "summary": "summary.json",
+  "counterexample": "counterexample.json",
+  "unchanged_observations": [
+    "320+200% global ChatSense title/refresh overlap and export-name truncation",
+    "Details labels naming tabs retain Overview narrative-heading destination; unchanged scientific invariant",
+    "D details link827\u2013847 below desktop main823; reachable by scrolling",
+    "Long enlarged/narrow cards scroll; mid-word headline breaks preserve glyphs"
+  ],
+  "limits": [
+    "Scoped Chromium hero-card UX acceptance only",
+    "No genuine browser UI zoom, DPR substitution, Firefox/WebKit, screen reader, forced colors, physical device or blanket WCAG claim",
+    "No human-comprehension evidence; human study NOT_RUN",
+    "Audit PNGs are not P0v2 frozen stimuli; Astra must recapture/freeze and request separate fixed-packet/scoring audit",
+    "P1 and Stage8B remain unauthorized"
+  ],
+  "tracked_clean_before_after": true
+}

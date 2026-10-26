@@ -1,0 +1,33 @@
+{
+  "owner": "Astra",
+  "nativeOpus": {
+    "executable": "/Users/parth/.npm-global/bin/claude",
+    "requestedModel": "claude-opus-5-5",
+    "actualNativeReceipt": "opus-repair-success-native-receipt.json",
+    "session": "915233dd-1ffc-4584-bbc0-6eec1e216db6",
+    "result": "completed; fixed commit 72eeb00d436d3a85a117fb8fced3cf7597b12d31"
+  },
+  "independentUXSol": {
+    "tool": "collaboration.spawn_agent",
+    "canonicalTask": "/root/sol_stage8a_repair_audit",
+    "fork_turns": "none",
+    "explicitModelOverride": "gpt-6.1-sol",
+    "runtimeReceipt": "sol-ux/RUNTIME.json",
+    "providerModelId": "not separately exposed by subagent runtime; configured dispatch override recorded here",
+    "sourceCommit": "72eeb00d436d3a85a117fb8fced3cf7597b12d31",
+    "result": "UX PASS"
+  },
+  "planningOutlineNotice": "sol-ux-planning-outline-NOT-DISPATCH.txt is a historical planning outline, not a transcript of the actual final dispatch",
+  "noHumanData": true,
+  "independentPacketSol": {
+    "tool": "collaboration.followup_task",
+    "canonicalTask": "/root/sol_stage8a_repair_audit",
+    "modelConfiguration": "Existing explicit gpt-6.1-sol dispatch; no override/substitution",
+    "candidateCommit": "6c5ef1c61358e637fc38c5a036149863a4efef0a",
+    "result": "PASS",
+    "receipt": "sol-packet/RUNTIME.json",
+    "reviewSha256": "0e3a29ac48392878ecf91b2e415f25c901ea617f30d0d2d5a1bb85c86e2e5799",
+    "inventorySha256": "0a4a18454e9e1c536f5b9edb45a0e8b8bbf5d2af8bf2b1e2c0122d8d305c7d24",
+    "finalImmutableFreezeVerification": "Separate bounded verification published outside this packet to avoid recursive hashes"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "task": "/root/sol_stage8a_repair_audit",
+  "assignment": "separate independent P0v2 fixed-packet/scoring audit after own immutable-source UX review",
+  "requested_designation": "Sol6.1",
+  "model_limit": "System describes GPT-6 basis; exact provider runtime model ID/configuration is not exposed. No invented UUID or stronger attestation.",
+  "candidate_commit": "6c5ef1c61358e637fc38c5a036149863a4efef0a",
+  "accepted_product_source": "72eeb00d436d3a85a117fb8fced3cf7597b12d31",
+  "python": "3.14.3 (main, Mar 14 2026, 10:42:53) [Clang 14.0.0 (clang-1400.0.29.202)]",
+  "python_executable": "/usr/local/opt/python@3.14/bin/python3.14",
+  "python_dependencies": "standard library only; PYTHONDONTWRITEBYTECODE=1",
+  "node": "v24.14.0",
+  "ajv": {
+    "version": "6.15.0",
+    "path": "/Users/parth/.codex/worktrees/stage8a-ux-repair-audit/whatsapp-analytics-ui/node_modules/ajv/lib/ajv.js",
+    "installed_from": "prior accepted UX audit normal npm ci; no install or manifest change in current audit",
+    "sha256": "cc30899a3c8232e1183d6f4d26a54396213f68f7476c3492f783d08e25401023"
+  },
+  "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+  "skills": "Previously read locally verified ponytail-review and Vercel verification/React guidance during source audit; their paths/hashes are preserved in packet consultations/sol-ux/skills.json. No additional semantic-scoring skill or another harness plugin registration claimed.",
+  "product_browser_tests": "Not rerun; product zero-drift and prior independently accepted suite/browser evidence preserved. No browser or server started.",
+  "mutation_scope": "Only artifacts/stage8a-sol-v2-packet-audit; no tracked edits, recapture, commit, push, publication, private/human data, paid APIs or delegation.",
+  "initial_final_status": "clean; exact requested HEAD unchanged"
+}

@@ -1,0 +1,14 @@
+{
+  "snapshot_commit": "95db0c9695fadfa0953562c4762b80a6cd41ac31",
+  "path": "docs/studies/stage8a/2026-10-26-v2/stimuli/scripts/capture.mjs",
+  "pretrim_sha256": "98f217919fcd43d92962fa76301328631880516a4064a6cdf4650ce048098161",
+  "candidate_sha256": "8ae9a0adb1ee8f3cd9fba2464adbf2f18f7faf468a3674666a271c64c627615c",
+  "pretrim_bytes": 12504,
+  "candidate_bytes": 12503,
+  "equal_after_trailing_whitespace_removal": true,
+  "exact_suffix_delta": {
+    "old": "b'.kill();\\n}\\n\\n'",
+    "new": "b'r.kill();\\n}\\n'"
+  },
+  "limitation": "Archived immutable post-run/pre-trim snapshot proves only trailing whitespace differs from candidate script. capture-run.json has no execution-time script hash/signature; this does not cryptographically attest script bytes at execution."
+}

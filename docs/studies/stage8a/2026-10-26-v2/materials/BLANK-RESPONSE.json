@@ -1,0 +1,706 @@
+{
+  "form_state": "BLANK_TEMPLATE",
+  "participant_code": null,
+  "slot": null,
+  "protocol_version": "2026-10-26-v2",
+  "protocol_sha256": null,
+  "consent_record_reference": null,
+  "quote_consent": null,
+  "disposition": null,
+  "screening": {
+    "adult_confirmed": null,
+    "voluntary_consent": null,
+    "uncertain_romantic_or_friendship": null,
+    "nonromantic_context": null
+  },
+  "session": {
+    "start_at": null,
+    "end_at": null,
+    "facilitator_code": null,
+    "planned_order": [],
+    "actual_order": [],
+    "display": null,
+    "deviations": [],
+    "redaction_incident": null
+  },
+  "cards": [
+    {
+      "card_id": "A",
+      "screenshot_sha256": null,
+      "order_position": null,
+      "silent_read_seconds": null,
+      "fully_visible": null,
+      "tell": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "not_tell": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "reply_check": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "want": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "silence_next": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "usefulness": {
+        "value": null,
+        "missing_reason": null
+      },
+      "creepiness": {
+        "value": null,
+        "missing_reason": null
+      },
+      "want_code": null,
+      "deviations": []
+    },
+    {
+      "card_id": "B",
+      "screenshot_sha256": null,
+      "order_position": null,
+      "silent_read_seconds": null,
+      "fully_visible": null,
+      "tell": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "not_tell": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "reply_check": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "want": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "silence_next": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "usefulness": {
+        "value": null,
+        "missing_reason": null
+      },
+      "creepiness": {
+        "value": null,
+        "missing_reason": null
+      },
+      "want_code": null,
+      "deviations": []
+    },
+    {
+      "card_id": "C",
+      "screenshot_sha256": null,
+      "order_position": null,
+      "silent_read_seconds": null,
+      "fully_visible": null,
+      "tell": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "not_tell": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "reply_check": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "want": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "silence_next": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "usefulness": {
+        "value": null,
+        "missing_reason": null
+      },
+      "creepiness": {
+        "value": null,
+        "missing_reason": null
+      },
+      "want_code": null,
+      "deviations": []
+    },
+    {
+      "card_id": "D",
+      "screenshot_sha256": null,
+      "order_position": null,
+      "silent_read_seconds": null,
+      "fully_visible": null,
+      "tell": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "not_tell": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "reply_check": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "want": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "silence_next": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "usefulness": {
+        "value": null,
+        "missing_reason": null
+      },
+      "creepiness": {
+        "value": null,
+        "missing_reason": null
+      },
+      "want_code": null,
+      "deviations": []
+    },
+    {
+      "card_id": "E",
+      "screenshot_sha256": null,
+      "order_position": null,
+      "silent_read_seconds": null,
+      "fully_visible": null,
+      "tell": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "not_tell": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "reply_check": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "want": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "silence_next": {
+        "verbatim": null,
+        "missing_reason": null,
+        "probes": [],
+        "revisions": []
+      },
+      "usefulness": {
+        "value": null,
+        "missing_reason": null
+      },
+      "creepiness": {
+        "value": null,
+        "missing_reason": null
+      },
+      "want_code": null,
+      "deviations": []
+    }
+  ],
+  "end_questions": {
+    "screenshot_card": {
+      "verbatim": null,
+      "missing_reason": null,
+      "probes": [],
+      "revisions": []
+    },
+    "recheck_weeks": {
+      "verbatim": null,
+      "missing_reason": null,
+      "probes": [],
+      "revisions": []
+    },
+    "overall_trust": {
+      "value": null,
+      "missing_reason": null
+    },
+    "evidence_visibility": {
+      "verbatim": null,
+      "missing_reason": null,
+      "probes": [],
+      "revisions": []
+    }
+  },
+  "independent_reviews": [
+    {
+      "reviewer_id": null,
+      "blind_to_ratings_and_other_reviewer": null,
+      "locked_at": null,
+      "private_file_sha256": null,
+      "cards": {
+        "A": {
+          "motive": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "prediction": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "direct": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "history": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          }
+        },
+        "B": {
+          "motive": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "prediction": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "direct": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "history": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          }
+        },
+        "C": {
+          "motive": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "prediction": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "direct": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "history": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          }
+        },
+        "D": {
+          "motive": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "prediction": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "direct": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "history": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          }
+        },
+        "E": {
+          "motive": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "prediction": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "direct": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "history": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          }
+        }
+      }
+    },
+    {
+      "reviewer_id": null,
+      "blind_to_ratings_and_other_reviewer": null,
+      "locked_at": null,
+      "private_file_sha256": null,
+      "cards": {
+        "A": {
+          "motive": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "prediction": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "direct": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "history": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          }
+        },
+        "B": {
+          "motive": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "prediction": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "direct": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "history": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          }
+        },
+        "C": {
+          "motive": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "prediction": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "direct": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "history": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          }
+        },
+        "D": {
+          "motive": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "prediction": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "direct": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "history": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          }
+        },
+        "E": {
+          "motive": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "prediction": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "direct": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          },
+          "history": {
+            "label": null,
+            "evidence_field": null,
+            "quote": null,
+            "rationale": null
+          }
+        }
+      }
+    }
+  ],
+  "adjudication": {
+    "completed": null,
+    "adjudicator_code": null,
+    "disagreements": [],
+    "resolved_cards": {
+      "A": {
+        "motive": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        },
+        "prediction": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        },
+        "direct": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        },
+        "history": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        }
+      },
+      "B": {
+        "motive": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        },
+        "prediction": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        },
+        "direct": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        },
+        "history": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        }
+      },
+      "C": {
+        "motive": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        },
+        "prediction": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        },
+        "direct": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        },
+        "history": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        }
+      },
+      "D": {
+        "motive": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        },
+        "prediction": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        },
+        "direct": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        },
+        "history": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        }
+      },
+      "E": {
+        "motive": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        },
+        "prediction": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        },
+        "direct": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        },
+        "history": {
+          "label": null,
+          "evidence_field": null,
+          "quote": null,
+          "rationale": null
+        }
+      }
+    },
+    "participant_correct": null,
+    "history_classification": null,
+    "integrity_eligible": null,
+    "exclusion_reason": null
+  }
+}

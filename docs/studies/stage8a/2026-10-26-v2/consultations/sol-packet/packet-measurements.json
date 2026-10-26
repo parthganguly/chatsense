@@ -1,0 +1,160 @@
+{
+  "candidate_commit": "6c5ef1c61358e637fc38c5a036149863a4efef0a",
+  "accepted_product_source": "72eeb00d436d3a85a117fb8fced3cf7597b12d31",
+  "non_document_drift": [],
+  "product_drift": false,
+  "preservation": [
+    {
+      "path": "materials/CODING-RUBRIC.md",
+      "exact_v1_bytes": true,
+      "sha256": "76451f47cf4163ed92bc69ec01a788180814952e5d2a7da810b4faf8ed96d7ac"
+    },
+    {
+      "path": "materials/INTERVIEW.md",
+      "exact_v1_bytes": true,
+      "sha256": "206c7352008face8a2f167796ee5073b81fede02be44ce5c46bc31424400971d"
+    },
+    {
+      "path": "materials/CONSENT-AND-RECRUITMENT.md",
+      "exact_v1_bytes": true,
+      "sha256": "f97eff5dbc8593a39aa3fb63c0c553f78173dd9f82907019e0e266b3e41a0120"
+    },
+    {
+      "path": "materials/RECORDING-AND-REVIEW.md",
+      "exact_v1_bytes": true,
+      "sha256": "b52c9a561d33882baecf3358ef6824c77e439f61902f5be9c5528d08d9dc2315"
+    },
+    {
+      "path": "preflight/gate.py",
+      "exact_v1_bytes": true,
+      "sha256": "44b348049ac0697cdeb5b89ba2f399bdf9709f003acb23063156c417fe25e88f"
+    },
+    {
+      "path": "preflight/test_gate.py",
+      "exact_v1_bytes": true,
+      "sha256": "42d006be6015242d05a31bdd8602b38f94b6fbd70961aee98e9f76290512b8c6"
+    },
+    {
+      "path": "preflight/run-report.py",
+      "exact_v1_bytes": true,
+      "sha256": "a2509e74ea2bc46d15a537f366b0861eca165396f30e080af75780c45cd3fee1"
+    },
+    {
+      "path": "preflight/validate-schema.mjs",
+      "exact_v1_bytes": true,
+      "sha256": "a46c8a7e9fa4c1e1e463bf81b045db537aa0baf8508ce7f1fd0b50884f9549bf"
+    },
+    {
+      "path": "materials/BLANK-RESPONSE.json",
+      "version_only": true,
+      "normalized_sha256": "4d08b2687ec9a372aaab040198b7c205b78e004b14160b970135a41745f075f4"
+    },
+    {
+      "path": "materials/response.schema.json",
+      "version_only": true,
+      "normalized_sha256": "c52582d64a963d0bfda314b87b3b66fb802e6092bf0268d0b94b3ed3745b4eca"
+    }
+  ],
+  "cards": [
+    {
+      "id": "s8a-v2-c1-pattern-change",
+      "selected_sha256": "eea78a25698389ab31dc52a232b7384b6165444157680f34219e171065c0b51f",
+      "dimensions": [
+        344,
+        546
+      ],
+      "prior_independent_png_equal": true,
+      "fixture_read_clock_and_text_v1_exact": true,
+      "selected_HTML_scientific_row_order_and_href_match": true,
+      "three_context_text_hashes_equal_v1": true,
+      "typography_rows_verified": 10,
+      "contrast_min": 7.577663953533317,
+      "whole_inside_actual_main": true,
+      "desktop_limitation_clearance": 119
+    },
+    {
+      "id": "s8a-v2-c2-carried-balanced",
+      "selected_sha256": "c8498e524874adf000a693c46a7e1a2154d6392e24759494f1de0bd3713f5adf",
+      "dimensions": [
+        344,
+        500
+      ],
+      "prior_independent_png_equal": true,
+      "fixture_read_clock_and_text_v1_exact": true,
+      "selected_HTML_scientific_row_order_and_href_match": true,
+      "three_context_text_hashes_equal_v1": true,
+      "typography_rows_verified": 10,
+      "contrast_min": 7.577663953533317,
+      "whole_inside_actual_main": true,
+      "desktop_limitation_clearance": 165
+    },
+    {
+      "id": "s8a-v2-c3-carried-mixed",
+      "selected_sha256": "70470d8b2a3ba4c7c738dd09088a1f05cd786ee2b07dcf375a607e23685ed602",
+      "dimensions": [
+        344,
+        520
+      ],
+      "prior_independent_png_equal": true,
+      "fixture_read_clock_and_text_v1_exact": true,
+      "selected_HTML_scientific_row_order_and_href_match": true,
+      "three_context_text_hashes_equal_v1": true,
+      "typography_rows_verified": 10,
+      "contrast_min": 7.577663953533317,
+      "whole_inside_actual_main": true,
+      "desktop_limitation_clearance": 145
+    },
+    {
+      "id": "s8a-v2-c4-unusual-silence",
+      "selected_sha256": "56b2ac46dcaa48cfd11e229b462d6bd2ac1f8b6630ec965723dfecbdc7106816",
+      "dimensions": [
+        344,
+        656
+      ],
+      "prior_independent_png_equal": true,
+      "fixture_read_clock_and_text_v1_exact": true,
+      "selected_HTML_scientific_row_order_and_href_match": true,
+      "three_context_text_hashes_equal_v1": true,
+      "typography_rows_verified": 12,
+      "contrast_min": 7.577663953533317,
+      "whole_inside_actual_main": true,
+      "desktop_limitation_clearance": 9
+    },
+    {
+      "id": "s8a-v2-c5-insufficient",
+      "selected_sha256": "77f4339d31bc6a333b70b6c5f010e3b31c8882f063a29619f98d037f9c82082e",
+      "dimensions": [
+        344,
+        508
+      ],
+      "prior_independent_png_equal": true,
+      "fixture_read_clock_and_text_v1_exact": true,
+      "selected_HTML_scientific_row_order_and_href_match": true,
+      "three_context_text_hashes_equal_v1": true,
+      "typography_rows_verified": 11,
+      "contrast_min": 7.577663953533317,
+      "whole_inside_actual_main": true,
+      "desktop_limitation_clearance": 157
+    }
+  ],
+  "methods_tail_sha256": "d8d78298f1a934d50a2495f5de3ee6fe887f63506d7442755cd9cea61d5e2ad4",
+  "v1_readonly_worktree_files_exact": 107,
+  "v1_scope_note": "v2 source branch does not include v1 branch packet; preservation checked against immutable git blobs and separate read-only v1 checkout, not assumed shared ancestry.",
+  "chronology": {
+    "accepted": "2026-10-26T10:06:09.685907+00:00",
+    "capture_started": "2026-10-26T10:15:44.961Z",
+    "acceptance_precedes_capture": true,
+    "build": "2026-10-26T10:04:26.957968+00:00"
+  },
+  "prior_ux_evidence_90_files_equal": true,
+  "build_output_inventory_encoding_matches": [
+    "lines"
+  ],
+  "build_output_files_verified": 36,
+  "all15_context_text_hashes_v1_exact": true,
+  "failed_attempt_partial_files": 22,
+  "failed_attempt_unused_by_selected_manifest": true,
+  "manifest_sha256": "ebae573647051612c7eaa7b553d53aa267c6263a14d7dbf5599b0585ab706f1c",
+  "capture_script_sha256": "8ae9a0adb1ee8f3cd9fba2464adbf2f18f7faf468a3674666a271c64c627615c",
+  "pending_final_freeze_intentional": true
+}

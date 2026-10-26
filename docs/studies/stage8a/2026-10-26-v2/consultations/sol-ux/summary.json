@@ -1,0 +1,2727 @@
+[
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "desktop",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 468,
+      "right": 812,
+      "top": 205,
+      "bottom": 751,
+      "width": 344,
+      "height": 546
+    },
+    "main": {
+      "left": 448,
+      "right": 832,
+      "top": 185,
+      "bottom": 823,
+      "width": 384,
+      "height": 638
+    },
+    "content": {
+      "left": 488,
+      "right": 795
+    },
+    "header": [
+      {
+        "left": 488,
+        "right": 641.828125,
+        "top": 218,
+        "bottom": 234,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 706.859375,
+        "right": 795,
+        "top": 218,
+        "bottom": 238,
+        "width": 88.140625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 704,
+    "limitationClearance": 119,
+    "limitationLastHit": true,
+    "link": {
+      "left": 488,
+      "right": 732.515625,
+      "top": 717,
+      "bottom": 737,
+      "width": 244.515625,
+      "height": 20
+    },
+    "rangeCount": 24,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "phone",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 370,
+      "top": 105,
+      "bottom": 651,
+      "width": 350,
+      "height": 546
+    },
+    "main": {
+      "left": 0,
+      "right": 390,
+      "top": 85,
+      "bottom": 767,
+      "width": 390,
+      "height": 682
+    },
+    "content": {
+      "left": 40,
+      "right": 353
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 264.859375,
+        "right": 353,
+        "top": 118,
+        "bottom": 138,
+        "width": 88.140625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 604,
+    "limitationClearance": 163,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 284.515625,
+      "top": 617,
+      "bottom": 637,
+      "width": 244.515625,
+      "height": 20
+    },
+    "rangeCount": 24,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": {
+      "focused": true,
+      "focusVisible": true,
+      "outline": "rgb(0, 95, 204) auto 1px",
+      "rect": {
+        "x": 40,
+        "y": 617,
+        "width": 244.515625,
+        "height": 20,
+        "top": 617,
+        "right": 284.515625,
+        "bottom": 637,
+        "left": 40
+      },
+      "shiftTabLeft": true,
+      "hash": "#narrative-heading",
+      "destination": "Balanced volume, uneven contact maintenance"
+    }
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "narrow",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 300,
+      "top": 105,
+      "bottom": 791,
+      "width": 280,
+      "height": 686
+    },
+    "main": {
+      "left": 0,
+      "right": 320,
+      "top": 85,
+      "bottom": 767,
+      "width": 320,
+      "height": 682
+    },
+    "content": {
+      "left": 40,
+      "right": 283
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 40,
+        "right": 128.140625,
+        "top": 138,
+        "bottom": 158,
+        "width": 88.140625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 724,
+    "limitationClearance": 43,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 283,
+      "top": 737,
+      "bottom": 777,
+      "width": 243,
+      "height": 40
+    },
+    "rangeCount": 30,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "text200",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 296,
+      "right": 984,
+      "top": 309,
+      "bottom": 1399,
+      "width": 688,
+      "height": 1090
+    },
+    "main": {
+      "left": 256,
+      "right": 1024,
+      "top": 269,
+      "bottom": 747,
+      "width": 768,
+      "height": 478
+    },
+    "content": {
+      "left": 332,
+      "right": 951
+    },
+    "header": [
+      {
+        "left": 332,
+        "right": 639.640625,
+        "top": 334,
+        "bottom": 366.609375,
+        "width": 307.640625,
+        "height": 32.609375
+      },
+      {
+        "left": 774.734375,
+        "right": 951,
+        "top": 334,
+        "bottom": 374,
+        "width": 176.265625,
+        "height": 40
+      }
+    ],
+    "limitationLastBottom": 1307,
+    "limitationClearance": -560,
+    "limitationLastHit": false,
+    "link": {
+      "left": 332,
+      "right": 821.03125,
+      "top": 1331,
+      "bottom": 1371,
+      "width": 489.03125,
+      "height": 40
+    },
+    "rangeCount": 24,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": true,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "390-text200",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 40,
+      "right": 350,
+      "top": 209,
+      "bottom": 2755.609375,
+      "width": 310,
+      "height": 2546.609375
+    },
+    "main": {
+      "left": 0,
+      "right": 390,
+      "top": 169,
+      "bottom": 691,
+      "width": 390,
+      "height": 522
+    },
+    "content": {
+      "left": 76,
+      "right": 317
+    },
+    "header": [
+      {
+        "left": 76,
+        "right": 317,
+        "top": 234,
+        "bottom": 298.609375,
+        "width": 241,
+        "height": 64.609375
+      },
+      {
+        "left": 76,
+        "right": 252.265625,
+        "top": 306.609375,
+        "bottom": 346.609375,
+        "width": 176.265625,
+        "height": 40
+      }
+    ],
+    "limitationLastBottom": 2583.609375,
+    "limitationClearance": -1892.609375,
+    "limitationLastHit": false,
+    "link": {
+      "left": 76,
+      "right": 317,
+      "top": 2607.609375,
+      "bottom": 2727.609375,
+      "width": 241,
+      "height": 120
+    },
+    "rangeCount": 59,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": true,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "320-text200",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 40,
+      "right": 280,
+      "top": 209,
+      "bottom": 3811.609375,
+      "width": 240,
+      "height": 3602.609375
+    },
+    "main": {
+      "left": 0,
+      "right": 320,
+      "top": 169,
+      "bottom": 691,
+      "width": 320,
+      "height": 522
+    },
+    "content": {
+      "left": 76,
+      "right": 247
+    },
+    "header": [
+      {
+        "left": 76,
+        "right": 247,
+        "top": 234,
+        "bottom": 298.609375,
+        "width": 171,
+        "height": 64.609375
+      },
+      {
+        "left": 76,
+        "right": 247,
+        "top": 306.609375,
+        "bottom": 378.609375,
+        "width": 171,
+        "height": 72
+      }
+    ],
+    "limitationLastBottom": 3559.609375,
+    "limitationClearance": -2868.609375,
+    "limitationLastHit": false,
+    "link": {
+      "left": 76,
+      "right": 247,
+      "top": 3583.609375,
+      "bottom": 3783.609375,
+      "width": 171,
+      "height": 200
+    },
+    "rangeCount": 83,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": true,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "dark",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 370,
+      "top": 105,
+      "bottom": 651,
+      "width": 350,
+      "height": 546
+    },
+    "main": {
+      "left": 0,
+      "right": 390,
+      "top": 85,
+      "bottom": 767,
+      "width": 390,
+      "height": 682
+    },
+    "content": {
+      "left": 40,
+      "right": 353
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 264.859375,
+        "right": 353,
+        "top": 118,
+        "bottom": 138,
+        "width": 88.140625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 604,
+    "limitationClearance": 163,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 284.515625,
+      "top": 617,
+      "bottom": 637,
+      "width": 244.515625,
+      "height": 20
+    },
+    "rangeCount": 24,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "native344",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 364,
+      "top": 105,
+      "bottom": 651,
+      "width": 344,
+      "height": 546
+    },
+    "main": {
+      "left": 0,
+      "right": 384,
+      "top": 85,
+      "bottom": 1723,
+      "width": 384,
+      "height": 1638
+    },
+    "content": {
+      "left": 40,
+      "right": 347
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 258.859375,
+        "right": 347,
+        "top": 118,
+        "bottom": 138,
+        "width": 88.140625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 604,
+    "limitationClearance": 1119,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 284.515625,
+      "top": 617,
+      "bottom": 637,
+      "width": 244.515625,
+      "height": 20
+    },
+    "rangeCount": 24,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "desktop",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 468,
+      "right": 812,
+      "top": 205,
+      "bottom": 705,
+      "width": 344,
+      "height": 500
+    },
+    "main": {
+      "left": 448,
+      "right": 832,
+      "top": 185,
+      "bottom": 823,
+      "width": 384,
+      "height": 638
+    },
+    "content": {
+      "left": 488,
+      "right": 795
+    },
+    "header": [
+      {
+        "left": 488,
+        "right": 641.828125,
+        "top": 218,
+        "bottom": 234,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 706.859375,
+        "right": 795,
+        "top": 218,
+        "bottom": 238,
+        "width": 88.140625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 658,
+    "limitationClearance": 165,
+    "limitationLastHit": true,
+    "link": {
+      "left": 488,
+      "right": 717.5,
+      "top": 671,
+      "bottom": 691,
+      "width": 229.5,
+      "height": 20
+    },
+    "rangeCount": 22,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "phone",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 370,
+      "top": 105,
+      "bottom": 585,
+      "width": 350,
+      "height": 480
+    },
+    "main": {
+      "left": 0,
+      "right": 390,
+      "top": 85,
+      "bottom": 767,
+      "width": 390,
+      "height": 682
+    },
+    "content": {
+      "left": 40,
+      "right": 353
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 264.859375,
+        "right": 353,
+        "top": 118,
+        "bottom": 138,
+        "width": 88.140625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 538,
+    "limitationClearance": 229,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 269.5,
+      "top": 551,
+      "bottom": 571,
+      "width": 229.5,
+      "height": 20
+    },
+    "rangeCount": 21,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": {
+      "focused": true,
+      "focusVisible": true,
+      "outline": "rgb(0, 95, 204) auto 1px",
+      "rect": {
+        "x": 40,
+        "y": 551,
+        "width": 229.5,
+        "height": 20,
+        "top": 551,
+        "right": 269.5,
+        "bottom": 571,
+        "left": 40
+      },
+      "shiftTabLeft": true,
+      "hash": "#narrative-heading",
+      "destination": "No measured change crossed the notable threshold"
+    }
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "narrow",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 300,
+      "top": 105,
+      "bottom": 685,
+      "width": 280,
+      "height": 580
+    },
+    "main": {
+      "left": 0,
+      "right": 320,
+      "top": 85,
+      "bottom": 767,
+      "width": 320,
+      "height": 682
+    },
+    "content": {
+      "left": 40,
+      "right": 283
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 40,
+        "right": 128.140625,
+        "top": 138,
+        "bottom": 158,
+        "width": 88.140625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 638,
+    "limitationClearance": 129,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 269.5,
+      "top": 651,
+      "bottom": 671,
+      "width": 229.5,
+      "height": 20
+    },
+    "rangeCount": 25,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "text200",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 296,
+      "right": 984,
+      "top": 309,
+      "bottom": 1307,
+      "width": 688,
+      "height": 998
+    },
+    "main": {
+      "left": 256,
+      "right": 1024,
+      "top": 269,
+      "bottom": 747,
+      "width": 768,
+      "height": 478
+    },
+    "content": {
+      "left": 332,
+      "right": 951
+    },
+    "header": [
+      {
+        "left": 332,
+        "right": 639.640625,
+        "top": 334,
+        "bottom": 366.609375,
+        "width": 307.640625,
+        "height": 32.609375
+      },
+      {
+        "left": 774.734375,
+        "right": 951,
+        "top": 334,
+        "bottom": 374,
+        "width": 176.265625,
+        "height": 40
+      }
+    ],
+    "limitationLastBottom": 1215,
+    "limitationClearance": -468,
+    "limitationLastHit": false,
+    "link": {
+      "left": 332,
+      "right": 790.984375,
+      "top": 1239,
+      "bottom": 1279,
+      "width": 458.984375,
+      "height": 40
+    },
+    "rangeCount": 22,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": true,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "390-text200",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 40,
+      "right": 350,
+      "top": 209,
+      "bottom": 2479.609375,
+      "width": 310,
+      "height": 2270.609375
+    },
+    "main": {
+      "left": 0,
+      "right": 390,
+      "top": 169,
+      "bottom": 691,
+      "width": 390,
+      "height": 522
+    },
+    "content": {
+      "left": 76,
+      "right": 317
+    },
+    "header": [
+      {
+        "left": 76,
+        "right": 317,
+        "top": 234,
+        "bottom": 298.609375,
+        "width": 241,
+        "height": 64.609375
+      },
+      {
+        "left": 76,
+        "right": 252.265625,
+        "top": 306.609375,
+        "bottom": 346.609375,
+        "width": 176.265625,
+        "height": 40
+      }
+    ],
+    "limitationLastBottom": 2347.609375,
+    "limitationClearance": -1656.609375,
+    "limitationLastHit": false,
+    "link": {
+      "left": 76,
+      "right": 317,
+      "top": 2371.609375,
+      "bottom": 2451.609375,
+      "width": 241,
+      "height": 80
+    },
+    "rangeCount": 52,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": true,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "320-text200",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 40,
+      "right": 280,
+      "top": 209,
+      "bottom": 3303.609375,
+      "width": 240,
+      "height": 3094.609375
+    },
+    "main": {
+      "left": 0,
+      "right": 320,
+      "top": 169,
+      "bottom": 691,
+      "width": 320,
+      "height": 522
+    },
+    "content": {
+      "left": 76,
+      "right": 247
+    },
+    "header": [
+      {
+        "left": 76,
+        "right": 247,
+        "top": 234,
+        "bottom": 298.609375,
+        "width": 171,
+        "height": 64.609375
+      },
+      {
+        "left": 76,
+        "right": 247,
+        "top": 306.609375,
+        "bottom": 378.609375,
+        "width": 171,
+        "height": 72
+      }
+    ],
+    "limitationLastBottom": 3091.609375,
+    "limitationClearance": -2400.609375,
+    "limitationLastHit": false,
+    "link": {
+      "left": 76,
+      "right": 247,
+      "top": 3115.609375,
+      "bottom": 3275.609375,
+      "width": 171,
+      "height": 160
+    },
+    "rangeCount": 71,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": true,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "dark",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 370,
+      "top": 105,
+      "bottom": 585,
+      "width": 350,
+      "height": 480
+    },
+    "main": {
+      "left": 0,
+      "right": 390,
+      "top": 85,
+      "bottom": 767,
+      "width": 390,
+      "height": 682
+    },
+    "content": {
+      "left": 40,
+      "right": 353
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 264.859375,
+        "right": 353,
+        "top": 118,
+        "bottom": 138,
+        "width": 88.140625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 538,
+    "limitationClearance": 229,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 269.5,
+      "top": 551,
+      "bottom": 571,
+      "width": 229.5,
+      "height": 20
+    },
+    "rangeCount": 21,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "native344",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 364,
+      "top": 105,
+      "bottom": 605,
+      "width": 344,
+      "height": 500
+    },
+    "main": {
+      "left": 0,
+      "right": 384,
+      "top": 85,
+      "bottom": 1723,
+      "width": 384,
+      "height": 1638
+    },
+    "content": {
+      "left": 40,
+      "right": 347
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 258.859375,
+        "right": 347,
+        "top": 118,
+        "bottom": 138,
+        "width": 88.140625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 558,
+    "limitationClearance": 1165,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 269.5,
+      "top": 571,
+      "bottom": 591,
+      "width": 229.5,
+      "height": 20
+    },
+    "rangeCount": 22,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "desktop",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 468,
+      "right": 812,
+      "top": 205,
+      "bottom": 725,
+      "width": 344,
+      "height": 520
+    },
+    "main": {
+      "left": 448,
+      "right": 832,
+      "top": 185,
+      "bottom": 823,
+      "width": 384,
+      "height": 638
+    },
+    "content": {
+      "left": 488,
+      "right": 795
+    },
+    "header": [
+      {
+        "left": 488,
+        "right": 641.828125,
+        "top": 218,
+        "bottom": 234,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 709.375,
+        "right": 795,
+        "top": 218,
+        "bottom": 238,
+        "width": 85.625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 678,
+    "limitationClearance": 145,
+    "limitationLastHit": true,
+    "link": {
+      "left": 488,
+      "right": 717.5,
+      "top": 691,
+      "bottom": 711,
+      "width": 229.5,
+      "height": 20
+    },
+    "rangeCount": 23,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "phone",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 370,
+      "top": 105,
+      "bottom": 605,
+      "width": 350,
+      "height": 500
+    },
+    "main": {
+      "left": 0,
+      "right": 390,
+      "top": 85,
+      "bottom": 767,
+      "width": 390,
+      "height": 682
+    },
+    "content": {
+      "left": 40,
+      "right": 353
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 267.375,
+        "right": 353,
+        "top": 118,
+        "bottom": 138,
+        "width": 85.625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 558,
+    "limitationClearance": 209,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 269.5,
+      "top": 571,
+      "bottom": 591,
+      "width": 229.5,
+      "height": 20
+    },
+    "rangeCount": 22,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": {
+      "focused": true,
+      "focusVisible": true,
+      "outline": "rgb(0, 95, 204) auto 1px",
+      "rect": {
+        "x": 40,
+        "y": 571,
+        "width": 229.5,
+        "height": 20,
+        "top": 571,
+        "right": 269.5,
+        "bottom": 591,
+        "left": 40
+      },
+      "shiftTabLeft": true,
+      "hash": "#narrative-heading",
+      "destination": "Balanced volume, uneven contact maintenance"
+    }
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "narrow",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 300,
+      "top": 105,
+      "bottom": 725,
+      "width": 280,
+      "height": 620
+    },
+    "main": {
+      "left": 0,
+      "right": 320,
+      "top": 85,
+      "bottom": 767,
+      "width": 320,
+      "height": 682
+    },
+    "content": {
+      "left": 40,
+      "right": 283
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 40,
+        "right": 125.625,
+        "top": 138,
+        "bottom": 158,
+        "width": 85.625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 678,
+    "limitationClearance": 89,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 269.5,
+      "top": 691,
+      "bottom": 711,
+      "width": 229.5,
+      "height": 20
+    },
+    "rangeCount": 27,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "text200",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 296,
+      "right": 984,
+      "top": 309,
+      "bottom": 1347,
+      "width": 688,
+      "height": 1038
+    },
+    "main": {
+      "left": 256,
+      "right": 1024,
+      "top": 269,
+      "bottom": 747,
+      "width": 768,
+      "height": 478
+    },
+    "content": {
+      "left": 332,
+      "right": 951
+    },
+    "header": [
+      {
+        "left": 332,
+        "right": 639.640625,
+        "top": 334,
+        "bottom": 366.609375,
+        "width": 307.640625,
+        "height": 32.609375
+      },
+      {
+        "left": 779.75,
+        "right": 951,
+        "top": 334,
+        "bottom": 374,
+        "width": 171.25,
+        "height": 40
+      }
+    ],
+    "limitationLastBottom": 1255,
+    "limitationClearance": -508,
+    "limitationLastHit": false,
+    "link": {
+      "left": 332,
+      "right": 790.984375,
+      "top": 1279,
+      "bottom": 1319,
+      "width": 458.984375,
+      "height": 40
+    },
+    "rangeCount": 23,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": true,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "390-text200",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 40,
+      "right": 350,
+      "top": 209,
+      "bottom": 2519.609375,
+      "width": 310,
+      "height": 2310.609375
+    },
+    "main": {
+      "left": 0,
+      "right": 390,
+      "top": 169,
+      "bottom": 691,
+      "width": 390,
+      "height": 522
+    },
+    "content": {
+      "left": 76,
+      "right": 317
+    },
+    "header": [
+      {
+        "left": 76,
+        "right": 317,
+        "top": 234,
+        "bottom": 298.609375,
+        "width": 241,
+        "height": 64.609375
+      },
+      {
+        "left": 76,
+        "right": 247.25,
+        "top": 306.609375,
+        "bottom": 346.609375,
+        "width": 171.25,
+        "height": 40
+      }
+    ],
+    "limitationLastBottom": 2387.609375,
+    "limitationClearance": -1696.609375,
+    "limitationLastHit": false,
+    "link": {
+      "left": 76,
+      "right": 317,
+      "top": 2411.609375,
+      "bottom": 2491.609375,
+      "width": 241,
+      "height": 80
+    },
+    "rangeCount": 53,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": true,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "320-text200",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 40,
+      "right": 280,
+      "top": 209,
+      "bottom": 3463.609375,
+      "width": 240,
+      "height": 3254.609375
+    },
+    "main": {
+      "left": 0,
+      "right": 320,
+      "top": 169,
+      "bottom": 691,
+      "width": 320,
+      "height": 522
+    },
+    "content": {
+      "left": 76,
+      "right": 247
+    },
+    "header": [
+      {
+        "left": 76,
+        "right": 247,
+        "top": 234,
+        "bottom": 298.609375,
+        "width": 171,
+        "height": 64.609375
+      },
+      {
+        "left": 76,
+        "right": 247,
+        "top": 306.609375,
+        "bottom": 378.609375,
+        "width": 171,
+        "height": 72
+      }
+    ],
+    "limitationLastBottom": 3251.609375,
+    "limitationClearance": -2560.609375,
+    "limitationLastHit": false,
+    "link": {
+      "left": 76,
+      "right": 247,
+      "top": 3275.609375,
+      "bottom": 3435.609375,
+      "width": 171,
+      "height": 160
+    },
+    "rangeCount": 75,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": true,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "dark",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 370,
+      "top": 105,
+      "bottom": 605,
+      "width": 350,
+      "height": 500
+    },
+    "main": {
+      "left": 0,
+      "right": 390,
+      "top": 85,
+      "bottom": 767,
+      "width": 390,
+      "height": 682
+    },
+    "content": {
+      "left": 40,
+      "right": 353
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 267.375,
+        "right": 353,
+        "top": 118,
+        "bottom": 138,
+        "width": 85.625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 558,
+    "limitationClearance": 209,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 269.5,
+      "top": 571,
+      "bottom": 591,
+      "width": 229.5,
+      "height": 20
+    },
+    "rangeCount": 22,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "native344",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 364,
+      "top": 105,
+      "bottom": 625,
+      "width": 344,
+      "height": 520
+    },
+    "main": {
+      "left": 0,
+      "right": 384,
+      "top": 85,
+      "bottom": 1723,
+      "width": 384,
+      "height": 1638
+    },
+    "content": {
+      "left": 40,
+      "right": 347
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 261.375,
+        "right": 347,
+        "top": 118,
+        "bottom": 138,
+        "width": 85.625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 578,
+    "limitationClearance": 1145,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 269.5,
+      "top": 591,
+      "bottom": 611,
+      "width": 229.5,
+      "height": 20
+    },
+    "rangeCount": 23,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "desktop",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 468,
+      "right": 812,
+      "top": 205,
+      "bottom": 861,
+      "width": 344,
+      "height": 656
+    },
+    "main": {
+      "left": 448,
+      "right": 832,
+      "top": 185,
+      "bottom": 823,
+      "width": 384,
+      "height": 638
+    },
+    "content": {
+      "left": 488,
+      "right": 795
+    },
+    "header": [
+      {
+        "left": 488,
+        "right": 641.828125,
+        "top": 218,
+        "bottom": 234,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 709.375,
+        "right": 795,
+        "top": 218,
+        "bottom": 238,
+        "width": 85.625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 814,
+    "limitationClearance": 9,
+    "limitationLastHit": true,
+    "link": {
+      "left": 488,
+      "right": 725.859375,
+      "top": 827,
+      "bottom": 847,
+      "width": 237.859375,
+      "height": 20
+    },
+    "rangeCount": 29,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "phone",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 370,
+      "top": 105,
+      "bottom": 761,
+      "width": 350,
+      "height": 656
+    },
+    "main": {
+      "left": 0,
+      "right": 390,
+      "top": 85,
+      "bottom": 767,
+      "width": 390,
+      "height": 682
+    },
+    "content": {
+      "left": 40,
+      "right": 353
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 267.375,
+        "right": 353,
+        "top": 118,
+        "bottom": 138,
+        "width": 85.625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 714,
+    "limitationClearance": 53,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 277.859375,
+      "top": 727,
+      "bottom": 747,
+      "width": 237.859375,
+      "height": 20
+    },
+    "rangeCount": 29,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": {
+      "focused": true,
+      "focusVisible": true,
+      "outline": "rgb(0, 95, 204) auto 1px",
+      "rect": {
+        "x": 40,
+        "y": 727,
+        "width": 237.859375,
+        "height": 20,
+        "top": 727,
+        "right": 277.859375,
+        "bottom": 747,
+        "left": 40
+      },
+      "shiftTabLeft": true,
+      "hash": "#narrative-heading",
+      "destination": "Balanced volume, uneven contact maintenance"
+    }
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "narrow",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 300,
+      "top": 105,
+      "bottom": 941,
+      "width": 280,
+      "height": 836
+    },
+    "main": {
+      "left": 0,
+      "right": 320,
+      "top": 85,
+      "bottom": 767,
+      "width": 320,
+      "height": 682
+    },
+    "content": {
+      "left": 40,
+      "right": 283
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 40,
+        "right": 125.625,
+        "top": 138,
+        "bottom": 158,
+        "width": 85.625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 894,
+    "limitationClearance": -127,
+    "limitationLastHit": false,
+    "link": {
+      "left": 40,
+      "right": 277.859375,
+      "top": 907,
+      "bottom": 927,
+      "width": 237.859375,
+      "height": 20
+    },
+    "rangeCount": 37,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "text200",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 296,
+      "right": 984,
+      "top": 309,
+      "bottom": 1619,
+      "width": 688,
+      "height": 1310
+    },
+    "main": {
+      "left": 256,
+      "right": 1024,
+      "top": 269,
+      "bottom": 747,
+      "width": 768,
+      "height": 478
+    },
+    "content": {
+      "left": 332,
+      "right": 951
+    },
+    "header": [
+      {
+        "left": 332,
+        "right": 639.640625,
+        "top": 334,
+        "bottom": 366.609375,
+        "width": 307.640625,
+        "height": 32.609375
+      },
+      {
+        "left": 779.75,
+        "right": 951,
+        "top": 334,
+        "bottom": 374,
+        "width": 171.25,
+        "height": 40
+      }
+    ],
+    "limitationLastBottom": 1527,
+    "limitationClearance": -780,
+    "limitationLastHit": false,
+    "link": {
+      "left": 332,
+      "right": 807.703125,
+      "top": 1551,
+      "bottom": 1591,
+      "width": 475.703125,
+      "height": 40
+    },
+    "rangeCount": 29,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": true,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "390-text200",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 40,
+      "right": 350,
+      "top": 209,
+      "bottom": 3455.609375,
+      "width": 310,
+      "height": 3246.609375
+    },
+    "main": {
+      "left": 0,
+      "right": 390,
+      "top": 169,
+      "bottom": 691,
+      "width": 390,
+      "height": 522
+    },
+    "content": {
+      "left": 76,
+      "right": 317
+    },
+    "header": [
+      {
+        "left": 76,
+        "right": 317,
+        "top": 234,
+        "bottom": 298.609375,
+        "width": 241,
+        "height": 64.609375
+      },
+      {
+        "left": 76,
+        "right": 247.25,
+        "top": 306.609375,
+        "bottom": 346.609375,
+        "width": 171.25,
+        "height": 40
+      }
+    ],
+    "limitationLastBottom": 3283.609375,
+    "limitationClearance": -2592.609375,
+    "limitationLastHit": false,
+    "link": {
+      "left": 76,
+      "right": 317,
+      "top": 3307.609375,
+      "bottom": 3427.609375,
+      "width": 241,
+      "height": 120
+    },
+    "rangeCount": 76,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": true,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "320-text200",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 40,
+      "right": 280,
+      "top": 209,
+      "bottom": 4879.609375,
+      "width": 240,
+      "height": 4670.609375
+    },
+    "main": {
+      "left": 0,
+      "right": 320,
+      "top": 169,
+      "bottom": 691,
+      "width": 320,
+      "height": 522
+    },
+    "content": {
+      "left": 76,
+      "right": 247
+    },
+    "header": [
+      {
+        "left": 76,
+        "right": 247,
+        "top": 234,
+        "bottom": 298.609375,
+        "width": 171,
+        "height": 64.609375
+      },
+      {
+        "left": 76,
+        "right": 247,
+        "top": 306.609375,
+        "bottom": 378.609375,
+        "width": 171,
+        "height": 72
+      }
+    ],
+    "limitationLastBottom": 4667.609375,
+    "limitationClearance": -3976.609375,
+    "limitationLastHit": false,
+    "link": {
+      "left": 76,
+      "right": 247,
+      "top": 4691.609375,
+      "bottom": 4851.609375,
+      "width": 171,
+      "height": 160
+    },
+    "rangeCount": 110,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": true,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "dark",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 370,
+      "top": 105,
+      "bottom": 761,
+      "width": 350,
+      "height": 656
+    },
+    "main": {
+      "left": 0,
+      "right": 390,
+      "top": 85,
+      "bottom": 767,
+      "width": 390,
+      "height": 682
+    },
+    "content": {
+      "left": 40,
+      "right": 353
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 267.375,
+        "right": 353,
+        "top": 118,
+        "bottom": 138,
+        "width": 85.625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 714,
+    "limitationClearance": 53,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 277.859375,
+      "top": 727,
+      "bottom": 747,
+      "width": 237.859375,
+      "height": 20
+    },
+    "rangeCount": 29,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "native344",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 364,
+      "top": 105,
+      "bottom": 761,
+      "width": 344,
+      "height": 656
+    },
+    "main": {
+      "left": 0,
+      "right": 384,
+      "top": 85,
+      "bottom": 1723,
+      "width": 384,
+      "height": 1638
+    },
+    "content": {
+      "left": 40,
+      "right": 347
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 261.375,
+        "right": 347,
+        "top": 118,
+        "bottom": 138,
+        "width": 85.625,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 714,
+    "limitationClearance": 1009,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 277.859375,
+      "top": 727,
+      "bottom": 747,
+      "width": 237.859375,
+      "height": 20
+    },
+    "rangeCount": 29,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "desktop",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 468,
+      "right": 812,
+      "top": 205,
+      "bottom": 713,
+      "width": 344,
+      "height": 508
+    },
+    "main": {
+      "left": 448,
+      "right": 832,
+      "top": 185,
+      "bottom": 823,
+      "width": 384,
+      "height": 638
+    },
+    "content": {
+      "left": 488,
+      "right": 795
+    },
+    "header": [
+      {
+        "left": 488,
+        "right": 641.828125,
+        "top": 218,
+        "bottom": 234,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 716.8125,
+        "right": 795,
+        "top": 218,
+        "bottom": 238,
+        "width": 78.1875,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 666,
+    "limitationClearance": 157,
+    "limitationLastHit": true,
+    "link": {
+      "left": 488,
+      "right": 753.765625,
+      "top": 679,
+      "bottom": 699,
+      "width": 265.765625,
+      "height": 20
+    },
+    "rangeCount": 22,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "phone",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 370,
+      "top": 105,
+      "bottom": 613,
+      "width": 350,
+      "height": 508
+    },
+    "main": {
+      "left": 0,
+      "right": 390,
+      "top": 85,
+      "bottom": 767,
+      "width": 390,
+      "height": 682
+    },
+    "content": {
+      "left": 40,
+      "right": 353
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 274.8125,
+        "right": 353,
+        "top": 118,
+        "bottom": 138,
+        "width": 78.1875,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 566,
+    "limitationClearance": 201,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 305.765625,
+      "top": 579,
+      "bottom": 599,
+      "width": 265.765625,
+      "height": 20
+    },
+    "rangeCount": 22,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": {
+      "focused": true,
+      "focusVisible": true,
+      "outline": "rgb(0, 95, 204) auto 1px",
+      "rect": {
+        "x": 40,
+        "y": 579,
+        "width": 265.765625,
+        "height": 20,
+        "top": 579,
+        "right": 305.765625,
+        "bottom": 599,
+        "left": 40
+      },
+      "shiftTabLeft": true,
+      "hash": "#narrative-heading",
+      "destination": "This export supports a descriptive snapshot"
+    }
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "narrow",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 300,
+      "top": 105,
+      "bottom": 753,
+      "width": 280,
+      "height": 648
+    },
+    "main": {
+      "left": 0,
+      "right": 320,
+      "top": 85,
+      "bottom": 767,
+      "width": 320,
+      "height": 682
+    },
+    "content": {
+      "left": 40,
+      "right": 283
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 40,
+        "right": 118.1875,
+        "top": 138,
+        "bottom": 158,
+        "width": 78.1875,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 686,
+    "limitationClearance": 81,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 283,
+      "top": 699,
+      "bottom": 739,
+      "width": 243,
+      "height": 40
+    },
+    "rangeCount": 28,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "text200",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 296,
+      "right": 984,
+      "top": 309,
+      "bottom": 1323,
+      "width": 688,
+      "height": 1014
+    },
+    "main": {
+      "left": 256,
+      "right": 1024,
+      "top": 269,
+      "bottom": 747,
+      "width": 768,
+      "height": 478
+    },
+    "content": {
+      "left": 332,
+      "right": 951
+    },
+    "header": [
+      {
+        "left": 332,
+        "right": 639.640625,
+        "top": 334,
+        "bottom": 366.609375,
+        "width": 307.640625,
+        "height": 32.609375
+      },
+      {
+        "left": 794.640625,
+        "right": 951,
+        "top": 334,
+        "bottom": 374,
+        "width": 156.359375,
+        "height": 40
+      }
+    ],
+    "limitationLastBottom": 1231,
+    "limitationClearance": -484,
+    "limitationLastHit": false,
+    "link": {
+      "left": 332,
+      "right": 863.515625,
+      "top": 1255,
+      "bottom": 1295,
+      "width": 531.515625,
+      "height": 40
+    },
+    "rangeCount": 22,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": true,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "390-text200",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 40,
+      "right": 350,
+      "top": 209,
+      "bottom": 2599.609375,
+      "width": 310,
+      "height": 2390.609375
+    },
+    "main": {
+      "left": 0,
+      "right": 390,
+      "top": 169,
+      "bottom": 691,
+      "width": 390,
+      "height": 522
+    },
+    "content": {
+      "left": 76,
+      "right": 317
+    },
+    "header": [
+      {
+        "left": 76,
+        "right": 317,
+        "top": 234,
+        "bottom": 298.609375,
+        "width": 241,
+        "height": 64.609375
+      },
+      {
+        "left": 76,
+        "right": 232.359375,
+        "top": 306.609375,
+        "bottom": 346.609375,
+        "width": 156.359375,
+        "height": 40
+      }
+    ],
+    "limitationLastBottom": 2427.609375,
+    "limitationClearance": -1736.609375,
+    "limitationLastHit": false,
+    "link": {
+      "left": 76,
+      "right": 317,
+      "top": 2451.609375,
+      "bottom": 2571.609375,
+      "width": 241,
+      "height": 120
+    },
+    "rangeCount": 55,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": true,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "320-text200",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 40,
+      "right": 280,
+      "top": 209,
+      "bottom": 3471.609375,
+      "width": 240,
+      "height": 3262.609375
+    },
+    "main": {
+      "left": 0,
+      "right": 320,
+      "top": 169,
+      "bottom": 691,
+      "width": 320,
+      "height": 522
+    },
+    "content": {
+      "left": 76,
+      "right": 247
+    },
+    "header": [
+      {
+        "left": 76,
+        "right": 247,
+        "top": 234,
+        "bottom": 298.609375,
+        "width": 171,
+        "height": 64.609375
+      },
+      {
+        "left": 76,
+        "right": 232.359375,
+        "top": 306.609375,
+        "bottom": 346.609375,
+        "width": 156.359375,
+        "height": 40
+      }
+    ],
+    "limitationLastBottom": 3219.609375,
+    "limitationClearance": -2528.609375,
+    "limitationLastHit": false,
+    "link": {
+      "left": 76,
+      "right": 247,
+      "top": 3243.609375,
+      "bottom": 3443.609375,
+      "width": 171,
+      "height": 200
+    },
+    "rangeCount": 75,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": true,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "dark",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 370,
+      "top": 105,
+      "bottom": 613,
+      "width": 350,
+      "height": 508
+    },
+    "main": {
+      "left": 0,
+      "right": 390,
+      "top": 85,
+      "bottom": 767,
+      "width": 390,
+      "height": 682
+    },
+    "content": {
+      "left": 40,
+      "right": 353
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 274.8125,
+        "right": 353,
+        "top": 118,
+        "bottom": 138,
+        "width": 78.1875,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 566,
+    "limitationClearance": 201,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 305.765625,
+      "top": 579,
+      "bottom": 599,
+      "width": 265.765625,
+      "height": 20
+    },
+    "rangeCount": 22,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "native344",
+    "exactText": true,
+    "href": "#narrative-heading",
+    "frozenClockMatches": true,
+    "card": {
+      "left": 20,
+      "right": 364,
+      "top": 105,
+      "bottom": 613,
+      "width": 344,
+      "height": 508
+    },
+    "main": {
+      "left": 0,
+      "right": 384,
+      "top": 85,
+      "bottom": 1723,
+      "width": 384,
+      "height": 1638
+    },
+    "content": {
+      "left": 40,
+      "right": 347
+    },
+    "header": [
+      {
+        "left": 40,
+        "right": 193.828125,
+        "top": 118,
+        "bottom": 134,
+        "width": 153.828125,
+        "height": 16
+      },
+      {
+        "left": 268.8125,
+        "right": 347,
+        "top": 118,
+        "bottom": 138,
+        "width": 78.1875,
+        "height": 20
+      }
+    ],
+    "limitationLastBottom": 566,
+    "limitationClearance": 1157,
+    "limitationLastHit": true,
+    "link": {
+      "left": 40,
+      "right": 305.765625,
+      "top": 579,
+      "bottom": 599,
+      "width": 265.765625,
+      "height": 20
+    },
+    "rangeCount": 22,
+    "horizontalEscapes": 0,
+    "glyphOverflowFlags": [],
+    "textOverlaps": [],
+    "lineReachabilityFailures": 0,
+    "ancestorClipFlags": 0,
+    "minContrast": 7.577663953533317,
+    "allSettledOpacity1": true,
+    "allTextActuallyDoubled": null,
+    "keyboard": null
+  }
+]

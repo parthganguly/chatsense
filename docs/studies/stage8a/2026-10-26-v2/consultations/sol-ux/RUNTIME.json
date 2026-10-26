@@ -1,0 +1,29 @@
+{
+  "source_commit": "72eeb00d436d3a85a117fb8fced3cf7597b12d31",
+  "task": "/root/sol_stage8a_repair_audit",
+  "role": "fresh independent Sol verifier requested by Astra",
+  "model_designation_requested": "Sol 6.1",
+  "runtime_model_evidence": "System describes the agent as based on GPT-6. Exact provider model identifier is not exposed; no stronger runtime identification is asserted.",
+  "delegation": "No subagents spawned.",
+  "node": "v24.14.0",
+  "npm": "11.9.0",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit-Mach-O",
+  "chromium": "149.0.7827.55",
+  "playwright": "1.61.1",
+  "dependency_install": "normal npm ci from immutable existing package-lock.json",
+  "build": "fresh npm run check includes npm run build; generated out/ served locally",
+  "python": "existing /tmp/s8a-venv/bin on PATH for required pandas parity",
+  "browser_settings": {
+    "locale": "en-US",
+    "timezone": "UTC",
+    "deviceScaleFactor": 1,
+    "clock": "page.clock.setFixedTime original frozenNowMs before every navigation",
+    "enlargement": "document.documentElement.style.fontSize=200%, measured all text font and leading doubled",
+    "opacity": "document.fonts.ready and every card ancestor opacity1 before capture/measurement"
+  },
+  "scope": "synthetic local fixtures only; no paid API, private export, communication, commit, push or merge",
+  "initial_and_final_tracked_status_clean": true,
+  "skills": "skills.json lists locally verified file paths and hashes; files read through shell, no other harness plugin registration asserted",
+  "axe": "not installed/used; no new dependency added",
+  "server": "port4332 stopped; viewport suite own4319 server ended with test run"
+}

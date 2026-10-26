@@ -1,0 +1,4450 @@
+{
+  "kind": "FAKE_INSTRUMENT_TEST_ONLY",
+  "human_observations": 0,
+  "human_study_decision": "NOT_RUN",
+  "controls": [
+    {
+      "id": "own_positive_exact_thresholds",
+      "expected": "PASS",
+      "actual": "PASS",
+      "pass": true,
+      "rationale": "Only A/B usefulness qualify; exactly five distinct yes; quotas exactly3/2; single positive spontaneous domain on different cards.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "PASS",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 10,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "N0",
+      "expected": "NOT_RUN",
+      "actual": "NOT_RUN",
+      "pass": true,
+      "rationale": "Never lower the target denominator.",
+      "result": {
+        "instrument_decision": "NOT_RUN",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 0
+      }
+    },
+    {
+      "id": "N7",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "Never lower the target denominator.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 7,
+        "N_usable": 7,
+        "N_reviewed": 7,
+        "N_comprehension_assessable": 7,
+        "comprehension_correct": 7,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "promise_count": 0,
+        "promise_assessable": 7,
+        "no_promise_count": 7,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "INCONCLUSIVE",
+          "history": "INCONCLUSIVE",
+          "usefulness": "INCONCLUSIVE",
+          "creepiness": "INCONCLUSIVE",
+          "own_chat": "INCONCLUSIVE"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": false,
+        "usefulness_medians": {
+          "A": 4,
+          "B": 4,
+          "C": 3,
+          "D": 3,
+          "E": 3
+        },
+        "usefulness_denominators": {
+          "A": 7,
+          "B": 7,
+          "C": 7,
+          "D": 7,
+          "E": 7
+        },
+        "useful_cards": [],
+        "creepiness_card_medians": {
+          "A": 2,
+          "B": 2,
+          "C": 2,
+          "D": 2,
+          "E": 2
+        },
+        "creepiness_denominators": {
+          "A": 7,
+          "B": 7,
+          "C": 7,
+          "D": 7,
+          "E": 7
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2
+        },
+        "creepiness_median": 2,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": false,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "N8",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "Never lower the target denominator.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 8,
+        "N_usable": 8,
+        "N_reviewed": 8,
+        "N_comprehension_assessable": 8,
+        "comprehension_correct": 8,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "promise_count": 0,
+        "promise_assessable": 8,
+        "no_promise_count": 8,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "INCONCLUSIVE",
+          "history": "INCONCLUSIVE",
+          "usefulness": "INCONCLUSIVE",
+          "creepiness": "INCONCLUSIVE",
+          "own_chat": "INCONCLUSIVE"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": false,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 8,
+          "B": 8,
+          "C": 8,
+          "D": 8,
+          "E": 8
+        },
+        "useful_cards": [],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 8,
+          "B": 8,
+          "C": 8,
+          "D": 8,
+          "E": 8
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": false,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "N9",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "Never lower the target denominator.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 9,
+        "N_usable": 9,
+        "N_reviewed": 9,
+        "N_comprehension_assessable": 9,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "promise_count": 0,
+        "promise_assessable": 9,
+        "no_promise_count": 9,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "INCONCLUSIVE",
+          "history": "INCONCLUSIVE",
+          "usefulness": "INCONCLUSIVE",
+          "creepiness": "INCONCLUSIVE",
+          "own_chat": "INCONCLUSIVE"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": false,
+        "usefulness_medians": {
+          "A": 4,
+          "B": 4,
+          "C": 3,
+          "D": 3,
+          "E": 3
+        },
+        "usefulness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "useful_cards": [],
+        "creepiness_card_medians": {
+          "A": 2,
+          "B": 2,
+          "C": 2,
+          "D": 2,
+          "E": 2
+        },
+        "creepiness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2
+        },
+        "creepiness_median": 2,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": false,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "1_incorrect_nonhistory_people",
+      "expected": "PASS",
+      "actual": "PASS",
+      "pass": true,
+      "rationale": "Eight of ten allows two incorrect people, not history promises.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "PASS",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "2_incorrect_nonhistory_people",
+      "expected": "PASS",
+      "actual": "PASS",
+      "pass": true,
+      "rationale": "Eight of ten allows two incorrect people, not history promises.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "PASS",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 8,
+        "comprehension_correct_slots": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "3_incorrect_nonhistory_people",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "pass": true,
+      "rationale": "Eight of ten allows two incorrect people, not history promises.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "FAIL",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 7,
+        "comprehension_correct_slots": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "FAIL",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "history_PROMISE",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "pass": true,
+      "rationale": "No ambiguity/missingness is silently NO_PROMISE.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "FAIL",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 1,
+        "promise_assessable": 10,
+        "no_promise_count": 9,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "FAIL",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "history_AMBIGUOUS",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "No ambiguity/missingness is silently NO_PROMISE.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 9,
+        "no_promise_count": 9,
+        "history_ambiguous_count": 1,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "INCONCLUSIVE",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "history_MISSING",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "No ambiguity/missingness is silently NO_PROMISE.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 9,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 9,
+        "no_promise_count": 9,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "INCONCLUSIVE",
+          "history": "INCONCLUSIVE",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "missing_motive",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "Missing core field keeps ten slots, not nine complete cases.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 9,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "INCONCLUSIVE",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "missing_prediction",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "Missing core field keeps ten slots, not nine complete cases.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 9,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "INCONCLUSIVE",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "missing_direct",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "Missing core field keeps ten slots, not nine complete cases.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 9,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "INCONCLUSIVE",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "missing_usefulness",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "Even known positive other fields do not waive core completeness.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 10,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "INCONCLUSIVE",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 9
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "missing_creepiness",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "Even known positive other fields do not waive core completeness.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 10,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "INCONCLUSIVE",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 9
+        },
+        "participant_creepiness_medians": {
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "missing_want",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "Even known positive other fields do not waive core completeness.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 10,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "INCONCLUSIVE"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": false,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "incomplete_raw",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 9,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "INCONCLUSIVE",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "review_independent",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "Self-attested review condition false cannot pass.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 9,
+        "N_comprehension_assessable": 9,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 9,
+        "no_promise_count": 9,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "INCONCLUSIVE",
+          "history": "INCONCLUSIVE",
+          "usefulness": "INCONCLUSIVE",
+          "creepiness": "INCONCLUSIVE",
+          "own_chat": "INCONCLUSIVE"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": false,
+        "usefulness_medians": {
+          "A": 4,
+          "B": 4,
+          "C": 3,
+          "D": 3,
+          "E": 3
+        },
+        "usefulness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "useful_cards": [],
+        "creepiness_card_medians": {
+          "A": 2,
+          "B": 2,
+          "C": 2,
+          "D": 2,
+          "E": 2
+        },
+        "creepiness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "participant_creepiness_medians": {
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2,
+        "own_chat_yes_people": 4,
+        "own_chat_complete": false,
+        "own_chat_card_yes": {
+          "A": 4,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "review_locked",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "Self-attested review condition false cannot pass.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 9,
+        "N_comprehension_assessable": 9,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 9,
+        "no_promise_count": 9,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "INCONCLUSIVE",
+          "history": "INCONCLUSIVE",
+          "usefulness": "INCONCLUSIVE",
+          "creepiness": "INCONCLUSIVE",
+          "own_chat": "INCONCLUSIVE"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": false,
+        "usefulness_medians": {
+          "A": 4,
+          "B": 4,
+          "C": 3,
+          "D": 3,
+          "E": 3
+        },
+        "usefulness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "useful_cards": [],
+        "creepiness_card_medians": {
+          "A": 2,
+          "B": 2,
+          "C": 2,
+          "D": 2,
+          "E": 2
+        },
+        "creepiness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "participant_creepiness_medians": {
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2,
+        "own_chat_yes_people": 4,
+        "own_chat_complete": false,
+        "own_chat_card_yes": {
+          "A": 4,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "review_adjudicated",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "Self-attested review condition false cannot pass.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 9,
+        "N_comprehension_assessable": 9,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 9,
+        "no_promise_count": 9,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "INCONCLUSIVE",
+          "history": "INCONCLUSIVE",
+          "usefulness": "INCONCLUSIVE",
+          "creepiness": "INCONCLUSIVE",
+          "own_chat": "INCONCLUSIVE"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": false,
+        "usefulness_medians": {
+          "A": 4,
+          "B": 4,
+          "C": 3,
+          "D": 3,
+          "E": 3
+        },
+        "usefulness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "useful_cards": [],
+        "creepiness_card_medians": {
+          "A": 2,
+          "B": 2,
+          "C": 2,
+          "D": 2,
+          "E": 2
+        },
+        "creepiness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "participant_creepiness_medians": {
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2,
+        "own_chat_yes_people": 4,
+        "own_chat_complete": false,
+        "own_chat_card_yes": {
+          "A": 4,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "eligibility_exposure_adult",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 9,
+        "N_reviewed": 9,
+        "N_comprehension_assessable": 9,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 9,
+        "no_promise_count": 9,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "INCONCLUSIVE",
+          "history": "INCONCLUSIVE",
+          "usefulness": "INCONCLUSIVE",
+          "creepiness": "INCONCLUSIVE",
+          "own_chat": "INCONCLUSIVE"
+        },
+        "quotas": {
+          "uncertain": 2,
+          "nonromantic": 1
+        },
+        "integrity_complete": false,
+        "usefulness_medians": {
+          "A": 4,
+          "B": 4,
+          "C": 3,
+          "D": 3,
+          "E": 3
+        },
+        "usefulness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "useful_cards": [],
+        "creepiness_card_medians": {
+          "A": 2,
+          "B": 2,
+          "C": 2,
+          "D": 2,
+          "E": 2
+        },
+        "creepiness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "participant_creepiness_medians": {
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2,
+        "own_chat_yes_people": 4,
+        "own_chat_complete": false,
+        "own_chat_card_yes": {
+          "A": 4,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "eligibility_exposure_consented",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 9,
+        "N_reviewed": 9,
+        "N_comprehension_assessable": 9,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 9,
+        "no_promise_count": 9,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "INCONCLUSIVE",
+          "history": "INCONCLUSIVE",
+          "usefulness": "INCONCLUSIVE",
+          "creepiness": "INCONCLUSIVE",
+          "own_chat": "INCONCLUSIVE"
+        },
+        "quotas": {
+          "uncertain": 2,
+          "nonromantic": 1
+        },
+        "integrity_complete": false,
+        "usefulness_medians": {
+          "A": 4,
+          "B": 4,
+          "C": 3,
+          "D": 3,
+          "E": 3
+        },
+        "usefulness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "useful_cards": [],
+        "creepiness_card_medians": {
+          "A": 2,
+          "B": 2,
+          "C": 2,
+          "D": 2,
+          "E": 2
+        },
+        "creepiness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "participant_creepiness_medians": {
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2,
+        "own_chat_yes_people": 4,
+        "own_chat_complete": false,
+        "own_chat_card_yes": {
+          "A": 4,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "eligibility_exposure_integrity",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 9,
+        "N_comprehension_assessable": 9,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 9,
+        "no_promise_count": 9,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "INCONCLUSIVE",
+          "history": "INCONCLUSIVE",
+          "usefulness": "INCONCLUSIVE",
+          "creepiness": "INCONCLUSIVE",
+          "own_chat": "INCONCLUSIVE"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": false,
+        "usefulness_medians": {
+          "A": 4,
+          "B": 4,
+          "C": 3,
+          "D": 3,
+          "E": 3
+        },
+        "usefulness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "useful_cards": [],
+        "creepiness_card_medians": {
+          "A": 2,
+          "B": 2,
+          "C": 2,
+          "D": 2,
+          "E": 2
+        },
+        "creepiness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "participant_creepiness_medians": {
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2,
+        "own_chat_yes_people": 4,
+        "own_chat_complete": false,
+        "own_chat_card_yes": {
+          "A": 4,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "quota_one_below_uncertain_context",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 10,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 2,
+          "nonromantic": 2
+        },
+        "integrity_complete": false,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "quota_one_below_nonromantic_context",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 10,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 1
+        },
+        "integrity_complete": false,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "withdrawn_not_replaced",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 9,
+        "N_reviewed": 9,
+        "N_comprehension_assessable": 9,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 9,
+        "no_promise_count": 9,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "INCONCLUSIVE",
+          "history": "INCONCLUSIVE",
+          "usefulness": "INCONCLUSIVE",
+          "creepiness": "INCONCLUSIVE",
+          "own_chat": "INCONCLUSIVE"
+        },
+        "quotas": {
+          "uncertain": 2,
+          "nonromantic": 1
+        },
+        "integrity_complete": false,
+        "usefulness_medians": {
+          "A": 4,
+          "B": 4,
+          "C": 3,
+          "D": 3,
+          "E": 3
+        },
+        "usefulness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "useful_cards": [],
+        "creepiness_card_medians": {
+          "A": 2,
+          "B": 2,
+          "C": 2,
+          "D": 2,
+          "E": 2
+        },
+        "creepiness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "participant_creepiness_medians": {
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2,
+        "own_chat_yes_people": 4,
+        "own_chat_complete": false,
+        "own_chat_card_yes": {
+          "A": 4,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "excluded_not_replaced",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 9,
+        "N_reviewed": 9,
+        "N_comprehension_assessable": 9,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 9,
+        "no_promise_count": 9,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "INCONCLUSIVE",
+          "history": "INCONCLUSIVE",
+          "usefulness": "INCONCLUSIVE",
+          "creepiness": "INCONCLUSIVE",
+          "own_chat": "INCONCLUSIVE"
+        },
+        "quotas": {
+          "uncertain": 2,
+          "nonromantic": 1
+        },
+        "integrity_complete": false,
+        "usefulness_medians": {
+          "A": 4,
+          "B": 4,
+          "C": 3,
+          "D": 3,
+          "E": 3
+        },
+        "usefulness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "useful_cards": [],
+        "creepiness_card_medians": {
+          "A": 2,
+          "B": 2,
+          "C": 2,
+          "D": 2,
+          "E": 2
+        },
+        "creepiness_denominators": {
+          "A": 9,
+          "B": 9,
+          "C": 9,
+          "D": 9,
+          "E": 9
+        },
+        "participant_creepiness_medians": {
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2,
+        "own_chat_yes_people": 4,
+        "own_chat_complete": false,
+        "own_chat_card_yes": {
+          "A": 4,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "unregistered_order",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "pass": true,
+      "rationale": "",
+      "error": "Unregistered card order."
+    },
+    {
+      "id": "one_reviewer_twice",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "pass": true,
+      "rationale": "",
+      "error": "Two distinct reviewer IDs required."
+    },
+    {
+      "id": "duplicate_slot_replacement",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "pass": true,
+      "rationale": "",
+      "error": "Duplicate participant/slot: never count repeated cards as people."
+    },
+    {
+      "id": "fifty_cards_pseudo_people",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "pass": true,
+      "rationale": "",
+      "error": "Expected 0..10 distinct started slots."
+    },
+    {
+      "id": "four_card_exposure",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "pass": true,
+      "rationale": "",
+      "error": "Exactly five distinct cards required."
+    },
+    {
+      "id": "empty_evidence",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "pass": true,
+      "rationale": "",
+      "error": "Every substantive code needs a field/quote citation."
+    },
+    {
+      "id": "real_data_guard",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "pass": true,
+      "rationale": "",
+      "error": "This P0 executable accepts FAKE_INSTRUMENT_TEST only."
+    },
+    {
+      "id": "D_contradiction_ERROR",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "pass": true,
+      "rationale": "Cannot feed NO_PROMISE with D reply error/unresolved direct response.",
+      "error": "D app-attributed reply ERROR contradicts a non-PROMISE history code."
+    },
+    {
+      "id": "D_contradiction_AMBIGUOUS",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "pass": true,
+      "rationale": "Cannot feed NO_PROMISE with D reply error/unresolved direct response.",
+      "error": "D unresolved prediction/response cannot be NO_PROMISE."
+    },
+    {
+      "id": "D_contradiction_MISSING",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "pass": true,
+      "rationale": "Cannot feed NO_PROMISE with D reply error/unresolved direct response.",
+      "error": "D unresolved prediction/response cannot be NO_PROMISE."
+    },
+    {
+      "id": "prompted_only_understanding",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "pass": true,
+      "rationale": "",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "FAIL",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 0,
+        "comprehension_correct_slots": [],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "FAIL",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "one_useful_card_only",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "pass": true,
+      "rationale": "",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "FAIL",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 10,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "FAIL",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 3.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "usefulness_median3p5_not_rounded",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "pass": true,
+      "rationale": "",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "FAIL",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 10,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "FAIL",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 3.5,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "creep_median_2.0",
+      "expected": "PASS",
+      "actual": "PASS",
+      "pass": true,
+      "rationale": "",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "PASS",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 10,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1,
+          "5": 1,
+          "6": 3,
+          "7": 3,
+          "8": 3,
+          "9": 3,
+          "10": 3
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "creep_median_2.5",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "pass": true,
+      "rationale": "",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "FAIL",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 10,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "FAIL",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.5,
+          "B": 2.5,
+          "C": 2.5,
+          "D": 2.5,
+          "E": 2.5
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 3,
+          "7": 3,
+          "8": 3,
+          "9": 3,
+          "10": 3
+        },
+        "creepiness_median": 2.5,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "pooled_median_false_PASS",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "pass": true,
+      "rationale": "Pooled50 median1 would pass incorrectly; participant-median median3 fails.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "FAIL",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 10,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "FAIL",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 1.0,
+          "B": 1.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 3,
+          "2": 3,
+          "3": 3,
+          "4": 3,
+          "5": 3,
+          "6": 3,
+          "7": 1,
+          "8": 1,
+          "9": 1,
+          "10": 1
+        },
+        "creepiness_median": 3.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "twenty_yes_but_four_distinct_people",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "pass": true,
+      "rationale": "",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "FAIL",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 10,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "FAIL"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 4,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4,
+          "E": 4
+        }
+      }
+    },
+    {
+      "id": "conditional_interest_not_fifth_yes",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "pass": true,
+      "rationale": "",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "FAIL",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 10,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "FAIL"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 4,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 4,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "semantic_hedged_restart",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "pass": true,
+      "rationale": "An app-attributed probability is a prediction even without certainty.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "FAIL",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 1,
+        "promise_assessable": 10,
+        "no_promise_count": 9,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "FAIL",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "semantic_negative_probability",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "pass": true,
+      "rationale": "Negative future claims are equally unsupported.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "FAIL",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 1,
+        "promise_assessable": 10,
+        "no_promise_count": 9,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "FAIL",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "semantic_contradiction",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "pass": true,
+      "rationale": "Explicit app prediction dominates the initial disclaimer.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "FAIL",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 1,
+        "promise_assessable": 10,
+        "no_promise_count": 9,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "FAIL",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "semantic_unclear_attribution",
+      "expected": "INCONCLUSIVE",
+      "actual": "INCONCLUSIVE",
+      "pass": true,
+      "rationale": "Unresolved attribution cannot be counted as NO_PROMISE.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "INCONCLUSIVE",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 9,
+        "no_promise_count": 9,
+        "history_ambiguous_count": 1,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "INCONCLUSIVE",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "semantic_personal_hope",
+      "expected": "PASS",
+      "actual": "PASS",
+      "pass": true,
+      "rationale": "Personal hope is explicitly separated from app inference.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "PASS",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 10,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "semantic_motive_hedge",
+      "expected": "PASS",
+      "actual": "PASS",
+      "pass": true,
+      "rationale": "Hedged attribution of caring is an unsupported motive claim.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "PASS",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "semantic_bare_negative",
+      "expected": "PASS",
+      "actual": "PASS",
+      "pass": true,
+      "rationale": "Bare no can mean no prediction or no reply; scope unresolved.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "PASS",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "semantic_vague_limit",
+      "expected": "PASS",
+      "actual": "PASS",
+      "pass": true,
+      "rationale": "Vague limitation does not supply motive-limit recognition.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "PASS",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 9,
+        "comprehension_correct_slots": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    },
+    {
+      "id": "semantic_historical_only",
+      "expected": "PASS",
+      "actual": "PASS",
+      "pass": true,
+      "rationale": "A historical statement is not positive spontaneous forecast-limit evidence.",
+      "result": {
+        "kind": "FAKE_INSTRUMENT_TEST",
+        "instrument_decision": "PASS",
+        "human_study_decision": "NOT_RUN",
+        "stage8b_authorized": false,
+        "N_target": 10,
+        "N_started": 10,
+        "N_usable": 10,
+        "N_reviewed": 10,
+        "N_comprehension_assessable": 10,
+        "comprehension_correct": 10,
+        "comprehension_correct_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "promise_count": 0,
+        "promise_assessable": 10,
+        "no_promise_count": 10,
+        "history_ambiguous_count": 0,
+        "gates": {
+          "comprehension": "PASS",
+          "history": "PASS",
+          "usefulness": "PASS",
+          "creepiness": "PASS",
+          "own_chat": "PASS"
+        },
+        "quotas": {
+          "uncertain": 3,
+          "nonromantic": 2
+        },
+        "integrity_complete": true,
+        "usefulness_medians": {
+          "A": 4.0,
+          "B": 4.0,
+          "C": 3.0,
+          "D": 3.0,
+          "E": 3.0
+        },
+        "usefulness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "useful_cards": [
+          "A",
+          "B"
+        ],
+        "creepiness_card_medians": {
+          "A": 2.0,
+          "B": 2.0,
+          "C": 2.0,
+          "D": 2.0,
+          "E": 2.0
+        },
+        "creepiness_denominators": {
+          "A": 10,
+          "B": 10,
+          "C": 10,
+          "D": 10,
+          "E": 10
+        },
+        "participant_creepiness_medians": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2
+        },
+        "creepiness_median": 2.0,
+        "own_chat_yes_people": 5,
+        "own_chat_complete": true,
+        "own_chat_card_yes": {
+          "A": 5,
+          "B": 0,
+          "C": 0,
+          "D": 0,
+          "E": 0
+        }
+      }
+    }
+  ]
+}

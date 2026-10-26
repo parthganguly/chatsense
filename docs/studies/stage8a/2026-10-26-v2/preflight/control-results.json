@@ -1,0 +1,767 @@
+{
+  "kind": "FAKE_INSTRUMENT_TEST_ONLY",
+  "human_observations": 0,
+  "note": "Repeated artificial code vectors test arithmetic; no generated participant transcripts or empirical claims.",
+  "gate_sha256": "44b348049ac0697cdeb5b89ba2f399bdf9709f003acb23063156c417fe25e88f",
+  "cases": {
+    "positive_algebra_control": {
+      "kind": "FAKE_INSTRUMENT_TEST",
+      "instrument_decision": "PASS",
+      "human_study_decision": "NOT_RUN",
+      "stage8b_authorized": false,
+      "N_target": 10,
+      "N_started": 10,
+      "N_usable": 10,
+      "N_reviewed": 10,
+      "N_comprehension_assessable": 10,
+      "comprehension_correct": 10,
+      "comprehension_correct_slots": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "promise_count": 0,
+      "promise_assessable": 10,
+      "no_promise_count": 10,
+      "history_ambiguous_count": 0,
+      "gates": {
+        "comprehension": "PASS",
+        "history": "PASS",
+        "usefulness": "PASS",
+        "creepiness": "PASS",
+        "own_chat": "PASS"
+      },
+      "quotas": {
+        "uncertain": 3,
+        "nonromantic": 2
+      },
+      "integrity_complete": true,
+      "usefulness_medians": {
+        "A": 4.0,
+        "B": 4.0,
+        "C": 4.0,
+        "D": 4.0,
+        "E": 4.0
+      },
+      "usefulness_denominators": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      },
+      "useful_cards": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "creepiness_card_medians": {
+        "A": 2.0,
+        "B": 2.0,
+        "C": 2.0,
+        "D": 2.0,
+        "E": 2.0
+      },
+      "creepiness_denominators": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      },
+      "participant_creepiness_medians": {
+        "1": 2,
+        "2": 2,
+        "3": 2,
+        "4": 2,
+        "5": 2,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "creepiness_median": 2.0,
+      "own_chat_yes_people": 10,
+      "own_chat_complete": true,
+      "own_chat_card_yes": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      }
+    },
+    "explicit_future_reply": {
+      "kind": "FAKE_INSTRUMENT_TEST",
+      "instrument_decision": "FAIL",
+      "human_study_decision": "NOT_RUN",
+      "stage8b_authorized": false,
+      "N_target": 10,
+      "N_started": 10,
+      "N_usable": 10,
+      "N_reviewed": 10,
+      "N_comprehension_assessable": 10,
+      "comprehension_correct": 9,
+      "comprehension_correct_slots": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "promise_count": 1,
+      "promise_assessable": 10,
+      "no_promise_count": 9,
+      "history_ambiguous_count": 0,
+      "gates": {
+        "comprehension": "PASS",
+        "history": "FAIL",
+        "usefulness": "PASS",
+        "creepiness": "PASS",
+        "own_chat": "PASS"
+      },
+      "quotas": {
+        "uncertain": 3,
+        "nonromantic": 2
+      },
+      "integrity_complete": true,
+      "usefulness_medians": {
+        "A": 4.0,
+        "B": 4.0,
+        "C": 4.0,
+        "D": 4.0,
+        "E": 4.0
+      },
+      "usefulness_denominators": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      },
+      "useful_cards": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "creepiness_card_medians": {
+        "A": 2.0,
+        "B": 2.0,
+        "C": 2.0,
+        "D": 2.0,
+        "E": 2.0
+      },
+      "creepiness_denominators": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      },
+      "participant_creepiness_medians": {
+        "1": 2,
+        "2": 2,
+        "3": 2,
+        "4": 2,
+        "5": 2,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "creepiness_median": 2.0,
+      "own_chat_yes_people": 10,
+      "own_chat_complete": true,
+      "own_chat_card_yes": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      }
+    },
+    "three_ambiguous_understandings": {
+      "kind": "FAKE_INSTRUMENT_TEST",
+      "instrument_decision": "FAIL",
+      "human_study_decision": "NOT_RUN",
+      "stage8b_authorized": false,
+      "N_target": 10,
+      "N_started": 10,
+      "N_usable": 10,
+      "N_reviewed": 10,
+      "N_comprehension_assessable": 10,
+      "comprehension_correct": 7,
+      "comprehension_correct_slots": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "promise_count": 0,
+      "promise_assessable": 10,
+      "no_promise_count": 10,
+      "history_ambiguous_count": 0,
+      "gates": {
+        "comprehension": "FAIL",
+        "history": "PASS",
+        "usefulness": "PASS",
+        "creepiness": "PASS",
+        "own_chat": "PASS"
+      },
+      "quotas": {
+        "uncertain": 3,
+        "nonromantic": 2
+      },
+      "integrity_complete": true,
+      "usefulness_medians": {
+        "A": 4.0,
+        "B": 4.0,
+        "C": 4.0,
+        "D": 4.0,
+        "E": 4.0
+      },
+      "usefulness_denominators": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      },
+      "useful_cards": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "creepiness_card_medians": {
+        "A": 2.0,
+        "B": 2.0,
+        "C": 2.0,
+        "D": 2.0,
+        "E": 2.0
+      },
+      "creepiness_denominators": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      },
+      "participant_creepiness_medians": {
+        "1": 2,
+        "2": 2,
+        "3": 2,
+        "4": 2,
+        "5": 2,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "creepiness_median": 2.0,
+      "own_chat_yes_people": 10,
+      "own_chat_complete": true,
+      "own_chat_card_yes": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      }
+    },
+    "one_ambiguous_history": {
+      "kind": "FAKE_INSTRUMENT_TEST",
+      "instrument_decision": "INCONCLUSIVE",
+      "human_study_decision": "NOT_RUN",
+      "stage8b_authorized": false,
+      "N_target": 10,
+      "N_started": 10,
+      "N_usable": 10,
+      "N_reviewed": 10,
+      "N_comprehension_assessable": 10,
+      "comprehension_correct": 9,
+      "comprehension_correct_slots": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "promise_count": 0,
+      "promise_assessable": 9,
+      "no_promise_count": 9,
+      "history_ambiguous_count": 1,
+      "gates": {
+        "comprehension": "PASS",
+        "history": "INCONCLUSIVE",
+        "usefulness": "PASS",
+        "creepiness": "PASS",
+        "own_chat": "PASS"
+      },
+      "quotas": {
+        "uncertain": 3,
+        "nonromantic": 2
+      },
+      "integrity_complete": true,
+      "usefulness_medians": {
+        "A": 4.0,
+        "B": 4.0,
+        "C": 4.0,
+        "D": 4.0,
+        "E": 4.0
+      },
+      "usefulness_denominators": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      },
+      "useful_cards": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "creepiness_card_medians": {
+        "A": 2.0,
+        "B": 2.0,
+        "C": 2.0,
+        "D": 2.0,
+        "E": 2.0
+      },
+      "creepiness_denominators": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      },
+      "participant_creepiness_medians": {
+        "1": 2,
+        "2": 2,
+        "3": 2,
+        "4": 2,
+        "5": 2,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "creepiness_median": 2.0,
+      "own_chat_yes_people": 10,
+      "own_chat_complete": true,
+      "own_chat_card_yes": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      }
+    },
+    "missing_rating": {
+      "kind": "FAKE_INSTRUMENT_TEST",
+      "instrument_decision": "INCONCLUSIVE",
+      "human_study_decision": "NOT_RUN",
+      "stage8b_authorized": false,
+      "N_target": 10,
+      "N_started": 10,
+      "N_usable": 10,
+      "N_reviewed": 10,
+      "N_comprehension_assessable": 10,
+      "comprehension_correct": 10,
+      "comprehension_correct_slots": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "promise_count": 0,
+      "promise_assessable": 10,
+      "no_promise_count": 10,
+      "history_ambiguous_count": 0,
+      "gates": {
+        "comprehension": "PASS",
+        "history": "PASS",
+        "usefulness": "INCONCLUSIVE",
+        "creepiness": "PASS",
+        "own_chat": "PASS"
+      },
+      "quotas": {
+        "uncertain": 3,
+        "nonromantic": 2
+      },
+      "integrity_complete": true,
+      "usefulness_medians": {
+        "A": 4.0,
+        "B": 4,
+        "C": 4.0,
+        "D": 4.0,
+        "E": 4.0
+      },
+      "usefulness_denominators": {
+        "A": 10,
+        "B": 9,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      },
+      "useful_cards": [
+        "A",
+        "C",
+        "D",
+        "E"
+      ],
+      "creepiness_card_medians": {
+        "A": 2.0,
+        "B": 2.0,
+        "C": 2.0,
+        "D": 2.0,
+        "E": 2.0
+      },
+      "creepiness_denominators": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      },
+      "participant_creepiness_medians": {
+        "1": 2,
+        "2": 2,
+        "3": 2,
+        "4": 2,
+        "5": 2,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "creepiness_median": 2.0,
+      "own_chat_yes_people": 10,
+      "own_chat_complete": true,
+      "own_chat_card_yes": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      }
+    },
+    "high_usefulness_false_confidence": {
+      "kind": "FAKE_INSTRUMENT_TEST",
+      "instrument_decision": "FAIL",
+      "human_study_decision": "NOT_RUN",
+      "stage8b_authorized": false,
+      "N_target": 10,
+      "N_started": 10,
+      "N_usable": 10,
+      "N_reviewed": 10,
+      "N_comprehension_assessable": 10,
+      "comprehension_correct": 7,
+      "comprehension_correct_slots": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "promise_count": 0,
+      "promise_assessable": 10,
+      "no_promise_count": 10,
+      "history_ambiguous_count": 0,
+      "gates": {
+        "comprehension": "FAIL",
+        "history": "PASS",
+        "usefulness": "PASS",
+        "creepiness": "PASS",
+        "own_chat": "PASS"
+      },
+      "quotas": {
+        "uncertain": 3,
+        "nonromantic": 2
+      },
+      "integrity_complete": true,
+      "usefulness_medians": {
+        "A": 4.0,
+        "B": 4.0,
+        "C": 4.0,
+        "D": 4.0,
+        "E": 4.0
+      },
+      "usefulness_denominators": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      },
+      "useful_cards": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "creepiness_card_medians": {
+        "A": 2.0,
+        "B": 2.0,
+        "C": 2.0,
+        "D": 2.0,
+        "E": 2.0
+      },
+      "creepiness_denominators": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      },
+      "participant_creepiness_medians": {
+        "1": 2,
+        "2": 2,
+        "3": 2,
+        "4": 2,
+        "5": 2,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "creepiness_median": 2.0,
+      "own_chat_yes_people": 10,
+      "own_chat_complete": true,
+      "own_chat_card_yes": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      }
+    },
+    "nonromantic_clear_understanding": {
+      "kind": "FAKE_INSTRUMENT_TEST",
+      "instrument_decision": "PASS",
+      "human_study_decision": "NOT_RUN",
+      "stage8b_authorized": false,
+      "N_target": 10,
+      "N_started": 10,
+      "N_usable": 10,
+      "N_reviewed": 10,
+      "N_comprehension_assessable": 10,
+      "comprehension_correct": 10,
+      "comprehension_correct_slots": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "promise_count": 0,
+      "promise_assessable": 10,
+      "no_promise_count": 10,
+      "history_ambiguous_count": 0,
+      "gates": {
+        "comprehension": "PASS",
+        "history": "PASS",
+        "usefulness": "PASS",
+        "creepiness": "PASS",
+        "own_chat": "PASS"
+      },
+      "quotas": {
+        "uncertain": 3,
+        "nonromantic": 10
+      },
+      "integrity_complete": true,
+      "usefulness_medians": {
+        "A": 4.0,
+        "B": 4.0,
+        "C": 4.0,
+        "D": 4.0,
+        "E": 4.0
+      },
+      "usefulness_denominators": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      },
+      "useful_cards": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "creepiness_card_medians": {
+        "A": 2.0,
+        "B": 2.0,
+        "C": 2.0,
+        "D": 2.0,
+        "E": 2.0
+      },
+      "creepiness_denominators": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      },
+      "participant_creepiness_medians": {
+        "1": 2,
+        "2": 2,
+        "3": 2,
+        "4": 2,
+        "5": 2,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2
+      },
+      "creepiness_median": 2.0,
+      "own_chat_yes_people": 10,
+      "own_chat_complete": true,
+      "own_chat_card_yes": {
+        "A": 10,
+        "B": 10,
+        "C": 10,
+        "D": 10,
+        "E": 10
+      }
+    },
+    "N9_no_reduced_denominator_pass": {
+      "kind": "FAKE_INSTRUMENT_TEST",
+      "instrument_decision": "INCONCLUSIVE",
+      "human_study_decision": "NOT_RUN",
+      "stage8b_authorized": false,
+      "N_target": 10,
+      "N_started": 9,
+      "N_usable": 9,
+      "N_reviewed": 9,
+      "N_comprehension_assessable": 9,
+      "comprehension_correct": 9,
+      "comprehension_correct_slots": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "promise_count": 0,
+      "promise_assessable": 9,
+      "no_promise_count": 9,
+      "history_ambiguous_count": 0,
+      "gates": {
+        "comprehension": "INCONCLUSIVE",
+        "history": "INCONCLUSIVE",
+        "usefulness": "INCONCLUSIVE",
+        "creepiness": "INCONCLUSIVE",
+        "own_chat": "INCONCLUSIVE"
+      },
+      "quotas": {
+        "uncertain": 3,
+        "nonromantic": 2
+      },
+      "integrity_complete": false,
+      "usefulness_medians": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 4,
+        "E": 4
+      },
+      "usefulness_denominators": {
+        "A": 9,
+        "B": 9,
+        "C": 9,
+        "D": 9,
+        "E": 9
+      },
+      "useful_cards": [],
+      "creepiness_card_medians": {
+        "A": 2,
+        "B": 2,
+        "C": 2,
+        "D": 2,
+        "E": 2
+      },
+      "creepiness_denominators": {
+        "A": 9,
+        "B": 9,
+        "C": 9,
+        "D": 9,
+        "E": 9
+      },
+      "participant_creepiness_medians": {
+        "1": 2,
+        "2": 2,
+        "3": 2,
+        "4": 2,
+        "5": 2,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2
+      },
+      "creepiness_median": 2,
+      "own_chat_yes_people": 9,
+      "own_chat_complete": false,
+      "own_chat_card_yes": {
+        "A": 9,
+        "B": 9,
+        "C": 9,
+        "D": 9,
+        "E": 9
+      }
+    }
+  }
+}

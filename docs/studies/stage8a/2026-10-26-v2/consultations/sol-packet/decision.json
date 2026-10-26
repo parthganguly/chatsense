@@ -1,0 +1,59 @@
+{
+  "decision": "PASS",
+  "scope": "Substantive P0v2 packet/scoring review candidate only; final immutable FREEZE delta/inventory verification still required.",
+  "candidate_commit": "6c5ef1c61358e637fc38c5a036149863a4efef0a",
+  "source_commit": "72eeb00d436d3a85a117fb8fced3cf7597b12d31",
+  "product_drift": false,
+  "methods_and_eight_materials_instrument_files": "exact v1 bytes; form/schema version-only",
+  "inherited_tests_passed": 30,
+  "inherited_schema_controls": "blank valid; eight invalid-input controls rejected",
+  "independent_controls_passed": 55,
+  "fresh_semantic_clauses": 9,
+  "fresh_schema_controls_passed": 14,
+  "all_selected_PNGs_independently_hash_verified_and_pixel_inspected": true,
+  "selected_native_dimensions": [
+    [
+      344,
+      546
+    ],
+    [
+      344,
+      500
+    ],
+    [
+      344,
+      520
+    ],
+    [
+      344,
+      656
+    ],
+    [
+      344,
+      508
+    ]
+  ],
+  "all15_context_text_hashes_match_v1": true,
+  "typography_delta_rows_verified": 53,
+  "build_output_files_verified": 36,
+  "prior_independent_ux_artifacts_equal": 90,
+  "failed_capture_partials": 22,
+  "failed_partials_selected": false,
+  "final_freeze_missing_intentionally_not_defect": true,
+  "findings": [],
+  "residual_limitations": [
+    "capture script pre-trim immutable post-run snapshot differs only one trailing newline; no execution-time script hash in capture-run.json",
+    "FAKE gate verifies supplied codes/arithmetic and flags, not semantic correctness, consent, reviewer independence or private-record completeness",
+    "Current substantive PASS is not final inventory verification or P1 authorization",
+    "Scoped hero-card UX; unchanged shell overlap, details label/destination mismatch and D desktop below-fold link retained"
+  ],
+  "human_observations": 0,
+  "human_study_decision": "NOT_RUN",
+  "P1_authorized": false,
+  "stage8b_authorized": false,
+  "merge_authorized": false,
+  "measurements": "packet-measurements.json",
+  "commands": "commands.json",
+  "runtime": "RUNTIME.json",
+  "clean_HEAD_status_before_after": true
+}
