@@ -1,0 +1,66 @@
+{
+  "source_packet_commit": "56034b7dbff14b4fde3920cd14e80e7635ce8357",
+  "accepted_code_commit": "72eeb00d436d3a85a117fb8fced3cf7597b12d31",
+  "cards": [
+    {
+      "card": "A",
+      "id": "s8a-v2-c1-pattern-change",
+      "canonical_image": "docs/studies/stage8a/2026-10-26-v2/stimuli/captures/s8a-v2-c1-pattern-change.selected.card.png",
+      "canonical_text": "docs/studies/stage8a/2026-10-26-v2/stimuli/captures/s8a-v2-c1-pattern-change.innerText.txt",
+      "image_path": "stimuli/s8a-v2-c1-pattern-change.selected.card.png",
+      "image_sha256": "eea78a25698389ab31dc52a232b7384b6165444157680f34219e171065c0b51f",
+      "image_bytes": 64800,
+      "text_path": "stimuli/s8a-v2-c1-pattern-change.innerText.txt",
+      "text_sha256": "8e77123a283e07a3bb03cc418c792d04aec95fbd764ee71dcebb2f6fed2e24d0",
+      "text_bytes": 798
+    },
+    {
+      "card": "B",
+      "id": "s8a-v2-c2-carried-balanced",
+      "canonical_image": "docs/studies/stage8a/2026-10-26-v2/stimuli/captures/s8a-v2-c2-carried-balanced.selected.card.png",
+      "canonical_text": "docs/studies/stage8a/2026-10-26-v2/stimuli/captures/s8a-v2-c2-carried-balanced.innerText.txt",
+      "image_path": "stimuli/s8a-v2-c2-carried-balanced.selected.card.png",
+      "image_sha256": "c8498e524874adf000a693c46a7e1a2154d6392e24759494f1de0bd3713f5adf",
+      "image_bytes": 53856,
+      "text_path": "stimuli/s8a-v2-c2-carried-balanced.innerText.txt",
+      "text_sha256": "e8a3f104a27c56d1e91f2a3aac98f9c2819a33e6a9ca8af3b3d5bcc461e44cca",
+      "text_bytes": 696
+    },
+    {
+      "card": "C",
+      "id": "s8a-v2-c3-carried-mixed",
+      "canonical_image": "docs/studies/stage8a/2026-10-26-v2/stimuli/captures/s8a-v2-c3-carried-mixed.selected.card.png",
+      "canonical_text": "docs/studies/stage8a/2026-10-26-v2/stimuli/captures/s8a-v2-c3-carried-mixed.innerText.txt",
+      "image_path": "stimuli/s8a-v2-c3-carried-mixed.selected.card.png",
+      "image_sha256": "70470d8b2a3ba4c7c738dd09088a1f05cd786ee2b07dcf375a607e23685ed602",
+      "image_bytes": 53669,
+      "text_path": "stimuli/s8a-v2-c3-carried-mixed.innerText.txt",
+      "text_sha256": "a84f90be893c2c337014f44008c0bc37b77aa6d363931af50c7e0256ed20b4fa",
+      "text_bytes": 726
+    },
+    {
+      "card": "D",
+      "id": "s8a-v2-c4-unusual-silence",
+      "canonical_image": "docs/studies/stage8a/2026-10-26-v2/stimuli/captures/s8a-v2-c4-unusual-silence.selected.card.png",
+      "canonical_text": "docs/studies/stage8a/2026-10-26-v2/stimuli/captures/s8a-v2-c4-unusual-silence.innerText.txt",
+      "image_path": "stimuli/s8a-v2-c4-unusual-silence.selected.card.png",
+      "image_sha256": "56b2ac46dcaa48cfd11e229b462d6bd2ac1f8b6630ec965723dfecbdc7106816",
+      "image_bytes": 78339,
+      "text_path": "stimuli/s8a-v2-c4-unusual-silence.innerText.txt",
+      "text_sha256": "d0712ba7660daadd1d429312c2959db589bc26647196d400073dbc00107a0608",
+      "text_bytes": 1075
+    },
+    {
+      "card": "E",
+      "id": "s8a-v2-c5-insufficient",
+      "canonical_image": "docs/studies/stage8a/2026-10-26-v2/stimuli/captures/s8a-v2-c5-insufficient.selected.card.png",
+      "canonical_text": "docs/studies/stage8a/2026-10-26-v2/stimuli/captures/s8a-v2-c5-insufficient.innerText.txt",
+      "image_path": "stimuli/s8a-v2-c5-insufficient.selected.card.png",
+      "image_sha256": "77f4339d31bc6a333b70b6c5f010e3b31c8882f063a29619f98d037f9c82082e",
+      "image_bytes": 55465,
+      "text_path": "stimuli/s8a-v2-c5-insufficient.innerText.txt",
+      "text_sha256": "51328f28c947eef9f5d281985241353256fab282435ddf7d1109efee854c5f0f",
+      "text_bytes": 756
+    }
+  ]
+}

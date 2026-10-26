@@ -1,0 +1,49 @@
+{
+  "verification": "PASS",
+  "scientific_protocol": "PASS_AT_ACCEPTED_SUBSTANTIVE_COMMIT",
+  "paid_launch": "BLOCKED",
+  "verified_utc": "2026-10-26T14:19:01.692760+00:00",
+  "selected_model": "gpt-6.1-sol",
+  "model_receipt_limit": "parent routing designation; no independent backend attestation",
+  "task_id": "/root/sol_s3_falsification",
+  "accepted_substantive_commit": "7b6cb033100126e1b9a0874b22e1f683a315211b",
+  "publication_freeze_commit": "7ed874b7a3963e560d399b7c0046f5625a2e0757",
+  "accepted_files_unchanged": 66,
+  "added_files": [
+    "docs/studies/s3/2026-10-26-v1/ASTRA-S3-PRELAUNCH.md",
+    "docs/studies/s3/2026-10-26-v1/FREEZE.json",
+    "docs/studies/s3/2026-10-26-v1/OWNER-AUTHORIZATION.md",
+    "docs/studies/s3/2026-10-26-v1/SHA256SUMS",
+    "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/EF435ACE-RECHECK.md",
+    "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/REPORT.md",
+    "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/delta-checks.json",
+    "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/final-decision-checks.json",
+    "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/final-independent-results.json",
+    "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/final-receipt.json",
+    "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/final_independent_recheck.py",
+    "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/independent-results.json",
+    "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/independent_recheck.py",
+    "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/receipt.json"
+  ],
+  "tracked_and_filesystem_packet_files": 80,
+  "inventoried_files": 78,
+  "inventory_sha256": "d6af08e2ad3453bbb913a7056afec991b1f08c8a8273bde2ecf7a3bac14c8659",
+  "freeze_sha256": "957b6c70fc9103987c6423e7e09997109352307753ecc9c9d97dbce3f769f24a",
+  "checks_passed": 169,
+  "document_review": {
+    "files": [
+      "ASTRA-S3-PRELAUNCH.md",
+      "OWNER-AUTHORIZATION.md"
+    ],
+    "result": "PASS",
+    "scope": "consistent with accepted protocol and earlier independent review; no broadened or granted permission",
+    "authorization": "explicitly NOT_GRANTED; caps32 requests and USD0.45 conditional; all account/contract/new-dispatcher gates retained",
+    "limits": "synthetic frozen inputs only; no private exports, product changes, merges, release, fallback, replacements or unsafe resume"
+  },
+  "scientific_tests_rerun": false,
+  "provider_calls": 0,
+  "network_requests": 0,
+  "credentials_accessed": false,
+  "frozen_packet_modified": false,
+  "external_publication_performed": false
+}

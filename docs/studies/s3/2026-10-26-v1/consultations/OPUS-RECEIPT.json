@@ -1,0 +1,14 @@
+{
+  "invoked_model": "claude-opus-5-5",
+  "observed_model_usage": [
+    "claude-opus-5-5"
+  ],
+  "harness": "native Claude Code",
+  "cli_version": "2.1.310",
+  "session_id": "c70d314a-8d97-4b52-abea-15aec7fb669b",
+  "terminal_reason": "completed",
+  "is_error": false,
+  "provider_calls_jev_glide": 0,
+  "result_sha256": "76f26b325196b32ad6dd574df8afcdd9810149e52db2d4a97b2f516986dafa10",
+  "cost_note": "Native consultation receipt reports list-price accounting, not a Jev/GLiDE inference bill. No study provider inference occurred."
+}

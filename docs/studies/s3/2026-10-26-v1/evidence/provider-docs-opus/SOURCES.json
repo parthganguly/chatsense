@@ -1,0 +1,202 @@
+[
+  {
+    "file": "jev-llms-index.txt",
+    "url": "https://docs.typesafe.ai/llms.txt",
+    "final_url": "https://docs.typesafe.ai/llms.txt",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:28Z",
+    "sha256": "e817e47899099364d29633f157ac5de74f936c849bdf5a14382e31ba4a09c688",
+    "bytes": 18706,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "jev-system-one-concept.md",
+    "url": "https://docs.typesafe.ai/concepts/system-one.md",
+    "final_url": "https://docs.typesafe.ai/concepts/system-one.md",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:29Z",
+    "sha256": "55dda6c80c2d04b0e6d897a9f9fb2752e1b6b0cb138bf724cd99eaf02146e133",
+    "bytes": 4269,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "jev-fan-out.md",
+    "url": "https://docs.typesafe.ai/patterns/fan-out.md",
+    "final_url": "https://docs.typesafe.ai/patterns/fan-out.md",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:30Z",
+    "sha256": "7374e45cd14771f092607922edc30fbeaba696cfe93aa09c152f9c6cf149dc16",
+    "bytes": 4109,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "jev-primitives.md",
+    "url": "https://docs.typesafe.ai/primitives.md",
+    "final_url": "https://docs.typesafe.ai/primitives.md",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:31Z",
+    "sha256": "c6e7de429b679d80419a3f08901f96f01010b4ffe0ab7095541c2ad318c126c1",
+    "bytes": 15597,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "jev-choice.md",
+    "url": "https://docs.typesafe.ai/primitives/choice.md",
+    "final_url": "https://docs.typesafe.ai/primitives/choice.md",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:32Z",
+    "sha256": "0ff127cbdb24e6ab20669cc559d738951d9285537b06d1c96c8581923b609ed4",
+    "bytes": 15639,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "jev-sdk-python-retries.md",
+    "url": "https://docs.typesafe.ai/sdk/python/api/retries.md",
+    "final_url": "https://docs.typesafe.ai/sdk/python/api/retries.md",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:32Z",
+    "sha256": "6ef903204ee1bfd976e443027d6c27278898574f51df4592c4e3fdc076204305",
+    "bytes": 7121,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "jev-sdk-python-constants.md",
+    "url": "https://docs.typesafe.ai/sdk/python/api/constants.md",
+    "final_url": "https://docs.typesafe.ai/sdk/python/api/constants.md",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:33Z",
+    "sha256": "a589efc998840cae4c78d60d2ca452dae64d1285dd63e100017b0ef9363aabba",
+    "bytes": 1472,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "jev-sdk-js-client.md",
+    "url": "https://docs.typesafe.ai/sdk/javascript/api/classes/TypeSafeClient.md",
+    "final_url": "https://docs.typesafe.ai/sdk/javascript/api/classes/TypeSafeClient.md",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:34Z",
+    "sha256": "bd7b2ba0fd1cd1974f1a6938ff8a87126c874d8a981afb7da64c2ae0d9fd26ab",
+    "bytes": 4036,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "jev-1.13-jaggedness.md",
+    "url": "https://docs.typesafe.ai/model-jaggedness/jev-1.13.md",
+    "final_url": "https://docs.typesafe.ai/model-jaggedness/jev-1.13.md",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:34Z",
+    "sha256": "f4bef6bdad41b84d4e8f7a14e9ce38aa9f8a55714b294ecf30b191482439affe",
+    "bytes": 9601,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "typesafe-dpa.html",
+    "url": "https://typesafe.ai/legal/data-processing",
+    "final_url": "https://typesafe.ai/legal/data-processing",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:35Z",
+    "sha256": "61d8e8ea1b59fa33ed55f05652e08a678fa5e310e94a9f59875bed98fec0213c",
+    "bytes": 206310,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "typesafe-privacy.html",
+    "url": "https://typesafe.ai/legal/privacy-policy",
+    "final_url": "https://typesafe.ai/legal/privacy-policy",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:35Z",
+    "sha256": "cc2f010b6781860e6bafb8a664583bff8a2dfaca5faac3be0914a05d880b6023",
+    "bytes": 201074,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "typesafe-mca.html",
+    "url": "https://typesafe.ai/legal/mca",
+    "final_url": "https://typesafe.ai/legal/mca",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:36Z",
+    "sha256": "6a6705df94b45d11e4ce5b367fb132ff41432e0812bc73fd4fd58e89a42863ba",
+    "bytes": 278201,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "glide-models.md",
+    "url": "https://docs.fastino.ai/concepts/models.md",
+    "final_url": "https://docs.fastino.ai/concepts/models.md",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:37Z",
+    "sha256": "7584d0f713eaf7c4e6c1f03a748355c0310bb581ebed7c5d8605c350b187281a",
+    "bytes": 6235,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "glide-choice.md",
+    "url": "https://docs.fastino.ai/concepts/glide-choice.md",
+    "final_url": "https://docs.fastino.ai/concepts/glide-choice.md",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:38Z",
+    "sha256": "2273efbeb6e8ead03e6d5cc97141b9cadb4cc7284c1aa358a4abfed1571fecf9",
+    "bytes": 5227,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "glide-overview.md",
+    "url": "https://docs.fastino.ai/concepts/glide.md",
+    "final_url": "https://docs.fastino.ai/concepts/glide.md",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:40Z",
+    "sha256": "e833a7b0e860656973963fa26e8f4911757348fb0db6796f5e2406236cb2a8f6",
+    "bytes": 3593,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "glide-api-systemone.md",
+    "url": "https://docs.fastino.ai/api-reference/inference/systemone.md",
+    "final_url": "https://docs.fastino.ai/api-reference/inference/systemone.md",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:40Z",
+    "sha256": "bfcd2960dd6b5e8c1e8ea21fb1b14957a4a392bd0f51d119c8c2c4ccfea4be9f",
+    "bytes": 1680,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "glide-retries.md",
+    "url": "https://docs.fastino.ai/troubleshooting/retries.md",
+    "final_url": "https://docs.fastino.ai/troubleshooting/retries.md",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:41Z",
+    "sha256": "0d2fd2ab77455fc1819c246029ff17de5f2bda7e35751d3d58c097793d8d24ca",
+    "bytes": 2525,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "glide-errors.md",
+    "url": "https://docs.fastino.ai/troubleshooting/errors.md",
+    "final_url": "https://docs.fastino.ai/troubleshooting/errors.md",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:42Z",
+    "sha256": "b7843552eebe10e8e084b4f3f56f4d6d7fcec178bb3522422f763a03f58a22ae",
+    "bytes": 18092,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "glide-trust-safety.md",
+    "url": "https://docs.fastino.ai/trust-safety.md",
+    "final_url": "https://docs.fastino.ai/trust-safety.md",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:43Z",
+    "sha256": "8b52757b163e62c8fa9735c68db32cf98108802d0110bbadae9a4e2b8c55a874",
+    "bytes": 9840,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  },
+  {
+    "file": "glide-authentication.md",
+    "url": "https://docs.fastino.ai/authentication.md",
+    "final_url": "https://docs.fastino.ai/authentication.md",
+    "status": 200,
+    "retrieved_utc": "2026-10-26T13:37:43Z",
+    "sha256": "4bed4885a77c4af77fc076f9235db861acb7d15b4d3481a9b32345ef4251ff83",
+    "bytes": 3544,
+    "method": "curl -sS -L GET, unauthenticated public page; stored verbatim; nothing executed"
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "schema": "s3.freeze.v1",
+  "created_utc": "2026-10-26T14:16:40.117043+00:00",
+  "timezone": "Asia/Kolkata",
+  "status": "SCIENTIFIC_PROTOCOL_PASS_OWNER_AUTHORIZATION_PENDING_PAID_LAUNCH_BLOCKED",
+  "inference_status": "NOT_EXECUTED",
+  "reviewed_substantive_commit": "7b6cb033100126e1b9a0874b22e1f683a315211b",
+  "source_packet_commit": "56034b7dbff14b4fde3920cd14e80e7635ce8357",
+  "accepted_app_code_commit": "72eeb00d436d3a85a117fb8fced3cf7597b12d31",
+  "inventory": "SHA256SUMS",
+  "inventory_sha256": "d6af08e2ad3453bbb913a7056afec991b1f08c8a8273bde2ecf7a3bac14c8659",
+  "inventoried_files": 78,
+  "excluded_from_inventory": [
+    "FREEZE.json",
+    "SHA256SUMS"
+  ],
+  "proposed_calls": {
+    "jev": 16,
+    "glide": 16,
+    "total": 32
+  },
+  "proposed_usd_ceiling": {
+    "jev": 0.05,
+    "glide": 0.4,
+    "total": 0.45
+  },
+  "actual_study_provider_calls": 0,
+  "credential_access_performed": false,
+  "dispatcher_implemented": false,
+  "human_study_status": "NOT_RUN_DEFERRED",
+  "new_results_location": "must be outside this frozen protocol directory"
+}

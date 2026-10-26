@@ -1,0 +1,409 @@
+{
+  "schema": "s3.key.v1",
+  "never_send_to_provider": true,
+  "cards": {
+    "A": {
+      "q01": {
+        "correct": "d0",
+        "classes": {
+          "d0": "observed_fact",
+          "d1": "unsupported_motive",
+          "d2": "unsupported_prediction",
+          "d3": "underreading"
+        },
+        "anchors": [
+          "5 minutes",
+          "1.5 hours",
+          "1.9 hours",
+          "30 minutes",
+          "It does not say why the pattern moved."
+        ]
+      },
+      "q02": {
+        "role": "positive_control",
+        "correct": "d0",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q03": {
+        "role": "false_control",
+        "correct": "d1",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q04": {
+        "role": "motive",
+        "correct": "d2",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q05": {
+        "role": "reply_prediction",
+        "correct": "d2",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q06": {
+        "role": "ambiguity_scope",
+        "correct": "d2",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q07": {
+        "role": "derived_fact_control",
+        "correct": "d0",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q08": {
+        "correct": "d0",
+        "classes": {
+          "d0": "observed_fact",
+          "d1": "unsupported_motive",
+          "d2": "unsupported_prediction",
+          "d3": "underreading"
+        }
+      }
+    },
+    "B": {
+      "q01": {
+        "correct": "d0",
+        "classes": {
+          "d0": "observed_fact",
+          "d1": "unsupported_motive",
+          "d2": "contradicted_fact",
+          "d3": "underreading"
+        },
+        "anchors": [
+          "76 by Ravi, 76 by Asha",
+          "4 by Ravi, 4 by Asha",
+          "neither side went above the balanced band",
+          "They do not measure anyone's reasons"
+        ]
+      },
+      "q02": {
+        "role": "positive_control",
+        "correct": "d0",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q03": {
+        "role": "false_control",
+        "correct": "d1",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q04": {
+        "role": "motive",
+        "correct": "d2",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q05": {
+        "role": "reply_prediction",
+        "correct": "d2",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q06": {
+        "role": "ambiguity_scope",
+        "correct": "d2",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q07": {
+        "role": "derived_fact_control",
+        "correct": "d0",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q08": {
+        "correct": "d0",
+        "classes": {
+          "d0": "observed_fact",
+          "d1": "unsupported_motive",
+          "d2": "unsupported_external_contact",
+          "d3": "underreading"
+        }
+      }
+    },
+    "C": {
+      "q01": {
+        "correct": "d0",
+        "classes": {
+          "d0": "observed_fact",
+          "d1": "unsupported_global_judgment",
+          "d2": "contradicted_fact",
+          "d3": "contradicted_error"
+        },
+        "anchors": [
+          "112 by Ravi, 40 by Asha",
+          "4 by Ravi, 4 by Asha",
+          "The measures disagree",
+          "They do not measure anyone's reasons"
+        ]
+      },
+      "q02": {
+        "role": "positive_control",
+        "correct": "d0",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q03": {
+        "role": "false_control",
+        "correct": "d1",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q04": {
+        "role": "motive",
+        "correct": "d2",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q05": {
+        "role": "reply_prediction",
+        "correct": "d2",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q06": {
+        "role": "ambiguity_scope",
+        "correct": "d2",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q07": {
+        "role": "derived_fact_control",
+        "correct": "d0",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q08": {
+        "correct": "d0",
+        "classes": {
+          "d0": "observed_fact",
+          "d1": "contradicted_fact",
+          "d2": "unsupported_motive",
+          "d3": "unsupported_error"
+        }
+      }
+    },
+    "D": {
+      "q01": {
+        "correct": "d0",
+        "classes": {
+          "d0": "observed_fact",
+          "d1": "unsupported_prediction",
+          "d2": "unsupported_prediction",
+          "d3": "contradicted_fact"
+        },
+        "anchors": [
+          "All 10 earlier",
+          "7 of those first messages",
+          "at least 15 days",
+          "not a promise about this quiet",
+          "If you have spoken since then"
+        ]
+      },
+      "q02": {
+        "role": "positive_control",
+        "correct": "d0",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q03": {
+        "role": "false_control",
+        "correct": "d1",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q04": {
+        "role": "motive",
+        "correct": "d2",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q05": {
+        "role": "reply_prediction",
+        "correct": "d2",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q06": {
+        "role": "ambiguity_scope",
+        "correct": "d2",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q07": {
+        "role": "derived_fact_control",
+        "correct": "d0",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q08": {
+        "correct": "d0",
+        "classes": {
+          "d0": "historical_count",
+          "d1": "unsupported_prediction",
+          "d2": "unsupported_prediction",
+          "d3": "underreading"
+        }
+      }
+    },
+    "E": {
+      "q01": {
+        "correct": "d0",
+        "classes": {
+          "d0": "insufficient_evidence",
+          "d1": "contradicted_fact",
+          "d2": "unsupported_global_judgment",
+          "d3": "contradicted_error"
+        },
+        "anchors": [
+          "1 day of messages",
+          "1 conversation start",
+          "0 eligible comparison windows",
+          "needs 4",
+          "That is the answer, not an error"
+        ]
+      },
+      "q02": {
+        "role": "positive_control",
+        "correct": "d0",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q03": {
+        "role": "false_control",
+        "correct": "d1",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q04": {
+        "role": "motive",
+        "correct": "d2",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q05": {
+        "role": "reply_prediction",
+        "correct": "d2",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q06": {
+        "role": "ambiguity_scope",
+        "correct": "d2",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q07": {
+        "role": "derived_fact_control",
+        "correct": "d0",
+        "classes": {
+          "d0": "supported",
+          "d1": "contradicted",
+          "d2": "not_determined"
+        }
+      },
+      "q08": {
+        "correct": "d0",
+        "classes": {
+          "d0": "insufficient_evidence",
+          "d1": "contradicted_fact",
+          "d2": "unsupported_global_judgment",
+          "d3": "contradicted_error"
+        }
+      }
+    }
+  }
+}

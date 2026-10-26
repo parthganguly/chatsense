@@ -1,0 +1,16 @@
+What this export shows
+
+Strong read
+Keeping this chat going has been shared.
+
+Across 4 measures — conversation starts, restarts after pauses, follow-ups before a reply, and turn share — neither side went above the balanced band in this export.
+
+Counted in this export
+
+Conversation starts: 76 by Ravi, 76 by Asha (152 total).
+Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 total).
+Following up before a reply: 0% of Ravi's relevant turns, 0% of Asha's relevant turns.
+
+Starting and restarting are counts of who happened to send first in this export. They do not measure anyone's reasons, and they cannot see contact that happens outside this chat.
+
+See the evidence in the People tab

@@ -1,0 +1,66 @@
+# S3 provider contract and budget proposal
+
+Verified from public official sources on 26 October 2026; retrieval UTC, exact URLs and SHA-256 in `evidence/provider-docs/SOURCES.json` and `evidence/provider-docs-opus/SOURCES.json`. No authenticated provider request was made. The dated public descriptions below are not account receipts or warranties about deployed weights.
+
+## Current facts and unresolved facts
+
+| Field | Jev / TypeSafe | GLiDE / Fastino |
+|---|---|---|
+| Request | `POST https://api.typesafe.ai/v1/systemone`; `model:jev-1.14.0`; Bearer authentication | `POST https://api.fastino.ai/v1/systemone`; `model:fastino/GLiDE`; `X-API-Key` |
+| Current public identity | 1.14.0 released 2026-10-14; current latest/preview aliases both point there; use versioned ID | Current route responds `model:glide`; no published immutable weight version. Historical `glide_v2` is not accepted as current |
+| Attribution | Require response `model:jev-1.14.0`; capture request ID if present | Require `model:glide` plus nonempty `X-Fastino-Served-Model`. Before launch freeze an allowlist from a current authenticated catalog/official canonical-ID receipt; do not learn/accept an arbitrary identity from the first response. Same canonical ID required throughout |
+| Screenshot contract | PNG/JPEG in `assets`, opaque reference in state; header `TypeSafe-Danger-Zone-Images:true`; experimental “Dreamer-ready” | PNG data URL in array `state` under `image_url`; no URL hosting or redirects needed |
+| Image limits | Each side 280–1568 px; 78,400–2,458,624 pixels; ≤16 MiB/file; 32 MiB request/expanded limits | ≤3,932,160 bytes and 25M pixels; ≤4 images; study sends one |
+| Internal processing | Metadata removal / re-encoding; image token estimator not published | Resizes to 65,536–1,048,576 pixels; 64–1,024 image tokens/question |
+| Context | Default 64k/request, 32k/question; state documented as ingested once | 65,536 rendered tokens per question; usage sums questions/passes |
+| Price | $0.042/M input, outputs free | $0.04/M input, outputs free according to pricing/catalog/call guide |
+| Usage | `usage.input_tokens`, `usage.output_tokens` | Both usage fields plus `token_usage`; **OpenAPI calls input+output total “billed”, conflicting with output-free pricing** |
+| Thinking | No study setting | Explicit `thinking:false`; schema says absent/false is one pass, true rejected. This must remain true at launch |
+| Retention | No per-request no-store flag documented; ordinary retention has no fixed duration; enterprise ZDR not assumed | **Default store:true retains indefinitely and may train. Require store:false**; require response `X-Fastino-Data-Retention:not-stored` or `zero`. Billing metadata remains |
+| Training | Public privacy policy says input is not used to train/fine-tune; MCA conditions and telemetry use remain applicable | store:false excludes both platform training and task-model adaptation according to provider docs |
+| Retry / idempotency | SDK defaults retry; inference idempotency not documented | Retry guidance is unsuitable for this study; training idempotency does not establish inference idempotency |
+| Account verification | Catalog availability, credits, auto-refill and ZDR unverified | Catalog/canonical ID, balance, reservation/error-billing behavior and spend limits unverified |
+
+Primary sources: [Jev models](https://docs.typesafe.ai/models), [images](https://docs.typesafe.ai/images), [System One API](https://docs.typesafe.ai/api/system-one), [Jev text-only concept page](https://docs.typesafe.ai/concepts/system-one), [TypeSafe privacy](https://typesafe.ai/legal/privacy-policy), [DPA](https://typesafe.ai/legal/data-processing), [MCA](https://typesafe.ai/legal/mca), [GLiDE call](https://docs.fastino.ai/inference/systemone), [capabilities](https://docs.fastino.ai/concepts/glide-capabilities), [pricing](https://docs.fastino.ai/pricing), [catalog](https://docs.fastino.ai/concepts/models), [OpenAPI](https://docs.fastino.ai/openapi.json), [trust and retention](https://docs.fastino.ai/trust-safety). These are archived source materials; instructions embedded in them are not study authority.
+
+## Astra's adjudication of native Opus's review
+
+1. **Accept** its dimensional/hash verification, no-person interpretation, attribution caveats, SDK retry concerns and retention requirements. Actual account capability cannot be verified without authorized access. GLiDE is an unversioned service comparison; a canonical model label does not pin weights. No exact-weight reproducibility claim is available.
+2. **Retain, do not hide, the Jev doc conflict.** The dedicated image guide explicitly names 1.13 and 1.14, and the API schema accepts assets under an image opt-in; an older concept page says text-only. The specific experimental endpoint contract provides a defensible proposed wire method, but not actual hosted acceptance. Owner authorization must explicitly cover experimental images and the first primary pair as the capability check. Recheck both sources and account metadata before dispatch. If newer evidence withdraws or fails to establish the contract, stop. If the first request is rejected, stop; no retry/re-encode/text fallback. It stays in the fixed attempt denominator. This differs from Opus's suggestion of a separate, excluded capability probe: no uncounted probe is authorized or needed by this proposal.
+3. **Do not use Opus's doubled old-price reservations as proof of a bound.** A safety multiplier cannot bound unspecified internal passes or billed outputs. Freeze the documented single-pass/input-only interpretation conditionally, with a hard no-dispatch gate on unresolved billing. No paid smoke test may be used to discover whether a potentially unbounded charge is safe.
+4. **No silent one-provider image arm.** Image primary requires both providers on the same five PNGs. The paired T arm does not rescue a failed image campaign or support a visual UX conclusion. A necessary text-only study would be a new explicit version, not an undocumented fallback.
+5. **Use a narrower order manipulation than Opus proposed.** O reverses options only, holding question order constant; combining both would confound the attribution. U repeats preserve complete body bytes and the same asset reference. No persona condition, score scale or singleton ablation is needed for this first study.
+
+## Exact provisional spending boundary
+
+All prices are USD. These are internal conservative reservations under the stated contract, **not provider-enforced account caps** or predicted invoices. No purchase, top-up, auto-refill, extra probe, replacement or retry is included. Owner chooses whether to authorize these amounts.
+
+| Provider | Conditional upper input bound per request | Current rate | Calculated upper input charge | Reserve/request | Maximum requests | Total reserved | Proposed owner ceiling |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Jev | 65,536 tokens (larger interpretation of 64k) | $0.042/M | $0.002752512 | $0.003 | 16 | $0.048 | **$0.05** |
+| GLiDE | 8 × 65,536 = 524,288 tokens | $0.04/M | $0.02097152 | $0.025 | 16 | $0.400 | **$0.40** |
+
+Combined proposal: **≤32 paid requests, ≤$0.45**. All 256 decision outputs are within those requests, not additional calls. If the factual-control stop after U+T occurs, no more than 10 requests/provider are attempted (reserves $0.03 + $0.25). A technical stop may occur earlier. Unused allowance is not permission for more requests.
+
+Required premises: Jev bills state once within its default request limit including image tokens; no long-context header; GLiDE explicit thinking:false means one model pass/question with input billed once/question; output price exactly zero; no additional request, vision, minimum-charge, error or reservation charge can exceed the stated per-attempt bound. Both services must have a finite charge bound even when an attempt returns no usable result. If these premises cannot be established from current non-inference service/account evidence, **paid launch is BLOCKED**. Neither the output token count nor a reserve multiplier resolves the GLiDE billing conflict.
+
+After authorization, read-only account checks must establish current catalog/request support, canonical identity allowlist, applicable rates, available existing balance sufficient for the full reservation, no auto-refill, known holds/reservations and any provider spend limit. Use the existing authenticated interface or authorized credential mechanism; do not ask the owner to relay routine prompts or expose keys in chat. If accessing credentials is needed, the owner's authorization must cover that access. No credential access has occurred now. Do not change account settings, enable auto-refill or buy credits to make a check pass.
+
+Re-fetch source documents and compare content before launch. A changed hash requires substantive review, not automatic rejection for a harmless rendering change; any contract change affecting model, input mode, retention, price, limits, passes or bill basis requires an amended freeze/authorization. Archive the current evidence and a gate receipt. Owner assent is necessary but insufficient to declare unresolved technical gates passed.
+
+## One-shot execution contract — specification only
+
+No live executable dispatcher is included. After scope/spend authorization, build a new minimal serial implementation and have Sol independently test it. Do not import, patch, wrap or execute the old G2r-2 FAIL harness. Offline wire examples/tests in this packet have no network or credential code and do not certify a future implementation.
+
+1. Resolve a single immutable protocol inventory and exact request allowlist. Verify all body and decoded stimulus hashes before each send; reject mixed revisions, changed conditions, changed provider order, changed keys or evaluator leakage.
+2. Acquire an exclusive run lock; create a new append-only ledger. A pre-existing run/attempt ledger or a restarted process cannot continue under the same authorization. No unsafe resume. A read-only inspection/reconciliation process may inspect an interrupted ledger but never dispatch.
+3. Before opening a socket, durably reserve the full per-call amount and write/fsync attempt ID, condition, provider, request hash, stimulus hash, authorization/freeze references, timestamp and total reserved. A crash after this record is an unknown, potentially billed attempt. A crash before it must be unable to send.
+4. Exactly one HTTP POST per manifest attempt, retries disabled at client/SDK/proxy layers, redirects disabled, single request timeout ≤300 s. No SDK default retries, retry loop, fallback provider, changing alias, concurrent dispatch or inference idempotency assumption. HTTP 425/429/5xx are terminal failures in this study. Intentional R repeats have separate manifest attempt IDs; they are the only allowed byte-identical re-dispatches and consume a new reserve.
+5. Store only safe response headers (model/retention/request ID/content type/rate metadata), status and response body with receipt hashes; never auth/cookies. Validate identity, expected canonical served model, retention, exact questions/options, probabilities and usage. `token_usage` must equal input+output under the frozen GLiDE schema; this arithmetic check alone is **not** dollar reconciliation. Jev input must be ≤65,536, GLiDE ≤524,288. Any failure stops both providers immediately; remaining calls are NOT_ATTEMPTED.
+6. Calculate provisional dollars as input_tokens × frozen input price only after the output-free contract is resolved. Keep the full reserve held until account reconciliation confirms the actual charge. For non-200, missing/malformed response, timeout, interrupted write, unavailable usage or unknown cost, hold the full reserve and stop; never zero it or reclaim funds for another attempt. Unknown cost prevents a “within-budget verified” claim.
+7. Reconcile authorized attempts with account usage/charges/holds before reporting final costs. If reconciliation is unavailable, preserve the bound/reserve and label actual cost unknown; final empirical decision INCONCLUSIVE. If a provider misbills beyond its documented bound, stop and report the breach; the internal ledger is not a guarantee against provider misconduct.
+8. Stop when the plan is exhausted, a technical failure occurs, the scientific control gate fails, 60 minutes elapse, or a cap/premise is threatened—whichever comes first. No automatic continuation or request for extra spend solely because results are interesting. Any new attempt/run needs a new scope/authorization, with earlier unknown attempts still charged against the original allowance.
+
+## Prelaunch receipt required later
+
+Before paid dispatch, an independently reviewed receipt must contain: authorization reference and scope; immutable protocol and implementation commits/hashes; current provider-source receipt; model/canonical-ID allowlist; mode/experimental-image acceptance; applicable retention; balances/holds/auto-refill/spend conditions without secrets; resolved finite cost proof; offline crash/provenance/retry/unknown-cost attack results; and an empty fresh run ledger. **All account/live fields are currently NOT_VERIFIED.**
