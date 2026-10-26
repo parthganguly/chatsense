@@ -158,6 +158,10 @@
       "result": "PASS_REJECTED_FAKE_ATTACK"
     },
     {
+      "name": "huge integer probability",
+      "result": "PASS_REJECTED_FAKE_ATTACK"
+    },
+    {
       "name": "sum drift",
       "result": "PASS_REJECTED_FAKE_ATTACK"
     },
@@ -263,6 +267,14 @@
     },
     {
       "name": "canonical numeric_string fails closed despite signal",
+      "result": "PASS"
+    },
+    {
+      "name": "canonical huge_positive_integer fails closed despite signal",
+      "result": "PASS"
+    },
+    {
+      "name": "canonical huge_negative_integer fails closed despite signal",
       "result": "PASS"
     },
     {

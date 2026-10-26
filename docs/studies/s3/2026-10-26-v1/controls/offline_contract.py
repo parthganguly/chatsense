@@ -87,7 +87,9 @@ def check_input(body, headers, pair, provider):
 
 
 def number(value):
-    return type(value) in (int, float) and math.isfinite(value)
+    # Integers are finite without float conversion; callers reject out-of-range
+    # values. math.isfinite(10**1000) would otherwise raise OverflowError.
+    return type(value) is int or (type(value) is float and math.isfinite(value))
 
 
 def validate_answer(response, body, provider, headers=None, served_allowlist=()):
@@ -250,6 +252,7 @@ def main():
         'extra option':lambda v:v['answers']['q01']['probabilities'].update(unknown=0),
         'NaN':lambda v:v['answers']['q01']['probabilities'].update(k1=float('nan')),
         'boolean probability':lambda v:v['answers']['q01']['probabilities'].update(k1=True),
+        'huge integer probability':lambda v:v['answers']['q01']['probabilities'].update(k1=10**1000),
         'sum drift':lambda v:v['answers']['q01']['probabilities'].update(k1=.123),
         'false selected choice':lambda v:v['answers']['q01'].update(choice='invented'),
     }
@@ -290,6 +293,8 @@ def main():
         'missing_secondary_item':lambda row:row.pop('q08'),
         'Infinity':lambda row:row['q06'].update(d0=float('inf')),
         'numeric_string':lambda row:row['q06'].update(d2='1'),
+        'huge_positive_integer':lambda row:row['q04'].update(d0=10**1000),
+        'huge_negative_integer':lambda row:row['q04'].update(d0=-(10**1000)),
     }
     for name, mutate in attacks.items():
         bad=copy.deepcopy(allrows)
