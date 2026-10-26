@@ -330,10 +330,10 @@ Statement: None of the 10 earlier day-plus quiet stretches ended with a new mess
 ### q04
 
 Which assessment fits this statement when read with the card?
-Statement: The chat is quiet because Asha is avoiding Ravi.
+Statement: The chat is quiet because the other person is avoiding Ravi.
 
 W paraphrase: Using the card, how would you assess this statement?
-Statement: The chat is quiet because Asha is avoiding Ravi.
+Statement: The chat is quiet because the other person is avoiding Ravi.
 
 - d0: The card supports the statement.
 - d1: The card contradicts the statement.
@@ -426,10 +426,10 @@ Statement: This export contains zero messages.
 ### q04
 
 Which assessment fits this statement when read with the card?
-Statement: The sparse export means Asha does not want to talk to Ravi.
+Statement: The sparse export means one person does not want to talk to the other.
 
 W paraphrase: Using the card, how would you assess this statement?
-Statement: The sparse export means Asha does not want to talk to Ravi.
+Statement: The sparse export means one person does not want to talk to the other.
 
 - d0: The card supports the statement.
 - d1: The card contradicts the statement.

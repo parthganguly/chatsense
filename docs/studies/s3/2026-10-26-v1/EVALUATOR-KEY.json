@@ -170,7 +170,7 @@
           "d0": "observed_fact",
           "d1": "unsupported_global_judgment",
           "d2": "contradicted_fact",
-          "d3": "unsupported_error"
+          "d3": "contradicted_error"
         },
         "anchors": [
           "112 by Ravi, 40 by Asha",
@@ -331,7 +331,7 @@
           "d0": "insufficient_evidence",
           "d1": "contradicted_fact",
           "d2": "unsupported_global_judgment",
-          "d3": "unsupported_error"
+          "d3": "contradicted_error"
         },
         "anchors": [
           "1 day of messages",
@@ -401,7 +401,7 @@
           "d0": "insufficient_evidence",
           "d1": "contradicted_fact",
           "d2": "unsupported_global_judgment",
-          "d3": "unsupported_error"
+          "d3": "contradicted_error"
         }
       }
     }

@@ -287,8 +287,8 @@
       },
       {
         "id": "q04",
-        "instructions": "Which assessment fits this statement when read with the card?\nStatement: The chat is quiet because Asha is avoiding Ravi.",
-        "paraphrase": "Using the card, how would you assess this statement?\nStatement: The chat is quiet because Asha is avoiding Ravi.",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: The chat is quiet because the other person is avoiding Ravi.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: The chat is quiet because the other person is avoiding Ravi.",
         "options": {
           "d0": "The card supports the statement.",
           "d1": "The card contradicts the statement.",
@@ -371,8 +371,8 @@
       },
       {
         "id": "q04",
-        "instructions": "Which assessment fits this statement when read with the card?\nStatement: The sparse export means Asha does not want to talk to Ravi.",
-        "paraphrase": "Using the card, how would you assess this statement?\nStatement: The sparse export means Asha does not want to talk to Ravi.",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: The sparse export means one person does not want to talk to the other.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: The sparse export means one person does not want to talk to the other.",
         "options": {
           "d0": "The card supports the statement.",
           "d1": "The card contradicts the statement.",

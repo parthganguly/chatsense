@@ -130,18 +130,36 @@ def tv(p, q):
     return .5 * sum(abs(p[d] - q[d]) for d in p)
 
 
+def canonical_valid(rows, required):
+    """Fail closed at scoring entry, independently of raw-response validation."""
+    if type(rows) is not dict or set(rows) != required:
+        return False
+    for (_, _, card), row in rows.items():
+        if type(row) is not dict or set(row) != {q['id'] for q in BANK[card]}:
+            return False
+        for question in BANK[card]:
+            p = row[question['id']]
+            if type(p) is not dict or set(p) != set(question['options']):
+                return False
+            if not all(number(v) and 0 <= v <= 1 for v in p.values()):
+                return False
+            if abs(sum(p.values()) - 1) > 1e-6:
+                return False
+    return True
+
+
 def viability(rows):
     """U+T must be complete; a reduced denominator never earns viability."""
     required = {(provider, condition, card) for provider in MODELS for condition in ['U','T'] for card in BANK}
-    if set(rows) != required:
+    if not canonical_valid(rows, required):
         return False
     return all(rows[(provider, condition, card)][q][KEY[card][q]['correct']] >= .80
                for provider, condition, card in required for q in ['q02','q03','q07'])
 
 
-def classify(rows, technical_ok=True):
+def classify(rows, technical_ok=False):
     required = {(provider, pair['condition'], pair['card']) for provider in MODELS for pair in PLAN['pairs']}
-    if not technical_ok or set(rows) != required:
+    if technical_ok is not True or not canonical_valid(rows, required):
         return 'INCONCLUSIVE'
     primary = {k: v for k,v in rows.items() if k[1] in ['U','T']}
     if not viability(primary):
@@ -157,7 +175,7 @@ def classify(rows, technical_ok=True):
                 flags.append((card,q,'shared_unsupported_support'))
             if card in 'DE' and any(all(rows[(p,c,card)][q]['d0'] >= .25 for c in ['U','R']) for p in MODELS):
                 flags.append((card,q,'repeated_unsupported_support'))
-        for q in KEY[card]:
+        for q in ['q02','q03','q04','q05','q06','q07']:
             if all(tv(rows[(p,'U',card)][q],rows[(p,'T',card)][q]) >= .20-1e-12 for p in MODELS):
                 flags.append((card,q,'modality'))
             if card in 'DE':
@@ -241,22 +259,45 @@ def main():
     reject('stored retention',lambda:validate_answer(gr,g,'glide',{'X-Fastino-Data-Retention':'stored','X-Fastino-Served-Model':'FAKE_OFFLINE_ID'},('FAKE_OFFLINE_ID',)))
     reject('unknown canonical model',lambda:validate_answer(gr,g,'glide',{'X-Fastino-Data-Retention':'not-stored','X-Fastino-Served-Model':'NEW'},('FAKE_OFFLINE_ID',)))
     allrows={(p,cell['condition'],cell['card']):rule(cell['card']) for p in MODELS for cell in PLAN['pairs']}
-    check('deterministic explicit-reading rule is NO-GO, not incremental signal',classify(allrows)=='NO-GO')
+    check('deterministic explicit-reading rule is NO-GO, not incremental signal',classify(allrows,technical_ok=True)=='NO-GO')
     bad=copy.deepcopy(allrows);bad.pop(('jev','U','A'))
-    check('missing denominator is INCONCLUSIVE',classify(bad)=='INCONCLUSIVE')
+    check('missing denominator is INCONCLUSIVE',classify(bad,technical_ok=True)=='INCONCLUSIVE')
     check('unknown cost/provenance technical veto is INCONCLUSIVE',classify(allrows,technical_ok=False)=='INCONCLUSIVE')
     bad=copy.deepcopy(allrows)
     for row in bad.values():
         for q in ['q02','q03','q04','q05','q06','q07']:row[q]={'d0':0.,'d1':0.,'d2':1.}
-    check('always undetermined fails factual gate',classify(bad)=='INCONCLUSIVE')
+    check('always undetermined fails factual gate',classify(bad,technical_ok=True)=='INCONCLUSIVE')
     bad=copy.deepcopy(allrows)
     for p in MODELS:bad[(p,'U','A')]['q05']={'d0':.90,'d1':0.,'d2':.10}
-    check('unsupported prediction generates GO review flag, never human PASS',classify(bad)=='GO')
+    check('unsupported prediction generates GO review flag, never human PASS',classify(bad,technical_ok=True)=='GO')
     bad=copy.deepcopy(allrows);bad[('jev','R','D')]['q05']={'d0':.2,'d1':0.,'d2':.8}
-    check('repeat instability overrides attractive signal',classify(bad)=='INCONCLUSIVE')
+    check('repeat instability overrides attractive signal',classify(bad,technical_ok=True)=='INCONCLUSIVE')
     bad=copy.deepcopy(allrows)
     for p in MODELS:bad[(p,'W','D')]['q06']={'d0':.2,'d1':0.,'d2':.8}
-    check('wording sensitivity triggers review',classify(bad)=='GO')
+    check('wording sensitivity triggers review',classify(bad,technical_ok=True)=='GO')
+    for q,condition,card in [('q01','T','A'),('q08','T','A'),('q01','W','D'),('q08','W','D'),('q01','O','D'),('q08','O','D')]:
+        bad=copy.deepcopy(allrows)
+        for p in MODELS:bad[(p,condition,card)][q]={'d0':.7,'d1':.3,'d2':0.,'d3':0.}
+        check(q+condition+card+' secondary-only change cannot trigger GO',classify(bad,technical_ok=True)=='NO-GO')
+    attacks={
+        'sum1.3':lambda row:row['q04'].update(d0=.3),
+        'bool':lambda row:row['q04'].update(d2=True),
+        'negative':lambda row:row['q04'].update(d0=.1,d1=-.1),
+        'missing_option':lambda row:row['q04'].pop('d2'),
+        'extra_item':lambda row:row.update(q09={'d0':1.}),
+        'NaN_secondary':lambda row:row['q08'].update(d0=float('nan')),
+        'missing_primary_item':lambda row:row.pop('q04'),
+        'missing_secondary_item':lambda row:row.pop('q08'),
+        'Infinity':lambda row:row['q06'].update(d0=float('inf')),
+        'numeric_string':lambda row:row['q06'].update(d2='1'),
+    }
+    for name, mutate in attacks.items():
+        bad=copy.deepcopy(allrows)
+        for p in MODELS:bad[(p,'U','A')]['q05']={'d0':.9,'d1':0.,'d2':.1}
+        mutate(bad[('jev','T','A')])
+        check('canonical '+name+' fails closed despite signal',classify(bad,technical_ok=True)=='INCONCLUSIVE')
+    check('technical status default is fail-closed',classify(allrows)=='INCONCLUSIVE')
+    check('truthy technical string is not valid evidence',classify(allrows,technical_ok='true')=='INCONCLUSIVE')
     check('planned denominators remain fixed',len(allrows)==32 and sum(len(v) for v in allrows.values())==256 and PLAN['requests_per_provider']==16)
     # These guard-spec examples are not a live ledger implementation or crash test.
     guard_cases=[{'attempt_state':'UNKNOWN','reserve_must_remain':True,'dispatch_allowed':False},
