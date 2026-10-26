@@ -1,0 +1,5 @@
+after s8a-v1-c1-pattern-change: captured 7 views, innerText == v1
+after s8a-v1-c2-carried-balanced: captured 7 views, innerText == v1
+after s8a-v1-c3-carried-mixed: captured 7 views, innerText == v1
+after s8a-v1-c4-unusual-silence: captured 7 views, innerText == v1
+after s8a-v1-c5-insufficient: captured 7 views, innerText == v1

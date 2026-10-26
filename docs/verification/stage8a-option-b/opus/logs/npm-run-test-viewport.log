@@ -1,0 +1,75 @@
+
+> chatsense@0.1.0 test:viewport
+> playwright test
+
+[WebServer] (node:39391) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:39415) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 48 tests using 2 workers
+
+(node:39417) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:39418) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [android-360x800] › tests/viewport/analytics-smoke.spec.ts:14:5 › onboarding explains the product and demo import reaches analysis (5.4s)
+  ✓   2 [android-360x800] › tests/viewport/analytics-smoke.spec.ts:40:5 › all analytics tabs lead with a takeaway card and do not overflow (6.5s)
+  ✓   3 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:162:7 › s8a-v1-c1-pattern-change: frozen text renders verbatim and every line is readable (3.2s)
+  ✓   4 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:183:7 › s8a-v1-c1-pattern-change: 200% text size doubles every line without loss (2.5s)
+  ✓   6 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:183:7 › s8a-v1-c2-carried-balanced: 200% text size doubles every line without loss (5.0s)
+  ✓   5 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:162:7 › s8a-v1-c2-carried-balanced: frozen text renders verbatim and every line is readable (5.4s)
+  ✓   8 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:183:7 › s8a-v1-c3-carried-mixed: 200% text size doubles every line without loss (3.0s)
+  ✓   7 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:162:7 › s8a-v1-c3-carried-mixed: frozen text renders verbatim and every line is readable (3.2s)
+  ✓  10 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:183:7 › s8a-v1-c4-unusual-silence: 200% text size doubles every line without loss (2.5s)
+  ✓   9 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:162:7 › s8a-v1-c4-unusual-silence: frozen text renders verbatim and every line is readable (2.9s)
+  ✓  11 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:162:7 › s8a-v1-c5-insufficient: frozen text renders verbatim and every line is readable (2.1s)
+  ✓  12 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:183:7 › s8a-v1-c5-insufficient: 200% text size doubles every line without loss (1.9s)
+  -  13 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:205:7 › single-viewport checks › desktop 1280x1000: readable, end reachable, card within an 800px display
+  -  14 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:225:7 › single-viewport checks › OS dark preference keeps every line readable
+  -  15 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:235:7 › single-viewport checks › longest card with an over-long limitation still wraps at 320px (test-DOM counterexample)
+  -  16 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:252:7 › single-viewport checks › keyboard reaches the details link with a visible focus ring and it activates
+(node:39452) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:39453) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  17 [phone-390x844] › tests/viewport/analytics-smoke.spec.ts:14:5 › onboarding explains the product and demo import reaches analysis (4.3s)
+  ✓  18 [phone-390x844] › tests/viewport/analytics-smoke.spec.ts:40:5 › all analytics tabs lead with a takeaway card and do not overflow (5.1s)
+  ✓  19 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:162:7 › s8a-v1-c1-pattern-change: frozen text renders verbatim and every line is readable (4.0s)
+  ✓  20 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:183:7 › s8a-v1-c1-pattern-change: 200% text size doubles every line without loss (2.9s)
+  ✓  21 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:162:7 › s8a-v1-c2-carried-balanced: frozen text renders verbatim and every line is readable (5.1s)
+  ✓  22 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:183:7 › s8a-v1-c2-carried-balanced: 200% text size doubles every line without loss (5.2s)
+  ✓  23 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:162:7 › s8a-v1-c3-carried-mixed: frozen text renders verbatim and every line is readable (4.5s)
+  ✓  24 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:183:7 › s8a-v1-c3-carried-mixed: 200% text size doubles every line without loss (4.3s)
+  ✓  25 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:162:7 › s8a-v1-c4-unusual-silence: frozen text renders verbatim and every line is readable (2.9s)
+  ✓  26 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:183:7 › s8a-v1-c4-unusual-silence: 200% text size doubles every line without loss (3.1s)
+  ✓  28 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:183:7 › s8a-v1-c5-insufficient: 200% text size doubles every line without loss (1.7s)
+  ✓  27 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:162:7 › s8a-v1-c5-insufficient: frozen text renders verbatim and every line is readable (2.3s)
+  ✓  30 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:225:7 › single-viewport checks › OS dark preference keeps every line readable (13.0s)
+  ✓  29 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:205:7 › single-viewport checks › desktop 1280x1000: readable, end reachable, card within an 800px display (13.9s)
+  ✓  32 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:252:7 › single-viewport checks › keyboard reaches the details link with a visible focus ring and it activates (1.3s)
+  ✓  31 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:235:7 › single-viewport checks › longest card with an over-long limitation still wraps at 320px (test-DOM counterexample) (3.3s)
+(node:39507) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:39518) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  33 [android-412x915] › tests/viewport/analytics-smoke.spec.ts:14:5 › onboarding explains the product and demo import reaches analysis (3.7s)
+  ✓  34 [android-412x915] › tests/viewport/analytics-smoke.spec.ts:40:5 › all analytics tabs lead with a takeaway card and do not overflow (5.3s)
+  ✓  35 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:162:7 › s8a-v1-c1-pattern-change: frozen text renders verbatim and every line is readable (3.8s)
+  ✓  36 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:183:7 › s8a-v1-c1-pattern-change: 200% text size doubles every line without loss (2.8s)
+  ✓  37 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:162:7 › s8a-v1-c2-carried-balanced: frozen text renders verbatim and every line is readable (4.7s)
+  ✓  38 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:183:7 › s8a-v1-c2-carried-balanced: 200% text size doubles every line without loss (3.9s)
+  ✓  39 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:162:7 › s8a-v1-c3-carried-mixed: frozen text renders verbatim and every line is readable (3.2s)
+  ✓  40 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:183:7 › s8a-v1-c3-carried-mixed: 200% text size doubles every line without loss (3.0s)
+  ✓  41 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:162:7 › s8a-v1-c4-unusual-silence: frozen text renders verbatim and every line is readable (2.7s)
+  ✓  42 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:183:7 › s8a-v1-c4-unusual-silence: 200% text size doubles every line without loss (3.1s)
+  ✓  43 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:162:7 › s8a-v1-c5-insufficient: frozen text renders verbatim and every line is readable (1.8s)
+  -  45 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:205:7 › single-viewport checks › desktop 1280x1000: readable, end reachable, card within an 800px display
+  -  46 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:225:7 › single-viewport checks › OS dark preference keeps every line readable
+  -  47 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:235:7 › single-viewport checks › longest card with an over-long limitation still wraps at 320px (test-DOM counterexample)
+  -  48 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:252:7 › single-viewport checks › keyboard reaches the details link with a visible focus ring and it activates
+  ✓  44 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:183:7 › s8a-v1-c5-insufficient: 200% text size doubles every line without loss (1.1s)
+
+  8 skipped
+  40 passed (1.5m)
+exit 0
