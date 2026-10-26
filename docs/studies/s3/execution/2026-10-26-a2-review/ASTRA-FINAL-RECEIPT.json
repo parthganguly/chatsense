@@ -1,0 +1,38 @@
+{
+  "recorded_utc": "2026-10-26T17:39:52.319823+00:00",
+  "authority": "https://github.com/parthganguly/chatsense/issues/38#issuecomment-6422489465",
+  "protocol_commit": "7ed874b7a3963e560d399b7c0046f5625a2e0757",
+  "audited_evidence_commit": "b664bc814eb5e37812b43e989cc4f9e98ba41789",
+  "decision": "A2 BLOCKED",
+  "phase_status": {
+    "A2": "BLOCKED",
+    "A3": "NOT_STARTED",
+    "A4": "NOT_EXECUTED",
+    "A5": "INCONCLUSIVE / NOT_RUN"
+  },
+  "inference_attempts": {
+    "jev": 0,
+    "glide": 0
+  },
+  "actual_account_balances": "UNVERIFIED",
+  "new_opus_dispatcher_invocation": false,
+  "sol": {
+    "task": "/root/sol_s3_a2_audit",
+    "requested_model": "gpt-6.1-sol",
+    "dispatch_route": "native Codex collaboration.spawn_agent explicit model override",
+    "reported_runtime_identity": "GPT-6 generic; no independently queryable model build ID",
+    "verdict": "PASS-for-BLOCKED-report; NOT dispatcher or launch PASS",
+    "boolean_assertions": 221,
+    "inventory_counts": 2,
+    "root_replay": "Original independent audit reproduced successfully before publication"
+  },
+  "hashes": {
+    "docs/studies/s3/execution/2026-10-26-a2/ASTRA-A2-REPORT.md": "ace3accea2ae503617152633b63eb1716e5e33631b62f7a6296afa64bdda069e",
+    "docs/studies/s3/execution/2026-10-26-a2/A2-EVIDENCE-SHA256SUMS": "311f93217b92d5679f06508e498f36ca9024ed61d281ed8922c872906d87b1aa",
+    "docs/studies/s3/execution/2026-10-26-a2/authenticated-catalogs.json": "36c6cbc105e5f0f75fb4daf7c61d3b0eb6c4d18c4dba4f394b8929f4d296772c",
+    "docs/studies/s3/execution/2026-10-26-a2-review/audit.py": "47ff964cbd328aa8dd64ae1df2015eaafdff606660bfcddb1bb16df4d0bc4440",
+    "docs/studies/s3/execution/2026-10-26-a2-review/receipt.json": "ae8d20cc3671821b3dc0e175cd8f22c6f993b587b4d2919080e37542128b5f07",
+    "docs/studies/s3/execution/2026-10-26-a2-review/REPORT.md": "6cf104d706742e87cf7409cc2c0beae1b73c9a8cb00c4585e1256c8815e54574",
+    "docs/studies/s3/execution/2026-10-26-a2-review/ARTIFACT-SHA256SUMS": "cf46c470dc33de52ff07c15bf7deb0f23fbb068884a21a237d2818df3e673545"
+  }
+}
