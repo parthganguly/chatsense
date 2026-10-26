@@ -1,0 +1,227 @@
+{
+  "origin": "OFFLINE_FAKE_NOT_INFERENCE",
+  "tests": [
+    {
+      "name": "32 body contracts and decoded stimulus hashes",
+      "result": "PASS"
+    },
+    {
+      "name": "A PNG limits",
+      "result": "PASS"
+    },
+    {
+      "name": "B PNG limits",
+      "result": "PASS"
+    },
+    {
+      "name": "C PNG limits",
+      "result": "PASS"
+    },
+    {
+      "name": "D PNG limits",
+      "result": "PASS"
+    },
+    {
+      "name": "E PNG limits",
+      "result": "PASS"
+    },
+    {
+      "name": "jevD R exact bytes",
+      "result": "PASS"
+    },
+    {
+      "name": "jevD O option-only",
+      "result": "PASS"
+    },
+    {
+      "name": "jevE R exact bytes",
+      "result": "PASS"
+    },
+    {
+      "name": "jevE O option-only",
+      "result": "PASS"
+    },
+    {
+      "name": "glideD R exact bytes",
+      "result": "PASS"
+    },
+    {
+      "name": "glideD O option-only",
+      "result": "PASS"
+    },
+    {
+      "name": "glideE R exact bytes",
+      "result": "PASS"
+    },
+    {
+      "name": "glideE O option-only",
+      "result": "PASS"
+    },
+    {
+      "name": "pair1 provider question identity",
+      "result": "PASS"
+    },
+    {
+      "name": "pair2 provider question identity",
+      "result": "PASS"
+    },
+    {
+      "name": "pair3 provider question identity",
+      "result": "PASS"
+    },
+    {
+      "name": "pair4 provider question identity",
+      "result": "PASS"
+    },
+    {
+      "name": "pair5 provider question identity",
+      "result": "PASS"
+    },
+    {
+      "name": "pair6 provider question identity",
+      "result": "PASS"
+    },
+    {
+      "name": "pair7 provider question identity",
+      "result": "PASS"
+    },
+    {
+      "name": "pair8 provider question identity",
+      "result": "PASS"
+    },
+    {
+      "name": "pair9 provider question identity",
+      "result": "PASS"
+    },
+    {
+      "name": "pair10 provider question identity",
+      "result": "PASS"
+    },
+    {
+      "name": "pair11 provider question identity",
+      "result": "PASS"
+    },
+    {
+      "name": "pair12 provider question identity",
+      "result": "PASS"
+    },
+    {
+      "name": "pair13 provider question identity",
+      "result": "PASS"
+    },
+    {
+      "name": "pair14 provider question identity",
+      "result": "PASS"
+    },
+    {
+      "name": "pair15 provider question identity",
+      "result": "PASS"
+    },
+    {
+      "name": "pair16 provider question identity",
+      "result": "PASS"
+    },
+    {
+      "name": "ground-truth/state substitution",
+      "result": "PASS_REJECTED_FAKE_ATTACK"
+    },
+    {
+      "name": "missing question",
+      "result": "PASS_REJECTED_FAKE_ATTACK"
+    },
+    {
+      "name": "model drift",
+      "result": "PASS_REJECTED_FAKE_ATTACK"
+    },
+    {
+      "name": "missing usage",
+      "result": "PASS_REJECTED_FAKE_ATTACK"
+    },
+    {
+      "name": "boolean usage",
+      "result": "PASS_REJECTED_FAKE_ATTACK"
+    },
+    {
+      "name": "input over bound",
+      "result": "PASS_REJECTED_FAKE_ATTACK"
+    },
+    {
+      "name": "extra option",
+      "result": "PASS_REJECTED_FAKE_ATTACK"
+    },
+    {
+      "name": "NaN",
+      "result": "PASS_REJECTED_FAKE_ATTACK"
+    },
+    {
+      "name": "boolean probability",
+      "result": "PASS_REJECTED_FAKE_ATTACK"
+    },
+    {
+      "name": "sum drift",
+      "result": "PASS_REJECTED_FAKE_ATTACK"
+    },
+    {
+      "name": "false selected choice",
+      "result": "PASS_REJECTED_FAKE_ATTACK"
+    },
+    {
+      "name": "stored retention",
+      "result": "PASS_REJECTED_FAKE_ATTACK"
+    },
+    {
+      "name": "unknown canonical model",
+      "result": "PASS_REJECTED_FAKE_ATTACK"
+    },
+    {
+      "name": "deterministic explicit-reading rule is NO-GO, not incremental signal",
+      "result": "PASS"
+    },
+    {
+      "name": "missing denominator is INCONCLUSIVE",
+      "result": "PASS"
+    },
+    {
+      "name": "unknown cost/provenance technical veto is INCONCLUSIVE",
+      "result": "PASS"
+    },
+    {
+      "name": "always undetermined fails factual gate",
+      "result": "PASS"
+    },
+    {
+      "name": "unsupported prediction generates GO review flag, never human PASS",
+      "result": "PASS"
+    },
+    {
+      "name": "repeat instability overrides attractive signal",
+      "result": "PASS"
+    },
+    {
+      "name": "wording sensitivity triggers review",
+      "result": "PASS"
+    },
+    {
+      "name": "planned denominators remain fixed",
+      "result": "PASS"
+    }
+  ],
+  "future_dispatcher_crash_tests": "NOT_IMPLEMENTED_NOT_CERTIFIED",
+  "guard_spec_examples": [
+    {
+      "attempt_state": "UNKNOWN",
+      "reserve_must_remain": true,
+      "dispatch_allowed": false
+    },
+    {
+      "attempt_state": "RESTARTED",
+      "reserve_must_remain": true,
+      "dispatch_allowed": false
+    },
+    {
+      "attempt_state": "COST_UNRESOLVED",
+      "reserve_must_remain": true,
+      "dispatch_allowed": false
+    }
+  ]
+}

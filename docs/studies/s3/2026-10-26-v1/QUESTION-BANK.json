@@ -1,0 +1,425 @@
+{
+  "schema": "s3.questions.v1",
+  "cards": {
+    "A": [
+      {
+        "id": "q01",
+        "instructions": "Which interpretation best fits the card?",
+        "paraphrase": "Which interpretation matches the card most closely?",
+        "options": {
+          "d0": "Recorded reply timing changed between the compared periods.",
+          "d1": "Ravi has lost interest in Asha.",
+          "d2": "Ravi will reply more slowly to the next message.",
+          "d3": "The export contains no usable timing information."
+        }
+      },
+      {
+        "id": "q02",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Ravi's typical reply time increased from 5 minutes to 1.5 hours.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Ravi's typical reply time increased from 5 minutes to 1.5 hours.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q03",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Ravi's typical reply time decreased from 1.5 hours to 5 minutes.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Ravi's typical reply time decreased from 1.5 hours to 5 minutes.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q04",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Ravi's replies became slower because Ravi lost interest in Asha.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Ravi's replies became slower because Ravi lost interest in Asha.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q05",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Ravi will take longer to answer the next message than Asha.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Ravi will take longer to answer the next message than Asha.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q06",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: The chat contained fewer messages in the later period.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: The chat contained fewer messages in the later period.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q07",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Asha's typical reply time decreased between the compared periods.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Asha's typical reply time decreased between the compared periods.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q08",
+        "instructions": "What does the measured change establish here?",
+        "paraphrase": "What is established by the measured change shown here?",
+        "options": {
+          "d0": "Reply timing differed across two recorded periods.",
+          "d1": "The reason Ravi changed reply timing is known.",
+          "d2": "The timing of future replies is known.",
+          "d3": "Nothing about recorded reply timing can be determined."
+        }
+      }
+    ],
+    "B": [
+      {
+        "id": "q01",
+        "instructions": "Which interpretation best fits the card?",
+        "paraphrase": "Which interpretation matches the card most closely?",
+        "options": {
+          "d0": "Keeping the recorded chat going was shared across the measured counts.",
+          "d1": "The two people care equally about their relationship.",
+          "d2": "Ravi initiated every conversation in the export.",
+          "d3": "The export has too few conversation starts to compare."
+        }
+      },
+      {
+        "id": "q02",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Ravi and Asha each started 76 conversations in this export.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Ravi and Asha each started 76 conversations in this export.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q03",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Ravi started 112 conversations and Asha started 40 in this export.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Ravi started 112 conversations and Asha started 40 in this export.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q04",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: The similar counts occurred because Ravi and Asha care equally.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: The similar counts occurred because Ravi and Asha care equally.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q05",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Ravi and Asha are equally likely to send the next message.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Ravi and Asha are equally likely to send the next message.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q06",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: The two people sent exactly the same total number of messages.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: The two people sent exactly the same total number of messages.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q07",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Ravi and Asha each restarted four day-plus pauses.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Ravi and Asha each restarted four day-plus pauses.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q08",
+        "instructions": "What does shared keeping-in-touch describe here?",
+        "paraphrase": "What is described as shared keeping-in-touch here?",
+        "options": {
+          "d0": "Four recorded measures stayed within a balanced band.",
+          "d1": "The two people have the same feelings.",
+          "d2": "The two people had equal contact outside this chat.",
+          "d3": "The recorded counts cannot be compared at all."
+        }
+      }
+    ],
+    "C": [
+      {
+        "id": "q01",
+        "instructions": "Which interpretation best fits the card?",
+        "paraphrase": "Which interpretation matches the card most closely?",
+        "options": {
+          "d0": "Conversation starts differed while the other listed measures stayed close to even.",
+          "d1": "Ravi contributed more overall effort to the relationship.",
+          "d2": "All four recorded measures were balanced.",
+          "d3": "Disagreement between measures means the calculations failed."
+        }
+      },
+      {
+        "id": "q02",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Ravi started 112 conversations and Asha started 40 in this export.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Ravi started 112 conversations and Asha started 40 in this export.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q03",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Ravi and Asha each started 76 conversations in this export.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Ravi and Asha each started 76 conversations in this export.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q04",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Ravi started more conversations because Ravi values the relationship more.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Ravi started more conversations because Ravi values the relationship more.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q05",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Ravi will send the next message in this chat.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Ravi will send the next message in this chat.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q06",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Ravi supplied most of the overall effort in this relationship.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Ravi supplied most of the overall effort in this relationship.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q07",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: The conversation-start counts were unequal while the day-plus restart counts were equal.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: The conversation-start counts were unequal while the day-plus restart counts were equal.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q08",
+        "instructions": "What does the mixed picture refer to here?",
+        "paraphrase": "What is referred to as mixed in this card?",
+        "options": {
+          "d0": "Conversation-start counts differ while the other listed measures stay close to even.",
+          "d1": "The conversation-start counts are unavailable.",
+          "d2": "Ravi has stronger feelings than Asha.",
+          "d3": "The export is corrupted and must be discarded."
+        }
+      }
+    ],
+    "D": [
+      {
+        "id": "q01",
+        "instructions": "Which interpretation best fits the card?",
+        "paraphrase": "Which interpretation matches the card most closely?",
+        "options": {
+          "d0": "The recorded quiet is longer than the earlier day-plus pauses in this export.",
+          "d1": "Ravi will send the next message after this quiet.",
+          "d2": "This quiet will end soon because earlier pauses ended.",
+          "d3": "The recorded quiet is shorter than the earlier day-plus pauses."
+        }
+      },
+      {
+        "id": "q02",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: All 10 earlier day-plus quiet stretches in this export ended with a new message.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: All 10 earlier day-plus quiet stretches in this export ended with a new message.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q03",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: None of the 10 earlier day-plus quiet stretches ended with a new message.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: None of the 10 earlier day-plus quiet stretches ended with a new message.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q04",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: The chat is quiet because Asha is avoiding Ravi.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: The chat is quiet because Asha is avoiding Ravi.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q05",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Ravi has a 70% chance of sending the next message after this quiet.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Ravi has a 70% chance of sending the next message after this quiet.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q06",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: The quiet is still continuing at the time someone reads this card.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: The quiet is still continuing at the time someone reads this card.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q07",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Three of the earlier day-plus quiet stretches ended with a first message from someone other than Ravi.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Three of the earlier day-plus quiet stretches ended with a first message from someone other than Ravi.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q08",
+        "instructions": "How should 7 of those restarts be interpreted here?",
+        "paraphrase": "What is the meaning of 7 of those restarts here?",
+        "options": {
+          "d0": "Seven earlier pauses ended with Ravi sending the first message.",
+          "d1": "Ravi will end this quiet by sending the next message.",
+          "d2": "This quiet has a 70% chance of ending.",
+          "d3": "The card provides no information about earlier restarts."
+        }
+      }
+    ],
+    "E": [
+      {
+        "id": "q01",
+        "instructions": "Which interpretation best fits the card?",
+        "paraphrase": "Which interpretation matches the card most closely?",
+        "options": {
+          "d0": "This export lacks enough observations for the displayed pattern reads.",
+          "d1": "The two people have never exchanged any messages.",
+          "d2": "The relationship has ended.",
+          "d3": "The app failed to open the export."
+        }
+      },
+      {
+        "id": "q02",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: One conversation start is recorded in this export.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: One conversation start is recorded in this export.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q03",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: This export contains zero messages.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: This export contains zero messages.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q04",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: The sparse export means Asha does not want to talk to Ravi.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: The sparse export means Asha does not want to talk to Ravi.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q05",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: Neither person will send another message.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: Neither person will send another message.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q06",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: The full chat history is too short for a pattern read.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: The full chat history is too short for a pattern read.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q07",
+        "instructions": "Which assessment fits this statement when read with the card?\nStatement: This export has fewer eligible comparison windows than a period comparison requires.",
+        "paraphrase": "Using the card, how would you assess this statement?\nStatement: This export has fewer eligible comparison windows than a period comparison requires.",
+        "options": {
+          "d0": "The card supports the statement.",
+          "d1": "The card contradicts the statement.",
+          "d2": "The card does not determine whether the statement is true."
+        }
+      },
+      {
+        "id": "q08",
+        "instructions": "What does not enough refer to here?",
+        "paraphrase": "What is referred to as not enough in this card?",
+        "options": {
+          "d0": "The export lacks enough observations for these pattern reads.",
+          "d1": "The export contains no messages.",
+          "d2": "The relationship has ended.",
+          "d3": "The app failed to process otherwise sufficient history."
+        }
+      }
+    ]
+  }
+}

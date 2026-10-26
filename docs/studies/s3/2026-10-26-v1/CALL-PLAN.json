@@ -1,0 +1,383 @@
+{
+  "schema": "s3.plan.v1",
+  "status": "PROPOSED_NOT_AUTHORIZED",
+  "requests_per_provider": 16,
+  "total_requests": 32,
+  "questions_per_request": 8,
+  "total_decisions": 256,
+  "no_personas": true,
+  "no_retries": true,
+  "pairs": [
+    {
+      "pair": 1,
+      "condition": "U",
+      "card": "A",
+      "mode": "image",
+      "providers_in_dispatch_order": [
+        "jev",
+        "glide"
+      ],
+      "question_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08"
+      ],
+      "instruction_variant": "instructions",
+      "option_insertion_order": "cyclic",
+      "repeats_pair": null
+    },
+    {
+      "pair": 2,
+      "condition": "U",
+      "card": "B",
+      "mode": "image",
+      "providers_in_dispatch_order": [
+        "glide",
+        "jev"
+      ],
+      "question_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08"
+      ],
+      "instruction_variant": "instructions",
+      "option_insertion_order": "cyclic",
+      "repeats_pair": null
+    },
+    {
+      "pair": 3,
+      "condition": "U",
+      "card": "C",
+      "mode": "image",
+      "providers_in_dispatch_order": [
+        "jev",
+        "glide"
+      ],
+      "question_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08"
+      ],
+      "instruction_variant": "instructions",
+      "option_insertion_order": "cyclic",
+      "repeats_pair": null
+    },
+    {
+      "pair": 4,
+      "condition": "U",
+      "card": "D",
+      "mode": "image",
+      "providers_in_dispatch_order": [
+        "glide",
+        "jev"
+      ],
+      "question_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08"
+      ],
+      "instruction_variant": "instructions",
+      "option_insertion_order": "cyclic",
+      "repeats_pair": null
+    },
+    {
+      "pair": 5,
+      "condition": "U",
+      "card": "E",
+      "mode": "image",
+      "providers_in_dispatch_order": [
+        "jev",
+        "glide"
+      ],
+      "question_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08"
+      ],
+      "instruction_variant": "instructions",
+      "option_insertion_order": "cyclic",
+      "repeats_pair": null
+    },
+    {
+      "pair": 6,
+      "condition": "T",
+      "card": "E",
+      "mode": "text",
+      "providers_in_dispatch_order": [
+        "glide",
+        "jev"
+      ],
+      "question_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08"
+      ],
+      "instruction_variant": "instructions",
+      "option_insertion_order": "cyclic",
+      "repeats_pair": null
+    },
+    {
+      "pair": 7,
+      "condition": "T",
+      "card": "D",
+      "mode": "text",
+      "providers_in_dispatch_order": [
+        "jev",
+        "glide"
+      ],
+      "question_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08"
+      ],
+      "instruction_variant": "instructions",
+      "option_insertion_order": "cyclic",
+      "repeats_pair": null
+    },
+    {
+      "pair": 8,
+      "condition": "T",
+      "card": "C",
+      "mode": "text",
+      "providers_in_dispatch_order": [
+        "glide",
+        "jev"
+      ],
+      "question_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08"
+      ],
+      "instruction_variant": "instructions",
+      "option_insertion_order": "cyclic",
+      "repeats_pair": null
+    },
+    {
+      "pair": 9,
+      "condition": "T",
+      "card": "B",
+      "mode": "text",
+      "providers_in_dispatch_order": [
+        "jev",
+        "glide"
+      ],
+      "question_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08"
+      ],
+      "instruction_variant": "instructions",
+      "option_insertion_order": "cyclic",
+      "repeats_pair": null
+    },
+    {
+      "pair": 10,
+      "condition": "T",
+      "card": "A",
+      "mode": "text",
+      "providers_in_dispatch_order": [
+        "glide",
+        "jev"
+      ],
+      "question_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08"
+      ],
+      "instruction_variant": "instructions",
+      "option_insertion_order": "cyclic",
+      "repeats_pair": null
+    },
+    {
+      "pair": 11,
+      "condition": "R",
+      "card": "D",
+      "mode": "image",
+      "providers_in_dispatch_order": [
+        "jev",
+        "glide"
+      ],
+      "question_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08"
+      ],
+      "instruction_variant": "instructions",
+      "option_insertion_order": "cyclic",
+      "repeats_pair": 4
+    },
+    {
+      "pair": 12,
+      "condition": "R",
+      "card": "E",
+      "mode": "image",
+      "providers_in_dispatch_order": [
+        "glide",
+        "jev"
+      ],
+      "question_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08"
+      ],
+      "instruction_variant": "instructions",
+      "option_insertion_order": "cyclic",
+      "repeats_pair": 5
+    },
+    {
+      "pair": 13,
+      "condition": "W",
+      "card": "D",
+      "mode": "image",
+      "providers_in_dispatch_order": [
+        "jev",
+        "glide"
+      ],
+      "question_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08"
+      ],
+      "instruction_variant": "paraphrase",
+      "option_insertion_order": "cyclic",
+      "repeats_pair": null
+    },
+    {
+      "pair": 14,
+      "condition": "W",
+      "card": "E",
+      "mode": "image",
+      "providers_in_dispatch_order": [
+        "glide",
+        "jev"
+      ],
+      "question_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08"
+      ],
+      "instruction_variant": "paraphrase",
+      "option_insertion_order": "cyclic",
+      "repeats_pair": null
+    },
+    {
+      "pair": 15,
+      "condition": "O",
+      "card": "E",
+      "mode": "image",
+      "providers_in_dispatch_order": [
+        "jev",
+        "glide"
+      ],
+      "question_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08"
+      ],
+      "instruction_variant": "instructions",
+      "option_insertion_order": "reverse-cyclic",
+      "repeats_pair": null
+    },
+    {
+      "pair": 16,
+      "condition": "O",
+      "card": "D",
+      "mode": "image",
+      "providers_in_dispatch_order": [
+        "glide",
+        "jev"
+      ],
+      "question_order": [
+        "q01",
+        "q02",
+        "q03",
+        "q04",
+        "q05",
+        "q06",
+        "q07",
+        "q08"
+      ],
+      "instruction_variant": "instructions",
+      "option_insertion_order": "reverse-cyclic",
+      "repeats_pair": null
+    }
+  ],
+  "label_mapping_rule": "For card index c=0..4 and zero-based question index j=0..7, canonical option dN maps to opaque key k(1+(N+c+j) mod option_count). Baseline insertion is the canonical option list rotated left by (c+2*j) mod option_count. O reverses that baseline insertion only, retaining every key-description association and question order. No card id, role, condition, evaluator key or source filenames enter model state. Each R uses the exact serialized U request bytes including the same asset identifier.",
+  "scientific_stop_after_pair": 10,
+  "scientific_stop_rule": "After all U and T pairs, if any q02/q03/q07 correct probability is below 0.80 for either provider/card/mode, stop before R/W/O; outcome INCONCLUSIVE. All 10 U/T pairs are attempted unless a technical hard stop occurs."
+}
