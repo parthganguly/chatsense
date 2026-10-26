@@ -133,6 +133,55 @@ async function expectNoHorizontalOverflow(page: Page, section: Locator, label: s
   expect(box.x, `${label}: card starts off-screen`).toBeGreaterThanOrEqual(0)
   expect(box.x + box.width, `${label}: card cut at right edge`).toBeLessThanOrEqual(width)
   for (const row of await measure(section)) expect.soft(row.clipped, `${label}: clipped text: ${row.text}`).toBe(false)
+  await expectInsideCard(section, label)
+}
+
+/**
+ * Rendered geometry, not scrollWidth: every element box and every text line
+ * box (Range rects, so glyphs past an element's edge count) lies inside the
+ * card's content box, which lies inside the clipping <main> and the viewport.
+ * Header items (eyebrow, confidence pill) must not overlap.
+ */
+async function expectInsideCard(section: Locator, label: string) {
+  const { content, escapes, overlaps } = await section.evaluate((card) => {
+    const style = getComputedStyle(card)
+    const box = card.getBoundingClientRect()
+    const main = card.closest("main")!.getBoundingClientRect()
+    const content = {
+      left: box.left + parseFloat(style.borderLeftWidth) + parseFloat(style.paddingLeft),
+      right: box.right - parseFloat(style.borderRightWidth) - parseFloat(style.paddingRight),
+    }
+    const describe = (rect: DOMRect, what: string) => `${what} x${rect.left.toFixed(2)}..${rect.right.toFixed(2)}`
+    const escapes: string[] = []
+    if (content.left < Math.max(main.left, 0) || content.right > Math.min(main.right, window.innerWidth)) {
+      escapes.push(`content box ${content.left}..${content.right} outside main/viewport`)
+    }
+    for (const element of card.querySelectorAll("*")) {
+      const rects = [element.getBoundingClientRect()]
+      for (const node of element.childNodes) {
+        if (node.nodeType !== Node.TEXT_NODE || !node.textContent?.trim()) continue
+        const range = document.createRange()
+        range.selectNodeContents(node)
+        rects.push(...range.getClientRects())
+      }
+      for (const rect of rects) {
+        if (rect.width === 0 && rect.height === 0) continue
+        if (rect.left < content.left - 0.5 || rect.right > content.right + 0.5) {
+          escapes.push(describe(rect, `${element.tagName.toLowerCase()} "${element.textContent?.trim().slice(0, 24)}"`))
+        }
+      }
+    }
+    const header = [...card.firstElementChild!.children].map((child) => child.getBoundingClientRect())
+    const overlaps = header.flatMap((a, i) =>
+      header
+        .slice(i + 1)
+        .filter((b) => a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom)
+        .map((b) => `${describe(a, "header item")} overlaps ${describe(b, "header item")}`),
+    )
+    return { content, escapes, overlaps }
+  })
+  expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+  expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
 }
 
 /**
@@ -196,6 +245,12 @@ for (const card of CARDS) {
     expect(await section.innerText()).toBe(readFileSync(path.join(DIR, `${card.id}.card.innerText.txt`), "utf8"))
     await expectNoHorizontalOverflow(page, section, `${card.id} 200% text`)
     await expectEndReachable(page, section, read, `${card.id} 200% text`)
+
+    // Both at once: 320 CSS px reflow with 200% text.
+    await page.setViewportSize({ width: 320, height: 640 })
+    expect(await section.innerText()).toBe(readFileSync(path.join(DIR, `${card.id}.card.innerText.txt`), "utf8"))
+    await expectNoHorizontalOverflow(page, section, `${card.id} 320px + 200% text`)
+    await expectEndReachable(page, section, read, `${card.id} 320px + 200% text`)
   })
 }
 
@@ -214,8 +269,34 @@ test.describe("single-viewport checks", () => {
       const section = await importCard(page, card)
       const read = readOf(card.id)
       expectReadable(await measure(section), read, `${card.id} desktop`)
-      // The desktop shell's scroll area is 638px, so the tallest card scrolls
-      // in-app; a whole-card stimulus image must still fit an 800px display.
+      await expectNoHorizontalOverflow(page, section, `${card.id} desktop`)
+      // First frame, no scrolling: the card from its top through the last line
+      // of the limitation is inside the shell's scroll area with clearance
+      // above the nav, and that last line is actually painted (not covered).
+      // The details link below it may need a scroll (reported, not asserted).
+      const frame = await section.getByText(read.limitation, { exact: true }).evaluate((element) => {
+        const main = element.closest("main")!
+        const range = document.createRange()
+        range.selectNodeContents(element)
+        const lines = [...range.getClientRects()]
+        const last = lines[lines.length - 1]
+        const hit = document.elementFromPoint(last.left + 4, last.top + last.height / 2)
+        return {
+          scrollTop: main.scrollTop,
+          mainTop: main.getBoundingClientRect().top,
+          mainBottom: main.getBoundingClientRect().bottom,
+          cardTop: element.parentElement!.getBoundingClientRect().top,
+          lastLineBottom: last.bottom,
+          lastLinePainted: hit !== null && element.contains(hit),
+        }
+      })
+      expect(frame.scrollTop).toBe(0)
+      expect(frame.cardTop, `${card.id}: card top above scroll area`).toBeGreaterThanOrEqual(frame.mainTop)
+      expect
+        .soft(frame.lastLineBottom + 8, `${card.id}: limitation's last line (bottom ${frame.lastLineBottom}) not 8px clear of nav at ${frame.mainBottom}`)
+        .toBeLessThanOrEqual(frame.mainBottom)
+      expect.soft(frame.lastLinePainted, `${card.id}: limitation's last line covered`).toBe(true)
+      // A whole-card stimulus image must still fit an 800px display.
       expect((await section.boundingBox())!.height, `${card.id}: card taller than 800px`).toBeLessThanOrEqual(800)
       await expectEndReachable(page, section, read, `${card.id} desktop`)
       await context.close()
@@ -238,8 +319,9 @@ test.describe("single-viewport checks", () => {
     const section = await importCard(page, card)
     await page.setViewportSize({ width: 320, height: 640 })
     // Stress input exists only in this test's DOM: every frozen limitation
-    // joined, plus an unbroken token. Never shipped, never a study stimulus.
-    const long = [...CARDS.map((entry) => readOf(entry.id).limitation), "Unbroken-".repeat(8)].join(" ")
+    // joined, plus a 120-character token with no break opportunity at all.
+    // Never shipped, never a study stimulus.
+    const long = [...CARDS.map((entry) => readOf(entry.id).limitation), "W".repeat(120)].join(" ")
     await section.getByText(read.limitation, { exact: true }).evaluate((element, text) => {
       element.textContent = text
     }, long)
@@ -247,6 +329,13 @@ test.describe("single-viewport checks", () => {
     expect(rowFor(rows, long).fontSize).toBeGreaterThanOrEqual(14)
     await expectNoHorizontalOverflow(page, section, "long limitation @320px")
     await expectEndReachable(page, section, { ...read, limitation: long }, "long limitation @320px")
+
+    await page.evaluate(() => {
+      document.documentElement.style.fontSize = "200%"
+    })
+    expect(rowFor(await measure(section), long).fontSize).toBeGreaterThanOrEqual(28)
+    await expectNoHorizontalOverflow(page, section, "long limitation @320px + 200% text")
+    await expectEndReachable(page, section, { ...read, limitation: long }, "long limitation @320px + 200% text")
   })
 
   test("keyboard reaches the details link with a visible focus ring and it activates", async ({ page }) => {

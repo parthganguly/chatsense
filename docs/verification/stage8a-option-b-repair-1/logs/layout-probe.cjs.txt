@@ -1,0 +1,39 @@
+// Temporary layout probe (not app source). Usage: node probe.cjs <cardId> <w> <h> [rootFont]
+const { createRequire } = require("node:module")
+const req = createRequire(process.cwd() + "/")
+const { chromium } = req("@playwright/test")
+const fs = require("node:fs"), path = require("node:path"), { spawn } = require("node:child_process")
+const [id, w, h, rootFont] = process.argv.slice(2)
+const DIR = path.join(process.cwd(), "tests/viewport/fixtures/stage8a-v1")
+const cards = JSON.parse(fs.readFileSync(path.join(DIR, "cards.json"), "utf8"))
+;(async () => {
+  const server = spawn(process.execPath, ["node_modules/http-server/bin/http-server", "out", "-p", "4329", "-a", "127.0.0.1", "-c-1", "--silent"], { stdio: "ignore" })
+  for (let i = 0; i < 100; i++) { if (await fetch("http://127.0.0.1:4329/").then(r => r.ok, () => false)) break; await new Promise(r => setTimeout(r, 200)) }
+  const browser = await chromium.launch()
+  try {
+    for (const card of cards.filter(c => id === "all" || c.id === id)) {
+      const ctx = await browser.newContext({ viewport: { width: +w, height: +h }, deviceScaleFactor: 1, locale: "en-US", timezoneId: "UTC" })
+      const page = await ctx.newPage()
+      await page.clock.setFixedTime(card.frozenNowMs)
+      await page.goto("http://127.0.0.1:4329/")
+      await page.getByText("Choose WhatsApp export").waitFor()
+      await page.locator("input[type=file]").setInputFiles({ name: "WhatsApp Chat with Synthetic Example.txt", mimeType: "text/plain", buffer: fs.readFileSync(path.join(DIR, card.id + ".txt")) })
+      await page.locator('section[aria-label="Relationship read"]').waitFor()
+      if (rootFont) await page.evaluate(f => { document.documentElement.style.fontSize = f }, rootFont)
+      await page.waitForTimeout(800)
+      const hh = await page.evaluate(() => { const e = document.querySelector("section h1"); const out = {}; for (const lh of ["24px","25px","26px","27px","28px"]) { e.style.lineHeight = lh; out[lh] = [e.scrollHeight, e.clientHeight, getComputedStyle(e).fontFamily.slice(0,40)] } e.style.lineHeight = ""; return out }); console.log(JSON.stringify(hh)); const r = await page.evaluate(() => {
+        const s = document.querySelector('section[aria-label="Relationship read"]')
+        const main = document.querySelector("main").getBoundingClientRect()
+        const rows = [...s.querySelectorAll("p,h1,li,a,span")].filter(e => e.childNodes.length && [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())).map(e => {
+          const range = document.createRange(); range.selectNodeContents(e); const b = e.getBoundingClientRect(); const lines = range.getClientRects()
+          return { t: e.textContent.slice(0, 30), top: b.top, bottom: b.bottom, left: b.left, right: b.right, textRight: Math.max(...[...lines].map(l => l.right)), lines: lines.length }
+        })
+        const sb = s.getBoundingClientRect()
+        return { main: { top: main.top, bottom: main.bottom }, card: { left: sb.left, right: sb.right, top: sb.top, bottom: sb.bottom }, rows }
+      })
+      console.log(card.id, JSON.stringify(r.main), JSON.stringify(r.card))
+      for (const x of r.rows) console.log("  ", x.top.toFixed(1), x.bottom.toFixed(1), x.left.toFixed(1), x.right.toFixed(1), "txtR", x.textRight.toFixed(1), x.lines, x.t)
+      await ctx.close()
+    }
+  } finally { await browser.close(); server.kill() }
+})()

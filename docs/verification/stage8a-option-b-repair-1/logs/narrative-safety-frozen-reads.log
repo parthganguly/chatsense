@@ -1,0 +1,6 @@
+s8a-v1-c1-pattern-change: assertRelationshipReadLanguageSafe passed
+s8a-v1-c2-carried-balanced: assertRelationshipReadLanguageSafe passed
+s8a-v1-c3-carried-mixed: assertRelationshipReadLanguageSafe passed
+s8a-v1-c4-unusual-silence: assertRelationshipReadLanguageSafe passed
+s8a-v1-c5-insufficient: assertRelationshipReadLanguageSafe passed
+exit 0

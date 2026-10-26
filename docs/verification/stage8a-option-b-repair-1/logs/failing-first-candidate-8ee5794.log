@@ -1,0 +1,927 @@
+[WebServer] (node:48782) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:48814) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 42 tests using 2 workers
+
+(node:48815) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:48816) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:48814) [DEP0066] DeprecationWarning: OutgoingMessage.prototype._headers is deprecated
+  ✓   2 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:211:7 › s8a-v1-c1-pattern-change: frozen text renders verbatim and every line is readable (6.4s)
+  ✘   1 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c1-pattern-change: 200% text size doubles every line without loss (6.4s)
+(node:48830) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   3 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:211:7 › s8a-v1-c2-carried-balanced: frozen text renders verbatim and every line is readable (5.1s)
+  ✘   4 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c2-carried-balanced: 200% text size doubles every line without loss (7.2s)
+  ✓   5 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:211:7 › s8a-v1-c3-carried-mixed: frozen text renders verbatim and every line is readable (6.2s)
+(node:48841) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   6 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:211:7 › s8a-v1-c4-unusual-silence: frozen text renders verbatim and every line is readable (4.5s)
+  ✘   7 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c3-carried-mixed: 200% text size doubles every line without loss (6.6s)
+  ✘   8 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c4-unusual-silence: 200% text size doubles every line without loss (5.0s)
+(node:48853) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:48854) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   9 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:211:7 › s8a-v1-c5-insufficient: frozen text renders verbatim and every line is readable (4.2s)
+  -  11 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:260:7 › single-viewport checks › desktop 1280x1000: readable, end reachable, card within an 800px display
+  -  12 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:306:7 › single-viewport checks › OS dark preference keeps every line readable
+  -  13 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:316:7 › single-viewport checks › longest card with an over-long limitation still wraps at 320px (test-DOM counterexample)
+  -  14 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:341:7 › single-viewport checks › keyboard reaches the details link with a visible focus ring and it activates
+  ✘  10 [android-360x800] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c5-insufficient: 200% text size doubles every line without loss (3.2s)
+(node:48879) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:48880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  16 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:211:7 › s8a-v1-c1-pattern-change: frozen text renders verbatim and every line is readable (5.1s)
+  ✘  15 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c1-pattern-change: 200% text size doubles every line without loss (5.0s)
+(node:48891) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  17 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:211:7 › s8a-v1-c2-carried-balanced: frozen text renders verbatim and every line is readable (5.5s)
+  ✓  19 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:211:7 › s8a-v1-c3-carried-mixed: frozen text renders verbatim and every line is readable (6.4s)
+  ✘  18 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c2-carried-balanced: 200% text size doubles every line without loss (7.2s)
+(node:48905) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  20 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c3-carried-mixed: 200% text size doubles every line without loss (4.7s)
+(node:48913) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  21 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:211:7 › s8a-v1-c4-unusual-silence: frozen text renders verbatim and every line is readable (4.9s)
+  ✓  23 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:211:7 › s8a-v1-c5-insufficient: frozen text renders verbatim and every line is readable (2.8s)
+  ✘  22 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c4-unusual-silence: 200% text size doubles every line without loss (5.4s)
+  ✘  24 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c5-insufficient: 200% text size doubles every line without loss (3.0s)
+(node:48927) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:48928) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  26 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:306:7 › single-viewport checks › OS dark preference keeps every line readable (16.1s)
+  ✘  25 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:260:7 › single-viewport checks › desktop 1280x1000: readable, end reachable, card within an 800px display (17.3s)
+(node:48948) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  27 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:316:7 › single-viewport checks › longest card with an over-long limitation still wraps at 320px (test-DOM counterexample) (3.9s)
+  ✓  28 [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:341:7 › single-viewport checks › keyboard reaches the details link with a visible focus ring and it activates (2.9s)
+(node:48969) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:48970) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  29 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:211:7 › s8a-v1-c1-pattern-change: frozen text renders verbatim and every line is readable (4.3s)
+  ✘  30 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c1-pattern-change: 200% text size doubles every line without loss (4.5s)
+(node:48981) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  31 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:211:7 › s8a-v1-c2-carried-balanced: frozen text renders verbatim and every line is readable (5.0s)
+  ✓  33 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:211:7 › s8a-v1-c3-carried-mixed: frozen text renders verbatim and every line is readable (9.0s)
+  ✘  32 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c2-carried-balanced: 200% text size doubles every line without loss (9.7s)
+(node:49047) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  35 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:211:7 › s8a-v1-c4-unusual-silence: frozen text renders verbatim and every line is readable (7.1s)
+  ✘  36 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c4-unusual-silence: 200% text size doubles every line without loss (8.4s)
+  ✘  34 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c3-carried-mixed: 200% text size doubles every line without loss (6.0s)
+(node:49173) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:49172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  37 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:211:7 › s8a-v1-c5-insufficient: frozen text renders verbatim and every line is readable (7.0s)
+  -  39 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:260:7 › single-viewport checks › desktop 1280x1000: readable, end reachable, card within an 800px display
+  -  40 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:306:7 › single-viewport checks › OS dark preference keeps every line readable
+  -  41 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:316:7 › single-viewport checks › longest card with an over-long limitation still wraps at 320px (test-DOM counterexample)
+  -  42 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:341:7 › single-viewport checks › keyboard reaches the details link with a visible focus ring and it activates
+  ✘  38 [android-412x915] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c5-insufficient: 200% text size doubles every line without loss (8.8s)
+
+
+  1) [android-360x800] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c1-pattern-change: 200% text size doubles every line without loss 
+
+    Error: s8a-v1-c1-pattern-change 200% text: escapes card content box 76..287
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Strong read\" x176.27..352.53",
+    +   "span \"Strong read\" x196.27..332.53",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:246:5
+
+    Error: s8a-v1-c1-pattern-change 320px + 200% text: escapes card content box 76..247
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Strong read\" x176.27..352.53",
+    +   "span \"Strong read\" x196.27..332.53",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:252:5
+
+    Error Context: test-results/relationship-read-card-s8a-5258d-les-every-line-without-loss-android-360x800/error-context.md
+
+  2) [android-360x800] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c2-carried-balanced: 200% text size doubles every line without loss 
+
+    Error: s8a-v1-c2-carried-balanced 200% text: escapes card content box 76..287
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Strong read\" x176.27..352.53",
+    +   "span \"Strong read\" x196.27..332.53",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:246:5
+
+    Error: s8a-v1-c2-carried-balanced 320px + 200% text: escapes card content box 76..247
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Strong read\" x176.27..352.53",
+    +   "span \"Strong read\" x196.27..332.53",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:252:5
+
+    Error Context: test-results/relationship-read-card-s8a-9e729-les-every-line-without-loss-android-360x800/error-context.md
+
+  3) [android-360x800] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c3-carried-mixed: 200% text size doubles every line without loss 
+
+    Error: s8a-v1-c3-carried-mixed 200% text: escapes card content box 76..287
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Useful read\" x176.27..347.52",
+    +   "span \"Useful read\" x196.27..327.52",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:246:5
+
+    Error: s8a-v1-c3-carried-mixed 320px + 200% text: escapes card content box 76..247
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Useful read\" x176.27..347.52",
+    +   "span \"Useful read\" x196.27..327.52",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:252:5
+
+    Error Context: test-results/relationship-read-card-s8a-c60c1-les-every-line-without-loss-android-360x800/error-context.md
+
+  4) [android-360x800] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c4-unusual-silence: 200% text size doubles every line without loss 
+
+    Error: s8a-v1-c4-unusual-silence 200% text: escapes card content box 76..287
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Useful read\" x176.27..347.52",
+    +   "span \"Useful read\" x196.27..327.52",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:246:5
+
+    Error: s8a-v1-c4-unusual-silence 320px + 200% text: escapes card content box 76..247
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Useful read\" x176.27..347.52",
+    +   "span \"Useful read\" x196.27..327.52",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:252:5
+
+    Error Context: test-results/relationship-read-card-s8a-49e6e-les-every-line-without-loss-android-360x800/error-context.md
+
+  5) [android-360x800] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c5-insufficient: 200% text size doubles every line without loss 
+
+    Error: s8a-v1-c5-insufficient 200% text: escapes card content box 76..287
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Light read\" x176.27..332.63",
+    +   "span \"Light read\" x196.27..312.63",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:246:5
+
+    Error: s8a-v1-c5-insufficient 320px + 200% text: escapes card content box 76..247
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Light read\" x176.27..332.63",
+    +   "span \"Light read\" x196.27..312.63",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:252:5
+
+    Error Context: test-results/relationship-read-card-s8a-f7af0-les-every-line-without-loss-android-360x800/error-context.md
+
+  6) [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c1-pattern-change: 200% text size doubles every line without loss 
+
+    Error: s8a-v1-c1-pattern-change 200% text: escapes card content box 76..317
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Strong read\" x176.27..352.53",
+    +   "span \"Strong read\" x196.27..332.53",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:246:5
+
+    Error: s8a-v1-c1-pattern-change 320px + 200% text: escapes card content box 76..247
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Strong read\" x176.27..352.53",
+    +   "span \"Strong read\" x196.27..332.53",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:252:5
+
+    Error Context: test-results/relationship-read-card-s8a-5258d-les-every-line-without-loss-phone-390x844/error-context.md
+
+  7) [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c2-carried-balanced: 200% text size doubles every line without loss 
+
+    Error: s8a-v1-c2-carried-balanced 200% text: escapes card content box 76..317
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Strong read\" x176.27..352.53",
+    +   "span \"Strong read\" x196.27..332.53",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:246:5
+
+    Error: s8a-v1-c2-carried-balanced 320px + 200% text: escapes card content box 76..247
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Strong read\" x176.27..352.53",
+    +   "span \"Strong read\" x196.27..332.53",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:252:5
+
+    Error Context: test-results/relationship-read-card-s8a-9e729-les-every-line-without-loss-phone-390x844/error-context.md
+
+  8) [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c3-carried-mixed: 200% text size doubles every line without loss 
+
+    Error: s8a-v1-c3-carried-mixed 200% text: escapes card content box 76..317
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Useful read\" x176.27..347.52",
+    +   "span \"Useful read\" x196.27..327.52",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:246:5
+
+    Error: s8a-v1-c3-carried-mixed 320px + 200% text: escapes card content box 76..247
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Useful read\" x176.27..347.52",
+    +   "span \"Useful read\" x196.27..327.52",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:252:5
+
+    Error Context: test-results/relationship-read-card-s8a-c60c1-les-every-line-without-loss-phone-390x844/error-context.md
+
+  9) [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c4-unusual-silence: 200% text size doubles every line without loss 
+
+    Error: s8a-v1-c4-unusual-silence 200% text: escapes card content box 76..317
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Useful read\" x176.27..347.52",
+    +   "span \"Useful read\" x196.27..327.52",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:246:5
+
+    Error: s8a-v1-c4-unusual-silence 320px + 200% text: escapes card content box 76..247
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Useful read\" x176.27..347.52",
+    +   "span \"Useful read\" x196.27..327.52",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:252:5
+
+    Error Context: test-results/relationship-read-card-s8a-49e6e-les-every-line-without-loss-phone-390x844/error-context.md
+
+  10) [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c5-insufficient: 200% text size doubles every line without loss 
+
+    Error: s8a-v1-c5-insufficient 200% text: escapes card content box 76..317
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "span \"Light read\" x176.27..332.63",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:246:5
+
+    Error: s8a-v1-c5-insufficient 320px + 200% text: escapes card content box 76..247
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Light read\" x176.27..332.63",
+    +   "span \"Light read\" x196.27..312.63",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:252:5
+
+    Error Context: test-results/relationship-read-card-s8a-f7af0-les-every-line-without-loss-phone-390x844/error-context.md
+
+  11) [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:260:7 › single-viewport checks › desktop 1280x1000: readable, end reachable, card within an 800px display 
+
+    Error: s8a-v1-c4-unusual-silence: limitation's last line (bottom 850) not 8px clear of nav at 823
+
+    expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 823
+    Received:    858
+
+      295 |       expect
+      296 |         .soft(frame.lastLineBottom + 8, `${card.id}: limitation's last line (bottom ${frame.lastLineBottom}) not 8px clear of nav at ${frame.mainBottom}`)
+    > 297 |         .toBeLessThanOrEqual(frame.mainBottom)
+          |          ^
+      298 |       expect.soft(frame.lastLinePainted, `${card.id}: limitation's last line covered`).toBe(true)
+      299 |       // A whole-card stimulus image must still fit an 800px display.
+      300 |       expect((await section.boundingBox())!.height, `${card.id}: card taller than 800px`).toBeLessThanOrEqual(800)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:297:10
+
+    Error: s8a-v1-c4-unusual-silence: limitation's last line covered
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      296 |         .soft(frame.lastLineBottom + 8, `${card.id}: limitation's last line (bottom ${frame.lastLineBottom}) not 8px clear of nav at ${frame.mainBottom}`)
+      297 |         .toBeLessThanOrEqual(frame.mainBottom)
+    > 298 |       expect.soft(frame.lastLinePainted, `${card.id}: limitation's last line covered`).toBe(true)
+          |                                                                                        ^
+      299 |       // A whole-card stimulus image must still fit an 800px display.
+      300 |       expect((await section.boundingBox())!.height, `${card.id}: card taller than 800px`).toBeLessThanOrEqual(800)
+      301 |       await expectEndReachable(page, section, read, `${card.id} desktop`)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:298:88
+
+    Error Context: test-results/relationship-read-card-sin-92ed2-ard-within-an-800px-display-phone-390x844/error-context.md
+
+  12) [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:316:7 › single-viewport checks › longest card with an over-long limitation still wraps at 320px (test-DOM counterexample) 
+
+    Error: long limitation @320px + 200% text: escapes card content box 76..247
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Useful read\" x176.27..347.52",
+    +   "span \"Useful read\" x196.27..327.52",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:337:5
+
+    Error Context: test-results/relationship-read-card-sin-2d23d-px-test-DOM-counterexample--phone-390x844/error-context.md
+
+  13) [android-412x915] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c1-pattern-change: 200% text size doubles every line without loss 
+
+    Error: s8a-v1-c1-pattern-change 200% text: escapes card content box 76..339
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "span \"Strong read\" x176.27..352.53",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:246:5
+
+    Error: s8a-v1-c1-pattern-change 320px + 200% text: escapes card content box 76..247
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Strong read\" x176.27..352.53",
+    +   "span \"Strong read\" x196.27..332.53",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:252:5
+
+    Error Context: test-results/relationship-read-card-s8a-5258d-les-every-line-without-loss-android-412x915/error-context.md
+
+  14) [android-412x915] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c2-carried-balanced: 200% text size doubles every line without loss 
+
+    Error: s8a-v1-c2-carried-balanced 200% text: escapes card content box 76..339
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "span \"Strong read\" x176.27..352.53",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:246:5
+
+    Error: s8a-v1-c2-carried-balanced 320px + 200% text: escapes card content box 76..247
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Strong read\" x176.27..352.53",
+    +   "span \"Strong read\" x196.27..332.53",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:252:5
+
+    Error Context: test-results/relationship-read-card-s8a-9e729-les-every-line-without-loss-android-412x915/error-context.md
+
+  15) [android-412x915] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c3-carried-mixed: 200% text size doubles every line without loss 
+
+    Error: s8a-v1-c3-carried-mixed 200% text: escapes card content box 76..339
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "span \"Useful read\" x176.27..347.52",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:246:5
+
+    Error: s8a-v1-c3-carried-mixed 320px + 200% text: escapes card content box 76..247
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Useful read\" x176.27..347.52",
+    +   "span \"Useful read\" x196.27..327.52",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:252:5
+
+    Error Context: test-results/relationship-read-card-s8a-c60c1-les-every-line-without-loss-android-412x915/error-context.md
+
+  16) [android-412x915] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c4-unusual-silence: 200% text size doubles every line without loss 
+
+    Error: s8a-v1-c4-unusual-silence 200% text: escapes card content box 76..339
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "span \"Useful read\" x176.27..347.52",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:246:5
+
+    Error: s8a-v1-c4-unusual-silence 320px + 200% text: escapes card content box 76..247
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Useful read\" x176.27..347.52",
+    +   "span \"Useful read\" x196.27..327.52",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:252:5
+
+    Error Context: test-results/relationship-read-card-s8a-49e6e-les-every-line-without-loss-android-412x915/error-context.md
+
+  17) [android-412x915] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c5-insufficient: 200% text size doubles every line without loss 
+
+    Error: s8a-v1-c5-insufficient 320px + 200% text: escapes card content box 76..247
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 4
+
+    - Array []
+    + Array [
+    +   "span \"Light read\" x176.27..332.63",
+    +   "span \"Light read\" x196.27..312.63",
+    + ]
+
+      181 |     return { content, escapes, overlaps }
+      182 |   })
+    > 183 |   expect.soft(escapes, `${label}: escapes card content box ${content.left}..${content.right}`).toEqual([])
+          |                                                                                                ^
+      184 |   expect.soft(overlaps, `${label}: header items overlap`).toEqual([])
+      185 | }
+      186 |
+        at expectInsideCard (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:183:96)
+        at expectNoHorizontalOverflow (/Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:136:3)
+        at /Users/parth/.codex/worktrees/stage8a-option-b/whatsapp-analytics-ui/tests/viewport/relationship-read-card.spec.ts:252:5
+
+    Error Context: test-results/relationship-read-card-s8a-f7af0-les-every-line-without-loss-android-412x915/error-context.md
+
+  17 failed
+    [android-360x800] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c1-pattern-change: 200% text size doubles every line without loss 
+    [android-360x800] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c2-carried-balanced: 200% text size doubles every line without loss 
+    [android-360x800] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c3-carried-mixed: 200% text size doubles every line without loss 
+    [android-360x800] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c4-unusual-silence: 200% text size doubles every line without loss 
+    [android-360x800] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c5-insufficient: 200% text size doubles every line without loss 
+    [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c1-pattern-change: 200% text size doubles every line without loss 
+    [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c2-carried-balanced: 200% text size doubles every line without loss 
+    [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c3-carried-mixed: 200% text size doubles every line without loss 
+    [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c4-unusual-silence: 200% text size doubles every line without loss 
+    [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c5-insufficient: 200% text size doubles every line without loss 
+    [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:260:7 › single-viewport checks › desktop 1280x1000: readable, end reachable, card within an 800px display 
+    [phone-390x844] › tests/viewport/relationship-read-card.spec.ts:316:7 › single-viewport checks › longest card with an over-long limitation still wraps at 320px (test-DOM counterexample) 
+    [android-412x915] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c1-pattern-change: 200% text size doubles every line without loss 
+    [android-412x915] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c2-carried-balanced: 200% text size doubles every line without loss 
+    [android-412x915] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c3-carried-mixed: 200% text size doubles every line without loss 
+    [android-412x915] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c4-unusual-silence: 200% text size doubles every line without loss 
+    [android-412x915] › tests/viewport/relationship-read-card.spec.ts:232:7 › s8a-v1-c5-insufficient: 200% text size doubles every line without loss 
+  8 skipped
+  17 passed (2.9m)
