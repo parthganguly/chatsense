@@ -1,0 +1,37 @@
+[
+  {
+    "file": "artifacts/stage8a-sol-ux-completion/UX-REVIEW.md",
+    "bytes": 14879,
+    "sha256": "e02bfac4bd8cfdee9687271477d0e1b88a5f5867e083773df31b33ebd66779e3"
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux-completion/complete.py",
+    "bytes": 2570,
+    "sha256": "a79d404d763991b8f16ecb561e10df3fd539690531e76741cc18f93f46b11f18"
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux-completion/identity-after.txt",
+    "bytes": 41,
+    "sha256": "aed8ac6e89b8c8e59fe85790346f6ffa84cd27338f00d6fad64b3af5f0ce07ed"
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux-completion/identity-before.txt",
+    "bytes": 41,
+    "sha256": "aed8ac6e89b8c8e59fe85790346f6ffa84cd27338f00d6fad64b3af5f0ce07ed"
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux-completion/independent-measurements-summary.json",
+    "bytes": 57224,
+    "sha256": "de71aff8c46880bad2f9a699a1a7fb101a12b2cb0a54c2042600830fffbd4dc6"
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux-completion/inspected-file-hashes.json",
+    "bytes": 4435,
+    "sha256": "d0d9fba2da22a9088680981f7324f214b4c1d5d0071b0bb05ec264a4cb1208c7"
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux-completion/original-evidence-receipt.json",
+    "bytes": 10845,
+    "sha256": "760b8e2a9e15101bd787dbce9f1c086aee04eedad5c115c490e27782ef82d0e6"
+  }
+]

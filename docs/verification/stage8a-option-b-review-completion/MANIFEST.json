@@ -1,0 +1,76 @@
+{
+  "decision": "BLOCKED",
+  "ux_decision": "FAIL",
+  "source_candidate": "8ee579420d56038800d0a4f453deb7e989d7325c",
+  "p0_v2_frozen": false,
+  "human_study_decision": "NOT_RUN",
+  "file_count": 13,
+  "inventory_sha256": "75080727c267ed88f022852fb2393d237aab102eb8bd05c4f9abbde0038b9c2a",
+  "files": [
+    {
+      "path": "CAPACITY-RECHECK.json",
+      "bytes": 1285,
+      "sha256": "a68415071de18e62b93cc967249d385a643736dd85dd4fee061c96b25e39547a"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3413,
+      "sha256": "ad4c94f8267043da81adc839beea0201464d4602dcdaac4a8f44ec4c48332220"
+    },
+    {
+      "path": "native-opus/opus-repair-retry-native-result.json",
+      "bytes": 1306,
+      "sha256": "cec6f8fee4b157930c3c8e230024f9d0c5c34bc37d7047fc8de0e6cb05b8e161"
+    },
+    {
+      "path": "native-opus/opus-repair-retry-native.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-opus/opus-repair-retry-prompt.txt",
+      "bytes": 5584,
+      "sha256": "55ea50f4d7de46eaed608cd987333193f623455a52a1877b7adf01b3a21d8003"
+    },
+    {
+      "path": "sol/SHA256SUMS.json",
+      "bytes": 1282,
+      "sha256": "c340d277a528d47ce91edd5d3a368c47bd6885a4e36d9ed1b9ed5058b967fc5d"
+    },
+    {
+      "path": "sol/UX-REVIEW.md",
+      "bytes": 14879,
+      "sha256": "e02bfac4bd8cfdee9687271477d0e1b88a5f5867e083773df31b33ebd66779e3"
+    },
+    {
+      "path": "sol/complete.py",
+      "bytes": 2570,
+      "sha256": "a79d404d763991b8f16ecb561e10df3fd539690531e76741cc18f93f46b11f18"
+    },
+    {
+      "path": "sol/identity-after.txt",
+      "bytes": 41,
+      "sha256": "aed8ac6e89b8c8e59fe85790346f6ffa84cd27338f00d6fad64b3af5f0ce07ed"
+    },
+    {
+      "path": "sol/identity-before.txt",
+      "bytes": 41,
+      "sha256": "aed8ac6e89b8c8e59fe85790346f6ffa84cd27338f00d6fad64b3af5f0ce07ed"
+    },
+    {
+      "path": "sol/independent-measurements-summary.json",
+      "bytes": 57224,
+      "sha256": "de71aff8c46880bad2f9a699a1a7fb101a12b2cb0a54c2042600830fffbd4dc6"
+    },
+    {
+      "path": "sol/inspected-file-hashes.json",
+      "bytes": 4435,
+      "sha256": "d0d9fba2da22a9088680981f7324f214b4c1d5d0071b0bb05ec264a4cb1208c7"
+    },
+    {
+      "path": "sol/original-evidence-receipt.json",
+      "bytes": 10845,
+      "sha256": "760b8e2a9e15101bd787dbce9f1c086aee04eedad5c115c490e27782ef82d0e6"
+    }
+  ]
+}

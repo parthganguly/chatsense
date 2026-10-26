@@ -1,0 +1,27 @@
+{
+  "recorded_at_utc": "2026-10-26T04:33:38.975974+00:00",
+  "prior_goal_turn": "progress: published157-file blocked checkpoint, exact readback, preserved both native errors and v1; full goal not achieved",
+  "current_revalidation": {
+    "engineering_worktree_head": "1f3e306bac5a6200785adf0841454fa92f24fe6c",
+    "working_tree_clean": true,
+    "codex_usage_snapshot": {
+      "ordinaryUsageAllowed": true,
+      "reported_primary_usedPercent": 1,
+      "scope": "account-level; does not itself prove any model invocation succeeds"
+    },
+    "sol_followup": "Completed formal UX FAIL on same immutable candidate; no broad reruns or original evidence edits.",
+    "native_opus_retry": {
+      "session_id": "05af8e32-e97b-4254-8f7c-82251f84f237",
+      "is_error": true,
+      "terminal_reason": "api_error",
+      "api_error_status": 429,
+      "api_error": "usage_limit_reached",
+      "result": "You've hit your session limit \u00b7 resets 1pm (Asia/Calcutta)"
+    },
+    "raw_native_receipt_sha256": "cec6f8fee4b157930c3c8e230024f9d0c5c34bc37d7047fc8de0e6cb05b8e161"
+  },
+  "goal_complete": false,
+  "ux_acceptance": false,
+  "p0_v2_frozen": false,
+  "next_action": "Native Opus repair after capacity recovery, then new immutable Sol UX audit before Astra v2 capture/freeze."
+}
