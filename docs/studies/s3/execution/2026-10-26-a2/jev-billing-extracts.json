@@ -1,0 +1,10 @@
+[
+  {
+    "pointer": "/components/schemas/Usage/properties/input_tokens/description",
+    "description": "Number of billable input tokens used to evaluate the request."
+  },
+  {
+    "pointer": "/components/schemas/Usage/properties/output_tokens/description",
+    "description": "Number of output tokens used to answer the questions. Output tokens are currently free of charge."
+  }
+]

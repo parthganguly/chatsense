@@ -1,0 +1,25 @@
+{
+  "method": "Astra observations through cua_repl; summaries, not raw network receipts",
+  "recorded_utc": "2026-10-26T17:33:53.802027+00:00",
+  "available_surface": "Codex in-app browser only",
+  "observations": [
+    {
+      "url": "https://console.typesafe.ai/login",
+      "result": "Login screen with Google/email choices; no authenticated account or balance visible",
+      "account_actions": []
+    },
+    {
+      "url": "https://agent.fastino.ai/auth",
+      "result": "Sign-in screen; no authenticated balance/settings visible",
+      "account_actions": []
+    },
+    {
+      "url": "https://agent.fastino.ai/terms",
+      "result": "Rendered Terms effective August 6, 2026, UI version 1.2.7 PRODUCTION. Sections 7A-C and 22: current plan pricing/limits in billing UI, daily free credits, optional overage auto-top-up, optional monthly cap. No whole-attempt maximum charge including timeout/error supplied in these sections. Section 6 describes retention/training and team ZDR; no account configuration is thereby proven.",
+      "account_actions": []
+    }
+  ],
+  "inference_calls": 0,
+  "sign_in_submissions": 0,
+  "settings_changes": 0
+}

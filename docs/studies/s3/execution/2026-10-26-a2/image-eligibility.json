@@ -1,0 +1,47 @@
+[
+  {
+    "file": "docs/studies/s3/2026-10-26-v1/stimuli/s8a-v2-c1-pattern-change.selected.card.png",
+    "sha256": "eea78a25698389ab31dc52a232b7384b6165444157680f34219e171065c0b51f",
+    "width": 344,
+    "height": 546,
+    "bytes": 64800,
+    "jev_size_eligible": true,
+    "glide_size_eligible": true
+  },
+  {
+    "file": "docs/studies/s3/2026-10-26-v1/stimuli/s8a-v2-c2-carried-balanced.selected.card.png",
+    "sha256": "c8498e524874adf000a693c46a7e1a2154d6392e24759494f1de0bd3713f5adf",
+    "width": 344,
+    "height": 500,
+    "bytes": 53856,
+    "jev_size_eligible": true,
+    "glide_size_eligible": true
+  },
+  {
+    "file": "docs/studies/s3/2026-10-26-v1/stimuli/s8a-v2-c3-carried-mixed.selected.card.png",
+    "sha256": "70470d8b2a3ba4c7c738dd09088a1f05cd786ee2b07dcf375a607e23685ed602",
+    "width": 344,
+    "height": 520,
+    "bytes": 53669,
+    "jev_size_eligible": true,
+    "glide_size_eligible": true
+  },
+  {
+    "file": "docs/studies/s3/2026-10-26-v1/stimuli/s8a-v2-c4-unusual-silence.selected.card.png",
+    "sha256": "56b2ac46dcaa48cfd11e229b462d6bd2ac1f8b6630ec965723dfecbdc7106816",
+    "width": 344,
+    "height": 656,
+    "bytes": 78339,
+    "jev_size_eligible": true,
+    "glide_size_eligible": true
+  },
+  {
+    "file": "docs/studies/s3/2026-10-26-v1/stimuli/s8a-v2-c5-insufficient.selected.card.png",
+    "sha256": "77f4339d31bc6a333b70b6c5f010e3b31c8882f063a29619f98d037f9c82082e",
+    "width": 344,
+    "height": 508,
+    "bytes": 55465,
+    "jev_size_eligible": true,
+    "glide_size_eligible": true
+  }
+]

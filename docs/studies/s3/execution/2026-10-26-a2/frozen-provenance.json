@@ -1,0 +1,409 @@
+{
+  "checked_utc": "2026-10-26T17:31:51.916236+00:00",
+  "protocol_commit": "7ed874b7a3963e560d399b7c0046f5625a2e0757",
+  "file_count": 80,
+  "all_identical": true,
+  "inventory_verified": true,
+  "files": [
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/.gitignore",
+      "sha256": "60c9bdd905fcf45ac485c680d32e9773962cf061b6f041dcddd033911558a672",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/ASTRA-S3-PRELAUNCH.md",
+      "sha256": "8df20348e41ce0deb7cf044f2d613e7ee26edb4477a5f717b5743f6736392d09",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/CALL-PLAN.json",
+      "sha256": "1bf684eca1c78d823650152801a7f1275745c3c0b9eb7618d03efd32b17e0bc9",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/EVALUATOR-KEY.json",
+      "sha256": "0338b8145e0574f53544a05625d9ba103db9766f23fe4f8504653fa2851f53f0",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/FREEZE.json",
+      "sha256": "957b6c70fc9103987c6423e7e09997109352307753ecc9c9d97dbce3f769f24a",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/OWNER-AUTHORIZATION.md",
+      "sha256": "c8b309d9d1ed5c09ad499daf711daf4291d2126887c3f64414430852626e3643",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/PROTOCOL.md",
+      "sha256": "3814388c94e515005da2f1ba38c400ab2494c3054740b9cdd0c148287e7c40ca",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/PROVIDER-CONTRACT.md",
+      "sha256": "1f46a5ed5a3f294342f641682940bb5750902c76fd35365f32b91eaafac2c0c8",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/QUESTION-BANK.json",
+      "sha256": "05faf910399e3f1362a4756d71c702dffe6f37175fefa5f01707d0ba809d7b2f",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/QUESTIONS.md",
+      "sha256": "7ad4284dc2c5fb78c706ce758fd9145d78644fa5b7ebc37de5932fb795b6d024",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/README.md",
+      "sha256": "d4ffba94cb2bcedeb7c895d3b3ec6ac94c1b97387a8bf8aa56db484ac9133b64",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/SHA256SUMS",
+      "sha256": "d6af08e2ad3453bbb913a7056afec991b1f08c8a8273bde2ecf7a3bac14c8659",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/ASTRA-DISPOSITION.md",
+      "sha256": "040987781865b865f89459082438e856e1489e2e45c0aed7e97b5c9218bba772",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/OPUS-BRIEF.md",
+      "sha256": "c3030c7be12799b66edda9d566088a7be965fb8e8a723df88c9ee7f5559b9d97",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/OPUS-FEASIBILITY.md",
+      "sha256": "f224afe02a5c3fb001385c62dc50c62a7c08c73b42adced7c61419d9c7c7b4ca",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/OPUS-RECEIPT.json",
+      "sha256": "ca55f3d3f8a3301d5e1ac4f912088fba70b8019145c3f30fbbfd721134adae64",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/opus-native-result.json",
+      "sha256": "76f26b325196b32ad6dd574df8afcdd9810149e52db2d4a97b2f516986dafa10",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/opus-native-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/EF435ACE-RECHECK.md",
+      "sha256": "94b5f90f8c1c5c770c4cd1c601c7d7438079408e183acda0fd560d91e569d44b",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/REPORT.md",
+      "sha256": "82353f7529a926f8d6c22ec6c7142c61adc0307011a9a75e7b6358bcc06cff98",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/delta-checks.json",
+      "sha256": "5a05c178d45a2011b29520712f87ea8f3b8e069e8d4b5a4aae621a4ed5c2e6a2",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/final-decision-checks.json",
+      "sha256": "9b7e03c1d6f3fa8f009160bea3112a57520af5cd98f24ba04e7db16ef2600fb9",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/final-independent-results.json",
+      "sha256": "12b5474343c90d442b4d9d70323b91f549ec9602dcaadec4d0e8d02da7ac41c8",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/final-receipt.json",
+      "sha256": "b462bfba231b9bdadfffff1437274d18f972e987cf414e4feef05a03e3d91078",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/final_independent_recheck.py",
+      "sha256": "5f5024739aced040c0c92ed7e97fc3cb83faad0e6bd896d0ca3281bf30cd46d6",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/independent-results.json",
+      "sha256": "1474a309a0a67db75fe630744079b0436e6ff2aea17dbb9f925e0169a40187fc",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/independent_recheck.py",
+      "sha256": "76d843e144bb924d1865b1422513232e97aada84bebe22c2947d306a9ee67adb",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/sol-recheck/receipt.json",
+      "sha256": "dcf313df1043d90caf2555283c07dbee506391af7e27e2b4deb2c166d201d9b7",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/sol-review/REPORT.md",
+      "sha256": "2f7ac244f024e761343924f2f35a1162388e662709a5b3611fbe8e9069962f5c",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/sol-review/independent-results.json",
+      "sha256": "0114f4c25fc6bc1b3acee559fcfc717277237d2bc8dce676ab767f68cb1bba51",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/sol-review/independent_audit.py",
+      "sha256": "7753b99c3d583757faf74d89352bbd2557543fc9be8bbb6ed236ab8fa35cc164",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/consultations/sol-review/receipt.json",
+      "sha256": "938febd2a7452a8b585818457217e8b6c14c49424fccd0b979c54cfb032ac836",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/controls/FAKE-negative-controls.json",
+      "sha256": "a2bf4a64cc8f4b320f43299cc79a520f654dc604b24fdacdc80caf589e208afc",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/controls/deterministic-rule-outputs.json",
+      "sha256": "166136ed352025b3decb1dfe5d211bfa95a1db86e36a9a30965396334a53045e",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/controls/offline_contract.py",
+      "sha256": "5a2f2b2d11b5193e2757d2e714a5d0f5ccdbdd1179021f299184e3b949a4aa88",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/controls/wire-manifest.json",
+      "sha256": "48bc5e490e93ad398012364ca45c5fd1b002e36b3ca9fd1161687fb5662c9a31",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/SOURCES.json",
+      "sha256": "b5295cfe54dd55a0af7509c34f1a4e5985ff65062c5673b1402d430403e15e5d",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/glide-api-systemone.md",
+      "sha256": "bfcd2960dd6b5e8c1e8ea21fb1b14957a4a392bd0f51d119c8c2c4ccfea4be9f",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/glide-authentication.md",
+      "sha256": "4bed4885a77c4af77fc076f9235db861acb7d15b4d3481a9b32345ef4251ff83",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/glide-choice.md",
+      "sha256": "2273efbeb6e8ead03e6d5cc97141b9cadb4cc7284c1aa358a4abfed1571fecf9",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/glide-errors.md",
+      "sha256": "b7843552eebe10e8e084b4f3f56f4d6d7fcec178bb3522422f763a03f58a22ae",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/glide-models.md",
+      "sha256": "7584d0f713eaf7c4e6c1f03a748355c0310bb581ebed7c5d8605c350b187281a",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/glide-overview.md",
+      "sha256": "e833a7b0e860656973963fa26e8f4911757348fb0db6796f5e2406236cb2a8f6",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/glide-retries.md",
+      "sha256": "0d2fd2ab77455fc1819c246029ff17de5f2bda7e35751d3d58c097793d8d24ca",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/glide-trust-safety.md",
+      "sha256": "8b52757b163e62c8fa9735c68db32cf98108802d0110bbadae9a4e2b8c55a874",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/jev-1.13-jaggedness.md",
+      "sha256": "f4bef6bdad41b84d4e8f7a14e9ce38aa9f8a55714b294ecf30b191482439affe",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/jev-choice.md",
+      "sha256": "0ff127cbdb24e6ab20669cc559d738951d9285537b06d1c96c8581923b609ed4",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/jev-fan-out.md",
+      "sha256": "7374e45cd14771f092607922edc30fbeaba696cfe93aa09c152f9c6cf149dc16",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/jev-llms-index.txt",
+      "sha256": "e817e47899099364d29633f157ac5de74f936c849bdf5a14382e31ba4a09c688",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/jev-primitives.md",
+      "sha256": "c6e7de429b679d80419a3f08901f96f01010b4ffe0ab7095541c2ad318c126c1",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/jev-sdk-js-client.md",
+      "sha256": "bd7b2ba0fd1cd1974f1a6938ff8a87126c874d8a981afb7da64c2ae0d9fd26ab",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/jev-sdk-python-constants.md",
+      "sha256": "a589efc998840cae4c78d60d2ca452dae64d1285dd63e100017b0ef9363aabba",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/jev-sdk-python-retries.md",
+      "sha256": "6ef903204ee1bfd976e443027d6c27278898574f51df4592c4e3fdc076204305",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/jev-system-one-concept.md",
+      "sha256": "55dda6c80c2d04b0e6d897a9f9fb2752e1b6b0cb138bf724cd99eaf02146e133",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/typesafe-dpa.html",
+      "sha256": "61d8e8ea1b59fa33ed55f05652e08a678fa5e310e94a9f59875bed98fec0213c",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/typesafe-mca.html",
+      "sha256": "6a6705df94b45d11e4ce5b367fb132ff41432e0812bc73fd4fd58e89a42863ba",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs-opus/typesafe-privacy.html",
+      "sha256": "cc2f010b6781860e6bafb8a664583bff8a2dfaca5faac3be0914a05d880b6023",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs/SOURCES.json",
+      "sha256": "c90dd384a505d0fe5a38409a117febbdf0700bfe8cae24d810caa64ed98ddf7a",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs/glide-call.md",
+      "sha256": "70e6de980b703ef3006c3085779a8051964de56008424aa3be0c460d9f0afea1",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs/glide-capabilities.md",
+      "sha256": "f15e71d13bfc10970dd055fbabfec93b27f6ab124c46ab6f996fcd2f7dd76e00",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs/glide-index.md",
+      "sha256": "90b5239bb0457614e6a7787deb8af4fee8ace99fa67178bccdeba4b72fe0439d",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs/glide-openapi.json",
+      "sha256": "f0c09683e618ee5a1ef2123e3152de8446d1a42bb090daf25010b8006cbd1ba7",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs/glide-pricing.md",
+      "sha256": "0c8c3e359c623151955db8f7bf2565b55234792162e8b2c3e8eee40671dba925",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs/jev-call.md",
+      "sha256": "5e6261f6f6212c6cf75fd55cc2856184b355a6400673b18314e85505e6219820",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs/jev-errors.md",
+      "sha256": "e0465b1d78a056ea4f2cf3bff66290dadc0feee39c96e99b0ad4b78852c01632",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs/jev-images.md",
+      "sha256": "b6836110409e88ff406b7044992d38828bbc95106a30b7831a6e29b998e1edeb",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs/jev-legal.md",
+      "sha256": "cc96ee6f2d53a89a76b21dc0df6102e5982d2583aa9ad95971d8bebc9de55897",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs/jev-list-models.md",
+      "sha256": "58ecfc2de394faaefda60d73252afb813bea3d780ff5eb0adc1a7bfc0ae46ae2",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/evidence/provider-docs/jev-models.md",
+      "sha256": "bed299c24098aaf2223f2244127041fcc5d0c3a77a2cbaa4daf7eb14bd755343",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/stimuli/manifest.json",
+      "sha256": "3b8fb908b500d9c0058105e5b86e9f483d9d41ef2f91fab30a5e09e8f040879e",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/stimuli/s8a-v2-c1-pattern-change.innerText.txt",
+      "sha256": "8e77123a283e07a3bb03cc418c792d04aec95fbd764ee71dcebb2f6fed2e24d0",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/stimuli/s8a-v2-c1-pattern-change.selected.card.png",
+      "sha256": "eea78a25698389ab31dc52a232b7384b6165444157680f34219e171065c0b51f",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/stimuli/s8a-v2-c2-carried-balanced.innerText.txt",
+      "sha256": "e8a3f104a27c56d1e91f2a3aac98f9c2819a33e6a9ca8af3b3d5bcc461e44cca",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/stimuli/s8a-v2-c2-carried-balanced.selected.card.png",
+      "sha256": "c8498e524874adf000a693c46a7e1a2154d6392e24759494f1de0bd3713f5adf",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/stimuli/s8a-v2-c3-carried-mixed.innerText.txt",
+      "sha256": "a84f90be893c2c337014f44008c0bc37b77aa6d363931af50c7e0256ed20b4fa",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/stimuli/s8a-v2-c3-carried-mixed.selected.card.png",
+      "sha256": "70470d8b2a3ba4c7c738dd09088a1f05cd786ee2b07dcf375a607e23685ed602",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/stimuli/s8a-v2-c4-unusual-silence.innerText.txt",
+      "sha256": "d0712ba7660daadd1d429312c2959db589bc26647196d400073dbc00107a0608",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/stimuli/s8a-v2-c4-unusual-silence.selected.card.png",
+      "sha256": "56b2ac46dcaa48cfd11e229b462d6bd2ac1f8b6630ec965723dfecbdc7106816",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/stimuli/s8a-v2-c5-insufficient.innerText.txt",
+      "sha256": "51328f28c947eef9f5d281985241353256fab282435ddf7d1109efee854c5f0f",
+      "identical_to_frozen": true
+    },
+    {
+      "path": "docs/studies/s3/2026-10-26-v1/stimuli/s8a-v2-c5-insufficient.selected.card.png",
+      "sha256": "77f4339d31bc6a333b70b6c5f010e3b31c8882f063a29619f98d037f9c82082e",
+      "identical_to_frozen": true
+    }
+  ]
+}

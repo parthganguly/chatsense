@@ -1,0 +1,135 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fastino.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+> ## Agent Instructions
+> Use https://docs.fastino.ai/llms.txt to discover and navigate pages. Use https://docs.fastino.ai/llms-full.txt when you need the complete documentation corpus. Use https://docs.fastino.ai/openapi.json as the source of truth for customer-facing routes. For GLiDE decision inference, call POST https://api.fastino.ai/v1/systemone with model fastino/GLiDE. Create managed config jobs with POST /v1/training/jobs using base_model. For custom training loops, native JSON clients use the public operations under /v1/training/jobs and /v1/training/usage. Existing Tinker clients use tinker==0.32.0 with TINKER_BASE_URL=https://api.fastino.ai/v1/training/compat/tinker and TINKER_CREDENTIAL_CMD. Compatibility child routes are private and absent from OpenAPI. Auto Train is private access and has no public route; direct interested users to sales@fastino.ai. Do not infer undocumented routes. Read API keys from FASTINO_API_KEY and never embed credentials in code, logs, or reports.
+
+# Trust & Safety
+
+> How Fastino protects your data, secures its infrastructure, and builds AI you can deploy responsibly.
+
+How we protect your data, secure our infrastructure, and build AI you can deploy responsibly.
+
+Questions? [security-svc@fastino.ai](mailto:security-svc@fastino.ai)
+
+## Overview
+
+Fastino.ai gives developers a set of AI models and APIs to build on. Trust is part of the product. This page explains the controls we run behind the API, what happens to the data you send us, and how we work to keep our models safe to deploy.
+
+It is written for the engineers integrating Fastino.ai and the security teams reviewing us. If you need something not covered here, such as a security questionnaire, subprocessor list, or a signed agreement, reach out at [security-svc@fastino.ai](mailto:security-svc@fastino.ai).
+
+## Data security
+
+### Encryption
+
+All data is encrypted in transit using TLS 1.2 or higher. Data at rest is encrypted using AES-256. API traffic is served exclusively over HTTPS, and requests over unencrypted channels are rejected.
+
+### Infrastructure
+
+[Fastino.ai](https://fastino.ai/) runs on AWS, which maintains its own physical and environmental security controls. Our production environment is isolated from development and staging, with separate VPC CIDRs and restrictive security groups, and network access is restricted by default.
+
+### Access control
+
+Access to production systems and customer data is limited to the employees who need it, granted on a least-privilege basis, and reviewed regularly. We require single sign-on and multi-factor authentication for internal systems, and access is revoked promptly when someone changes roles or leaves.
+
+### Secure development
+
+Changes to production go through code review and automated testing before they ship. We use dependency scanning and static analysis in our pipeline, keep an audit trail of deployments, and patch known vulnerabilities on a defined timeline.
+
+### Authentication for developers
+
+API access is authenticated with per-team API keys. A key is bound to a team and can access every project in that team, so treat each key as team-wide. We recommend you store keys in a secrets manager, set an expiry where appropriate, and never commit them to source control. Keys can be revoked at any time from the dashboard.
+
+## Privacy & data handling
+
+### What we collect
+
+When you call the API we process the inputs you send (prompts, files, and parameters) and return outputs. We also collect operational metadata such as request timestamps, token counts, and error logs to run and secure the service.
+
+### Do we train on your data?
+
+**Sometimes, by default.** Unless you opt out, we may use inputs and outputs you send through the API to improve and train our models. Enterprise customers can opt out of platform training in Settings. Separately, your inference data is used for continuous adaptation and remediation training of your own task models. That task-model training applies regardless of the platform-training opt-out and is not affected by the toggle. A request sent with `store: false` is the exception: it is never used for platform training or for task-model adaptation.
+
+### Retention
+
+By default, API inputs and outputs are retained indefinitely to support debugging, abuse detection, and service reliability and improvement. Stored payloads tier to colder storage over time but are not automatically deleted. On supported routes, including `POST /v1/systemone`, you can set `store: false` on a request for zero-retention handling. The input and output are then never written to storage, while usage metadata such as the model, token counts, latency, status, and cost is still recorded for billing. The `X-Fastino-Data-Retention` response header reports the retention applied to the request.
+
+We use a small set of third-party providers to deliver the service (for example, cloud hosting and monitoring). A current list of subprocessors is available below. We update it before adding a new subprocessor that handles customer data.
+
+Subprocessors (last updated October 12, 2026):
+
+| Company Information | Location | Processing Purpose |
+| - | - | - |
+| Amazon Web Services, Inc. | United States | Cloud infrastructure services, AI/ML services |
+| Anthropic, PBC | United States | AI/ML services |
+| LangChain, Inc. | United States | AI/ML services |
+| Intercom, Inc | United States | Customer support and messaging services |
+| OpenAI, L.L.C. | United States | AI/ML services |
+| Twilio Inc. (SendGrid) | United States | Email delivery services |
+| Amplitude, Inc. | United States | Product analytics |
+| Vercel | United States | Website Hosting, AI/ML services |
+| Supabase | United States | Database support |
+| Modal | United States | AI/ML services |
+| Microsoft Azure | United States | AI/ML services |
+| Datadog | United States | Observability and Monitoring |
+| Sentry | United States | Observability and Monitoring |
+| Stripe | United States | Billing |
+| Attio | United States | Email delivery services |
+| Linear | United States | Product/Project Management |
+
+### Data subject requests
+
+If you or your users need to access, export, or delete personal data, contact [security-svc@fastino.ai](mailto:security-svc@fastino.ai) and we will respond within the timelines required by applicable law.
+
+## AI safety & responsible use
+
+Because Fastino.ai ships AI models, safety is not only an infrastructure question. Here is how we work to make our models safe to build on and how we expect them to be used.
+
+### Model safeguards
+
+Our models are trained and evaluated with safety in mind, including filtering of harmful content and testing against known misuse patterns before release. We continue to evaluate models after launch and update safeguards as new risks emerge.
+
+### Content moderation
+
+We offer optional input-side safety filtering to help you flag potentially harmful prompts. Filtering applies to inputs only; we do not filter or reject model outputs. Detection is geared toward abuse patterns such as jailbreaks, weapons, malware, and account abuse, and can surface categories like hate, harassment, and explicit content, though it isn't purpose-built or evaluated for those. These filters are off by default and run only where your risk policy enables them. You remain responsible for moderation appropriate to your own product and users.
+
+### Acceptable use
+
+Use of Fastino.ai is governed by our Terms of Service. In short, do not use our models to generate illegal content, to harm or deceive people, to build surveillance or profiling systems that violate rights, or to attempt to bypass our safety controls. We may suspend access for violations.
+
+### Human oversight
+
+AI output can be wrong or biased. For decisions that affect people (such as hiring, credit, healthcare, or legal outcomes) we ask that you keep a human in the loop rather than relying on model output alone, and that you disclose to your users when they are interacting with AI.
+
+### Bias & limitations
+
+Our models reflect patterns in their training data and can produce inaccurate or skewed results. We test for common failure modes and document known limitations in our model documentation so you can decide where the models are and are not appropriate to deploy.
+
+## Compliance & certifications
+
+### SOC 2 Type I
+
+**Fastino is SOC 2 Type I compliant.** We have completed an independent SOC 2 Type I examination. The resulting report evaluates whether our in-scope controls were suitably designed and implemented as of a specified date. A Type I report does not assess how effectively controls operated over an observation period; that is the focus of a Type II examination.
+
+To request our SOC 2 Type I report, which we share under NDA, email [security-svc@fastino.ai](mailto:security-svc@fastino.ai).
+
+### In progress
+
+* **SOC 2 Type II:** We are in the observation window and expect to complete the examination in November 2026.
+* **ISO 27001:** Our certification work is underway.
+
+To be notified when the SOC 2 Type II report is available, email [security-svc@fastino.ai](mailto:security-svc@fastino.ai).
+
+### GDPR
+
+At this time, we do not offer a Data Processing Addendum (DPA).
+
+## Reporting a security or safety issue
+
+If you find a vulnerability or see our models being misused, tell us. Email [security-svc@fastino.ai](mailto:security-svc@fastino.ai) with details and, for vulnerabilities, steps to reproduce. We investigate every report.
+
+For questions about this page contact [security-svc@fastino.ai](mailto:security-svc@fastino.ai).
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

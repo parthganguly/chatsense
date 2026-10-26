@@ -1,0 +1,35 @@
+{
+  "jev": {
+    "all_published_GET_paths": [
+      "/v1/models"
+    ],
+    "account_balance_holds_autorefill_endpoint_identified": false,
+    "scope": "published OpenAPI only; training billing endpoints are not inference-account receipts"
+  },
+  "glide": {
+    "all_published_GET_paths": [
+      "/v1/base-models",
+      "/v1/datasets",
+      "/v1/datasets/{name}",
+      "/v1/gliner-2/jobs/{job_id}",
+      "/v1/inferences",
+      "/v1/inferences/{inference_id}",
+      "/v1/inferences/{inference_id}/feedback",
+      "/v1/models",
+      "/v1/training/jobs",
+      "/v1/training/jobs/{job_id}",
+      "/v1/training/jobs/{job_id}/billing",
+      "/v1/training/jobs/{job_id}/checkpoints",
+      "/v1/training/jobs/{job_id}/checkpoints/{checkpoint_id}/download",
+      "/v1/training/jobs/{job_id}/checkpoints/{kind}/{name}",
+      "/v1/training/jobs/{job_id}/deployments",
+      "/v1/training/jobs/{job_id}/download",
+      "/v1/training/jobs/{job_id}/futures/{future_id}",
+      "/v1/training/jobs/{job_id}/logs",
+      "/v1/training/operations/{idempotency_key}",
+      "/v1/training/usage"
+    ],
+    "account_balance_holds_autorefill_endpoint_identified": false,
+    "scope": "published OpenAPI only; training billing endpoints are not inference-account receipts"
+  }
+}

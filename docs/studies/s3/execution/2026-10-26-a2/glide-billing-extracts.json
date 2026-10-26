@@ -1,0 +1,102 @@
+[
+  {
+    "pointer": "/components/schemas/BaseModelResponse/properties/cache_read_price_per_million/description",
+    "description": "Effective upper-bound USD list price per million input tokens served from the provider's prompt cache (Anthropic cache_read_input_tokens, Bedrock cacheReadInputTokens, OpenAI prompt_tokens_details.cached_tokens). Always the rate BillableEvent.record actually charges: when a provider does not differentiate cache-read pricing this equals ``input_price_per_million`` rather than ``None``, so customers compute ``cache_read_tokens \u00d7 cache_read_price`` without special-casing. ``None`` only when the model has no pricing at all (cache reads are still tracked for analytics)."
+  },
+  {
+    "pointer": "/components/schemas/BaseModelResponse/properties/cache_write_price_per_million/description",
+    "description": "Effective upper-bound USD list price per million input tokens written into the provider's prompt cache (Anthropic cache_creation_input_tokens, Bedrock cacheWriteInputTokens). Providers that charge cache writes at the plain input rate (OpenAI, Modal) report ``input_price_per_million`` here rather than ``None``, matching what BillableEvent.record charges. ``None`` only when the model has no pricing at all."
+  },
+  {
+    "pointer": "/components/schemas/BaseModelResponse/properties/input_price_per_million/description",
+    "description": "Upper-bound USD list price per million input tokens (highest provider COGS multiplied by the inference margin). Caps what BillableEvent.record can charge for model_inference; actual charges may be lower when the request is routed to a cheaper provider."
+  },
+  {
+    "pointer": "/components/schemas/BaseModelResponse/properties/market_input_price_per_million/description",
+    "description": "Median USD per 1M input tokens across the third-party providers serving this model, for comparison against our own rate. Median rather than mean so one outlying listing cannot move it. Never used to bill. Null when nobody publishes a rate for it."
+  },
+  {
+    "pointer": "/components/schemas/BaseModelResponse/properties/output_price_per_million/description",
+    "description": "Upper-bound USD list price per million output tokens (highest provider COGS multiplied by the inference margin). Caps what BillableEvent.record can charge for model_inference; actual charges may be lower when the request is routed to a cheaper provider."
+  },
+  {
+    "pointer": "/components/schemas/ChatCompletionRequest/properties/reasoning/description",
+    "description": "Opt-in reasoning / extended-thinking controls. Accepts Fastino's normalized shape with keys ``enabled`` (bool), ``max_tokens`` (int, Anthropic-style budget), ``effort`` (one of minimal/low/medium/high/xhigh/max/none, OpenAI-style tier), and ``exclude`` (bool, hide reasoning tokens from the response). ``effort`` and ``max_tokens`` are mutually exclusive. Fastino extensions for Claude routes (Anthropic direct + Bedrock): ``mode`` (manual/adaptive \u2014 adaptive lets the model pick thinking depth per request, required on Opus 4.7+) and ``display`` (summarized/omitted \u2014 controls whether thinking text streams back; omitted preserves only the signature for multi-turn). On Chat Completions, provider reasoning text is hidden by default and is returned on ``message.reasoning_content`` / ``delta.reasoning_content`` only when the caller explicitly requests visible reasoning with ``exclude=false`` or ``display=summarized``. Fastino canonicalizes this into InferenceRequest.reasoning at the adapter boundary and each provider renders it to its native wire field (Anthropic ``thinking``, OpenAI ``reasoning_effort``, Vercel AI Gateway ``reasoning``). Fastino does not enable reasoning by default."
+  },
+  {
+    "pointer": "/components/schemas/FastinoExtension/description",
+    "description": "Fastino-specific extension fields appended to OpenAI-compatible responses.\n\nOpenAI's API contract reserves the unprefixed top-level keys (``id``,\n``choices``, ``usage``, \u2026); custom data must live under a clearly\nnamespaced key. ``x_fastino`` is that key.\n\nAttributes:\n    inference_id: The Fastino-side identifier of the persisted\n        ``inferences`` row associated with this completion. Present\n        when persistence is enabled (``extra_body.store == True``)\n        and the row was successfully recorded; ``None`` for ad-hoc\n        requests that opted out of persistence. The frontend uses\n        this to poll ``GET /inferences/{id}`` for asynchronous\n        judge results without coupling the inference response\n        latency to the judge.\n    default_schema_applied: Whether Fastino supplied the selected\n        encoder model's default because the request did not provide a\n        GLiNER schema. This also applies when ``response_format`` is\n        ``text`` or ``json_object``, since neither contains a schema.\n    truncated: Whether the encoder input was cut to fit the model's\n        ``max_input_tokens`` because the request set\n        ``truncate_overflow_text``. For a batch, at least one text was cut."
+  },
+  {
+    "pointer": "/components/schemas/InferenceRecord/properties/cache_write_tokens/description",
+    "description": "Input tokens written into the provider prompt cache (cache creation). Zero for providers that bill writes as plain input."
+  },
+  {
+    "pointer": "/components/schemas/InferenceRecord/properties/input_tokens/description",
+    "description": "Non-cached input/prompt tokens, sourced from the metered requests row. None when no billing row was recorded."
+  },
+  {
+    "pointer": "/components/schemas/PromptTokensDetails/description",
+    "description": "Per-input-class breakdown for OpenAI-shape usage payloads.\n\nMirrors OpenAI's ``prompt_tokens_details`` block and the industry\ncache-creation extension so clients reading\n``usage.prompt_tokens_details.cached_tokens`` /\n``cache_write_tokens`` keep working when Fastino relays a cache-aware\nupstream response. Both counts are subsets of ``prompt_tokens`` on the\nwire \u2014 that's the upstream contract Fastino relays faithfully.\n\nAttributes:\n    cached_tokens: Input tokens served from the upstream prompt cache\n        (cache read).\n    cache_write_tokens: Input tokens written into the upstream prompt\n        cache (cache creation). ``0`` for upstreams that bill writes\n        as plain input (OpenAI, vLLM)."
+  },
+  {
+    "pointer": "/components/schemas/ResponsesRequest/properties/store/description",
+    "description": "Whether to store response state for turn-to-turn continuation. When true, Fastino preserves the response for previous_response_id replay, including available tool-call and reasoning context."
+  },
+  {
+    "pointer": "/components/schemas/StorageUsageResponse/description",
+    "description": "``billing/usage/checkpoints/current`` response."
+  },
+  {
+    "pointer": "/components/schemas/SystemOneRequest/properties/state/description",
+    "description": "The situation every question is evaluated against: a string, a JSON object of labeled fields, or a JSON array. An array may mix strings with text parts and up to 4 image_url parts (a public https URL without redirects, or a base64 data URL). Each image must be JPEG, PNG, GIF or WebP, at most 3,932,160 bytes (5 MiB of base64) and at most 25,000,000 pixels. Images are billed as input tokens, once per question. Send an empty value when the question carries all the context."
+  },
+  {
+    "pointer": "/components/schemas/SystemOneRequest/properties/store/description",
+    "description": "Whether Fastino keeps this request's input and output. `true` (the default) records them in your inference history. `false` keeps neither: no history entry, and the payload stays out of logs, error reports and traces, so it is never used for training or continuous adaptation, whatever your training opt-out says. Usage metadata (model, token counts, latency, status, cost) is still recorded for billing. The `X-Fastino-Data-Retention` response header reports the outcome."
+  },
+  {
+    "pointer": "/components/schemas/SystemOneResponse/properties/token_usage/description",
+    "description": "Total tokens billed for the decision (input plus output)."
+  },
+  {
+    "pointer": "/components/schemas/SystemOneResponse/properties/usage/description",
+    "description": "Token counts used for billing."
+  },
+  {
+    "pointer": "/paths//v1/chat/completions/post/responses/200/content/text/event-stream/schema/properties/usage/anyOf/0/properties/prompt_tokens_details/anyOf/0/description",
+    "description": "Per-input-class breakdown for OpenAI-shape usage payloads.\n\nMirrors OpenAI's ``prompt_tokens_details`` block and the industry\ncache-creation extension so clients reading\n``usage.prompt_tokens_details.cached_tokens`` /\n``cache_write_tokens`` keep working when Fastino relays a cache-aware\nupstream response. Both counts are subsets of ``prompt_tokens`` on the\nwire \u2014 that's the upstream contract Fastino relays faithfully.\n\nAttributes:\n    cached_tokens: Input tokens served from the upstream prompt cache\n        (cache read).\n    cache_write_tokens: Input tokens written into the upstream prompt\n        cache (cache creation). ``0`` for upstreams that bill writes\n        as plain input (OpenAI, vLLM)."
+  },
+  {
+    "pointer": "/paths//v1/chat/completions/post/responses/200/content/text/event-stream/schema/properties/x_fastino/anyOf/0/description",
+    "description": "Fastino-specific extension fields appended to OpenAI-compatible responses.\n\nOpenAI's API contract reserves the unprefixed top-level keys (``id``,\n``choices``, ``usage``, \u2026); custom data must live under a clearly\nnamespaced key. ``x_fastino`` is that key.\n\nAttributes:\n    inference_id: The Fastino-side identifier of the persisted\n        ``inferences`` row associated with this completion. Present\n        when persistence is enabled (``extra_body.store == True``)\n        and the row was successfully recorded; ``None`` for ad-hoc\n        requests that opted out of persistence. The frontend uses\n        this to poll ``GET /inferences/{id}`` for asynchronous\n        judge results without coupling the inference response\n        latency to the judge.\n    default_schema_applied: Whether Fastino supplied the selected\n        encoder model's default because the request did not provide a\n        GLiNER schema. This also applies when ``response_format`` is\n        ``text`` or ``json_object``, since neither contains a schema.\n    truncated: Whether the encoder input was cut to fit the model's\n        ``max_input_tokens`` because the request set\n        ``truncate_overflow_text``. For a batch, at least one text was cut."
+  },
+  {
+    "pointer": "/paths//v1/datasets/get/parameters/2/description",
+    "description": "When true, include the caller's own failed datasets (status='failed'). Defaults to false so the UI never renders broken-but-clickable records that 404 on preview/analyze. The result set is always scoped to the authenticated user \u2014 this flag does NOT grant cross-user visibility, so passing true is safe for any authenticated caller. Failed rows remain in the database for support / debugging; their original upload is preserved at raw_s3_key."
+  },
+  {
+    "pointer": "/paths//v1/datasets/get/parameters/2/schema/description",
+    "description": "When true, include the caller's own failed datasets (status='failed'). Defaults to false so the UI never renders broken-but-clickable records that 404 on preview/analyze. The result set is always scoped to the authenticated user \u2014 this flag does NOT grant cross-user visibility, so passing true is safe for any authenticated caller. Failed rows remain in the database for support / debugging; their original upload is preserved at raw_s3_key."
+  },
+  {
+    "pointer": "/paths//v1/datasets/upload/process/post/description",
+    "description": "Queues processing for a reserved dataset upload."
+  },
+  {
+    "pointer": "/paths//v1/datasets/upload/url/post/description",
+    "description": "Creates a reserved dataset row and presigned upload URL."
+  },
+  {
+    "pointer": "/paths//v1/systemone/post/description",
+    "description": "Answer a batch of questions about one state.\n\nSend `store: false` to keep neither the input nor the output; usage metadata is still\nrecorded for billing. See the `store` field."
+  },
+  {
+    "pointer": "/paths//v1/systemone/post/responses/402/description",
+    "description": "Insufficient credits, funding required, or an owner-set daily or monthly spend limit was reached."
+  },
+  {
+    "pointer": "/paths//v1/systemone/post/responses/403/description",
+    "description": "A payment method, card verification, credit ceiling, or account policy requirement blocks the request."
+  }
+]

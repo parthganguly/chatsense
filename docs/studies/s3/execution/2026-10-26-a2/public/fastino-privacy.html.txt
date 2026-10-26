@@ -1,0 +1,20 @@
+Fastino Labs
+Fastino Labs
+Fastino Labs builds open language and decision models for agentic AI, including GLiNER, GLiDE and the Fastino fine-tuning agent.
+Base URL: https://api.fastino.ai
+Documentation
+For the full machine-readable documentation, visit:
+https://docs.fastino.ai/llms.txt
+Quick Start
+Get an API key from Settings → API Keys
+Upload or generate a dataset (JSON, JSONL, or CSV)
+Start a training job with POST /v1/training/jobs
+Evaluate with project-scoped Evaluation Suites
+Run inference with POST /v1/chat/completions, or get a GLiDE decision with POST /v1/systemone
+API Formats
+GLiDE decisions: POST /v1/systemone with model fastino/GLiDE
+OpenAI-compatible: POST /v1/chat/completions (set base_url to https://api.fastino.ai/v1)
+Anthropic-compatible: POST /v1/messages (set base_url to https://api.fastino.ai)
+Auth: Include your API key in the X-API-Key header. Keys start with fast_sk_ (pio_sk_ keys are retired).
+Full documentation:
+https://docs.fastino.ai/llms.txt

@@ -1,0 +1,105 @@
+Privacy policy - TypeSafe AI
+TypeSafe AI
+Enterprise
+Thoughts
+Company
+Docs
+API console
+Contact us
+API console
+Docs
+Menu
+TypeSafe AI, Inc.
+Privacy policy
+Privacy policy
+Last updated
+Nov 19, 2025
+This privacy policy (“Privacy Policy”) describes the types of personal data that Typesafe AI, Inc. (“TypeSafe,” “we,” “our,” and/or “us”) collects, uses, and discloses from individuals (“you” or “your”) our website at
+https://www.typesafe.ai
+along with our web-based interface(s) (the “Playground”), application programming interfaces (“APIs”), and other services that link to this Privacy Policy (collectively, the “Services”).
+As used in this Privacy Policy, “personal data” means any information relating to an identified or identifiable individual and includes any information that constitutes "personally identifiable information," “personal data,” or "personal information" under applicable privacy or data protection laws or regulations.
+You acknowledge the collection, use, disclosure, procedures, and other processing described in this Privacy Policy.
+Personal Data We Collect
+We may collect a variety of personal data from or about you or your devices from various sources, as described below. Where applicable, we indicate whether and why you must provide us with your personal data, as well as the consequences of failing to do so.  If you do not provide your personal data when requested, you may not be able to use the full extent of the Services if that personal data is necessary to provide you with the Services or if we are legally required to collect it.
+Personal Data You Provide to Us
+Account Information.
+We collect the personal data you provide to create, update, or manage your Services account, including, for example, your name and email address.
+Services.
+We collect the personal data you provide when you use the Services, including your prompts, data, instructions, and other input (“Input”).  We will not train or fine tune any artificial intelligence or machine learning models on your prompts or other Input.
+Contact Information.
+We may collect your personal data when you inquire about us, the Services, or when you otherwise interact with us. This data may include your name, email address, and any data you choose to provide to us.
+Communications.
+If you contact us directly, we may receive personal data about you, such as your name, email address, the contents of a message or attachments that you may send to us.  When you sign up for news and updates, we will collect your email address and other personal data.  When you communicate with us online, our third-party vendors may receive and store these communications on our behalf.
+When we send you emails, we may use embedded pixels or other technologies to track information about your receipt and interaction with our emails, such as whether and when you open them, whether you access any links included in our emails, how long you read our emails, whether you forward our emails and to whom, your Location Information (described below), and your Device Information (described below), to learn how to deliver a better user experience and improve the Services.
+Careers.
+If you decide that you wish to apply for a job with us, you may submit your contact information and your resume online.  We will collect the information you choose to provide on your resume, such as your education and employment experience.
+Payment Information.
+If you make a payment to us, your payment-related information, such as credit card or other financial information, may be collected by our third-party payment processor on our behalf.
+Personal Data We Collect When You Use Our Services
+Location Information.
+We may collect and infer your general location information, including, for example, by collecting and using your internet protocol (IP) address.
+Device Information.
+We may receive information about your device and software, including IP address, device type, device identifiers, web browser type and version, and operating system version.
+Usage Information.
+We automatically receive data about your interactions with the Services, such as the dates and times of your use of the Services  Information from Cookies and Similar Technologies. We and our third-party partners may collect information using cookies, beacons, invisible tags, and similar technologies (collectively “Cookies”) to provide functionality and to distinguish you from other users of the Services.
+How We Use the Personal Data We Collect
+We use the personal data we collect:
+To provide, maintain, improve, debug, administer, and enhance the Services;
+To understand your preferences and analyze how you use the Services and develop new products, services, and technology;
+To communicate with you, provide you with relevant updates and other information, provide information that you request, respond to comments and questions, and otherwise provide customer support;
+For marketing and advertising purposes, such as developing and providing promotional and advertising materials that may be relevant, valuable or otherwise of interest to you;
+To generate anonymized or aggregated data that we may use for lawful purposes;
+To facilitate transactions and payments;
+To find and prevent fraud and abuse, resolve disputes, or respond to trust and safety issues;
+For compliance purposes, including enforcing our contracts or other legal rights, or as may be required by applicable laws and regulations or requested by any judicial process or governmental agency; and
+For other purposes for which we provide notice at the time the information is collected.
+We (1) will not train or fine tune any artificial intelligence or machine learning models on Input, and (2) will not disclose any Input to a third party other than our service providers.
+How We Disclose the Personal Data We Collect
+We do not “sell” personal data nor “share” personal data for cross-contextual behavioral advertising.
+Affiliates. We may disclose personal data we receive to our subsidiaries and  affiliates for the purposes described in this Privacy Policy.
+Vendors and Service Providers. We may disclose personal data we receive to vendors and service providers that help us provide the Services.
+Partners. We use analytics services such as Google Analytics to collect and process analytics data.  These services may also collect information about your use of other websites, apps, and online resources.  You can learn more about Google’s practices by visiting https://www.google.com/policies/privacy/partners/.
+As Required By Law and Similar Disclosures. We may access, preserve, and disclose personal data if we believe doing so is required or appropriate to:
+Comply with law enforcement requests and legal process, such as a court order or subpoena;
+Respond to your requests;
+Protect your, our, or others’ rights, property, or safety;
+Protect against legal liability; or
+Investigate fraud or other unlawful activity.
+For the avoidance of doubt, the disclosure of personal data may occur if you input any objectionable content on or through with the Services.
+Merger, Sale, or Other Asset Transfers. We may transfer your personal data to service providers, advisors, potential transactional partners, or other third parties in connection with the consideration, negotiation, or completion of a corporate transaction in which we are acquired by or merged with another company or we sell, liquidate, or transfer all or a portion of our assets.
+Consent. We may also disclose your personal data with your permission.
+Your Choices
+Marketing Communications. You can unsubscribe from our promotional emails via the link provided in the emails.  Please note that if you opt out of receiving promotional messages from us, you will continue to receive administrative messages from us.
+Do Not Track. There is no accepted standard on how to respond to “Do Not Track” signals, and we do not respond to such signals.
+Third Parties
+The Services may contain links to other websites, products, or services that we do not own or operate or permit you to integrate with third-party services. We are not responsible for the privacy practices of these third parties.  Please be aware that this Privacy Policy does not apply to your activities on these third-party services or any data you disclose to these third parties.  We encourage you to read their privacy policies before providing any data to them.
+Retention
+We retain personal data about you for as long as reasonably necessary to provide you with the Services, or otherwise in support of our business or commercial purposes. When you request that we do so, we take measures to delete your personal data or keep it in a form that does not permit identifying you when this personal data is no longer reasonably necessary for the purposes for which we process it, unless we are required by law to keep this data for a longer period.
+Security
+We make reasonable efforts to protect your data by using security measures designed to safeguard the data we maintain.  However, because no electronic transmission or storage of data can be entirely secure, we can make no guarantees as to the security or privacy of your data.
+Children’s Privacy
+We do not knowingly collect, maintain, or use personal data from children under 18 years of age, and no part of the Services is directed to children.  If you learn that a child has provided us with personal data in violation of this Privacy Policy, then you may alert us at
+privacy@typesafe.ai
+.
+International Visitors
+The Services are hosted in the United States (“U.S.”).  If you choose to use the Services from the EEA, the UK or other regions of the world with laws governing data collection and use that may differ from U.S. law, then please note that you are transferring your personal data outside of those regions to the U.S. for storage and processing.
+Changes to this Privacy Policy
+We will post any adjustments to the Privacy Policy on this page, and the revised version will be effective when it is posted.
+Contact Information
+If you have any questions, comments, or concerns about our processing activities, please email us at
+privacy@typesafe.ai
+.
+TypeSafe AI © 2026
+Contact
+Terms of Use
+Privacy Policy
+Acceptable Use Policy
+Accessibility
+LinkedIn
+X
+TypeSafe AI © 2026
+Contact
+Terms of Use
+Privacy Policy
+Acceptable Use Policy
+Accessibility

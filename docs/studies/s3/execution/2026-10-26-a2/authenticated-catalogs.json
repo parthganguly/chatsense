@@ -1,0 +1,72 @@
+[
+  {
+    "provider": "jev",
+    "method": "GET",
+    "url": "https://api.typesafe.ai/v1/models",
+    "retrieved_utc": "2026-10-26T17:28:38.390047+00:00",
+    "credential_source": "existing macOS Keychain scoped service",
+    "redirects": false,
+    "application_retries": 0,
+    "inference": false,
+    "credential_available": true,
+    "http_status": 200,
+    "response_bytes": 311,
+    "raw_response_sha256": "7fbe8d7d66e3d1c9560506fd514b47dee5308246139de38f61a685b715362d60",
+    "headers": {
+      "Date": "Mon, 26 Oct 2026 17:28:39 GMT",
+      "Content-Type": "application/json"
+    },
+    "models": [
+      {
+        "name": "jev-latest",
+        "description": "The latest iteration of TypeSafe's System One Model: Jev",
+        "release_date": "2026-09-10T18:38:01.391457+00:00"
+      },
+      {
+        "name": "jev-preview",
+        "description": "A preview version of `jev-latest`: should be better in most ways",
+        "release_date": "2026-09-10T18:39:06.057655+00:00"
+      }
+    ],
+    "projection": "allowlisted model-contract fields only; other models omitted for GLiDE"
+  },
+  {
+    "provider": "glide",
+    "method": "GET",
+    "url": "https://api.fastino.ai/v1/base-models?supports_inference=true",
+    "retrieved_utc": "2026-10-26T17:28:39.542651+00:00",
+    "credential_source": "existing macOS Keychain scoped service",
+    "redirects": false,
+    "application_retries": 0,
+    "inference": false,
+    "credential_available": true,
+    "http_status": 200,
+    "response_bytes": 16499,
+    "raw_response_sha256": "b6289e219aa0a136433423704e8d812c4cb8a2073b12932591916cdb1c5a26de",
+    "headers": {
+      "Content-Type": "application/json",
+      "Date": "Mon, 26 Oct 2026 17:28:40 GMT"
+    },
+    "models": [
+      {
+        "id": "fastino/GLiDE",
+        "label": "GLiDE",
+        "description": "One-pass GLiDE v2.3 decision model served in bf16 on a B200.",
+        "task_type": "systemone",
+        "context_window": 65536,
+        "max_input_tokens": 65536,
+        "max_output_tokens": null,
+        "input_price_per_million": 0.04,
+        "output_price_per_million": 0.0,
+        "cache_read_price_per_million": 0.04,
+        "cache_write_price_per_million": 0.04,
+        "supports_inference": true,
+        "supports_image_input": false,
+        "supports_zdr": true,
+        "deprecated": false,
+        "sunset_date": null
+      }
+    ],
+    "projection": "allowlisted model-contract fields only; other models omitted for GLiDE"
+  }
+]

@@ -1,0 +1,233 @@
+[
+  {
+    "file": "jev-openapi.json",
+    "url": "https://api.typesafe.ai/openapi.json",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:27:04.266732+00:00",
+    "status": 200,
+    "final_url": "https://api.typesafe.ai/openapi.json",
+    "sha256": "3ca93b6e6b9aa8d7820531b78c66ed7a9798b11e6e163ad96b140fb3d75fbcf4",
+    "bytes": 22467
+  },
+  {
+    "file": "jev-models.md",
+    "url": "https://docs.typesafe.ai/models.md",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:27:04.267812+00:00",
+    "status": 200,
+    "final_url": "https://docs.typesafe.ai/models.md",
+    "sha256": "bed299c24098aaf2223f2244127041fcc5d0c3a77a2cbaa4daf7eb14bd755343",
+    "bytes": 8275
+  },
+  {
+    "file": "jev-images.md",
+    "url": "https://docs.typesafe.ai/images.md",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:27:04.269086+00:00",
+    "status": 200,
+    "final_url": "https://docs.typesafe.ai/images.md",
+    "sha256": "b6836110409e88ff406b7044992d38828bbc95106a30b7831a6e29b998e1edeb",
+    "bytes": 20991
+  },
+  {
+    "file": "jev-errors.md",
+    "url": "https://docs.typesafe.ai/api/errors.md",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:27:04.269593+00:00",
+    "status": 200,
+    "final_url": "https://docs.typesafe.ai/api/errors.md",
+    "sha256": "e0465b1d78a056ea4f2cf3bff66290dadc0feee39c96e99b0ad4b78852c01632",
+    "bytes": 2722
+  },
+  {
+    "file": "jev-list-models.md",
+    "url": "https://docs.typesafe.ai/api/list-models.md",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:27:04.270361+00:00",
+    "status": 200,
+    "final_url": "https://docs.typesafe.ai/api/list-models.md",
+    "sha256": "58ecfc2de394faaefda60d73252afb813bea3d780ff5eb0adc1a7bfc0ae46ae2",
+    "bytes": 5123
+  },
+  {
+    "file": "jev-system-one.md",
+    "url": "https://docs.typesafe.ai/api/system-one.md",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:27:04.271422+00:00",
+    "status": 200,
+    "final_url": "https://docs.typesafe.ai/api/system-one.md",
+    "sha256": "5e6261f6f6212c6cf75fd55cc2856184b355a6400673b18314e85505e6219820",
+    "bytes": 28858
+  },
+  {
+    "file": "jev-concept.md",
+    "url": "https://docs.typesafe.ai/concepts/system-one.md",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:27:05.128699+00:00",
+    "status": 200,
+    "final_url": "https://docs.typesafe.ai/concepts/system-one.md",
+    "sha256": "55dda6c80c2d04b0e6d897a9f9fb2752e1b6b0cb138bf724cd99eaf02146e133",
+    "bytes": 4269
+  },
+  {
+    "file": "glide-openapi.json",
+    "url": "https://docs.fastino.ai/openapi.json",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:27:05.418458+00:00",
+    "status": 200,
+    "final_url": "https://docs.fastino.ai/openapi.json",
+    "sha256": "e820307c50362075c2a9e55d7ae646ddfa59c4240fe2e158d48204b9fbd097d3",
+    "bytes": 405292
+  },
+  {
+    "file": "glide-index.txt",
+    "url": "https://docs.fastino.ai/llms.txt",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:27:05.498454+00:00",
+    "status": 200,
+    "final_url": "https://docs.fastino.ai/llms.txt",
+    "sha256": "90b5239bb0457614e6a7787deb8af4fee8ace99fa67178bccdeba4b72fe0439d",
+    "bytes": 24101
+  },
+  {
+    "file": "glide-pricing.md",
+    "url": "https://docs.fastino.ai/pricing.md",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:27:05.620616+00:00",
+    "status": 200,
+    "final_url": "https://docs.fastino.ai/pricing.md",
+    "sha256": "50588da651e869ba97d02571730b47b7f5b2ec87af35376069906a24809649e6",
+    "bytes": 3099
+  },
+  {
+    "file": "glide-models.md",
+    "url": "https://docs.fastino.ai/concepts/models.md",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:27:05.725851+00:00",
+    "status": 200,
+    "final_url": "https://docs.fastino.ai/concepts/models.md",
+    "sha256": "49ade67dec77999b6f1271a043d4103cb945c803d251c6d8d6d98ead42e91a15",
+    "bytes": 7118
+  },
+  {
+    "file": "glide-systemone.md",
+    "url": "https://docs.fastino.ai/inference/systemone.md",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:27:06.081324+00:00",
+    "status": 200,
+    "final_url": "https://docs.fastino.ai/inference/systemone.md",
+    "sha256": "70e6de980b703ef3006c3085779a8051964de56008424aa3be0c460d9f0afea1",
+    "bytes": 20523
+  },
+  {
+    "file": "glide-capabilities.md",
+    "url": "https://docs.fastino.ai/concepts/glide-capabilities.md",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:27:06.558234+00:00",
+    "status": 200,
+    "final_url": "https://docs.fastino.ai/concepts/glide-capabilities.md",
+    "sha256": "f15e71d13bfc10970dd055fbabfec93b27f6ab124c46ab6f996fcd2f7dd76e00",
+    "bytes": 4579
+  },
+  {
+    "file": "glide-retention.md",
+    "url": "https://docs.fastino.ai/trust-safety.md",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:27:06.776072+00:00",
+    "status": 200,
+    "final_url": "https://docs.fastino.ai/trust-safety.md",
+    "sha256": "8b52757b163e62c8fa9735c68db32cf98108802d0110bbadae9a4e2b8c55a874",
+    "bytes": 9840
+  },
+  {
+    "file": "glide-errors.md",
+    "url": "https://docs.fastino.ai/troubleshooting/errors.md",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:27:06.877017+00:00",
+    "status": 200,
+    "final_url": "https://docs.fastino.ai/troubleshooting/errors.md",
+    "sha256": "33800b4dd9ce28e3111f7fef74527fb747fcabcbd964104f8530e4fd46adb278",
+    "bytes": 18092
+  },
+  {
+    "file": "glide-authentication.md",
+    "url": "https://docs.fastino.ai/authentication.md",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:27:06.917643+00:00",
+    "status": 200,
+    "final_url": "https://docs.fastino.ai/authentication.md",
+    "sha256": "4bed4885a77c4af77fc076f9235db861acb7d15b4d3481a9b32345ef4251ff83",
+    "bytes": 3544
+  },
+  {
+    "file": "typesafe-mca.html",
+    "url": "https://typesafe.ai/legal/mca",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:30:24.499258+00:00",
+    "status": 200,
+    "final_url": "https://typesafe.ai/legal/mca",
+    "sha256": "6a6705df94b45d11e4ce5b367fb132ff41432e0812bc73fd4fd58e89a42863ba",
+    "bytes": 278201
+  },
+  {
+    "file": "typesafe-privacy.html",
+    "url": "https://typesafe.ai/legal/privacy-policy",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:30:24.501355+00:00",
+    "status": 200,
+    "final_url": "https://typesafe.ai/legal/privacy-policy",
+    "sha256": "cc2f010b6781860e6bafb8a664583bff8a2dfaca5faac3be0914a05d880b6023",
+    "bytes": 201074
+  },
+  {
+    "file": "typesafe-dpa.html",
+    "url": "https://typesafe.ai/legal/data-processing",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:30:24.502400+00:00",
+    "status": 200,
+    "final_url": "https://typesafe.ai/legal/data-processing",
+    "sha256": "61d8e8ea1b59fa33ed55f05652e08a678fa5e310e94a9f59875bed98fec0213c",
+    "bytes": 206310
+  },
+  {
+    "file": "fastino-terms.html",
+    "url": "https://agent.fastino.ai/terms",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:30:24.502784+00:00",
+    "status": 200,
+    "final_url": "https://agent.fastino.ai/terms",
+    "sha256": "2cf8fc8ff44118a8d8e59e58c2f8ea9be92b40603c40cc292de02f408cad9d44",
+    "bytes": 10706
+  },
+  {
+    "file": "fastino-privacy.html",
+    "url": "https://agent.fastino.ai/privacy",
+    "method": "GET",
+    "authentication": false,
+    "retrieved_utc": "2026-10-26T17:30:24.503421+00:00",
+    "status": 200,
+    "final_url": "https://agent.fastino.ai/privacy",
+    "sha256": "2cf8fc8ff44118a8d8e59e58c2f8ea9be92b40603c40cc292de02f408cad9d44",
+    "bytes": 10706
+  }
+]

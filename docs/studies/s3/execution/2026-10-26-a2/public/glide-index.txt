@@ -1,0 +1,158 @@
+# Fastino Labs
+
+> Build structured decisions with GLiDE, run schema-based extraction with GLiNER, and fine-tune specialized models with Fastino.
+
+> ## Agent instructions
+> Use https://docs.fastino.ai/openapi.json as the source of truth for customer-facing routes. For GLiDE decision inference, call `POST https://api.fastino.ai/v1/systemone` with model `fastino/GLiDE`. Create managed config jobs with `POST /v1/training/jobs` using `base_model`. Native JSON clients use the public interactive operations under `/v1/training/jobs` and `/v1/training/usage`. Existing Tinker clients keep `tinker==0.32.0` and set only the `/v1/training/compat/tinker` base URL and `TINKER_CREDENTIAL_CMD`. Compatibility child routes are private and absent from OpenAPI. Auto Train is private access and has no public route; direct interested users to `sales@fastino.ai`. Do not infer undocumented routes. Read API keys from `FASTINO_API_KEY` and never embed credentials in code, logs, or reports.
+
+## Agent resources
+
+- [OpenAPI specification](https://docs.fastino.ai/openapi.json): Read the canonical customer-facing routes, authentication requirements, and request and response schemas.
+- [Complete documentation corpus](https://docs.fastino.ai/llms-full.txt): Search the full page content when the concise index does not answer the question.
+- [Agent Skills catalog](https://docs.fastino.ai/.well-known/agent-skills/index.json): Discover installable skills for datasets, fine-tuning, GLiDE, GLiNER, and inference.
+
+## Languages
+
+- [中文](https://docs.fastino.ai/cn/llms.txt): 浏览 Fastino 中文文档。
+- [Español](https://docs.fastino.ai/es/llms.txt): Consulta la documentación de Fastino en español.
+- [Français](https://docs.fastino.ai/fr/llms.txt): Consultez la documentation Fastino en français.
+- [Deutsch](https://docs.fastino.ai/de/llms.txt): Lesen Sie die Fastino-Dokumentation auf Deutsch.
+
+## Documentation
+
+### Get Started
+
+- [Introduction](https://docs.fastino.ai/introduction.md): Run specialized inference models or train your own with Fastino's Inference and Training APIs.
+- [Quickstart](https://docs.fastino.ai/quickstart.md): Run your first GLiDE inference call and create a decoder training job on Fastino.
+- [Fastino GLiDE Agent Skill](https://docs.fastino.ai/concepts/glide-agent-skill.md): Install Fastino's hosted GLiDE skill for Cursor, Claude Code, and Codex.
+- [Cookbooks](https://docs.fastino.ai/cookbooks/overview.md): Working GLiDE and GLiNER 2.5 Multi recipes to triage support tickets, gate agent actions, catch prompt injections, extract entities, and classify text.
+- [Example Use Cases](https://docs.fastino.ai/example-use-cases.md): Explore concrete ways to use GLiDE across AI systems, operations, safety, research, and product workflows.
+
+### Decision Models
+
+- [Decision models for classification, routing, and scoring](https://docs.fastino.ai/concepts/decision-models.md): Understand decision models for classification, routing, scoring, and confidence, and explore Fastino's decision model families.
+- [GLiDE: a decision model for typed questions](https://docs.fastino.ai/concepts/glide.md): Learn what GLiDE is, when to use it, and where to start with typed decision questions.
+- [Call GLiDE](https://docs.fastino.ai/inference/systemone.md): Authenticate, send a GLiDE decision request, and handle probabilities and confidence.
+- [Noul](https://docs.fastino.ai/concepts/glide-noul.md): Ask GLiDE a yes-or-no question and receive the calibrated probability of true.
+- [Choice](https://docs.fastino.ai/concepts/glide-choice.md): Ask GLiDE to select one caller-defined option and return the full probability distribution.
+- [Score](https://docs.fastino.ai/concepts/glide-score.md): Ask GLiDE to evaluate an ordered rubric and return discrete and continuous results.
+- [GLiDE Capabilities](https://docs.fastino.ai/concepts/glide-capabilities.md): Review GLiDE decision behavior, confidence, context limits, and unsupported request shapes.
+- [Classify Requests with GLiDE](https://docs.fastino.ai/guides/glide-classification.md): Classify requests with GLiDE using binary Noul questions or multi-category Choice questions.
+- [Route Agents, Tools, and Models with GLiDE](https://docs.fastino.ai/guides/glide-routing.md): Build a request router with GLiDE, inspect probabilities, and send uncertain decisions to a fallback.
+- [Score with Ordered Rubrics Using GLiDE](https://docs.fastino.ai/guides/glide-scoring.md): Build rubric-based scoring with GLiDE and consume both discrete and continuous results.
+- [Build Policy and Safety Gates with GLiDE](https://docs.fastino.ai/guides/glide-policy-safety.md): Evaluate proposed actions against supplied policy and route uncertain or high-risk cases to review.
+- [Rerank Retrieved Passages with GLiDE](https://docs.fastino.ai/guides/glide-reranking.md): Score query-to-passage relevance with GLiDE, filter weak matches, and rerank retrieved context.
+- [Cookbook: Triage a support ticket](https://docs.fastino.ai/cookbooks/glide-support-ticket-triage.md): Route a support ticket to a queue, rate its urgency, and decide whether a person should reply, in one GLiDE call.
+- [Cookbook: Gate an agent's next move](https://docs.fastino.ai/cookbooks/glide-gate-agent-actions.md): Check an agent's proposed action against your policy and decide whether it acts, asks the user first, or keeps looking.
+- [Cookbook: Catch a prompt injection](https://docs.fastino.ai/cookbooks/glide-prompt-injection.md): Spot hidden instructions in content your agent reads, before the agent obeys them.
+- [GLiNER 2.5 Decide for schema-defined text classification](https://docs.fastino.ai/concepts/gliner-2-5-decide.md): Learn when to use GLiNER 2.5 Decide for fast, schema-defined English text classification.
+- [Call GLiNER 2.5 Decide](https://docs.fastino.ai/concepts/gliner-2-5-decide-call.md): Authenticate and make a first schema-defined classification request with GLiNER 2.5 Decide.
+- [GLiNER 2.5 Decide Classification](https://docs.fastino.ai/concepts/gliner-2-5-decide-schema.md): Define Decide classification tasks and consume their single-label, multi-label, and multi-task results.
+- [Evaluate and Train GLiNER 2.5 Decide](https://docs.fastino.ai/concepts/gliner-2-5-decide-thresholds.md): Evaluate classification quality, select multi-label thresholds, and fine-tune GLiNER 2.5 Decide for your domain.
+- [GLiNER 2.5 Decide Capabilities](https://docs.fastino.ai/concepts/gliner-2-5-decide-capabilities.md): Review GLiNER 2.5 Decide language, classification behavior, schema limits, and unsupported patterns.
+
+### Training API
+
+- [Training API overview](https://docs.fastino.ai/training.md): Choose managed training, application-directed training, or a private autonomous training agent.
+- [Encoder Quickstart](https://docs.fastino.ai/training/encoder-quickstart.md): Start a managed training job for a GLiNER encoder, then verify its canonical job ID.
+- [Decoder Quickstart](https://docs.fastino.ai/training/decoder-quickstart.md): Train a Nemotron or Qwen decoder LLM with the native REST interactive training loop.
+- [Migrate from Tinker](https://docs.fastino.ai/training/migrate-from-tinker.md): Run your existing Tinker Python SDK workload on Fastino by changing the SDK base URL and credential, then verify the connection and review the limits.
+- [Prepare and upload training datasets](https://docs.fastino.ai/concepts/datasets.md): Format, upload, validate, and inspect NER or classification datasets before starting a Fastino GLiNER training job.
+- [Connect Azure Blob data with a coding agent](https://docs.fastino.ai/guides/azure-blob-connector.md): Ask Cursor, Claude Code, or Codex to connect an Azure Blob container to a Fastino project with read-only access.
+- [Fine-tune GLiNER](https://docs.fastino.ai/guides/fine-tune-gliner.md): Prepare a GLiNER dataset, create a managed config job, and monitor it through checkpoints and completion.
+- [Build a custom training loop](https://docs.fastino.ai/training/training-loop.md): Connect sampling, rewards, updates, and checkpoints inside one interactive Fastino job.
+- [Train with verifiable rewards](https://docs.fastino.ai/training/verifiable-rewards.md): Turn a deterministic grader into a learning signal for one interactive Fastino job.
+- [Checkpoints and recovery](https://docs.fastino.ai/training/checkpoints.md): Save interactive-job state and application progress, then recover without replaying completed work.
+- [Auto Train](https://docs.fastino.ai/training/auto.md): Delegate data preparation, training, evaluation, and model selection to Fastino's autonomous training agent.
+
+### GLiNER Models
+
+- [GLiNER2.5](https://docs.fastino.ai/concepts/gliner.md): Learn when and how to use GLiNER2.5 Multi for multilingual, schema-driven information extraction.
+- [GLiNER Agent Skill](https://docs.fastino.ai/concepts/gliner-agent-skill.md): Install Fastino's hosted GLiNER skill for Cursor, Claude Code, and Codex.
+- [GLiNER inference with /v1/chat/completions](https://docs.fastino.ai/inference/chat-completions.md): Use POST /v1/chat/completions for GLiNER extraction, classification, records, and relations-not for GLiDE decisions.
+- [Cookbook: Extract entities from multilingual text](https://docs.fastino.ai/cookbooks/gliner-entity-extraction.md): Pull people, organizations, places, and dates out of text in any supported language with GLiNER 2.5 Multi.
+- [Cookbook: Classify text into your own labels](https://docs.fastino.ai/cookbooks/gliner-text-classification.md): Label text with several independent classification tasks in one GLiNER 2.5 Multi call.
+- [Cookbook: Extract relations between entities](https://docs.fastino.ai/cookbooks/gliner-relation-extraction.md): Find who works where, what is located where, and who acquired whom, as head and tail pairs, with GLiNER 2.5 Multi.
+
+### Inference API
+
+- [Inference API: run Fastino models](https://docs.fastino.ai/inference.md): Learn how to run inference with Fastino models through the GLiDE and OpenAI-compatible APIs.
+- [Fastino API authentication: generate and use API keys](https://docs.fastino.ai/authentication.md): Authenticate Fastino API requests with the X-API-Key header or a Bearer token, then create, rotate, and revoke API keys in the Fastino dashboard settings.
+
+### Troubleshooting
+
+- [Fastino API error codes and response body shapes](https://docs.fastino.ai/troubleshooting/errors.md): Every 4xx and 5xx status code the Fastino API returns, the JSON body shape for each family, and steps to resolve billing, rate-limit, and validation errors.
+- [Retries and model warm-up](https://docs.fastino.ai/troubleshooting/retries.md): Handle transient 425, 429, 503, and Anthropic-compatible 529 responses without retrying permanent request failures.
+
+### Models
+
+- [Model catalog](https://docs.fastino.ai/concepts/models.md): Compare models available for inference and training, including model IDs, specifications, pricing, and training workflows.
+
+### Account
+
+- [Pricing](https://docs.fastino.ai/pricing.md): Pricing for Fastino inference, config-job training, and model-specific interactive Training API usage.
+- [Trust & Safety](https://docs.fastino.ai/trust-safety.md): How Fastino protects your data, secures its infrastructure, and builds AI you can deploy responsibly.
+
+## API Reference
+
+### Inference
+
+- [API Reference](https://docs.fastino.ai/api-reference/overview.md): Set up your account and get started with Fastino in minutes. Generate an API key, browse available models, and run your first inference or training job.
+- [Inference API reference](https://docs.fastino.ai/api-reference/inference/overview.md): Exact request and response contracts for GLiDE, GLiNER, compatibility, history, and feedback inference endpoints.
+- [List compatibility models](https://docs.fastino.ai/api-reference/inference/models.md): List model IDs exposed through the OpenAI- and Anthropic-compatible SDK surfaces.
+- [GLiDE decision inference](https://docs.fastino.ai/api-reference/inference/systemone.md): Call GLiDE with state and typed questions and receive calibrated decision answers.
+- [Chat Completions](https://docs.fastino.ai/api-reference/inference/chat-completions.md): Run GLiNER extraction, classification, structured tasks, and supported decoder inference.
+- [OpenAI-compatible Responses](https://docs.fastino.ai/api-reference/inference/responses.md): Run supported Fastino models through the OpenAI Responses wire contract.
+- [Anthropic-compatible Messages](https://docs.fastino.ai/api-reference/inference/messages.md): Run supported Fastino models through the Anthropic Messages wire contract.
+- [Native GLiNER-2 inference](https://docs.fastino.ai/api-reference/inference/gliner-2.md): Run synchronous native GLiNER-2 extraction and classification with the unified GLiNER schema, with entity extraction and classification examples.
+- [Submit an asynchronous GLiNER-2 job](https://docs.fastino.ai/api-reference/inference/gliner-2-async.md): Submit very large GLiNER-2 inputs for asynchronous processing when the input exceeds one million tokens or may outlast the synchronous request timeout.
+- [Get an asynchronous GLiNER-2 job](https://docs.fastino.ai/api-reference/inference/gliner-2-job-status.md): Poll a GLiNER-2 asynchronous job by its job_id until it completes or fails, with example processing, complete, and error responses.
+- [List inference history](https://docs.fastino.ai/api-reference/inference/history/list.md): Call GET /v1/inferences to list stored inference records with supported filters and pagination.
+- [Get an inference record](https://docs.fastino.ai/api-reference/inference/history/get.md): Call GET /v1/inferences/{inference_id} to retrieve one stored inference record by its identifier.
+- [Get inference feedback](https://docs.fastino.ai/api-reference/inference/history/get-feedback.md): Call GET /v1/inferences/{inference_id}/feedback to retrieve the feedback stored for one inference, identified by its inference_id.
+- [Submit inference feedback](https://docs.fastino.ai/api-reference/inference/history/submit-feedback.md): Submit a verdict and optional corrected output for one stored inference.
+
+### Training
+
+- [Training API reference](https://docs.fastino.ai/api-reference/training/overview.md): Reference for the public Training REST surface: base-model discovery, datasets, managed config jobs, lifecycle operations, and native interactive operations.
+- [List available and trainable models](https://docs.fastino.ai/api-reference/training/base-models.md): Query the live Fastino model catalog and filter it by inference, training, or architecture capability.
+- [List datasets](https://docs.fastino.ai/api-reference/datasets/list.md): List datasets available to the authenticated Fastino account with GET /v1/datasets, and paginate results with the limit and offset query parameters.
+- [Create a dataset upload URL](https://docs.fastino.ai/api-reference/datasets/upload-url.md): Create a presigned upload URL with POST /v1/datasets/upload/url, upload the file as application/octet-stream, then process it with the returned dataset_id.
+- [Process an uploaded dataset](https://docs.fastino.ai/api-reference/datasets/process-upload.md): Queue asynchronous processing after a dataset file upload completes by calling POST /v1/datasets/upload/process with its dataset_id.
+- [List dataset versions](https://docs.fastino.ai/api-reference/datasets/versions.md): List all visible versions, processing states, and metadata for one dataset with GET /v1/datasets/{name}.
+- [Delete a dataset](https://docs.fastino.ai/api-reference/datasets/delete.md): Soft-delete a dataset and all of its stored versions by name with DELETE /v1/datasets/{name}.
+- [Create a config training job](https://docs.fastino.ai/api-reference/training-jobs/create.md): Call POST /v1/training/jobs to start an asynchronous Fastino-managed training job from a base model and datasets.
+- [List training jobs](https://docs.fastino.ai/api-reference/training-jobs/list.md): Call GET /v1/training/jobs to list config and interactive jobs visible to your account.
+- [Get a training job](https://docs.fastino.ai/api-reference/training-jobs/get.md): Get a config or interactive training job by its canonical Fastino job ID.
+- [Update a training job's project](https://docs.fastino.ai/api-reference/training-jobs/update-project.md): Call PATCH /v1/training/jobs/{job_id} to assign a training job to a project, or send null to unassign it. Related deployments and inferences stay put.
+- [Delete a training job](https://docs.fastino.ai/api-reference/training-jobs/delete.md): Call DELETE /v1/training/jobs/{job_id} to permanently delete a training job with its checkpoints and stored artifacts, stopping the job first if active.
+- [Stop a training job](https://docs.fastino.ai/api-reference/training-jobs/stop.md): Stop a running Fastino training job while preserving existing checkpoints.
+- [Terminate a training job](https://docs.fastino.ai/api-reference/training-jobs/terminate.md): Terminate a config training job, preserving checkpoints unless deletion is explicitly requested.
+- [Synchronize a training job](https://docs.fastino.ai/api-reference/training-jobs/sync.md): Refresh the training-job status from its training provider by calling POST /v1/training/jobs/{job_id}/sync with the ID of the training job.
+- [Get training logs](https://docs.fastino.ai/api-reference/training-jobs/logs.md): Retrieve a point-in-time snapshot of a Fastino training job's output logs.
+- [Get training-job billing](https://docs.fastino.ai/api-reference/training-jobs/billing.md): Call GET /v1/training/jobs/{job_id}/billing to check whether a Fastino training job was billed, plus its charge in USD, GPU minutes, and timestamps.
+- [List training checkpoints](https://docs.fastino.ai/api-reference/training-jobs/checkpoints.md): List config or interactive training-job checkpoints and use the correct identifier for each job type.
+- [Download an interactive checkpoint](https://docs.fastino.ai/api-reference/training-jobs/download-checkpoint.md): Get a short-lived download URL for an interactive training-job checkpoint.
+- [Deploy a training checkpoint](https://docs.fastino.ai/api-reference/training-jobs/deploy-checkpoint.md): Deploy one deployable checkpoint from a Fastino training job to the hosted multi-model inference endpoint, using the checkpoint ID from the list endpoint.
+- [List training-job deployments](https://docs.fastino.ai/api-reference/training-jobs/deployments.md): List deployments created from or associated with a training job by calling GET /v1/training/jobs/{job_id}/deployments with the job ID.
+- [Rename a trained model](https://docs.fastino.ai/api-reference/training-jobs/update-model-name.md): Call PATCH /v1/training/jobs/{job_id}/model-name to rename a trained model. New names use 1-64 letters, numbers, hyphens, or underscores.
+- [Download trained weights](https://docs.fastino.ai/api-reference/training-jobs/download.md): Call GET /v1/training/jobs/{job_id}/download to get a temporary presigned URL for a trained artifact, with its expiry time and a suggested file name.
+- [Push a trained model to Hugging Face Hub](https://docs.fastino.ai/api-reference/training-jobs/push-to-hub.md): Publish a completed training artifact to Hugging Face Hub with POST /v1/training/jobs/{job_id}/push-to-hub, giving the target repo_id and hf_token.
+- [Create an interactive model](https://docs.fastino.ai/api-reference/training-jobs/interactive/create-model.md): Create an interactive LoRA job from a base_model, or restore one from_checkpoint with optional load_optimizer. The response returns the job_id and future_id.
+- [Queue a forward operation](https://docs.fastino.ai/api-reference/training-jobs/interactive/forward.md): Queue a forward pass without gradients on an interactive training job, then poll the returned future_id until the status is completed, failed, or cancelled.
+- [Queue a forward-backward operation](https://docs.fastino.ai/api-reference/training-jobs/interactive/forward-backward.md): Queue a forward-backward pass that accumulates gradients on an interactive training job, then poll the returned future_id until it reaches a terminal status.
+- [Queue an optimizer step](https://docs.fastino.ai/api-reference/training-jobs/interactive/optim-step.md): Queue an optimizer step over accumulated gradients on an interactive training job. The request body is optional, and the response returns a future_id to poll.
+- [Get an interactive future](https://docs.fastino.ai/api-reference/training-jobs/interactive/get-future.md): Poll an interactive future for its status and result. With wait=true, the request waits up to 25 seconds, and the service retains results for one hour.
+- [Look up a training operation](https://docs.fastino.ai/api-reference/training-jobs/interactive/get-operation.md): Recover the job and future belonging to an Idempotency-Key without submitting work again.
+- [Cancel an interactive future](https://docs.fastino.ai/api-reference/training-jobs/interactive/cancel-future.md): Request best-effort cancellation of a queued or running sample future. Terminal futures and training futures return 204 as successful no-ops.
+- [Save training weights](https://docs.fastino.ai/api-reference/training-jobs/interactive/save-weights.md): Save an interactive job's LoRA weights and optimizer state under a name. The response includes a future_id, a weights checkpoint ID, and its tinker:// path.
+- [Save sampler weights](https://docs.fastino.ai/api-reference/training-jobs/interactive/save-weights-for-sampler.md): Save an interactive job's LoRA weights under a name for sampling and adapter download. The response includes a future_id, checkpoint ID, and tinker:// path.
+- [Load training weights](https://docs.fastino.ai/api-reference/training-jobs/interactive/load-weights.md): Queue a load into an interactive job from a state name or this job's tinker:// path. Set optimizer to restore optimizer state, then poll the future_id.
+- [Sample from an interactive job](https://docs.fastino.ai/api-reference/training-jobs/interactive/sample.md): Generate continuations of a tokenized prompt from a sampler checkpoint and read tokens from the completed future's result.sequences, even after the job stops.
+- [Deploy an interactive-job checkpoint](https://docs.fastino.ai/api-reference/training-jobs/interactive/deploy-checkpoint.md): Call POST /v1/training/jobs/{job_id}/checkpoints/sampler_weights/{name}/deploy to serve a sampler checkpoint as a trained model.
+- [Get an interactive checkpoint](https://docs.fastino.ai/api-reference/training-jobs/interactive/get-checkpoint.md): Return one checkpoint from an interactive training job by kind and name, where kind is either weights or sampler_weights.
+- [Delete an interactive checkpoint](https://docs.fastino.ai/api-reference/training-jobs/interactive/delete-checkpoint.md): Delete a weights or sampler_weights checkpoint from an interactive training job. The operation completes synchronously with no response body.
+- [Publish an interactive checkpoint](https://docs.fastino.ai/api-reference/training-jobs/interactive/publish-checkpoint.md): Publish a weights or sampler_weights checkpoint from an interactive training job. Publication does not grant another team permission to load it.
+- [Unpublish an interactive checkpoint](https://docs.fastino.ai/api-reference/training-jobs/interactive/unpublish-checkpoint.md): Remove publication from an interactive training-job checkpoint by sending DELETE to its publish path. The request completes synchronously with no response body.
+- [Set checkpoint retention](https://docs.fastino.ai/api-reference/training-jobs/interactive/set-checkpoint-ttl.md): Set the retention period for a weights or sampler_weights checkpoint on an interactive training job. A null TTL keeps the checkpoint until deletion.
+- [Get interactive checkpoint storage usage](https://docs.fastino.ai/api-reference/training-jobs/interactive/storage-usage.md): Return team-scoped interactive checkpoint storage and its monthly price with GET /v1/training/usage. It does not report compute usage or total billing.
