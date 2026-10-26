@@ -1,0 +1,30 @@
+{
+  "FINAL-VERIFICATION.md": {
+    "bytes": 5681,
+    "sha256": "6587e82161f8a11a6d95e93e48c9e128401be86146b5a9481a18f69819c5872b"
+  },
+  "allowed-metadata.diff": {
+    "bytes": 15616,
+    "sha256": "b93823461a211c4f0854c5725030d32cfb7dfef913bfc6e1e9353212cbc96126"
+  },
+  "decision.json": {
+    "bytes": 5161,
+    "sha256": "099d3fa97f47c2e04f8a63ddbbd1acbfdc25e70b98cd8da3ce9dbb12a91eba66"
+  },
+  "final-identity.json": {
+    "bytes": 72,
+    "sha256": "e142eeaabd531625ac76ba9a7bccc57c2ebf77327a1b97d9146058ff3147df4a"
+  },
+  "initial-identity.json": {
+    "bytes": 72,
+    "sha256": "e142eeaabd531625ac76ba9a7bccc57c2ebf77327a1b97d9146058ff3147df4a"
+  },
+  "verification.log": {
+    "bytes": 5162,
+    "sha256": "21961a9f06ca51a10b747432c84c1fc687adf261195b1080e5f5d80c48472193"
+  },
+  "verify-final.py": {
+    "bytes": 6656,
+    "sha256": "5321ccd0c8336263205ef178cbcc9a0c2f6c456fea97698253b48ae3f53568ee"
+  }
+}
