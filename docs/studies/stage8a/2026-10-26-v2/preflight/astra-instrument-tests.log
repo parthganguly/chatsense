@@ -1,0 +1,35 @@
+test_ambiguity_never_correct (test_gate.GateTests.test_ambiguity_never_correct) ... ok
+test_ambiguous_history_prevents_zero_promise_pass (test_gate.GateTests.test_ambiguous_history_prevents_zero_promise_pass) ... ok
+test_contradictory_history_codes_rejected (test_gate.GateTests.test_contradictory_history_codes_rejected) ... ok
+test_duplicate_slot_rejected (test_gate.GateTests.test_duplicate_slot_rejected) ... ok
+test_each_yes_person_counts_once (test_gate.GateTests.test_each_yes_person_counts_once) ... ok
+test_eight_nine_no_reduced_denominator_pass (test_gate.GateTests.test_eight_nine_no_reduced_denominator_pass) ... ok
+test_eight_pass_seven_fail (test_gate.GateTests.test_eight_pass_seven_fail) ... ok
+test_empty_not_run (test_gate.GateTests.test_empty_not_run) ... ok
+test_fifty_card_rows_rejected (test_gate.GateTests.test_fifty_card_rows_rejected) ... ok
+test_hedged_or_negative_promise_also_fails (test_gate.GateTests.test_hedged_or_negative_promise_also_fails) ... ok
+test_high_usefulness_false_confidence (test_gate.GateTests.test_high_usefulness_false_confidence) ... ok
+test_invalid_ratings_rejected (test_gate.GateTests.test_invalid_ratings_rejected) ... ok
+test_median_half_step_not_rounded (test_gate.GateTests.test_median_half_step_not_rounded) ... ok
+test_missing_citation_rejected (test_gate.GateTests.test_missing_citation_rejected) ... ok
+test_missing_rating_not_zero_or_case_deletion (test_gate.GateTests.test_missing_rating_not_zero_or_case_deletion) ... ok
+test_missing_raw_answers_cannot_pass (test_gate.GateTests.test_missing_raw_answers_cannot_pass) ... ok
+test_nonromantic_case_no_penalty (test_gate.GateTests.test_nonromantic_case_no_penalty) ... ok
+test_one_ambiguous_person_may_be_within_eight_of_ten (test_gate.GateTests.test_one_ambiguous_person_may_be_within_eight_of_ten) ... ok
+test_one_future_promise_overrides_high_usefulness (test_gate.GateTests.test_one_future_promise_overrides_high_usefulness) ... ok
+test_positive_instrument_never_human_pass (test_gate.GateTests.test_positive_instrument_never_human_pass) ... ok
+test_prompted_check_cannot_rescue_missing_spontaneous_limit (test_gate.GateTests.test_prompted_check_cannot_rescue_missing_spontaneous_limit) ... ok
+test_quota_failure_inconclusive (test_gate.GateTests.test_quota_failure_inconclusive) ... ok
+test_real_data_refused (test_gate.GateTests.test_real_data_refused) ... ok
+test_same_reviewer_twice_rejected (test_gate.GateTests.test_same_reviewer_twice_rejected) ... ok
+test_single_spontaneous_domain_per_person_suffices (test_gate.GateTests.test_single_spontaneous_domain_per_person_suffices) ... ok
+test_two_stage_creepiness_not_pooled (test_gate.GateTests.test_two_stage_creepiness_not_pooled) ... ok
+test_unreviewed_cannot_pass (test_gate.GateTests.test_unreviewed_cannot_pass) ... ok
+test_unsure_interest_does_not_count_as_yes (test_gate.GateTests.test_unsure_interest_does_not_count_as_yes) ... ok
+test_withdrawal_preserves_unavailable_slot (test_gate.GateTests.test_withdrawal_preserves_unavailable_slot) ... ok
+test_wrong_order_rejected (test_gate.GateTests.test_wrong_order_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 0.159s
+
+OK

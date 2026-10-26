@@ -1,0 +1,5 @@
+PASS s8a-v1-c1-pattern-change
+PASS s8a-v1-c2-carried-balanced
+PASS s8a-v1-c3-carried-mixed
+PASS s8a-v1-c4-unusual-silence
+PASS s8a-v1-c5-insufficient

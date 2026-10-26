@@ -1,0 +1,7 @@
+# Preserve authority snapshots and terminal receipts byte-for-byte.
+authority/*.md whitespace=-blank-at-eof
+preflight/*.log -whitespace
+stimuli/verification/*.log -whitespace
+consultations/**/logs/* -whitespace
+# Retain the exact failed-run script as forensic evidence.
+stimuli/verification/failed-capture-attempt-1/capture-script.mjs.txt whitespace=-blank-at-eof

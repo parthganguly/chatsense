@@ -1,0 +1,43 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto');
+const {chromium}=require('@playwright/test');
+const DIR='tests/viewport/fixtures/stage8a-v1',OUT='artifacts/stage8a-sol-repair-audit';
+const cards=JSON.parse(fs.readFileSync(DIR+'/cards.json')); const results=[];
+const modes=[['desktop',1280,1000,100,'light'],['phone',390,844,100,'light'],['narrow',320,844,100,'light'],['text200',1280,1000,200,'light'],['390-text200',390,844,200,'light'],['320-text200',320,844,200,'light'],['dark',390,844,100,'dark'],['native344',384,1800,100,'light']];
+function inspect(root){
+ const rect=r=>({left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width,height:r.height});
+ const parse=s=>(s.match(/[\d.]+/g)||[]).map(Number); const blend=(a,b)=>[0,1,2].map(i=>a[i]*(a[3]??1)+b[i]*(1-(a[3]??1)));
+ const lum=c=>c.map(x=>x/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4).reduce((s,x,i)=>s+x*[.2126,.7152,.0722][i],0);
+ const bg=e=>{let layers=[];for(let n=e;n;n=n.parentElement)layers.unshift(parse(getComputedStyle(n).backgroundColor));return layers.reduce((b,a)=>blend(a,b),[255,255,255]);};
+ const main=root.closest('main'),box=root.getBoundingClientRect(),cs=getComputedStyle(root),content={left:box.left+parseFloat(cs.borderLeftWidth)+parseFloat(cs.paddingLeft),right:box.right-parseFloat(cs.borderRightWidth)-parseFloat(cs.paddingRight)};
+ const rows=[],escapes=[],clipped=[];for(const e of root.querySelectorAll('*')){
+  const s=getComputedStyle(e),r=e.getBoundingClientRect(); if(r.width&& (r.left<content.left-.5||r.right>content.right+.5))escapes.push({type:'element',tag:e.tagName,text:e.textContent,rect:rect(r)});
+  const nodes=[...e.childNodes].filter(n=>n.nodeType===3&&n.textContent.trim());if(!nodes.length)continue;
+  const lines=nodes.flatMap(n=>{let q=document.createRange();q.selectNodeContents(n);return [...q.getClientRects()].map(rect)});
+  for(const l of lines)if(l.left<content.left-.5||l.right>content.right+.5)escapes.push({type:'text',text:e.textContent,rect:l});
+  if(e.scrollHeight>e.clientHeight+1||e.scrollWidth>e.clientWidth+1)clipped.push({text:e.textContent,scrollHeight:e.scrollHeight,clientHeight:e.clientHeight,scrollWidth:e.scrollWidth,clientWidth:e.clientWidth});
+  const opacity=[];for(let n=e;n;n=n.parentElement)opacity.push({tag:n.tagName,opacity:getComputedStyle(n).opacity,overflowX:getComputedStyle(n).overflowX,overflowY:getComputedStyle(n).overflowY});
+  const background=bg(e),foreground=blend(parse(s.color),background),l=[lum(background),lum(foreground)].sort((a,b)=>b-a);
+  rows.push({text:nodes.map(n=>n.textContent).join('').trim(),tag:e.tagName,font:s.fontFamily,size:parseFloat(s.fontSize),leading:parseFloat(s.lineHeight),foreground,background,contrast:(l[0]+.05)/(l[1]+.05),opacity,rect:rect(r),lines});
+ }
+ const head=[...root.firstElementChild.children].map(e=>rect(e.getBoundingClientRect()));const overlaps=head[0].left<head[1].right&&head[1].left<head[0].right&&head[0].top<head[1].bottom&&head[1].top<head[0].bottom;
+ const p=root.querySelector('a').previousElementSibling;let rr=document.createRange();rr.selectNodeContents(p);const limitationLines=[...rr.getClientRects()].map(rect); const last=limitationLines.at(-1);const hit=document.elementFromPoint((last.left+last.right)/2,(last.top+last.bottom)/2);
+ return {card:rect(box),main:rect(main.getBoundingClientRect()),content,head,overlaps,rows,escapes,clipped,limitationLines,limitationLastHit:hit===p||p.contains(hit),clearance:main.getBoundingClientRect().bottom-last.bottom,link:rect(root.querySelector('a').getBoundingClientRect()),scrollTop:main.scrollTop};
+}
+async function reachable(section){return section.evaluate(root=>{
+ const out=[],main=root.closest('main');for(const e of root.querySelectorAll('*'))for(const n of e.childNodes){if(n.nodeType!==3||!n.textContent.trim())continue;let range=document.createRange();range.selectNodeContents(n);const len=range.getClientRects().length;for(let i=0;i<len;i++){let r=range.getClientRects()[i],m=main.getBoundingClientRect();main.scrollTop+=(r.top+r.bottom)/2-(m.top+m.bottom)/2;r=range.getClientRects()[i];m=main.getBoundingClientRect();let x=(r.left+r.right)/2,y=(r.top+r.bottom)/2,h=document.elementFromPoint(x,y);let clips=[];for(let a=e.parentElement;a;a=a.parentElement){let s=getComputedStyle(a),b=a.getBoundingClientRect();if(['hidden','clip','auto','scroll'].includes(s.overflowY)&&(r.top<b.top-.5||r.bottom>b.bottom+.5))clips.push(a.tagName)}out.push({text:n.textContent,line:i,top:r.top,bottom:r.bottom,reachable:r.top>=m.top-.5&&r.bottom<=m.bottom+.5&&!!h&&(h===e||e.contains(h)),clips});}}
+ return out;
+});}
+(async()=>{const browser=await chromium.launch();console.log('Chromium',browser.version());for(const card of cards){for(const [mode,width,height,size,colorScheme]of modes){
+ const context=await browser.newContext({viewport:{width,height},deviceScaleFactor:1,locale:'en-US',timezoneId:'UTC',colorScheme});const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(String(e)));await page.clock.setFixedTime(card.frozenNowMs);await page.goto('http://127.0.0.1:4332');await page.getByText('Choose WhatsApp export').waitFor();await page.locator('input[type=file]').setInputFiles({name:'WhatsApp Chat with Synthetic Example.txt',mimeType:'text/plain',buffer:fs.readFileSync(DIR+'/'+card.id+'.txt')});const section=page.locator('section[aria-label="Relationship read"]');await section.waitFor();await page.evaluate(()=>document.fonts.ready);await page.waitForFunction(()=>{let e=document.querySelector('section[aria-label="Relationship read"]');for(;e;e=e.parentElement)if(getComputedStyle(e).opacity!=='1')return false;return true;});if(size===200)await page.evaluate(()=>document.documentElement.style.fontSize='200%');await page.evaluate(()=>document.fonts.ready);await page.locator('main').evaluate(e=>e.scrollTop=0);
+ const actual=await section.innerText(),expected=fs.readFileSync(DIR+'/'+card.id+'.card.innerText.txt','utf8').trimEnd();const data=await section.evaluate(inspect);const row={id:card.id,mode,width,height,rootPercent:size,scheme:colorScheme,dpr:await page.evaluate(()=>devicePixelRatio),now:await page.evaluate(()=>Date.now()),exactText:actual===expected,actual,href:await section.locator('a').getAttribute('href'),errors,...data};
+ await page.screenshot({path:OUT+'/screenshots/'+card.id+'.'+mode+'.first-screen.png'});
+ row.reachability=await reachable(section);await page.locator('main').evaluate(e=>e.scrollTop=0);
+ if(mode==='native344'){const b=await section.boundingBox();if(b.y<data.main.top||b.y+b.height>data.main.bottom)throw Error('native card not wholly inside main');await section.screenshot({path:OUT+'/screenshots/'+card.id+'.whole-native344.png'});}
+ if(mode==='320-text200'||mode==='390-text200'){await page.setViewportSize({width,height:6000});await page.locator('main').evaluate(e=>e.scrollTop=0);await section.screenshot({path:OUT+'/screenshots/'+card.id+'.'+mode+'.whole.png'});}
+ if(mode==='phone'){
+  const link=section.locator('a');await link.focus();await page.keyboard.press('Shift+Tab');const left=await link.evaluate(e=>document.activeElement!==e);await page.keyboard.press('Tab');row.keyboard=await link.evaluate(e=>({focused:document.activeElement===e,focusVisible:e.matches(':focus-visible'),outline:getComputedStyle(e).outline,rect:e.getBoundingClientRect().toJSON()}));row.keyboard.shiftTabLeft=left;await page.screenshot({path:OUT+'/screenshots/'+card.id+'.keyboard-focus.png'});await page.keyboard.press('Enter');row.keyboard.hash=await page.evaluate(()=>location.hash);row.keyboard.destination=await page.locator('#narrative-heading').innerText();
+ }
+ results.push(row);fs.writeFileSync(OUT+'/measurements.json',JSON.stringify(results,null,2));console.log(card.id,mode,'exact',row.exactText,'escape',row.escapes.length,'clip',row.clipped.length,'unreachable',row.reachability.filter(x=>!x.reachable).length,'clearance',row.clearance);await context.close();
+ }
+}
+await browser.close();})().catch(e=>{console.error(e);process.exit(1)});

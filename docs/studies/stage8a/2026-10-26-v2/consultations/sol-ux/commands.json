@@ -1,0 +1,49 @@
+[
+  {
+    "command": "npm ci",
+    "exit_code": 0,
+    "log": "logs/npm-ci.log"
+  },
+  {
+    "command": "PATH=/tmp/s8a-venv/bin:$PATH npm run check",
+    "exit_code": 0,
+    "log": "logs/check.log",
+    "includes_fresh_production_build": true
+  },
+  {
+    "command": "npm run test:viewport",
+    "exit_code": 0,
+    "passed": 40,
+    "skipped": 8,
+    "skip_reason": "Four single-viewport tests run only at390px; duplicate360/412px cases skipped.",
+    "log": "logs/viewport.log"
+  },
+  {
+    "command": "npx tsx -e 'import fs from \"node:fs\"; import { assertRelationshipReadLanguageSafe } from \"./tests/helpers/narrative-safety\"; const d=\"tests/viewport/fixtures/stage8a-v1\"; for (const c of JSON.parse(fs.readFileSync(d+\"/cards.json\",\"utf8\"))) {assertRelationshipReadLanguageSafe(JSON.parse(fs.readFileSync(d+\"/\"+c.id+\".relationship-read.json\",\"utf8\")),c.id); console.log(\"PASS\",c.id)}'",
+    "exit_code": 0,
+    "passed": 5,
+    "log": "logs/safety.log"
+  },
+  {
+    "command": "node < artifacts/stage8a-sol-repair-audit/probe.cjs.txt",
+    "exit_code": 0,
+    "imports": 40,
+    "log": "logs/probe.log"
+  },
+  {
+    "command": "node < artifacts/stage8a-sol-repair-audit/counterexample.cjs.txt",
+    "exit_code": 0,
+    "imports": 5,
+    "log": "logs/counterexample.log"
+  },
+  {
+    "command": "python3 artifacts/stage8a-sol-repair-audit/summarize.py",
+    "exit_code": 0,
+    "log": "logs/summary.log"
+  },
+  {
+    "command": "./node_modules/.bin/http-server out -p4332 -c-1 --silent",
+    "status": "task-owned server stopped by SIGTERM after probes",
+    "log": "logs/server.log"
+  }
+]

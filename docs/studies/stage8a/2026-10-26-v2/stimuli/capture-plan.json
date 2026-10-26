@@ -1,0 +1,17 @@
+{
+  "uxDecision": "PASS",
+  "humanStudyDecision": "NOT_RUN",
+  "acceptedCodeCommit": "72eeb00d436d3a85a117fb8fced3cf7597b12d31",
+  "acceptedAtUtc": "2026-10-26T10:06:09.685907+00:00",
+  "acceptanceOwner": "Astra",
+  "uxReview": "../consultations/sol-ux/UX-REVIEW.md",
+  "uxReviewSha256": "31d7bc5fa6794e070d34785abec30da53beca9ecee6853630782ff72b60cb4c2",
+  "uxDecisionSha256": "e18b644d496d5fce930f5f3fdc2c1b3e4f179c2b412542f26d066738d1f7022e",
+  "uxEvidenceInventorySha256": "7195b32dd22e5ef64fccca204bb1bd0c7e3c6d172621ed347e29999a2ec6db7a",
+  "componentSha256": "033be9330b718288147dba63bebab8a7bd9b2944d0c7f2481c770711442b10b5",
+  "lockfileSha256": "ed0e2d88c8ebefb4fdee380497374f9646aa44fbd9a95d454c27f9f7e35c463e",
+  "scope": "five frozen Relationship Read cards; no global WCAG or human-comprehension claim",
+  "humanObservations": 0,
+  "recruitmentAuthorized": false,
+  "stage8bAuthorized": false
+}

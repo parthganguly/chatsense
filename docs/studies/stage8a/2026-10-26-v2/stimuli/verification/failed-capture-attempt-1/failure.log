@@ -1,0 +1,19 @@
+s8a-v2-c1-pattern-change: exact v1 text; complete selected 344x546; contrast/legibility PASS
+s8a-v2-c2-carried-balanced: exact v1 text; complete selected 344x500; contrast/legibility PASS
+s8a-v2-c3-carried-mixed: exact v1 text; complete selected 344x520; contrast/legibility PASS
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('section[aria-label="Relationship read"]') to be visible[22m
+
+    at /Users/parth/.codex/worktrees/stage8a-prereg-v2/whatsapp-analytics-ui/docs/studies/stage8a/2026-10-26-v2/stimuli/scripts/capture.mjs:74:21 {
+  log: [
+    `  - waiting for locator('section[aria-label="Relationship read"]') to be visible`
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.14.0

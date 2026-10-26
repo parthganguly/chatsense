@@ -1,0 +1,26 @@
+[
+  {
+    "path": "/Users/parth/.codex/plugins/cache/openai-curated-remote/vercel/0.54.1/skills/react-best-practices/SKILL.md",
+    "exists": true,
+    "sha256": "5c1b1512e76413a9706309569c4c88827ed86b00dff9338849bf64caae7d3921",
+    "applied": true
+  },
+  {
+    "path": "/Users/parth/.codex/plugins/cache/openai-curated-remote/vercel/0.54.1/skills/verification/SKILL.md",
+    "exists": true,
+    "sha256": "1dd50aa65a4f8a287f8d8e2fbbaf4e52a3998451a9011659ab0ab38d19539932",
+    "applied": true
+  },
+  {
+    "path": "/Users/parth/.codex/plugins/cache/ponytail/ponytail/5.3.2/skills/ponytail-review/SKILL.md",
+    "exists": true,
+    "sha256": "33fe4ebe22a460924e5d4a261e223df22e409cc94ab76182bee9fb91a3ef022e",
+    "applied": true
+  },
+  {
+    "path": "/Users/parth/.claude/skills/break-ui/SKILL.md",
+    "exists": true,
+    "sha256": "e7eec1d70ac56a04255e9c0dbe98084ea3d544cc04aaad34f32c95d6fa9dff5e",
+    "applied": false
+  }
+]

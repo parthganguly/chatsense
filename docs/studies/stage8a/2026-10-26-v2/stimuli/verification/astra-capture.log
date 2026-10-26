@@ -1,0 +1,20 @@
+Starting s8a-v2-c1-pattern-change selected
+Starting s8a-v2-c1-pattern-change desktopAudit
+Starting s8a-v2-c1-pattern-change mobileAudit
+s8a-v2-c1-pattern-change: exact v1 text; complete selected 344x546; contrast/legibility PASS
+Starting s8a-v2-c2-carried-balanced selected
+Starting s8a-v2-c2-carried-balanced desktopAudit
+Starting s8a-v2-c2-carried-balanced mobileAudit
+s8a-v2-c2-carried-balanced: exact v1 text; complete selected 344x500; contrast/legibility PASS
+Starting s8a-v2-c3-carried-mixed selected
+Starting s8a-v2-c3-carried-mixed desktopAudit
+Starting s8a-v2-c3-carried-mixed mobileAudit
+s8a-v2-c3-carried-mixed: exact v1 text; complete selected 344x520; contrast/legibility PASS
+Starting s8a-v2-c4-unusual-silence selected
+Starting s8a-v2-c4-unusual-silence desktopAudit
+Starting s8a-v2-c4-unusual-silence mobileAudit
+s8a-v2-c4-unusual-silence: exact v1 text; complete selected 344x656; contrast/legibility PASS
+Starting s8a-v2-c5-insufficient selected
+Starting s8a-v2-c5-insufficient desktopAudit
+Starting s8a-v2-c5-insufficient mobileAudit
+s8a-v2-c5-insufficient: exact v1 text; complete selected 344x508; contrast/legibility PASS
