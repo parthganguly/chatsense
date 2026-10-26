@@ -1,0 +1,161 @@
+{
+  "candidate": "7b6cb033100126e1b9a0874b22e1f683a315211b",
+  "asserted_checks": [
+    {
+      "name": "F1 secondary-only q01 modality shift",
+      "result": "PASS"
+    },
+    {
+      "name": "F1 secondary-only q01 wording shift",
+      "result": "PASS"
+    },
+    {
+      "name": "F1 secondary-only q08 modality shift",
+      "result": "PASS"
+    },
+    {
+      "name": "F1 secondary-only q08 wording shift",
+      "result": "PASS"
+    },
+    {
+      "name": "missing inner decision",
+      "result": "PASS"
+    },
+    {
+      "name": "missing secondary T decision",
+      "result": "PASS"
+    },
+    {
+      "name": "unvalidated probabilities sum 1.3",
+      "result": "PASS"
+    },
+    {
+      "name": "unvalidated boolean probabilities",
+      "result": "PASS"
+    },
+    {
+      "name": "unvalidated negative canonical probabilities",
+      "result": "PASS"
+    },
+    {
+      "name": "canonical NaN plus otherwise valid signal",
+      "result": "PASS"
+    },
+    {
+      "name": "canonical missing option plus signal",
+      "result": "PASS"
+    },
+    {
+      "name": "canonical extra item plus signal",
+      "result": "PASS"
+    },
+    {
+      "name": "support threshold 0.249999",
+      "result": "PASS"
+    },
+    {
+      "name": "support threshold 0.25",
+      "result": "PASS"
+    },
+    {
+      "name": "support threshold 0.250001",
+      "result": "PASS"
+    },
+    {
+      "name": "TV modality threshold 0.199999",
+      "result": "PASS"
+    },
+    {
+      "name": "TV modality threshold 0.2",
+      "result": "PASS"
+    },
+    {
+      "name": "TV modality threshold 0.200001",
+      "result": "PASS"
+    },
+    {
+      "name": "repeat threshold 0.099999",
+      "result": "PASS"
+    },
+    {
+      "name": "repeat threshold 0.1",
+      "result": "PASS"
+    },
+    {
+      "name": "repeat threshold 0.100001",
+      "result": "PASS"
+    },
+    {
+      "name": "control threshold 0.799999",
+      "result": "PASS"
+    },
+    {
+      "name": "control threshold 0.8",
+      "result": "PASS"
+    },
+    {
+      "name": "control threshold 0.800001",
+      "result": "PASS"
+    },
+    {
+      "name": "latest delta exactly two offline controls",
+      "result": "PASS"
+    },
+    {
+      "name": "all40 correct keys unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "PROTOCOL.md unchanged since first repair",
+      "result": "PASS"
+    },
+    {
+      "name": "QUESTION-BANK.json unchanged since first repair",
+      "result": "PASS"
+    },
+    {
+      "name": "QUESTIONS.md unchanged since first repair",
+      "result": "PASS"
+    },
+    {
+      "name": "EVALUATOR-KEY.json unchanged since first repair",
+      "result": "PASS"
+    },
+    {
+      "name": "PROVIDER-CONTRACT.md unchanged since first repair",
+      "result": "PASS"
+    },
+    {
+      "name": "CALL-PLAN.json unchanged since first repair",
+      "result": "PASS"
+    },
+    {
+      "name": "controls/wire-manifest.json unchanged since first repair",
+      "result": "PASS"
+    },
+    {
+      "name": "controls/deterministic-rule-outputs.json unchanged since first repair",
+      "result": "PASS"
+    },
+    {
+      "name": "archived72 author check outcomes",
+      "result": "PASS"
+    },
+    {
+      "name": "initial review unchanged REPORT.md",
+      "result": "PASS"
+    },
+    {
+      "name": "initial review unchanged independent-results.json",
+      "result": "PASS"
+    },
+    {
+      "name": "initial review unchanged independent_audit.py",
+      "result": "PASS"
+    },
+    {
+      "name": "initial review unchanged receipt.json",
+      "result": "PASS"
+    }
+  ]
+}

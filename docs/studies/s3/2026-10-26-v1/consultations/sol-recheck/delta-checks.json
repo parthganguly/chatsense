@@ -1,0 +1,249 @@
+{
+  "candidate": "ef435ace5ed7275b51027a46f09e430b7973f943",
+  "asserted_checks": [
+    {
+      "name": "F1 secondary-only q01 modality shift corrected",
+      "result": "PASS"
+    },
+    {
+      "name": "F1 secondary-only q01 wording shift corrected",
+      "result": "PASS"
+    },
+    {
+      "name": "F1 secondary-only q08 modality shift corrected",
+      "result": "PASS"
+    },
+    {
+      "name": "F1 secondary-only q08 wording shift corrected",
+      "result": "PASS"
+    },
+    {
+      "name": "missing inner decision corrected",
+      "result": "PASS"
+    },
+    {
+      "name": "missing secondary T decision corrected",
+      "result": "PASS"
+    },
+    {
+      "name": "unvalidated probabilities sum 1.3 corrected",
+      "result": "PASS"
+    },
+    {
+      "name": "unvalidated boolean probabilities corrected",
+      "result": "PASS"
+    },
+    {
+      "name": "unvalidated negative canonical probabilities corrected",
+      "result": "PASS"
+    },
+    {
+      "name": "canonical NaN plus otherwise valid signal corrected",
+      "result": "PASS"
+    },
+    {
+      "name": "canonical missing option plus signal corrected",
+      "result": "PASS"
+    },
+    {
+      "name": "canonical extra item plus signal corrected",
+      "result": "PASS"
+    },
+    {
+      "name": "support threshold 0.249999 unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "support threshold 0.25 unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "support threshold 0.250001 unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "TV modality threshold 0.199999 unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "TV modality threshold 0.2 unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "TV modality threshold 0.200001 unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "repeat threshold 0.099999 unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "repeat threshold 0.1 unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "repeat threshold 0.100001 unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "control threshold 0.799999 unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "control threshold 0.8 unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "control threshold 0.800001 unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "04-glide-U-D only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "04-jev-U-D only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "05-jev-U-E only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "05-glide-U-E only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "06-glide-T-E only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "06-jev-T-E only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "07-jev-T-D only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "07-glide-T-D only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "11-jev-R-D only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "11-glide-R-D only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "12-glide-R-E only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "12-jev-R-E only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "13-jev-W-D only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "13-glide-W-D only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "14-glide-W-E only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "14-jev-W-E only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "15-jev-O-E only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "15-glide-O-E only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "16-glide-O-D only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "16-jev-O-D only body hash/size changed",
+      "result": "PASS"
+    },
+    {
+      "name": "exact20 D/E request wires changed",
+      "result": "PASS"
+    },
+    {
+      "name": "CALL-PLAN.json unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "PROVIDER-CONTRACT.md unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "controls/deterministic-rule-outputs.json unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "stimuli all files unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "evidence all files unchanged",
+      "result": "PASS"
+    },
+    {
+      "name": "original review preserved REPORT.md",
+      "result": "PASS"
+    },
+    {
+      "name": "original review preserved independent-results.json",
+      "result": "PASS"
+    },
+    {
+      "name": "original review preserved independent_audit.py",
+      "result": "PASS"
+    },
+    {
+      "name": "original review preserved receipt.json",
+      "result": "PASS"
+    }
+  ],
+  "changed_wires": [
+    "04-glide-U-D",
+    "04-jev-U-D",
+    "05-jev-U-E",
+    "05-glide-U-E",
+    "06-glide-T-E",
+    "06-jev-T-E",
+    "07-jev-T-D",
+    "07-glide-T-D",
+    "11-jev-R-D",
+    "11-glide-R-D",
+    "12-glide-R-E",
+    "12-jev-R-E",
+    "13-jev-W-D",
+    "13-glide-W-D",
+    "14-glide-W-E",
+    "14-jev-W-E",
+    "15-jev-O-E",
+    "15-glide-O-E",
+    "16-glide-O-D",
+    "16-jev-O-D"
+  ],
+  "additional_boundary_probe": {
+    "value_description": "canonical probability integer 10**1000",
+    "expected": "INCONCLUSIVE",
+    "actual": "OverflowError: int too large to convert to float",
+    "false_GO": false
+  }
+}

@@ -1,0 +1,834 @@
+{
+  "candidate_commit": "7b6cb033100126e1b9a0874b22e1f683a315211b",
+  "checks": [
+    {
+      "name": "provider-docs/jev-images.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs/jev-legal.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs/jev-models.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs/jev-call.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs/jev-errors.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs/jev-list-models.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs/glide-call.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs/glide-index.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs/glide-pricing.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs/glide-openapi.json source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs/glide-capabilities.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/jev-llms-index.txt source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/jev-system-one-concept.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/jev-fan-out.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/jev-primitives.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/jev-choice.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/jev-sdk-python-retries.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/jev-sdk-python-constants.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/jev-sdk-js-client.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/jev-1.13-jaggedness.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/typesafe-dpa.html source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/typesafe-privacy.html source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/typesafe-mca.html source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/glide-models.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/glide-choice.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/glide-overview.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/glide-api-systemone.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/glide-retries.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/glide-errors.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/glide-trust-safety.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "provider-docs-opus/glide-authentication.md source receipt integrity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Jev conditional arithmetic",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "GLiDE conditional arithmetic",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "A image: hash, size, canonical source bytes",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "A text: hash, size, canonical source bytes",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "A dimension envelope",
+      "result": "PASS",
+      "detail": [
+        344,
+        546
+      ]
+    },
+    {
+      "name": "B image: hash, size, canonical source bytes",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "B text: hash, size, canonical source bytes",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "B dimension envelope",
+      "result": "PASS",
+      "detail": [
+        344,
+        500
+      ]
+    },
+    {
+      "name": "C image: hash, size, canonical source bytes",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "C text: hash, size, canonical source bytes",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "C dimension envelope",
+      "result": "PASS",
+      "detail": [
+        344,
+        520
+      ]
+    },
+    {
+      "name": "D image: hash, size, canonical source bytes",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "D text: hash, size, canonical source bytes",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "D dimension envelope",
+      "result": "PASS",
+      "detail": [
+        344,
+        656
+      ]
+    },
+    {
+      "name": "E image: hash, size, canonical source bytes",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "E text: hash, size, canonical source bytes",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "E dimension envelope",
+      "result": "PASS",
+      "detail": [
+        344,
+        508
+      ]
+    },
+    {
+      "name": "01-jev independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "01-glide independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "02-glide independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "02-jev independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "03-jev independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "03-glide independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "04-glide independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "04-jev independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "05-jev independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "05-glide independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "06-glide independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "06-jev independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "07-jev independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "07-glide independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "08-glide independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "08-jev independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "09-jev independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "09-glide independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "10-glide independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "10-jev independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "11-jev independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "11-glide independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "12-glide independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "12-jev independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "13-jev independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "13-glide independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "14-glide independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "14-jev independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "15-jev independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "15-glide independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "16-glide independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "16-jev independent wire",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "32 cells, 256 decisions",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "40 literal bank items, 40 evaluator records",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "alternating provider first",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "jev denominators",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "jevD R byte identity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "jevD W only eight instruction strings",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "jevD O reverse only option positions",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "jevE R byte identity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "jevE W only eight instruction strings",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "jevE O reverse only option positions",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "glide denominators",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "glideD R byte identity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "glideD W only eight instruction strings",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "glideD O reverse only option positions",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "glideE R byte identity",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "glideE W only eight instruction strings",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "glideE O reverse only option positions",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "clean rows",
+      "returned": "NO-GO"
+    },
+    {
+      "name": "F1 secondary-only q01 modality shift",
+      "returned": "NO-GO"
+    },
+    {
+      "name": "F1 secondary-only q01 wording shift",
+      "returned": "NO-GO"
+    },
+    {
+      "name": "F1 secondary-only q08 modality shift",
+      "returned": "NO-GO"
+    },
+    {
+      "name": "F1 secondary-only q08 wording shift",
+      "returned": "NO-GO"
+    },
+    {
+      "name": "support threshold 0.249999",
+      "returned": "NO-GO"
+    },
+    {
+      "name": "support threshold 0.25",
+      "returned": "GO"
+    },
+    {
+      "name": "support threshold 0.250001",
+      "returned": "GO"
+    },
+    {
+      "name": "TV modality threshold 0.199999",
+      "returned": "NO-GO"
+    },
+    {
+      "name": "TV modality threshold 0.2",
+      "returned": "GO"
+    },
+    {
+      "name": "TV modality threshold 0.200001",
+      "returned": "GO"
+    },
+    {
+      "name": "repeat threshold 0.099999",
+      "returned": "NO-GO"
+    },
+    {
+      "name": "repeat threshold 0.1",
+      "returned": "NO-GO"
+    },
+    {
+      "name": "repeat threshold 0.100001",
+      "returned": "INCONCLUSIVE"
+    },
+    {
+      "name": "control threshold 0.799999",
+      "returned": "INCONCLUSIVE"
+    },
+    {
+      "name": "control threshold 0.8",
+      "returned": "NO-GO"
+    },
+    {
+      "name": "control threshold 0.800001",
+      "returned": "NO-GO"
+    },
+    {
+      "name": "missing planned request",
+      "returned": "INCONCLUSIVE"
+    },
+    {
+      "name": "missing inner decision",
+      "returned": "INCONCLUSIVE"
+    },
+    {
+      "name": "missing secondary T decision",
+      "returned": "INCONCLUSIVE"
+    },
+    {
+      "name": "blanket abstention",
+      "returned": "INCONCLUSIVE"
+    },
+    {
+      "name": "fabricated future promise, technically complete",
+      "returned": "GO"
+    },
+    {
+      "name": "fabricated promise plus technical veto",
+      "returned": "INCONCLUSIVE"
+    },
+    {
+      "name": "unvalidated probabilities sum 1.3",
+      "returned": "INCONCLUSIVE"
+    },
+    {
+      "name": "unvalidated boolean probabilities",
+      "returned": "INCONCLUSIVE"
+    },
+    {
+      "name": "unvalidated negative canonical probabilities",
+      "returned": "INCONCLUSIVE"
+    },
+    {
+      "name": "canonical NaN plus otherwise valid signal",
+      "returned": "INCONCLUSIVE"
+    },
+    {
+      "name": "canonical missing option plus signal",
+      "returned": "INCONCLUSIVE"
+    },
+    {
+      "name": "canonical extra item plus signal",
+      "returned": "INCONCLUSIVE"
+    },
+    {
+      "name": "valid independent raw response",
+      "returned": true
+    },
+    {
+      "name": "missing raw question",
+      "raised": "AssertionError",
+      "message": "missing/extra answer"
+    },
+    {
+      "name": "missing raw option",
+      "raised": "AssertionError",
+      "message": "missing/extra option"
+    },
+    {
+      "name": "raw NaN",
+      "raised": "AssertionError",
+      "message": "invalid probability"
+    },
+    {
+      "name": "raw Infinity",
+      "raised": "AssertionError",
+      "message": "invalid probability"
+    },
+    {
+      "name": "raw boolean",
+      "raised": "AssertionError",
+      "message": "invalid probability"
+    },
+    {
+      "name": "raw numeric string",
+      "raised": "AssertionError",
+      "message": "invalid probability"
+    },
+    {
+      "name": "raw negative",
+      "raised": "AssertionError",
+      "message": "invalid probability"
+    },
+    {
+      "name": "raw wrong choice",
+      "raised": "AssertionError",
+      "message": "choice not argmax"
+    },
+    {
+      "name": "missing usage",
+      "raised": "KeyError",
+      "message": "'usage'"
+    },
+    {
+      "name": "unknown model",
+      "raised": "AssertionError",
+      "message": "model drift"
+    },
+    {
+      "name": "usage boolean",
+      "raised": "AssertionError",
+      "message": "unknown/invalid usage"
+    },
+    {
+      "name": "usage negative",
+      "raised": "AssertionError",
+      "message": "unknown/invalid usage"
+    },
+    {
+      "name": "usage string",
+      "raised": "AssertionError",
+      "message": "unknown/invalid usage"
+    },
+    {
+      "name": "valid tie jev",
+      "returned": true
+    },
+    {
+      "name": "valid tie glide",
+      "returned": true
+    },
+    {
+      "name": "missing retention",
+      "raised": "AssertionError",
+      "message": "retention"
+    },
+    {
+      "name": "stored retention",
+      "raised": "AssertionError",
+      "message": "retention"
+    },
+    {
+      "name": "unallowlisted identity",
+      "raised": "AssertionError",
+      "message": "canonical identity"
+    },
+    {
+      "name": "inconsistent token total",
+      "raised": "AssertionError",
+      "message": "usage total mismatch"
+    },
+    {
+      "name": "extreme integer canonical positive",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "extreme integer raw positive",
+      "raised": "AssertionError",
+      "message": "invalid probability"
+    },
+    {
+      "name": "extreme integer raw rejected without overflow True",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "extreme integer canonical negative",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "extreme integer raw negative",
+      "raised": "AssertionError",
+      "message": "invalid probability"
+    },
+    {
+      "name": "extreme integer raw rejected without overflow False",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "technical default refuses otherwise qualifying GO",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "technical status requires literal bool True False",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "technical status requires literal bool True None",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "technical status requires literal bool True 0",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "technical status requires literal bool True 1",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "technical status requires literal bool True 'true'",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "technical status requires literal bool True []",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "technical status requires literal bool True {}",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "technical literal True still permits valid GO",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "secondary-only excluded q01T",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "secondary-only excluded q01W",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "secondary-only excluded q01O",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "secondary repeat veto retained q01",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "secondary-only excluded q08T",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "secondary-only excluded q08W",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "secondary-only excluded q08O",
+      "result": "PASS",
+      "detail": null
+    },
+    {
+      "name": "secondary repeat veto retained q08",
+      "result": "PASS",
+      "detail": null
+    }
+  ],
+  "new_dispatcher_tested": false
+}
