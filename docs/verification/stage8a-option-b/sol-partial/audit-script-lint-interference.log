@@ -1,0 +1,31 @@
+
+> chatsense@0.1.0 check
+> npm run lint && npm run typecheck && npm run test && npm run test:parity && npm run test:forecast-parity && npm run forecast:eval && npm run build
+
+
+> chatsense@0.1.0 lint
+> eslint .
+
+
+/Users/parth/.codex/worktrees/stage8a-ux-audit/whatsapp-analytics-ui/artifacts/stage8a-sol-ux/probe.cjs
+  1:18    error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  1:18    error  'require' is not defined                 no-undef
+  1:56    error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  1:56    error  'require' is not defined                 no-undef
+  1:81    error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  1:81    error  'require' is not defined                 no-undef
+  2:12    error  'process' is not defined                 no-undef
+  3:920   error  'document' is not defined                no-undef
+  3:1004  error  'document' is not defined                no-undef
+  4:566   error  'getComputedStyle' is not defined        no-undef
+  4:690   error  'getComputedStyle' is not defined        no-undef
+  4:838   error  'document' is not defined                no-undef
+  4:1224  error  'document' is not defined                no-undef
+  4:1268  error  'document' is not defined                no-undef
+  4:1323  error  'document' is not defined                no-undef
+  4:1369  error  'innerWidth' is not defined              no-undef
+  5:666   error  'console' is not defined                 no-undef
+  5:683   error  'process' is not defined                 no-undef
+
+✖ 18 problems (18 errors, 0 warnings)
+

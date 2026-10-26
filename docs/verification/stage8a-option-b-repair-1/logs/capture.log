@@ -1,0 +1,6 @@
+s8a-v1-c1-pattern-change: captured 9 views, innerText == v1, no escapes/overlaps, contrast >= 4.5
+s8a-v1-c2-carried-balanced: captured 9 views, innerText == v1, no escapes/overlaps, contrast >= 4.5
+s8a-v1-c3-carried-mixed: captured 9 views, innerText == v1, no escapes/overlaps, contrast >= 4.5
+s8a-v1-c4-unusual-silence: captured 9 views, innerText == v1, no escapes/overlaps, contrast >= 4.5
+s8a-v1-c5-insufficient: captured 9 views, innerText == v1, no escapes/overlaps, contrast >= 4.5
+exit 0

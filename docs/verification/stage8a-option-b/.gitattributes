@@ -1,0 +1,4 @@
+# Preserve independent audit output byte-for-byte, including console CR/progress lines.
+sol-partial/** -text
+sol-partial/*.log -whitespace
+sol-partial/source.diff -whitespace

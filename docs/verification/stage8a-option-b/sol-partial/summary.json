@@ -1,0 +1,2581 @@
+[
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "desktop",
+    "card": {
+      "x": 468,
+      "y": 205,
+      "width": 344,
+      "height": 582,
+      "right": 812,
+      "bottom": 787
+    },
+    "main": {
+      "x": 448,
+      "y": 185,
+      "width": 384,
+      "height": 638,
+      "right": 832,
+      "bottom": 823
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 737,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Strong read",
+        12
+      ],
+      [
+        "The pattern in this chat measurably changed.",
+        20
+      ],
+      [
+        "Ravi's typical reply slowed from 5 minutes to 1.5 hours between 2026-04-01 to 2026-04-14 and 2026-04-29 to 2026-05-07.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "Typical reply time (Ravi): 5 minutes in 2026-04-01 to 2026-04-14, then 1.5 hours in 2026-04-29 to 2026-05-07 \u2014 from 20 and 20 observed events.",
+        14
+      ],
+      [
+        "Typical reply time (Asha): 1.9 hours in 2026-04-01 to 2026-04-14, then 30 minutes in 2026-04-29 to 2026-05-07 \u2014 from 19 and 20 observed events.",
+        14
+      ],
+      [
+        "Measured from the export's last message on May 7, 2026. If you have spoken since then, re-export for a current read.",
+        14
+      ],
+      [
+        "A measured change describes timing and volume between compared periods of this export. It does not say why the pattern moved.",
+        14
+      ],
+      [
+        "See the evidence in the Changes tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "mobile",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 582,
+      "right": 370,
+      "bottom": 687
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 637,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Strong read",
+        12
+      ],
+      [
+        "The pattern in this chat measurably changed.",
+        20
+      ],
+      [
+        "Ravi's typical reply slowed from 5 minutes to 1.5 hours between 2026-04-01 to 2026-04-14 and 2026-04-29 to 2026-05-07.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "Typical reply time (Ravi): 5 minutes in 2026-04-01 to 2026-04-14, then 1.5 hours in 2026-04-29 to 2026-05-07 \u2014 from 20 and 20 observed events.",
+        14
+      ],
+      [
+        "Typical reply time (Asha): 1.9 hours in 2026-04-01 to 2026-04-14, then 30 minutes in 2026-04-29 to 2026-05-07 \u2014 from 19 and 20 observed events.",
+        14
+      ],
+      [
+        "Measured from the export's last message on May 7, 2026. If you have spoken since then, re-export for a current read.",
+        14
+      ],
+      [
+        "A measured change describes timing and volume between compared periods of this export. It does not say why the pattern moved.",
+        14
+      ],
+      [
+        "See the evidence in the Changes tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "narrow",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 280,
+      "height": 718,
+      "right": 300,
+      "bottom": 823
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 320,
+      "height": 682,
+      "right": 320,
+      "bottom": 767
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 753,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Strong read",
+        12
+      ],
+      [
+        "The pattern in this chat measurably changed.",
+        20
+      ],
+      [
+        "Ravi's typical reply slowed from 5 minutes to 1.5 hours between 2026-04-01 to 2026-04-14 and 2026-04-29 to 2026-05-07.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "Typical reply time (Ravi): 5 minutes in 2026-04-01 to 2026-04-14, then 1.5 hours in 2026-04-29 to 2026-05-07 \u2014 from 20 and 20 observed events.",
+        14
+      ],
+      [
+        "Typical reply time (Asha): 1.9 hours in 2026-04-01 to 2026-04-14, then 30 minutes in 2026-04-29 to 2026-05-07 \u2014 from 19 and 20 observed events.",
+        14
+      ],
+      [
+        "Measured from the export's last message on May 7, 2026. If you have spoken since then, re-export for a current read.",
+        14
+      ],
+      [
+        "A measured change describes timing and volume between compared periods of this export. It does not say why the pattern moved.",
+        14
+      ],
+      [
+        "See the evidence in the Changes tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "text200",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 310,
+      "height": 2706.609375,
+      "right": 350,
+      "bottom": 2915.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 390,
+      "height": 522,
+      "right": 390,
+      "bottom": 691
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 24,
+    "limitationFont": 28,
+    "limitationLineHeight": 40,
+    "limitationBottom": 2735.609375,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        24
+      ],
+      [
+        "Strong read",
+        24
+      ],
+      [
+        "The pattern in this chat measurably changed.",
+        40
+      ],
+      [
+        "Ravi's typical reply slowed from 5 minutes to 1.5 hours between 2026-04-01 to 2026-04-14 and 2026-04-29 to 2026-05-07.",
+        28
+      ],
+      [
+        "Counted in this export",
+        24
+      ],
+      [
+        "Typical reply time (Ravi): 5 minutes in 2026-04-01 to 2026-04-14, then 1.5 hours in 2026-04-29 to 2026-05-07 \u2014 from 20 and 20 observed events.",
+        28
+      ],
+      [
+        "Typical reply time (Asha): 1.9 hours in 2026-04-01 to 2026-04-14, then 30 minutes in 2026-04-29 to 2026-05-07 \u2014 from 19 and 20 observed events.",
+        28
+      ],
+      [
+        "Measured from the export's last message on May 7, 2026. If you have spoken since then, re-export for a current read.",
+        28
+      ],
+      [
+        "A measured change describes timing and volume between compared periods of this export. It does not say why the pattern moved.",
+        28
+      ],
+      [
+        "See the evidence in the Changes tab",
+        28
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "combined",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 240,
+      "height": 3754.609375,
+      "right": 280,
+      "bottom": 3963.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 320,
+      "height": 522,
+      "right": 320,
+      "bottom": 691
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 24,
+    "limitationFont": 28,
+    "limitationLineHeight": 40,
+    "limitationBottom": 3703.609375,
+    "textOutsideViewport": [
+      {
+        "text": "Strong read",
+        "rect": {
+          "x": 176.265625,
+          "y": 242,
+          "width": 176.265625,
+          "height": 40,
+          "right": 352.53125,
+          "bottom": 282
+        },
+        "outsideViewport": [
+          {
+            "x": 196.265625,
+            "y": 245,
+            "right": 332.53125,
+            "bottom": 279
+          }
+        ]
+      }
+    ],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        24
+      ],
+      [
+        "Strong read",
+        24
+      ],
+      [
+        "The pattern in this chat measurably changed.",
+        40
+      ],
+      [
+        "Ravi's typical reply slowed from 5 minutes to 1.5 hours between 2026-04-01 to 2026-04-14 and 2026-04-29 to 2026-05-07.",
+        28
+      ],
+      [
+        "Counted in this export",
+        24
+      ],
+      [
+        "Typical reply time (Ravi): 5 minutes in 2026-04-01 to 2026-04-14, then 1.5 hours in 2026-04-29 to 2026-05-07 \u2014 from 20 and 20 observed events.",
+        28
+      ],
+      [
+        "Typical reply time (Asha): 1.9 hours in 2026-04-01 to 2026-04-14, then 30 minutes in 2026-04-29 to 2026-05-07 \u2014 from 19 and 20 observed events.",
+        28
+      ],
+      [
+        "Measured from the export's last message on May 7, 2026. If you have spoken since then, re-export for a current read.",
+        28
+      ],
+      [
+        "A measured change describes timing and volume between compared periods of this export. It does not say why the pattern moved.",
+        28
+      ],
+      [
+        "See the evidence in the Changes tab",
+        28
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "dark",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 582,
+      "right": 370,
+      "bottom": 687
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 637,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Strong read",
+        12
+      ],
+      [
+        "The pattern in this chat measurably changed.",
+        20
+      ],
+      [
+        "Ravi's typical reply slowed from 5 minutes to 1.5 hours between 2026-04-01 to 2026-04-14 and 2026-04-29 to 2026-05-07.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "Typical reply time (Ravi): 5 minutes in 2026-04-01 to 2026-04-14, then 1.5 hours in 2026-04-29 to 2026-05-07 \u2014 from 20 and 20 observed events.",
+        14
+      ],
+      [
+        "Typical reply time (Asha): 1.9 hours in 2026-04-01 to 2026-04-14, then 30 minutes in 2026-04-29 to 2026-05-07 \u2014 from 19 and 20 observed events.",
+        14
+      ],
+      [
+        "Measured from the export's last message on May 7, 2026. If you have spoken since then, re-export for a current read.",
+        14
+      ],
+      [
+        "A measured change describes timing and volume between compared periods of this export. It does not say why the pattern moved.",
+        14
+      ],
+      [
+        "See the evidence in the Changes tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "whole",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 344,
+      "height": 582,
+      "right": 364,
+      "bottom": 687
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 384,
+      "height": 1638,
+      "right": 384,
+      "bottom": 1723
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 637,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Strong read",
+        12
+      ],
+      [
+        "The pattern in this chat measurably changed.",
+        20
+      ],
+      [
+        "Ravi's typical reply slowed from 5 minutes to 1.5 hours between 2026-04-01 to 2026-04-14 and 2026-04-29 to 2026-05-07.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "Typical reply time (Ravi): 5 minutes in 2026-04-01 to 2026-04-14, then 1.5 hours in 2026-04-29 to 2026-05-07 \u2014 from 20 and 20 observed events.",
+        14
+      ],
+      [
+        "Typical reply time (Asha): 1.9 hours in 2026-04-01 to 2026-04-14, then 30 minutes in 2026-04-29 to 2026-05-07 \u2014 from 19 and 20 observed events.",
+        14
+      ],
+      [
+        "Measured from the export's last message on May 7, 2026. If you have spoken since then, re-export for a current read.",
+        14
+      ],
+      [
+        "A measured change describes timing and volume between compared periods of this export. It does not say why the pattern moved.",
+        14
+      ],
+      [
+        "See the evidence in the Changes tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "desktop",
+    "card": {
+      "x": 468,
+      "y": 205,
+      "width": 344,
+      "height": 536,
+      "right": 812,
+      "bottom": 741
+    },
+    "main": {
+      "x": 448,
+      "y": 185,
+      "width": 384,
+      "height": 638,
+      "right": 832,
+      "bottom": 823
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 691,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Strong read",
+        12
+      ],
+      [
+        "Keeping this chat going has been shared.",
+        20
+      ],
+      [
+        "Across 4 measures \u2014 conversation starts, restarts after pauses, follow-ups before a reply, and turn share \u2014 neither side went above the balanced band in this export.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "Conversation starts: 76 by Ravi, 76 by Asha (152 total).",
+        14
+      ],
+      [
+        "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 total).",
+        14
+      ],
+      [
+        "Following up before a reply: 0% of Ravi's relevant turns, 0% of Asha's relevant turns.",
+        14
+      ],
+      [
+        "Starting and restarting are counts of who happened to send first in this export. They do not measure anyone's reasons, and they cannot see contact that happens outside this chat.",
+        14
+      ],
+      [
+        "See the evidence in the People tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "mobile",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 516,
+      "right": 370,
+      "bottom": 621
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 571,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Strong read",
+        12
+      ],
+      [
+        "Keeping this chat going has been shared.",
+        20
+      ],
+      [
+        "Across 4 measures \u2014 conversation starts, restarts after pauses, follow-ups before a reply, and turn share \u2014 neither side went above the balanced band in this export.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "Conversation starts: 76 by Ravi, 76 by Asha (152 total).",
+        14
+      ],
+      [
+        "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 total).",
+        14
+      ],
+      [
+        "Following up before a reply: 0% of Ravi's relevant turns, 0% of Asha's relevant turns.",
+        14
+      ],
+      [
+        "Starting and restarting are counts of who happened to send first in this export. They do not measure anyone's reasons, and they cannot see contact that happens outside this chat.",
+        14
+      ],
+      [
+        "See the evidence in the People tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "narrow",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 280,
+      "height": 612,
+      "right": 300,
+      "bottom": 717
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 320,
+      "height": 682,
+      "right": 320,
+      "bottom": 767
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 667,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Strong read",
+        12
+      ],
+      [
+        "Keeping this chat going has been shared.",
+        20
+      ],
+      [
+        "Across 4 measures \u2014 conversation starts, restarts after pauses, follow-ups before a reply, and turn share \u2014 neither side went above the balanced band in this export.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "Conversation starts: 76 by Ravi, 76 by Asha (152 total).",
+        14
+      ],
+      [
+        "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 total).",
+        14
+      ],
+      [
+        "Following up before a reply: 0% of Ravi's relevant turns, 0% of Asha's relevant turns.",
+        14
+      ],
+      [
+        "Starting and restarting are counts of who happened to send first in this export. They do not measure anyone's reasons, and they cannot see contact that happens outside this chat.",
+        14
+      ],
+      [
+        "See the evidence in the People tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "text200",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 310,
+      "height": 2454.609375,
+      "right": 350,
+      "bottom": 2663.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 390,
+      "height": 522,
+      "right": 390,
+      "bottom": 691
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 24,
+    "limitationFont": 28,
+    "limitationLineHeight": 40,
+    "limitationBottom": 2523.609375,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        24
+      ],
+      [
+        "Strong read",
+        24
+      ],
+      [
+        "Keeping this chat going has been shared.",
+        40
+      ],
+      [
+        "Across 4 measures \u2014 conversation starts, restarts after pauses, follow-ups before a reply, and turn share \u2014 neither side went above the balanced band in this export.",
+        28
+      ],
+      [
+        "Counted in this export",
+        24
+      ],
+      [
+        "Conversation starts: 76 by Ravi, 76 by Asha (152 total).",
+        28
+      ],
+      [
+        "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 total).",
+        28
+      ],
+      [
+        "Following up before a reply: 0% of Ravi's relevant turns, 0% of Asha's relevant turns.",
+        28
+      ],
+      [
+        "Starting and restarting are counts of who happened to send first in this export. They do not measure anyone's reasons, and they cannot see contact that happens outside this chat.",
+        28
+      ],
+      [
+        "See the evidence in the People tab",
+        28
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "combined",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 240,
+      "height": 3278.609375,
+      "right": 280,
+      "bottom": 3487.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 320,
+      "height": 522,
+      "right": 320,
+      "bottom": 691
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 24,
+    "limitationFont": 28,
+    "limitationLineHeight": 40,
+    "limitationBottom": 3267.609375,
+    "textOutsideViewport": [
+      {
+        "text": "Strong read",
+        "rect": {
+          "x": 176.265625,
+          "y": 242,
+          "width": 176.265625,
+          "height": 40,
+          "right": 352.53125,
+          "bottom": 282
+        },
+        "outsideViewport": [
+          {
+            "x": 196.265625,
+            "y": 245,
+            "right": 332.53125,
+            "bottom": 279
+          }
+        ]
+      }
+    ],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        24
+      ],
+      [
+        "Strong read",
+        24
+      ],
+      [
+        "Keeping this chat going has been shared.",
+        40
+      ],
+      [
+        "Across 4 measures \u2014 conversation starts, restarts after pauses, follow-ups before a reply, and turn share \u2014 neither side went above the balanced band in this export.",
+        28
+      ],
+      [
+        "Counted in this export",
+        24
+      ],
+      [
+        "Conversation starts: 76 by Ravi, 76 by Asha (152 total).",
+        28
+      ],
+      [
+        "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 total).",
+        28
+      ],
+      [
+        "Following up before a reply: 0% of Ravi's relevant turns, 0% of Asha's relevant turns.",
+        28
+      ],
+      [
+        "Starting and restarting are counts of who happened to send first in this export. They do not measure anyone's reasons, and they cannot see contact that happens outside this chat.",
+        28
+      ],
+      [
+        "See the evidence in the People tab",
+        28
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "dark",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 516,
+      "right": 370,
+      "bottom": 621
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 571,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Strong read",
+        12
+      ],
+      [
+        "Keeping this chat going has been shared.",
+        20
+      ],
+      [
+        "Across 4 measures \u2014 conversation starts, restarts after pauses, follow-ups before a reply, and turn share \u2014 neither side went above the balanced band in this export.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "Conversation starts: 76 by Ravi, 76 by Asha (152 total).",
+        14
+      ],
+      [
+        "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 total).",
+        14
+      ],
+      [
+        "Following up before a reply: 0% of Ravi's relevant turns, 0% of Asha's relevant turns.",
+        14
+      ],
+      [
+        "Starting and restarting are counts of who happened to send first in this export. They do not measure anyone's reasons, and they cannot see contact that happens outside this chat.",
+        14
+      ],
+      [
+        "See the evidence in the People tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "whole",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 344,
+      "height": 536,
+      "right": 364,
+      "bottom": 641
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 384,
+      "height": 1638,
+      "right": 384,
+      "bottom": 1723
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 591,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Strong read",
+        12
+      ],
+      [
+        "Keeping this chat going has been shared.",
+        20
+      ],
+      [
+        "Across 4 measures \u2014 conversation starts, restarts after pauses, follow-ups before a reply, and turn share \u2014 neither side went above the balanced band in this export.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "Conversation starts: 76 by Ravi, 76 by Asha (152 total).",
+        14
+      ],
+      [
+        "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 total).",
+        14
+      ],
+      [
+        "Following up before a reply: 0% of Ravi's relevant turns, 0% of Asha's relevant turns.",
+        14
+      ],
+      [
+        "Starting and restarting are counts of who happened to send first in this export. They do not measure anyone's reasons, and they cannot see contact that happens outside this chat.",
+        14
+      ],
+      [
+        "See the evidence in the People tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "desktop",
+    "card": {
+      "x": 468,
+      "y": 205,
+      "width": 344,
+      "height": 560,
+      "right": 812,
+      "bottom": 765
+    },
+    "main": {
+      "x": 448,
+      "y": 185,
+      "width": 384,
+      "height": 638,
+      "right": 832,
+      "bottom": 823
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 715,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Useful read",
+        12
+      ],
+      [
+        "The keeping-in-touch picture is mixed.",
+        20
+      ],
+      [
+        "Ravi started most conversations, while restarts after pauses and follow-ups before a reply and turn share stayed close to even. The measures disagree \u2014 that disagreement is the finding, not a fault.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "Conversation starts: 112 by Ravi, 40 by Asha (152 total).",
+        14
+      ],
+      [
+        "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 total).",
+        14
+      ],
+      [
+        "Following up before a reply: 0% of Ravi's relevant turns, 0% of Asha's relevant turns.",
+        14
+      ],
+      [
+        "Starting and restarting are counts of who happened to send first in this export. They do not measure anyone's reasons, and they cannot see contact that happens outside this chat.",
+        14
+      ],
+      [
+        "See the evidence in the People tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "mobile",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 540,
+      "right": 370,
+      "bottom": 645
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 595,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Useful read",
+        12
+      ],
+      [
+        "The keeping-in-touch picture is mixed.",
+        20
+      ],
+      [
+        "Ravi started most conversations, while restarts after pauses and follow-ups before a reply and turn share stayed close to even. The measures disagree \u2014 that disagreement is the finding, not a fault.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "Conversation starts: 112 by Ravi, 40 by Asha (152 total).",
+        14
+      ],
+      [
+        "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 total).",
+        14
+      ],
+      [
+        "Following up before a reply: 0% of Ravi's relevant turns, 0% of Asha's relevant turns.",
+        14
+      ],
+      [
+        "Starting and restarting are counts of who happened to send first in this export. They do not measure anyone's reasons, and they cannot see contact that happens outside this chat.",
+        14
+      ],
+      [
+        "See the evidence in the People tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "narrow",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 280,
+      "height": 660,
+      "right": 300,
+      "bottom": 765
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 320,
+      "height": 682,
+      "right": 320,
+      "bottom": 767
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 715,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Useful read",
+        12
+      ],
+      [
+        "The keeping-in-touch picture is mixed.",
+        20
+      ],
+      [
+        "Ravi started most conversations, while restarts after pauses and follow-ups before a reply and turn share stayed close to even. The measures disagree \u2014 that disagreement is the finding, not a fault.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "Conversation starts: 112 by Ravi, 40 by Asha (152 total).",
+        14
+      ],
+      [
+        "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 total).",
+        14
+      ],
+      [
+        "Following up before a reply: 0% of Ravi's relevant turns, 0% of Asha's relevant turns.",
+        14
+      ],
+      [
+        "Starting and restarting are counts of who happened to send first in this export. They do not measure anyone's reasons, and they cannot see contact that happens outside this chat.",
+        14
+      ],
+      [
+        "See the evidence in the People tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "text200",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 310,
+      "height": 2502.609375,
+      "right": 350,
+      "bottom": 2711.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 390,
+      "height": 522,
+      "right": 390,
+      "bottom": 691
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 24,
+    "limitationFont": 28,
+    "limitationLineHeight": 40,
+    "limitationBottom": 2571.609375,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        24
+      ],
+      [
+        "Useful read",
+        24
+      ],
+      [
+        "The keeping-in-touch picture is mixed.",
+        40
+      ],
+      [
+        "Ravi started most conversations, while restarts after pauses and follow-ups before a reply and turn share stayed close to even. The measures disagree \u2014 that disagreement is the finding, not a fault.",
+        28
+      ],
+      [
+        "Counted in this export",
+        24
+      ],
+      [
+        "Conversation starts: 112 by Ravi, 40 by Asha (152 total).",
+        28
+      ],
+      [
+        "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 total).",
+        28
+      ],
+      [
+        "Following up before a reply: 0% of Ravi's relevant turns, 0% of Asha's relevant turns.",
+        28
+      ],
+      [
+        "Starting and restarting are counts of who happened to send first in this export. They do not measure anyone's reasons, and they cannot see contact that happens outside this chat.",
+        28
+      ],
+      [
+        "See the evidence in the People tab",
+        28
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "combined",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 240,
+      "height": 3462.609375,
+      "right": 280,
+      "bottom": 3671.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 320,
+      "height": 522,
+      "right": 320,
+      "bottom": 691
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 24,
+    "limitationFont": 28,
+    "limitationLineHeight": 40,
+    "limitationBottom": 3451.609375,
+    "textOutsideViewport": [
+      {
+        "text": "Useful read",
+        "rect": {
+          "x": 176.265625,
+          "y": 242,
+          "width": 171.25,
+          "height": 40,
+          "right": 347.515625,
+          "bottom": 282
+        },
+        "outsideViewport": [
+          {
+            "x": 196.265625,
+            "y": 245,
+            "right": 327.515625,
+            "bottom": 279
+          }
+        ]
+      }
+    ],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        24
+      ],
+      [
+        "Useful read",
+        24
+      ],
+      [
+        "The keeping-in-touch picture is mixed.",
+        40
+      ],
+      [
+        "Ravi started most conversations, while restarts after pauses and follow-ups before a reply and turn share stayed close to even. The measures disagree \u2014 that disagreement is the finding, not a fault.",
+        28
+      ],
+      [
+        "Counted in this export",
+        24
+      ],
+      [
+        "Conversation starts: 112 by Ravi, 40 by Asha (152 total).",
+        28
+      ],
+      [
+        "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 total).",
+        28
+      ],
+      [
+        "Following up before a reply: 0% of Ravi's relevant turns, 0% of Asha's relevant turns.",
+        28
+      ],
+      [
+        "Starting and restarting are counts of who happened to send first in this export. They do not measure anyone's reasons, and they cannot see contact that happens outside this chat.",
+        28
+      ],
+      [
+        "See the evidence in the People tab",
+        28
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "dark",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 540,
+      "right": 370,
+      "bottom": 645
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 595,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Useful read",
+        12
+      ],
+      [
+        "The keeping-in-touch picture is mixed.",
+        20
+      ],
+      [
+        "Ravi started most conversations, while restarts after pauses and follow-ups before a reply and turn share stayed close to even. The measures disagree \u2014 that disagreement is the finding, not a fault.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "Conversation starts: 112 by Ravi, 40 by Asha (152 total).",
+        14
+      ],
+      [
+        "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 total).",
+        14
+      ],
+      [
+        "Following up before a reply: 0% of Ravi's relevant turns, 0% of Asha's relevant turns.",
+        14
+      ],
+      [
+        "Starting and restarting are counts of who happened to send first in this export. They do not measure anyone's reasons, and they cannot see contact that happens outside this chat.",
+        14
+      ],
+      [
+        "See the evidence in the People tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "whole",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 344,
+      "height": 560,
+      "right": 364,
+      "bottom": 665
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 384,
+      "height": 1638,
+      "right": 384,
+      "bottom": 1723
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 615,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Useful read",
+        12
+      ],
+      [
+        "The keeping-in-touch picture is mixed.",
+        20
+      ],
+      [
+        "Ravi started most conversations, while restarts after pauses and follow-ups before a reply and turn share stayed close to even. The measures disagree \u2014 that disagreement is the finding, not a fault.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "Conversation starts: 112 by Ravi, 40 by Asha (152 total).",
+        14
+      ],
+      [
+        "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 total).",
+        14
+      ],
+      [
+        "Following up before a reply: 0% of Ravi's relevant turns, 0% of Asha's relevant turns.",
+        14
+      ],
+      [
+        "Starting and restarting are counts of who happened to send first in this export. They do not measure anyone's reasons, and they cannot see contact that happens outside this chat.",
+        14
+      ],
+      [
+        "See the evidence in the People tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "desktop",
+    "card": {
+      "x": 468,
+      "y": 205,
+      "width": 344,
+      "height": 696,
+      "right": 812,
+      "bottom": 901
+    },
+    "main": {
+      "x": 448,
+      "y": 185,
+      "width": 384,
+      "height": 638,
+      "right": 832,
+      "bottom": 823
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 851,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Useful read",
+        12
+      ],
+      [
+        "The current quiet is long for this chat.",
+        20
+      ],
+      [
+        "Counting from the export's last message, this quiet has already run longer than 10 of the 10 earlier day-plus quiet stretches in this export.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "No messages appear after Mar 29, 2026 in this export \u2014 quiet for at least 15 days so far.",
+        14
+      ],
+      [
+        "All 10 earlier day-plus quiet stretches in this export ended with a new message \u2014 7 of those first messages came from Ravi.",
+        14
+      ],
+      [
+        "Earlier day-plus quiet stretches typically ran 2.1 days; the longest ran 2.6 days.",
+        14
+      ],
+      [
+        "After earlier day-plus pauses, this chat picked back up all 10 times inside this export \u2014 7 of those restarts began with a message from Ravi. That is a count of the past, not a promise about this quiet.",
+        14
+      ],
+      [
+        "Measured from the export's last message on Mar 29, 2026. If you have spoken since then, re-export for a current read.",
+        14
+      ],
+      [
+        "Longer than usual is a timing fact from this export alone. It cannot say why this chat is quiet, and it cannot see messages, calls, or contact happening anywhere else.",
+        14
+      ],
+      [
+        "See the evidence in the Rhythm tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "mobile",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 696,
+      "right": 370,
+      "bottom": 801
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 751,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Useful read",
+        12
+      ],
+      [
+        "The current quiet is long for this chat.",
+        20
+      ],
+      [
+        "Counting from the export's last message, this quiet has already run longer than 10 of the 10 earlier day-plus quiet stretches in this export.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "No messages appear after Mar 29, 2026 in this export \u2014 quiet for at least 15 days so far.",
+        14
+      ],
+      [
+        "All 10 earlier day-plus quiet stretches in this export ended with a new message \u2014 7 of those first messages came from Ravi.",
+        14
+      ],
+      [
+        "Earlier day-plus quiet stretches typically ran 2.1 days; the longest ran 2.6 days.",
+        14
+      ],
+      [
+        "After earlier day-plus pauses, this chat picked back up all 10 times inside this export \u2014 7 of those restarts began with a message from Ravi. That is a count of the past, not a promise about this quiet.",
+        14
+      ],
+      [
+        "Measured from the export's last message on Mar 29, 2026. If you have spoken since then, re-export for a current read.",
+        14
+      ],
+      [
+        "Longer than usual is a timing fact from this export alone. It cannot say why this chat is quiet, and it cannot see messages, calls, or contact happening anywhere else.",
+        14
+      ],
+      [
+        "See the evidence in the Rhythm tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "narrow",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 280,
+      "height": 872,
+      "right": 300,
+      "bottom": 977
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 320,
+      "height": 682,
+      "right": 320,
+      "bottom": 767
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 927,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Useful read",
+        12
+      ],
+      [
+        "The current quiet is long for this chat.",
+        20
+      ],
+      [
+        "Counting from the export's last message, this quiet has already run longer than 10 of the 10 earlier day-plus quiet stretches in this export.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "No messages appear after Mar 29, 2026 in this export \u2014 quiet for at least 15 days so far.",
+        14
+      ],
+      [
+        "All 10 earlier day-plus quiet stretches in this export ended with a new message \u2014 7 of those first messages came from Ravi.",
+        14
+      ],
+      [
+        "Earlier day-plus quiet stretches typically ran 2.1 days; the longest ran 2.6 days.",
+        14
+      ],
+      [
+        "After earlier day-plus pauses, this chat picked back up all 10 times inside this export \u2014 7 of those restarts began with a message from Ravi. That is a count of the past, not a promise about this quiet.",
+        14
+      ],
+      [
+        "Measured from the export's last message on Mar 29, 2026. If you have spoken since then, re-export for a current read.",
+        14
+      ],
+      [
+        "Longer than usual is a timing fact from this export alone. It cannot say why this chat is quiet, and it cannot see messages, calls, or contact happening anywhere else.",
+        14
+      ],
+      [
+        "See the evidence in the Rhythm tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "text200",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 310,
+      "height": 3422.609375,
+      "right": 350,
+      "bottom": 3631.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 390,
+      "height": 522,
+      "right": 390,
+      "bottom": 691
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 24,
+    "limitationFont": 28,
+    "limitationLineHeight": 40,
+    "limitationBottom": 3451.609375,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        24
+      ],
+      [
+        "Useful read",
+        24
+      ],
+      [
+        "The current quiet is long for this chat.",
+        40
+      ],
+      [
+        "Counting from the export's last message, this quiet has already run longer than 10 of the 10 earlier day-plus quiet stretches in this export.",
+        28
+      ],
+      [
+        "Counted in this export",
+        24
+      ],
+      [
+        "No messages appear after Mar 29, 2026 in this export \u2014 quiet for at least 15 days so far.",
+        28
+      ],
+      [
+        "All 10 earlier day-plus quiet stretches in this export ended with a new message \u2014 7 of those first messages came from Ravi.",
+        28
+      ],
+      [
+        "Earlier day-plus quiet stretches typically ran 2.1 days; the longest ran 2.6 days.",
+        28
+      ],
+      [
+        "After earlier day-plus pauses, this chat picked back up all 10 times inside this export \u2014 7 of those restarts began with a message from Ravi. That is a count of the past, not a promise about this quiet.",
+        28
+      ],
+      [
+        "Measured from the export's last message on Mar 29, 2026. If you have spoken since then, re-export for a current read.",
+        28
+      ],
+      [
+        "Longer than usual is a timing fact from this export alone. It cannot say why this chat is quiet, and it cannot see messages, calls, or contact happening anywhere else.",
+        28
+      ],
+      [
+        "See the evidence in the Rhythm tab",
+        28
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "combined",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 240,
+      "height": 4846.609375,
+      "right": 280,
+      "bottom": 5055.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 320,
+      "height": 522,
+      "right": 320,
+      "bottom": 691
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 24,
+    "limitationFont": 28,
+    "limitationLineHeight": 40,
+    "limitationBottom": 4835.609375,
+    "textOutsideViewport": [
+      {
+        "text": "Useful read",
+        "rect": {
+          "x": 176.265625,
+          "y": 242,
+          "width": 171.25,
+          "height": 40,
+          "right": 347.515625,
+          "bottom": 282
+        },
+        "outsideViewport": [
+          {
+            "x": 196.265625,
+            "y": 245,
+            "right": 327.515625,
+            "bottom": 279
+          }
+        ]
+      }
+    ],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        24
+      ],
+      [
+        "Useful read",
+        24
+      ],
+      [
+        "The current quiet is long for this chat.",
+        40
+      ],
+      [
+        "Counting from the export's last message, this quiet has already run longer than 10 of the 10 earlier day-plus quiet stretches in this export.",
+        28
+      ],
+      [
+        "Counted in this export",
+        24
+      ],
+      [
+        "No messages appear after Mar 29, 2026 in this export \u2014 quiet for at least 15 days so far.",
+        28
+      ],
+      [
+        "All 10 earlier day-plus quiet stretches in this export ended with a new message \u2014 7 of those first messages came from Ravi.",
+        28
+      ],
+      [
+        "Earlier day-plus quiet stretches typically ran 2.1 days; the longest ran 2.6 days.",
+        28
+      ],
+      [
+        "After earlier day-plus pauses, this chat picked back up all 10 times inside this export \u2014 7 of those restarts began with a message from Ravi. That is a count of the past, not a promise about this quiet.",
+        28
+      ],
+      [
+        "Measured from the export's last message on Mar 29, 2026. If you have spoken since then, re-export for a current read.",
+        28
+      ],
+      [
+        "Longer than usual is a timing fact from this export alone. It cannot say why this chat is quiet, and it cannot see messages, calls, or contact happening anywhere else.",
+        28
+      ],
+      [
+        "See the evidence in the Rhythm tab",
+        28
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "dark",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 696,
+      "right": 370,
+      "bottom": 801
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 751,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Useful read",
+        12
+      ],
+      [
+        "The current quiet is long for this chat.",
+        20
+      ],
+      [
+        "Counting from the export's last message, this quiet has already run longer than 10 of the 10 earlier day-plus quiet stretches in this export.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "No messages appear after Mar 29, 2026 in this export \u2014 quiet for at least 15 days so far.",
+        14
+      ],
+      [
+        "All 10 earlier day-plus quiet stretches in this export ended with a new message \u2014 7 of those first messages came from Ravi.",
+        14
+      ],
+      [
+        "Earlier day-plus quiet stretches typically ran 2.1 days; the longest ran 2.6 days.",
+        14
+      ],
+      [
+        "After earlier day-plus pauses, this chat picked back up all 10 times inside this export \u2014 7 of those restarts began with a message from Ravi. That is a count of the past, not a promise about this quiet.",
+        14
+      ],
+      [
+        "Measured from the export's last message on Mar 29, 2026. If you have spoken since then, re-export for a current read.",
+        14
+      ],
+      [
+        "Longer than usual is a timing fact from this export alone. It cannot say why this chat is quiet, and it cannot see messages, calls, or contact happening anywhere else.",
+        14
+      ],
+      [
+        "See the evidence in the Rhythm tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "whole",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 344,
+      "height": 696,
+      "right": 364,
+      "bottom": 801
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 384,
+      "height": 1638,
+      "right": 384,
+      "bottom": 1723
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 751,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Useful read",
+        12
+      ],
+      [
+        "The current quiet is long for this chat.",
+        20
+      ],
+      [
+        "Counting from the export's last message, this quiet has already run longer than 10 of the 10 earlier day-plus quiet stretches in this export.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "No messages appear after Mar 29, 2026 in this export \u2014 quiet for at least 15 days so far.",
+        14
+      ],
+      [
+        "All 10 earlier day-plus quiet stretches in this export ended with a new message \u2014 7 of those first messages came from Ravi.",
+        14
+      ],
+      [
+        "Earlier day-plus quiet stretches typically ran 2.1 days; the longest ran 2.6 days.",
+        14
+      ],
+      [
+        "After earlier day-plus pauses, this chat picked back up all 10 times inside this export \u2014 7 of those restarts began with a message from Ravi. That is a count of the past, not a promise about this quiet.",
+        14
+      ],
+      [
+        "Measured from the export's last message on Mar 29, 2026. If you have spoken since then, re-export for a current read.",
+        14
+      ],
+      [
+        "Longer than usual is a timing fact from this export alone. It cannot say why this chat is quiet, and it cannot see messages, calls, or contact happening anywhere else.",
+        14
+      ],
+      [
+        "See the evidence in the Rhythm tab",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "desktop",
+    "card": {
+      "x": 468,
+      "y": 205,
+      "width": 344,
+      "height": 544,
+      "right": 812,
+      "bottom": 749
+    },
+    "main": {
+      "x": 448,
+      "y": 185,
+      "width": 384,
+      "height": 638,
+      "right": 832,
+      "bottom": 823
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 699,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Light read",
+        12
+      ],
+      [
+        "Not enough here to read a pattern yet.",
+        20
+      ],
+      [
+        "This export is too short or too sparse for an honest pattern read. That is the answer, not an error \u2014 nothing is filled in with a guess.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "1 day of messages with 0 eligible comparison windows \u2014 a period comparison needs 4.",
+        14
+      ],
+      [
+        "1 conversation start \u2014 reading who starts contact needs at least 3.",
+        14
+      ],
+      [
+        "0 completed day-plus quiet stretches \u2014 ranking a quiet needs at least 5.",
+        14
+      ],
+      [
+        "Measured from the export's last message on Jul 4, 2026. If you have spoken since then, re-export for a current read.",
+        14
+      ],
+      [
+        "If the chat is older than this export, re-export with the full history for a fuller read. Nothing here means something is wrong.",
+        14
+      ],
+      [
+        "See the evidence in the summary below",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "mobile",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 544,
+      "right": 370,
+      "bottom": 649
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 599,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Light read",
+        12
+      ],
+      [
+        "Not enough here to read a pattern yet.",
+        20
+      ],
+      [
+        "This export is too short or too sparse for an honest pattern read. That is the answer, not an error \u2014 nothing is filled in with a guess.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "1 day of messages with 0 eligible comparison windows \u2014 a period comparison needs 4.",
+        14
+      ],
+      [
+        "1 conversation start \u2014 reading who starts contact needs at least 3.",
+        14
+      ],
+      [
+        "0 completed day-plus quiet stretches \u2014 ranking a quiet needs at least 5.",
+        14
+      ],
+      [
+        "Measured from the export's last message on Jul 4, 2026. If you have spoken since then, re-export for a current read.",
+        14
+      ],
+      [
+        "If the chat is older than this export, re-export with the full history for a fuller read. Nothing here means something is wrong.",
+        14
+      ],
+      [
+        "See the evidence in the summary below",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "narrow",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 280,
+      "height": 680,
+      "right": 300,
+      "bottom": 785
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 320,
+      "height": 682,
+      "right": 320,
+      "bottom": 767
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 715,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Light read",
+        12
+      ],
+      [
+        "Not enough here to read a pattern yet.",
+        20
+      ],
+      [
+        "This export is too short or too sparse for an honest pattern read. That is the answer, not an error \u2014 nothing is filled in with a guess.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "1 day of messages with 0 eligible comparison windows \u2014 a period comparison needs 4.",
+        14
+      ],
+      [
+        "1 conversation start \u2014 reading who starts contact needs at least 3.",
+        14
+      ],
+      [
+        "0 completed day-plus quiet stretches \u2014 ranking a quiet needs at least 5.",
+        14
+      ],
+      [
+        "Measured from the export's last message on Jul 4, 2026. If you have spoken since then, re-export for a current read.",
+        14
+      ],
+      [
+        "If the chat is older than this export, re-export with the full history for a fuller read. Nothing here means something is wrong.",
+        14
+      ],
+      [
+        "See the evidence in the summary below",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "text200",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 310,
+      "height": 2558.609375,
+      "right": 350,
+      "bottom": 2767.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 390,
+      "height": 522,
+      "right": 390,
+      "bottom": 691
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 24,
+    "limitationFont": 28,
+    "limitationLineHeight": 40,
+    "limitationBottom": 2587.609375,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        24
+      ],
+      [
+        "Light read",
+        24
+      ],
+      [
+        "Not enough here to read a pattern yet.",
+        40
+      ],
+      [
+        "This export is too short or too sparse for an honest pattern read. That is the answer, not an error \u2014 nothing is filled in with a guess.",
+        28
+      ],
+      [
+        "Counted in this export",
+        24
+      ],
+      [
+        "1 day of messages with 0 eligible comparison windows \u2014 a period comparison needs 4.",
+        28
+      ],
+      [
+        "1 conversation start \u2014 reading who starts contact needs at least 3.",
+        28
+      ],
+      [
+        "0 completed day-plus quiet stretches \u2014 ranking a quiet needs at least 5.",
+        28
+      ],
+      [
+        "Measured from the export's last message on Jul 4, 2026. If you have spoken since then, re-export for a current read.",
+        28
+      ],
+      [
+        "If the chat is older than this export, re-export with the full history for a fuller read. Nothing here means something is wrong.",
+        28
+      ],
+      [
+        "See the evidence in the summary below",
+        28
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "combined",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 240,
+      "height": 3454.609375,
+      "right": 280,
+      "bottom": 3663.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 320,
+      "height": 522,
+      "right": 320,
+      "bottom": 691
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 24,
+    "limitationFont": 28,
+    "limitationLineHeight": 40,
+    "limitationBottom": 3403.609375,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        24
+      ],
+      [
+        "Light read",
+        24
+      ],
+      [
+        "Not enough here to read a pattern yet.",
+        40
+      ],
+      [
+        "This export is too short or too sparse for an honest pattern read. That is the answer, not an error \u2014 nothing is filled in with a guess.",
+        28
+      ],
+      [
+        "Counted in this export",
+        24
+      ],
+      [
+        "1 day of messages with 0 eligible comparison windows \u2014 a period comparison needs 4.",
+        28
+      ],
+      [
+        "1 conversation start \u2014 reading who starts contact needs at least 3.",
+        28
+      ],
+      [
+        "0 completed day-plus quiet stretches \u2014 ranking a quiet needs at least 5.",
+        28
+      ],
+      [
+        "Measured from the export's last message on Jul 4, 2026. If you have spoken since then, re-export for a current read.",
+        28
+      ],
+      [
+        "If the chat is older than this export, re-export with the full history for a fuller read. Nothing here means something is wrong.",
+        28
+      ],
+      [
+        "See the evidence in the summary below",
+        28
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "dark",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 544,
+      "right": 370,
+      "bottom": 649
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 599,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Light read",
+        12
+      ],
+      [
+        "Not enough here to read a pattern yet.",
+        20
+      ],
+      [
+        "This export is too short or too sparse for an honest pattern read. That is the answer, not an error \u2014 nothing is filled in with a guess.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "1 day of messages with 0 eligible comparison windows \u2014 a period comparison needs 4.",
+        14
+      ],
+      [
+        "1 conversation start \u2014 reading who starts contact needs at least 3.",
+        14
+      ],
+      [
+        "0 completed day-plus quiet stretches \u2014 ranking a quiet needs at least 5.",
+        14
+      ],
+      [
+        "Measured from the export's last message on Jul 4, 2026. If you have spoken since then, re-export for a current read.",
+        14
+      ],
+      [
+        "If the chat is older than this export, re-export with the full history for a fuller read. Nothing here means something is wrong.",
+        14
+      ],
+      [
+        "See the evidence in the summary below",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "whole",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 344,
+      "height": 544,
+      "right": 364,
+      "bottom": 649
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 384,
+      "height": 1638,
+      "right": 384,
+      "bottom": 1723
+    },
+    "textEqual": true,
+    "minimumContrast": 7.577663953533317,
+    "minimumFont": 12,
+    "limitationFont": 14,
+    "limitationLineHeight": 20,
+    "limitationBottom": 599,
+    "textOutsideViewport": [],
+    "allFontSizes": [
+      [
+        "What this export shows",
+        12
+      ],
+      [
+        "Light read",
+        12
+      ],
+      [
+        "Not enough here to read a pattern yet.",
+        20
+      ],
+      [
+        "This export is too short or too sparse for an honest pattern read. That is the answer, not an error \u2014 nothing is filled in with a guess.",
+        14
+      ],
+      [
+        "Counted in this export",
+        12
+      ],
+      [
+        "1 day of messages with 0 eligible comparison windows \u2014 a period comparison needs 4.",
+        14
+      ],
+      [
+        "1 conversation start \u2014 reading who starts contact needs at least 3.",
+        14
+      ],
+      [
+        "0 completed day-plus quiet stretches \u2014 ranking a quiet needs at least 5.",
+        14
+      ],
+      [
+        "Measured from the export's last message on Jul 4, 2026. If you have spoken since then, re-export for a current read.",
+        14
+      ],
+      [
+        "If the chat is older than this export, re-export with the full history for a fuller read. Nothing here means something is wrong.",
+        14
+      ],
+      [
+        "See the evidence in the summary below",
+        14
+      ]
+    ]
+  }
+]

@@ -1,0 +1,290 @@
+[
+  {
+    "file": "artifacts/stage8a-sol-ux/D-blocker-measurements.json",
+    "bytes": 11002,
+    "sha256": "d300dfeecbe3ce033102d0f8a6019facad6b49dd5388f00f06e5459a324b487c",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/D-mobile-settled-measurements.json",
+    "bytes": 11556,
+    "sha256": "720bddec4c51333885fb0efcfd43dd889cd353ca01fecf3409698fd453c2f586",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/D-mobile-settled.cjs.txt",
+    "bytes": 3760,
+    "sha256": "c3d105b49e823afe6a7a18d2513ee748ca8a2523ecf70df4f1665d08d4e152a8",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/D-mobile-settled.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/D-probe.cjs.txt",
+    "bytes": 3390,
+    "sha256": "4fa4ee96f65a8fe5b7f4af67e57383562d64d07a59da3ca6bbd4dd7aa9e80f3c",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/D-probe.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/audit-script-lint-interference.log",
+    "bytes": 1651,
+    "sha256": "93d343280f2859bdda7215573f11f4b247df4df306db9fb938cdfe30ebbe0622",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/check.log",
+    "bytes": 2564,
+    "sha256": "042b3a7230096e8eecfbbe848ed974b849be0a14d2568b902bd917bce70eefcc",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/fixture-identity.json",
+    "bytes": 4290,
+    "sha256": "49258ff4ada5e52363ba3008933dd912df74d56bf709fcfb07f4ce32415de558",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/fresh-build.log",
+    "bytes": 1106,
+    "sha256": "9cb1f2fd44fe9846d97b9313c3643bebec03f00aa315cda4cd57c6eb79d9bb97",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/initial-dependency-workaround-failed.log",
+    "bytes": 1174,
+    "sha256": "ec9883df61f3d52db2bac062761e5914b6b2fe7569f4631a77218ceb9d569048",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/keyboard-destination.partial.png",
+    "bytes": 50918,
+    "sha256": "edfe786e2f3b856d6b78616c8e8f01f573bc7287f41f523b9e512cd70aa66bb4",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/measurements.json",
+    "bytes": 406759,
+    "sha256": "f6382d1660da38241fa6e242317c86a8dd670a3674f1075f7b6f7dc87a205dda",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/npm-ci.log",
+    "bytes": 953,
+    "sha256": "763b31bbb2891c3ef2a77194d7892b56d603651d07939743d260af6f46ac0d37",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/probe.cjs.txt",
+    "bytes": 3762,
+    "sha256": "7c8351022e7c77852d514e8505d0a02b2c3b31907f01f5c105722005ec63dbc1",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/probe.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c1-pattern-change.combined.partial-first-screen.png",
+    "bytes": 38242,
+    "sha256": "98ce972e4418dad49bb7b40e64de44e2bd6daba5a4e8cda3f0dc9b16e2d3baa8",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c1-pattern-change.desktop.partial-first-screen.png",
+    "bytes": 112023,
+    "sha256": "5cbcd9092121b201f951b8401061e517ea93350f70f91e800d81a70576ed2903",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c1-pattern-change.mobile.partial-first-screen.png",
+    "bytes": 89142,
+    "sha256": "99d1bb9d917c2c46dba4597fa148bab51466cb2a2fc816abce528848788e1d8f",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c1-pattern-change.whole-344px.png",
+    "bytes": 65553,
+    "sha256": "175a97afae81de586c174b12906e4325d6205a91001d24a8a43724d6ecfeab06",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c2-carried-balanced.combined.partial-first-screen.png",
+    "bytes": 39707,
+    "sha256": "8d30bb910701a6a6e56b89157e63c767d03a6b397b3eb0a0d56bf39da5017961",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c2-carried-balanced.desktop.partial-first-screen.png",
+    "bytes": 103447,
+    "sha256": "b41e5e3f4f5ac3843b514808d1717561b47b85f59571360fb7be47c0fcfec447",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c2-carried-balanced.mobile.partial-first-screen.png",
+    "bytes": 84741,
+    "sha256": "9021c82d923be740bebd72903019d591bf132ad14f52fed32ef7487ee87b4500",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c2-carried-balanced.whole-344px.png",
+    "bytes": 54167,
+    "sha256": "9ea6852193a568cd4efb4f23a515c1c55f4f68f433048d4f863bc336e3a189cc",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c3-carried-mixed.combined.partial-first-screen.png",
+    "bytes": 38256,
+    "sha256": "990b7c4d79b9c0d0d60eb3b73ac872674100802c415a896028d10dc5ad7201a8",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c3-carried-mixed.desktop.partial-first-screen.png",
+    "bytes": 101359,
+    "sha256": "64c59dcead0e6e83861c17e3acdd5ab212c75cbe8d21a97fc029d1d241b98160",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c3-carried-mixed.mobile.partial-first-screen.png",
+    "bytes": 80541,
+    "sha256": "ebd493a3c6c9f09e5f732104b31782574e1c7524a7f352983a7e21914107c480",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c3-carried-mixed.whole-344px.png",
+    "bytes": 54017,
+    "sha256": "4c5758d73fba9f548866d0e4e86610d0517cf2582c2c8ff9f385275ab6950c28",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c4-unusual-silence.combined.partial-first-screen.png",
+    "bytes": 38418,
+    "sha256": "fc8e2ce1ccc120e7ef022250d2183a8a94f734044dc4e0c12a7fc7a1a4278717",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c4-unusual-silence.desktop.partial-first-screen.png",
+    "bytes": 119379,
+    "sha256": "6586c7e630a83bef0a41c5de5db94cb8f8c31bd15efa6c3730a17f65a3475f0b",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c4-unusual-silence.mobile.partial-first-screen.png",
+    "bytes": 91065,
+    "sha256": "6b3ea74223ec498b98847c03fd8f2e4297edbaea8c89b8d17bd02b3d3591c0a7",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c4-unusual-silence.whole-344px.png",
+    "bytes": 79731,
+    "sha256": "5577f1748ec6a18223599139c8dca462b42077c6123260ca3d65f25adfa785db",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c5-insufficient.combined.partial-first-screen.png",
+    "bytes": 39190,
+    "sha256": "bc408150f3294401e484d7b5ef8077781f4a33cef105d29eb865c72ba72f3a1c",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c5-insufficient.desktop.partial-first-screen.png",
+    "bytes": 106241,
+    "sha256": "3bd5884b4a216f349f13adeb108c4d8e2df067d4f7e01e54d70670199f30e3c4",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c5-insufficient.mobile.partial-first-screen.png",
+    "bytes": 81968,
+    "sha256": "6347a188b92e97bf9293f35d57f200ce31ee7dc7b10568e3282ab2b9a10ef4ad",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/s8a-v1-c5-insufficient.whole-344px.png",
+    "bytes": 56505,
+    "sha256": "6ecba7a7a257524107630036d924bb595dc64afcd581128486c1404ddca317b9",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/safety.log",
+    "bytes": 355,
+    "sha256": "386003bb7d2d817a0e72ec808892ddc69febe66086480b92293a3201cc4febd8",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/safety.ts.txt",
+    "bytes": 467,
+    "sha256": "5f9658033b55a8d83ce07cf1364069db9f7f7e107c815aed95b6ca74c923de53",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/server.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/source.diff",
+    "bytes": 4235,
+    "sha256": "a2ea0a65b6050ba3681577f1bec353c3f116fc9b3b3555d2e0a4565795186ec9",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/stress-320-text200-unbroken120.partial.png",
+    "bytes": 39954,
+    "sha256": "937742162c36529e7bc464c8bdb1175c95b8c75d808c7fe321d2cdd8a8667f19",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/stress-keyboard.json",
+    "bytes": 30662,
+    "sha256": "2da9a87da857d07bdeae85c7ec1f376a8671833bf76048c2317803e2da7c224e",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/stress.cjs.txt",
+    "bytes": 3084,
+    "sha256": "3ddf260b0e03a74170024418e9eba481ef825f892d3bd9ab4e0a2df7167641d4",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/stress.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/summarize.py",
+    "bytes": 1047,
+    "sha256": "50d5ca79cba9b36dffd7da5acfd0836c02c2a4bce289abe3f21cce8c38eccb2f",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/summary.json",
+    "bytes": 64604,
+    "sha256": "9b367082ad54677e94e3174db0c22d2ebf89ee39cc979c38553d8e1b1851b688",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/summary.log",
+    "bytes": 3565,
+    "sha256": "04aab3913a5ae129f3e7d5e4e0be1696e18620449fe9eaa8a4ab964996ec24ac",
+    "matchesPreservedCommit1f3e306": true
+  },
+  {
+    "file": "artifacts/stage8a-sol-ux/viewport.log",
+    "bytes": 9780,
+    "sha256": "ea1ea2608e4293bd431cdc62be3f05c33da8513e5850f737b1d4e3fa716051d8",
+    "matchesPreservedCommit1f3e306": true
+  }
+]

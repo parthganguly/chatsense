@@ -1,0 +1,4 @@
+import {readFileSync} from 'node:fs';
+import {assertRelationshipReadLanguageSafe} from '../../tests/helpers/narrative-safety';
+const cards=JSON.parse(readFileSync('tests/viewport/fixtures/stage8a-v1/cards.json','utf8'));
+for(const card of cards){assertRelationshipReadLanguageSafe(JSON.parse(readFileSync(`tests/viewport/fixtures/stage8a-v1/${card.id}.relationship-read.json`,'utf8')),card.id);console.log(`${card.id}: independent frozen-read language scan passed`)}

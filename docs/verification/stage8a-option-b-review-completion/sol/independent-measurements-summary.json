@@ -1,0 +1,2705 @@
+[
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "desktop",
+    "clock": 1778182200000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 468,
+      "y": 205,
+      "width": 344,
+      "height": 582,
+      "right": 812,
+      "bottom": 787
+    },
+    "main": {
+      "x": 448,
+      "y": 185,
+      "width": 384,
+      "height": 638,
+      "right": 832,
+      "bottom": 823
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 737,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 488,
+          "y": 222,
+          "width": 153.828125,
+          "height": 16,
+          "right": 641.828125,
+          "bottom": 238
+        },
+        "ranges": [
+          {
+            "x": 506,
+            "y": 221,
+            "right": 641.828125,
+            "bottom": 238
+          }
+        ]
+      },
+      {
+        "text": "Strong read",
+        "fontSize": 12,
+        "rect": {
+          "x": 706.859375,
+          "y": 222,
+          "width": 88.140625,
+          "height": 20,
+          "right": 795,
+          "bottom": 242
+        },
+        "ranges": [
+          {
+            "x": 716.859375,
+            "y": 223,
+            "right": 785,
+            "bottom": 240
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "mobile",
+    "clock": 1778182200000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 582,
+      "right": 370,
+      "bottom": 687
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 637,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 153.828125,
+          "height": 16,
+          "right": 193.828125,
+          "bottom": 138
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 193.828125,
+            "bottom": 138
+          }
+        ]
+      },
+      {
+        "text": "Strong read",
+        "fontSize": 12,
+        "rect": {
+          "x": 264.859375,
+          "y": 122,
+          "width": 88.140625,
+          "height": 20,
+          "right": 353,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 274.859375,
+            "y": 123,
+            "right": 343,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "narrow",
+    "clock": 1778182200000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 280,
+      "height": 718,
+      "right": 300,
+      "bottom": 823
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 320,
+      "height": 682,
+      "right": 320,
+      "bottom": 767
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 753,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 142.859375,
+          "height": 32,
+          "right": 182.859375,
+          "bottom": 154
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 154.65625,
+            "bottom": 138
+          },
+          {
+            "x": 40,
+            "y": 137,
+            "right": 76.5625,
+            "bottom": 154
+          }
+        ]
+      },
+      {
+        "text": "Strong read",
+        "fontSize": 12,
+        "rect": {
+          "x": 194.859375,
+          "y": 122,
+          "width": 88.140625,
+          "height": 20,
+          "right": 283,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 204.859375,
+            "y": 123,
+            "right": 273,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "text200",
+    "clock": 1778182200000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 310,
+      "height": 2706.609375,
+      "right": 350,
+      "bottom": 2915.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 390,
+      "height": 522,
+      "right": 390,
+      "bottom": 691
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 28,
+    "bodyLimitationLineHeight": 40,
+    "limitationBottom": 2735.609375,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 24,
+        "rect": {
+          "x": 76,
+          "y": 242,
+          "width": 76.265625,
+          "height": 160.609375,
+          "right": 152.265625,
+          "bottom": 402.609375
+        },
+        "ranges": [
+          {
+            "x": 76,
+            "y": 273.609375,
+            "right": 139.515625,
+            "bottom": 307.609375
+          },
+          {
+            "x": 76,
+            "y": 305.609375,
+            "right": 119.046875,
+            "bottom": 339.609375
+          },
+          {
+            "x": 76,
+            "y": 337.609375,
+            "right": 152.265625,
+            "bottom": 371.609375
+          },
+          {
+            "x": 76,
+            "y": 369.609375,
+            "right": 149.109375,
+            "bottom": 403.609375
+          }
+        ]
+      },
+      {
+        "text": "Strong read",
+        "fontSize": 24,
+        "rect": {
+          "x": 176.265625,
+          "y": 242,
+          "width": 176.265625,
+          "height": 40,
+          "right": 352.53125,
+          "bottom": 282
+        },
+        "ranges": [
+          {
+            "x": 196.265625,
+            "y": 245,
+            "right": 332.53125,
+            "bottom": 279
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": true,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "combined",
+    "clock": 1778182200000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 240,
+      "height": 3754.609375,
+      "right": 280,
+      "bottom": 3963.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 320,
+      "height": 522,
+      "right": 320,
+      "bottom": 691
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 28,
+    "bodyLimitationLineHeight": 40,
+    "limitationBottom": 3703.609375,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 24,
+        "rect": {
+          "x": 76,
+          "y": 242,
+          "width": 76.265625,
+          "height": 160.609375,
+          "right": 152.265625,
+          "bottom": 402.609375
+        },
+        "ranges": [
+          {
+            "x": 76,
+            "y": 273.609375,
+            "right": 139.515625,
+            "bottom": 307.609375
+          },
+          {
+            "x": 76,
+            "y": 305.609375,
+            "right": 119.046875,
+            "bottom": 339.609375
+          },
+          {
+            "x": 76,
+            "y": 337.609375,
+            "right": 152.265625,
+            "bottom": 371.609375
+          },
+          {
+            "x": 76,
+            "y": 369.609375,
+            "right": 149.109375,
+            "bottom": 403.609375
+          }
+        ]
+      },
+      {
+        "text": "Strong read",
+        "fontSize": 24,
+        "rect": {
+          "x": 176.265625,
+          "y": 242,
+          "width": 176.265625,
+          "height": 40,
+          "right": 352.53125,
+          "bottom": 282
+        },
+        "ranges": [
+          {
+            "x": 196.265625,
+            "y": 245,
+            "right": 332.53125,
+            "bottom": 279
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": true,
+    "textOutsideViewport": [
+      "Strong read"
+    ]
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "dark",
+    "clock": 1778182200000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 582,
+      "right": 370,
+      "bottom": 687
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 637,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 153.828125,
+          "height": 16,
+          "right": 193.828125,
+          "bottom": 138
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 193.828125,
+            "bottom": 138
+          }
+        ]
+      },
+      {
+        "text": "Strong read",
+        "fontSize": 12,
+        "rect": {
+          "x": 264.859375,
+          "y": 122,
+          "width": 88.140625,
+          "height": 20,
+          "right": 353,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 274.859375,
+            "y": 123,
+            "right": 343,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c1-pattern-change",
+    "mode": "whole",
+    "clock": 1778182200000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 344,
+      "height": 582,
+      "right": 364,
+      "bottom": 687
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 384,
+      "height": 1638,
+      "right": 384,
+      "bottom": 1723
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 637,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 153.828125,
+          "height": 16,
+          "right": 193.828125,
+          "bottom": 138
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 193.828125,
+            "bottom": 138
+          }
+        ]
+      },
+      {
+        "text": "Strong read",
+        "fontSize": 12,
+        "rect": {
+          "x": 258.859375,
+          "y": 122,
+          "width": 88.140625,
+          "height": 20,
+          "right": 347,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 268.859375,
+            "y": 123,
+            "right": 337,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "desktop",
+    "clock": 1774811700000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 468,
+      "y": 205,
+      "width": 344,
+      "height": 536,
+      "right": 812,
+      "bottom": 741
+    },
+    "main": {
+      "x": 448,
+      "y": 185,
+      "width": 384,
+      "height": 638,
+      "right": 832,
+      "bottom": 823
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 691,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 488,
+          "y": 222,
+          "width": 153.828125,
+          "height": 16,
+          "right": 641.828125,
+          "bottom": 238
+        },
+        "ranges": [
+          {
+            "x": 506,
+            "y": 221,
+            "right": 641.828125,
+            "bottom": 238
+          }
+        ]
+      },
+      {
+        "text": "Strong read",
+        "fontSize": 12,
+        "rect": {
+          "x": 706.859375,
+          "y": 222,
+          "width": 88.140625,
+          "height": 20,
+          "right": 795,
+          "bottom": 242
+        },
+        "ranges": [
+          {
+            "x": 716.859375,
+            "y": 223,
+            "right": 785,
+            "bottom": 240
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "mobile",
+    "clock": 1774811700000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 516,
+      "right": 370,
+      "bottom": 621
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 571,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 153.828125,
+          "height": 16,
+          "right": 193.828125,
+          "bottom": 138
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 193.828125,
+            "bottom": 138
+          }
+        ]
+      },
+      {
+        "text": "Strong read",
+        "fontSize": 12,
+        "rect": {
+          "x": 264.859375,
+          "y": 122,
+          "width": 88.140625,
+          "height": 20,
+          "right": 353,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 274.859375,
+            "y": 123,
+            "right": 343,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "narrow",
+    "clock": 1774811700000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 280,
+      "height": 612,
+      "right": 300,
+      "bottom": 717
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 320,
+      "height": 682,
+      "right": 320,
+      "bottom": 767
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 667,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 142.859375,
+          "height": 32,
+          "right": 182.859375,
+          "bottom": 154
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 154.65625,
+            "bottom": 138
+          },
+          {
+            "x": 40,
+            "y": 137,
+            "right": 76.5625,
+            "bottom": 154
+          }
+        ]
+      },
+      {
+        "text": "Strong read",
+        "fontSize": 12,
+        "rect": {
+          "x": 194.859375,
+          "y": 122,
+          "width": 88.140625,
+          "height": 20,
+          "right": 283,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 204.859375,
+            "y": 123,
+            "right": 273,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "text200",
+    "clock": 1774811700000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 310,
+      "height": 2454.609375,
+      "right": 350,
+      "bottom": 2663.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 390,
+      "height": 522,
+      "right": 390,
+      "bottom": 691
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 28,
+    "bodyLimitationLineHeight": 40,
+    "limitationBottom": 2523.609375,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 24,
+        "rect": {
+          "x": 76,
+          "y": 242,
+          "width": 76.265625,
+          "height": 160.609375,
+          "right": 152.265625,
+          "bottom": 402.609375
+        },
+        "ranges": [
+          {
+            "x": 76,
+            "y": 273.609375,
+            "right": 139.515625,
+            "bottom": 307.609375
+          },
+          {
+            "x": 76,
+            "y": 305.609375,
+            "right": 119.046875,
+            "bottom": 339.609375
+          },
+          {
+            "x": 76,
+            "y": 337.609375,
+            "right": 152.265625,
+            "bottom": 371.609375
+          },
+          {
+            "x": 76,
+            "y": 369.609375,
+            "right": 149.109375,
+            "bottom": 403.609375
+          }
+        ]
+      },
+      {
+        "text": "Strong read",
+        "fontSize": 24,
+        "rect": {
+          "x": 176.265625,
+          "y": 242,
+          "width": 176.265625,
+          "height": 40,
+          "right": 352.53125,
+          "bottom": 282
+        },
+        "ranges": [
+          {
+            "x": 196.265625,
+            "y": 245,
+            "right": 332.53125,
+            "bottom": 279
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": true,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "combined",
+    "clock": 1774811700000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 240,
+      "height": 3278.609375,
+      "right": 280,
+      "bottom": 3487.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 320,
+      "height": 522,
+      "right": 320,
+      "bottom": 691
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 28,
+    "bodyLimitationLineHeight": 40,
+    "limitationBottom": 3267.609375,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 24,
+        "rect": {
+          "x": 76,
+          "y": 242,
+          "width": 76.265625,
+          "height": 160.609375,
+          "right": 152.265625,
+          "bottom": 402.609375
+        },
+        "ranges": [
+          {
+            "x": 76,
+            "y": 273.609375,
+            "right": 139.515625,
+            "bottom": 307.609375
+          },
+          {
+            "x": 76,
+            "y": 305.609375,
+            "right": 119.046875,
+            "bottom": 339.609375
+          },
+          {
+            "x": 76,
+            "y": 337.609375,
+            "right": 152.265625,
+            "bottom": 371.609375
+          },
+          {
+            "x": 76,
+            "y": 369.609375,
+            "right": 149.109375,
+            "bottom": 403.609375
+          }
+        ]
+      },
+      {
+        "text": "Strong read",
+        "fontSize": 24,
+        "rect": {
+          "x": 176.265625,
+          "y": 242,
+          "width": 176.265625,
+          "height": 40,
+          "right": 352.53125,
+          "bottom": 282
+        },
+        "ranges": [
+          {
+            "x": 196.265625,
+            "y": 245,
+            "right": 332.53125,
+            "bottom": 279
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": true,
+    "textOutsideViewport": [
+      "Strong read"
+    ]
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "dark",
+    "clock": 1774811700000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 516,
+      "right": 370,
+      "bottom": 621
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 571,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 153.828125,
+          "height": 16,
+          "right": 193.828125,
+          "bottom": 138
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 193.828125,
+            "bottom": 138
+          }
+        ]
+      },
+      {
+        "text": "Strong read",
+        "fontSize": 12,
+        "rect": {
+          "x": 264.859375,
+          "y": 122,
+          "width": 88.140625,
+          "height": 20,
+          "right": 353,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 274.859375,
+            "y": 123,
+            "right": 343,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c2-carried-balanced",
+    "mode": "whole",
+    "clock": 1774811700000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 344,
+      "height": 536,
+      "right": 364,
+      "bottom": 641
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 384,
+      "height": 1638,
+      "right": 384,
+      "bottom": 1723
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 591,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 153.828125,
+          "height": 16,
+          "right": 193.828125,
+          "bottom": 138
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 193.828125,
+            "bottom": 138
+          }
+        ]
+      },
+      {
+        "text": "Strong read",
+        "fontSize": 12,
+        "rect": {
+          "x": 258.859375,
+          "y": 122,
+          "width": 88.140625,
+          "height": 20,
+          "right": 347,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 268.859375,
+            "y": 123,
+            "right": 337,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "desktop",
+    "clock": 1774811700000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 468,
+      "y": 205,
+      "width": 344,
+      "height": 560,
+      "right": 812,
+      "bottom": 765
+    },
+    "main": {
+      "x": 448,
+      "y": 185,
+      "width": 384,
+      "height": 638,
+      "right": 832,
+      "bottom": 823
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 715,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 488,
+          "y": 222,
+          "width": 153.828125,
+          "height": 16,
+          "right": 641.828125,
+          "bottom": 238
+        },
+        "ranges": [
+          {
+            "x": 506,
+            "y": 221,
+            "right": 641.828125,
+            "bottom": 238
+          }
+        ]
+      },
+      {
+        "text": "Useful read",
+        "fontSize": 12,
+        "rect": {
+          "x": 709.375,
+          "y": 222,
+          "width": 85.625,
+          "height": 20,
+          "right": 795,
+          "bottom": 242
+        },
+        "ranges": [
+          {
+            "x": 719.375,
+            "y": 223,
+            "right": 785,
+            "bottom": 240
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "mobile",
+    "clock": 1774811700000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 540,
+      "right": 370,
+      "bottom": 645
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 595,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 153.828125,
+          "height": 16,
+          "right": 193.828125,
+          "bottom": 138
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 193.828125,
+            "bottom": 138
+          }
+        ]
+      },
+      {
+        "text": "Useful read",
+        "fontSize": 12,
+        "rect": {
+          "x": 267.375,
+          "y": 122,
+          "width": 85.625,
+          "height": 20,
+          "right": 353,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 277.375,
+            "y": 123,
+            "right": 343,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "narrow",
+    "clock": 1774811700000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 280,
+      "height": 660,
+      "right": 300,
+      "bottom": 765
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 320,
+      "height": 682,
+      "right": 320,
+      "bottom": 767
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 715,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 145.375,
+          "height": 32,
+          "right": 185.375,
+          "bottom": 154
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 154.65625,
+            "bottom": 138
+          },
+          {
+            "x": 40,
+            "y": 137,
+            "right": 76.5625,
+            "bottom": 154
+          }
+        ]
+      },
+      {
+        "text": "Useful read",
+        "fontSize": 12,
+        "rect": {
+          "x": 197.375,
+          "y": 122,
+          "width": 85.625,
+          "height": 20,
+          "right": 283,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 207.375,
+            "y": 123,
+            "right": 273,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "text200",
+    "clock": 1774811700000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 310,
+      "height": 2502.609375,
+      "right": 350,
+      "bottom": 2711.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 390,
+      "height": 522,
+      "right": 390,
+      "bottom": 691
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 28,
+    "bodyLimitationLineHeight": 40,
+    "limitationBottom": 2571.609375,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 24,
+        "rect": {
+          "x": 76,
+          "y": 242,
+          "width": 76.265625,
+          "height": 160.609375,
+          "right": 152.265625,
+          "bottom": 402.609375
+        },
+        "ranges": [
+          {
+            "x": 76,
+            "y": 273.609375,
+            "right": 139.515625,
+            "bottom": 307.609375
+          },
+          {
+            "x": 76,
+            "y": 305.609375,
+            "right": 119.046875,
+            "bottom": 339.609375
+          },
+          {
+            "x": 76,
+            "y": 337.609375,
+            "right": 152.265625,
+            "bottom": 371.609375
+          },
+          {
+            "x": 76,
+            "y": 369.609375,
+            "right": 149.109375,
+            "bottom": 403.609375
+          }
+        ]
+      },
+      {
+        "text": "Useful read",
+        "fontSize": 24,
+        "rect": {
+          "x": 176.265625,
+          "y": 242,
+          "width": 171.25,
+          "height": 40,
+          "right": 347.515625,
+          "bottom": 282
+        },
+        "ranges": [
+          {
+            "x": 196.265625,
+            "y": 245,
+            "right": 327.515625,
+            "bottom": 279
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": true,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "combined",
+    "clock": 1774811700000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 240,
+      "height": 3462.609375,
+      "right": 280,
+      "bottom": 3671.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 320,
+      "height": 522,
+      "right": 320,
+      "bottom": 691
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 28,
+    "bodyLimitationLineHeight": 40,
+    "limitationBottom": 3451.609375,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 24,
+        "rect": {
+          "x": 76,
+          "y": 242,
+          "width": 76.265625,
+          "height": 160.609375,
+          "right": 152.265625,
+          "bottom": 402.609375
+        },
+        "ranges": [
+          {
+            "x": 76,
+            "y": 273.609375,
+            "right": 139.515625,
+            "bottom": 307.609375
+          },
+          {
+            "x": 76,
+            "y": 305.609375,
+            "right": 119.046875,
+            "bottom": 339.609375
+          },
+          {
+            "x": 76,
+            "y": 337.609375,
+            "right": 152.265625,
+            "bottom": 371.609375
+          },
+          {
+            "x": 76,
+            "y": 369.609375,
+            "right": 149.109375,
+            "bottom": 403.609375
+          }
+        ]
+      },
+      {
+        "text": "Useful read",
+        "fontSize": 24,
+        "rect": {
+          "x": 176.265625,
+          "y": 242,
+          "width": 171.25,
+          "height": 40,
+          "right": 347.515625,
+          "bottom": 282
+        },
+        "ranges": [
+          {
+            "x": 196.265625,
+            "y": 245,
+            "right": 327.515625,
+            "bottom": 279
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": true,
+    "textOutsideViewport": [
+      "Useful read"
+    ]
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "dark",
+    "clock": 1774811700000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 540,
+      "right": 370,
+      "bottom": 645
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 595,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 153.828125,
+          "height": 16,
+          "right": 193.828125,
+          "bottom": 138
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 193.828125,
+            "bottom": 138
+          }
+        ]
+      },
+      {
+        "text": "Useful read",
+        "fontSize": 12,
+        "rect": {
+          "x": 267.375,
+          "y": 122,
+          "width": 85.625,
+          "height": 20,
+          "right": 353,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 277.375,
+            "y": 123,
+            "right": 343,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c3-carried-mixed",
+    "mode": "whole",
+    "clock": 1774811700000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 344,
+      "height": 560,
+      "right": 364,
+      "bottom": 665
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 384,
+      "height": 1638,
+      "right": 384,
+      "bottom": 1723
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 615,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 153.828125,
+          "height": 16,
+          "right": 193.828125,
+          "bottom": 138
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 193.828125,
+            "bottom": 138
+          }
+        ]
+      },
+      {
+        "text": "Useful read",
+        "fontSize": 12,
+        "rect": {
+          "x": 261.375,
+          "y": 122,
+          "width": 85.625,
+          "height": 20,
+          "right": 347,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 271.375,
+            "y": 123,
+            "right": 337,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "desktop",
+    "clock": 1776104100000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 468,
+      "y": 205,
+      "width": 344,
+      "height": 696,
+      "right": 812,
+      "bottom": 901
+    },
+    "main": {
+      "x": 448,
+      "y": 185,
+      "width": 384,
+      "height": 638,
+      "right": 832,
+      "bottom": 823
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 851,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 488,
+          "y": 222,
+          "width": 153.828125,
+          "height": 16,
+          "right": 641.828125,
+          "bottom": 238
+        },
+        "ranges": [
+          {
+            "x": 506,
+            "y": 221,
+            "right": 641.828125,
+            "bottom": 238
+          }
+        ]
+      },
+      {
+        "text": "Useful read",
+        "fontSize": 12,
+        "rect": {
+          "x": 709.375,
+          "y": 222,
+          "width": 85.625,
+          "height": 20,
+          "right": 795,
+          "bottom": 242
+        },
+        "ranges": [
+          {
+            "x": 719.375,
+            "y": 223,
+            "right": 785,
+            "bottom": 240
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "mobile",
+    "clock": 1776104100000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 696,
+      "right": 370,
+      "bottom": 801
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 751,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 153.828125,
+          "height": 16,
+          "right": 193.828125,
+          "bottom": 138
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 193.828125,
+            "bottom": 138
+          }
+        ]
+      },
+      {
+        "text": "Useful read",
+        "fontSize": 12,
+        "rect": {
+          "x": 267.375,
+          "y": 122,
+          "width": 85.625,
+          "height": 20,
+          "right": 353,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 277.375,
+            "y": 123,
+            "right": 343,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "narrow",
+    "clock": 1776104100000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 280,
+      "height": 872,
+      "right": 300,
+      "bottom": 977
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 320,
+      "height": 682,
+      "right": 320,
+      "bottom": 767
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 927,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 145.375,
+          "height": 32,
+          "right": 185.375,
+          "bottom": 154
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 154.65625,
+            "bottom": 138
+          },
+          {
+            "x": 40,
+            "y": 137,
+            "right": 76.5625,
+            "bottom": 154
+          }
+        ]
+      },
+      {
+        "text": "Useful read",
+        "fontSize": 12,
+        "rect": {
+          "x": 197.375,
+          "y": 122,
+          "width": 85.625,
+          "height": 20,
+          "right": 283,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 207.375,
+            "y": 123,
+            "right": 273,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "text200",
+    "clock": 1776104100000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 310,
+      "height": 3422.609375,
+      "right": 350,
+      "bottom": 3631.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 390,
+      "height": 522,
+      "right": 390,
+      "bottom": 691
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 28,
+    "bodyLimitationLineHeight": 40,
+    "limitationBottom": 3451.609375,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 24,
+        "rect": {
+          "x": 76,
+          "y": 242,
+          "width": 76.265625,
+          "height": 160.609375,
+          "right": 152.265625,
+          "bottom": 402.609375
+        },
+        "ranges": [
+          {
+            "x": 76,
+            "y": 273.609375,
+            "right": 139.515625,
+            "bottom": 307.609375
+          },
+          {
+            "x": 76,
+            "y": 305.609375,
+            "right": 119.046875,
+            "bottom": 339.609375
+          },
+          {
+            "x": 76,
+            "y": 337.609375,
+            "right": 152.265625,
+            "bottom": 371.609375
+          },
+          {
+            "x": 76,
+            "y": 369.609375,
+            "right": 149.109375,
+            "bottom": 403.609375
+          }
+        ]
+      },
+      {
+        "text": "Useful read",
+        "fontSize": 24,
+        "rect": {
+          "x": 176.265625,
+          "y": 242,
+          "width": 171.25,
+          "height": 40,
+          "right": 347.515625,
+          "bottom": 282
+        },
+        "ranges": [
+          {
+            "x": 196.265625,
+            "y": 245,
+            "right": 327.515625,
+            "bottom": 279
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": true,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "combined",
+    "clock": 1776104100000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 240,
+      "height": 4846.609375,
+      "right": 280,
+      "bottom": 5055.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 320,
+      "height": 522,
+      "right": 320,
+      "bottom": 691
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 28,
+    "bodyLimitationLineHeight": 40,
+    "limitationBottom": 4835.609375,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 24,
+        "rect": {
+          "x": 76,
+          "y": 242,
+          "width": 76.265625,
+          "height": 160.609375,
+          "right": 152.265625,
+          "bottom": 402.609375
+        },
+        "ranges": [
+          {
+            "x": 76,
+            "y": 273.609375,
+            "right": 139.515625,
+            "bottom": 307.609375
+          },
+          {
+            "x": 76,
+            "y": 305.609375,
+            "right": 119.046875,
+            "bottom": 339.609375
+          },
+          {
+            "x": 76,
+            "y": 337.609375,
+            "right": 152.265625,
+            "bottom": 371.609375
+          },
+          {
+            "x": 76,
+            "y": 369.609375,
+            "right": 149.109375,
+            "bottom": 403.609375
+          }
+        ]
+      },
+      {
+        "text": "Useful read",
+        "fontSize": 24,
+        "rect": {
+          "x": 176.265625,
+          "y": 242,
+          "width": 171.25,
+          "height": 40,
+          "right": 347.515625,
+          "bottom": 282
+        },
+        "ranges": [
+          {
+            "x": 196.265625,
+            "y": 245,
+            "right": 327.515625,
+            "bottom": 279
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": true,
+    "textOutsideViewport": [
+      "Useful read"
+    ]
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "dark",
+    "clock": 1776104100000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 696,
+      "right": 370,
+      "bottom": 801
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 751,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 153.828125,
+          "height": 16,
+          "right": 193.828125,
+          "bottom": 138
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 193.828125,
+            "bottom": 138
+          }
+        ]
+      },
+      {
+        "text": "Useful read",
+        "fontSize": 12,
+        "rect": {
+          "x": 267.375,
+          "y": 122,
+          "width": 85.625,
+          "height": 20,
+          "right": 353,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 277.375,
+            "y": 123,
+            "right": 343,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c4-unusual-silence",
+    "mode": "whole",
+    "clock": 1776104100000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 344,
+      "height": 696,
+      "right": 364,
+      "bottom": 801
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 384,
+      "height": 1638,
+      "right": 384,
+      "bottom": 1723
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 751,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 153.828125,
+          "height": 16,
+          "right": 193.828125,
+          "bottom": 138
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 193.828125,
+            "bottom": 138
+          }
+        ]
+      },
+      {
+        "text": "Useful read",
+        "fontSize": 12,
+        "rect": {
+          "x": 261.375,
+          "y": 122,
+          "width": 85.625,
+          "height": 20,
+          "right": 347,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 271.375,
+            "y": 123,
+            "right": 337,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "desktop",
+    "clock": 1783159500000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 468,
+      "y": 205,
+      "width": 344,
+      "height": 544,
+      "right": 812,
+      "bottom": 749
+    },
+    "main": {
+      "x": 448,
+      "y": 185,
+      "width": 384,
+      "height": 638,
+      "right": 832,
+      "bottom": 823
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 699,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 488,
+          "y": 222,
+          "width": 153.828125,
+          "height": 16,
+          "right": 641.828125,
+          "bottom": 238
+        },
+        "ranges": [
+          {
+            "x": 506,
+            "y": 221,
+            "right": 641.828125,
+            "bottom": 238
+          }
+        ]
+      },
+      {
+        "text": "Light read",
+        "fontSize": 12,
+        "rect": {
+          "x": 716.8125,
+          "y": 222,
+          "width": 78.1875,
+          "height": 20,
+          "right": 795,
+          "bottom": 242
+        },
+        "ranges": [
+          {
+            "x": 726.8125,
+            "y": 223,
+            "right": 785,
+            "bottom": 240
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "mobile",
+    "clock": 1783159500000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 544,
+      "right": 370,
+      "bottom": 649
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 599,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 153.828125,
+          "height": 16,
+          "right": 193.828125,
+          "bottom": 138
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 193.828125,
+            "bottom": 138
+          }
+        ]
+      },
+      {
+        "text": "Light read",
+        "fontSize": 12,
+        "rect": {
+          "x": 274.8125,
+          "y": 122,
+          "width": 78.1875,
+          "height": 20,
+          "right": 353,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 284.8125,
+            "y": 123,
+            "right": 343,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "narrow",
+    "clock": 1783159500000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 280,
+      "height": 680,
+      "right": 300,
+      "bottom": 785
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 320,
+      "height": 682,
+      "right": 320,
+      "bottom": 767
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 715,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 152.8125,
+          "height": 32,
+          "right": 192.8125,
+          "bottom": 154
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 154.65625,
+            "bottom": 138
+          },
+          {
+            "x": 40,
+            "y": 137,
+            "right": 76.5625,
+            "bottom": 154
+          }
+        ]
+      },
+      {
+        "text": "Light read",
+        "fontSize": 12,
+        "rect": {
+          "x": 204.8125,
+          "y": 122,
+          "width": 78.1875,
+          "height": 20,
+          "right": 283,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 214.8125,
+            "y": 123,
+            "right": 273,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "text200",
+    "clock": 1783159500000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 310,
+      "height": 2558.609375,
+      "right": 350,
+      "bottom": 2767.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 390,
+      "height": 522,
+      "right": 390,
+      "bottom": 691
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 28,
+    "bodyLimitationLineHeight": 40,
+    "limitationBottom": 2587.609375,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 24,
+        "rect": {
+          "x": 76,
+          "y": 242,
+          "width": 76.265625,
+          "height": 160.609375,
+          "right": 152.265625,
+          "bottom": 402.609375
+        },
+        "ranges": [
+          {
+            "x": 76,
+            "y": 273.609375,
+            "right": 139.515625,
+            "bottom": 307.609375
+          },
+          {
+            "x": 76,
+            "y": 305.609375,
+            "right": 119.046875,
+            "bottom": 339.609375
+          },
+          {
+            "x": 76,
+            "y": 337.609375,
+            "right": 152.265625,
+            "bottom": 371.609375
+          },
+          {
+            "x": 76,
+            "y": 369.609375,
+            "right": 149.109375,
+            "bottom": 403.609375
+          }
+        ]
+      },
+      {
+        "text": "Light read",
+        "fontSize": 24,
+        "rect": {
+          "x": 176.265625,
+          "y": 242,
+          "width": 156.359375,
+          "height": 40,
+          "right": 332.625,
+          "bottom": 282
+        },
+        "ranges": [
+          {
+            "x": 196.265625,
+            "y": 245,
+            "right": 312.625,
+            "bottom": 279
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": true,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "combined",
+    "clock": 1783159500000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 40,
+      "y": 209,
+      "width": 240,
+      "height": 3454.609375,
+      "right": 280,
+      "bottom": 3663.609375
+    },
+    "main": {
+      "x": 0,
+      "y": 169,
+      "width": 320,
+      "height": 522,
+      "right": 320,
+      "bottom": 691
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 28,
+    "bodyLimitationLineHeight": 40,
+    "limitationBottom": 3403.609375,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 24,
+        "rect": {
+          "x": 76,
+          "y": 242,
+          "width": 76.265625,
+          "height": 160.609375,
+          "right": 152.265625,
+          "bottom": 402.609375
+        },
+        "ranges": [
+          {
+            "x": 76,
+            "y": 273.609375,
+            "right": 139.515625,
+            "bottom": 307.609375
+          },
+          {
+            "x": 76,
+            "y": 305.609375,
+            "right": 119.046875,
+            "bottom": 339.609375
+          },
+          {
+            "x": 76,
+            "y": 337.609375,
+            "right": 152.265625,
+            "bottom": 371.609375
+          },
+          {
+            "x": 76,
+            "y": 369.609375,
+            "right": 149.109375,
+            "bottom": 403.609375
+          }
+        ]
+      },
+      {
+        "text": "Light read",
+        "fontSize": 24,
+        "rect": {
+          "x": 176.265625,
+          "y": 242,
+          "width": 156.359375,
+          "height": 40,
+          "right": 332.625,
+          "bottom": 282
+        },
+        "ranges": [
+          {
+            "x": 196.265625,
+            "y": 245,
+            "right": 312.625,
+            "bottom": 279
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": true,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "dark",
+    "clock": 1783159500000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 350,
+      "height": 544,
+      "right": 370,
+      "bottom": 649
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 390,
+      "height": 682,
+      "right": 390,
+      "bottom": 767
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 599,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 153.828125,
+          "height": 16,
+          "right": 193.828125,
+          "bottom": 138
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 193.828125,
+            "bottom": 138
+          }
+        ]
+      },
+      {
+        "text": "Light read",
+        "fontSize": 12,
+        "rect": {
+          "x": 274.8125,
+          "y": 122,
+          "width": 78.1875,
+          "height": 20,
+          "right": 353,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 284.8125,
+            "y": 123,
+            "right": 343,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  },
+  {
+    "id": "s8a-v1-c5-insufficient",
+    "mode": "whole",
+    "clock": 1783159500000,
+    "textEqual": true,
+    "href": "#narrative-heading",
+    "card": {
+      "x": 20,
+      "y": 105,
+      "width": 344,
+      "height": 544,
+      "right": 364,
+      "bottom": 649
+    },
+    "main": {
+      "x": 0,
+      "y": 85,
+      "width": 384,
+      "height": 1638,
+      "right": 384,
+      "bottom": 1723
+    },
+    "minimumContrast": 7.577663953533317,
+    "bodyLimitationSize": 14,
+    "bodyLimitationLineHeight": 20,
+    "limitationBottom": 599,
+    "headerTextBounds": [
+      {
+        "text": "What this export shows",
+        "fontSize": 12,
+        "rect": {
+          "x": 40,
+          "y": 122,
+          "width": 153.828125,
+          "height": 16,
+          "right": 193.828125,
+          "bottom": 138
+        },
+        "ranges": [
+          {
+            "x": 58,
+            "y": 121,
+            "right": 193.828125,
+            "bottom": 138
+          }
+        ]
+      },
+      {
+        "text": "Light read",
+        "fontSize": 12,
+        "rect": {
+          "x": 268.8125,
+          "y": 122,
+          "width": 78.1875,
+          "height": 20,
+          "right": 347,
+          "bottom": 142
+        },
+        "ranges": [
+          {
+            "x": 278.8125,
+            "y": 123,
+            "right": 337,
+            "bottom": 140
+          }
+        ]
+      }
+    ],
+    "everyFontExactlyDoubled": null,
+    "textOutsideViewport": []
+  }
+]

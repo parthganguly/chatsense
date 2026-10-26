@@ -1,0 +1,4486 @@
+{
+ "phase": "before",
+ "browser": "chromium 149.0.7827.55",
+ "results": {
+  "s8a-v1-c1-pattern-change.desktop-1280x1000": {
+   "box": {
+    "x": 468,
+    "y": 205,
+    "width": 344,
+    "height": 520
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 823,
+    "cardBottom": 725,
+    "limitationBottom": 682,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(226, 232, 240)",
+    "top": "1px rgb(226, 232, 240)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Strong read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The pattern in this chat measurably changed.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Ravi's typical reply slowed from 5 minutes to 1.",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Typical reply time (Ravi): 5 minutes in 2026-04-",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Typical reply time (Asha): 1.9 hours in 2026-04-",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Measured from the export's last message on May 7",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "A measured change describes timing and volume be",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the Changes tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c1-pattern-change.mobile-390x844": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 350,
+    "height": 520
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 767,
+    "cardBottom": 625,
+    "limitationBottom": 582,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(226, 232, 240)",
+    "top": "1px rgb(226, 232, 240)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Strong read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The pattern in this chat measurably changed.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Ravi's typical reply slowed from 5 minutes to 1.",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Typical reply time (Ravi): 5 minutes in 2026-04-",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Typical reply time (Asha): 1.9 hours in 2026-04-",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Measured from the export's last message on May 7",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "A measured change describes timing and volume be",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the Changes tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c1-pattern-change.card-390": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 350,
+    "height": 520
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 767,
+    "cardBottom": 625,
+    "limitationBottom": 582,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(226, 232, 240)",
+    "top": "1px rgb(226, 232, 240)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Strong read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The pattern in this chat measurably changed.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Ravi's typical reply slowed from 5 minutes to 1.",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Typical reply time (Ravi): 5 minutes in 2026-04-",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Typical reply time (Asha): 1.9 hours in 2026-04-",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Measured from the export's last message on May 7",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "A measured change describes timing and volume be",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the Changes tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c1-pattern-change.reflow-320": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 280,
+    "height": 595.5
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 563,
+    "cardBottom": 700.5,
+    "limitationBottom": 657.5,
+    "cardWhollyVisible": false,
+    "limitationWhollyVisible": false
+   },
+   "border": {
+    "left": "4px rgb(226, 232, 240)",
+    "top": "1px rgb(226, 232, 240)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Strong read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The pattern in this chat measurably changed.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Ravi's typical reply slowed from 5 minutes to 1.",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Typical reply time (Ravi): 5 minutes in 2026-04-",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Typical reply time (Asha): 1.9 hours in 2026-04-",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Measured from the export's last message on May 7",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "A measured change describes timing and volume be",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the Changes tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c1-pattern-change.text200-390": {
+   "box": {
+    "x": 40,
+    "y": 209,
+    "width": 310,
+    "height": 2133.109375
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 691,
+    "cardBottom": 2342.109375,
+    "limitationBottom": 2224.109375,
+    "cardWhollyVisible": false,
+    "limitationWhollyVisible": false
+   },
+   "border": {
+    "left": "4px rgb(226, 232, 240)",
+    "top": "1px rgb(226, 232, 240)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 24,
+     "lineHeightPx": 32,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Strong read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The pattern in this chat measurably changed.",
+     "tag": "h1",
+     "fontSizePx": 40,
+     "lineHeightPx": 56,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Ravi's typical reply slowed from 5 minutes to 1.",
+     "tag": "p",
+     "fontSizePx": 28,
+     "lineHeightPx": 48,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Typical reply time (Ravi): 5 minutes in 2026-04-",
+     "tag": "span",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Typical reply time (Asha): 1.9 hours in 2026-04-",
+     "tag": "span",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Measured from the export's last message on May 7",
+     "tag": "p",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "A measured change describes timing and volume be",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 32,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the Changes tab",
+     "tag": "a",
+     "fontSizePx": 24,
+     "lineHeightPx": 32,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c1-pattern-change.zoom200-equiv-640": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 600,
+    "height": 392
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 423,
+    "cardBottom": 497,
+    "limitationBottom": 454,
+    "cardWhollyVisible": false,
+    "limitationWhollyVisible": false
+   },
+   "border": {
+    "left": "4px rgb(226, 232, 240)",
+    "top": "1px rgb(226, 232, 240)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Strong read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The pattern in this chat measurably changed.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Ravi's typical reply slowed from 5 minutes to 1.",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Typical reply time (Ravi): 5 minutes in 2026-04-",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Typical reply time (Asha): 1.9 hours in 2026-04-",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Measured from the export's last message on May 7",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "A measured change describes timing and volume be",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the Changes tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c1-pattern-change.dark-pref-390": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 350,
+    "height": 520
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 767,
+    "cardBottom": 625,
+    "limitationBottom": 582,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(226, 232, 240)",
+    "top": "1px rgb(226, 232, 240)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Strong read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The pattern in this chat measurably changed.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Ravi's typical reply slowed from 5 minutes to 1.",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Typical reply time (Ravi): 5 minutes in 2026-04-",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Typical reply time (Asha): 1.9 hours in 2026-04-",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Measured from the export's last message on May 7",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "A measured change describes timing and volume be",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the Changes tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c2-carried-balanced.desktop-1280x1000": {
+   "box": {
+    "x": 468,
+    "y": 205,
+    "width": 344,
+    "height": 490
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 823,
+    "cardBottom": 695,
+    "limitationBottom": 652,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(124, 58, 237)",
+    "top": "1px rgb(124, 58, 237)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Strong read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "Keeping this chat going has been shared.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Across 4 measures — conversation starts, restart",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Conversation starts: 76 by Ravi, 76 by Asha (152",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Restarts after day-plus pauses: 4 by Ravi, 4 by ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Following up before a reply: 0% of Ravi's releva",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Starting and restarting are counts of who happen",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the People tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c2-carried-balanced.mobile-390x844": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 350,
+    "height": 454
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 767,
+    "cardBottom": 559,
+    "limitationBottom": 516,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(124, 58, 237)",
+    "top": "1px rgb(124, 58, 237)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Strong read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "Keeping this chat going has been shared.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Across 4 measures — conversation starts, restart",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Conversation starts: 76 by Ravi, 76 by Asha (152",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Restarts after day-plus pauses: 4 by Ravi, 4 by ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Following up before a reply: 0% of Ravi's releva",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Starting and restarting are counts of who happen",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the People tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c2-carried-balanced.card-390": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 350,
+    "height": 454
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 767,
+    "cardBottom": 559,
+    "limitationBottom": 516,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(124, 58, 237)",
+    "top": "1px rgb(124, 58, 237)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Strong read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "Keeping this chat going has been shared.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Across 4 measures — conversation starts, restart",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Conversation starts: 76 by Ravi, 76 by Asha (152",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Restarts after day-plus pauses: 4 by Ravi, 4 by ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Following up before a reply: 0% of Ravi's releva",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Starting and restarting are counts of who happen",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the People tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c2-carried-balanced.reflow-320": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 280,
+    "height": 561.5
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 563,
+    "cardBottom": 666.5,
+    "limitationBottom": 623.5,
+    "cardWhollyVisible": false,
+    "limitationWhollyVisible": false
+   },
+   "border": {
+    "left": "4px rgb(124, 58, 237)",
+    "top": "1px rgb(124, 58, 237)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Strong read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "Keeping this chat going has been shared.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Across 4 measures — conversation starts, restart",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Conversation starts: 76 by Ravi, 76 by Asha (152",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Restarts after day-plus pauses: 4 by Ravi, 4 by ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Following up before a reply: 0% of Ravi's releva",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Starting and restarting are counts of who happen",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the People tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c2-carried-balanced.text200-390": {
+   "box": {
+    "x": 40,
+    "y": 209,
+    "width": 310,
+    "height": 1945.109375
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 691,
+    "cardBottom": 2154.109375,
+    "limitationBottom": 2036.109375,
+    "cardWhollyVisible": false,
+    "limitationWhollyVisible": false
+   },
+   "border": {
+    "left": "4px rgb(124, 58, 237)",
+    "top": "1px rgb(124, 58, 237)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 24,
+     "lineHeightPx": 32,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Strong read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "Keeping this chat going has been shared.",
+     "tag": "h1",
+     "fontSizePx": 40,
+     "lineHeightPx": 56,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Across 4 measures — conversation starts, restart",
+     "tag": "p",
+     "fontSizePx": 28,
+     "lineHeightPx": 48,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Conversation starts: 76 by Ravi, 76 by Asha (152",
+     "tag": "span",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Restarts after day-plus pauses: 4 by Ravi, 4 by ",
+     "tag": "span",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Following up before a reply: 0% of Ravi's releva",
+     "tag": "span",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Starting and restarting are counts of who happen",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 32,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the People tab",
+     "tag": "a",
+     "fontSizePx": 24,
+     "lineHeightPx": 32,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c2-carried-balanced.zoom200-equiv-640": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 600,
+    "height": 322
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 423,
+    "cardBottom": 427,
+    "limitationBottom": 384,
+    "cardWhollyVisible": false,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(124, 58, 237)",
+    "top": "1px rgb(124, 58, 237)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Strong read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "Keeping this chat going has been shared.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Across 4 measures — conversation starts, restart",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Conversation starts: 76 by Ravi, 76 by Asha (152",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Restarts after day-plus pauses: 4 by Ravi, 4 by ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Following up before a reply: 0% of Ravi's releva",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Starting and restarting are counts of who happen",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the People tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c2-carried-balanced.dark-pref-390": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 350,
+    "height": 454
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 767,
+    "cardBottom": 559,
+    "limitationBottom": 516,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(124, 58, 237)",
+    "top": "1px rgb(124, 58, 237)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Strong read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "Keeping this chat going has been shared.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Across 4 measures — conversation starts, restart",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Conversation starts: 76 by Ravi, 76 by Asha (152",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Restarts after day-plus pauses: 4 by Ravi, 4 by ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Following up before a reply: 0% of Ravi's releva",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Starting and restarting are counts of who happen",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the People tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c3-carried-mixed.desktop-1280x1000": {
+   "box": {
+    "x": 468,
+    "y": 205,
+    "width": 344,
+    "height": 514
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 823,
+    "cardBottom": 719,
+    "limitationBottom": 676,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(124, 58, 237)",
+    "top": "1px rgb(124, 58, 237)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Useful read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The keeping-in-touch picture is mixed.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Ravi started most conversations, while restarts ",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Conversation starts: 112 by Ravi, 40 by Asha (15",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Restarts after day-plus pauses: 4 by Ravi, 4 by ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Following up before a reply: 0% of Ravi's releva",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Starting and restarting are counts of who happen",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the People tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c3-carried-mixed.mobile-390x844": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 350,
+    "height": 498
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 767,
+    "cardBottom": 603,
+    "limitationBottom": 560,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(124, 58, 237)",
+    "top": "1px rgb(124, 58, 237)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Useful read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The keeping-in-touch picture is mixed.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Ravi started most conversations, while restarts ",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Conversation starts: 112 by Ravi, 40 by Asha (15",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Restarts after day-plus pauses: 4 by Ravi, 4 by ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Following up before a reply: 0% of Ravi's releva",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Starting and restarting are counts of who happen",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the People tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c3-carried-mixed.card-390": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 350,
+    "height": 498
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 767,
+    "cardBottom": 603,
+    "limitationBottom": 560,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(124, 58, 237)",
+    "top": "1px rgb(124, 58, 237)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Useful read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The keeping-in-touch picture is mixed.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Ravi started most conversations, while restarts ",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Conversation starts: 112 by Ravi, 40 by Asha (15",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Restarts after day-plus pauses: 4 by Ravi, 4 by ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Following up before a reply: 0% of Ravi's releva",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Starting and restarting are counts of who happen",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the People tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c3-carried-mixed.reflow-320": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 280,
+    "height": 609.5
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 563,
+    "cardBottom": 714.5,
+    "limitationBottom": 671.5,
+    "cardWhollyVisible": false,
+    "limitationWhollyVisible": false
+   },
+   "border": {
+    "left": "4px rgb(124, 58, 237)",
+    "top": "1px rgb(124, 58, 237)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Useful read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The keeping-in-touch picture is mixed.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Ravi started most conversations, while restarts ",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Conversation starts: 112 by Ravi, 40 by Asha (15",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Restarts after day-plus pauses: 4 by Ravi, 4 by ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Following up before a reply: 0% of Ravi's releva",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Starting and restarting are counts of who happen",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the People tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c3-carried-mixed.text200-390": {
+   "box": {
+    "x": 40,
+    "y": 209,
+    "width": 310,
+    "height": 1993.109375
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 691,
+    "cardBottom": 2202.109375,
+    "limitationBottom": 2084.109375,
+    "cardWhollyVisible": false,
+    "limitationWhollyVisible": false
+   },
+   "border": {
+    "left": "4px rgb(124, 58, 237)",
+    "top": "1px rgb(124, 58, 237)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 24,
+     "lineHeightPx": 32,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Useful read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The keeping-in-touch picture is mixed.",
+     "tag": "h1",
+     "fontSizePx": 40,
+     "lineHeightPx": 56,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Ravi started most conversations, while restarts ",
+     "tag": "p",
+     "fontSizePx": 28,
+     "lineHeightPx": 48,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Conversation starts: 112 by Ravi, 40 by Asha (15",
+     "tag": "span",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Restarts after day-plus pauses: 4 by Ravi, 4 by ",
+     "tag": "span",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Following up before a reply: 0% of Ravi's releva",
+     "tag": "span",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Starting and restarting are counts of who happen",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 32,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the People tab",
+     "tag": "a",
+     "fontSizePx": 24,
+     "lineHeightPx": 32,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c3-carried-mixed.zoom200-equiv-640": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 600,
+    "height": 346
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 423,
+    "cardBottom": 451,
+    "limitationBottom": 408,
+    "cardWhollyVisible": false,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(124, 58, 237)",
+    "top": "1px rgb(124, 58, 237)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Useful read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The keeping-in-touch picture is mixed.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Ravi started most conversations, while restarts ",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Conversation starts: 112 by Ravi, 40 by Asha (15",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Restarts after day-plus pauses: 4 by Ravi, 4 by ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Following up before a reply: 0% of Ravi's releva",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Starting and restarting are counts of who happen",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the People tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c3-carried-mixed.dark-pref-390": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 350,
+    "height": 498
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 767,
+    "cardBottom": 603,
+    "limitationBottom": 560,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(124, 58, 237)",
+    "top": "1px rgb(124, 58, 237)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Useful read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The keeping-in-touch picture is mixed.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Ravi started most conversations, while restarts ",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Conversation starts: 112 by Ravi, 40 by Asha (15",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Restarts after day-plus pauses: 4 by Ravi, 4 by ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Following up before a reply: 0% of Ravi's releva",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Starting and restarting are counts of who happen",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the People tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c4-unusual-silence.desktop-1280x1000": {
+   "box": {
+    "x": 468,
+    "y": 205,
+    "width": 344,
+    "height": 634
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 823,
+    "cardBottom": 839,
+    "limitationBottom": 796,
+    "cardWhollyVisible": false,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(226, 232, 240)",
+    "top": "1px rgb(226, 232, 240)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Useful read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The current quiet is long for this chat.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Counting from the export's last message, this qu",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "No messages appear after Mar 29, 2026 in this ex",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "All 10 earlier day-plus quiet stretches in this ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Earlier day-plus quiet stretches typically ran 2",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "After earlier day-plus pauses, this chat picked ",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Measured from the export's last message on Mar 2",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Longer than usual is a timing fact from this exp",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the Rhythm tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c4-unusual-silence.mobile-390x844": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 350,
+    "height": 634
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 767,
+    "cardBottom": 739,
+    "limitationBottom": 696,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(226, 232, 240)",
+    "top": "1px rgb(226, 232, 240)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Useful read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The current quiet is long for this chat.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Counting from the export's last message, this qu",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "No messages appear after Mar 29, 2026 in this ex",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "All 10 earlier day-plus quiet stretches in this ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Earlier day-plus quiet stretches typically ran 2",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "After earlier day-plus pauses, this chat picked ",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Measured from the export's last message on Mar 2",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Longer than usual is a timing fact from this exp",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the Rhythm tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c4-unusual-silence.card-390": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 350,
+    "height": 634
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 767,
+    "cardBottom": 739,
+    "limitationBottom": 696,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(226, 232, 240)",
+    "top": "1px rgb(226, 232, 240)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Useful read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The current quiet is long for this chat.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Counting from the export's last message, this qu",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "No messages appear after Mar 29, 2026 in this ex",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "All 10 earlier day-plus quiet stretches in this ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Earlier day-plus quiet stretches typically ran 2",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "After earlier day-plus pauses, this chat picked ",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Measured from the export's last message on Mar 2",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Longer than usual is a timing fact from this exp",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the Rhythm tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c4-unusual-silence.reflow-320": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 280,
+    "height": 745.5
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 563,
+    "cardBottom": 850.5,
+    "limitationBottom": 807.5,
+    "cardWhollyVisible": false,
+    "limitationWhollyVisible": false
+   },
+   "border": {
+    "left": "4px rgb(226, 232, 240)",
+    "top": "1px rgb(226, 232, 240)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Useful read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The current quiet is long for this chat.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Counting from the export's last message, this qu",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "No messages appear after Mar 29, 2026 in this ex",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "All 10 earlier day-plus quiet stretches in this ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Earlier day-plus quiet stretches typically ran 2",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "After earlier day-plus pauses, this chat picked ",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Measured from the export's last message on Mar 2",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Longer than usual is a timing fact from this exp",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the Rhythm tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c4-unusual-silence.text200-390": {
+   "box": {
+    "x": 40,
+    "y": 209,
+    "width": 310,
+    "height": 2761.109375
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 691,
+    "cardBottom": 2970.109375,
+    "limitationBottom": 2852.109375,
+    "cardWhollyVisible": false,
+    "limitationWhollyVisible": false
+   },
+   "border": {
+    "left": "4px rgb(226, 232, 240)",
+    "top": "1px rgb(226, 232, 240)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 24,
+     "lineHeightPx": 32,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Useful read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The current quiet is long for this chat.",
+     "tag": "h1",
+     "fontSizePx": 40,
+     "lineHeightPx": 56,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Counting from the export's last message, this qu",
+     "tag": "p",
+     "fontSizePx": 28,
+     "lineHeightPx": 48,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "No messages appear after Mar 29, 2026 in this ex",
+     "tag": "span",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "All 10 earlier day-plus quiet stretches in this ",
+     "tag": "span",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Earlier day-plus quiet stretches typically ran 2",
+     "tag": "span",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "After earlier day-plus pauses, this chat picked ",
+     "tag": "p",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Measured from the export's last message on Mar 2",
+     "tag": "p",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Longer than usual is a timing fact from this exp",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 32,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the Rhythm tab",
+     "tag": "a",
+     "fontSizePx": 24,
+     "lineHeightPx": 32,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c4-unusual-silence.zoom200-equiv-640": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 600,
+    "height": 466
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 423,
+    "cardBottom": 571,
+    "limitationBottom": 528,
+    "cardWhollyVisible": false,
+    "limitationWhollyVisible": false
+   },
+   "border": {
+    "left": "4px rgb(226, 232, 240)",
+    "top": "1px rgb(226, 232, 240)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Useful read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The current quiet is long for this chat.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Counting from the export's last message, this qu",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "No messages appear after Mar 29, 2026 in this ex",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "All 10 earlier day-plus quiet stretches in this ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Earlier day-plus quiet stretches typically ran 2",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "After earlier day-plus pauses, this chat picked ",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Measured from the export's last message on Mar 2",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Longer than usual is a timing fact from this exp",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the Rhythm tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c4-unusual-silence.dark-pref-390": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 350,
+    "height": 634
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 767,
+    "cardBottom": 739,
+    "limitationBottom": 696,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(226, 232, 240)",
+    "top": "1px rgb(226, 232, 240)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Useful read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "The current quiet is long for this chat.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "Counting from the export's last message, this qu",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "No messages appear after Mar 29, 2026 in this ex",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "All 10 earlier day-plus quiet stretches in this ",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Earlier day-plus quiet stretches typically ran 2",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "After earlier day-plus pauses, this chat picked ",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Measured from the export's last message on Mar 2",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Longer than usual is a timing fact from this exp",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the Rhythm tab",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c5-insufficient.desktop-1280x1000": {
+   "box": {
+    "x": 468,
+    "y": 205,
+    "width": 344,
+    "height": 522
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 823,
+    "cardBottom": 727,
+    "limitationBottom": 684,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(203, 213, 225)",
+    "top": "1px rgb(203, 213, 225)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Light read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "Not enough here to read a pattern yet.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "This export is too short or too sparse for an ho",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "1 day of messages with 0 eligible comparison win",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "1 conversation start — reading who starts contac",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "0 completed day-plus quiet stretches — ranking a",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Measured from the export's last message on Jul 4",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "If the chat is older than this export, re-export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the summary below",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c5-insufficient.mobile-390x844": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 350,
+    "height": 522
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 767,
+    "cardBottom": 627,
+    "limitationBottom": 584,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(203, 213, 225)",
+    "top": "1px rgb(203, 213, 225)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Light read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "Not enough here to read a pattern yet.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "This export is too short or too sparse for an ho",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "1 day of messages with 0 eligible comparison win",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "1 conversation start — reading who starts contac",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "0 completed day-plus quiet stretches — ranking a",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Measured from the export's last message on Jul 4",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "If the chat is older than this export, re-export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the summary below",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c5-insufficient.card-390": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 350,
+    "height": 522
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 767,
+    "cardBottom": 627,
+    "limitationBottom": 584,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(203, 213, 225)",
+    "top": "1px rgb(203, 213, 225)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Light read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "Not enough here to read a pattern yet.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "This export is too short or too sparse for an ho",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "1 day of messages with 0 eligible comparison win",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "1 conversation start — reading who starts contac",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "0 completed day-plus quiet stretches — ranking a",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Measured from the export's last message on Jul 4",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "If the chat is older than this export, re-export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the summary below",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c5-insufficient.reflow-320": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 280,
+    "height": 566
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 563,
+    "cardBottom": 671,
+    "limitationBottom": 628,
+    "cardWhollyVisible": false,
+    "limitationWhollyVisible": false
+   },
+   "border": {
+    "left": "4px rgb(203, 213, 225)",
+    "top": "1px rgb(203, 213, 225)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Light read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "Not enough here to read a pattern yet.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "This export is too short or too sparse for an ho",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "1 day of messages with 0 eligible comparison win",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "1 conversation start — reading who starts contac",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "0 completed day-plus quiet stretches — ranking a",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Measured from the export's last message on Jul 4",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "If the chat is older than this export, re-export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the summary below",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c5-insufficient.text200-390": {
+   "box": {
+    "x": 40,
+    "y": 209,
+    "width": 310,
+    "height": 2065.109375
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 691,
+    "cardBottom": 2274.109375,
+    "limitationBottom": 2156.109375,
+    "cardWhollyVisible": false,
+    "limitationWhollyVisible": false
+   },
+   "border": {
+    "left": "4px rgb(203, 213, 225)",
+    "top": "1px rgb(203, 213, 225)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 24,
+     "lineHeightPx": 32,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Light read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "Not enough here to read a pattern yet.",
+     "tag": "h1",
+     "fontSizePx": 40,
+     "lineHeightPx": 56,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "This export is too short or too sparse for an ho",
+     "tag": "p",
+     "fontSizePx": 28,
+     "lineHeightPx": 48,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "1 day of messages with 0 eligible comparison win",
+     "tag": "span",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "1 conversation start — reading who starts contac",
+     "tag": "span",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "0 completed day-plus quiet stretches — ranking a",
+     "tag": "span",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Measured from the export's last message on Jul 4",
+     "tag": "p",
+     "fontSizePx": 24,
+     "lineHeightPx": 40,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "If the chat is older than this export, re-export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 32,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the summary below",
+     "tag": "a",
+     "fontSizePx": 24,
+     "lineHeightPx": 32,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c5-insufficient.zoom200-equiv-640": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 600,
+    "height": 374
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 423,
+    "cardBottom": 479,
+    "limitationBottom": 436,
+    "cardWhollyVisible": false,
+    "limitationWhollyVisible": false
+   },
+   "border": {
+    "left": "4px rgb(203, 213, 225)",
+    "top": "1px rgb(203, 213, 225)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Light read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "Not enough here to read a pattern yet.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "This export is too short or too sparse for an ho",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "1 day of messages with 0 eligible comparison win",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "1 conversation start — reading who starts contac",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "0 completed day-plus quiet stretches — ranking a",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Measured from the export's last message on Jul 4",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "If the chat is older than this export, re-export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the summary below",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  },
+  "s8a-v1-c5-insufficient.dark-pref-390": {
+   "box": {
+    "x": 20,
+    "y": 105,
+    "width": 350,
+    "height": 522
+   },
+   "firstFrame": {
+    "scrollAreaBottom": 767,
+    "cardBottom": 627,
+    "limitationBottom": 584,
+    "cardWhollyVisible": true,
+    "limitationWhollyVisible": true
+   },
+   "border": {
+    "left": "4px rgb(203, 213, 225)",
+    "top": "1px rgb(203, 213, 225)"
+   },
+   "overflowX": 0,
+   "rows": [
+    {
+     "text": "What this export shows",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    },
+    {
+     "text": "Light read",
+     "tag": "span",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(241, 245, 249)",
+     "contrast": 6.92
+    },
+    {
+     "text": "Not enough here to read a pattern yet.",
+     "tag": "h1",
+     "fontSizePx": 20,
+     "lineHeightPx": 28,
+     "fontWeight": "700",
+     "color": "rgb(2, 6, 23)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 20.17
+    },
+    {
+     "text": "This export is too short or too sparse for an ho",
+     "tag": "p",
+     "fontSizePx": 14,
+     "lineHeightPx": 24,
+     "fontWeight": "400",
+     "color": "rgb(71, 85, 105)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.58
+    },
+    {
+     "text": "Counted in this export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16.5,
+     "fontWeight": "600",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "1 day of messages with 0 eligible comparison win",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "1 conversation start — reading who starts contac",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "0 completed day-plus quiet stretches — ranking a",
+     "tag": "span",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "Measured from the export's last message on Jul 4",
+     "tag": "p",
+     "fontSizePx": 12,
+     "lineHeightPx": 20,
+     "fontWeight": "400",
+     "color": "rgb(100, 116, 139)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 4.76
+    },
+    {
+     "text": "If the chat is older than this export, re-export",
+     "tag": "p",
+     "fontSizePx": 11,
+     "lineHeightPx": 16,
+     "fontWeight": "400",
+     "color": "rgb(148, 163, 184)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 2.56
+    },
+    {
+     "text": "See the evidence in the summary below",
+     "tag": "a",
+     "fontSizePx": 12,
+     "lineHeightPx": 16,
+     "fontWeight": "600",
+     "color": "rgb(6, 95, 70)",
+     "background": "rgb(255, 255, 255)",
+     "contrast": 7.68
+    }
+   ]
+  }
+ }
+}
