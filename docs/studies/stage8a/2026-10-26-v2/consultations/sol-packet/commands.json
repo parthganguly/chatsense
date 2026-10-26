@@ -1,0 +1,40 @@
+[
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s docs/studies/stage8a/2026-10-26-v2/preflight -p 'test_*.py' -v",
+    "exit_code": 0,
+    "tests": 30,
+    "log": "logs/inherited-tests.log"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 docs/studies/stage8a/2026-10-26-v2/preflight/verify-science.py",
+    "exit_code": 0,
+    "log": "logs/inherited-science.log"
+  },
+  {
+    "command": "node --input-type=module < artifacts/stage8a-sol-v2-packet-audit/inherited-schema-adapter.mjs.txt",
+    "exit_code": 0,
+    "note": "Inherited script unchanged except absolute existing Ajv import and materials path for stdin execution.",
+    "log": "logs/inherited-schema.log"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 artifacts/stage8a-sol-v2-packet-audit/independent-controls.py",
+    "exit_code": 0,
+    "controls": 55,
+    "semantic_clauses": 9,
+    "log": "logs/independent-controls.log"
+  },
+  {
+    "command": "node < artifacts/stage8a-sol-v2-packet-audit/schema-controls.cjs.txt",
+    "exit_code": 0,
+    "controls": 14,
+    "log": "logs/schema-controls.log"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 artifacts/stage8a-sol-v2-packet-audit/verify-packet.py",
+    "first_attempt_exit_code": 1,
+    "first_attempt_log": "logs/packet-verification.log",
+    "correction": "Initial assertion incorrectly assumed candidate branch contains v1 packet; corrected to compare immutable v1 blobs with all107 files in separate read-only v1 checkout.",
+    "final_exit_code": 0,
+    "final_log": "logs/packet-verification-second.log"
+  }
+]

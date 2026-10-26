@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/parth/.codex/worktrees/stage8a-v2-packet-audit/whatsapp-analytics-ui/artifacts/stage8a-sol-v2-packet-audit/verify-packet.py", line 14, in <module>
+    assert not git('diff',v1,candidate,'--',oldbase);r['v1_packet_tracked_diff_empty']=True
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

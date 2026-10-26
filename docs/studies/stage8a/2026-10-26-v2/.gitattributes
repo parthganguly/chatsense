@@ -5,3 +5,5 @@ stimuli/verification/*.log -whitespace
 consultations/**/logs/* -whitespace
 # Retain the exact failed-run script as forensic evidence.
 stimuli/verification/failed-capture-attempt-1/capture-script.mjs.txt whitespace=-blank-at-eof
+# Independent audit files, including the pre-trim script, are copied verbatim.
+consultations/sol-packet/** -whitespace

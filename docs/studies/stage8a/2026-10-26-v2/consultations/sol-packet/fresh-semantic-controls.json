@@ -1,0 +1,86 @@
+{
+  "kind": "FAKE_CLAUSES_NOT_PARTICIPANT_RECORDS",
+  "controls": [
+    {
+      "id": "hedged_restart",
+      "artificial_clause": "The export makes a return message seem more likely after this gap.",
+      "manual_expected_domain": "prediction",
+      "manual_expected_label": "ERROR",
+      "history_label": "PROMISE",
+      "rationale": "An app-attributed probability is a prediction even without certainty.",
+      "automatic_semantic_scoring": false
+    },
+    {
+      "id": "negative_probability",
+      "artificial_clause": "Those earlier pauses mean he probably will not answer this time.",
+      "manual_expected_domain": "prediction",
+      "manual_expected_label": "ERROR",
+      "history_label": "PROMISE",
+      "rationale": "Negative future claims are equally unsupported.",
+      "automatic_semantic_scoring": false
+    },
+    {
+      "id": "contradiction",
+      "artificial_clause": "This cannot forecast anything; still, the app tells me she will be back by Friday.",
+      "manual_expected_domain": "prediction",
+      "manual_expected_label": "ERROR",
+      "history_label": "PROMISE",
+      "rationale": "Explicit app prediction dominates the initial disclaimer.",
+      "automatic_semantic_scoring": false
+    },
+    {
+      "id": "unclear_attribution",
+      "artificial_clause": "I expect another message, though I cannot explain what that expectation is based on.",
+      "manual_expected_domain": "prediction",
+      "manual_expected_label": "AMBIGUOUS",
+      "history_label": "AMBIGUOUS",
+      "rationale": "Unresolved attribution cannot be counted as NO_PROMISE.",
+      "automatic_semantic_scoring": false
+    },
+    {
+      "id": "personal_hope",
+      "artificial_clause": "I personally hope for contact; this export only describes earlier pauses and says nothing about a future reply.",
+      "manual_expected_domain": "prediction",
+      "manual_expected_label": "CLEAR_LIMIT",
+      "history_label": "NO_PROMISE",
+      "rationale": "Personal hope is explicitly separated from app inference.",
+      "automatic_semantic_scoring": false
+    },
+    {
+      "id": "motive_hedge",
+      "artificial_clause": "The starts suggest they may have stopped caring.",
+      "manual_expected_domain": "motive",
+      "manual_expected_label": "ERROR",
+      "history_label": null,
+      "rationale": "Hedged attribution of caring is an unsupported motive claim.",
+      "automatic_semantic_scoring": false
+    },
+    {
+      "id": "bare_negative",
+      "artificial_clause": "No.",
+      "manual_expected_domain": "direct",
+      "manual_expected_label": "AMBIGUOUS",
+      "history_label": null,
+      "rationale": "Bare no can mean no prediction or no reply; scope unresolved.",
+      "automatic_semantic_scoring": false
+    },
+    {
+      "id": "vague_limit",
+      "artificial_clause": "This cannot know absolutely everything about them.",
+      "manual_expected_domain": "motive",
+      "manual_expected_label": "AMBIGUOUS",
+      "history_label": null,
+      "rationale": "Vague limitation does not supply motive-limit recognition.",
+      "automatic_semantic_scoring": false
+    },
+    {
+      "id": "historical_only",
+      "artificial_clause": "Seven of the earlier restarts were from Ravi.",
+      "manual_expected_domain": "prediction",
+      "manual_expected_label": "NOT_MENTIONED",
+      "history_label": null,
+      "rationale": "A historical statement is not positive spontaneous forecast-limit evidence.",
+      "automatic_semantic_scoring": false
+    }
+  ]
+}

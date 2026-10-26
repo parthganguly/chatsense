@@ -1,0 +1,327 @@
+{
+  "kind": "FAKE_BLANK_SCHEMA_CONTROLS_ONLY",
+  "note": "Private-form-state blank acceptance is intentional structural validation, not completeness or human study PASS.",
+  "ajvVersion": "6.15.0",
+  "controls": [
+    {
+      "id": "blank_structure",
+      "expected": true,
+      "actual": true,
+      "errors": null
+    },
+    {
+      "id": "v1_protocol_forbidden",
+      "expected": false,
+      "actual": false,
+      "errors": [
+        {
+          "keyword": "const",
+          "dataPath": ".protocol_version",
+          "schemaPath": "#/properties/protocol_version/const",
+          "params": {
+            "allowedValue": "2026-10-26-v2"
+          },
+          "message": "should be equal to constant"
+        }
+      ]
+    },
+    {
+      "id": "wrong_form_state",
+      "expected": false,
+      "actual": false,
+      "errors": [
+        {
+          "keyword": "enum",
+          "dataPath": ".form_state",
+          "schemaPath": "#/properties/form_state/enum",
+          "params": {
+            "allowedValues": [
+              "BLANK_TEMPLATE",
+              "PRIVATE_HUMAN_RECORD"
+            ]
+          },
+          "message": "should be equal to one of the allowed values"
+        }
+      ]
+    },
+    {
+      "id": "four_cards",
+      "expected": false,
+      "actual": false,
+      "errors": [
+        {
+          "keyword": "minItems",
+          "dataPath": ".cards",
+          "schemaPath": "#/properties/cards/minItems",
+          "params": {
+            "limit": 5
+          },
+          "message": "should NOT have fewer than 5 items"
+        },
+        {
+          "keyword": "const",
+          "dataPath": ".cards[0].card_id",
+          "schemaPath": "#/properties/cards/allOf/4/contains/properties/card_id/const",
+          "params": {
+            "allowedValue": "E"
+          },
+          "message": "should be equal to constant"
+        },
+        {
+          "keyword": "const",
+          "dataPath": ".cards[1].card_id",
+          "schemaPath": "#/properties/cards/allOf/4/contains/properties/card_id/const",
+          "params": {
+            "allowedValue": "E"
+          },
+          "message": "should be equal to constant"
+        },
+        {
+          "keyword": "const",
+          "dataPath": ".cards[2].card_id",
+          "schemaPath": "#/properties/cards/allOf/4/contains/properties/card_id/const",
+          "params": {
+            "allowedValue": "E"
+          },
+          "message": "should be equal to constant"
+        },
+        {
+          "keyword": "const",
+          "dataPath": ".cards[3].card_id",
+          "schemaPath": "#/properties/cards/allOf/4/contains/properties/card_id/const",
+          "params": {
+            "allowedValue": "E"
+          },
+          "message": "should be equal to constant"
+        },
+        {
+          "keyword": "contains",
+          "dataPath": ".cards",
+          "schemaPath": "#/properties/cards/allOf/4/contains",
+          "params": {},
+          "message": "should contain a valid item"
+        }
+      ]
+    },
+    {
+      "id": "six_cards",
+      "expected": false,
+      "actual": false,
+      "errors": [
+        {
+          "keyword": "maxItems",
+          "dataPath": ".cards",
+          "schemaPath": "#/properties/cards/maxItems",
+          "params": {
+            "limit": 5
+          },
+          "message": "should NOT have more than 5 items"
+        }
+      ]
+    },
+    {
+      "id": "duplicate_D_missing_E",
+      "expected": false,
+      "actual": false,
+      "errors": [
+        {
+          "keyword": "const",
+          "dataPath": ".cards[0].card_id",
+          "schemaPath": "#/properties/cards/allOf/4/contains/properties/card_id/const",
+          "params": {
+            "allowedValue": "E"
+          },
+          "message": "should be equal to constant"
+        },
+        {
+          "keyword": "const",
+          "dataPath": ".cards[1].card_id",
+          "schemaPath": "#/properties/cards/allOf/4/contains/properties/card_id/const",
+          "params": {
+            "allowedValue": "E"
+          },
+          "message": "should be equal to constant"
+        },
+        {
+          "keyword": "const",
+          "dataPath": ".cards[2].card_id",
+          "schemaPath": "#/properties/cards/allOf/4/contains/properties/card_id/const",
+          "params": {
+            "allowedValue": "E"
+          },
+          "message": "should be equal to constant"
+        },
+        {
+          "keyword": "const",
+          "dataPath": ".cards[3].card_id",
+          "schemaPath": "#/properties/cards/allOf/4/contains/properties/card_id/const",
+          "params": {
+            "allowedValue": "E"
+          },
+          "message": "should be equal to constant"
+        },
+        {
+          "keyword": "const",
+          "dataPath": ".cards[4].card_id",
+          "schemaPath": "#/properties/cards/allOf/4/contains/properties/card_id/const",
+          "params": {
+            "allowedValue": "E"
+          },
+          "message": "should be equal to constant"
+        },
+        {
+          "keyword": "contains",
+          "dataPath": ".cards",
+          "schemaPath": "#/properties/cards/allOf/4/contains",
+          "params": {},
+          "message": "should contain a valid item"
+        }
+      ]
+    },
+    {
+      "id": "conditional_yes_not_valid_code",
+      "expected": false,
+      "actual": false,
+      "errors": [
+        {
+          "keyword": "enum",
+          "dataPath": ".cards[0].want_code",
+          "schemaPath": "#/properties/cards/items/properties/want_code/enum",
+          "params": {
+            "allowedValues": [
+              null,
+              "yes",
+              "no",
+              "unsure",
+              "prefer_not"
+            ]
+          },
+          "message": "should be equal to one of the allowed values"
+        }
+      ]
+    },
+    {
+      "id": "direct_NOT_MENTIONED_not_valid",
+      "expected": false,
+      "actual": false,
+      "errors": [
+        {
+          "keyword": "enum",
+          "dataPath": ".independent_reviews[0].cards.C.direct.label",
+          "schemaPath": "#/properties/independent_reviews/items/properties/cards/properties/C/properties/direct/properties/label/enum",
+          "params": {
+            "allowedValues": [
+              null,
+              "CLEAR_LIMIT",
+              "ERROR",
+              "AMBIGUOUS",
+              "MISSING"
+            ]
+          },
+          "message": "should be equal to one of the allowed values"
+        }
+      ]
+    },
+    {
+      "id": "motive_PROMISE_wrong_domain",
+      "expected": false,
+      "actual": false,
+      "errors": [
+        {
+          "keyword": "enum",
+          "dataPath": ".independent_reviews[0].cards.C.motive.label",
+          "schemaPath": "#/properties/independent_reviews/items/properties/cards/properties/C/properties/motive/properties/label/enum",
+          "params": {
+            "allowedValues": [
+              null,
+              "CLEAR_LIMIT",
+              "ERROR",
+              "AMBIGUOUS",
+              "NOT_MENTIONED",
+              "MISSING"
+            ]
+          },
+          "message": "should be equal to one of the allowed values"
+        }
+      ]
+    },
+    {
+      "id": "D_history_CLEAR_LIMIT_wrong_domain",
+      "expected": false,
+      "actual": false,
+      "errors": [
+        {
+          "keyword": "enum",
+          "dataPath": ".adjudication.resolved_cards.D.history.label",
+          "schemaPath": "#/properties/adjudication/properties/resolved_cards/properties/D/properties/history/properties/label/enum",
+          "params": {
+            "allowedValues": [
+              null,
+              "NO_PROMISE",
+              "PROMISE",
+              "AMBIGUOUS",
+              "MISSING"
+            ]
+          },
+          "message": "should be equal to one of the allowed values"
+        }
+      ]
+    },
+    {
+      "id": "non_D_history_PROMISE_wrong_domain",
+      "expected": false,
+      "actual": false,
+      "errors": [
+        {
+          "keyword": "enum",
+          "dataPath": ".adjudication.resolved_cards.C.history.label",
+          "schemaPath": "#/properties/adjudication/properties/resolved_cards/properties/C/properties/history/properties/label/enum",
+          "params": {
+            "allowedValues": [
+              null
+            ]
+          },
+          "message": "should be equal to one of the allowed values"
+        }
+      ]
+    },
+    {
+      "id": "unregistered_sixth_review_card",
+      "expected": false,
+      "actual": false,
+      "errors": [
+        {
+          "keyword": "additionalProperties",
+          "dataPath": ".independent_reviews[0].cards",
+          "schemaPath": "#/properties/independent_reviews/items/properties/cards/additionalProperties",
+          "params": {
+            "additionalProperty": "F"
+          },
+          "message": "should NOT have additional properties"
+        }
+      ]
+    },
+    {
+      "id": "unexpected_property",
+      "expected": false,
+      "actual": false,
+      "errors": [
+        {
+          "keyword": "additionalProperties",
+          "dataPath": "",
+          "schemaPath": "#/additionalProperties",
+          "params": {
+            "additionalProperty": "synthetic_total"
+          },
+          "message": "should NOT have additional properties"
+        }
+      ]
+    },
+    {
+      "id": "structural_private_form_is_not_complete",
+      "expected": true,
+      "actual": true,
+      "errors": null
+    }
+  ]
+}
