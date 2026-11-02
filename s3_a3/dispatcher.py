@@ -14,6 +14,7 @@ Usage (from the repository root):
 import argparse
 import base64
 import datetime
+import errno
 import fcntl
 import hashlib
 import json
@@ -22,6 +23,7 @@ import os
 import re
 import stat
 import sys
+import threading
 import time
 from pathlib import Path
 
@@ -52,10 +54,12 @@ FACTUAL_ITEMS = ("q02", "q03", "q07")
 FACTUAL_MIN = 0.80
 FACTUAL_CHECKPOINT = 20  # after pair 10: all U and T attempts
 QUESTION_IDS = ["q%02d" % n for n in range(1, 9)]
-SAFE_HEADERS = {"content-type", "x-request-id", "request-id",
-                "x-fastino-served-model", "x-fastino-data-retention"}
-SAFE_HEADER_PREFIXES = ("x-ratelimit-", "ratelimit-")
 SAFE_VALUE = re.compile(r"[\x20-\x7e]{0,256}\Z")
+RATE_TOKEN = re.compile(r"[a-z_]{1,32}\Z")
+SAFE_HEADERS = {"content-type": SAFE_VALUE, "x-request-id": SAFE_VALUE, "request-id": SAFE_VALUE,
+                "x-fastino-served-model": SAFE_VALUE, "x-fastino-data-retention": SAFE_VALUE,
+                "retry-after": re.compile(r"[0-9]{1,6}\Z"),
+                "x-ratelimit-scope": RATE_TOKEN, "x-ratelimit-code": RATE_TOKEN}
 COST_STATUS = "UNKNOWN_UNRECONCILED"
 
 
@@ -293,13 +297,15 @@ def paths(state_root):
 
 
 def _fsync(fd):
-    # macOS fsync does not flush the drive cache; F_FULLFSYNC does where supported.
+    # macOS fsync does not flush the drive cache; F_FULLFSYNC does. Fall back only where the
+    # filesystem cannot do it; a hard error (EIO, ENOSPC, ...) fails closed.
     if hasattr(fcntl, "F_FULLFSYNC"):
         try:
             fcntl.fcntl(fd, fcntl.F_FULLFSYNC)
             return
-        except OSError:
-            pass
+        except OSError as e:
+            if e.errno not in (errno.ENOTSUP, errno.EOPNOTSUPP, errno.ENOTTY):
+                raise
     os.fsync(fd)
 
 
@@ -379,6 +385,9 @@ def _consume_authorization(p):
         finally:
             os.close(fd)
         _fsync_dir(p["auth_dir"])
+        # State dirs may have been made, unsynced, by a racing process: sync every entry before any send.
+        _fsync_dir(p["root"].parent)
+        _fsync_dir(p["root"])
         os.mkdir(p["run_dir"], 0o700)
         _fsync_dir(p["runs"])
         os.mkdir(p["receipts"], 0o700)
@@ -437,8 +446,8 @@ def _check_response(res, row, allow, served_seen, info):
         if type(item) is not tuple or len(item) != 2 or type(item[0]) is not str or type(item[1]) is not str:
             raise Invalid("HEADER_INVALID")
         name = item[0].lower()
-        if name in SAFE_HEADERS or name.startswith(SAFE_HEADER_PREFIXES):
-            if name in safe or not SAFE_VALUE.match(item[1]):
+        if name in SAFE_HEADERS:
+            if name in safe or not SAFE_HEADERS[name].match(item[1]):
                 raise Invalid("HEADER_INVALID")
             safe[name] = item[1]
     info["safe_headers"] = safe
@@ -503,6 +512,47 @@ def _factual_controls_pass(fz, responses):
 
 # ---------------------------------------------------------------- dispatch
 
+def _expired(remaining):
+    return not remaining > 0  # NaN counts as expired
+
+
+def _handoff(transport, snap, timeout, clock, t0):
+    """One handoff on a daemon worker, bounded by `timeout` real seconds.
+
+    The worker sends only if it starts inside that bound and the 60-minute window;
+    otherwise it never sends. A hung transport is abandoned, never awaited or
+    retried, and anything it returns after the bound is discarded.
+    """
+    bound = time.monotonic() + timeout
+    lock, finished = threading.Lock(), threading.Event()
+    box = {"state": "pending"}
+
+    def work():
+        with lock:
+            if box["state"] != "pending" or time.monotonic() >= bound or _expired(TIME_LIMIT_S - (clock() - t0)):
+                box["state"] = "not_sent"
+                finished.set()
+                return
+            box["state"] = "sent"
+        try:
+            out = ("result", transport(snap["url"], snap["headers"], snap["body"], timeout))
+        except BaseException as e:
+            out = ("error", e)
+        with lock:
+            if "late" not in box:  # main has not closed the box
+                box[out[0]] = out[1]
+        finished.set()
+    threading.Thread(target=work, daemon=True).start()
+    try:
+        finished.wait(max(0.0, bound - time.monotonic()))
+    finally:  # also on KeyboardInterrupt: a worker that has not started never sends
+        with lock:
+            if box["state"] == "pending":
+                box["state"] = "not_sent"
+            box["late"] = time.monotonic() >= bound
+    return box
+
+
 def run(state_root, transport, *, served_allowlist, clock=time.monotonic, packet=PACKET):
     fz = load_frozen(packet)
     reqs = build_requests(fz)
@@ -533,9 +583,7 @@ def run(state_root, transport, *, served_allowlist, clock=time.monotonic, packet
             if i == FACTUAL_CHECKPOINT and not _factual_controls_pass(fz, responses):
                 stop = "FACTUAL_CONTROL_STOP"
                 break
-            now = clock()
-            remaining = TIME_LIMIT_S - (now - t0) if t0 is not None else TIME_LIMIT_S
-            if remaining <= 0:
+            if t0 is not None and _expired(TIME_LIMIT_S - (clock() - t0)):
                 stop = "TIME_LIMIT"
                 break
             snap = {**r, "headers": dict(r["headers"])}
@@ -552,23 +600,37 @@ def run(state_root, transport, *, served_allowlist, clock=time.monotonic, packet
                 break
             reserved[prov] += amount
             reserved["total"] += amount
-            attempted += 1
             append({"type": "RESERVE", "id": row["id"], "provider": prov, "pair": row["pair"],
                     "condition": row["condition"], "card": row["card"], "body_sha256": snap["body_sha256"],
                     "stimulus_sha256": snap["stimulus_sha256"], "request_sha256": snap["request_sha256"],
                     "reserve_micro_usd": amount, "reserved_micro_usd": dict(reserved),
                     "authorization_id": AUTH_ID, "freeze_sha256": FREEZE_SHA256})
             # Reservation is fsynced. From here a crash is an unknown, potentially billed attempt.
+            now = clock()
             if t0 is None:
-                t0 = now
+                t0 = now  # the 60-minute window opens at the first actual handoff
+            remaining = TIME_LIMIT_S - (now - t0)
+            timeout = min(MAX_TIMEOUT_S, remaining)
+            box = {"state": "not_sent"} if _expired(remaining) else _handoff(transport, snap, timeout, clock, t0)
+            if box["state"] != "sent":  # provably never handed off; the reserve stays held
+                outcome = ("NOT_SENT_TIME_LIMIT" if _expired(TIME_LIMIT_S - (clock() - t0))
+                           else "NOT_SENT_HANDOFF_LATE")
+                append({"type": "NOT_SENT", "id": row["id"], "outcome": outcome, "reserve_micro_usd": amount,
+                        "cost_status": COST_STATUS, "reserve_retained": True})
+                outcomes.append([row["id"], outcome])
+                stop = "TIME_LIMIT" if outcome == "NOT_SENT_TIME_LIMIT" else "TECHNICAL_FAILURE"
+                failure = None if stop == "TIME_LIMIT" else outcome
+                break
+            attempted += 1
             info = {}
-            try:
-                res = transport(snap["url"], snap["headers"], snap["body"], min(MAX_TIMEOUT_S, remaining))
-            except TimeoutError:
-                outcome = "TRANSPORT_TIMEOUT"
-            except Exception:
-                outcome = "TRANSPORT_ERROR"
+            if "error" in box:
+                outcome = "TRANSPORT_TIMEOUT" if isinstance(box["error"], TimeoutError) else "TRANSPORT_ERROR"
+            elif "result" not in box:
+                outcome = "TRANSPORT_TIMEOUT"  # hung: abandoned, never retried
+            elif box["late"] or clock() - now >= timeout:
+                outcome = "RESPONSE_LATE"
             else:
+                res = box["result"]
                 try:
                     obj = _check_response(res, row, allow, served_seen, info)
                     outcome = "VALID"
@@ -626,7 +688,7 @@ def inspect(state_root):
     if lines[-1] != b"":
         errors.append("PARTIAL_RECORD")
     prev = _sha(marker) if marker is not None else None
-    plan, open_attempt, referenced = None, None, set()
+    plan, open_attempt, referenced, held = None, None, set(), False
     attempts = rep["attempts"]
     reserved = rep["reserved_micro_usd"]
     for n, line in enumerate(lines[:-1]):
@@ -651,7 +713,7 @@ def inspect(state_root):
         elif t == "RESERVE":
             k = len(attempts)
             want = plan[k] if k < len(plan) else None
-            if (open_attempt is not None or want is None
+            if (open_attempt is not None or held or want is None
                     or [rec.get(x) for x in ("id", "provider", "body_sha256", "stimulus_sha256", "request_sha256")] != want
                     or rec.get("reserve_micro_usd") != RESERVE_MICRO_USD.get(want[1])):
                 errors.append("RESERVE_OUT_OF_ORDER")
@@ -681,13 +743,22 @@ def inspect(state_root):
                 except OSError:
                     errors.append("RECEIPT_MISSING")
             open_attempt = None
+        elif t == "NOT_SENT":  # reserved, provably never handed off; the reserve stays held
+            if (open_attempt is None or rec.get("id") != open_attempt["id"] or rec.get("reserve_retained") is not True
+                    or rec.get("outcome") not in ("NOT_SENT_TIME_LIMIT", "NOT_SENT_HANDOFF_LATE")):
+                errors.append("RESULT_WITHOUT_RESERVE")
+                break
+            open_attempt.update(outcome=rec["outcome"], status="NOT_SENT_RESERVE_HELD")
+            open_attempt, held = None, True
         elif t == "STOP":
-            if open_attempt is not None or rec.get("not_attempted") != [a[0] for a in plan[len(attempts):]]:
+            sent = len(attempts) - held
+            if open_attempt is not None or rec.get("not_attempted") != [a[0] for a in plan[sent:]]:
                 errors.append("STOP_INCONSISTENT")
                 break
             valid = sum(a["status"] == "VALID" for a in attempts)
             reason = rec.get("reason")
             if ((reason == "PLAN_COMPLETE" and valid != len(plan))
+                    or (held and reason not in ("TIME_LIMIT", "TECHNICAL_FAILURE"))
                     or (reason == "FACTUAL_CONTROL_STOP" and (valid != FACTUAL_CHECKPOINT or len(attempts) != valid))
                     or reason not in ("PLAN_COMPLETE", "FACTUAL_CONTROL_STOP", "TIME_LIMIT",
                                       "TECHNICAL_FAILURE", "CAP_THREATENED")):
@@ -703,9 +774,10 @@ def inspect(state_root):
         on_disk = set()
     rep["orphan_receipts"] = len(on_disk - referenced)
     count = lambda s: sum(a["status"] == s for a in attempts)
-    rep["counts"] = {"attempted": len(attempts), "valid": count("VALID"), "invalid": count("INVALID"),
-                     "unknown": count("UNKNOWN_POTENTIALLY_BILLED"),
-                     "not_attempted": (len(plan) if plan else 32) - len(attempts)}
+    sent = len(attempts) - held
+    rep["counts"] = {"attempted": sent, "valid": count("VALID"), "invalid": count("INVALID"),
+                     "unknown": count("UNKNOWN_POTENTIALLY_BILLED"), "not_sent": int(held),
+                     "not_attempted": (len(plan) if plan else 32) - sent}
     return rep
 
 
