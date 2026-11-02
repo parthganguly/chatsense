@@ -1,0 +1,25 @@
+$ python3 -B -m unittest discover -s s3_a3/tests -v
+# Python 3.14.3, darwin, 2026-11-02T11:58:10Z
+# Tests and fakes written; s3_a3/dispatcher.py did not exist yet. Actual first failure:
+
+test_dispatcher (unittest.loader._FailedTest.test_dispatcher) ... ERROR
+
+======================================================================
+ERROR: test_dispatcher (unittest.loader._FailedTest.test_dispatcher)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_dispatcher
+Traceback (most recent call last):
+  File ".../unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File ".../unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File ".../s3_a3/tests/test_dispatcher.py", line 16, in <module>
+    import dispatcher as d
+ModuleNotFoundError: No module named 'dispatcher'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)
