@@ -1,0 +1,6 @@
+{"case": "_fsync", "interrupted_at": 1, "sends": 0, "code": "STATE_DIR_FAILED", "consumed": false}
+{"case": "_fsync", "interrupted_at": 4, "sends": 0, "code": "RUN_SETUP_FAILED", "consumed": true}
+{"case": "_fsync", "interrupted_at": 8, "sends": 0, "code": "RUN_SETUP_FAILED", "consumed": true}
+{"case": "_fsync_dir", "interrupted_at": 1, "sends": 0, "code": "STATE_DIR_FAILED", "consumed": false}
+{"case": "_fsync_dir", "interrupted_at": 4, "sends": 0, "code": "RUN_SETUP_FAILED", "consumed": true}
+{"case": "_fsync_dir", "interrupted_at": 8, "sends": 0, "code": "RUN_SETUP_FAILED", "consumed": true}

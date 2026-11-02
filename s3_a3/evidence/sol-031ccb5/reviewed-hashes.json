@@ -1,0 +1,13 @@
+{
+  "commit": "031ccb5ed70a9b54cf41eb4a2e909253228d5d8d",
+  "status": "",
+  "files": {
+    "s3_a3/dispatcher.py": "72d2c96b9160120007c6307eae903cafd35c53bb4dadcda1ba3b12d999f3ccc3",
+    "s3_a3/tests/test_dispatcher.py": "8560c821844f05b3acfecd325fd798451c53a085e9b753f3f51c3d3bd1ccf17a",
+    "s3_a3/tests/receiver_gap_check.py": "4f887f6efba82b485eceee8b13083a0813db6effa17001885e5ad2e23813211c",
+    "s3_a3/tests/fakes.py": "01a323cc9c88afe67899dbeb499131897e3d65a8e6cd0a07065a7b471f8c0678",
+    "docs/studies/s3/2026-10-26-v1/FREEZE.json": "957b6c70fc9103987c6423e7e09997109352307753ecc9c9d97dbce3f769f24a",
+    "docs/studies/s3/2026-10-26-v1/PROVIDER-CONTRACT.md": "1f46a5ed5a3f294342f641682940bb5750902c76fd35365f32b91eaafac2c0c8",
+    "docs/studies/s3/2026-10-26-v1/PROTOCOL.md": "3814388c94e515005da2f1ba38c400ab2494c3054740b9cdd0c148287e7c40ca"
+  }
+}
