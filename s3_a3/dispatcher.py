@@ -277,7 +277,7 @@ def verify_requests(reqs, fz):
         if [r["provider"] for r in reqs].count("jev") != 16 or any(
                 by[(p, "R", c)] != by[(p, "U", c)] for p in MODELS for c in "DE"):
             raise Refused("PLAN_MISMATCH")
-    except Refused:
+    except Exception:
         raise Refused("PLAN_MISMATCH")
 
 
@@ -410,7 +410,13 @@ def _strict_json(data):
         if not math.isfinite(v):
             raise ValueError
         return v
-    return json.loads(data.decode("utf-8"), object_pairs_hook=pairs, parse_constant=no_constant, parse_float=finite)
+
+    def bounded_int(s):  # do not rely on the interpreter's int-digit limit
+        if len(s) > 32:
+            raise ValueError
+        return int(s)
+    return json.loads(data.decode("utf-8"), object_pairs_hook=pairs, parse_constant=no_constant,
+                      parse_float=finite, parse_int=bounded_int)
 
 
 def _number(v):
@@ -568,6 +574,8 @@ def run(state_root, transport, *, served_allowlist, clock=time.monotonic, packet
                     outcome = "VALID"
                 except Invalid as e:
                     outcome = e.code
+                except Exception:
+                    outcome = "RESPONSE_INVALID"
             if outcome == "VALID":
                 try:
                     info["receipt"] = _write_receipt(p, i, row["id"], res[2])

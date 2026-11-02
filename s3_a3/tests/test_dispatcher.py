@@ -1,5 +1,6 @@
 """Offline tests for the S3 A3 one-shot dispatcher. Fake transport only."""
 import ast
+import errno
 import json
 import os
 import shutil
@@ -7,7 +8,9 @@ import signal
 import subprocess
 import sys
 import tempfile
+import threading
 import time
+import types
 import unittest
 from pathlib import Path
 from unittest import mock
@@ -44,8 +47,17 @@ class Base(unittest.TestCase):
 
     def assert_no_canary(self, summary=None):
         for path, (data, _, _) in tree_bytes(self.state).items():
-            self.assertNotIn(CANARY.encode(), data, path)
-        self.assertNotIn(CANARY, repr(summary))
+            self.assertNotIn(CANARY.lower().encode(), data.lower(), path)
+        self.assertNotIn(CANARY.lower(), repr(summary).lower())
+
+    def after_append(self, hook):
+        """Patch _append so hook(rec) runs after each genuine append+fsync."""
+        orig = d._append
+
+        def wrapped(fd, chain, rec):
+            orig(fd, chain, rec)
+            hook(rec)
+        return mock.patch.object(d, "_append", wrapped)
 
     def copy_packet(self):
         dst = Path(self.tmp) / "packet"
@@ -184,7 +196,7 @@ class Dispatch(Base):
         self.assertTrue(report["complete"])
         self.assertEqual(report["stop_reason"], "PLAN_COMPLETE")
         self.assertEqual(report["counts"], {"attempted": 32, "valid": 32, "invalid": 0,
-                                            "unknown": 0, "not_attempted": 0})
+                                            "unknown": 0, "not_sent": 0, "not_attempted": 0})
         self.assertEqual(report["reserved_micro_usd"], {"jev": 48000, "glide": 400000, "total": 448000})
         self.assertEqual(report["cost_status"], "UNKNOWN_UNRECONCILED")
         self.assertIs(report["within_budget_verified"], False)
@@ -233,24 +245,128 @@ class Dispatch(Base):
     def test_sixty_minute_limit_and_timeout_cap(self):
         now = [1000.0]
 
-        def tick(i):
-            now[0] += {2: 3500, 3: 98}.get(i, 1)
-        summary, fake = self.run_fake(clock=lambda: now[0], on_handoff=tick)
-        # first dispatch t=1000; handoff 3 at elapsed 3502 -> timeout 98; then elapsed 3600 -> stop
+        def tick(i):  # inside each call, within its timeout
+            now[0] += {3: 97}.get(i, 1)
+
+        def gap(rec):  # between attempts
+            if rec["type"] == "RESULT":
+                now[0] += {IDS[2]: 3499, IDS[3]: 1}.get(rec["id"], 0)
+        with self.after_append(gap):
+            summary, fake = self.run_fake(clock=lambda: now[0], on_handoff=tick)
+        # first send t=1000; handoff 3 at elapsed 3502 -> timeout 98, reply at 3599; then elapsed 3600 -> stop
         self.assertEqual(len(fake.calls), 4)
         self.assertEqual(fake.calls[3]["timeout"], 98.0)
+        self.assertEqual(summary["outcomes"][-1], [IDS[3], "VALID"])
         self.assertEqual(summary["stop_reason"], "TIME_LIMIT")
         self.assertEqual(summary["not_attempted"], IDS[4:])
+        self.assertEqual(d.inspect(self.state)["counts"]["not_sent"], 0)
 
     def test_time_limit_exactly_sixty_minutes_stops(self):
         now = [0.0]
 
-        def tick(i):
-            if i == 0:
+        def gap(rec):
+            if rec["type"] == "RESULT":
                 now[0] = 3600.0
-        summary, fake = self.run_fake(clock=lambda: now[0], on_handoff=tick)
+        with self.after_append(gap):
+            summary, fake = self.run_fake(clock=lambda: now[0])
         self.assertEqual(len(fake.calls), 1)
         self.assertEqual(summary["stop_reason"], "TIME_LIMIT")
+
+
+class Deadline(Base):
+    """Second review: the window is rechecked after the durable reserve, at handoff."""
+
+    def test_deadline_reached_during_reserve_never_hands_off(self):  # Astra's reproduction
+        for jump in (3600.0, 3601.0):
+            with self.subTest(jump):
+                self.setUp()
+                now = [0.0]
+
+                def hook(rec):
+                    if rec["type"] == "RESERVE" and rec["id"] == IDS[1]:
+                        now[0] = jump
+                with self.after_append(hook):
+                    summary, fake = self.run_fake(clock=lambda: now[0])
+                self.assertEqual(len(fake.calls), 1)
+                self.assertEqual(summary["stop_reason"], "TIME_LIMIT")
+                self.assertIsNone(summary["failure"])
+                self.assertEqual(summary["outcomes"], [[IDS[0], "VALID"], [IDS[1], "NOT_SENT_TIME_LIMIT"]])
+                self.assertEqual(summary["handoffs"], 1)
+                self.assertEqual(summary["not_attempted"], IDS[1:])
+                held = {"jev": 3000, "glide": 25000, "total": 28000}
+                self.assertEqual(summary["reserved_micro_usd"], held)
+                rep = d.inspect(self.state)
+                self.assertEqual(rep["errors"], [])
+                self.assertTrue(rep["complete"])
+                self.assertEqual(rep["stop_reason"], "TIME_LIMIT")
+                self.assertEqual(rep["attempts"][1]["status"], "NOT_SENT_RESERVE_HELD")
+                self.assertIs(rep["attempts"][1]["reserve_retained"], True)
+                self.assertEqual(rep["counts"], {"attempted": 1, "valid": 1, "invalid": 0, "unknown": 0,
+                                                 "not_sent": 1, "not_attempted": 31})
+                self.assertEqual(rep["reserved_micro_usd"], held)
+
+    def test_window_anchored_at_first_send_and_timeout_freshly_clamped(self):
+        now = [1000.0]
+        at_reserve = {0: 1050.0, 1: 1050.0 + 3599.5, 2: 1050.0 + 3600}
+
+        def hook(rec):
+            if rec["type"] == "RESERVE":
+                now[0] = at_reserve.get(IDS.index(rec["id"]), now[0])
+        with self.after_append(hook):
+            summary, fake = self.run_fake(clock=lambda: now[0])
+        # first send at 1050 (not the pre-reserve 1000); second send has 0.5 s left
+        self.assertEqual([c["timeout"] for c in fake.calls], [300, 0.5])
+        self.assertEqual(summary["outcomes"][-1], [IDS[2], "NOT_SENT_TIME_LIMIT"])
+        self.assertEqual(summary["stop_reason"], "TIME_LIMIT")
+
+    def test_late_response_is_never_valid_even_on_final_row(self):
+        def per_call(now):
+            return None, lambda i: now.__setitem__(0, now[0] + 300) if i == 31 else None
+
+        def campaign(now):
+            def hook(rec):
+                if rec["type"] == "RESERVE" and rec["id"] == IDS[31]:
+                    now[0] = 3500.0
+            return hook, lambda i: now.__setitem__(0, now[0] + 100.5) if i == 31 else None
+        for name, setup, timeout in (("per-call", per_call, 300), ("campaign", campaign, 100.0)):
+            with self.subTest(name):
+                self.setUp()
+                now = [0.0]
+                hook, tick = setup(now)
+                with self.after_append(hook or (lambda rec: None)):
+                    summary, fake = self.run_fake(clock=lambda: now[0], on_handoff=tick)
+                self.assertEqual(len(fake.calls), 32)
+                self.assertEqual(fake.calls[31]["timeout"], timeout)
+                self.assertEqual(summary["outcomes"][-1], [IDS[31], "RESPONSE_LATE"])
+                self.assertEqual(summary["stop_reason"], "TECHNICAL_FAILURE")
+                self.assertEqual(summary["failure"], "RESPONSE_LATE")
+                rep = d.inspect(self.state)
+                self.assertEqual(rep["errors"], [])
+                self.assertEqual(rep["stop_reason"], "TECHNICAL_FAILURE")
+                self.assertEqual(rep["counts"]["valid"], 31)
+                self.assertEqual(rep["attempts"][31]["status"], "INVALID")
+                self.assertEqual(len(list((ledger_path(self.state).parent / "receipts").iterdir())), 31)
+
+    def test_hung_transport_is_abandoned_at_timeout_without_resend(self):
+        release = threading.Event()
+        self.addCleanup(release.set)
+        now = [0.0]
+
+        def hook(rec):
+            if rec["type"] == "RESERVE" and rec["id"] == IDS[1]:
+                now[0] = 3600 - 0.2
+        start = time.monotonic()
+        with self.after_append(hook):
+            summary, fake = self.run_fake(clock=lambda: now[0], on_handoff=lambda i: i == 1 and release.wait(10))
+        self.assertLess(time.monotonic() - start, 5)
+        self.assertEqual(len(fake.calls), 2)
+        self.assertAlmostEqual(fake.calls[1]["timeout"], 0.2)
+        self.assertEqual(summary["outcomes"][-1], [IDS[1], "TRANSPORT_TIMEOUT"])
+        self.assertEqual(summary["stop_reason"], "TECHNICAL_FAILURE")
+        self.assertEqual(summary["not_attempted"], IDS[2:])
+        rep = d.inspect(self.state)
+        self.assertEqual(rep["attempts"][1]["status"], "INVALID")
+        self.assertEqual(rep["reserved_micro_usd"]["total"], 28000)
 
 
 def raw(status=200, body=b"{}", headers=(("Content-Type", "application/json"),)):
@@ -341,6 +457,7 @@ class HostileResponses(Base):
             "NaN literal": (rejson('{"model":NaN}'), "JSON_INVALID"),
             "overflow float": (rejson('{"x":1e400}'), "JSON_INVALID"),
             "huge int literal": (rejson('{"x":' + "9" * 5000 + "}"), "JSON_INVALID"),
+            "33-digit int literal": (rejson('{"x":' + "9" * 33 + "}"), "JSON_INVALID"),
             "deep nesting": (rejson("[" * 200000 + "]" * 200000), "JSON_INVALID"),
             "top-level list": (rejson("[]"), "ANSWERS_INVALID"),
             "too large": (rejson(big), "RESPONSE_TOO_LARGE"),
@@ -376,7 +493,8 @@ class HostileResponses(Base):
                 dict(zip([k for k, v in r["answers"][q]["probabilities"].items() if v == 0][:2], (-0.25, 0.25))))),
                 "PROBABILITY_INVALID"),
             "prob above one": (setp(q, 1, 1.5), "PROBABILITY_INVALID"),
-            "huge int prob": (setp(q, 1, 10 ** 300), "PROBABILITY_INVALID"),
+            "big int prob": (setp(q, 1, 10 ** 20), "PROBABILITY_INVALID"),
+            "huge int prob": (setp(q, 1, 10 ** 300), "JSON_INVALID"),  # rejected at parse bound
             "sum drift": (setp(q, 1, 0.3), "PROBABILITY_INVALID"),
             "choice not argmax": (upd(lambda r: r["answers"][q].update(
                 choice=next(k for k, v in r["answers"][q]["probabilities"].items() if v == 0))), "CHOICE_INVALID"),
@@ -440,6 +558,23 @@ class HostileResponses(Base):
         self.assertEqual(len(fake.calls), 3)
         self.assertEqual(summary["outcomes"][-1], [IDS[2], "CANONICAL_IDENTITY"])
 
+    def test_rate_metadata_headers_named_and_bounded(self):
+        def mutate(i, resp, headers):
+            headers += [("Retry-After", "30"), ("X-RateLimit-Scope", "endpoint"), ("X-RateLimit-Code", "rate_limited"),
+                        ("X-RateLimit-Secret", CANARY), ("RateLimit-Policy", CANARY), ("x-ratelimit-" + CANARY, "1")]
+        summary, fake = self.run_fake(mutate=mutate)
+        self.assertEqual(summary["stop_reason"], "PLAN_COMPLETE")
+        self.assert_no_canary(summary)
+        res = [json.loads(x) for x in ledger_path(self.state).read_bytes().splitlines()]
+        self.assertEqual(next(r for r in res if r["type"] == "RESULT")["safe_headers"],
+                         {"content-type": "application/json", "x-request-id": "fake-01", "retry-after": "30",
+                          "x-ratelimit-scope": "endpoint", "x-ratelimit-code": "rate_limited"})
+        for name, value in (("Retry-After", CANARY), ("Retry-After", "9" * 7), ("X-RateLimit-Scope", "a" * 33),
+                            ("X-RateLimit-Code", CANARY), ("X-RateLimit-Code", CANARY.lower())):
+            with self.subTest(name=name, value=value[:8]):
+                self.setUp()
+                self.attack(0, hdr(name, value), "HEADER_INVALID")
+
     def test_empty_allowlist_rejects_first_glide_response(self):
         summary, fake = self.run_fake(allow=())
         self.assertEqual(len(fake.calls), 2)
@@ -478,6 +613,54 @@ class Faults(Base):
         with self.assertRaises(d.Refused) as cm:
             d.run(self.state, FakeProvider(self.state), served_allowlist=(SERVED,))
         self.assertEqual(cm.exception.code, "AUTHORIZATION_CONSUMED")
+
+    def test_full_fsync_hard_error_never_falls_back(self):
+        def fcntl_failing(code):
+            return types.SimpleNamespace(F_FULLFSYNC=51, fcntl=mock.Mock(side_effect=OSError(code, "x")))
+        fd = os.open(os.path.join(self.tmp, "f"), os.O_WRONLY | os.O_CREAT, 0o600)
+        self.addCleanup(os.close, fd)
+        for code, falls_back in ((errno.EIO, False), (errno.ENOSPC, False),
+                                 (errno.ENOTSUP, True), (errno.EOPNOTSUPP, True), (errno.ENOTTY, True)):
+            with self.subTest(errno.errorcode[code]), mock.patch.object(d, "fcntl", fcntl_failing(code)), \
+                    mock.patch.object(d.os, "fsync") as plain:
+                if falls_back:
+                    d._fsync(fd)
+                    plain.assert_called_once_with(fd)
+                else:
+                    with self.assertRaises(OSError):
+                        d._fsync(fd)
+                    plain.assert_not_called()
+        orig = d._append
+
+        def bad(fd, chain, rec):
+            if rec["type"] == "RESERVE":
+                with mock.patch.object(d, "fcntl", fcntl_failing(errno.EIO)):
+                    return orig(fd, chain, rec)
+            return orig(fd, chain, rec)
+        with mock.patch.object(d, "_append", bad):
+            fake = FakeProvider(self.state)
+            with self.assertRaises(d.Aborted) as cm:
+                d.run(self.state, fake, served_allowlist=(SERVED,))
+        self.assertEqual(cm.exception.code, "LEDGER_WRITE_FAILED")
+        self.assertEqual(fake.calls, [])
+
+    def test_state_dirs_made_by_racing_process_are_fsynced_before_first_handoff(self):
+        for sub in ("authorizations", "runs"):  # visible but possibly not yet durable
+            os.makedirs(os.path.join(self.state, sub))
+        orig, synced, at_handoff = d._fsync_dir, [], []
+
+        def record(path):
+            orig(path)
+            synced.append(os.path.realpath(path))
+
+        def snapshot(i):
+            if i == 0:
+                at_handoff.extend(synced)
+        with mock.patch.object(d, "_fsync_dir", record):
+            self.run_fake(on_handoff=snapshot)
+        want = {os.path.realpath(x) for x in (self.tmp, self.state, os.path.join(self.state, "authorizations"),
+                                              os.path.join(self.state, "runs"), ledger_path(self.state).parent)}
+        self.assertLessEqual(want, set(at_handoff))
 
     def test_receipt_write_failure_is_recorded_and_stops(self):
         with mock.patch.object(d, "_write_receipt", side_effect=OSError(28, "No space " + CANARY)):
@@ -607,7 +790,7 @@ class Processes(Base):
         self.assertEqual(rep["errors"], [])
         self.assertFalse(rep["complete"])
         self.assertEqual(rep["counts"], {"attempted": 3, "valid": 2, "invalid": 0, "unknown": 1,
-                                         "not_attempted": 29})
+                                         "not_sent": 0, "not_attempted": 29})
         self.assertEqual(rep["attempts"][2]["id"], IDS[2])
         self.assertEqual(rep["reserved_micro_usd"], {"jev": 3000, "glide": 50000, "total": 53000})
         self.assert_no_resume()
@@ -657,8 +840,8 @@ class Surface(unittest.TestCase):
     SRC = Path(d.__file__).read_text()
 
     def test_no_network_credential_subprocess_or_env_code(self):
-        allowed = {"argparse", "base64", "datetime", "fcntl", "hashlib", "json", "math", "os", "re",
-                   "stat", "sys", "time", "pathlib"}
+        allowed = {"argparse", "base64", "datetime", "errno", "fcntl", "hashlib", "json", "math", "os", "re",
+                   "stat", "sys", "threading", "time", "pathlib"}
         tree = ast.parse(self.SRC)
         for node in ast.walk(tree):
             if isinstance(node, ast.Import):

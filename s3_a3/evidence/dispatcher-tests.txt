@@ -1,0 +1,81 @@
+$ python3 -B -W error::ResourceWarning -m unittest discover -s s3_a3/tests -v
+# Python 3.14.3, darwin 22.6.0 (macOS, APFS), finished 2026-11-02T12:13:41Z
+# dispatcher.py sha256 2f342f1fc8f2880a13c02d6c58f5515b2faea6f67a539df22ac66d6adfdcd3cc
+# test_dispatcher.py sha256 fe35d460e91b7e906d4306cac68f5195bfe3478725a21728a670bf7b09e25515
+# fakes.py sha256 01a323cc9c88afe67899dbeb499131897e3d65a8e6cd0a07065a7b471f8c0678
+# child.py sha256 2437c8d75d7820096cc1ed91f6cd2ef80f298120784dec07433fb240b35d60ba
+# Fake in-process transport only. Zero provider calls, zero network, zero credentials.
+
+test_early_factual_failure_still_runs_all_twenty_first (test_dispatcher.Dispatch.test_early_factual_failure_still_runs_all_twenty_first) ... ok
+test_factual_boundary_080_continues (test_dispatcher.Dispatch.test_factual_boundary_080_continues) ... ok
+test_factual_stop_after_exactly_twenty (test_dispatcher.Dispatch.test_factual_stop_after_exactly_twenty) ... ok
+test_full_fake_run_matches_oracle_and_verifies_read_only (test_dispatcher.Dispatch.test_full_fake_run_matches_oracle_and_verifies_read_only) ... ok
+test_sixty_minute_limit_and_timeout_cap (test_dispatcher.Dispatch.test_sixty_minute_limit_and_timeout_cap) ... ok
+test_time_limit_exactly_sixty_minutes_stops (test_dispatcher.Dispatch.test_time_limit_exactly_sixty_minutes_stops) ... ok
+test_unsafe_headers_never_persisted (test_dispatcher.Dispatch.test_unsafe_headers_never_persisted) ... ok
+test_ledger_tampering_detected (test_dispatcher.Faults.test_ledger_tampering_detected) ... ok
+test_marker_fsync_failure_means_no_handoff_and_no_retry (test_dispatcher.Faults.test_marker_fsync_failure_means_no_handoff_and_no_retry) ... ok
+test_receipt_write_failure_is_recorded_and_stops (test_dispatcher.Faults.test_receipt_write_failure_is_recorded_and_stops) ... ok
+test_rerun_refused_even_after_ledger_or_run_dir_removed (test_dispatcher.Faults.test_rerun_refused_even_after_ledger_or_run_dir_removed) ... ok
+test_reserve_fsync_failure_means_no_handoff (test_dispatcher.Faults.test_reserve_fsync_failure_means_no_handoff) ... ok
+test_result_append_failure_leaves_unknown_reserved_attempt (test_dispatcher.Faults.test_result_append_failure_leaves_unknown_reserved_attempt) ... ok
+test_inventory_and_32_ordered_requests_verify (test_dispatcher.FrozenInputs.test_inventory_and_32_ordered_requests_verify) ... ok
+test_mutated_packet_refused_before_any_state (test_dispatcher.FrozenInputs.test_mutated_packet_refused_before_any_state) ... ok
+test_outbound_validation_rejects_any_changed_handoff (test_dispatcher.FrozenInputs.test_outbound_validation_rejects_any_changed_handoff) ... ok
+test_packet_mutated_mid_run_stops_before_next_handoff (test_dispatcher.FrozenInputs.test_packet_mutated_mid_run_stops_before_next_handoff) ... ok
+test_reordered_or_duplicated_plan_refused_before_any_state (test_dispatcher.FrozenInputs.test_reordered_or_duplicated_plan_refused_before_any_state) ... ok
+test_request_mutated_mid_run_is_never_handed_off (test_dispatcher.FrozenInputs.test_request_mutated_mid_run_is_never_handed_off) ... ok
+test_empty_allowlist_rejects_first_glide_response (test_dispatcher.HostileResponses.test_empty_allowlist_rejects_first_glide_response) ... ok
+test_glide_identity_retention_usage (test_dispatcher.HostileResponses.test_glide_identity_retention_usage) ... ok
+test_glide_served_identity_must_not_change_and_is_not_learned (test_dispatcher.HostileResponses.test_glide_served_identity_must_not_change_and_is_not_learned) ... ok
+test_jev_input_bound_is_inclusive (test_dispatcher.HostileResponses.test_jev_input_bound_is_inclusive) ... ok
+test_malformed_and_malicious_bodies (test_dispatcher.HostileResponses.test_malformed_and_malicious_bodies) ... ok
+test_malformed_transport_result (test_dispatcher.HostileResponses.test_malformed_transport_result) ... ok
+test_model_answers_probabilities_choice (test_dispatcher.HostileResponses.test_model_answers_probabilities_choice) ... ok
+test_non_200_and_redirects_are_terminal_without_retry (test_dispatcher.HostileResponses.test_non_200_and_redirects_are_terminal_without_retry) ... ok
+test_transport_failures_are_terminal (test_dispatcher.HostileResponses.test_transport_failures_are_terminal) ... ok
+test_usage (test_dispatcher.HostileResponses.test_usage) ... ok
+test_competing_processes_exactly_one_dispatches (test_dispatcher.Processes.test_competing_processes_exactly_one_dispatches) ... ok
+test_sigkill_after_response_before_receipt (test_dispatcher.Processes.test_sigkill_after_response_before_receipt) ... ok
+test_sigkill_before_reserve_cannot_have_sent (test_dispatcher.Processes.test_sigkill_before_reserve_cannot_have_sent) ... ok
+test_sigkill_during_transport_holds_unknown_reserve (test_dispatcher.Processes.test_sigkill_during_transport_holds_unknown_reserve) ... ok
+test_cli_cannot_dispatch_or_choose_paths (test_dispatcher.Surface.test_cli_cannot_dispatch_or_choose_paths) ... ok
+test_cli_verify_and_inspect_are_read_only (test_dispatcher.Surface.test_cli_verify_and_inspect_are_read_only) ... ok
+test_no_network_credential_subprocess_or_env_code (test_dispatcher.Surface.test_no_network_credential_subprocess_or_env_code) ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 47.154s
+
+OK
+
+# ---- mutation check (in-memory mutants; dispatcher.py on disk unchanged)
+$ python3 -B s3_a3/tests/mutation_check.py
+no reservation before handoff    KILLED
+no U+T factual stop              KILLED
+accept non-200                   KILLED
+marker not one-use               KILLED
+time limit off by one            KILLED
+no mid-run inventory recheck     KILLED
+no outbound check at handoff     KILLED
+served identity may change       KILLED
+bool usage accepted              KILLED
+negative probability accepted    KILLED
+duplicate JSON keys accepted     KILLED
+inspect ignores hash chain       KILLED
+persist any header               KILLED
+receipt failure ignored          KILLED
+reserve released on failure      KILLED
+plan reorder accepted            KILLED
+mutants=16 survived=0
+
+# ---- preserved acceptance observer (unchanged files)
+$ python3 -B -m unittest discover -s s3_a3/acceptance -v
+Ran 5 tests in 0.119s
+OK
+
+# ---- CLI (fixed state root s3_a3/state; none existed before or after)
+$ python3 -B s3_a3/dispatcher.py verify          # exit 0
+{"freeze_sha256": "957b6c70fc9103987c6423e7e09997109352307753ecc9c9d97dbce3f769f24a", "inventory_sha256": "d6af08e2ad3453bbb913a7056afec991b1f08c8a8273bde2ecf7a3bac14c8659", "order_sha256": "9e720d83ef71ef222baed19b1cebfe7608e40bd3fe7ffab91762ed87c72c6986", "requests": 32, "reserve_micro_usd": {"jev": 3000, "glide": 25000}, "live_dispatch": "DISABLED"}
+$ python3 -B s3_a3/dispatcher.py run             # exit 4
+LIVE_DISPATCH_DISABLED
+$ python3 -B s3_a3/dispatcher.py inspect         # exit 1: errors ["NO_RUN"], authorization_consumed false
