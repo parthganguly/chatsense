@@ -6,6 +6,28 @@ allowlist; `run` there verifies the frozen packet and refuses before any state.
 
 transport(url, headers, body, timeout) -> (status:int, headers:list[(str,str)], body:bytes)
 
+Handoff semantics (trusted synthetic fakes only; CPython on POSIX, checked on 3.14):
+- The transport must be a plain Python function or an instance of a Python class whose
+  __call__ is a plain Python function (not a generator/coroutine). Anything else, a run
+  off the main thread, an armed ITIMER_REAL or an installed sys.setprofile hook is
+  refused before the authorization is consumed.
+- "Sent" means the interpreter entered the transport's own code object. A scoped
+  sys.setprofile guard sees that 'call' event before any of the body executes. There
+  it rereads the clock: past the 60-minute window or the per-call real bound it raises,
+  so the body never starts (NOT_SENT). Otherwise the entry instant opens the window on
+  the first send and the per-call alarm is cut to what is left, so a stale `timeout`
+  argument cannot extend the call. No hook exists between the guard's return and the
+  body's first instruction; that interpreter step is the residual gap.
+- The handoff runs synchronously on the main thread. ITIMER_REAL delivers SIGALRM, whose
+  handler raises _Cutoff (a BaseException) into whatever Python code is running, so a hung
+  fake is unwound before run() continues; no thread or callback survives the call.
+  Handlers run between bytecodes, and blocking calls that are interrupted by signals
+  (sleep, lock waits, select) run them promptly. Native code that does not return to the
+  interpreter delays the cutoff until it does, and a fake that catches BaseException
+  and keeps running defeats it. Timer resolution is 1 us; less is treated as expired.
+- A reply returned at or after the per-call timeout or the window end is RESPONSE_LATE.
+  None of this is a hard real-time, native or network guarantee.
+
 Usage (from the repository root):
   python3 -B s3_a3/dispatcher.py verify    # frozen inventory + 32 requests
   python3 -B s3_a3/dispatcher.py inspect   # read-only ledger check (fixed state root)
@@ -21,6 +43,7 @@ import json
 import math
 import os
 import re
+import signal
 import stat
 import sys
 import threading
@@ -54,12 +77,19 @@ FACTUAL_ITEMS = ("q02", "q03", "q07")
 FACTUAL_MIN = 0.80
 FACTUAL_CHECKPOINT = 20  # after pair 10: all U and T attempts
 QUESTION_IDS = ["q%02d" % n for n in range(1, 9)]
+TIMER_RESOLUTION_S = 1e-6  # setitimer rounds anything smaller to 0, which disarms it
 SAFE_VALUE = re.compile(r"[\x20-\x7e]{0,256}\Z")
-RATE_TOKEN = re.compile(r"[a-z_]{1,32}\Z")
-SAFE_HEADERS = {"content-type": SAFE_VALUE, "x-request-id": SAFE_VALUE, "request-id": SAFE_VALUE,
-                "x-fastino-served-model": SAFE_VALUE, "x-fastino-data-retention": SAFE_VALUE,
-                "retry-after": re.compile(r"[0-9]{1,6}\Z"),
-                "x-ratelimit-scope": RATE_TOKEN, "x-ratelimit-code": RATE_TOKEN}
+# Named response headers. Values are checked in memory; the ledger keeps only known values:
+# retry-after digits, the rate values the frozen fakes use (the provider docs list none),
+# application/json without parameters, retention and served identity only when accepted,
+# and request IDs raw only in the A3 synthetic format, otherwise as a SHA-256 (which does
+# not hide a guessable secret; no live request ID exists offline).
+SAFE_HEADERS = {"content-type", "x-request-id", "request-id", "x-fastino-served-model",
+                "x-fastino-data-retention", "retry-after", "x-ratelimit-scope", "x-ratelimit-code"}
+RETRY_AFTER = re.compile(r"[0-9]{1,6}\Z")
+RATE_VALUES = {"x-ratelimit-scope": {"endpoint"}, "x-ratelimit-code": {"rate_limited"}}
+RETENTION_VALUES = ("not-stored", "zero")
+SYNTHETIC_REQUEST_ID = re.compile(r"fake-[0-9]{2}\Z")
 COST_STATUS = "UNKNOWN_UNRECONCILED"
 
 
@@ -438,24 +468,42 @@ def _check_response(res, row, allow, served_seen, info):
     if type(res) is not tuple or len(res) != 3:
         raise Invalid("TRANSPORT_MALFORMED")
     status, headers, body = res
-    if type(status) is not int or type(headers) is not list or type(body) is not bytes:
+    if (type(status) is not int or not 100 <= status <= 599 or type(headers) is not list
+            or type(body) is not bytes):
         raise Invalid("TRANSPORT_MALFORMED")
     info.update(http_status=status, response_sha256=_sha(body), response_bytes=len(body))
-    safe = {}
+    safe = {}  # raw values, memory only
     for item in headers:
         if type(item) is not tuple or len(item) != 2 or type(item[0]) is not str or type(item[1]) is not str:
             raise Invalid("HEADER_INVALID")
         name = item[0].lower()
         if name in SAFE_HEADERS:
-            if name in safe or not SAFE_HEADERS[name].match(item[1]):
+            if name in safe or not SAFE_VALUE.match(item[1]):
                 raise Invalid("HEADER_INVALID")
             safe[name] = item[1]
-    info["safe_headers"] = safe
+    kept = {}
+    for name, value in safe.items():
+        if name == "retry-after" or name in RATE_VALUES:
+            if not (RETRY_AFTER.match(value) if name == "retry-after" else value in RATE_VALUES[name]):
+                raise Invalid("HEADER_INVALID")
+            kept[name] = value
+        elif name == "content-type":
+            media = value.split(";")[0].strip().lower()
+            if media == "application/json":
+                kept[name] = media
+        elif name in ("x-request-id", "request-id"):
+            kept[name] = value if SYNTHETIC_REQUEST_ID.match(value) else "sha256:" + _sha(value.encode())
+        elif name == "x-fastino-data-retention":
+            if value in RETENTION_VALUES:
+                kept[name] = value
+        elif value in allow:  # x-fastino-served-model
+            kept[name] = value
+    info["safe_headers"] = kept
     if status != 200:  # includes redirects, 425, 429, 5xx: terminal, never retried or followed
         raise Invalid("HTTP_STATUS")
     if len(body) > MAX_RESPONSE_BYTES:
         raise Invalid("RESPONSE_TOO_LARGE")
-    if safe.get("content-type", "").split(";")[0].strip().lower() != "application/json":
+    if kept.get("content-type") != "application/json":
         raise Invalid("CONTENT_TYPE")
     try:
         obj = _strict_json(body)
@@ -466,7 +514,7 @@ def _check_response(res, row, allow, served_seen, info):
     if obj.get("model") != REPORTED_MODELS[provider]:
         raise Invalid("MODEL_MISMATCH")
     if provider == "glide":
-        if safe.get("x-fastino-data-retention") not in ("not-stored", "zero"):
+        if safe.get("x-fastino-data-retention") not in RETENTION_VALUES:
             raise Invalid("RETENTION")
         served = safe.get("x-fastino-served-model")
         if served not in allow or (served_seen is not None and served != served_seen):
@@ -516,40 +564,83 @@ def _expired(remaining):
     return not remaining > 0  # NaN counts as expired
 
 
-def _handoff(transport, snap, timeout, clock, t0):
-    """One handoff on a daemon worker, bounded by `timeout` real seconds.
+class _Cutoff(BaseException):
+    """Raised by the receiver-entry guard or SIGALRM; never escapes _handoff."""
 
-    The worker sends only if it starts inside that bound and the 60-minute window;
-    otherwise it never sends. A hung transport is abandoned, never awaited or
-    retried, and anything it returns after the bound is discarded.
+
+_FUNCTION = type(_sha)
+_NOT_PLAIN = 0x20 | 0x80 | 0x100 | 0x200  # CO_GENERATOR, CO_COROUTINE, CO_ITERABLE_COROUTINE, CO_ASYNC_GENERATOR
+
+
+def _receiver_code(transport):
+    """The code object whose interpreter entry is the handoff, or None if unsupported."""
+    fn = transport if type(transport) is _FUNCTION else getattr(type(transport), "__call__", None)
+    if type(fn) is not _FUNCTION or fn.__code__.co_flags & _NOT_PLAIN:
+        return None
+    return fn.__code__
+
+
+def _handoff_unavailable():
+    """Why a guarded, interruptible handoff cannot be set up here, or None."""
+    if threading.current_thread() is not threading.main_thread() or not hasattr(signal, "setitimer"):
+        return "TIMEOUT_UNAVAILABLE"
+    if signal.getitimer(signal.ITIMER_REAL) != (0.0, 0.0):
+        return "TIMEOUT_UNAVAILABLE"
+    if sys.getprofile() is not None:
+        return "PROFILE_HOOK_ACTIVE"
+    return None
+
+
+def _handoff(transport, code, snap, timeout, clock, t0):
+    """One synchronous handoff, bounded by `timeout` real seconds (see module docstring).
+
+    Returns box: state "sent" only once the receiver's code was entered, with the entry
+    clock reading ("entered", "t0"); then "result", "error" or "cutoff" (ended by the alarm)
+    and "late" (returned at or past the real bound).
     """
     bound = time.monotonic() + timeout
-    lock, finished = threading.Lock(), threading.Event()
-    box = {"state": "pending"}
+    box = {"state": "not_sent", "armed": False}
 
-    def work():
-        with lock:
-            if box["state"] != "pending" or time.monotonic() >= bound or _expired(TIME_LIMIT_S - (clock() - t0)):
-                box["state"] = "not_sent"
-                finished.set()
-                return
-            box["state"] = "sent"
-        try:
-            out = ("result", transport(snap["url"], snap["headers"], snap["body"], timeout))
-        except BaseException as e:
-            out = ("error", e)
-        with lock:
-            if "late" not in box:  # main has not closed the box
-                box[out[0]] = out[1]
-        finished.set()
-    threading.Thread(target=work, daemon=True).start()
+    def guard(frame, event, arg):
+        if frame.f_code is not code or event != "call" or box["state"] != "not_sent":
+            return
+        now = clock()  # first interpreter entry of the receiver; none of its body has run
+        start = now if t0 is None else t0
+        left = min(bound - time.monotonic(), TIME_LIMIT_S - (now - start))
+        if not left >= TIMER_RESOLUTION_S:  # NaN or expired: abort before the body starts
+            raise _Cutoff
+        signal.setitimer(signal.ITIMER_REAL, left)
+        box.update(state="sent", entered=now, t0=start, deadline=time.monotonic() + left)
+
+    def alarm(signum, frame):
+        if box["armed"]:
+            raise _Cutoff
+
+    # A _Cutoff can only be raised while "armed", and "armed" is only true inside the outer
+    # try. The timer is one-shot, so once it has fired no second alarm can arrive.
+    previous = signal.signal(signal.SIGALRM, alarm)
     try:
-        finished.wait(max(0.0, bound - time.monotonic()))
-    finally:  # also on KeyboardInterrupt: a worker that has not started never sends
-        with lock:
-            if box["state"] == "pending":
-                box["state"] = "not_sent"
-            box["late"] = time.monotonic() >= bound
+        try:
+            box["armed"] = True
+            signal.setitimer(signal.ITIMER_REAL, timeout)
+            sys.setprofile(guard)
+            box["result"] = transport(snap["url"], snap["headers"], snap["body"], timeout)
+            if box["state"] != "sent":  # body ran without the guard seeing it: unknown, not "not sent"
+                raise Aborted("RECEIVER_UNGUARDED")
+            box["late"] = time.monotonic() >= box["deadline"]
+        finally:
+            box["armed"] = False
+    except _Cutoff:
+        box["cutoff"] = True
+    except BaseException as e:
+        if box["state"] != "sent":
+            raise
+        box["error"] = e
+    finally:
+        box["armed"] = False
+        sys.setprofile(None)
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        signal.signal(signal.SIGALRM, previous)
     return box
 
 
@@ -560,8 +651,14 @@ def run(state_root, transport, *, served_allowlist, clock=time.monotonic, packet
     if transport is None:
         raise Refused("LIVE_DISPATCH_DISABLED")
     allow = tuple(served_allowlist)
-    if not all(type(a) is str and a for a in allow):
+    if not all(type(a) is str and a and SAFE_VALUE.match(a) for a in allow):
         raise Refused("ALLOWLIST_INVALID")
+    code = _receiver_code(transport)
+    if code is None:
+        raise Refused("TRANSPORT_UNSUPPORTED")
+    unavailable = _handoff_unavailable()
+    if unavailable:
+        raise Refused(unavailable)
     p = paths(state_root)
     fd, chain = _consume_authorization(p)
     rows = fz["rows"]
@@ -606,14 +703,13 @@ def run(state_root, transport, *, served_allowlist, clock=time.monotonic, packet
                     "reserve_micro_usd": amount, "reserved_micro_usd": dict(reserved),
                     "authorization_id": AUTH_ID, "freeze_sha256": FREEZE_SHA256})
             # Reservation is fsynced. From here a crash is an unknown, potentially billed attempt.
-            now = clock()
-            if t0 is None:
-                t0 = now  # the 60-minute window opens at the first actual handoff
-            remaining = TIME_LIMIT_S - (now - t0)
+            remaining = TIME_LIMIT_S if t0 is None else TIME_LIMIT_S - (clock() - t0)
             timeout = min(MAX_TIMEOUT_S, remaining)
-            box = {"state": "not_sent"} if _expired(remaining) else _handoff(transport, snap, timeout, clock, t0)
-            if box["state"] != "sent":  # provably never handed off; the reserve stays held
-                outcome = ("NOT_SENT_TIME_LIMIT" if _expired(TIME_LIMIT_S - (clock() - t0))
+            box = {"state": "not_sent"} if _expired(remaining) else _handoff(transport, code, snap, timeout, clock, t0)
+            if box["state"] == "sent" and t0 is None:
+                t0 = box["t0"]  # the 60-minute window opens at the receiver's first entry
+            if box["state"] != "sent":  # receiver body never entered; the reserve stays held
+                outcome = ("NOT_SENT_TIME_LIMIT" if t0 is not None and _expired(TIME_LIMIT_S - (clock() - t0))
                            else "NOT_SENT_HANDOFF_LATE")
                 append({"type": "NOT_SENT", "id": row["id"], "outcome": outcome, "reserve_micro_usd": amount,
                         "cost_status": COST_STATUS, "reserve_retained": True})
@@ -623,11 +719,12 @@ def run(state_root, transport, *, served_allowlist, clock=time.monotonic, packet
                 break
             attempted += 1
             info = {}
+            end = clock()
             if "error" in box:
                 outcome = "TRANSPORT_TIMEOUT" if isinstance(box["error"], TimeoutError) else "TRANSPORT_ERROR"
-            elif "result" not in box:
-                outcome = "TRANSPORT_TIMEOUT"  # hung: abandoned, never retried
-            elif box["late"] or clock() - now >= timeout:
+            elif "result" not in box or box.get("cutoff"):
+                outcome = "TRANSPORT_TIMEOUT"  # hung: interrupted by the alarm, never retried
+            elif box["late"] or end - box["entered"] >= timeout or _expired(TIME_LIMIT_S - (end - t0)):
                 outcome = "RESPONSE_LATE"
             else:
                 res = box["result"]

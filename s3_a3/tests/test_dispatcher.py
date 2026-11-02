@@ -1,6 +1,8 @@
 """Offline tests for the S3 A3 one-shot dispatcher. Fake transport only."""
 import ast
 import errno
+import functools
+import inspect
 import json
 import os
 import shutil
@@ -369,6 +371,237 @@ class Deadline(Base):
         self.assertEqual(rep["reserved_micro_usd"]["total"], 28000)
 
 
+def call_line():
+    """Dispatcher line that calls the transport, located by source text, not number."""
+    src, first = inspect.getsourcelines(d._handoff)
+    hits = [first + n for n, s in enumerate(src) if "= transport(snap[" in s]
+    assert len(hits) == 1, hits
+    return hits[0]
+
+
+RECEIVER = FakeProvider.__call__.__code__
+
+
+class ReceiverEntry(Base):
+    """Third review: protection runs at the receiver's entry, not before the call."""
+
+    def trace(self, at, action):
+        """Run action(hit) at `at`: "caller" = the dispatcher's transport-call line;
+        "frame" = the receiver frame's creation, before the guard; "body" = the receiver's
+        first body line, after the guard. hit counts from 0 per handoff."""
+        line, hits = call_line(), []
+
+        def local(frame, event, arg):
+            if event == "line" and ((at == "caller" and frame.f_lineno == line)
+                                    or (at == "body" and frame.f_code is RECEIVER and frame.f_lineno == body)):
+                hits.append(1)
+                action(len(hits) - 1)
+                return None if at == "body" else local
+            return local
+
+        def tracer(frame, event, arg):
+            if frame.f_code is d._handoff.__code__ and at == "caller":
+                return local
+            if frame.f_code is RECEIVER:
+                if at == "frame":
+                    hits.append(1)
+                    action(len(hits) - 1)
+                elif at == "body":
+                    return local
+        src, first = inspect.getsourcelines(FakeProvider.__call__)
+        body = first + next(n for n, s in enumerate(src) if "i = len(self.calls)" in s)
+        sys.settrace(tracer)
+        self.addCleanup(sys.settrace, None)
+        return hits
+
+    def test_deadline_crossed_before_receiver_entry_is_never_sent(self):
+        for at in ("caller", "frame"):
+            for jump in (3600.0, 3601.0):
+                with self.subTest(at=at, jump=jump):
+                    self.setUp()
+                    now = [0.0]
+                    hits = self.trace(at, lambda n: n == 1 and now.__setitem__(0, jump))
+                    summary, fake = self.run_fake(clock=lambda: now[0])
+                    sys.settrace(None)
+                    self.assertEqual(len(hits), 2)  # the delay was really injected at that point
+                    self.assertEqual(len(fake.calls), 1)  # receiver body never ran a second time
+                    self.assertEqual(summary["outcomes"], [[IDS[0], "VALID"], [IDS[1], "NOT_SENT_TIME_LIMIT"]])
+                    self.assertEqual(summary["handoffs"], 1)
+                    rep = d.inspect(self.state)
+                    self.assertEqual(rep["errors"], [])
+                    self.assertEqual(rep["counts"]["not_sent"], 1)
+                    self.assertEqual(rep["reserved_micro_usd"]["total"], 28000)
+
+    def test_delay_after_receiver_entry_is_a_sent_late_attempt(self):
+        for jump in (3600.0, 3601.0):
+            with self.subTest(jump):
+                self.setUp()
+                now, seen = [0.0], []
+                hits = self.trace("body", lambda n: n == 1 and now.__setitem__(0, jump))
+                summary, fake = self.run_fake(clock=lambda: now[0], on_handoff=lambda i: seen.append(now[0]))
+                sys.settrace(None)
+                self.assertEqual(len(hits), 2)
+                self.assertEqual(seen, [0.0, jump])  # the started call is not redefined as unsent
+                self.assertEqual(summary["handoffs"], 2)
+                self.assertEqual(summary["outcomes"][-1], [IDS[1], "RESPONSE_LATE"])
+                rep = d.inspect(self.state)
+                self.assertEqual(rep["errors"], [])
+                self.assertEqual(rep["counts"]["invalid"], 1)
+                self.assertEqual(rep["reserved_micro_usd"]["total"], 28000)
+
+    def test_window_opens_at_first_receiver_entry(self):
+        now = [0.0]
+        self.trace("caller", lambda n: n == 0 and now.__setitem__(0, 50.0))  # pre-receiver delay, first send
+
+        def gap(rec):
+            if rec["type"] == "RESULT" and rec["id"] == IDS[0]:
+                now[0] = 50.0 + 3599.5
+        with self.after_append(gap):
+            summary, fake = self.run_fake(clock=lambda: now[0])
+        sys.settrace(None)
+        # anchored at the pre-receiver 0.0, call 2 (at 3649.5) would be NOT_SENT
+        self.assertEqual([c["timeout"] for c in fake.calls[:2]], [300, 0.5])
+        self.assertEqual(summary["outcomes"][1], [IDS[1], "VALID"])
+
+    def test_stale_timeout_argument_is_cut_to_the_window(self):
+        now, waited = [0.0], []
+
+        def hook(rec):
+            if rec["type"] == "RESERVE" and rec["id"] == IDS[1]:
+                now[0] = 3599.0  # timeout argument will be 1.0
+        self.trace("caller", lambda n: n == 1 and now.__setitem__(0, 3599.95))  # 0.05 left at entry
+
+        def hang(i):
+            if i == 1:
+                start = time.monotonic()
+                try:
+                    threading.Event().wait(5)
+                finally:
+                    waited.append(time.monotonic() - start)
+        with self.after_append(hook):
+            summary, fake = self.run_fake(clock=lambda: now[0], on_handoff=hang)
+        sys.settrace(None)
+        self.assertEqual(fake.calls[1]["timeout"], 1.0)
+        self.assertLess(waited[0], 0.5)
+        self.assertEqual(summary["outcomes"][-1], [IDS[1], "TRANSPORT_TIMEOUT"])
+
+    def test_pre_receiver_real_stall_never_sends_even_after_return(self):
+        hits = self.trace("caller", lambda n: time.sleep(0.12))
+        threads = threading.active_count()
+        with mock.patch.object(d, "MAX_TIMEOUT_S", 0.03):
+            summary, fake = self.run_fake()
+        sys.settrace(None)
+        time.sleep(0.2)
+        self.assertEqual(len(hits), 1)
+        self.assertEqual(fake.calls, [])
+        self.assertEqual(threading.active_count(), threads)
+        self.assertEqual(summary["outcomes"], [[IDS[0], "NOT_SENT_HANDOFF_LATE"]])
+        self.assertEqual(summary["handoffs"], 0)
+        self.assertEqual(d.inspect(self.state)["errors"], [])
+
+    def test_hung_fake_is_terminated_before_run_returns(self):
+        for row in (1, 31):
+            with self.subTest(row):
+                self.setUp()
+                now, unwound = [0.0], []
+
+                def hook(rec):
+                    if rec["type"] == "RESERVE" and rec["id"] == IDS[row]:
+                        now[0] = 3600 - 0.2
+
+                def hang(i):
+                    if i == row:
+                        try:
+                            while True:
+                                time.sleep(30)
+                        finally:
+                            unwound.append(time.monotonic())
+                threads = threading.active_count()
+                with self.after_append(hook):
+                    summary, fake = self.run_fake(clock=lambda: now[0], on_handoff=hang)
+                returned = time.monotonic()
+                self.assertEqual(len(unwound), 1)
+                self.assertLessEqual(unwound[0], returned)
+                self.assertEqual(threading.active_count(), threads)
+                self.assertEqual(summary["outcomes"][-1], [IDS[row], "TRANSPORT_TIMEOUT"])
+                self.assertEqual(summary["handoffs"], row + 1)
+                self.assertEqual(d.inspect(self.state)["stop_reason"], "TECHNICAL_FAILURE")
+        self.assertIsNone(sys.getprofile())
+        self.assertEqual(signal.getitimer(signal.ITIMER_REAL), (0.0, 0.0))
+        self.assertIs(signal.getsignal(signal.SIGALRM), signal.SIG_DFL)
+
+    def test_unsupported_transport_or_environment_refused_before_authorization(self):
+        async def coro(*a):
+            pass
+
+        def gen(*a):
+            yield
+
+        class NativeCall:
+            __call__ = print
+        cases = {"builtin": (print, "TRANSPORT_UNSUPPORTED"),
+                 "partial": (functools.partial(lambda *a: None), "TRANSPORT_UNSUPPORTED"),
+                 "generator": (gen, "TRANSPORT_UNSUPPORTED"), "coroutine": (coro, "TRANSPORT_UNSUPPORTED"),
+                 "class": (FakeProvider, "TRANSPORT_UNSUPPORTED"), "native __call__": (NativeCall(), "TRANSPORT_UNSUPPORTED"),
+                 "bound method": (FakeProvider(self.state).__call__, "TRANSPORT_UNSUPPORTED")}
+        for name, (transport, code) in cases.items():
+            with self.subTest(name):
+                with self.assertRaises(d.Refused) as cm:
+                    d.run(self.state, transport, served_allowlist=(SERVED,))
+                self.assertEqual(cm.exception.code, code)
+                self.assertFalse(os.path.exists(self.state))
+        fake = FakeProvider(self.state)
+        out = {}
+
+        def off_main():
+            try:
+                d.run(self.state, fake, served_allowlist=(SERVED,))
+            except d.Refused as e:
+                out["code"] = e.code
+        t = threading.Thread(target=off_main)
+        t.start()
+        t.join()
+        self.assertEqual(out, {"code": "TIMEOUT_UNAVAILABLE"})
+        sys.setprofile(lambda *a: None)
+        try:
+            with self.assertRaises(d.Refused) as cm:
+                d.run(self.state, fake, served_allowlist=(SERVED,))
+        finally:
+            sys.setprofile(None)
+        self.assertEqual(cm.exception.code, "PROFILE_HOOK_ACTIVE")
+        old = signal.signal(signal.SIGALRM, lambda *a: None)
+        signal.setitimer(signal.ITIMER_REAL, 60)
+        try:
+            with self.assertRaises(d.Refused) as cm:
+                d.run(self.state, fake, served_allowlist=(SERVED,))
+        finally:
+            signal.setitimer(signal.ITIMER_REAL, 0)
+            signal.signal(signal.SIGALRM, old)
+        self.assertEqual(cm.exception.code, "TIMEOUT_UNAVAILABLE")
+        self.assertEqual(fake.calls, [])
+        self.assertFalse(os.path.exists(self.state))
+
+    def test_receiver_body_run_unseen_by_guard_is_unknown_not_unsent(self):
+        fake, ran = FakeProvider(self.state), []
+
+        class Send:
+            def __call__(self, url, headers, body, timeout):
+                ran.append(1)
+                Send.__call__ = Send.later  # later calls enter code the guard does not watch
+                return fake(url, headers, body, timeout)
+
+            def later(self, url, headers, body, timeout):
+                ran.append(2)
+                return fake(url, headers, body, timeout)
+        with self.assertRaises(d.Aborted) as cm:
+            d.run(self.state, Send(), served_allowlist=(SERVED,))
+        self.assertEqual(cm.exception.code, "RECEIVER_UNGUARDED")
+        self.assertEqual(ran, [1, 2])
+        rep = d.inspect(self.state)
+        self.assertEqual(rep["attempts"][1]["status"], "UNKNOWN_POTENTIALLY_BILLED")
+        self.assertEqual(rep["counts"]["not_sent"], 0)
+
+
 def raw(status=200, body=b"{}", headers=(("Content-Type", "application/json"),)):
     return lambda i, resp, h: (status, list(headers), body)
 
@@ -574,6 +807,45 @@ class HostileResponses(Base):
             with self.subTest(name=name, value=value[:8]):
                 self.setUp()
                 self.attack(0, hdr(name, value), "HEADER_INVALID")
+
+    def test_hostile_named_header_values_never_reach_the_ledger(self):
+        token = "zq7canary"  # lowercase, printable, matches every old per-header pattern
+        rid = "Bearer " + token
+        cases = [  # (row, status, header, value, outcome, persisted safe_headers)
+            (0, 429, "X-RateLimit-Scope", "secret_" + token, "HEADER_INVALID", None),
+            (0, 429, "X-RateLimit-Code", "authorization", "HEADER_INVALID", None),
+            (0, 200, "X-RateLimit-Code", token, "HEADER_INVALID", None),
+            (0, 429, "X-Request-Id", rid, "HTTP_STATUS",
+             {"content-type": "application/json", "x-request-id": "sha256:" + d._sha(rid.encode())}),
+            (0, 429, "Request-Id", token, "HTTP_STATUS",
+             {"content-type": "application/json", "x-request-id": "fake-01", "request-id": "sha256:" + d._sha(token.encode())}),
+            (0, 200, "Content-Type", "application/json; secret=" + token, "VALID", None),
+            (0, 200, "Content-Type", "text/" + token, "CONTENT_TYPE", {"x-request-id": "fake-01"}),
+            (1, 200, "X-Fastino-Served-Model", token, "CANONICAL_IDENTITY",
+             {"content-type": "application/json", "x-fastino-data-retention": "not-stored"}),
+            (1, 200, "X-Fastino-Data-Retention", token, "RETENTION",
+             {"content-type": "application/json", "x-fastino-served-model": SERVED}),
+            (0, 10 ** 30 + int.from_bytes(token.encode()), "X-Debug", token, "TRANSPORT_MALFORMED", None),
+        ]
+        for row, status, name, value, code, kept in cases:
+            with self.subTest(name=name, status=status if status < 600 else "huge"):
+                self.setUp()
+
+                def mutate(i, resp, h, row=row, status=status, name=name, value=value):
+                    if i == row:
+                        hdr(name, value)(resp, h)
+                        return status, h, json.dumps(resp).encode()
+                summary, fake = self.run_fake(mutate=mutate)
+                self.assertEqual(summary["outcomes"][row], [IDS[row], code])
+                for path, (data, _, _) in tree_bytes(self.state).items():
+                    self.assertNotIn(token.encode(), data, path)
+                    self.assertNotIn(b"%d" % status, data if status > 599 else b"", path)
+                res = [json.loads(x) for x in ledger_path(self.state).read_bytes().splitlines()]
+                rec = [r for r in res if r["type"] == "RESULT"][row]
+                if code == "VALID":
+                    self.assertEqual(rec["safe_headers"]["content-type"], "application/json")
+                else:
+                    self.assertEqual(rec.get("safe_headers"), kept)
 
     def test_empty_allowlist_rejects_first_glide_response(self):
         summary, fake = self.run_fake(allow=())
@@ -841,6 +1113,7 @@ class Surface(unittest.TestCase):
 
     def test_no_network_credential_subprocess_or_env_code(self):
         allowed = {"argparse", "base64", "datetime", "errno", "fcntl", "hashlib", "json", "math", "os", "re",
+                   "signal",  # synchronous SIGALRM per-call cutoff; see dispatcher docstring
                    "stat", "sys", "threading", "time", "pathlib"}
         tree = ast.parse(self.SRC)
         for node in ast.walk(tree):
