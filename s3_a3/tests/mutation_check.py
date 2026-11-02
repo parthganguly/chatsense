@@ -35,7 +35,7 @@ MUTANTS = {
     "window anchored before receiver": ("remaining = TIME_LIMIT_S if t0 is None else TIME_LIMIT_S - (clock() - t0)",
                                         "t0 = clock() if t0 is None else t0\n            remaining = TIME_LIMIT_S - (clock() - t0)",
                                         T + "ReceiverEntry.test_window_opens_at_first_receiver_entry"),
-    "stale timeout not cut at entry": ("signal.setitimer(signal.ITIMER_REAL, left)", "pass",
+    "stale timeout not cut at entry": ("if not timeout <= window:", "if False:",
                                        T + "ReceiverEntry.test_stale_timeout_argument_is_cut_to_the_window"),
     "late reply accepted": ('elif box["late"] or end - box["entered"] >= timeout or _expired(TIME_LIMIT_S - (end - t0)):',
                             "elif False:", T + "Deadline"),

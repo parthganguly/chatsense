@@ -381,6 +381,42 @@ def call_line():
 
 RECEIVER = FakeProvider.__call__.__code__
 
+MASK_CHILD = r"""
+import json, os, signal, sys, tempfile, time
+from unittest import mock
+sys.path[:0] = sys.argv[2:4]
+from fakes import SERVED, FakeProvider
+import dispatcher as d
+
+mode, events = sys.argv[1], []
+state = os.path.join(tempfile.mkdtemp(), "state")
+if mode == "receiver_masks":
+    transport = FakeProvider(state, on_handoff=lambda i: i == 0 and signal.pthread_sigmask(signal.SIG_BLOCK, {signal.SIGALRM}))
+    mine = signal.getsignal(signal.SIGALRM)
+else:
+    def transport(url, headers, body, timeout):
+        events.append("entered")
+        time.sleep(0.18)
+        events.append("continued_after_timeout")
+        return 500, [], b""
+    mine = signal.SIG_IGN if mode == "blocked" else (lambda *a: events.append("caller handler ran"))
+    signal.signal(signal.SIGALRM, mine)
+    signal.pthread_sigmask(signal.SIG_BLOCK, {signal.SIGALRM})
+    if mode == "pending":
+        signal.raise_signal(signal.SIGALRM)
+with mock.patch.object(d, "MAX_TIMEOUT_S", d.MAX_TIMEOUT_S if mode == "receiver_masks" else 0.035):
+    try:
+        out = d.run(state, transport, served_allowlist=(SERVED,))["outcomes"]
+    except d.Refused as e:
+        out = e.code
+print(json.dumps({"out": out, "events": events, "state": os.path.exists(state),
+                  "calls": len(getattr(transport, "calls", ())),
+                  "mask": signal.SIGALRM in signal.pthread_sigmask(signal.SIG_BLOCK, ()),
+                  "pending": signal.SIGALRM in signal.sigpending(),
+                  "handler": signal.getsignal(signal.SIGALRM) is mine,
+                  "timer": signal.getitimer(signal.ITIMER_REAL)}))
+"""
+
 
 class ReceiverEntry(Base):
     """Third review: protection runs at the receiver's entry, not before the call."""
@@ -464,12 +500,14 @@ class ReceiverEntry(Base):
         self.assertEqual(summary["outcomes"][1], [IDS[1], "VALID"])
 
     def test_stale_timeout_argument_is_cut_to_the_window(self):
+        # Supersedes correction-3's expectation of a stale 1.0 s argument: with 0.05 s left at
+        # entry the receiver is refused unsent, reserve held, and never handed 1.0.
         now, waited = [0.0], []
 
         def hook(rec):
             if rec["type"] == "RESERVE" and rec["id"] == IDS[1]:
                 now[0] = 3599.0  # timeout argument will be 1.0
-        self.trace("caller", lambda n: n == 1 and now.__setitem__(0, 3599.95))  # 0.05 left at entry
+        hits = self.trace("caller", lambda n: n == 1 and now.__setitem__(0, 3599.95))  # 0.05 left at entry
 
         def hang(i):
             if i == 1:
@@ -481,9 +519,71 @@ class ReceiverEntry(Base):
         with self.after_append(hook):
             summary, fake = self.run_fake(clock=lambda: now[0], on_handoff=hang)
         sys.settrace(None)
-        self.assertEqual(fake.calls[1]["timeout"], 1.0)
-        self.assertLess(waited[0], 0.5)
-        self.assertEqual(summary["outcomes"][-1], [IDS[1], "TRANSPORT_TIMEOUT"])
+        self.assertEqual(len(hits), 2)
+        self.assertEqual([c["timeout"] for c in fake.calls], [300])
+        self.assertEqual(waited, [])
+        self.assertEqual(summary["outcomes"], [[IDS[0], "VALID"], [IDS[1], "NOT_SENT_HANDOFF_LATE"]])
+        self.assertEqual(summary["handoffs"], 1)
+        rep = d.inspect(self.state)
+        self.assertEqual(rep["errors"], [])
+        self.assertEqual(rep["attempts"][1]["status"], "NOT_SENT_RESERVE_HELD")
+        self.assertEqual(rep["reserved_micro_usd"]["total"], 28000)
+
+    def test_receiver_never_handed_a_timeout_beyond_the_window_at_entry(self):
+        # Owner's case: bound to 300 at reserve, then the clock jumps 0 -> 3599.5 just before
+        # the second entry, at the call line or at the receiver frame's creation.
+        for at in ("caller", "frame"):
+            with self.subTest(at):
+                self.setUp()
+                now = [0.0]
+                hits = self.trace(at, lambda n: n == 1 and now.__setitem__(0, 3599.5))
+                summary, fake = self.run_fake(clock=lambda: now[0])
+                sys.settrace(None)
+                self.assertEqual(len(hits), 2)
+                self.assertEqual([c["timeout"] for c in fake.calls], [300])
+                self.assertEqual(summary["outcomes"], [[IDS[0], "VALID"], [IDS[1], "NOT_SENT_HANDOFF_LATE"]])
+                self.assertEqual(summary["stop_reason"], "TECHNICAL_FAILURE")
+                rep = d.inspect(self.state)
+                self.assertEqual(rep["errors"], [])
+                self.assertEqual(rep["counts"], {"attempted": 1, "valid": 1, "invalid": 0, "unknown": 0,
+                                                 "not_sent": 1, "not_attempted": 31})
+                self.assertEqual(rep["reserved_micro_usd"]["total"], 28000)
+        with self.subTest("real clock, window-bound"):  # fails closed; per-call-bound runs pass elsewhere
+            self.setUp()
+            off = [0.0]
+
+            def hook(rec):
+                if rec["type"] == "RESERVE" and rec["id"] == IDS[1]:
+                    off[0] = 3500.0  # ~100 s left: window-bound, nowhere near expiry
+            with self.after_append(hook):
+                summary, fake = self.run_fake(clock=lambda: time.monotonic() + off[0])
+            self.assertEqual([c["timeout"] for c in fake.calls], [300])
+            self.assertEqual(summary["outcomes"][-1], [IDS[1], "NOT_SENT_HANDOFF_LATE"])
+
+    def test_blocked_or_pending_sigalrm_refused_and_caller_state_kept(self):
+        # Astra's counterexample, in a child so the mask and handler never leak into this process.
+        for mode in ("blocked", "pending", "receiver_masks"):
+            with self.subTest(mode):
+                r = subprocess.run([sys.executable, "-B", "-c", MASK_CHILD, mode, str(HERE), str(HERE.parent)],
+                                   env=ENV, capture_output=True, text=True, timeout=60)
+                self.assertEqual(r.returncode, 0, r.stderr)
+                out = json.loads(r.stdout)
+                self.assertEqual(out["timer"], [0.0, 0.0])
+                self.assertTrue(out["handler"])
+                if mode == "receiver_masks":  # first receiver blocks SIGALRM; the second is never entered
+                    self.assertEqual(out["out"], [[IDS[0], "VALID"], [IDS[1], "NOT_SENT_HANDOFF_LATE"]])
+                    self.assertEqual(out["calls"], 1)
+                    continue
+                self.assertEqual(out["out"], "TIMEOUT_UNAVAILABLE")
+                self.assertEqual(out["events"], [])
+                self.assertFalse(out["state"])  # refused before the authorization was consumed
+                self.assertTrue(out["mask"])
+                self.assertEqual(out["pending"], mode == "pending")
+        with mock.patch("signal.getsignal", return_value=None):  # handler Python cannot restore
+            with self.assertRaises(d.Refused) as cm:
+                d.run(self.state, FakeProvider(self.state), served_allowlist=(SERVED,))
+        self.assertEqual(cm.exception.code, "TIMEOUT_UNAVAILABLE")
+        self.assertFalse(os.path.exists(self.state))
 
     def test_pre_receiver_real_stall_never_sends_even_after_return(self):
         hits = self.trace("caller", lambda n: time.sleep(0.12))

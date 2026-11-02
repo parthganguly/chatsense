@@ -9,22 +9,26 @@ transport(url, headers, body, timeout) -> (status:int, headers:list[(str,str)], 
 Handoff semantics (trusted synthetic fakes only; CPython on POSIX, checked on 3.14):
 - The transport must be a plain Python function or an instance of a Python class whose
   __call__ is a plain Python function (not a generator/coroutine). Anything else, a run
-  off the main thread, an armed ITIMER_REAL or an installed sys.setprofile hook is
-  refused before the authorization is consumed.
+  off the main thread, an armed ITIMER_REAL, a blocked or pending SIGALRM, a SIGALRM
+  handler Python cannot restore or an installed sys.setprofile hook is refused before
+  the authorization is consumed (and rechecked before each later handoff, as NOT_SENT).
 - "Sent" means the interpreter entered the transport's own code object. A scoped
-  sys.setprofile guard sees that 'call' event before any of the body executes. There
-  it rereads the clock: past the 60-minute window or the per-call real bound it raises,
-  so the body never starts (NOT_SENT). Otherwise the entry instant opens the window on
-  the first send and the per-call alarm is cut to what is left, so a stale `timeout`
-  argument cannot extend the call. No hook exists between the guard's return and the
-  body's first instruction; that interpreter step is the residual gap.
+  sys.setprofile guard sees that 'call' event before any of the body executes (trace and
+  sys.monitoring callbacks for the same entry run before it, so they count as pre-entry
+  delay). There it rereads the clock: past the 60-minute window or the per-call real
+  bound, or if the `timeout` argument the receiver was handed exceeds the window left at
+  that instant, it raises, so the body never starts (NOT_SENT). Otherwise the entry
+  instant opens the window on the first send and the per-call alarm is cut to what is
+  left. With a real clock, a window-bound `timeout` (last MAX_TIMEOUT_S of the window)
+  always exceeds what is left by entry, so those handoffs fail closed as NOT_SENT. No hook exists between the guard's return and the body's first instruction; that
+  interpreter step is the residual gap.
 - The handoff runs synchronously on the main thread. ITIMER_REAL delivers SIGALRM, whose
   handler raises _Cutoff (a BaseException) into whatever Python code is running, so a hung
   fake is unwound before run() continues; no thread or callback survives the call.
   Handlers run between bytecodes, and blocking calls that are interrupted by signals
   (sleep, lock waits, select) run them promptly. Native code that does not return to the
   interpreter delays the cutoff until it does, and a fake that catches BaseException
-  and keeps running defeats it. Timer resolution is 1 us; less is treated as expired.
+  and keeps running, or blocks SIGALRM itself, defeats it. Timer resolution is 1 us; less is treated as expired.
 - A reply returned at or after the per-call timeout or the window end is RESPONSE_LATE.
   None of this is a hard real-time, native or network guarantee.
 
@@ -582,9 +586,15 @@ def _receiver_code(transport):
 
 def _handoff_unavailable():
     """Why a guarded, interruptible handoff cannot be set up here, or None."""
-    if threading.current_thread() is not threading.main_thread() or not hasattr(signal, "setitimer"):
+    if (threading.current_thread() is not threading.main_thread()
+            or not all(hasattr(signal, f) for f in ("setitimer", "pthread_sigmask", "sigpending"))):
         return "TIMEOUT_UNAVAILABLE"
-    if signal.getitimer(signal.ITIMER_REAL) != (0.0, 0.0):
+    # The caller's timer, mask and handler are left alone: an armed timer, a blocked or pending
+    # SIGALRM (the alarm could never interrupt the receiver) or a handler Python cannot restore
+    # (installed outside Python) is refused instead.
+    if (signal.getitimer(signal.ITIMER_REAL) != (0.0, 0.0) or signal.getsignal(signal.SIGALRM) is None
+            or signal.SIGALRM in signal.pthread_sigmask(signal.SIG_BLOCK, ())
+            or signal.SIGALRM in signal.sigpending()):
         return "TIMEOUT_UNAVAILABLE"
     if sys.getprofile() is not None:
         return "PROFILE_HOOK_ACTIVE"
@@ -600,13 +610,18 @@ def _handoff(transport, code, snap, timeout, clock, t0):
     """
     bound = time.monotonic() + timeout
     box = {"state": "not_sent", "armed": False}
+    if _handoff_unavailable():  # rechecked per handoff: an earlier receiver may have masked SIGALRM
+        return box
 
     def guard(frame, event, arg):
         if frame.f_code is not code or event != "call" or box["state"] != "not_sent":
             return
         now = clock()  # first interpreter entry of the receiver; none of its body has run
         start = now if t0 is None else t0
-        left = min(bound - time.monotonic(), TIME_LIMIT_S - (now - start))
+        window = TIME_LIMIT_S - (now - start)
+        if not timeout <= window:  # the receiver is handed `timeout`; never more than is left
+            raise _Cutoff
+        left = min(bound - time.monotonic(), window)
         if not left >= TIMER_RESOLUTION_S:  # NaN or expired: abort before the body starts
             raise _Cutoff
         signal.setitimer(signal.ITIMER_REAL, left)
