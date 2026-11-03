@@ -1,0 +1,19 @@
+{
+  "harness": "native Claude Code, existing subscription",
+  "requested_model": "claude-opus-5-5",
+  "assistant_models": [
+    "<synthetic>"
+  ],
+  "tool_calls": {},
+  "is_error": true,
+  "terminal_subtype": "success",
+  "reported_model_usage": [],
+  "raw_stream_sha256": "2e9a27f5c5ad02c2a27fa292a783a25593d7fb58b0e80f1122f076feb2fc5385",
+  "brief_sha256": "d8d14f015036a4174f4d7de1384cb0c21654bcefa0d2daed2d531c47361950da",
+  "rate_limit_status": "rejected",
+  "rate_limit_window": "five_hour",
+  "overage_used": false,
+  "reset_epoch": 1793746200,
+  "reset_ist": "2026-11-04T04:20:00+05:30",
+  "terminal_message": "You've hit your session limit \u00b7 resets 4:20am (Asia/Calcutta)"
+}
