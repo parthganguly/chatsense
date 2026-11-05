@@ -18,8 +18,18 @@ def checkpoint(read_settlements):
         if set(statements) != set(expected):
             raise ValueError("PAIR_UNSETTLED")
         receipt = {}
+        estimates = {}
         for r in results:
             s = statements[r["id"]]
+            # The owner accepts unavailable settlement, never contradictory evidence.
+            # Only this explicit, data-free state takes the estimate-only path.
+            if s == {"state": "unverified"}:
+                estimates[r["id"]] = {
+                    "state": "settled_debit_unverified",
+                    "estimated_input_nano_usd": r["provisional_input_nano_usd"],
+                    "usage": r["usage"],
+                }
+                continue
             provider = r["id"].split("-")[1]
             numeric = ("before_nano_usd", "after_nano_usd", "debit_nano_usd")
             if (any(type(s.get(k)) is not int or s[k] < 0 for k in numeric)
@@ -31,7 +41,10 @@ def checkpoint(read_settlements):
                     or s["debit_nano_usd"] > d.RESERVE_MICRO_USD[provider] * 1000):
                 raise ValueError("PAIR_DEBIT_MISMATCH")
             receipt[r["id"]] = {k: s[k] for k in (*numeric, "account_evidence_sha256", "attempt_body_sha256")}
-        d._create(run_dir / "first-pair-settlement.json", d._canon(receipt))
+        if estimates:
+            d._create(run_dir / "first-pair-estimates.json", d._canon(estimates))
+        if receipt:
+            d._create(run_dir / "first-pair-settlement.json", d._canon(receipt))
     return reconcile
 
 

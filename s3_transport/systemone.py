@@ -10,24 +10,16 @@ from urllib.parse import urlsplit
 from s3_a3 import dispatcher as d
 
 
-# The amendment forbids a live send until both providers' no-external-charge
-# restrictions are verified. No qualifying TypeSafe settlement evidence exists yet.
-# Pin the reviewed, current, redacted evidence file only after that gate passes.
-FINANCIAL_RECEIPT_SHA256 = None
+# Owner decision #6656790937 accepts this dated account snapshot for the one-use run.
+FINANCIAL_RECEIPT_SHA256 = "f92df97aaace87b80f9e5aaef84ed0a0799b5c48403471ce421dcbc75030bcda"
 STATE_ROOT = Path.home() / "Library" / "Application Support" / "ChatSense-S3"
-FINANCIAL_RECEIPT = STATE_ROOT.parent / "ChatSense-S3-financial-preflight.json"
+FINANCIAL_RECEIPT = Path(__file__).resolve().parent / "evidence" / "account-preflight.json"
 
 
 def _require_financial_receipt():
-    import json
-    if FINANCIAL_RECEIPT_SHA256 is None:
-        raise d.Refused("FINANCIAL_PREFLIGHT_INCOMPLETE")
     raw = d._read(FINANCIAL_RECEIPT)
     if hashlib.sha256(raw).hexdigest() != FINANCIAL_RECEIPT_SHA256:
         raise d.Refused("FINANCIAL_PREFLIGHT_MISMATCH")
-    reviewed_at = json.loads(raw)["verified_epoch"]
-    if type(reviewed_at) is not int or not 0 <= time.time() - reviewed_at <= 900:
-        raise d.Refused("FINANCIAL_PREFLIGHT_EXPIRED")
 
 
 class TransportError(Exception):

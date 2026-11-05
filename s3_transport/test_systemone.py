@@ -127,6 +127,28 @@ class WireTest(unittest.TestCase):
         self.assertEqual(result["reserved_micro_usd"]["total"],28000)
         with self.assertRaises(d.Refused):self.dispatch(self.settlement)
 
+    def test_estimates_do_not_create_settled_debits(self):
+        result = self.dispatch(lambda rows: {r["id"]: {"state": "unverified"} for r in rows})
+        self.assertEqual((result["handoffs"], result["failure"]), (3, "HTTP_STATUS"))
+        root = d.paths(self.state)["run_dir"]
+        estimates = json.loads((root / "first-pair-estimates.json").read_bytes())
+        self.assertEqual(set(estimates), {r["id"] for r in self.rows[:2]})
+        for row in self.rows[:2]:
+            item = estimates[row["id"]]
+            self.assertEqual(item["state"], "settled_debit_unverified")
+            self.assertEqual(item["estimated_input_nano_usd"],
+                             item["usage"]["input_tokens"] * d.NANO_USD_PER_INPUT_TOKEN[row["provider"]])
+        self.assertFalse((root / "first-pair-settlement.json").exists())
+        self.check_no_secrets()
+        with self.assertRaises(d.Refused):
+            self.dispatch(self.settlement)
+
+    def test_unverified_label_cannot_hide_reported_charge(self):
+        def reader(rows):
+            return {r["id"]: {"state": "unverified", "debit_nano_usd": 90000000} for r in rows}
+        self.assertEqual(self.dispatch(reader)["failure"], "PAIR_RECONCILIATION_FAILED")
+        self.assertEqual(len(self.posts), 2)
+
     def test_balance_mismatch_stops_at_pair(self):
         def bad(rows):
             data=self.settlement(rows)
@@ -162,9 +184,12 @@ class WireTest(unittest.TestCase):
         self.assertEqual(self.dispatch(self.settlement)["failure"],"TRANSPORT_ERROR")
         self.assertEqual(len(self.posts),1)
 
-    def test_missing_financial_clearance_consumes_nothing(self):
-        with patch.object(wire,"STATE_ROOT",self.state):
-            with self.assertRaisesRegex(d.Refused,"FINANCIAL_PREFLIGHT_INCOMPLETE"):
-                wire.run_counted(KEYS,[SERVED],self.settlement)
-        self.assertEqual(self.posts,[])
+    def test_changed_receipt_consumes_nothing(self):
+        wire._require_financial_receipt()
+        changed = self.state.parent / "different.json"
+        changed.write_text("{}")
+        with patch.object(wire, "FINANCIAL_RECEIPT", changed), patch.object(wire, "STATE_ROOT", self.state):
+            with self.assertRaisesRegex(d.Refused, "FINANCIAL_PREFLIGHT_MISMATCH"):
+                wire.run_counted(KEYS, [SERVED], self.settlement)
+        self.assertEqual(self.posts, [])
         self.assertFalse(self.state.exists())
