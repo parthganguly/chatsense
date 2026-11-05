@@ -38,6 +38,33 @@ def _https(host, timeout):
     return http.client.HTTPSConnection(host, timeout=timeout, context=ssl.create_default_context())
 
 
+def _json_strings(value):
+    pending = [value]
+    while pending:
+        item = pending.pop()
+        if isinstance(item, str):
+            yield item
+        elif isinstance(item, dict):
+            pending.extend(item.keys())
+            pending.extend(item.values())
+        elif isinstance(item, list):
+            pending.extend(item)
+
+
+def _check_reflection(raw, received, tokens):
+    if any(token.encode("ascii") in raw or any(token in k or token in v for k, v in received)
+           for token in tokens):
+        raise TransportError("CREDENTIAL_REFLECTION")
+    if b"\\" in raw:
+        # The on-disk JSON would disclose the decoded text even if escaped in transit.
+        try:
+            obj = d._strict_json(raw)
+        except (ValueError, UnicodeError, RecursionError):
+            return  # the dispatcher will refuse malformed JSON and cannot archive it
+        if any(token in field for field in _json_strings(obj) for token in tokens):
+            raise TransportError("CREDENTIAL_REFLECTION")
+
+
 class _SystemOne:
     def __init__(self, requests, credentials):
         self.rows = requests
@@ -88,16 +115,23 @@ class _SystemOne:
             conn.endheaders(body)
             conn.sock.settimeout(remaining())
             response = conn.getresponse()
+            lengths = response.headers.get_all("Content-Length", [])
+            encodings = response.headers.get_all("Transfer-Encoding", [])
+            if (len(lengths) > 1 or len(encodings) > 1 or (lengths and encodings)
+                    or (encodings and encodings[0].lower() != "chunked")
+                    or (lengths and (not lengths[0].isascii() or not lengths[0].isdecimal()
+                                     or int(lengths[0]) > d.MAX_RESPONSE_BYTES))):
+                raise TransportError("INVALID_RESPONSE_FRAMING")
             raw = response.read(d.MAX_RESPONSE_BYTES + 1)
+            if lengths and len(raw) != int(lengths[0]):
+                raise TransportError("TRUNCATED_RESPONSE")
             remaining()
             if len(raw) > d.MAX_RESPONSE_BYTES:
                 raise TransportError("RESPONSE_TOO_LARGE")
             received = response.getheaders()
             # Valid response bodies are archived by A3. Refuse a reflected credential
             # before either the raw body or any response header reaches that boundary.
-            if any(token.encode("ascii") in raw or any(token in k or token in v for k, v in received)
-                   for token in self.credentials.values()):
-                raise TransportError("CREDENTIAL_REFLECTION")
+            _check_reflection(raw, received, tuple(self.credentials.values()))
             result = (response.status, received, raw)
             self.closed = response.status != 200
             return result

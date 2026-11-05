@@ -64,7 +64,7 @@ class WireTest(unittest.TestCase):
                 if status == 307:self.send_header("Location","/must-not-follow")
                 for k,v in headers:self.send_header(k,v)
                 payload=json.dumps(obj).encode()
-                self.send_header("Content-Length",str(len(payload)))
+                self.send_header("Content-Length",str(len(payload) + (7 if outer.mode == "truncated" else 0)))
                 self.end_headers()
                 self.wfile.write(payload)
 
@@ -151,6 +151,17 @@ class WireTest(unittest.TestCase):
         self.mode="echo"
         self.assertEqual(self.dispatch(self.settlement)["failure"],"TRANSPORT_ERROR")
         self.check_no_secrets()
+
+    def test_json_escaped_credential_refused(self):
+        self.mode="echo"
+        with patch.dict(KEYS, {"jev": 'synthetic-jev-"-secret'}):
+            self.assertEqual(self.dispatch(self.settlement)["failure"],"TRANSPORT_ERROR")
+            self.assertEqual(list(d.paths(self.state)["receipts"].iterdir()),[])
+
+    def test_truncated_valid_json_refused(self):
+        self.mode="truncated"
+        self.assertEqual(self.dispatch(self.settlement)["failure"],"TRANSPORT_ERROR")
+        self.assertEqual(len(self.posts),1)
 
     def test_missing_financial_clearance_consumes_nothing(self):
         with patch.object(wire,"STATE_ROOT",self.state):
