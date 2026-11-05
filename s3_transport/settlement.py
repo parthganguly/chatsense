@@ -45,7 +45,7 @@ def run_with_checkpoint(state_root, transport, allowlist, read_settlements, rows
     """
     import os
     import time
-    done = False
+    checked_response_time = False
     p = d.paths(state_root)
     reconcile = checkpoint(read_settlements)
 
@@ -53,15 +53,18 @@ def run_with_checkpoint(state_root, transport, allowlist, read_settlements, rows
         pass
 
     def monotonic():
-        nonlocal done
-        if transport.sent == 2 and not done:
-            try:
-                tail = d._strict_json(d._read(p["ledger"]).splitlines()[-1])
-                if tail["type"] == "RESULT" and tail["outcome"] == "VALID" and tail["id"] == rows[1]["id"]:
+        nonlocal checked_response_time
+        if transport.sent == 2 and not transport.pair_reconciled:
+            if not checked_response_time:
+                # A3's first sample after the second POST timestamps that response.
+                checked_response_time = True
+            else:
+                # In the pinned dispatcher this is row three's pre-reservation sample.
+                try:
                     reconcile(p["run_dir"], [(r["id"], "VALID") for r in rows[:2]])
-                    done = True
-            except Exception:
-                raise PairStop from None
+                except Exception:
+                    raise PairStop from None
+                transport.pair_reconciled = True
         return time.monotonic()
 
     try:

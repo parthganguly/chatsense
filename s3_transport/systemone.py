@@ -70,11 +70,12 @@ class _SystemOne:
         self.rows = requests
         self.credentials = credentials
         self.sent = 0
+        self.pair_reconciled = False
         self.closed = False
         self.deadline = None
 
     def __call__(self, url, headers, body, timeout):
-        if self.closed or self.sent >= len(self.rows):
+        if self.closed or self.sent >= len(self.rows) or (self.sent >= 2 and not self.pair_reconciled):
             raise TransportError("TRANSPORT_CLOSED")
         self.closed = True  # Any exception or rejected response permanently closes this instance.
         start = time.monotonic()
