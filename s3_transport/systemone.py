@@ -3,6 +3,7 @@ import hashlib
 import http.client
 import math
 from pathlib import Path
+import socket
 import ssl
 import time
 from urllib.parse import urlsplit
@@ -26,8 +27,46 @@ class TransportError(Exception):
     """Fixed, non-sensitive failure code."""
 
 
+FASTINO_HOST = urlsplit(d.PROVIDER_URLS["glide"]).hostname
+
+
+def _connect_ipv4_first(address, timeout, source_address=None):
+    """TCP only: IPv4 candidates first, then IPv6, within one shared `timeout` budget."""
+    deadline = time.monotonic() + timeout
+    infos = socket.getaddrinfo(*address, 0, socket.SOCK_STREAM)
+    infos.sort(key=lambda info: info[0] != socket.AF_INET)  # stable: resolver order kept per family
+    error = OSError("NO_ADDRESS")
+    for i, (family, kind, proto, _, sockaddr) in enumerate(infos):
+        left = deadline - time.monotonic()
+        if left <= 0:
+            raise TimeoutError("CONNECT_TIMEOUT")
+        try:
+            sock = socket.socket(family, kind, proto)
+            try:
+                # Leave time for each remaining address, including IPv6 fallback.
+                sock.settimeout(left / (len(infos) - i))
+                if source_address:
+                    sock.bind(source_address)
+                sock.connect(sockaddr)
+                left = deadline - time.monotonic()
+                if left <= 0:
+                    raise TimeoutError("CONNECT_TIMEOUT")
+                sock.settimeout(left)  # TLS uses the remaining budget.
+                return sock
+            except BaseException:
+                sock.close()
+                raise
+        except OSError as exc:
+            error = exc
+    raise error
+
+
 def _https(host, timeout):
-    return http.client.HTTPSConnection(host, timeout=timeout, context=ssl.create_default_context())
+    conn = http.client.HTTPSConnection(host, timeout=timeout, context=ssl.create_default_context())
+    if host == FASTINO_HOST:
+        # Mac resolver lists unreachable IPv6 first; TLS still wraps with server_hostname=host.
+        conn._create_connection = _connect_ipv4_first
+    return conn
 
 
 def _json_strings(value):
