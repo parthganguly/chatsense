@@ -663,7 +663,7 @@ def _handoff(transport, code, snap, timeout, clock, t0):
     return box
 
 
-def run(state_root, transport, *, served_allowlist, clock=time.monotonic, packet=PACKET):
+def run(state_root, transport, *, served_allowlist, clock=time.monotonic, packet=PACKET, after_first_pair=None):
     fz = load_frozen(packet)
     reqs = build_requests(fz)
     verify_requests(reqs, fz)
@@ -696,6 +696,13 @@ def run(state_root, transport, *, served_allowlist, clock=time.monotonic, packet
                 "order_sha256": ORDER_SHA256, "attempts": _order(reqs), "reserve_micro_usd": RESERVE_MICRO_USD,
                 "cap_micro_usd": CAP_MICRO_USD, "time_limit_s": TIME_LIMIT_S, "cost_status": COST_STATUS})
         for i, (r, row) in enumerate(zip(reqs, rows)):
+            # The live integration reconciles the two durable VALID results before reserve 3.
+            if i == 2 and after_first_pair is not None:
+                try:
+                    after_first_pair(p["run_dir"], tuple(outcomes))
+                except Exception:
+                    stop, failure = "TECHNICAL_FAILURE", "PAIR_RECONCILIATION_FAILED"
+                    break
             if i == FACTUAL_CHECKPOINT and not _factual_controls_pass(fz, responses):
                 stop = "FACTUAL_CONTROL_STOP"
                 break
