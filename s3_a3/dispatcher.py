@@ -19,9 +19,12 @@ Handoff semantics (trusted synthetic fakes only; CPython on POSIX, checked on 3.
   bound, or if the `timeout` argument the receiver was handed exceeds the window left at
   that instant, it raises, so the body never starts (NOT_SENT). Otherwise the entry
   instant opens the window on the first send and the per-call alarm is cut to what is
-  left. With a real clock, a window-bound `timeout` (last MAX_TIMEOUT_S of the window)
-  always exceeds what is left by entry, so those handoffs fail closed as NOT_SENT. No hook exists between the guard's return and the body's first instruction; that
-  interpreter step is the residual gap.
+  left. In the last MAX_TIMEOUT_S of the window the `timeout` is what is left after the
+  reserve, less a setup allowance (SETUP_ALLOWANCE_S or 1% of what is left, whichever is
+  smaller) when the clock advances between two readings taken after the reserve; a
+  stationary clock gets the exact remainder. A handoff whose setup outlasts the allowance
+  is NOT_SENT. No hook exists between the guard's return and the body's first
+  instruction; that interpreter step is the residual gap.
 - The handoff runs synchronously on the main thread. ITIMER_REAL delivers SIGALRM, whose
   handler raises _Cutoff (a BaseException) into whatever Python code is running, so a hung
   fake is unwound before run() continues; no thread or callback survives the call.
@@ -75,6 +78,7 @@ INPUT_BOUND = {"jev": 65536, "glide": 524288}
 NANO_USD_PER_INPUT_TOKEN = {"jev": 42, "glide": 40}  # provisional only; billing basis unresolved
 TIME_LIMIT_S = 3600
 MAX_TIMEOUT_S = 300
+SETUP_ALLOWANCE_S = 0.005  # window-bound timeouts leave this (or 1% of what is left) for handoff setup
 MAX_RESPONSE_BYTES = 1 << 20
 USAGE_MAX = 2 ** 53 - 1
 FACTUAL_ITEMS = ("q02", "q03", "q07")
@@ -718,8 +722,13 @@ def run(state_root, transport, *, served_allowlist, clock=time.monotonic, packet
                     "reserve_micro_usd": amount, "reserved_micro_usd": dict(reserved),
                     "authorization_id": AUTH_ID, "freeze_sha256": FREEZE_SHA256})
             # Reservation is fsynced. From here a crash is an unknown, potentially billed attempt.
-            remaining = TIME_LIMIT_S if t0 is None else TIME_LIMIT_S - (clock() - t0)
-            timeout = min(MAX_TIMEOUT_S, remaining)
+            sampled = None if t0 is None else clock()
+            remaining = TIME_LIMIT_S if t0 is None else TIME_LIMIT_S - (sampled - t0)
+            # A clock that moved since that sample will also move before the receiver's entry:
+            # leave a small setup allowance, or the guard refuses every window-bound handoff.
+            # A stationary clock keeps the exact remainder.
+            setup = min(SETUP_ALLOWANCE_S, remaining / 100) if t0 is not None and clock() > sampled else 0
+            timeout = min(MAX_TIMEOUT_S, remaining - setup)
             box = {"state": "not_sent"} if _expired(remaining) else _handoff(transport, code, snap, timeout, clock, t0)
             if box["state"] == "sent" and t0 is None:
                 t0 = box["t0"]  # the 60-minute window opens at the receiver's first entry

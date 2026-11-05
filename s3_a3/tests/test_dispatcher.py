@@ -548,7 +548,7 @@ class ReceiverEntry(Base):
                 self.assertEqual(rep["counts"], {"attempted": 1, "valid": 1, "invalid": 0, "unknown": 0,
                                                  "not_sent": 1, "not_attempted": 31})
                 self.assertEqual(rep["reserved_micro_usd"]["total"], 28000)
-        with self.subTest("real clock, window-bound"):  # fails closed; per-call-bound runs pass elsewhere
+        with self.subTest("real clock, window-bound"):  # ordinary final-window handoffs proceed
             self.setUp()
             off = [0.0]
 
@@ -557,8 +557,28 @@ class ReceiverEntry(Base):
                     off[0] = 3500.0  # ~100 s left: window-bound, nowhere near expiry
             with self.after_append(hook):
                 summary, fake = self.run_fake(clock=lambda: time.monotonic() + off[0])
-            self.assertEqual([c["timeout"] for c in fake.calls], [300])
-            self.assertEqual(summary["outcomes"][-1], [IDS[1], "NOT_SENT_HANDOFF_LATE"])
+            self.assertEqual(fake.calls[0]["timeout"], 300)
+            self.assertTrue(99 < fake.calls[1]["timeout"] < 100)
+            self.assertEqual(summary["outcomes"][1], [IDS[1], "VALID"])
+            self.assertEqual(summary["handoffs"], 32)
+
+    def test_final_window_handoff_live_on_scaled_real_clock(self):
+        # Astra's reproducer: a 1 s campaign whose second handoff is window-bound with ample time.
+        for stall in (0, 0.03):  # a pre-entry stall that outlasts the setup allowance still refuses
+            with self.subTest(stall=stall):
+                self.setUp()
+                hits = self.trace("caller", lambda n: n == 1 and stall and time.sleep(stall))
+                with mock.patch.object(d, "TIME_LIMIT_S", 1.0), mock.patch.object(d, "MAX_TIMEOUT_S", 0.95):
+                    summary, fake = self.run_fake(on_handoff=lambda i: i == 0 and time.sleep(0.08))
+                sys.settrace(None)
+                if stall:
+                    self.assertEqual(len(hits), 2)
+                    self.assertEqual(len(fake.calls), 1)
+                    self.assertEqual(summary["outcomes"][1], [IDS[1], "NOT_SENT_HANDOFF_LATE"])
+                    continue
+                self.assertEqual(summary["outcomes"][1], [IDS[1], "VALID"])
+                self.assertEqual(fake.calls[0]["timeout"], 0.95)
+                self.assertTrue(0.5 < fake.calls[1]["timeout"] < 0.92, fake.calls[1]["timeout"])
 
     def test_blocked_or_pending_sigalrm_refused_and_caller_state_kept(self):
         # Astra's counterexample, in a child so the mask and handler never leak into this process.
