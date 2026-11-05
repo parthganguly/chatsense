@@ -1,0 +1,56 @@
+{
+  "stop_reason": "TECHNICAL_FAILURE",
+  "failure": "TRANSPORT_ERROR",
+  "outcomes": [
+    [
+      "01-jev-U-A",
+      "VALID"
+    ],
+    [
+      "01-glide-U-A",
+      "VALID"
+    ],
+    [
+      "02-glide-U-B",
+      "TRANSPORT_ERROR"
+    ]
+  ],
+  "not_attempted": [
+    "02-jev-U-B",
+    "03-jev-U-C",
+    "03-glide-U-C",
+    "04-glide-U-D",
+    "04-jev-U-D",
+    "05-jev-U-E",
+    "05-glide-U-E",
+    "06-glide-T-E",
+    "06-jev-T-E",
+    "07-jev-T-D",
+    "07-glide-T-D",
+    "08-glide-T-C",
+    "08-jev-T-C",
+    "09-jev-T-B",
+    "09-glide-T-B",
+    "10-glide-T-A",
+    "10-jev-T-A",
+    "11-jev-R-D",
+    "11-glide-R-D",
+    "12-glide-R-E",
+    "12-jev-R-E",
+    "13-jev-W-D",
+    "13-glide-W-D",
+    "14-glide-W-E",
+    "14-jev-W-E",
+    "15-jev-O-E",
+    "15-glide-O-E",
+    "16-glide-O-D",
+    "16-jev-O-D"
+  ],
+  "handoffs": 3,
+  "reserved_micro_usd": {
+    "jev": 3000,
+    "glide": 50000,
+    "total": 53000
+  },
+  "cost_status": "UNKNOWN_UNRECONCILED"
+}
