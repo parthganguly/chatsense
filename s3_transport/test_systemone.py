@@ -15,7 +15,7 @@ from unittest.mock import patch
 
 from s3_a3 import dispatcher as d
 from s3_transport import systemone as wire
-from s3_transport.settlement import checkpoint
+from s3_transport.settlement import run_with_checkpoint
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "s3_a3/tests"))
 from fakes import SERVED, valid_response
@@ -93,8 +93,7 @@ class WireTest(unittest.TestCase):
                 for row,r in zip(self.rows,results)}
 
     def dispatch(self,reader):
-        return d.run(self.state,wire._SystemOne(self.rows,KEYS),served_allowlist=[SERVED],
-                     after_first_pair=checkpoint(reader))
+        return run_with_checkpoint(self.state, wire._SystemOne(self.rows,KEYS), [SERVED], reader, self.rows)
 
     def check_no_secrets(self):
         for p in self.state.rglob("*"):

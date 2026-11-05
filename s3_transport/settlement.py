@@ -33,3 +33,57 @@ def checkpoint(read_settlements):
             receipt[r["id"]] = {k: s[k] for k in (*numeric, "account_evidence_sha256", "attempt_body_sha256")}
         d._create(run_dir / "first-pair-settlement.json", d._canon(receipt))
     return reconcile
+
+
+def run_with_checkpoint(state_root, transport, allowlist, read_settlements, rows):
+    """Use A3's injected clock as a synchronous checkpoint, always returning true monotonic time.
+
+    A3 samples it once before classifying response two, then before reserving row three.
+    Only the latter has two durable VALID results. No background polling and no clock offset.
+    A negative settlement decision unwinds A3 and closes its fd before writing a terminal
+    STOP using the accepted chain format. It cannot write a reserve or resume a run.
+    """
+    import os
+    import time
+    done = False
+    p = d.paths(state_root)
+    reconcile = checkpoint(read_settlements)
+
+    class PairStop(Exception):
+        pass
+
+    def monotonic():
+        nonlocal done
+        if transport.sent == 2 and not done:
+            try:
+                tail = d._strict_json(d._read(p["ledger"]).splitlines()[-1])
+                if tail["type"] == "RESULT" and tail["outcome"] == "VALID" and tail["id"] == rows[1]["id"]:
+                    reconcile(p["run_dir"], [(r["id"], "VALID") for r in rows[:2]])
+                    done = True
+            except Exception:
+                raise PairStop from None
+        return time.monotonic()
+
+    try:
+        return d.run(state_root, transport, served_allowlist=allowlist, clock=monotonic)
+    except PairStop:
+        # Terminal accounting only. If interrupted or damaged, keep the consumed marker and
+        # leave the run incomplete rather than inferring any missing record.
+        report = d.inspect(state_root)
+        if (report["errors"] or report["complete"] or report["counts"]["valid"] != 2
+                or report["counts"]["attempted"] != 2):
+            raise d.Aborted("PAIR_CHECKPOINT_LEDGER_INVALID") from None
+        ledger = d._read(p["ledger"]).splitlines()
+        last = d._strict_json(ledger[-1])
+        unseen = [r["id"] for r in rows[2:]]
+        reason = "PAIR_RECONCILIATION_FAILED"
+        stop = dict(type="STOP", reason="TECHNICAL_FAILURE", failure=reason, attempted=2,
+                    not_attempted=unseen, reserved_micro_usd=report["reserved_micro_usd"], cost_status=d.COST_STATUS)
+        fd = os.open(p["ledger"], os.O_WRONLY | os.O_APPEND | os.O_NOFOLLOW)
+        try:
+            d._append(fd, {"seq": len(ledger), "prev": last["hash"]}, stop)
+        finally:
+            os.close(fd)
+        return dict(stop_reason=stop["reason"], failure=reason, handoffs=2,
+                    outcomes=[[r["id"], "VALID"] for r in rows[:2]], not_attempted=unseen,
+                    reserved_micro_usd=report["reserved_micro_usd"], cost_status=d.COST_STATUS)

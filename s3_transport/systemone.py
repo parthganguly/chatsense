@@ -152,6 +152,5 @@ def run_counted(credentials, served_allowlist, reconcile_first_pair):
     rows = d.build_requests(frozen)
     d.verify_requests(rows, frozen)
     transport = _SystemOne(rows, dict(credentials))
-    from .settlement import checkpoint
-    return d.run(STATE_ROOT, transport, served_allowlist=served_allowlist,
-                 after_first_pair=checkpoint(reconcile_first_pair))
+    from .settlement import run_with_checkpoint
+    return run_with_checkpoint(STATE_ROOT, transport, served_allowlist, reconcile_first_pair, rows)
