@@ -1,0 +1,10 @@
+test_first_handoff_replayed_after_valid_first (test_handoff_oracle.ObserverTest.test_first_handoff_replayed_after_valid_first) ... ok
+test_frozen_repeats_are_legal_at_their_positions_only (test_handoff_oracle.ObserverTest.test_frozen_repeats_are_legal_at_their_positions_only) ... ok
+test_no_missing_stale_underreserved_or_float_reservation (test_handoff_oracle.ObserverTest.test_no_missing_stale_underreserved_or_float_reservation) ... ok
+test_silent_early_exit_is_not_a_completed_run (test_handoff_oracle.ObserverTest.test_silent_early_exit_is_not_a_completed_run) ... ok
+test_swapped_provider_and_body_changed_after_preflight (test_handoff_oracle.ObserverTest.test_swapped_provider_and_body_changed_after_preflight) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.515s
+
+OK

@@ -1,0 +1,6 @@
+handoffs 1 timeouts [0.95] outcomes [['01-jev-U-A', 'VALID'], ['01-glide-U-A', 'NOT_SENT_HANDOFF_LATE']]
+Traceback (most recent call last):
+  File "/Users/parth/Projects/chatsense-s3-a3-offline/s3_a3/evidence/sol-031ccb5/normal-final-window.py", line 14, in <module>
+    assert len(fake.calls)==2
+           ^^^^^^^^^^^^^^^^^^
+AssertionError

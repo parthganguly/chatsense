@@ -1,0 +1,1 @@
+{"freeze_sha256": "957b6c70fc9103987c6423e7e09997109352307753ecc9c9d97dbce3f769f24a", "inventory_sha256": "d6af08e2ad3453bbb913a7056afec991b1f08c8a8273bde2ecf7a3bac14c8659", "order_sha256": "9e720d83ef71ef222baed19b1cebfe7608e40bd3fe7ffab91762ed87c72c6986", "requests": 32, "reserve_micro_usd": {"jev": 3000, "glide": 25000}, "live_dispatch": "DISABLED"}

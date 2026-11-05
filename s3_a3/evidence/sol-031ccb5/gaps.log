@@ -1,0 +1,14 @@
+{"case": "caller_gap_3600", "ok": true, "hits": 2, "observed": [[0.0, 300]], "outcomes": [["01-jev-U-A", "VALID"], ["01-glide-U-A", "NOT_SENT_TIME_LIMIT"]], "reserved": {"jev": 3000, "glide": 25000, "total": 28000}}
+{"case": "caller_gap_3601", "ok": true, "hits": 2, "observed": [[0.0, 300]], "outcomes": [["01-jev-U-A", "VALID"], ["01-glide-U-A", "NOT_SENT_TIME_LIMIT"]], "reserved": {"jev": 3000, "glide": 25000, "total": 28000}}
+{"case": "body_gap_3600", "ok": true, "hits": 2, "observed": [[0.0, 300], [3600.0, 300]], "outcomes": [["01-jev-U-A", "VALID"], ["01-glide-U-A", "RESPONSE_LATE"]], "reserved": {"jev": 3000, "glide": 25000, "total": 28000}}
+{"case": "body_gap_3601", "ok": true, "hits": 2, "observed": [[0.0, 300], [3601.0, 300]], "outcomes": [["01-jev-U-A", "VALID"], ["01-glide-U-A", "RESPONSE_LATE"]], "reserved": {"jev": 3000, "glide": 25000, "total": 28000}}
+{"case": "frame_gap_3600", "ok": true, "hits": 2, "observed": [[0.0, 300]], "outcomes": [["01-jev-U-A", "VALID"], ["01-glide-U-A", "NOT_SENT_TIME_LIMIT"]], "reserved": {"jev": 3000, "glide": 25000, "total": 28000}}
+{"case": "frame_gap_3601", "ok": true, "hits": 2, "observed": [[0.0, 300]], "outcomes": [["01-jev-U-A", "VALID"], ["01-glide-U-A", "NOT_SENT_TIME_LIMIT"]], "reserved": {"jev": 3000, "glide": 25000, "total": 28000}}
+{"case": "stall_before_receiver", "ok": true, "sends_at_return": 0, "sends_after": [], "outcomes": [["01-jev-U-A", "NOT_SENT_HANDOFF_LATE"]]}
+{"case": "hung_fake_row_2", "ok": true, "body_unwound_before_return": true, "extra_threads": 0, "outcome": ["01-glide-U-A", "TRANSPORT_TIMEOUT"]}
+{"case": "hung_fake_row_32", "ok": true, "body_unwound_before_return": true, "extra_threads": 0, "outcome": ["16-jev-O-D", "TRANSPORT_TIMEOUT"]}
+{"case": "metadata_x-ratelimit-scope", "ok": true, "leaked": []}
+{"case": "metadata_x-ratelimit-code", "ok": true, "leaked": []}
+{"case": "metadata_x-request-id", "ok": true, "leaked": []}
+{"case": "metadata_content-type", "ok": true, "leaked": []}
+{"source": "/Users/parth/Projects/chatsense-s3-a3-sol-final/s3_a3/dispatcher.py", "cases": 13, "failed": []}

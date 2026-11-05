@@ -1,0 +1,43 @@
+{
+  "accepted_commit": "188fff410e35dfaaf9961b6f7cbe12bf6d20fba3",
+  "reviewed_dispatcher_commit": "e8a4efa9967f5832513298ff1f217170ae7abc82",
+  "scientific_freeze": "7ed874b7a3963e560d399b7c0046f5625a2e0757",
+  "reviewed_files_sha256": {
+    "s3_a3/acceptance/handoff_oracle.py": "1e4c52dcdf2c4bae31f298049e32a72fed27bf95130e74d3da78a93167bd3011",
+    "s3_a3/acceptance/test_handoff_oracle.py": "9f917dfac829f54a11aa06a93ef406148c5b912d9226b968779792fd5b0444fb",
+    "s3_a3/dispatcher.py": "b1a8b9797e831cf86ea330d3bbdaa54a19afe439a11e1762ebc7154c92357357",
+    "s3_a3/tests/child.py": "2437c8d75d7820096cc1ed91f6cd2ef80f298120784dec07433fb240b35d60ba",
+    "s3_a3/tests/fakes.py": "01a323cc9c88afe67899dbeb499131897e3d65a8e6cd0a07065a7b471f8c0678",
+    "s3_a3/tests/mutation_check.py": "c508e29c2af52f65e04c33276840c943e98c4b2c8014ab83c9a38d73c4d8308a",
+    "s3_a3/tests/receiver_gap_check.py": "4f887f6efba82b485eceee8b13083a0813db6effa17001885e5ad2e23813211c",
+    "s3_a3/tests/test_dispatcher.py": "f25b1738bc44dba80a9607ab4e75658effcc3d49ef82d4d9354bf9262e09d251"
+  },
+  "evidence_sha256": {
+    "cli-verify.json": "758800e5b39cafba242b3748d5fe27ac636264e3f93be85267ec81084c9bc7ce",
+    "dispatcher-tests.log": "656cd23e9d7f53cdc3343e9e90b46e0af42c6a91b1f2042f742f002fe819a1fe",
+    "initial-mutation-sweep.log": "ede202faacfd6a24e2e94a651273770ccfaafcb7e398eacf26631640621237d3",
+    "mutations.log": "7757b33e4428d229b8672ed2d49d695a3ddd1e84651bc8b1cc4c374cc571cc98",
+    "native-opus.json": "dc8b2834c7cbe3f57e4bde92d9404829dd0c4df82cd67bdc9f519fdb39f6b271",
+    "observer-tests.log": "07c93ff11eea7ce1b14740b5d5d19cf85c281d5738aee7619382fd923d6ea3d5",
+    "original-deadline.log": "a65b3e61cb6b7f5f575af6844d97107bd86c448d4cb6df357158d8eac0607dc4",
+    "original-final-window.log": "d96688c4d58b232b5eaed411ae223d47603bddbbe316bf1e3e56744f3f986354",
+    "receiver-boundaries.jsonl": "a6bf0030525b6ec6feee8d5f4d3f3f94923e48fa2a83fc753a62ee1624442aa4",
+    "sol/REPORT.md": "5c56f544fcd1e94510b0bb0dd76d9a3eda93963838e3465b529cb9ed508dd1ff",
+    "sol/SHA256SUMS": "f18a054f2a8a8f897d2f060e9ff827eef46436b1e2c49efae872f23ff10e6244",
+    "sol/SIGNOFF-188fff4.md": "b0d5233e7c0f6d1782758dfa1d5ede10623292380fc20727140193169a6221ea",
+    "sol/attack.log": "3a6770eb0d361f4a6e08c79deb4d34451293f3e6e51ada5824690da3f9fce1b7",
+    "sol/attack.py": "97784769b46ccf5abec467ae50a5301d67b889730a059b1bcb7c95e2bc213542",
+    "sol/delta.log": "6c6b1ee5577ca2d3dce371056c245f391524486031ab63baabe6a9f6a9d748ba",
+    "sol/delta.py": "3108feabbdbe74d869d7cc4e722e3add343331506311b8607114d1eeeceaedf0",
+    "sol/gaps.log": "c4a8a878b1d25f243af864f2121ba7da1cc2a5646833285a74324decf6704c7f",
+    "sol/gaps.py": "dda350b395a9a59b1042dd6ff63a018db3b1ba31e1f7a7f6edf9a7e3e79ae04f",
+    "sol/sync.log": "ca6362057ab705235f65a41d385a8cb6c2dd91b0b31feab2a22dd6074b1e0f85",
+    "sol/sync.py": "eb0a33c8b80f8a159a83c50f654cd5738a53d6658d74b0d73332e3a55125ab77",
+    "sol/verify.log": "9b6a85f06a3eb3354e1379b0ce00301713e3b76365738d091a5a1439c13e3614",
+    "sol/verify.py": "9da45c11d67e54891962acbcf3f053309d069559335db8cd0ada87a43ed50a96",
+    "sol/window-initial-fixture.log": "ffd6f66458f4cd7e9259774c63746ecbcf233aa63a4e63060271e30b06ae30b7",
+    "sol/window-initial-stop-expectation.log": "7b4f9aa2a0b198955643b3d104fd34e7d665d38761223601ef6825a58f70d5f9",
+    "sol/window.log": "8b0aebe2fee3ac1dff11eaba27ffd406dd8f4be18a5560c672585d63433daf0c",
+    "sol/window.py": "a365a30456e809c662b381a6a358c7d232aa04b84cd2ac825743c31e606f07f6"
+  }
+}

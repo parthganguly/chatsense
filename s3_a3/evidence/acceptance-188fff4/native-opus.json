@@ -1,0 +1,20 @@
+{
+  "harness": "native Claude Code, existing subscription",
+  "requested_model": "claude-opus-5-5",
+  "assistant_models": [
+    "claude-opus-5-5"
+  ],
+  "tool_calls": {
+    "Grep": 1,
+    "Read": 3,
+    "Bash": 11,
+    "Edit": 11
+  },
+  "is_error": false,
+  "terminal_subtype": "success",
+  "reported_model_usage": [
+    "claude-opus-5-5"
+  ],
+  "raw_stream_sha256": "28c1b6e7fcbf268edf2bcbac3dd733e48ea293ce6862fb4096f196dad707a764",
+  "brief_sha256": "d8d14f015036a4174f4d7de1384cb0c21654bcefa0d2daed2d531c47361950da"
+}

@@ -1,0 +1,35 @@
+no reservation before handoff    KILLED
+no U+T factual stop              KILLED
+accept non-200                   KILLED
+marker not one-use               KILLED
+time limit off by one            KILLED
+no deadline recheck after reserve KILLED
+no receiver-entry recheck        KILLED
+window anchored before receiver  KILLED
+stale timeout not cut at entry   KILLED
+late reply accepted              KILLED
+hung fake not terminated         KILLED
+unsupported transport accepted   KILLED
+existing profile hook replaced   KILLED
+unguarded body counted unsent    KILLED
+hard full-fsync error falls back KILLED
+racing state dirs not synced     KILLED
+rate headers unbounded           KILLED
+raw named values persisted       KILLED
+request id persisted raw         KILLED
+content-type parameters kept     KILLED
+unaccepted served identity kept  KILLED
+unknown retention kept           KILLED
+status range unchecked           KILLED
+no mid-run inventory recheck     KILLED
+no outbound check at handoff     KILLED
+served identity may change       KILLED
+bool usage accepted              KILLED
+negative probability accepted    KILLED
+duplicate JSON keys accepted     KILLED
+inspect ignores hash chain       KILLED
+persist any header               KILLED
+receipt failure ignored          KILLED
+reserve released on failure      KILLED
+plan reorder accepted            KILLED
+mutants=34 survived=0

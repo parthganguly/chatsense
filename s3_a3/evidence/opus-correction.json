@@ -1,0 +1,24 @@
+{
+  "harness": "native Claude Code, existing subscription",
+  "requested_model": "claude-opus-5-5",
+  "assistant_models": [
+    "<synthetic>",
+    "claude-opus-5-5"
+  ],
+  "tool_calls": {
+    "Bash": 15,
+    "Read": 2,
+    "Grep": 4,
+    "Edit": 9
+  },
+  "is_error": true,
+  "terminal_subtype": "success",
+  "reported_model_usage": [
+    "claude-opus-5-5"
+  ],
+  "raw_stream_sha256": "9f14afb33a8ac24da1ac13b301715065294c4b507e6b1634653715d04691d0a3",
+  "brief_sha256": "7069620eeee5e6644c08992a3929aa8f404599e909622bcb10f5fb4f22ee6eb1",
+  "terminal_message": "You've hit your session limit \u00b7 resets 10:20pm (Asia/Calcutta)",
+  "window": "five_hour",
+  "correction_applied": false
+}
