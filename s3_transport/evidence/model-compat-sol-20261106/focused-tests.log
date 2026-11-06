@@ -1,0 +1,12 @@
+test_body_identity_drift_stops_before_fourth_handoff (s3_transport.test_model_compatibility.ModelCompatibility.test_body_identity_drift_stops_before_fourth_handoff) ... ok
+test_default_still_requires_approved_label (s3_transport.test_model_compatibility.ModelCompatibility.test_default_still_requires_approved_label) ... ok
+test_header_and_retention_requirements (s3_transport.test_model_compatibility.ModelCompatibility.test_header_and_retention_requirements) ... ok
+test_malformed_answers_usage_and_json (s3_transport.test_model_compatibility.ModelCompatibility.test_malformed_answers_usage_and_json) ... ok
+test_proposed_exact_labels (s3_transport.test_model_compatibility.ModelCompatibility.test_proposed_exact_labels) ... ok
+test_stable_labels_complete_in_fake_run (s3_transport.test_model_compatibility.ModelCompatibility.test_stable_labels_complete_in_fake_run) ... ok
+test_unknown_missing_and_nonstring_labels (s3_transport.test_model_compatibility.ModelCompatibility.test_unknown_missing_and_nonstring_labels) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 7.108s
+
+OK

@@ -72,6 +72,11 @@ PROVIDER_URLS = {"jev": "https://api.typesafe.ai/v1/systemone",
                  "glide": "https://api.fastino.ai/v1/systemone"}
 MODELS = {"jev": "jev-1.14.0", "glide": "fastino/GLiDE"}
 REPORTED_MODELS = {"jev": "jev-1.14.0", "glide": "glide"}
+# Owner-approved provider-contract amendment: issue #38, comment 6691144132.
+GLIDE_BODY_MODELS = ("glide", "glide_v2")
+GLIDE_DOCUMENTED_BODY_MODELS = ("glide", "glide_v2")
+# Pending owner approval: s3_transport/PROPOSED-USAGE-AMENDMENT.md; no CLI/env switch.
+GLIDE_INDEPENDENT_TOKEN_USAGE = False
 RESERVE_MICRO_USD = {"jev": 3000, "glide": 25000}
 CAP_MICRO_USD = {"jev": 50000, "glide": 400000, "total": 450000}
 INPUT_BOUND = {"jev": 65536, "glide": 524288}
@@ -470,7 +475,7 @@ def _number(v):
     return type(v) is int or (type(v) is float and math.isfinite(v))
 
 
-def _check_response(res, row, allow, served_seen, info):
+def _check_response(res, row, allow, served_seen, info, body_model_seen=None):
     """Fail closed. Fills info with safe, dispatcher-derived fields only."""
     provider = row["provider"]
     if type(res) is not tuple or len(res) != 3:
@@ -519,14 +524,21 @@ def _check_response(res, row, allow, served_seen, info):
         raise Invalid("JSON_INVALID")
     if type(obj) is not dict:
         raise Invalid("ANSWERS_INVALID")
-    if obj.get("model") != REPORTED_MODELS[provider]:
-        raise Invalid("MODEL_MISMATCH")
     if provider == "glide":
+        model = obj.get("model")
+        # Retain only a fixed public label or a fixed category, never arbitrary provider text.
+        info["body_model_class"] = model if model in GLIDE_DOCUMENTED_BODY_MODELS else "other_or_missing"
+        if model not in GLIDE_BODY_MODELS:
+            raise Invalid("MODEL_MISMATCH")
+        if body_model_seen is not None and model != body_model_seen:
+            raise Invalid("BODY_MODEL_CHANGED")
         if safe.get("x-fastino-data-retention") not in RETENTION_VALUES:
             raise Invalid("RETENTION")
         served = safe.get("x-fastino-served-model")
         if served not in allow or (served_seen is not None and served != served_seen):
             raise Invalid("CANONICAL_IDENTITY")
+    elif obj.get("model") != REPORTED_MODELS[provider]:
+        raise Invalid("MODEL_MISMATCH")
     answers = obj.get("answers")
     keys = row["serialized_option_keys"]
     if type(answers) is not dict or set(answers) != set(keys):
@@ -543,16 +555,43 @@ def _check_response(res, row, allow, served_seen, info):
         c = a.get("choice")
         if type(c) is not str or c not in p or abs(p[c] - max(p.values())) > 1e-9:
             raise Invalid("CHOICE_INVALID")
-    usage = obj.get("usage")
+    def usage_failure(subtype, code="USAGE_INVALID"):
+        # Subtypes come only from fixed internal field names/literals, never values.
+        info["usage_failure"] = subtype
+        raise Invalid(code)
+
+    if "usage" not in obj:
+        usage_failure("USAGE_MISSING")
+    usage = obj["usage"]
     if type(usage) is not dict:
-        raise Invalid("USAGE_INVALID")
-    u = {k: usage.get(k) for k in ("input_tokens", "output_tokens")}
-    if not all(type(v) is int and 0 <= v <= USAGE_MAX for v in u.values()):
-        raise Invalid("USAGE_INVALID")
-    if provider == "glide" and (type(obj.get("token_usage")) is not int or obj["token_usage"] != sum(u.values())):
-        raise Invalid("USAGE_INVALID")
+        usage_failure("USAGE_TYPE")
+    u = {}
+    for field in ("input_tokens", "output_tokens"):
+        if field not in usage:
+            usage_failure(field.upper() + "_MISSING")
+        value = usage[field]
+        if type(value) is not int:
+            usage_failure(field.upper() + "_TYPE")
+        if value < 0:
+            usage_failure(field.upper() + "_NEGATIVE")
+        if value > USAGE_MAX:
+            usage_failure(field.upper() + "_EXCESSIVE")
+        u[field] = value
+    if provider == "glide":
+        if "token_usage" not in obj:
+            usage_failure("TOKEN_USAGE_MISSING")
+        tokens = obj["token_usage"]
+        if type(tokens) is not int:
+            usage_failure("TOKEN_USAGE_TYPE")
+        if tokens < 0:
+            usage_failure("TOKEN_USAGE_NEGATIVE")
+        if GLIDE_INDEPENDENT_TOKEN_USAGE:
+            if tokens > USAGE_MAX:
+                usage_failure("TOKEN_USAGE_EXCESSIVE")
+        elif tokens != sum(u.values()):
+            usage_failure("TOKEN_USAGE_SUM_MISMATCH")
     if u["input_tokens"] > INPUT_BOUND[provider]:
-        raise Invalid("USAGE_BOUND")
+        usage_failure("INPUT_BOUND", "USAGE_BOUND")
     info.update(usage=u, provisional_input_nano_usd=u["input_tokens"] * NANO_USD_PER_INPUT_TOKEN[provider])
     return obj
 
@@ -684,6 +723,7 @@ def run(state_root, transport, *, served_allowlist, clock=time.monotonic, packet
     reserved = {"jev": 0, "glide": 0, "total": 0}
     outcomes, responses = [], []
     stop, failure, served_seen, t0, attempted = None, None, None, None, 0
+    body_model_seen = None
 
     def append(rec):
         try:
@@ -753,7 +793,7 @@ def run(state_root, transport, *, served_allowlist, clock=time.monotonic, packet
             else:
                 res = box["result"]
                 try:
-                    obj = _check_response(res, row, allow, served_seen, info)
+                    obj = _check_response(res, row, allow, served_seen, info, body_model_seen)
                     outcome = "VALID"
                 except Invalid as e:
                     outcome = e.code
@@ -773,6 +813,7 @@ def run(state_root, transport, *, served_allowlist, clock=time.monotonic, packet
             responses.append(obj)
             if prov == "glide":
                 served_seen = info["safe_headers"]["x-fastino-served-model"]
+                body_model_seen = obj["model"]
         else:
             stop = "PLAN_COMPLETE"
         not_attempted = [row["id"] for row in rows[attempted:]]

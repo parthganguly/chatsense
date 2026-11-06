@@ -1,0 +1,79 @@
+{
+  "retrieved_utc": "2026-11-06T14:40:25.445305+00:00",
+  "openapi_url": "https://docs.fastino.ai/openapi.json",
+  "openapi_sha256": "fb64a277d3f69983dfa3e759663df3e04274a4b3c359b61c398f4a726f3c5384",
+  "request_model_schema": {
+    "description": "Decision model to call. Use `fastino/GLiDE`.",
+    "minLength": 1,
+    "title": "Model",
+    "type": "string"
+  },
+  "response_model_schema": {
+    "description": "Engine name without the provider prefix, e.g. `glide`.",
+    "title": "Model",
+    "type": "string"
+  },
+  "response_required": [
+    "model",
+    "answers",
+    "usage",
+    "token_usage"
+  ],
+  "served_header_schema": {
+    "type": "string"
+  },
+  "catalog_url": "https://api.fastino.ai/v1/base-models",
+  "catalog_sha256": "549a85859c1b75f5da458bc6a5b5a44c898092d0cbdd86705e46c3961c7d3cea",
+  "catalog_glide": [
+    {
+      "id": "fastino/GLiDE",
+      "description": "One-pass GLiDE v2.3 decision model served in NVFP4 on a B200.",
+      "supports_inference": true,
+      "deprecated": false
+    }
+  ],
+  "history": {
+    "utc": "2026-11-06T14:37:06.666245+00:00",
+    "method": "GET",
+    "host": "api.fastino.ai",
+    "route": "/v1/inferences",
+    "query": {
+      "limit": 10,
+      "offset": 0,
+      "since": "2026-11-06T14:06:35Z",
+      "until": "2026-11-06T14:06:45Z"
+    },
+    "inference_calls": 0,
+    "curl_exit": 0,
+    "total": 0,
+    "records": []
+  },
+  "nov6_original_body_model_value": null,
+  "nov6_original_body_model_recoverable_from_history": false,
+  "proposal_body_labels": [
+    "glide",
+    "glide_v2"
+  ],
+  "default_approved_body_labels": [
+    "glide"
+  ],
+  "served_header_interpretation": "The header identifies the selected canonical model after routing, using the base-model ID when a fine-tune was not selected.",
+  "documentation": [
+    {
+      "url": "https://docs.fastino.ai/inference/systemone",
+      "retrieval": "live Firecrawl scrape, cache miss",
+      "finding": "Hosted request model fastino/GLiDE; body model glide in reference, migration instructions, and examples."
+    },
+    {
+      "url": "https://docs.fastino.ai/cookbooks/glide-support-ticket-triage",
+      "retrieval": "live Firecrawl scrape, cache miss",
+      "finding": "Hosted request model fastino/GLiDE; measured response model glide_v2. The example omits token_usage, unlike the API schema. Proposed compatibility affects model labels only."
+    },
+    {
+      "url": "https://fastino.ai/blog/glide-decision-model-family",
+      "retrieval": "Firecrawl cache from 2026-11-06T04:03:09.739Z",
+      "finding": "Announces GLiDE family and hosted 27B availability. Does not define a body-label mapping or immutable weights for the study request."
+    }
+  ],
+  "identity_limits": "Two body labels are evidenced for the hosted canonical service. This does not establish equal model weights or recover the rejected November 6 field."
+}
