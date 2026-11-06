@@ -1,0 +1,22 @@
+{
+  "scientific_freeze": "7ed874b7a3963e560d399b7c0046f5625a2e0757",
+  "protected_paths_unchanged": [
+    "docs/studies/s3/2026-10-26-v1",
+    "s3_transport/systemone.py",
+    "s3_transport/settlement.py",
+    "s3_transport/evidence/live-20261105",
+    "s3_transport/evidence/campaign-6686504920"
+  ],
+  "campaigns": {
+    "live-20261105": {
+      "ledger_sha256": "998468923a5f22e46f33dd80742acb0fe99bab2692392fa52f6539ffac054d1c",
+      "matches_preserved_evidence": true
+    },
+    "campaign-6686504920": {
+      "ledger_sha256": "e70d8ac3ca8ca313927982acc4840cd4da82a5d10d69850844e60d3871da6f0b",
+      "matches_preserved_evidence": true
+    }
+  },
+  "historical_results_reprocessed": false,
+  "inference_calls": 0
+}
