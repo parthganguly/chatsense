@@ -17,3 +17,5 @@ Neither source establishes `fastino/GLiDE` as a body label. The local/open-weigh
 **Historical disposition.** The November 6 response body was discarded after its model check failed. The existing request-time history query returned zero records, consistent with the documented `store:false` behavior. Its exact body label and answer vectors remain unknown. This amendment cannot retroactively validate that response. Both consumed campaigns remain separate and inconclusive.
 
 The new bounded diagnostic retains only the public labels `glide` or `glide_v2`, or a fixed `other_or_missing` category. Arbitrary response strings and rejected bodies are excluded from this diagnostic. The prepared validator also refuses a transition between the two permitted labels within one campaign. [Evidence projection](evidence/model-contract-20261106.json)
+
+After approval, post-run raw-response validation must apply the same approved finite-label rule before the unchanged frozen canonical scoring. Preserve actual provider labels; do not rewrite responses to satisfy the original literal-label validator.

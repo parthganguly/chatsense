@@ -1,0 +1,13 @@
+Verdict: PASS for the narrowly scoped prepared finite-label amendment and current approval boundary. Activation remains NOT APPROVED: an owner must explicitly approve adding glide_v2. No blocking finding in this scope.
+
+Revision independently reviewed and tested: 14d02924bc914152f445211b51db9b3f3c44b574 (against ac8e2da).
+
+Reviewed changed dispatcher code, PROPOSED-MODEL-AMENDMENT.md, evidence/model-contract-20261106.json, and focused tests. The supplied official-reference/cookbook evidence supports exactly glide and glide_v2 for the hosted request fastino/GLiDE; this review did not independently refetch public documentation. The schema's general string type is not an authorization to accept arbitrary labels. Neither label proves immutable underlying weights.
+
+The production constant remains GLIDE_BODY_MODELS=("glide",). The additional documented-label constant only bounds diagnostics; it does not activate glide_v2. Request identity, canonical served header, retention, answer and usage validation remain unchanged. Unknown, missing, nonstring, case-varied, whitespace-suffixed, prefixed and local-version labels reject. Only the two fixed public labels or other_or_missing enter the new diagnostic; arbitrary model text does not. Rejected responses are not added to accepted response objects. Existing response byte count/hash remain the only body-derived rejected-response metadata besides the bounded diagnostic.
+
+Verification: all 7 repository focused tests passed. An independent offline script passed 41 checks: default glide acceptance/glide_v2 rejection; both exact proposed labels; missing/unknown/nonstring labels; duplicate or conflicting served headers; served identity mismatch; both accepted retention values and missing/invalid retention; missing answers and malformed usage; both directions of body identity drift. Each drift stopped at handoff 3 with 29 remaining calls unattempted, and inspect reported no errors. The independent script disabled socket creation. All test state used temporary directories under this report directory and was cleaned up. No provider requests, credentials, live campaign state, or tracked-file writes were used.
+
+The November 6 rejected body label remains unknown; no test or documentation establishes retrospective validity. This PASS does not approve a paid campaign, activate glide_v2, or validate historical responses. Existing canonical allowlist semantics were not broadened by this patch. Review was restricted to model compatibility, the approval boundary, safe diagnostics, and identity stability.
+
+Artifacts: focused-tests.log, independent.py, independent.log.
