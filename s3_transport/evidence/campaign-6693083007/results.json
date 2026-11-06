@@ -1,0 +1,217 @@
+{
+  "authorization": "https://github.com/parthganguly/chatsense/issues/38#issuecomment-6693083007",
+  "protocol_sha": "7ed874b7a3963e560d399b7c0046f5625a2e0757",
+  "a3_sha": "188fff410e35dfaaf9961b6f7cbe12bf6d20fba3",
+  "source_sha": "91f7bd485803e9b540076fc2137c6349f086f8cb",
+  "model_amendment_sha": "df8ba8f8a806fb6f2cbe02f8f64b63a25de9a8ce",
+  "ledger_sha256": "96b5b3a9a6315ec8148ae340ef9d60fc6ae48dbd3c38142fea8a1ae3c2083daf",
+  "start_utc": "2026-11-06T19:15:46.284664+00:00",
+  "stop_utc": "2026-11-06T19:16:42.949248+00:00",
+  "stop_reason": "TECHNICAL_FAILURE",
+  "failure": "USAGE_INVALID",
+  "counts": {
+    "attempted": 2,
+    "valid": 1,
+    "invalid": 1,
+    "unknown": 0,
+    "not_sent": 0,
+    "not_attempted": 30
+  },
+  "provider_counts": {
+    "jev": {
+      "attempted": 1,
+      "valid": 1
+    },
+    "glide": {
+      "attempted": 1,
+      "valid": 0
+    }
+  },
+  "token_usage_valid_responses": {
+    "jev": {
+      "input_tokens": 1666,
+      "output_tokens": 347
+    },
+    "glide": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  "http_post_writes": {
+    "jev": 1,
+    "glide": 1
+  },
+  "canonical_frozen_verdict": "INCONCLUSIVE",
+  "failed_factual_controls_so_far": [
+    {
+      "id": "01-jev-U-A",
+      "question": "q02",
+      "p_correct": 0.02
+    }
+  ],
+  "estimated_input_nano_usd_valid_responses": {
+    "jev": 69972,
+    "glide": 0
+  },
+  "verified_settled_debits": {},
+  "first_pair_estimates": {},
+  "available_aggregate_account_observations": {
+    "baseline": {
+      "as_of_utc": "2026-11-06T19:15:05.046667+00:00",
+      "kind": "aggregate wallet; no attributable line item",
+      "balance_usd": "5.98087200",
+      "overdraft_available": false
+    },
+    "final": {
+      "as_of_utc": "2026-11-06T19:17:05.010529+00:00",
+      "kind": "aggregate wallet; no attributable line item",
+      "balance_usd": "5.98077700",
+      "overdraft_available": false
+    }
+  },
+  "attempts": [
+    {
+      "id": "01-jev-U-A",
+      "outcome": "VALID",
+      "utc": "2026-11-06T19:15:47.940563+00:00",
+      "http_status": 200,
+      "response_sha256": "9a0fcf870ff6a3dcd59a2e7661000d570be1be66bd55b484e80b0c6a4fb6904d",
+      "safe_headers": {
+        "content-type": "application/json"
+      },
+      "usage": {
+        "input_tokens": 1666,
+        "output_tokens": 347
+      },
+      "provisional_input_nano_usd": 69972,
+      "response_bytes": 915,
+      "provider": "jev",
+      "card": "A",
+      "condition": "U",
+      "body_sha256": "ac2aeab4ec81b4e2bdc7debba44cecf98dbef31c6ff9262f92af70951e1089cc",
+      "decoded_stimulus_sha256": "eea78a25698389ab31dc52a232b7384b6165444157680f34219e171065c0b51f",
+      "reported_model": "jev-1.14.0",
+      "canonical_probabilities": {
+        "q01": {
+          "d0": 1.0,
+          "d1": 0.0,
+          "d2": 0.0,
+          "d3": 0.0
+        },
+        "q02": {
+          "d0": 0.02,
+          "d1": 0.98,
+          "d2": 0.0
+        },
+        "q03": {
+          "d0": 0.0,
+          "d1": 1.0,
+          "d2": 0.0
+        },
+        "q04": {
+          "d0": 0.0,
+          "d1": 0.02,
+          "d2": 0.98
+        },
+        "q05": {
+          "d0": 0.48,
+          "d1": 0.02,
+          "d2": 0.5
+        },
+        "q06": {
+          "d0": 0.03,
+          "d1": 0.68,
+          "d2": 0.29
+        },
+        "q07": {
+          "d0": 1.0,
+          "d1": 0.0,
+          "d2": 0.0
+        },
+        "q08": {
+          "d0": 1.0,
+          "d1": 0.0,
+          "d2": 0.0,
+          "d3": 0.0
+        }
+      },
+      "selected_canonical": {
+        "q01": "d0",
+        "q02": "d1",
+        "q03": "d1",
+        "q04": "d2",
+        "q05": "d2",
+        "q06": "d1",
+        "q07": "d0",
+        "q08": "d0"
+      }
+    },
+    {
+      "id": "01-glide-U-A",
+      "outcome": "USAGE_INVALID",
+      "utc": "2026-11-06T19:16:42.943090+00:00",
+      "http_status": 200,
+      "response_sha256": "37aa6fb70310ff013389b0a5e7e3965840f2d0768e80c22fff27f684a5dc609b",
+      "safe_headers": {
+        "content-type": "application/json",
+        "x-fastino-data-retention": "not-stored",
+        "x-fastino-served-model": "fastino/GLiDE",
+        "x-request-id": "sha256:245acf1a9fc08de695d1a99f2554e90f36c8e7deccc580366d35718abc72e36b"
+      },
+      "body_model_class": "glide_v2",
+      "response_bytes": 1594,
+      "provider": "glide",
+      "card": "A",
+      "condition": "U",
+      "body_sha256": "c3ca98d2ffd95a84fc3c4ee56283e2fc709975becf46f31f67178a57281dd69f",
+      "decoded_stimulus_sha256": "eea78a25698389ab31dc52a232b7384b6165444157680f34219e171065c0b51f"
+    }
+  ],
+  "not_attempted": [
+    "02-glide-U-B",
+    "02-jev-U-B",
+    "03-jev-U-C",
+    "03-glide-U-C",
+    "04-glide-U-D",
+    "04-jev-U-D",
+    "05-jev-U-E",
+    "05-glide-U-E",
+    "06-glide-T-E",
+    "06-jev-T-E",
+    "07-jev-T-D",
+    "07-glide-T-D",
+    "08-glide-T-C",
+    "08-jev-T-C",
+    "09-jev-T-B",
+    "09-glide-T-B",
+    "10-glide-T-A",
+    "10-jev-T-A",
+    "11-jev-R-D",
+    "11-glide-R-D",
+    "12-glide-R-E",
+    "12-jev-R-E",
+    "13-jev-W-D",
+    "13-glide-W-D",
+    "14-glide-W-E",
+    "14-jev-W-E",
+    "15-jev-O-E",
+    "15-glide-O-E",
+    "16-glide-O-D",
+    "16-jev-O-D"
+  ],
+  "within_provider_contrasts": [],
+  "between_provider_contrasts": [],
+  "cost_estimate_usd_all_attempts": {
+    "jev": "0.000069972",
+    "glide": null,
+    "combined": null
+  },
+  "verified_settled_debit_usd": {
+    "jev": null,
+    "glide": null,
+    "combined": null
+  },
+  "first_pair_checkpoint": "NOT_REACHED_PAIR_INVALID",
+  "fastino_aggregate_wallet_decrease_usd": "0.00009500",
+  "aggregate_wallet_decrease_is_attributable_settled_debit": false
+}

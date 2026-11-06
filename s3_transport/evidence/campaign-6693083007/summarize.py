@@ -1,5 +1,6 @@
 """Read-only report of the single live A3 state; never calls either provider."""
 from collections import Counter
+from decimal import Decimal
 import hashlib
 import importlib.util
 import json
@@ -26,7 +27,7 @@ results = {r["id"]:r for r in ledger if r["type"]=="RESULT"}
 for id,row in plan.items():
     if id not in results: continue
     r=results[id]
-    record={k:r[k] for k in ("id","outcome","utc","http_status","response_sha256","safe_headers","usage","provisional_input_nano_usd") if k in r}
+    record={k:r[k] for k in ("id","outcome","utc","http_status","response_sha256","safe_headers","usage","provisional_input_nano_usd","body_model_class","response_bytes") if k in r}
     record.update({k:row[k] for k in ("provider","card","condition","body_sha256","decoded_stimulus_sha256")})
     observed.append(record)
     if r["outcome"]!="VALID": continue
@@ -77,5 +78,19 @@ summary={"authorization":"https://github.com/parthganguly/chatsense/issues/38#is
          "available_aggregate_account_observations":{stage:json.loads((private/("fastino-"+stage+".json")).read_text()) for stage in ("baseline","first-pair","final") if (private/("fastino-"+stage+".json")).exists()},
          "attempts":observed,"not_attempted":stop["not_attempted"],"within_provider_contrasts":distances,
          "between_provider_contrasts":cross}
+summary["cost_estimate_usd_all_attempts"] = {
+    p: (str(Decimal(summary["estimated_input_nano_usd_valid_responses"][p])/Decimal(10**9))
+        if summary["provider_counts"][p]["attempted"]==summary["provider_counts"][p]["valid"] else None)
+    for p in ("jev","glide")}
+summary["cost_estimate_usd_all_attempts"]["combined"] = None if any(
+    v is None for v in summary["cost_estimate_usd_all_attempts"].values()) else str(sum(
+    Decimal(v) for v in summary["cost_estimate_usd_all_attempts"].values()))
+summary["verified_settled_debit_usd"] = {"jev":None,"glide":None,"combined":None}
+summary["first_pair_checkpoint"] = "NOT_REACHED_PAIR_INVALID" if summary["counts"]["valid"]<2 else "SEE_RECEIPTS"
+observations = summary["available_aggregate_account_observations"]
+if all("balance_usd" in observations.get(stage,{}) for stage in ("baseline","final")):
+    summary["fastino_aggregate_wallet_decrease_usd"] = str(
+        Decimal(observations["baseline"]["balance_usd"])-Decimal(observations["final"]["balance_usd"]))
+summary["aggregate_wallet_decrease_is_attributable_settled_debit"] = False
 (private/"results.json").write_text(json.dumps(summary,indent=2,allow_nan=False)+"\n")
 print(json.dumps({k:summary[k] for k in ("counts","stop_reason","failure","canonical_frozen_verdict","estimated_input_nano_usd_valid_responses")}))

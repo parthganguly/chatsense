@@ -1,0 +1,55 @@
+{
+  "campaign_id": "s3-6693083007",
+  "operator_source_commit": "34e8409fe9b0245a734358e243100d655a0860de",
+  "runtime_source_commit": "91f7bd485803e9b540076fc2137c6349f086f8cb",
+  "operator_script_sha256": "5170e24876ed86784507387cb01fdc1c28858a0de1f5b173c48a29772a9ed5c9",
+  "one_use_marker_sha256": "57d4065e764dedb94bbf162c4a778310d71e25d1068a5cd51217855fa94f27fb",
+  "ledger_sha256": "96b5b3a9a6315ec8148ae340ef9d60fc6ae48dbd3c38142fea8a1ae3c2083daf",
+  "inspection": {
+    "authorization_id": "s3-v1-957b6c70fc910398",
+    "authorization_consumed": true,
+    "errors": [],
+    "complete": true,
+    "stop_reason": "TECHNICAL_FAILURE",
+    "attempts": [
+      {
+        "id": "01-jev-U-A",
+        "provider": "jev",
+        "status": "VALID",
+        "outcome": "VALID",
+        "http_status": 200,
+        "reserve_micro_usd": 3000,
+        "reserve_retained": true
+      },
+      {
+        "id": "01-glide-U-A",
+        "provider": "glide",
+        "status": "INVALID",
+        "outcome": "USAGE_INVALID",
+        "http_status": 200,
+        "reserve_micro_usd": 25000,
+        "reserve_retained": true
+      }
+    ],
+    "counts": {
+      "attempted": 2,
+      "valid": 1,
+      "invalid": 1,
+      "unknown": 0,
+      "not_sent": 0,
+      "not_attempted": 30
+    },
+    "reserved_micro_usd": {
+      "jev": 3000,
+      "glide": 25000,
+      "total": 28000
+    },
+    "orphan_receipts": 0,
+    "cost_status": "UNKNOWN_UNRECONCILED",
+    "within_budget_verified": false
+  },
+  "prior_ledgers_unchanged": true,
+  "prior_campaigns_reprocessed": false,
+  "accepted_sources_unchanged": true,
+  "recorded_utc": "2026-11-06T19:18:39.011913+00:00"
+}
