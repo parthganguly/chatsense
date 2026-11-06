@@ -16,3 +16,24 @@ python3 -B s3_transport/evidence/sol/probe.py
 ```
 
 The issue records live counts, results and charge evidence. [S3 study record](https://github.com/parthganguly/chatsense/issues/38)
+
+## Approved GLiDE response-body compatibility
+
+[Owner approval #6691144132](https://github.com/parthganguly/chatsense/issues/38#issuecomment-6691144132) activates exactly `glide` and `glide_v2`, case-sensitive. The first successfully accepted body label is fixed throughout the campaign. Requested model, canonical served header, retention, typed answers, probabilities and usage checks remain unchanged. [Amendment and limits](PROPOSED-MODEL-AMENDMENT.md)
+
+For post-run validation before unchanged frozen canonical scoring, use:
+
+```python
+from s3_transport.postrun import validate_recorded_responses
+responses_by_attempt = validate_recorded_responses(state_root)
+```
+
+This reads a finished ledger and its accepted receipts, reuses the live response validator, preserves the original model labels, and does not reconsider rejected attempts. It does not dispatch or score a study. Historical report scripts and the frozen packet remain untouched; their original literal-label validator is not the amended post-run entry point.
+
+Focused offline regression:
+
+```sh
+python3 -B -m unittest s3_transport.test_model_compatibility s3_transport.test_postrun_compatibility -v
+```
+
+Both previous campaigns remain consumed and inconclusive. This activation authorizes no new inference campaign.

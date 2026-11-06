@@ -72,8 +72,8 @@ PROVIDER_URLS = {"jev": "https://api.typesafe.ai/v1/systemone",
                  "glide": "https://api.fastino.ai/v1/systemone"}
 MODELS = {"jev": "jev-1.14.0", "glide": "fastino/GLiDE"}
 REPORTED_MODELS = {"jev": "jev-1.14.0", "glide": "glide"}
-# Adding glide_v2 requires approval of the provider-contract amendment in PR #41.
-GLIDE_BODY_MODELS = ("glide",)
+# Owner-approved provider-contract amendment: issue #38, comment 6691144132.
+GLIDE_BODY_MODELS = ("glide", "glide_v2")
 GLIDE_DOCUMENTED_BODY_MODELS = ("glide", "glide_v2")
 RESERVE_MICRO_USD = {"jev": 3000, "glide": 25000}
 CAP_MICRO_USD = {"jev": 50000, "glide": 400000, "total": 450000}
