@@ -11,9 +11,9 @@ from urllib.parse import urlsplit
 from s3_a3 import dispatcher as d
 
 
-# Owner decision #6656790937 accepts this dated account snapshot for the one-use run.
+# Owner decision #6686504920 grants a separate one-use campaign with the accepted account snapshot.
 FINANCIAL_RECEIPT_SHA256 = "f92df97aaace87b80f9e5aaef84ed0a0799b5c48403471ce421dcbc75030bcda"
-STATE_ROOT = Path.home() / "Library" / "Application Support" / "ChatSense-S3"
+STATE_ROOT = Path.home() / "Library" / "Application Support" / "ChatSense-S3-6686504920"
 FINANCIAL_RECEIPT = Path(__file__).resolve().parent / "evidence" / "account-preflight.json"
 
 
