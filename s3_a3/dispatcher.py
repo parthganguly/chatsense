@@ -75,6 +75,8 @@ REPORTED_MODELS = {"jev": "jev-1.14.0", "glide": "glide"}
 # Owner-approved provider-contract amendment: issue #38, comment 6691144132.
 GLIDE_BODY_MODELS = ("glide", "glide_v2")
 GLIDE_DOCUMENTED_BODY_MODELS = ("glide", "glide_v2")
+# Pending owner approval: s3_transport/PROPOSED-USAGE-AMENDMENT.md; no CLI/env switch.
+GLIDE_INDEPENDENT_TOKEN_USAGE = False
 RESERVE_MICRO_USD = {"jev": 3000, "glide": 25000}
 CAP_MICRO_USD = {"jev": 50000, "glide": 400000, "total": 450000}
 INPUT_BOUND = {"jev": 65536, "glide": 524288}
@@ -553,16 +555,43 @@ def _check_response(res, row, allow, served_seen, info, body_model_seen=None):
         c = a.get("choice")
         if type(c) is not str or c not in p or abs(p[c] - max(p.values())) > 1e-9:
             raise Invalid("CHOICE_INVALID")
-    usage = obj.get("usage")
+    def usage_failure(subtype, code="USAGE_INVALID"):
+        # Subtypes come only from fixed internal field names/literals, never values.
+        info["usage_failure"] = subtype
+        raise Invalid(code)
+
+    if "usage" not in obj:
+        usage_failure("USAGE_MISSING")
+    usage = obj["usage"]
     if type(usage) is not dict:
-        raise Invalid("USAGE_INVALID")
-    u = {k: usage.get(k) for k in ("input_tokens", "output_tokens")}
-    if not all(type(v) is int and 0 <= v <= USAGE_MAX for v in u.values()):
-        raise Invalid("USAGE_INVALID")
-    if provider == "glide" and (type(obj.get("token_usage")) is not int or obj["token_usage"] != sum(u.values())):
-        raise Invalid("USAGE_INVALID")
+        usage_failure("USAGE_TYPE")
+    u = {}
+    for field in ("input_tokens", "output_tokens"):
+        if field not in usage:
+            usage_failure(field.upper() + "_MISSING")
+        value = usage[field]
+        if type(value) is not int:
+            usage_failure(field.upper() + "_TYPE")
+        if value < 0:
+            usage_failure(field.upper() + "_NEGATIVE")
+        if value > USAGE_MAX:
+            usage_failure(field.upper() + "_EXCESSIVE")
+        u[field] = value
+    if provider == "glide":
+        if "token_usage" not in obj:
+            usage_failure("TOKEN_USAGE_MISSING")
+        tokens = obj["token_usage"]
+        if type(tokens) is not int:
+            usage_failure("TOKEN_USAGE_TYPE")
+        if tokens < 0:
+            usage_failure("TOKEN_USAGE_NEGATIVE")
+        if GLIDE_INDEPENDENT_TOKEN_USAGE:
+            if tokens > USAGE_MAX:
+                usage_failure("TOKEN_USAGE_EXCESSIVE")
+        elif tokens != sum(u.values()):
+            usage_failure("TOKEN_USAGE_SUM_MISMATCH")
     if u["input_tokens"] > INPUT_BOUND[provider]:
-        raise Invalid("USAGE_BOUND")
+        usage_failure("INPUT_BOUND", "USAGE_BOUND")
     info.update(usage=u, provisional_input_nano_usd=u["input_tokens"] * NANO_USD_PER_INPUT_TOKEN[provider])
     return obj
 

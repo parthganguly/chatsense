@@ -1,0 +1,64 @@
+{
+  "retrieved_utc": "2026-11-06T19:58:01.519851+00:00",
+  "openapi_url": "https://docs.fastino.ai/openapi.json",
+  "openapi_sha256": "fb64a277d3f69983dfa3e759663df3e04274a4b3c359b61c398f4a726f3c5384",
+  "response_required": [
+    "model",
+    "answers",
+    "usage",
+    "token_usage"
+  ],
+  "token_usage_schema": {
+    "description": "Total tokens billed for the decision (input plus output).",
+    "minimum": 0,
+    "title": "Token Usage",
+    "type": "integer"
+  },
+  "usage_required": [
+    "input_tokens",
+    "output_tokens"
+  ],
+  "usage_counts": {
+    "input_tokens": {
+      "type": "integer",
+      "minimum": 0.0
+    },
+    "output_tokens": {
+      "type": "integer",
+      "minimum": 0.0
+    }
+  },
+  "schema_maximum_for_counters": null,
+  "schema_cross_field_equality": false,
+  "guide_url": "https://docs.fastino.ai/inference/systemone",
+  "guide_findings": [
+    "Examples have 89 input + 1 output / token_usage 90, and 743 + 252 / token_usage 995.",
+    "usage.input_tokens aggregates internal passes across questions and includes image tokens.",
+    "Guide advertises $0.04 per million input tokens and zero output-token price.",
+    "Examples do not resolve the discrepancy with the retained historical wire receipt."
+  ],
+  "historical_source": {
+    "local_file": "/Users/parth/Projects/chatsense-decision-lab/evidence/smoke/2026-10-16T12-42-00.235Z.json",
+    "file_sha256": "73441aae5905fc548b39ab929acba9f63749ed63cb05a1485fbec4696fd46a10",
+    "kind": "availability-smoke-only",
+    "parent_source_sha256": "9155d0135ec9ce0877495fc31045541527fc5c353244c40abe57370e7f778e5f",
+    "record_index": 1,
+    "started_at": "2026-10-16T12:42:02.043Z",
+    "url": "https://api.fastino.ai/v1/systemone",
+    "http_status": 200,
+    "response_model": "glide_v2",
+    "usage": {
+      "input_tokens": 137,
+      "output_tokens": 0
+    },
+    "token_usage": 216,
+    "prior_corroboration": "https://github.com/parthganguly/chatsense/issues/38#issuecomment-6571321377",
+    "historical_inference_not_repeated": true
+  },
+  "interpretation": "The schema description calls token_usage an input-plus-output billed total, but the retained wire counters contradict exact equality. The relationship among wire counters is not established; the proposal checks them independently, without changing the provisional input-cost basis.",
+  "local_defensive_maximum": 9007199254740991,
+  "nov7_actual_usage_fields": null,
+  "nov7_exact_usage_rejection_subtype": "UNKNOWN",
+  "provider_inference_calls": 0,
+  "account_api_calls": 0
+}
