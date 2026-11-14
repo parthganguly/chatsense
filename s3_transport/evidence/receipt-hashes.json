@@ -1,0 +1,17 @@
+{
+  "adapter_commit": "2eb8e2f95b3950488891c794c160e0aef3d63ade",
+  "files": {
+    "account-preflight.json": "f92df97aaace87b80f9e5aaef84ed0a0799b5c48403471ce421dcbc75030bcda",
+    "initial-review.md": "3c61a5f056186fa576ceadba02907597f8187febf81fc54a3e17700416f50676",
+    "local-tls-tests.txt": "660a606d153b7011a42e25ccdf37086019f554bfa2f0435ff30ddb5cfbfc9bb6",
+    "sol/REPORT.md": "b49c3f6a2a5b40b4d42b08978c0fa7f46702525151f8b529abbdbd310f7cd32f",
+    "sol/SHA256SUMS": "0e1729327f6e2e71366ecd1cce7a84b466e7a300c70f72469d7414b308b5006f",
+    "sol/checkpoint-crash.json": "c3702663f265bb7a3c290f1a5134c0f9b0d0f0d35a42b4d6c7d76f5844a409c8",
+    "sol/probe.log": "eadf48757604c6319700dc9ed693f08dccfbb5e513ca807f0931f68067cad08f",
+    "sol/probe.py": "18a05f30b880b624ad72e0610b1f20d7e92f6b45c157295c6cf8b88b4c57b38d",
+    "sol/secondary-interlock.json": "b99b82b340a30dcc61ed774981c7fbdcc8c8f4c414d0e70a1feb35c752f794c7",
+    "sol/tls-deadline.json": "31dcd6c0cbd923d31cdff28c145ce9e804d38d94c020994f4112ff0764678744",
+    "sol/unicode-reflection.json": "9439e43ce8f6a1a76ce0de068c6d8f4db57b58127ba763a3f353c44488d8eeb8",
+    "typesafe-question.txt": "82647e14c6c75f2a4022586f6f02a3f97a9e29500f7f1d5b75a5d074c77e6837"
+  }
+}

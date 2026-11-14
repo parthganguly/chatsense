@@ -1,0 +1,27 @@
+test_fake_live_and_postrun_accept_historical_counts_without_normalizing (s3_transport.test_usage_compatibility.UsageCompatibility.test_fake_live_and_postrun_accept_historical_counts_without_normalizing) ... ok
+test_historical_counts_and_cost_basis (s3_transport.test_usage_compatibility.UsageCompatibility.test_historical_counts_and_cost_basis) ... ok
+test_identity_retention_answers_and_probabilities_still_required (s3_transport.test_usage_compatibility.UsageCompatibility.test_identity_retention_answers_and_probabilities_still_required) ... ok
+test_incorrect_types_negative_and_excessive_counters (s3_transport.test_usage_compatibility.UsageCompatibility.test_incorrect_types_negative_and_excessive_counters) ... ok
+test_independent_maximum_is_also_pending (s3_transport.test_usage_compatibility.UsageCompatibility.test_independent_maximum_is_also_pending) ... ok
+test_input_bound_and_jev_contract_unchanged (s3_transport.test_usage_compatibility.UsageCompatibility.test_input_bound_and_jev_contract_unchanged) ... ok
+test_live_postrun_malformed_usage_parity (s3_transport.test_usage_compatibility.UsageCompatibility.test_live_postrun_malformed_usage_parity) ... ok
+test_ordinary_zero_and_independent_boundaries (s3_transport.test_usage_compatibility.UsageCompatibility.test_ordinary_zero_and_independent_boundaries) ... ok
+test_pending_default_keeps_equality (s3_transport.test_usage_compatibility.UsageCompatibility.test_pending_default_keeps_equality) ... ok
+test_rejected_attempts_stay_rejected_and_diagnostic_is_bounded (s3_transport.test_usage_compatibility.UsageCompatibility.test_rejected_attempts_stay_rejected_and_diagnostic_is_bounded) ... ok
+test_required_usage_object_and_fields (s3_transport.test_usage_compatibility.UsageCompatibility.test_required_usage_object_and_fields) ... ok
+test_active_allowlist_matches_owner_approval (s3_transport.test_model_compatibility.ModelCompatibility.test_active_allowlist_matches_owner_approval) ... ok
+test_approved_exact_labels (s3_transport.test_model_compatibility.ModelCompatibility.test_approved_exact_labels) ... ok
+test_body_identity_drift_stops_before_fourth_handoff (s3_transport.test_model_compatibility.ModelCompatibility.test_body_identity_drift_stops_before_fourth_handoff) ... ok
+test_header_and_retention_requirements (s3_transport.test_model_compatibility.ModelCompatibility.test_header_and_retention_requirements) ... ok
+test_malformed_answers_usage_and_json (s3_transport.test_model_compatibility.ModelCompatibility.test_malformed_answers_usage_and_json) ... ok
+test_stable_labels_complete_in_fake_run (s3_transport.test_model_compatibility.ModelCompatibility.test_stable_labels_complete_in_fake_run) ... ok
+test_unknown_missing_and_nonstring_labels (s3_transport.test_model_compatibility.ModelCompatibility.test_unknown_missing_and_nonstring_labels) ... ok
+test_live_postrun_rejection_parity (s3_transport.test_postrun_compatibility.PostRunCompatibility.test_live_postrun_rejection_parity) ... ok
+test_postrun_rejects_body_identity_change (s3_transport.test_postrun_compatibility.PostRunCompatibility.test_postrun_rejects_body_identity_change) ... ok
+test_read_only_and_original_labels_preserved (s3_transport.test_postrun_compatibility.PostRunCompatibility.test_read_only_and_original_labels_preserved) ... ok
+test_rejects_broken_receipt_integrity (s3_transport.test_postrun_compatibility.PostRunCompatibility.test_rejects_broken_receipt_integrity) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 28.547s
+
+OK

@@ -1,0 +1,102 @@
+{
+  "platform": "Darwin x86_64, same Mac as counted S3 run",
+  "python": "3.14.3",
+  "diagnostic_source": "4c6c718ac66214941b4fd858ebe02072ffc2b776",
+  "diagnostic_start_utc": "2026-11-05T13:07:46Z",
+  "rows": [
+    {
+      "host": "api.fastino.ai",
+      "limit_s": 12.0,
+      "path": "adapter",
+      "status": "wall_timeout"
+    },
+    {
+      "dns_ms": 19.3,
+      "host": "api.fastino.ai",
+      "path": "ipv4",
+      "stage": "complete",
+      "status": "ok",
+      "tcp_ms": 240.3,
+      "tls_ms": 215.9,
+      "tls_version": "TLSv1.3",
+      "total_ms": 476.5
+    },
+    {
+      "host": "api.fastino.ai",
+      "limit_s": 12.0,
+      "path": "ipv6",
+      "status": "wall_timeout"
+    },
+    {
+      "host": "api.typesafe.ai",
+      "https_connect_ms": 694.3,
+      "path": "adapter",
+      "stage": "complete",
+      "status": "ok",
+      "total_ms": 694.3
+    },
+    {
+      "dns_ms": 6.0,
+      "host": "api.typesafe.ai",
+      "path": "ipv4",
+      "stage": "complete",
+      "status": "ok",
+      "tcp_ms": 32.3,
+      "tls_ms": 101.4,
+      "tls_version": "TLSv1.3",
+      "total_ms": 140.1
+    },
+    {
+      "dns_ms": 12.7,
+      "host": "api.typesafe.ai",
+      "path": "ipv6",
+      "stage": "complete",
+      "status": "ok",
+      "tcp_ms": 147.9,
+      "tls_ms": 311.9,
+      "tls_version": "TLSv1.3",
+      "total_ms": 472.9
+    }
+  ],
+  "supplementary_observations": {
+    "resolver_order": {
+      "api.fastino.ai": [
+        "IPv6",
+        "IPv6",
+        "IPv6",
+        "IPv6",
+        "IPv4",
+        "IPv4",
+        "IPv4",
+        "IPv4"
+      ],
+      "api.typesafe.ai": [
+        "IPv4",
+        "IPv4",
+        "IPv6",
+        "IPv6"
+      ]
+    },
+    "during_forced_fastino_ipv6": "IPv6 TCP socket in SYN_SENT (local process observation).",
+    "original_counted_glide_attempt": "300-second timeout; IPv6 TCP SYN_SENT observed while pending; zero HTTP POST writes."
+  },
+  "corrected_transport_source": "8108a8246cd26c7da18fbfd14f93129ea5a6c7ff",
+  "corrected_connection": {
+    "utc": "2026-11-05T13:12:11.449405+00:00",
+    "host": "api.fastino.ai",
+    "path": "corrected_adapter",
+    "status": "ok",
+    "tcp_family": "AF_INET",
+    "tls_version": "TLSv1.3",
+    "hostname_verified": true,
+    "total_ms": 446.7
+  },
+  "corrected_check_method": "Called s3_transport.systemone._https(\"api.fastino.ai\", 6.0).connect() and closed the socket after TLS. Checked the peer hostname, enabled hostname verification and CERT_REQUIRED. A local audit hook prohibited HTTP writes; a 12-second process alarm bounded the check.",
+  "inference_calls": 0,
+  "implementation_and_review": {
+    "implementation": "Native Opus 5.5 with Astra finalizing the shared TCP/TLS deadline and socket cleanup.",
+    "focused_regression_tests": 6,
+    "independent_reviewer": "Sol 6.1",
+    "review_result": "PASS at 8108a824; independent loopback checks covered IPv4 refusal followed by IPv6 success, trusted certificate for the wrong hostname refused, and stalled TLS bounded at 0.15 s with cleanup."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "campaign_id": "s3-6693083007",
+  "owner_authority": "https://github.com/parthganguly/chatsense/issues/38#issuecomment-6693083007",
+  "state_namespace": "ChatSense-S3-6693083007",
+  "prior_ledgers_sha256": {
+    "ChatSense-S3": "998468923a5f22e46f33dd80742acb0fe99bab2692392fa52f6539ffac054d1c",
+    "ChatSense-S3-6686504920": "e70d8ac3ca8ca313927982acc4840cd4da82a5d10d69850844e60d3871da6f0b"
+  },
+  "protocol_commit": "7ed874b7a3963e560d399b7c0046f5625a2e0757",
+  "accepted_a3_commit": "188fff410e35dfaaf9961b6f7cbe12bf6d20fba3",
+  "activated_model_validation_commit": "df8ba8f8a806fb6f2cbe02f8f64b63a25de9a8ce",
+  "source_commit": "91f7bd485803e9b540076fc2137c6349f086f8cb",
+  "operator_script_sha256": "5170e24876ed86784507387cb01fdc1c28858a0de1f5b173c48a29772a9ed5c9",
+  "maximum_attempts_per_provider": 16,
+  "intended_usd": {
+    "jev": "0.05",
+    "glide": "0.40",
+    "total": "0.45"
+  },
+  "time_limit_seconds": 3600,
+  "prepared_utc": "2026-11-06T19:14:47.325721+00:00"
+}

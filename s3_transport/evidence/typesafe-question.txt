@@ -1,0 +1,8 @@
+To: support@typesafe.ai
+Subject: Can a prepaid SystemOne request settle below zero with auto-recharge off?
+
+Hello TypeSafe Support,
+
+Your help center confirms that disabling auto-recharge stops automatic purchases and that new requests return 402 when credits run out. For a standard prepaid organization with auto-recharge off, can a SystemOne request already accepted while credit was available subsequently settle below zero, create an amount due, or lead to any charge to a saved card? Or is its settlement limited to available prepaid credits, with no automatic external collection? A link to the applicable policy or console control would be sufficient.
+
+Thank you.

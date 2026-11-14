@@ -1,0 +1,43 @@
+{
+  "authorization_id": "s3-v1-957b6c70fc910398",
+  "authorization_consumed": true,
+  "errors": [],
+  "complete": false,
+  "stop_reason": null,
+  "attempts": [
+    {
+      "id": "01-jev-U-A",
+      "provider": "jev",
+      "status": "VALID",
+      "outcome": "VALID",
+      "http_status": 200,
+      "reserve_micro_usd": 3000,
+      "reserve_retained": true
+    },
+    {
+      "id": "01-glide-U-A",
+      "provider": "glide",
+      "status": "VALID",
+      "outcome": "VALID",
+      "http_status": 200,
+      "reserve_micro_usd": 25000,
+      "reserve_retained": true
+    }
+  ],
+  "counts": {
+    "attempted": 2,
+    "valid": 2,
+    "invalid": 0,
+    "unknown": 0,
+    "not_sent": 0,
+    "not_attempted": 30
+  },
+  "reserved_micro_usd": {
+    "jev": 3000,
+    "glide": 25000,
+    "total": 28000
+  },
+  "orphan_receipts": 0,
+  "cost_status": "UNKNOWN_UNRECONCILED",
+  "within_budget_verified": false
+}

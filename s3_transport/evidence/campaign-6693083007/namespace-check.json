@@ -1,0 +1,10 @@
+{
+  "scope": "namespace isolation and consumed-state replay refusal only",
+  "distinct_marker_paths": true,
+  "prior_markers_present": true,
+  "third_state_absent_before_execution": true,
+  "temporary_fake_handoffs": 1,
+  "replay_additional_handoffs": 0,
+  "network_disabled": true,
+  "result": "PASS"
+}

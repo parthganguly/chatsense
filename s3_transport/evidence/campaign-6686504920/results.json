@@ -1,0 +1,191 @@
+{
+  "authorization": "https://github.com/parthganguly/chatsense/issues/38#issuecomment-6686504920",
+  "protocol_sha": "7ed874b7a3963e560d399b7c0046f5625a2e0757",
+  "a3_sha": "188fff410e35dfaaf9961b6f7cbe12bf6d20fba3",
+  "transport_sha": "7031d7d54d5060f4593d23f88a905f4c9769d439",
+  "ledger_sha256": "e70d8ac3ca8ca313927982acc4840cd4da82a5d10d69850844e60d3871da6f0b",
+  "start_utc": "2026-11-06T14:06:36.691117+00:00",
+  "stop_utc": "2026-11-06T14:06:43.646564+00:00",
+  "stop_reason": "TECHNICAL_FAILURE",
+  "failure": "MODEL_MISMATCH",
+  "counts": {
+    "attempted": 2,
+    "valid": 1,
+    "invalid": 1,
+    "unknown": 0,
+    "not_sent": 0,
+    "not_attempted": 30
+  },
+  "http_post_writes": {
+    "jev": 1,
+    "glide": 1
+  },
+  "canonical_frozen_verdict": "INCONCLUSIVE",
+  "failed_factual_controls_so_far": [
+    {
+      "id": "01-jev-U-A",
+      "question": "q02",
+      "p_correct": 0.03
+    }
+  ],
+  "estimated_input_nano_usd_valid_responses": {
+    "jev": 69972,
+    "glide": null
+  },
+  "verified_settled_debits": {},
+  "attempts": [
+    {
+      "id": "01-jev-U-A",
+      "outcome": "VALID",
+      "utc": "2026-11-06T14:06:38.018806+00:00",
+      "http_status": 200,
+      "response_sha256": "e99c7d151d1e837c943035c22c38132d16551a5bac4eb235becca5d5ec0e518e",
+      "safe_headers": {
+        "content-type": "application/json"
+      },
+      "usage": {
+        "input_tokens": 1666,
+        "output_tokens": 347
+      },
+      "provisional_input_nano_usd": 69972,
+      "provider": "jev",
+      "card": "A",
+      "condition": "U",
+      "body_sha256": "ac2aeab4ec81b4e2bdc7debba44cecf98dbef31c6ff9262f92af70951e1089cc",
+      "decoded_stimulus_sha256": "eea78a25698389ab31dc52a232b7384b6165444157680f34219e171065c0b51f",
+      "reported_model": "jev-1.14.0",
+      "canonical_probabilities": {
+        "q01": {
+          "d0": 1.0,
+          "d1": 0.0,
+          "d2": 0.0,
+          "d3": 0.0
+        },
+        "q02": {
+          "d0": 0.03,
+          "d1": 0.96,
+          "d2": 0.01
+        },
+        "q03": {
+          "d0": 0.0,
+          "d1": 1.0,
+          "d2": 0.0
+        },
+        "q04": {
+          "d0": 0.0,
+          "d1": 0.01,
+          "d2": 0.99
+        },
+        "q05": {
+          "d0": 0.35,
+          "d1": 0.02,
+          "d2": 0.63
+        },
+        "q06": {
+          "d0": 0.02,
+          "d1": 0.68,
+          "d2": 0.3
+        },
+        "q07": {
+          "d0": 1.0,
+          "d1": 0.0,
+          "d2": 0.0
+        },
+        "q08": {
+          "d0": 1.0,
+          "d1": 0.0,
+          "d2": 0.0,
+          "d3": 0.0
+        }
+      },
+      "selected_canonical": {
+        "q01": "d0",
+        "q02": "d1",
+        "q03": "d1",
+        "q04": "d2",
+        "q05": "d2",
+        "q06": "d1",
+        "q07": "d0",
+        "q08": "d0"
+      }
+    },
+    {
+      "id": "01-glide-U-A",
+      "outcome": "MODEL_MISMATCH",
+      "utc": "2026-11-06T14:06:43.639790+00:00",
+      "http_status": 200,
+      "response_sha256": "157f9c21ee8070c64bd8d255dafd43c042cebd8bf6b09e316050e07949250344",
+      "safe_headers": {
+        "content-type": "application/json",
+        "x-fastino-data-retention": "not-stored",
+        "x-fastino-served-model": "fastino/GLiDE",
+        "x-request-id": "sha256:3279cbe769ca0bb3f74c4872228a9adce82963f3031d978421eaf65aa53d33c2"
+      },
+      "provider": "glide",
+      "card": "A",
+      "condition": "U",
+      "body_sha256": "c3ca98d2ffd95a84fc3c4ee56283e2fc709975becf46f31f67178a57281dd69f",
+      "decoded_stimulus_sha256": "eea78a25698389ab31dc52a232b7384b6165444157680f34219e171065c0b51f"
+    }
+  ],
+  "not_attempted": [
+    "02-glide-U-B",
+    "02-jev-U-B",
+    "03-jev-U-C",
+    "03-glide-U-C",
+    "04-glide-U-D",
+    "04-jev-U-D",
+    "05-jev-U-E",
+    "05-glide-U-E",
+    "06-glide-T-E",
+    "06-jev-T-E",
+    "07-jev-T-D",
+    "07-glide-T-D",
+    "08-glide-T-C",
+    "08-jev-T-C",
+    "09-jev-T-B",
+    "09-glide-T-B",
+    "10-glide-T-A",
+    "10-jev-T-A",
+    "11-jev-R-D",
+    "11-glide-R-D",
+    "12-glide-R-E",
+    "12-jev-R-E",
+    "13-jev-W-D",
+    "13-glide-W-D",
+    "14-glide-W-E",
+    "14-jev-W-E",
+    "15-jev-O-E",
+    "15-glide-O-E",
+    "16-glide-O-D",
+    "16-jev-O-D"
+  ],
+  "within_provider_contrasts": [],
+  "between_provider_contrasts": [],
+  "campaign_id": "s3-6686504920",
+  "settled_debit_status": {
+    "jev": "unverified",
+    "glide": "unverified"
+  },
+  "glide_rejection": {
+    "expected_response_body_model": "glide",
+    "actual_body_model_value_retained": false,
+    "response_sha256": "157f9c21ee8070c64bd8d255dafd43c042cebd8bf6b09e316050e07949250344",
+    "reason": "MODEL_MISMATCH",
+    "limitation": "Accepted A3 retained the response hash and headers; it does not archive rejected response bodies. The exact missing or differing model value and unvalidated GLiDE answers/usage are unavailable."
+  },
+  "fastino_account_observation": {
+    "as_of_utc": "2026-11-06T14:07:15.116141+00:00",
+    "kind": "aggregate wallet; no attributable line item",
+    "balance_usd": "5.98087200",
+    "overdraft_available": false,
+    "comparison_preflight_usd": "5.98096700",
+    "decrease_since_dated_preflight_usd": "0.00009500",
+    "campaign_attributable_settled_debit_usd": null
+  },
+  "reserved_micro_usd_internal_only": {
+    "jev": 3000,
+    "glide": 25000,
+    "total": 28000
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "result": "PASS",
+  "campaign_hashes_unchanged": {
+    "ChatSense-S3": {
+      "ledger_sha256": "998468923a5f22e46f33dd80742acb0fe99bab2692392fa52f6539ffac054d1c",
+      "consumed_marker_sha256": "77a6593cd69cd3e3daaa6943fd01c8bee53a860c70f819e9fea6be18fb372b10"
+    },
+    "ChatSense-S3-6686504920": {
+      "ledger_sha256": "e70d8ac3ca8ca313927982acc4840cd4da82a5d10d69850844e60d3871da6f0b",
+      "consumed_marker_sha256": "a271fafbd9574923fb02f3dbe607de09fdccf442ef32b0969025a7a690f5e301"
+    },
+    "ChatSense-S3-6693083007": {
+      "ledger_sha256": "96b5b3a9a6315ec8148ae340ef9d60fc6ae48dbd3c38142fea8a1ae3c2083daf",
+      "consumed_marker_sha256": "57d4065e764dedb94bbf162c4a778310d71e25d1068a5cd51217855fa94f27fb"
+    }
+  },
+  "protected_paths_unchanged": [
+    "docs/studies/s3/2026-10-26-v1",
+    "s3_transport/systemone.py",
+    "s3_transport/settlement.py",
+    "s3_transport/postrun.py",
+    "s3_transport/evidence/live-20261105",
+    "s3_transport/evidence/campaign-6686504920",
+    "s3_transport/evidence/campaign-6693083007"
+  ],
+  "scientific_freeze": "7ed874b7a3963e560d399b7c0046f5625a2e0757",
+  "historical_scoring_or_semantic_validation_invoked": false
+}

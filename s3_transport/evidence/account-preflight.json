@@ -1,0 +1,55 @@
+{
+  "as_of_utc": "2026-11-05T05:24:49.434393+00:00",
+  "owner_authority": "https://github.com/parthganguly/chatsense/issues/38#issuecomment-6650103649",
+  "intended_usd": {
+    "jev": "0.05",
+    "glide": "0.40",
+    "combined": "0.45"
+  },
+  "funding_source": "existing_prepaid_only",
+  "fastino": {
+    "utc": "2026-11-05T05:09:01.701759+00:00",
+    "method": "GET",
+    "host": "api.fastino.ai",
+    "retries": 0,
+    "inference_requests": 0,
+    "http_statuses": [
+      200,
+      200
+    ],
+    "balance_usd": "5.98096700",
+    "overdraft_available": false,
+    "auto_reload": false,
+    "auto_charged_month": 0.0,
+    "billing_active": true,
+    "source_routes": [
+      "GET /v1/billing/billing-status",
+      "GET /v1/billing/team/<same key-associated team>/overage-settings"
+    ],
+    "automatic_payment_at_exhaustion": "off; provider UI states requests stop with auto-reload off",
+    "preflight": "PASS"
+  },
+  "typesafe": {
+    "evidence": "Authenticated Chrome rendered billing and keys in the same selected organization; inspected locally. No identifier or fragment retained.",
+    "balance_display_usd": "4.99",
+    "purchase_status": "paid",
+    "auto_recharge": "off",
+    "matched_existing_key": true,
+    "match_method": "One distinct masked prefix/suffix pair in the organization matched the stored credential in process memory.",
+    "observed_key_count_by_distinct_masks": 2,
+    "depleted_new_request": "402 until credits added",
+    "refill": "off disables automatic purchases",
+    "settlement_below_zero_or_external_collection_for_accepted_work": "unverified",
+    "preflight": "PARTIALLY_CLEARED"
+  },
+  "restriction": "Only the settlement-to-external-liability boundary remains unresolved; no per-attempt $0.45 guarantee required.",
+  "provider_inference_attempts": {
+    "jev": 0,
+    "glide": 0
+  },
+  "first_pair_reconciliation": "NOT_RUN",
+  "observed_study_debit": "not applicable; no counted attempt",
+  "a5": "NOT_RUN",
+  "settings_writes": 0,
+  "purchases": 0
+}

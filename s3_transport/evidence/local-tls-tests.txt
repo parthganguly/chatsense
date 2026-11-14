@@ -1,0 +1,17 @@
+test_balance_mismatch_stops_at_pair (s3_transport.test_systemone.WireTest.test_balance_mismatch_stops_at_pair) ... ok
+test_json_escaped_credential_refused (s3_transport.test_systemone.WireTest.test_json_escaped_credential_refused) ... ok
+test_missing_financial_clearance_consumes_nothing (s3_transport.test_systemone.WireTest.test_missing_financial_clearance_consumes_nothing) ... ok
+test_redirect (s3_transport.test_systemone.WireTest.test_redirect) ... ok
+test_reflected_secret_never_archived (s3_transport.test_systemone.WireTest.test_reflected_secret_never_archived) ... ok
+test_response_lost_no_retry (s3_transport.test_systemone.WireTest.test_response_lost_no_retry) ... ok
+test_truncated_valid_json_refused (s3_transport.test_systemone.WireTest.test_truncated_valid_json_refused) ... ok
+test_unknown_settlement_no_third_reservation (s3_transport.test_systemone.WireTest.test_unknown_settlement_no_third_reservation) ... /usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/decoder.py:361: ResourceWarning: unclosed <ssl.SSLSocket [closed] fd=6, family=2, type=1, proto=0>
+  obj, end = self.scan_once(s, idx)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_valid_pair_then_counted_third_error (s3_transport.test_systemone.WireTest.test_valid_pair_then_counted_third_error) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 7.077s
+
+OK

@@ -1,0 +1,50 @@
+test_balance_mismatch_stops_at_pair (__main__.Probe.test_balance_mismatch_stops_at_pair) ... ok
+test_checkpoint_crash_is_consumed (__main__.Probe.test_checkpoint_crash_is_consumed) ... ok
+test_json_escaped_credential_refused (__main__.Probe.test_json_escaped_credential_refused) ... ok
+test_missing_financial_clearance_consumes_nothing (__main__.Probe.test_missing_financial_clearance_consumes_nothing) ... ok
+test_redirect (__main__.Probe.test_redirect) ... ok
+test_reflected_secret_never_archived (__main__.Probe.test_reflected_secret_never_archived) ... ok
+test_response_lost_no_retry (__main__.Probe.test_response_lost_no_retry) ... ok
+test_secondary_interlock (__main__.Probe.test_secondary_interlock) ... ok
+test_tls_deadline_before_post (__main__.Probe.test_tls_deadline_before_post) ... ----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 57938)
+Traceback (most recent call last):
+  File "/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/server.py", line 496, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/server.py", line 464, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ConnectionResetError: [Errno 54] Connection reset by peer
+----------------------------------------
+ok
+test_truncated_valid_json_refused (__main__.Probe.test_truncated_valid_json_refused) ... ok
+test_unicode_reflection (__main__.Probe.test_unicode_reflection) ... ok
+test_unknown_settlement_no_third_reservation (__main__.Probe.test_unknown_settlement_no_third_reservation) ... /usr/local/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/decoder.py:361: ResourceWarning: unclosed <ssl.SSLSocket [closed] fd=6, family=2, type=1, proto=0>
+  obj, end = self.scan_once(s, idx)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_valid_pair_then_counted_third_error (__main__.Probe.test_valid_pair_then_counted_third_error) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 9.775s
+
+OK

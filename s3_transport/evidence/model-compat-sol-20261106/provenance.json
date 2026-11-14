@@ -1,0 +1,11 @@
+{
+  "reviewer": "fresh Sol 6.1",
+  "agent": "/root/sol_model_compat",
+  "model": "gpt-6.1-sol",
+  "reviewed_revision": "14d02924bc914152f445211b51db9b3f3c44b574",
+  "verdict": "PASS",
+  "repository_focused_tests": 7,
+  "independent_synthetic_checks": 41,
+  "provider_calls": 0,
+  "implementation": "Astra; requested native Opus 5.5 was unavailable because its five-hour quota was exhausted before any model usage or edit."
+}
