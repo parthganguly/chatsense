@@ -1,0 +1,35 @@
+test_checkpoint_missing_extra_and_positive_anomaly (s3_v2.test_v2.V2.test_checkpoint_missing_extra_and_positive_anomaly) ... ok
+test_crash_unknown_and_no_rerun (s3_v2.test_v2.V2.test_crash_unknown_and_no_rerun) ... ok
+test_deadline (s3_v2.test_v2.V2.test_deadline) ... ok
+test_manifest_bridge_keys_stimuli_and_repeats (s3_v2.test_v2.V2.test_manifest_bridge_keys_stimuli_and_repeats) ... ok
+test_request_and_receipt_tamper (s3_v2.test_v2.V2.test_request_and_receipt_tamper) ... ok
+test_scientific_errors_complete_and_no_mutating_report (s3_v2.test_v2.V2.test_scientific_errors_complete_and_no_mutating_report) ... ok
+test_technical_failure_retains_prefix (s3_v2.test_v2.V2.test_technical_failure_retains_prefix) ... ok
+test_transport_fourth_send_interlock (s3_v2.test_v2.V2.test_transport_fourth_send_interlock) ... ok
+test_active_default_accepts_independent_counts (s3_transport.test_usage_compatibility.UsageCompatibility.test_active_default_accepts_independent_counts) ... ok
+test_active_default_enforces_independent_maximum (s3_transport.test_usage_compatibility.UsageCompatibility.test_active_default_enforces_independent_maximum) ... ok
+test_fake_live_and_postrun_accept_historical_counts_without_normalizing (s3_transport.test_usage_compatibility.UsageCompatibility.test_fake_live_and_postrun_accept_historical_counts_without_normalizing) ... ok
+test_historical_counts_and_cost_basis (s3_transport.test_usage_compatibility.UsageCompatibility.test_historical_counts_and_cost_basis) ... ok
+test_identity_retention_answers_and_probabilities_still_required (s3_transport.test_usage_compatibility.UsageCompatibility.test_identity_retention_answers_and_probabilities_still_required) ... ok
+test_incorrect_types_negative_and_excessive_counters (s3_transport.test_usage_compatibility.UsageCompatibility.test_incorrect_types_negative_and_excessive_counters) ... ok
+test_input_bound_and_jev_contract_unchanged (s3_transport.test_usage_compatibility.UsageCompatibility.test_input_bound_and_jev_contract_unchanged) ... ok
+test_live_postrun_malformed_usage_parity (s3_transport.test_usage_compatibility.UsageCompatibility.test_live_postrun_malformed_usage_parity) ... ok
+test_ordinary_zero_and_independent_boundaries (s3_transport.test_usage_compatibility.UsageCompatibility.test_ordinary_zero_and_independent_boundaries) ... ok
+test_rejected_attempts_stay_rejected_and_diagnostic_is_bounded (s3_transport.test_usage_compatibility.UsageCompatibility.test_rejected_attempts_stay_rejected_and_diagnostic_is_bounded) ... ok
+test_required_usage_object_and_fields (s3_transport.test_usage_compatibility.UsageCompatibility.test_required_usage_object_and_fields) ... ok
+test_active_allowlist_matches_owner_approval (s3_transport.test_model_compatibility.ModelCompatibility.test_active_allowlist_matches_owner_approval) ... ok
+test_approved_exact_labels (s3_transport.test_model_compatibility.ModelCompatibility.test_approved_exact_labels) ... ok
+test_body_identity_drift_stops_before_fourth_handoff (s3_transport.test_model_compatibility.ModelCompatibility.test_body_identity_drift_stops_before_fourth_handoff) ... ok
+test_header_and_retention_requirements (s3_transport.test_model_compatibility.ModelCompatibility.test_header_and_retention_requirements) ... ok
+test_malformed_answers_usage_and_json (s3_transport.test_model_compatibility.ModelCompatibility.test_malformed_answers_usage_and_json) ... ok
+test_stable_labels_complete_in_fake_run (s3_transport.test_model_compatibility.ModelCompatibility.test_stable_labels_complete_in_fake_run) ... ok
+test_unknown_missing_and_nonstring_labels (s3_transport.test_model_compatibility.ModelCompatibility.test_unknown_missing_and_nonstring_labels) ... ok
+test_live_postrun_rejection_parity (s3_transport.test_postrun_compatibility.PostRunCompatibility.test_live_postrun_rejection_parity) ... ok
+test_postrun_rejects_body_identity_change (s3_transport.test_postrun_compatibility.PostRunCompatibility.test_postrun_rejects_body_identity_change) ... ok
+test_read_only_and_original_labels_preserved (s3_transport.test_postrun_compatibility.PostRunCompatibility.test_read_only_and_original_labels_preserved) ... ok
+test_rejects_broken_receipt_integrity (s3_transport.test_postrun_compatibility.PostRunCompatibility.test_rejects_broken_receipt_integrity) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 34.718s
+
+OK

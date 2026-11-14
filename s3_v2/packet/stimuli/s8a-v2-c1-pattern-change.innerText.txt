@@ -1,0 +1,17 @@
+What this export shows
+
+Strong read
+The pattern in this chat measurably changed.
+
+Ravi's typical reply slowed from 5 minutes to 1.5 hours between 2026-04-01 to 2026-04-14 and 2026-04-29 to 2026-05-07.
+
+Counted in this export
+
+Typical reply time (Ravi): 5 minutes in 2026-04-01 to 2026-04-14, then 1.5 hours in 2026-04-29 to 2026-05-07 — from 20 and 20 observed events.
+Typical reply time (Asha): 1.9 hours in 2026-04-01 to 2026-04-14, then 30 minutes in 2026-04-29 to 2026-05-07 — from 19 and 20 observed events.
+
+Measured from the export's last message on May 7, 2026. If you have spoken since then, re-export for a current read.
+
+A measured change describes timing and volume between compared periods of this export. It does not say why the pattern moved.
+
+See the evidence in the Changes tab
