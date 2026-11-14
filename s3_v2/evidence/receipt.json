@@ -1,0 +1,22 @@
+{
+  "status": "S3 V2 OFFLINE \u2014 IMPLEMENTED/FROZEN & SOL PASS",
+  "source_commit": "769b0764c0ec9534efa5ef1c966ead81d93f5c52",
+  "base_commit": "44de4cc3f9b234bf3ce3dc217b112d21611efddc",
+  "freeze_sha256": "b712e2b46d35ef2acacbfb31e7dc874b0c8197308403864601f7555e79cdb8e4",
+  "wire_manifest_sha256": "2a1722ef91e775cdf141d6990ed50ade8babd0c7e2d482121d455ece19e54f46",
+  "request_order_sha256": "08a847c7fb9794cb72ea3d4b13533ee390eaaacccdf21b161d3b55ca0abe3403",
+  "inventory_digest": "7ff80e42db6462b3f11010d9406d2ee6f7fa71e4ae8f7dc02ea9a1818e83f0a0",
+  "tests": 30,
+  "reviewer_model": "gpt-6.1-sol",
+  "live_inference_requests": 0,
+  "paid_campaign_authorized": false,
+  "scope": "Offline fake-provider verification only",
+  "note": "The independent probe stdout phrase held the fourth reserve is a wording error; its assertions and Sol REPORT confirm no fourth reserve existed after the accounting crash.",
+  "artifact_sha256": {
+    "coordinator-tests.log": "39b5ddebd2c369f726d13eec06e6ba852b06d9aa54f78259a540a4e8a1e2115b",
+    "sol/REPORT.md": "d332baf152cdd378197e1a85b079dfeb8976ba64593865ff004c5c854e924c3c",
+    "sol/focused-final.log": "585b816d6a22969799d2cee2db8f859f9b924ba3efd0fd2c089ad895d11c845a",
+    "sol/independent.py": "8c0a45d9eb2474921b8bed313cb3e10ad9ed9387be93c7633e2aa678984b4a4e",
+    "sol/independent.log": "1876670812344d4ef118bdee18f353dbbffa4ab211550a92c6a551e156c5aeb1"
+  }
+}
