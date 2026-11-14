@@ -75,8 +75,8 @@ REPORTED_MODELS = {"jev": "jev-1.14.0", "glide": "glide"}
 # Owner-approved provider-contract amendment: issue #38, comment 6691144132.
 GLIDE_BODY_MODELS = ("glide", "glide_v2")
 GLIDE_DOCUMENTED_BODY_MODELS = ("glide", "glide_v2")
-# Pending owner approval: s3_transport/PROPOSED-USAGE-AMENDMENT.md; no CLI/env switch.
-GLIDE_INDEPENDENT_TOKEN_USAGE = False
+# Owner-approved activation: s3_transport/PROPOSED-USAGE-AMENDMENT.md; no CLI/env switch.
+GLIDE_INDEPENDENT_TOKEN_USAGE = True
 RESERVE_MICRO_USD = {"jev": 3000, "glide": 25000}
 CAP_MICRO_USD = {"jev": 50000, "glide": 400000, "total": 450000}
 INPUT_BOUND = {"jev": 65536, "glide": 524288}

@@ -49,10 +49,10 @@ class UsageCompatibility(unittest.TestCase):
         self.assertNotIn("provisional_input_nano_usd", info)
         self.assertNotIn(CANARY, json.dumps(info))
 
-    def test_pending_default_keeps_equality(self):
-        self.assertIs(d.GLIDE_INDEPENDENT_TOKEN_USAGE, False)
+    def test_active_default_accepts_independent_counts(self):
+        self.assertIs(d.GLIDE_INDEPENDENT_TOKEN_USAGE, True)
         obj, headers, _ = self.response()
-        self.invalid_usage(obj, headers, "TOKEN_USAGE_SUM_MISMATCH")
+        self.check(obj, headers)
         obj["token_usage"] = 137
         self.check(obj, headers)
 
@@ -79,13 +79,10 @@ class UsageCompatibility(unittest.TestCase):
                         self.assertEqual(result["token_usage"], triple[2])
                         self.assertEqual(info["provisional_input_nano_usd"], triple[0] * 40)
 
-    def test_independent_maximum_is_also_pending(self):
-        # Previously equality could admit a total above USAGE_MAX; do not silently
-        # change that active accepted set before the proposed independent bound.
+    def test_active_default_enforces_independent_maximum(self):
+        # The approved independent bound rejects even an arithmetically equal total.
         obj, headers, _ = self.response((1, d.USAGE_MAX, d.USAGE_MAX + 1))
-        self.check(obj, headers)
-        with patch.object(d, "GLIDE_INDEPENDENT_TOKEN_USAGE", True):
-            self.invalid_usage(obj, headers, "TOKEN_USAGE_EXCESSIVE")
+        self.invalid_usage(obj, headers, "TOKEN_USAGE_EXCESSIVE")
 
     def test_required_usage_object_and_fields(self):
         with patch.object(d, "GLIDE_INDEPENDENT_TOKEN_USAGE", True):
