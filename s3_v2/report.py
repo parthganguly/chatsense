@@ -6,6 +6,8 @@ def report(state):
  d=engine();fz=d.load_frozen();audit=d.inspect(state)
  if audit['errors']:raise d.Invalid('REPORT_LEDGER_INVALID')
  records=[json.loads(l) for l in d._read(d.paths(state)['ledger']).splitlines()]
+ stop=next((r for r in records if r['type']=='STOP'),None)
+ uncertainty={'A':['d2','d2','d2','d2','d2','d2','d2','d2'],'D':[None,'d2','d2','d2','d2','d2','d2','d2'],'E':[None,None,'d2',None,'d2','d2','d0','d2']}
  responses={};metadata={};served=body=None
  for r in records:
   if r['type']!='RESULT' or r['outcome']!='VALID':continue
@@ -22,18 +24,20 @@ def report(state):
  attempts={a['id']:a for a in audit['attempts']};cells=[]
  for row in fz['rows']:
   a=attempts.get(row['id']);cell={'id':row['id'],'provider':row['provider'],'card':row['card'],'mode':row['mode'],'repeat':row['repeat'],'status':a['status'] if a else 'NOT_ATTEMPTED','outcome':a['outcome'] if a else None,'items':None}
+  cell['reason']=(a['outcome'] or 'INTERRUPTED_AFTER_RESERVATION') if a else ((stop.get('failure') or stop['reason']) if stop else 'INTERRUPTED_BEFORE_ATTEMPT')
+  if a and a['outcome'] in ('TRANSPORT_ERROR','TRANSPORT_TIMEOUT','RESPONSE_LATE','RECEIPT_PERSIST_FAILED'):cell['status']='UNKNOWN_POTENTIALLY_BILLED'
   cell.update(body_sha256=row['body_sha256'],stimulus_sha256=row['decoded_stimulus_sha256'],usage_and_estimate=metadata.get(row['id']))
   if row['id'] in responses:
    obj=responses[row['id']];items={}
    for q,ans in obj['answers'].items():
     mapping=row['canonical_to_wire'][q];probs={c:ans['probabilities'][k] for c,k in mapping.items()};reference=fz['key'][row['card']][q]['correct'];m=max(probs.values())
     question=next(x for x in fz['bank'][row['card']] if x['id']==q)
-    items[q]={'question':question['instructions'],'options':question['options'],'probabilities':probs,'reference':reference,'reference_probability':probs[reference],'argmax':[k for k,v in probs.items() if abs(v-m)<=1e-9]}
+    items[q]={'question':question['instructions'],'options':question['options'],'probabilities':probs,'reference':reference,'reference_probability':probs[reference],'argmax':[k for k,v in probs.items() if abs(v-m)<=1e-9], 'comparators_not_model_observations':{'deterministic_reference':{k:float(k==reference) for k in probs},'always_uncertain':({k:float(k==uncertainty[row['card']][int(q[1:])-1]) for k in probs} if uncertainty[row['card']][int(q[1:])-1] is not None else None),'uncertainty_unavailable':uncertainty[row['card']][int(q[1:])-1] is None}}
    cell['items']=items
   cells.append(cell)
  def contrast(a,b,kind):
   x,y=cells[a-1],cells[b-1];valid=x['items'] is not None and y['items'] is not None
-  return {'kind':kind,'left':x['id'],'right':y['id'],'available':valid,'items':{q:{'tv':sum(abs(v-y['items'][q]['probabilities'][k]) for k,v in item['probabilities'].items())/2,'right_minus_left':{k:y['items'][q]['probabilities'][k]-v for k,v in item['probabilities'].items()}} for q,item in x['items'].items()} if valid else None}
+  return {'kind':kind,'left':x['id'],'right':y['id'],'available':valid,'items':{q:{'selected_interpretation_changed':set(item['argmax'])!=set(y['items'][q]['argmax']),'tv':sum(abs(v-y['items'][q]['probabilities'][k]) for k,v in item['probabilities'].items())/2,'right_minus_left':{k:y['items'][q]['probabilities'][k]-v for k,v in item['probabilities'].items()}} for q,item in x['items'].items()} if valid else None}
  modality=[(1,2),(3,4),(5,9),(6,10),(8,12),(7,11),(16,13),(15,14)];repeat=[(1,16),(2,13),(3,15),(4,14)]
  contrasts=[contrast(a,b,'modality') for a,b in modality]+[contrast(a,b,'repeat') for a,b in repeat]
- return {'study':'S3 v2 descriptive only; not human comprehension','freeze_sha256':d.FREEZE_SHA256,'technical_complete':audit['complete'] and audit['stop_reason']=='PLAN_COMPLETE','terminal':audit['complete'],'stop_reason':audit['stop_reason'],'planned_requests':16,'planned_items':128,'valid_requests':len(responses),'valid_items':8*len(responses),'reserved_micro_usd':audit['reserved_micro_usd'],'settled_cost':'UNVERIFIED','cells':cells,'contrasts':contrasts,'modality_available':sum(c['available'] for c in contrasts[:8]),'modality_planned':8,'repeat_available':sum(c['available'] for c in contrasts[8:]),'repeat_planned':4}
+ return {'study':'S3 v2 descriptive only; not human comprehension','freeze_sha256':d.FREEZE_SHA256,'technical_complete':audit['complete'] and audit['stop_reason']=='PLAN_COMPLETE','terminal':audit['complete'],'stop_reason':audit['stop_reason'],'failure':stop.get('failure') if stop else None,'planned_requests':16,'planned_items':128,'valid_requests':len(responses),'valid_items':8*len(responses),'reserved_micro_usd':audit['reserved_micro_usd'],'settled_cost':'UNVERIFIED','cells':cells,'contrasts':contrasts,'modality_available':sum(c['available'] for c in contrasts[:8]),'modality_planned':8,'repeat_available':sum(c['available'] for c in contrasts[8:]),'repeat_planned':4}

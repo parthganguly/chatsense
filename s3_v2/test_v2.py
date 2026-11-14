@@ -39,7 +39,7 @@ class V2(unittest.TestCase):
    def reader(rows):checks.append(fake.sent);self.assertEqual([r['id'].split('-')[1] for r in rows],['jev','jev','glide']);return unverified(rows)
    result=run(tmp,fake,reader);self.assertEqual(result['handoffs'],16);self.assertEqual(checks,[3])
    before={str(p):p.read_bytes() for p in Path(tmp).rglob('*') if p.is_file()};r=report(tmp)
-   self.assertTrue(r['technical_complete']);self.assertEqual((r['modality_available'],r['repeat_available']),(8,4));self.assertEqual(r['reserved_micro_usd']['total'],224000)
+   self.assertIn('comparators_not_model_observations',r['cells'][0]['items']['q01']);self.assertIn('selected_interpretation_changed',r['contrasts'][0]['items']['q01']);self.assertTrue(r['technical_complete']);self.assertEqual((r['modality_available'],r['repeat_available']),(8,4));self.assertEqual(r['reserved_micro_usd']['total'],224000)
    self.assertTrue(any(item['reference_probability']==0 for cell in r['cells'] for item in cell['items'].values()))
    self.assertEqual(before,{str(p):p.read_bytes() for p in Path(tmp).rglob('*') if p.is_file()})
    with self.assertRaises(Exception):run(tmp,Fake(),unverified)
@@ -66,7 +66,7 @@ class V2(unittest.TestCase):
      if kind=='note':s[rows[0]['id']]['note']='extra'
      if kind=='anomaly':s[rows[0]['id']]={'state':'settled','before_nano_usd':999,'after_nano_usd':0,'debit_nano_usd':999,'attempt_body_sha256':'0'*64,'account_evidence_sha256':'a'*64}
      return s
-    fake=Fake();r=run(tmp,fake,reader);self.assertEqual(r['failure'],'CHECKPOINT_FAILED');self.assertEqual(fake.sent,3);self.assertEqual(report(tmp)['valid_requests'],3)
+    fake=Fake();r=run(tmp,fake,reader);self.assertEqual(r['failure'],'CHECKPOINT_FAILED');self.assertEqual(fake.sent,3);self.assertEqual(report(tmp)['valid_requests'],3);self.assertEqual(report(tmp)['failure'],'CHECKPOINT_FAILED');self.assertEqual(report(tmp)['cells'][3]['reason'],'CHECKPOINT_FAILED')
  def test_request_and_receipt_tamper(self):
   d=engine();f=d.load_frozen();req=d.build_requests(f)[0];req['body']+=b' '
   with self.assertRaises(Exception):d.validate_outbound(req,f['rows'][0])
