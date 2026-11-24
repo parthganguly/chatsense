@@ -1,0 +1,12 @@
+Freeze inventory, isolated engine, 24 proposal items, 10 immutable stimuli, 16 exact rows and four exact repeats passed.
+Matched settled branch ran through reserve 4 only after three durable valid results. Wrong answers retained through completion.
+Actual child crash at checkpoint retained three valid responses and held the fourth reserve.
+Malformed unverified record stops before reserve 4. Report failure and cell reason: CHECKPOINT_FAILED CHECKPOINT_FAILED
+A handed-off transport timeout is reported as UNKNOWN_POTENTIALLY_BILLED with outcome TRANSPORT_TIMEOUT
+Nonzero contrast preserves signed differences, TV, tied argmax change and comparator vectors with explicit unavailable state.
+0/16 valid, 0/8 modality, 0/4 repeat
+1/16 valid, 0/8 modality, 0/4 repeat
+2/16 valid, 1/8 modality, 0/4 repeat
+3/16 valid, 1/8 modality, 0/4 repeat
+15/16 valid, 7/8 modality, 3/4 repeat
+Accounting EOF stopped after three handoffs and before reserve 4.

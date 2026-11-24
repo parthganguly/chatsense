@@ -4,6 +4,9 @@ This document describes the repeatable tooling layer around ChatSense product
 passes: AI context packing, viewport QA, and phone QA. None of it changes
 product behavior, and none of it may ever involve personal exports.
 
+For current model roles, native delegation and independent acceptance gates, see the
+[model council operating policy](governance/model-council.md).
+
 ## Repomix — AI context packing
 
 `repomix.config.json` packs the product-relevant sources (app, features,
