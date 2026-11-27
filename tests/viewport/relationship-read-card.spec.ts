@@ -190,7 +190,7 @@ async function expectInsideCard(section: Locator, label: string) {
  * 200% text a limitation can be taller than the scroll area on its own.)
  */
 async function expectEndReachable(page: Page, section: Locator, read: RelationshipRead, label: string) {
-  for (const target of [section.getByText(read.limitation, { exact: true }), section.getByRole("link")]) {
+  for (const target of [section.getByText(read.limitation, { exact: true }), section.getByRole("button")]) {
     for (const block of ["start", "end"] as const) {
       const visible = await target.evaluate((element, edge) => {
         element.scrollIntoView({ block: edge })
@@ -217,7 +217,7 @@ for (const card of CARDS) {
     const rows = await measure(section)
     rowFor(rows, read.headline)
     rowFor(rows, read.confidenceLabel)
-    await expect(section.getByRole("link")).toHaveAttribute("href", "#narrative-heading")
+    await expect(section.getByRole("button")).toHaveText(/^See the evidence in /)
 
     expectReadable(rows, read, label)
     await expectNoHorizontalOverflow(page, section, label)
@@ -341,7 +341,7 @@ test.describe("single-viewport checks", () => {
   test("keyboard reaches the details link with a visible focus ring and it activates", async ({ page }) => {
     const card = CARDS[0]
     const section = await importCard(page, card)
-    const link = section.getByRole("link")
+    const link = section.getByRole("button")
     for (let presses = 0; presses < 40; presses += 1) {
       await page.keyboard.press("Tab")
       if (await link.evaluate((element) => element === document.activeElement)) break
@@ -361,7 +361,9 @@ test.describe("single-viewport checks", () => {
     await expect(link).toBeFocused()
 
     await page.keyboard.press("Enter")
-    await expect.poll(() => page.evaluate(() => location.hash)).toBe("#narrative-heading")
-    await expect(page.locator("#narrative-heading")).toBeInViewport()
+    // The button routes by state (card 1 names the Changes tab) and focuses its evidence heading.
+    await expect(page.getByRole("tab", { name: "Changes", exact: true })).toHaveAttribute("aria-selected", "true")
+    await expect(page.locator("#changes-narrative-heading")).toBeFocused()
+    await expect(page.locator("#changes-narrative-heading")).toBeInViewport()
   })
 })

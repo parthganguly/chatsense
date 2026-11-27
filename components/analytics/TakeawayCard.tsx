@@ -21,8 +21,8 @@ export function TakeawayCard({ takeaway }: { takeaway: HumanTakeaway }) {
       aria-label={takeaway.title}
       className={`rounded-lg border border-slate-200 border-l-4 ${toneAccent[takeaway.tone]} bg-white p-4 shadow-sm`}
     >
-      <div className="flex items-start justify-between gap-3">
-        <p className="text-xs font-semibold text-emerald-800">
+      <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-1">
+        <p className="min-w-0 break-words text-xs font-semibold text-emerald-800">
           <Sparkles className="mr-1 inline h-3.5 w-3.5 text-emerald-700" aria-hidden="true" />
           {takeaway.title}
         </p>

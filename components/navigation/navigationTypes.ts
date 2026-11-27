@@ -1,1 +1,2 @@
-export type AppScreen = "import" | "overview" | "changes" | "rhythm" | "people"
+export type ReportTab = "overview" | "changes" | "rhythm" | "people"
+export type AppScreen = "import" | ReportTab

@@ -21,7 +21,13 @@ const detailsLabel: Record<RelationshipRead["detailsSection"], string> = {
  * (Strong/Useful/Light read), not which state this is; the headline and
  * evidence say that.
  */
-export function RelationshipReadCard({ read }: { read: RelationshipRead }) {
+export function RelationshipReadCard({
+  read,
+  onOpenEvidence,
+}: {
+  read: RelationshipRead
+  onOpenEvidence: (section: RelationshipRead["detailsSection"]) => void
+}) {
   return (
     <section
       aria-label="Relationship read"
@@ -66,12 +72,13 @@ export function RelationshipReadCard({ read }: { read: RelationshipRead }) {
       <p className="mt-2 break-words border-t border-slate-200 pt-2 text-sm leading-5 text-slate-700">
         {read.limitation}
       </p>
-      <a
-        href="#narrative-heading"
-        className="mt-3 inline-block text-sm font-semibold text-emerald-800 underline underline-offset-2"
+      <button
+        type="button"
+        onClick={() => onOpenEvidence(read.detailsSection)}
+        className="mt-3 inline-block text-left text-sm font-semibold text-emerald-800 underline underline-offset-2"
       >
         See the evidence in {detailsLabel[read.detailsSection]}
-      </a>
+      </button>
     </section>
   )
 }

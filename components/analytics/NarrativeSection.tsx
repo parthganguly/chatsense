@@ -18,7 +18,11 @@ export function NarrativeSection({
   return (
     <section aria-labelledby={headingId}>
       <p className="text-[11px] font-bold uppercase text-emerald-700">{eyebrow}</p>
-      <h2 id={headingId} className="mt-2 break-words text-xl font-bold leading-7 text-slate-950">
+      <h2
+        id={headingId}
+        tabIndex={-1}
+        className="mt-2 scroll-mt-4 break-words text-xl font-bold leading-7 text-slate-950 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-emerald-700"
+      >
         {title}
       </h2>
       <p className="mt-2 break-words text-sm leading-6 text-slate-600">{section.summary}</p>
