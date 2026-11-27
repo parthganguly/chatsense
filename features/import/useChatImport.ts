@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useState } from "react"
+import { useCallback, useRef, useState } from "react"
 import {
   analyzeChat,
   buildRelationshipRead,
@@ -12,12 +12,21 @@ import {
 import { DEMO_EXPORT_NAME, DEMO_EXPORT_TEXT } from "./demoExport"
 import { ImportError, isImportError, readWhatsAppExport } from "./readWhatsAppExport"
 
+// The report is everything the app keeps after an import. Raw messages are
+// parsed, analyzed, and dropped; only the count is retained.
+type ImportedReport = {
+  analysis: ChatAnalysis
+  relationshipRead: RelationshipRead
+  messageCount: number
+  sourceName: string
+}
+
 export type ChatImportState = {
   analysis: ChatAnalysis | null
   relationshipRead: RelationshipRead | null
   error: string | null
   isLoading: boolean
-  messages: ChatMessage[]
+  messageCount: number
   sourceName: string
 }
 
@@ -25,6 +34,7 @@ export type ChatImportActions = {
   importFile(file: File): Promise<void>
   importDemo(): void
   setError(message: string | null): void
+  clear(): void
 }
 
 export function analyzeImportedText(
@@ -54,31 +64,39 @@ export function getImportErrorMessage(error: unknown): string {
   return isImportError(error) ? error.message : IMPORT_FALLBACK_MESSAGE
 }
 
+function toReport(text: string, sourceName: string): ImportedReport {
+  const imported = analyzeImportedText(text)
+  return {
+    analysis: imported.analysis,
+    relationshipRead: imported.relationshipRead,
+    messageCount: imported.messages.length,
+    sourceName,
+  }
+}
+
 export function useChatImport(onImported?: () => void): ChatImportState & ChatImportActions {
-  const [messages, setMessages] = useState<ChatMessage[]>([])
-  const [analysis, setAnalysis] = useState<ChatAnalysis | null>(null)
-  const [relationshipRead, setRelationshipRead] = useState<RelationshipRead | null>(null)
-  const [sourceName, setSourceName] = useState("")
+  const [report, setReport] = useState<ImportedReport | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  // Each import and each clear takes a new ticket. A result whose ticket is no
+  // longer current (cleared, or superseded by a newer import) is discarded.
+  const ticket = useRef(0)
 
   const importFile = useCallback(
     async (file: File) => {
+      const mine = ++ticket.current
       setIsLoading(true)
       setError(null)
 
       try {
         const text = await readWhatsAppExport(file)
-        const imported = analyzeImportedText(text)
-        setMessages(imported.messages)
-        setAnalysis(imported.analysis)
-        setRelationshipRead(imported.relationshipRead)
-        setSourceName(file.name)
+        if (mine !== ticket.current) return
+        setReport(toReport(text, file.name))
         onImported?.()
       } catch (err) {
-        setError(getImportErrorMessage(err))
+        if (mine === ticket.current) setError(getImportErrorMessage(err))
       } finally {
-        setIsLoading(false)
+        if (mine === ticket.current) setIsLoading(false)
       }
     },
     [onImported],
@@ -88,32 +106,37 @@ export function useChatImport(onImported?: () => void): ChatImportState & ChatIm
   // only differences are the committed synthetic source text and the source
   // label shown in the header.
   const importDemo = useCallback(() => {
+    const mine = ++ticket.current
     setIsLoading(true)
     setError(null)
 
     try {
-      const imported = analyzeImportedText(DEMO_EXPORT_TEXT)
-      setMessages(imported.messages)
-      setAnalysis(imported.analysis)
-      setRelationshipRead(imported.relationshipRead)
-      setSourceName(DEMO_EXPORT_NAME)
+      setReport(toReport(DEMO_EXPORT_TEXT, DEMO_EXPORT_NAME))
       onImported?.()
     } catch (err) {
       setError(getImportErrorMessage(err))
     } finally {
-      setIsLoading(false)
+      if (mine === ticket.current) setIsLoading(false)
     }
   }, [onImported])
 
+  const clear = useCallback(() => {
+    ticket.current += 1
+    setReport(null)
+    setError(null)
+    setIsLoading(false)
+  }, [])
+
   return {
-    analysis,
-    relationshipRead,
+    analysis: report?.analysis ?? null,
+    relationshipRead: report?.relationshipRead ?? null,
     error,
     importFile,
     importDemo,
     isLoading,
-    messages,
+    messageCount: report?.messageCount ?? 0,
     setError,
-    sourceName,
+    clear,
+    sourceName: report?.sourceName ?? "",
   }
 }
