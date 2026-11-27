@@ -1,0 +1,24 @@
+{
+  "state": "carried_contact",
+  "historicalNote": null,
+  "historicalNoteSuppressed": false,
+  "stalenessNote": null,
+  "ongoingQuiet": {
+    "minutesSoFar": 60,
+    "sinceIso": "2026-03-29T18:15:00.000Z",
+    "comparableCount": 8,
+    "longerThanCount": 0
+  },
+  "detailsSection": "people",
+  "evidence": [
+    "Conversation starts: 112 by Ravi, 40 by Asha (152 total).",
+    "Restarts after day-plus pauses: 4 by Ravi, 4 by Asha (8 total).",
+    "Following up before a reply: 0% of Ravi's relevant turns, 0% of Asha's relevant turns."
+  ],
+  "carriedContactLabel": "mixed",
+  "headline": "The keeping-in-touch picture is mixed.",
+  "summary": "Ravi started most conversations, while restarts after pauses and follow-ups before a reply and turn share stayed close to even. The measures disagree — that disagreement is the finding, not a fault.",
+  "confidence": "moderate",
+  "confidenceLabel": "Useful read",
+  "limitation": "Starting and restarting are counts of who happened to send first in this export. They do not measure anyone's reasons, and they cannot see contact that happens outside this chat."
+}

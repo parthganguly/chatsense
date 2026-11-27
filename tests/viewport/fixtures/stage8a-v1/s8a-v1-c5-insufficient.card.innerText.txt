@@ -1,0 +1,18 @@
+What this export shows
+
+Light read
+Not enough here to read a pattern yet.
+
+This export is too short or too sparse for an honest pattern read. That is the answer, not an error — nothing is filled in with a guess.
+
+Counted in this export
+
+1 day of messages with 0 eligible comparison windows — a period comparison needs 4.
+1 conversation start — reading who starts contact needs at least 3.
+0 completed day-plus quiet stretches — ranking a quiet needs at least 5.
+
+Measured from the export's last message on Jul 4, 2026. If you have spoken since then, re-export for a current read.
+
+If the chat is older than this export, re-export with the full history for a fuller read. Nothing here means something is wrong.
+
+See the evidence in the summary below
