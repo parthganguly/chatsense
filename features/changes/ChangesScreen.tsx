@@ -50,8 +50,8 @@ export function ChangesScreen({ analysis }: { analysis: ChatAnalysis }) {
           {dynamics.adaptiveWindows.map((bucket) => (
             <div key={bucket.index} className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
               <div className="flex items-start justify-between gap-3">
-                <div>
-                  <h3 className="text-sm font-semibold text-slate-900">
+                <div className="min-w-0">
+                  <h3 className="break-words text-sm font-semibold text-slate-900">
                     {formatDate(bucket.start)} to {formatDate(bucket.end)}
                   </h3>
                   <p className="mt-1 text-xs text-slate-500">
@@ -61,7 +61,7 @@ export function ChangesScreen({ analysis }: { analysis: ChatAnalysis }) {
                 </div>
                 <span className="text-sm font-bold text-emerald-800">{formatNumber(bucket.messageCount)}</span>
               </div>
-              <div className="mt-3 grid grid-cols-3 gap-2 text-xs">
+              <div className="mt-3 grid grid-cols-[repeat(auto-fit,minmax(5.5rem,1fr))] gap-2 text-xs">
                 <WindowStat label="Active days" value={formatNumber(bucket.activeDays)} />
                 <WindowStat label="Turns" value={formatNumber(bucket.turnCount)} />
                 <WindowStat label="Restarts" value={formatNumber(bucket.reconnectionCount)} />
@@ -78,8 +78,8 @@ export function ChangesScreen({ analysis }: { analysis: ChatAnalysis }) {
           {topParticipants.map((participant) => (
             <div key={participant.sender} className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
               <div className="flex items-start justify-between gap-3">
-                <div>
-                  <h3 className="text-sm font-semibold text-slate-900">{participant.sender}</h3>
+                <div className="min-w-0">
+                  <h3 className="break-words text-sm font-semibold text-slate-900">{participant.sender}</h3>
                   <p className="mt-1 text-xs text-slate-500">
                     {formatNumber(participant.turnCount)} turns | median reply{" "}
                     {formatDuration(participant.medianReplyMinutes)}
@@ -125,15 +125,15 @@ function ForecastingResearchSection({ analysis }: { analysis: ChatAnalysis }) {
       <SectionHeading eyebrow="Research gate" title="Forecasting validation" />
       <div className="mt-4 rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
         <div className="flex items-start justify-between gap-3">
-          <div>
-            <h3 className="text-sm font-semibold text-slate-900">{primaryStatus}</h3>
+          <div className="min-w-0">
+            <h3 className="break-words text-sm font-semibold text-slate-900">{primaryStatus}</h3>
             <p className="mt-1 text-xs leading-5 text-slate-500">
               {primaryReason} Product forecasting remains blocked and this does not support any claim about intent.
             </p>
           </div>
           <FlaskConical className="h-4 w-4 shrink-0 text-emerald-700" />
         </div>
-        <div className="mt-4 grid grid-cols-2 gap-2 text-xs">
+        <div className="mt-4 grid grid-cols-[repeat(auto-fit,minmax(7rem,1fr))] gap-2 text-xs">
           <WindowStat label="Reply opportunities" value={formatNumber(forecasting.summary.replyOpportunityCount)} />
           <WindowStat label="Observed replies" value={formatNumber(forecasting.summary.observedReplyCount)} />
           <WindowStat label="Activity windows" value={formatNumber(forecasting.summary.completedActivityWindowCount)} />
@@ -228,15 +228,15 @@ function WindowParticipantDetails({ bucket }: { bucket: AdaptiveWindow }) {
 function WindowParticipantRow({ participant }: { participant: ParticipantDynamicsSummary }) {
   return (
     <div className="rounded-md bg-slate-50 p-3">
-      <div className="flex items-center justify-between gap-3 text-xs">
-        <span className="min-w-0 truncate font-semibold text-slate-800">{participant.sender}</span>
-        <span className="shrink-0 text-slate-500">{formatNumber(participant.reconnectionCount)} restarts</span>
+      <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-xs">
+        <span className="min-w-0 break-words font-semibold text-slate-800">{participant.sender}</span>
+        <span className="text-slate-500">{formatNumber(participant.reconnectionCount)} restarts</span>
       </div>
       <div className="mt-3 space-y-2">
         <ProgressRow label="Turn share" value={participant.turnShare} />
         <ProgressRow label="Thread-start share" value={participant.threadStartShare} />
       </div>
-      <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
+      <div className="mt-3 grid grid-cols-[repeat(auto-fit,minmax(7rem,1fr))] gap-2 text-xs">
         <WindowStat
           label={`${formatNumber(participant.replySampleCount)} reply samples`}
           value={formatDuration(participant.medianReplyMinutes)}
@@ -251,12 +251,12 @@ function ChangeCard({ change }: { change: MetricChange }) {
   const hasDirection = change.evidenceState === "sufficient"
   return (
     <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-1">
         <div className="min-w-0">
-          <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+          <p className="break-words text-[10px] font-bold uppercase tracking-wider text-slate-400">
             {change.sender ?? "Conversation"} | {change.evidenceState}
           </p>
-          <h3 className="mt-1 text-sm font-semibold text-slate-900">{change.label}</h3>
+          <h3 className="mt-1 break-words text-sm font-semibold text-slate-900">{change.label}</h3>
           <p className="mt-1 text-xs leading-5 text-slate-500">
             {formatPeriod(change.earlierPeriod)} to {formatPeriod(change.laterPeriod)}
           </p>
@@ -267,7 +267,7 @@ function ChangeCard({ change }: { change: MetricChange }) {
           <Timer className="h-4 w-4 shrink-0 text-slate-400" />
         )}
       </div>
-      <div className="mt-3 grid grid-cols-2 gap-3 text-xs">
+      <div className="mt-3 grid grid-cols-[repeat(auto-fit,minmax(7rem,1fr))] gap-3 text-xs">
         <WindowStat label={`${change.earlierPeriod.label} value`} value={formatChangeValue(change.earlierValue)} />
         <WindowStat label={`${change.laterPeriod.label} value`} value={formatChangeValue(change.laterValue)} />
         <WindowStat label="Earlier sample" value={formatNumber(change.earlierSampleSize)} />
@@ -320,9 +320,9 @@ function forecastStatus(
 
 function WindowStat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-md bg-slate-50 p-3">
-      <p className="font-bold text-slate-900">{value}</p>
-      <p className="mt-1 text-slate-500">{label}</p>
+    <div className="min-w-0 rounded-md bg-slate-50 p-3">
+      <p className="break-words font-bold text-slate-900">{value}</p>
+      <p className="mt-1 break-words text-slate-500">{label}</p>
     </div>
   )
 }

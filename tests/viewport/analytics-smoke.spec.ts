@@ -31,7 +31,7 @@ test("onboarding explains the product and demo import reaches analysis", async (
   // The demo import must land in the normal analysis state.
   await page.getByRole("button", { name: "Try demo export" }).click()
   for (const tab of TABS) {
-    await page.getByRole("button", { name: tab.nav, exact: true }).click()
+    await page.getByRole("tab", { name: tab.nav, exact: true }).click()
     await expect(page.getByText(tab.takeaway).first()).toBeVisible()
   }
   await expect(page.getByText("Demo export (synthetic)", { exact: false })).toBeVisible()
@@ -60,7 +60,7 @@ test("all analytics tabs lead with a takeaway card and do not overflow", async (
   expect(heroBox!.y).toBeLessThan(overviewTakeawayBox!.y)
 
   for (const tab of TABS) {
-    await page.getByRole("button", { name: tab.nav, exact: true }).click()
+    await page.getByRole("tab", { name: tab.nav, exact: true }).click()
 
     const takeaway = page.getByText(tab.takeaway).first()
     const rawMetrics = page.getByText(tab.rawMetrics, { exact: true }).first()
@@ -82,6 +82,6 @@ test("all analytics tabs lead with a takeaway card and do not overflow", async (
   }
 
   // Bottom nav still works after the walk: return to Overview.
-  await page.getByRole("button", { name: "Overview", exact: true }).click()
+  await page.getByRole("tab", { name: "Overview", exact: true }).click()
   await expect(page.getByText("What to notice").first()).toBeVisible()
 })

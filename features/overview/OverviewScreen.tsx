@@ -11,20 +11,26 @@ import { formatDate, formatNumber } from "@/utils/formatting"
 export function OverviewScreen({
   analysis,
   relationshipRead,
+  onOpenEvidence,
 }: {
   analysis: ChatAnalysis
   relationshipRead: RelationshipRead | null
+  onOpenEvidence: (section: RelationshipRead["detailsSection"]) => void
 }) {
   const { overview, replyDynamics, silenceSummary, narrative } = analysis
 
   return (
     <div className="space-y-7 px-5 py-5">
-      {relationshipRead ? <RelationshipReadCard read={relationshipRead} /> : null}
+      {relationshipRead ? <RelationshipReadCard read={relationshipRead} onOpenEvidence={onOpenEvidence} /> : null}
       <TakeawayCard takeaway={narrative.takeaways.overview} />
 
       <section aria-labelledby="narrative-heading">
         <p className="text-[11px] font-bold uppercase text-emerald-700">Evidence-backed summary</p>
-        <h2 id="narrative-heading" className="mt-2 max-w-xl break-words text-2xl font-bold leading-8 text-slate-950">
+        <h2
+          id="narrative-heading"
+          tabIndex={-1}
+          className="mt-2 max-w-xl scroll-mt-4 break-words text-2xl font-bold leading-8 text-slate-950 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-emerald-700"
+        >
           {narrative.headline}
         </h2>
         <p className="mt-3 max-w-2xl break-words text-sm leading-6 text-slate-600">{narrative.summary}</p>

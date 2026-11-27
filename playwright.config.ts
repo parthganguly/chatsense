@@ -4,19 +4,21 @@ import { defineConfig } from "@playwright/test"
  * Mobile viewport smoke tests for the static export in `out/`.
  * Run `npm run build` first; the config serves `out/` with http-server.
  */
+const PORT = Number(process.env.PW_PORT ?? 4319)
+
 export default defineConfig({
   testDir: "tests/viewport",
   timeout: 60_000,
   fullyParallel: true,
   reporter: [["list"]],
   webServer: {
-    command: "npx http-server out -p 4319 -c-1 --silent",
-    port: 4319,
+    command: `npx http-server out -a 127.0.0.1 -p ${PORT} -c-1 --silent`,
+    port: PORT,
     reuseExistingServer: true,
     timeout: 30_000,
   },
   use: {
-    baseURL: "http://127.0.0.1:4319",
+    baseURL: `http://127.0.0.1:${PORT}`,
     hasTouch: true,
     isMobile: true,
     deviceScaleFactor: 3,

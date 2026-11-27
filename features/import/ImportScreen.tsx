@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, type ReactNode } from "react"
+import { useEffect, useRef, type ReactNode } from "react"
 import {
   AlertCircle,
   Eye,
@@ -25,24 +25,38 @@ import { WHATSAPP_EXPORT_ACCEPT } from "./readWhatsAppExport"
 export function ImportScreen({
   error,
   isLoading,
+  focusHeading,
   onFileUpload,
   onDemoImport,
 }: {
   error: string | null
   isLoading: boolean
+  focusHeading: boolean
   onFileUpload: (file: File) => void
   onDemoImport: () => void
 }) {
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const headingRef = useRef<HTMLHeadingElement>(null)
+
+  // After Clear chat the report is gone; put focus where the user restarts.
+  useEffect(() => {
+    if (focusHeading) headingRef.current?.focus()
+  }, [focusHeading])
 
   return (
     <div className="h-full overflow-y-auto bg-[#f8faf8]">
       <div className="mx-auto flex max-w-xl flex-col gap-6 px-5 pb-8 pt-[max(2rem,env(safe-area-inset-top))]">
         <header>
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-700 text-white">
+          <div className="mb-4 flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-emerald-700 text-white">
             <MessagesSquare className="h-6 w-6" />
           </div>
-          <h1 className="text-3xl font-bold text-slate-900">ChatSense</h1>
+          <h1
+            ref={headingRef}
+            tabIndex={-1}
+            className="text-[length:min(1.875rem,calc((100vw_-_2.5rem)/6))] leading-[1.2] font-bold text-slate-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-emerald-700"
+          >
+            ChatSense
+          </h1>
           <p className="mt-2 max-w-sm text-base leading-6 text-slate-600">{ONBOARDING_PROMISE}</p>
         </header>
 
@@ -52,7 +66,10 @@ export function ImportScreen({
           accept={WHATSAPP_EXPORT_ACCEPT}
           className="hidden"
           onChange={(event) => {
-            const file = event.target.files?.[0]
+            const input = event.target
+            const file = input.files?.[0]
+            // Clear after taking the file so choosing the same file again fires onChange.
+            input.value = ""
             if (file) onFileUpload(file)
           }}
         />
@@ -90,12 +107,14 @@ export function ImportScreen({
           </button>
           <p className="mt-2 text-center text-xs leading-5 text-slate-500">{ONBOARDING_DEMO.note}</p>
 
-          {error && (
-            <div className="mt-4 flex gap-3 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
-              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-              <span>{error}</span>
-            </div>
-          )}
+          <div role="alert" aria-live="assertive" aria-atomic="true">
+            {error && (
+              <div className="mt-4 flex gap-3 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                <span className="min-w-0 break-words">{error}</span>
+              </div>
+            )}
+          </div>
         </section>
 
         <OnboardingCard icon={<Eye className="h-4 w-4 text-emerald-700" aria-hidden="true" />} title={ONBOARDING_WHAT_YOU_SEE.title}>
