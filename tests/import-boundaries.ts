@@ -4,8 +4,13 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 import JSZip from "jszip"
 import { analyzeChat, parseWhatsAppChat } from "@chatsense/core"
-import { analyzeImportedText } from "../features/import/useChatImport"
-import { readWhatsAppExport, selectWhatsAppTextEntry } from "../features/import/readWhatsAppExport"
+import { analyzeImportedText, getImportErrorMessage, IMPORT_FALLBACK_MESSAGE } from "../features/import/useChatImport"
+import {
+  DEFAULT_WHATSAPP_EXPORT_LIMITS,
+  readWhatsAppExport,
+  selectWhatsAppTextEntry,
+  ZIP_UNREADABLE_MESSAGE,
+} from "../features/import/readWhatsAppExport"
 import { nativeSharedFileToFile, sharedFileErrorMessage, subscribeToSharedFileBridge } from "../platform/android/sharedFileBridge"
 import {
   SHARED_FILE_AVAILABLE_EVENT,
@@ -30,6 +35,13 @@ async function run() {
   await testZipSelection()
   await testZipWithoutTxtFailure()
   await testUnsupportedFileFailure()
+  await testInputSizeCapIsCheckedBeforeReading()
+  await testInputSizeCapBoundary()
+  await testZipTextExpansionIsBounded()
+  await testZipStreamMatchesJSZipStringAcrossChunkBoundaries()
+  await testZipSelectionPriorityIsUnchanged()
+  await testCorruptZipErrorIsSanitized()
+  await testOnlyAuthoredImportErrorsAreShown()
   await testNativeSharedFileConversion()
   testAndroidNativeErrorConversion()
   testNativePluginUnavailable()
@@ -82,6 +94,143 @@ async function testZipWithoutTxtFailure() {
 async function testUnsupportedFileFailure() {
   const file = new File(["{}"], "export.json", { type: "application/json" })
   await assert.rejects(readWhatsAppExport(file), /Choose the WhatsApp export ZIP or TXT file/)
+}
+
+// Limit tests use tiny injected limits on tiny synthetic inputs; nothing large is generated.
+class ReadTrackingFile extends File {
+  reads = 0
+
+  override text() {
+    this.reads += 1
+    return super.text()
+  }
+
+  override arrayBuffer() {
+    this.reads += 1
+    return super.arrayBuffer()
+  }
+}
+
+async function testInputSizeCapIsCheckedBeforeReading() {
+  assert.equal(DEFAULT_WHATSAPP_EXPORT_LIMITS.maxInputBytes, 50 * 1024 * 1024)
+  const limits = { maxInputBytes: 8, maxZipTextLength: 1024 }
+
+  const txt = new ReadTrackingFile(["123456789"], "WhatsApp Chat.txt", { type: "text/plain" })
+  await assert.rejects(readWhatsAppExport(txt, limits), /too large for local import/)
+  assert.equal(txt.reads, 0)
+
+  const zip = new ReadTrackingFile(["123456789"], "export.zip", { type: "application/zip" })
+  await assert.rejects(readWhatsAppExport(zip, limits), /too large for local import/)
+  assert.equal(zip.reads, 0)
+}
+
+async function testInputSizeCapBoundary() {
+  const atLimit = new File(["12345678"], "WhatsApp Chat.txt", { type: "text/plain" })
+  assert.equal(await readWhatsAppExport(atLimit, { maxInputBytes: 8, maxZipTextLength: 8 }), "12345678")
+
+  const zipBytes = await zipOf({ "WhatsApp Chat with Alice.txt": sampleChat })
+  const zip = new File([toArrayBuffer(zipBytes)], "export.zip", { type: "application/zip" })
+  const exact = { maxInputBytes: zipBytes.byteLength, maxZipTextLength: sampleChat.length }
+  assert.equal(await readWhatsAppExport(zip, exact), sampleChat)
+  await assert.rejects(
+    readWhatsAppExport(zip, { ...exact, maxInputBytes: zipBytes.byteLength - 1 }),
+    /too large for local import/,
+  )
+}
+
+async function testZipTextExpansionIsBounded() {
+  const expanded = "a".repeat(4096)
+  const zipBytes = await zipOf({ "WhatsApp Chat with Alice.txt": expanded }, "DEFLATE")
+  assert.ok(zipBytes.byteLength < 512, "fixture must compress well below the extracted limit")
+  const zip = new File([toArrayBuffer(zipBytes)], "export.zip", { type: "application/zip" })
+  const limits = { maxInputBytes: 1024, maxZipTextLength: 1024 }
+
+  await assert.rejects(readWhatsAppExport(zip, limits), /chat inside this ZIP is too large/)
+  assert.equal(await readWhatsAppExport(zip, { ...limits, maxZipTextLength: 4096 }), expanded)
+}
+
+async function testZipStreamMatchesJSZipStringAcrossChunkBoundaries() {
+  // JSZip reads entry data in 16 KiB blocks; place a 4-byte emoji and 2-byte
+  // characters across that boundary and keep a leading BOM to prove the bounded
+  // stream returns exactly what `async("string")` returned before.
+  const text = `${String.fromCharCode(0xfeff)}${"a".repeat(16380)}\u{1F600}${"é".repeat(9000)}\n${sampleChat}`
+  for (const compression of ["STORE", "DEFLATE"] as const) {
+    const zipBytes = await zipOf({ "WhatsApp Chat with Alice.txt": text }, compression)
+    const baseline = await (await JSZip.loadAsync(zipBytes)).file("WhatsApp Chat with Alice.txt")!.async("string")
+    const file = new File([toArrayBuffer(zipBytes)], "export.zip", { type: "application/zip" })
+    const streamed = await readWhatsAppExport(file)
+    assert.equal(streamed, baseline, `${compression} stream must match JSZip string output`)
+    assert.equal(streamed, text)
+  }
+}
+
+async function testZipSelectionPriorityIsUnchanged() {
+  const zipBytes = await zipOf({
+    "notes.txt": "ignore me",
+    "WhatsApp Chat with Alice.txt": "also ignore me",
+    "nested/_chat.txt": sampleChat,
+  })
+  const file = new File([toArrayBuffer(zipBytes)], "export.zip", { type: "application/zip" })
+  assert.equal(await readWhatsAppExport(file), sampleChat)
+}
+
+async function testCorruptZipErrorIsSanitized() {
+  const notZip = new File(["Alice private words, not a zip"], "export.zip", { type: "application/zip" })
+  await assert.rejects(readWhatsAppExport(notZip), (error: unknown) => {
+    assert.ok(error instanceof Error)
+    assert.equal(error.message, ZIP_UNREADABLE_MESSAGE)
+    return true
+  })
+}
+
+async function testOnlyAuthoredImportErrorsAreShown() {
+  // Authored conditions keep their exact copy through the UI mapper.
+  const unsupported = await readWhatsAppExport(new File(["x"], "a.pdf")).catch((e: unknown) => e)
+  assert.equal(getImportErrorMessage(unsupported), "Choose the WhatsApp export ZIP or TXT file.")
+  const corrupt = await readWhatsAppExport(new File(["not a zip"], "x.zip", { type: "application/zip" })).catch(
+    (e: unknown) => e,
+  )
+  assert.equal(getImportErrorMessage(corrupt), ZIP_UNREADABLE_MESSAGE)
+  const noTxt = await readWhatsAppExport(
+    new File([toArrayBuffer(await zipOf({ "photo.jpg": "x" }))], "x.zip", { type: "application/zip" }),
+  ).catch((e: unknown) => e)
+  assert.equal(getImportErrorMessage(noTxt), "No WhatsApp chat TXT file was found inside this ZIP.")
+  let empty: unknown
+  try {
+    analyzeImportedText("nothing here")
+  } catch (e) {
+    empty = e
+  }
+  assert.match(getImportErrorMessage(empty), /No WhatsApp messages were found/)
+
+  // The ZIP decoded limit counts UTF-16 code units, so it is labelled as characters, never MB.
+  const big = await zipOf({ "WhatsApp Chat with Alice.txt": "a".repeat(2048) }, "DEFLATE")
+  const tooLong = await readWhatsAppExport(new File([toArrayBuffer(big)], "x.zip", { type: "application/zip" }), {
+    maxInputBytes: 4096,
+    maxZipTextLength: 1024,
+  }).catch((e: unknown) => e)
+  const message = getImportErrorMessage(tooLong)
+  assert.match(message, /chat inside this ZIP is too large.*Limit: 1,024 characters\./)
+  assert.doesNotMatch(message, /MB/)
+
+  // Unknown reader/engine errors never surface their internal message.
+  class FailingTextFile extends File {
+    override text(): Promise<string> {
+      return Promise.reject(new Error("NotReadableError: /data/user/0/internal/path"))
+    }
+  }
+  const readerError = await readWhatsAppExport(new FailingTextFile(["x"], "chat.txt", { type: "text/plain" })).catch(
+    (e: unknown) => e,
+  )
+  assert.equal(getImportErrorMessage(readerError), IMPORT_FALLBACK_MESSAGE)
+  assert.equal(getImportErrorMessage(new TypeError("Cannot read properties of undefined")), IMPORT_FALLBACK_MESSAGE)
+  assert.equal(getImportErrorMessage("raw string"), IMPORT_FALLBACK_MESSAGE)
+}
+
+async function zipOf(entries: Record<string, string>, compression: "STORE" | "DEFLATE" = "STORE") {
+  const zip = new JSZip()
+  for (const [name, content] of Object.entries(entries)) zip.file(name, content)
+  return zip.generateAsync({ type: "uint8array", compression })
 }
 
 async function testNativeSharedFileConversion() {

@@ -10,7 +10,7 @@ import {
   type RelationshipRead,
 } from "@chatsense/core"
 import { DEMO_EXPORT_NAME, DEMO_EXPORT_TEXT } from "./demoExport"
-import { readWhatsAppExport } from "./readWhatsAppExport"
+import { ImportError, isImportError, readWhatsAppExport } from "./readWhatsAppExport"
 
 export type ChatImportState = {
   analysis: ChatAnalysis | null
@@ -33,7 +33,7 @@ export function analyzeImportedText(
 ): { analysis: ChatAnalysis; relationshipRead: RelationshipRead; messages: ChatMessage[] } {
   const messages = parseWhatsAppChat(text)
   if (messages.length === 0) {
-    throw new Error("No WhatsApp messages were found. Choose the exported ZIP or TXT file.")
+    throw new ImportError("No WhatsApp messages were found. Choose the exported ZIP or TXT file.")
   }
 
   const analysis = analyzeChat(messages)
@@ -46,8 +46,12 @@ export function analyzeImportedText(
   }
 }
 
+export const IMPORT_FALLBACK_MESSAGE = "ChatSense could not process this export."
+
+// Only explicitly authored ImportError messages reach the UI; unknown
+// reader/engine errors (File API, JSZip, parser, analyzer) get the safe fallback.
 export function getImportErrorMessage(error: unknown): string {
-  return error instanceof Error ? error.message : "ChatSense could not process this export."
+  return isImportError(error) ? error.message : IMPORT_FALLBACK_MESSAGE
 }
 
 export function useChatImport(onImported?: () => void): ChatImportState & ChatImportActions {

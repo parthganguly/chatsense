@@ -21,13 +21,20 @@ final class SharedFileIntentRouting {
 
     private boolean isSupportedShareIntent(String action, String streamUri, String dataUri) {
         if (ACTION_SEND.equals(action)) {
-            return streamUri != null && !streamUri.trim().isEmpty();
+            return isContentUri(streamUri);
         }
 
         if (ACTION_VIEW.equals(action)) {
-            return dataUri != null && !dataUri.trim().isEmpty();
+            return isContentUri(dataUri);
         }
 
         return false;
+    }
+
+    // Shared exports arrive only as provider content:// URIs. Any other scheme
+    // (file://, android.resource://, http(s)://, ...) is ignored before it can
+    // reach the ContentResolver. Matches android.net.Uri's case-sensitive scheme.
+    static boolean isContentUri(String uri) {
+        return uri != null && uri.startsWith("content://") && uri.length() > "content://".length();
     }
 }
