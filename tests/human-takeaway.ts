@@ -75,8 +75,11 @@ function testConcentratedRestartsProduceSilencePattern() {
 function testReplyTimingChangeProducesDirectionOfTravel() {
   const changes = narrativeForText(fixture("stage4_reply_slowdown")).takeaways.changes
   assert.equal(changes.tone, "changed")
-  assert.match(changes.oneLineRead, /Typical replies became (?:faster|slower) for (Asha|Ravi)\./)
-  assert.equal(changes.whyItLooksThatWay.some((reason) => /Typical reply time moved from .* to .* for/i.test(reason)), true)
+  assert.equal(changes.oneLineRead, "Typical replies became slower for Ravi.")
+  assert.equal(
+    changes.whyItLooksThatWay.some((reason) => reason === "Typical reply time moved from 5m to 1.5h for Ravi."),
+    true,
+  )
 }
 
 function testNoNotableChangeReadsStable() {

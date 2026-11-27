@@ -991,7 +991,7 @@ function changeOneLine(change: MetricChange): string {
       : "The later period became less active."
   }
   if (change.metric === "median_reply_minutes") {
-    return `Typical replies became ${change.direction === "increased" ? "slower" : "faster"} for ${change.sender}.`
+    return `Typical replies became ${change.direction === "slower" ? "slower" : "faster"} for ${change.sender}.`
   }
   if (change.metric === "thread_start_share") return `Starting new conversations shifted for ${change.sender}.`
   if (change.metric === "reconnection_share") return `Restarting after quiet periods shifted for ${change.sender}.`
