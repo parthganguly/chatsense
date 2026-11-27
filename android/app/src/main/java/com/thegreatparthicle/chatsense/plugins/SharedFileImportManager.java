@@ -53,7 +53,12 @@ public class SharedFileImportManager {
             return ImportResult.error(validation.error);
         }
 
-        ensureCacheDirectory();
+        try {
+            ensureCacheDirectory();
+        } catch (IOException exception) {
+            closeQuietly(input);
+            throw exception;
+        }
         String id = UUID.randomUUID().toString();
         String safeName = sanitizeDisplayName(displayName);
         File destination = new File(cacheDirectory, id + "-" + safeName);
@@ -193,7 +198,9 @@ public class SharedFileImportManager {
             }
         } catch (SharedFileImportException exception) {
             throw exception;
-        } catch (IOException exception) {
+        } catch (IOException | RuntimeException exception) {
+            // Providers may fail mid-stream with unchecked exceptions (e.g. SecurityException);
+            // never leave a partial copy of the export in cache.
             if (destination.exists()) {
                 destination.delete();
             }

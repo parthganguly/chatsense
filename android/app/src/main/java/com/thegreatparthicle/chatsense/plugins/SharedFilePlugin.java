@@ -1,5 +1,6 @@
 package com.thegreatparthicle.chatsense.plugins;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -46,7 +47,9 @@ public class SharedFilePlugin extends Plugin {
 
     private void processSharedIntent(Intent intent) {
         Uri uri = sharedFileUri(intent);
-        if (uri == null) {
+        // Defense in depth behind MainActivity routing: only provider content:// URIs
+        // may reach the ContentResolver (never file://, android.resource://, etc.).
+        if (uri == null || !ContentResolver.SCHEME_CONTENT.equals(uri.getScheme())) {
             return;
         }
 
