@@ -227,6 +227,39 @@ for (const mode of [
 
     // Onboarding at the same size.
     await page.getByRole("button", { name: "Clear chat and return to import" }).click()
+    await expect(page.getByRole("heading", { name: "ChatSense", level: 1 })).toBeFocused()
+    // Inspect the real text range and focus outline, not just the block box.
+    const h1 = await page.evaluate(() => {
+      const el = document.querySelector("h1")!
+      const range = document.createRange()
+      range.selectNodeContents(el)
+      const rects = [...range.getClientRects()].map((r) => r.toJSON())
+      const box = el.getBoundingClientRect()
+      const cs = getComputedStyle(el)
+      const off = parseFloat(cs.outlineOffset) || 0
+      const w = parseFloat(cs.outlineWidth) || 0
+      const grow = off + w
+      return {
+        rects,
+        box: box.toJSON(),
+        outline: { left: box.left - grow, right: box.right + grow, top: box.top - grow, bottom: box.bottom + grow },
+        outlineStyle: cs.outlineStyle,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      }
+    })
+    expect(h1.rects, "ChatSense text is one whole line").toHaveLength(1)
+    const line = h1.rects[0]
+    expect(line.left, "text inside heading").toBeGreaterThanOrEqual(h1.box.left - 0.5)
+    expect(line.right, "text inside heading").toBeLessThanOrEqual(h1.box.right + 0.5)
+    expect(line.left, "text inside viewport").toBeGreaterThanOrEqual(-0.5)
+    expect(line.right, "text inside viewport").toBeLessThanOrEqual(h1.width + 0.5)
+    expect(h1.outlineStyle).not.toBe("none")
+    expect(line.right, "text inside focus outline").toBeLessThanOrEqual(h1.outline.right)
+    expect(h1.outline.left, "outline inside viewport").toBeGreaterThanOrEqual(-0.5)
+    expect(h1.outline.right, "outline inside viewport").toBeLessThanOrEqual(h1.width + 0.5)
+    expect(h1.outline.top, "outline inside viewport").toBeGreaterThanOrEqual(-0.5)
+    expect(h1.outline.bottom, "outline inside viewport").toBeLessThanOrEqual(h1.height + 0.5)
     expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0)
     const mark = await page.evaluate(() => {
       const svgBox = document.querySelector("h1")!.previousElementSibling!.getBoundingClientRect()

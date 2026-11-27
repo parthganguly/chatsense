@@ -53,7 +53,7 @@ export function ImportScreen({
           <h1
             ref={headingRef}
             tabIndex={-1}
-            className="text-3xl font-bold text-slate-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-emerald-700"
+            className="text-[length:min(1.875rem,calc((100vw_-_2.5rem)/6))] leading-[1.2] font-bold text-slate-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-emerald-700"
           >
             ChatSense
           </h1>
