@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -12,6 +13,8 @@ import org.junit.rules.TemporaryFolder;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 public class SharedFileImportManagerTest {
@@ -199,6 +202,121 @@ public class SharedFileImportManagerTest {
         assertEquals(1, manager.cleanupStaleFiles(5001));
         assertFalse(oldFile.file.file.exists());
         assertTrue(freshFile.file.file.exists());
+    }
+
+    @Test
+    public void runtimeFailureMidCopyDeletesPartialFileAndClosesInput() throws Exception {
+        SharedFileImportManager manager = manager(1024);
+        TrackingStream input = new TrackingStream("hello".getBytes(StandardCharsets.UTF_8), new SecurityException("revoked"));
+
+        try {
+            manager.importSharedFile(input, "WhatsApp Chat.txt", "text/plain", -1);
+            fail("Expected the provider failure to propagate");
+        } catch (SecurityException expected) {
+            assertEquals("revoked", expected.getMessage());
+        }
+
+        assertTrue(input.closed);
+        assertCacheEmpty();
+        assertNull(manager.consumePending().file);
+    }
+
+    @Test
+    public void ioFailureMidCopyDeletesPartialFileAndClosesInput() throws Exception {
+        SharedFileImportManager manager = manager(1024);
+        TrackingStream input = new TrackingStream("hello".getBytes(StandardCharsets.UTF_8), new IOException("stream reset"));
+
+        try {
+            manager.importSharedFile(input, "WhatsApp Chat.txt", "text/plain", -1);
+            fail("Expected the provider failure to propagate");
+        } catch (IOException expected) {
+            assertEquals("stream reset", expected.getMessage());
+        }
+
+        assertTrue(input.closed);
+        assertCacheEmpty();
+    }
+
+    @Test
+    public void cacheDirectoryFailureClosesInput() throws Exception {
+        File blocker = temporaryFolder.newFile("not-a-directory");
+        SharedFileImportManager manager = new SharedFileImportManager(blocker, 1024, 1000);
+        TrackingStream input = new TrackingStream("hello".getBytes(StandardCharsets.UTF_8), null);
+
+        try {
+            manager.importSharedFile(input, "WhatsApp Chat.txt", "text/plain", 5);
+            fail("Expected cache directory failure");
+        } catch (IOException expected) {
+            assertTrue(input.closed);
+        }
+    }
+
+    @Test
+    public void streamingSizeLimitClosesInput() throws Exception {
+        SharedFileImportManager manager = manager(4);
+        TrackingStream input = new TrackingStream("hello".getBytes(StandardCharsets.UTF_8), null);
+
+        try {
+            manager.importSharedFile(input, "WhatsApp Chat.txt", "text/plain", -1);
+            fail("Expected file_too_large");
+        } catch (SharedFileImportManager.SharedFileImportException exception) {
+            assertEquals("file_too_large", exception.error.code);
+        }
+
+        assertTrue(input.closed);
+        assertCacheEmpty();
+    }
+
+    private void assertCacheEmpty() throws Exception {
+        File[] files = new File(cacheDirectory(), SharedFileImportManager.CACHE_DIRECTORY).listFiles();
+        assertTrue(files == null || files.length == 0);
+    }
+
+    /** Emits the given bytes, then optionally fails; records close(). Tiny synthetic input only. */
+    private static final class TrackingStream extends InputStream {
+        private final byte[] bytes;
+        private final Exception failure;
+        private int position;
+        boolean closed;
+
+        TrackingStream(byte[] bytes, Exception failure) {
+            this.bytes = bytes;
+            this.failure = failure;
+        }
+
+        @Override
+        public int read() throws IOException {
+            if (position < bytes.length) {
+                return bytes[position++] & 0xff;
+            }
+            return failOrEnd();
+        }
+
+        @Override
+        public int read(byte[] buffer, int offset, int length) throws IOException {
+            if (position < bytes.length) {
+                int count = Math.min(length, bytes.length - position);
+                System.arraycopy(bytes, position, buffer, offset, count);
+                position += count;
+                return count;
+            }
+            return failOrEnd();
+        }
+
+        private int failOrEnd() throws IOException {
+            if (failure instanceof IOException) {
+                throw (IOException) failure;
+            }
+            if (failure instanceof RuntimeException) {
+                throw (RuntimeException) failure;
+            }
+            return -1;
+        }
+
+        @Override
+        public void close() {
+            closed = true;
+        }
     }
 
     private SharedFileImportManager manager(long maxBytes) throws Exception {
